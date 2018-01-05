@@ -171,9 +171,9 @@ en:
           proposal_accepted_reason: 'This proposal has been accepted because:'
           proposal_in_evaluation_reason: This proposal is being evaluated
           proposal_rejected_reason: 'This proposal has been rejected because:'
-          proposal_doable_reason: 'This proposal has been doable because:'
-          proposal_notdoable_reason: 'This proposal has been notdoable because:'
-          proposal_tovote_reason: 'This proposal has been tovote because:'
+          proposal_doable_reason: 'This proposal has been judged doable because:'
+          proposal_notdoable_reason: 'This proposal has been judged not doable because:'
+          proposal_tovote_reason: 'This proposal has been submitted to vote because:'
           report: Report
         vote_button:
           already_voted: Already voted
