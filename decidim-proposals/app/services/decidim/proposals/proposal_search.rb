@@ -54,6 +54,12 @@ module Decidim
           query.rejected
         when "evaluating"
           query.evaluating
+        when "doable"
+          query.doable
+        when "notdoable"
+          query.notdoable
+        when "tovote"
+          query.tovote
         else # Assume 'all'
           query
         end

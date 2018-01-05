@@ -33,6 +33,12 @@ module Decidim
           "text-alert"
         when "evaluating"
           "text-info"
+        when "doable"
+          "text-success"
+        when "notdoable"
+          "text-alert"
+        when "tovote"
+          "text-success"
         else
           "text-warning"
         end
@@ -52,7 +58,25 @@ module Decidim
           "warning"
         when "evaluating"
           "secondary"
+        when "doable"
+          "success"
+        when "notdoable"
+          "warning"
+        when "tovote"
+          "success"
         end
+      end
+
+      def proposal_state_collection
+        states = [
+          ["accepted", t('.accepted')],
+          ["rejected", t('.rejected')],
+          ["evaluating", t('.evaluating')],
+          ["doable", t('.doable')],
+          ["notdoable", t('.notdoable')],
+          ["tovote", t('.tovote')],
+         ] 
+         return states
       end
 
       def proposal_limit_enabled?

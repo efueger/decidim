@@ -11,7 +11,7 @@ module Decidim
         translatable_attribute :answer, String
         attribute :state, String
 
-        validates :state, presence: true, inclusion: { in: %w(accepted rejected evaluating) }
+        validates :state, presence: true, inclusion: { in: Decidim::Proposals::STATES }
         validates :answer, translatable_presence: true, if: ->(form) { form.state == "rejected" }
       end
     end

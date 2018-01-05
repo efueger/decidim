@@ -57,6 +57,9 @@ en:
             accepted: Accepted
             answer_proposal: Answer
             evaluating: Evaluating
+            doable: Doable
+            notdoable: Not doable
+            tovote: Submit to vote
             rejected: Rejected
             title: Answer for proposal %{title}
         proposals:
@@ -79,6 +82,10 @@ en:
         evaluating: Evaluating
         not_answered: Not answered
         rejected: Rejected
+        doable: Doable
+        notdoable: Not doable
+        tovote: Submit to vote
+
       create:
         error: There's been errors when saving the proposal.
         success: Proposal created successfully.
@@ -127,6 +134,9 @@ en:
           search: Search
           state: State
           voted: Voted
+          doable: Doable
+          notdoable: Not doable
+          tovote: Submit to vote
         filters_small_view:
           close_modal: Close modal
           filter: Filter

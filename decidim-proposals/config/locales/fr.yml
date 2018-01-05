@@ -56,6 +56,9 @@ fr:
             accepted: Retenue
             answer_proposal: Répondre
             evaluating: En cours d'évaluation
+            doable: Réalisable
+            notdoable: Non réalisable
+            tovote: Soumis au vote
             rejected: Refusée
             title: Réponse à la proposition %{title}
         proposals:
@@ -78,6 +81,10 @@ fr:
         evaluating: En cours d'évaluation
         not_answered: Resté sans réponse
         rejected: Refusée
+        doable: Réalisable
+        notdoable: Non réalisable
+        tovote: Soumis au vote
+
       create:
         error: Il y a eu des erreurs lors de la sauvegarde de la proposition.
         success: Proposition créée avec succès.
@@ -127,6 +134,10 @@ fr:
           search: Rechercher
           state: État
           voted: Votées
+          doable: Réalisable
+          notdoable: Non réalisable
+          tovote: Soumis au vote
+
         filters_small_view:
           close_modal: Fermer la fenêtre de dialogue
           filter: Filtrer

@@ -2,6 +2,9 @@
 
 module Decidim
   module Proposals
+
+    STATES = %w(accepted rejected evaluating doable notdoable tovote)
+
     # The data store for a Proposal in the Decidim::Proposals component.
     class Proposal < Proposals::ApplicationRecord
       include Decidim::Resourceable
@@ -26,6 +29,9 @@ module Decidim
       scope :accepted, -> { where(state: "accepted") }
       scope :rejected, -> { where(state: "rejected") }
       scope :evaluating, -> { where(state: "evaluating") }
+      scope :doable, -> { where(state: "doable") }
+      scope :notdoable, -> { where(state: "notdoable") }
+      scope :tovote, -> { where(state: "tovote") }
 
       def self.order_randomly(seed)
         transaction do
