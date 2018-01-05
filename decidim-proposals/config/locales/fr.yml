@@ -53,13 +53,13 @@ fr:
             name: Proposition
         proposal_answers:
           edit:
-            accepted: Retenue
+            accepted: Recevable
             answer_proposal: Répondre
             evaluating: En cours d'évaluation
             doable: Réalisable
             notdoable: Non réalisable
             tovote: Soumis au vote
-            rejected: Refusée
+            rejected: Non recevable
             title: Réponse à la proposition %{title}
         proposals:
           answer:
@@ -77,10 +77,10 @@ fr:
             create: Créer
             title: Créer une proposition
       answers:
-        accepted: Retenues
+        accepted: Recevable
         evaluating: En cours d'évaluation
         not_answered: Resté sans réponse
-        rejected: Refusée
+        rejected: Non recevable
         doable: Réalisable
         notdoable: Non réalisable
         tovote: Soumis au vote
@@ -118,7 +118,7 @@ fr:
           send: Envoyer
           title: Modifier la proposition
         filters:
-          accepted: Retenues
+          accepted: Recevable
           activity: Activité
           all: Toutes
           category: Catégorie
@@ -127,7 +127,7 @@ fr:
           evaluating: En cours d'évaluation
           official: Elu-e-s
           origin: Auteurs
-          rejected: Refusée
+          rejected: Non recevable
           related_to: Liée à
           scope_prompt: Sélectionnez un périmètre d'application
           scopes: Zones d'application
@@ -169,9 +169,9 @@ fr:
         show:
           contact: Contact
           edit_proposal: Modifier la proposition
-          proposal_accepted_reason: 'Cette proposition a été retenue parce que :'
-          proposal_in_evaluation_reason: Cette proposition est en cours d'évaluation
-          proposal_rejected_reason: 'Cette proposition a été refusée parce que:'
+          proposal_accepted_reason: 'Cette proposition est recevable parce que :'
+          proposal_in_evaluation_reason: 'Cette proposition est en cours d'évaluation :'
+          proposal_rejected_reason: 'Cette proposition est non recevable parce que :'
           proposal_doable_reason: 'Cette proposition a été jugée réalisable :'
           proposal_notdoable_reason: 'Cette proposition a été jugée non réalisable parce que :'
           proposal_tovote_reason: 'Cette proposition est soumise au vote :'
