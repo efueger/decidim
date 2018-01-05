@@ -84,6 +84,27 @@ module Decidim
         answered? && state == "evaluating"
       end
 
+      # Public: Checks if the organization has marked the proposal as doable it.
+      #
+      # Returns Boolean.
+      def doable?
+        answered? && state == "doable"
+      end
+
+      # Public: Checks if the organization has marked the proposal as not doable it.
+      #
+      # Returns Boolean.
+      def notdoable?
+        answered? && state == "notdoable"
+      end
+
+      # Public: Checks if the organization has marked the proposal as tovote it.
+      #
+      # Returns Boolean.
+      def tovote?
+        answered? && state == "tovote"
+      end
+
       # Public: Overrides the `commentable?` Commentable concern method.
       def commentable?
         feature.settings.comments_enabled?

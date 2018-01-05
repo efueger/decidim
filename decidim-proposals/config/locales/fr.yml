@@ -172,6 +172,9 @@ fr:
           proposal_accepted_reason: 'Cette proposition a été retenue parce que :'
           proposal_in_evaluation_reason: Cette proposition est en cours d'évaluation
           proposal_rejected_reason: 'Cette proposition a été refusée parce que:'
+          proposal_doable_reason: 'Cette proposition a été doable parce que:'
+          proposal_notdoable_reason: 'Cette proposition a été notdoable parce que:'
+          proposal_tovote_reason: 'Cette proposition a été tovote parce que:'
           report: Signaler
         vote_button:
           already_voted: Déjà voté
