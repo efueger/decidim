@@ -2,9 +2,11 @@
 
 module Decidim
   module Proposals
-
-    STATES = %w(accepted rejected evaluating doable notdoable tovote)
-
+    
+    unless (const_defined?(:STATES))
+      STATES = %w(accepted rejected evaluating doable notdoable tovote)
+    end
+    
     # The data store for a Proposal in the Decidim::Proposals component.
     class Proposal < Proposals::ApplicationRecord
       include Decidim::Resourceable
