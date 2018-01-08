@@ -84,7 +84,6 @@ fr:
         doable: Réalisable
         notdoable: Non réalisable
         tovote: Soumis au vote
-
       create:
         error: Il y a eu des erreurs lors de la sauvegarde de la proposition.
         success: Proposition créée avec succès.
@@ -170,7 +169,7 @@ fr:
           contact: Contact
           edit_proposal: Modifier la proposition
           proposal_accepted_reason: 'Cette proposition est recevable parce que :'
-          proposal_in_evaluation_reason: 'Cette proposition est en cours d'évaluation :'
+          proposal_in_evaluation_reason: "Cette proposition est en cours d'évaluation :"
           proposal_rejected_reason: 'Cette proposition est non recevable parce que :'
           proposal_doable_reason: 'Cette proposition a été jugée réalisable :'
           proposal_notdoable_reason: 'Cette proposition a été jugée non réalisable parce que :'
