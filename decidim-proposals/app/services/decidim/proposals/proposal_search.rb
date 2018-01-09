@@ -60,6 +60,8 @@ module Decidim
           query.notdoable
         when "tovote"
           query.tovote
+        when "not_answered"
+          query.not_answered
         else # Assume 'all'
           query
         end

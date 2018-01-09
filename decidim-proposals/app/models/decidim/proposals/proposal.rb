@@ -34,6 +34,7 @@ module Decidim
       scope :doable, -> { where(state: "doable") }
       scope :notdoable, -> { where(state: "notdoable") }
       scope :tovote, -> { where(state: "tovote") }
+      scope :not_answered, -> { where(state: null) }
 
       def self.order_randomly(seed)
         transaction do

@@ -136,6 +136,7 @@ fr:
           doable: Réalisable
           notdoable: Non réalisable
           tovote: Soumis au vote
+          not_answered: Pas encore évaluée
 
         filters_small_view:
           close_modal: Fermer la fenêtre de dialogue
