@@ -67,18 +67,6 @@ module Decidim
         end
       end
 
-      def proposal_state_collection
-        states = [
-          ["accepted", t('.accepted')],
-          ["rejected", t('.rejected')],
-          ["evaluating", t('.evaluating')],
-          ["doable", t('.doable')],
-          ["notdoable", t('.notdoable')],
-          ["tovote", t('.tovote')],
-         ] 
-         return states
-      end
-
       def proposal_limit_enabled?
         proposal_limit.present?
       end
