@@ -79,7 +79,7 @@ fr:
       answers:
         accepted: Recevable
         evaluating: En cours d'évaluation
-        not_answered: Resté sans réponse
+        not_answered: Pas encore évaluée
         rejected: Non recevable
         doable: Réalisable
         notdoable: Non réalisable
