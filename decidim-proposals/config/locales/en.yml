@@ -137,7 +137,7 @@ en:
           doable: Doable
           notdoable: Not doable
           tovote: Submit to vote
-          not_answered: Not evaluated yet
+          not_answered: Not answered
 
         filters_small_view:
           close_modal: Close modal
