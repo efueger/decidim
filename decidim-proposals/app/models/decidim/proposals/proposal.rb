@@ -86,6 +86,8 @@ module Decidim
       # Returns Boolean.
       def withdrawn?
         state == "withdrawn"
+      end
+      
       # Public: Checks if the organization has marked the proposal as doable it.
       #
       # Returns Boolean.
