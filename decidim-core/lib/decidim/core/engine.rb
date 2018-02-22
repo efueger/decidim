@@ -56,6 +56,7 @@ module Decidim
       end
 
       initializer "decidim.assets" do |app|
+        app.config.assets.paths << File.expand_path("../../../app/assets/stylesheets", __dir__)
         app.config.assets.precompile += %w(decidim_core_manifest.js)
 
         Decidim.feature_manifests.each do |feature|
@@ -107,19 +108,14 @@ module Decidim
           Geocoder.configure(
             # geocoding service (see below for supported options):
             lookup: :here,
-
             # IP address geocoding service (see below for supported options):
             # :ip_lookup => :maxmind,
-
             # to use an API key:
             api_key: [Decidim.geocoder&.fetch(:here_app_id), Decidim.geocoder&.fetch(:here_app_code)]
-
             # geocoding service request timeout, in seconds (default 3):
             # :timeout => 5,
-
             # set default units to kilometers:
             # :units => :km,
-
             # caching (see below for details):
             # :cache => Redis.new,
             # :cache_prefix => "..."
@@ -208,6 +204,12 @@ module Decidim
             data[:recipient_ids],
             data[:extra]
           )
+        end
+      end
+
+      initializer "decidim.content_processors" do |_app|
+        Decidim.configure do |config|
+          config.content_processors += [:user]
         end
       end
 

@@ -29,6 +29,7 @@ a:hover .icon--action{
 .icon--after{
   margin-left: .3rem;
 }
+
 .icon--before{
   margin-right: .3rem;
 }
@@ -64,4 +65,12 @@ a:hover .icon--action{
   vertical-align: -.45em;
   margin-right: .2em;
   color: $medium-gray;
+}
+
+.icon-red{
+  color: $primary!important;
+}
+
+.icon-green{
+  color: $green!important;
 }

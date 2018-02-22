@@ -35,13 +35,13 @@ module Decidim
     def create_user
       @user = User.create!(email: form.email,
                            name: form.name,
+                           nickname: form.nickname,
                            password: form.password,
                            password_confirmation: form.password_confirmation,
                            organization: form.current_organization,
                            tos_agreement: form.tos_agreement,
-                           newsletter_notifications: form.newsletter_notifications,
-                           email_on_notification: true
-                          )
+                           newsletter_notifications: form.newsletter,
+                           email_on_notification: true)
     end
 
     def create_user_group

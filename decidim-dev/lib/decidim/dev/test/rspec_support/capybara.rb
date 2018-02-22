@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
 require "selenium-webdriver"
-require "capybara-screenshot/rspec"
 
 module Decidim
   # Helpers meant to be used only during capybara test runs.
   module CapybaraTestHelpers
     def switch_to_host(host = "lvh.me")
-      unless /lvh\.me$/.match?(host)
-        raise "Can't switch to a custom host unless it really exists. Use `whatever.lvh.me` as a workaround."
-      end
+      raise "Can't switch to a custom host unless it really exists. Use `whatever.lvh.me` as a workaround." unless /lvh\.me$/.match?(host)
 
       app_host = (host ? "http://#{host}" : nil)
       Capybara.app_host = app_host
@@ -46,30 +43,35 @@ module Capybara
     def wait_for_pending_requests
       Timeout.timeout(120) { sleep(0.01) while pending_requests? }
     rescue Timeout::Error
-      raise "Requests did not finish in 60 seconds"
+      raise "Requests did not finish in 120 seconds"
     end
   end
 end
 
-Capybara::Screenshot.prune_strategy = :keep_last_run
-Capybara::Screenshot::RSpec.add_link_to_screenshot_for_failed_examples = true
-
-Capybara::Screenshot.register_driver(:headless_chrome) do |driver, path|
-  driver.browser.save_screenshot(path)
-end
-
 Capybara.configure do |config|
   config.always_include_port = true
-  config.default_driver = :headless_chrome
 end
 
 Capybara.asset_host = "http://localhost:3000"
 
 RSpec.configure do |config|
-  config.before :each, type: :feature do
-    Capybara.current_session.driver.reset!
+  config.before :each, type: :system do
+    driven_by(:headless_chrome)
     switch_to_default_host
   end
 
-  config.include Decidim::CapybaraTestHelpers, type: :feature
+  config.before :each, driver: :rack_test do
+    driven_by(:rack_test)
+  end
+
+  config.around :each, :slow do |example|
+    max_wait_time_for_slow_specs = 7
+
+    using_wait_time(max_wait_time_for_slow_specs) do
+      example.run
+    end
+  end
+
+  config.include Decidim::CapybaraTestHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :system
 end

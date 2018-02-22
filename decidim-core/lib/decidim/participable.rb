@@ -42,10 +42,6 @@ module Decidim
         }
       end
 
-      def extension_module
-        "#{module_name}::#{demodulized_name}Context".constantize
-      end
-
       def admin_extension_module
         "#{admin_module_name}::#{demodulized_name}Context".constantize
       end
@@ -79,6 +75,14 @@ module Decidim
 
       def participatory_space_manifest
         Decidim.find_participatory_space_manifest(name.demodulize.underscore.pluralize)
+      end
+
+      # Public: Adds a sane default way to retrieve public spaces. Please, overwrite
+      # this from your model class in case this is not correct for your model.
+      #
+      # Returns an `ActiveRecord::Association`.
+      def public_spaces
+        published
       end
     end
   end

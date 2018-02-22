@@ -19,7 +19,7 @@ module Decidim
           from: sender,
           to: user,
           conversation: conversation,
-          action: "new_conversation"
+          action: "new_message"
         )
       end
 
@@ -39,7 +39,7 @@ module Decidim
             sender: @sender
           )
 
-          mail(to: to.email, subject: subject)
+          mail(from: Decidim.config.mailer_sender, to: to.email, subject: subject)
         end
       end
     end

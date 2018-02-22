@@ -24,28 +24,35 @@ module Decidim
 
       source_root File.expand_path("templates", __dir__)
 
-      class_option :path, type: :string, default: nil,
+      class_option :path, type: :string,
+                          default: nil,
                           desc: "Path to the gem"
 
-      class_option :edge, type: :boolean, default: false,
+      class_option :edge, type: :boolean,
+                          default: false,
                           desc: "Use GitHub's edge version from master branch"
 
-      class_option :branch, type: :string, default: nil,
+      class_option :branch, type: :string,
+                            default: nil,
                             desc: "Use a specific branch from GitHub's version"
 
-      class_option :database, type: :string, aliases: "-d", default: "postgresql",
+      class_option :database, type: :string,
+                              default: "postgresql",
                               desc: "Configure for selected database (options: #{DATABASES.join("/")})"
 
-      class_option :recreate_db, type: :boolean, default: false,
+      class_option :recreate_db, type: :boolean,
+                                 default: false,
                                  desc: "Recreate test database"
 
-      class_option :seed_db, type: :boolean, default: false,
+      class_option :seed_db, type: :boolean,
+                             default: false,
                              desc: "Seed test database"
 
       class_option :app_const_base, type: :string,
                                     desc: "The application constant name"
 
-      class_option :skip_bundle, type: :boolean, aliases: "-B", default: true,
+      class_option :skip_bundle, type: :boolean,
+                                 default: true,
                                  desc: "Don't run bundle install"
 
       class_option :skip_gemfile, type: :boolean,
@@ -97,9 +104,7 @@ module Decidim
       end
 
       def add_ignore_uploads
-        unless options["skip_git"]
-          append_file ".gitignore", "\n# Ignore public uploads\npublic/uploads"
-        end
+        append_file ".gitignore", "\n# Ignore public uploads\npublic/uploads" unless options["skip_git"]
       end
 
       def remove_default_error_pages
@@ -110,9 +115,7 @@ module Decidim
       def authorization_handler
         template "initializer.rb", "config/initializers/decidim.rb"
 
-        if options[:demo]
-          template "example_authorization_handler.rb", "app/services/example_authorization_handler.rb"
-        end
+        template "example_authorization_handler.rb", "app/services/example_authorization_handler.rb" if options[:demo]
       end
 
       def install

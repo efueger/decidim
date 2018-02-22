@@ -4,94 +4,64 @@ module Decidim
   # This class is used to authorize a user against an action in the context of a
   # feature.
   class ActionAuthorizer
-    include Wisper::Publisher
-
+    #
     # Initializes the ActionAuthorizer.
     #
     # user    - The user to authorize against.
     # feature - The feature to authenticate against.
     # action  - The action to authenticate.
+    #
     def initialize(user, feature, action)
       @user = user
       @feature = feature
       @action = action.to_s if action
     end
 
-    # Public: Broadcasts different events given the status of the authentication.
     #
-    # Broadcasts:
-    #   failed       - When no valid authorization can be found.
-    #   unauthorized - When an authorization was found, but didn't match the credentials.
-    #   incomplete   - An authorization was found, but lacks some required fields. User
-    #                  should re-authenticate.
+    # Authorize user to perform an action in the context of a feature.
     #
-    # Returns nil.
+    # Returns:
+    #   :ok an empty hash                      - When there is no authorization handler related to the action.
+    #   result of authorization handler check  - When there is an authorization handler related to the action. Check Decidim::Verifications::DefaultActionAuthorizer class docs.
+    #
     def authorize
-      status_code, fields = *status_data
+      raise AuthorizationError, "Missing data" unless feature && action
 
-      status(status_code, fields || {})
+      status_code, data = if authorization_handler_name
+                            authorization_handler.authorize(authorization, permission_options)
+                          else
+                            [:ok, {}]
+                          end
+
+      AuthorizationStatus.new(status_code, authorization_handler, data)
     end
 
     private
 
-    def status_data
-      raise AuthorizationError, "Missing data" unless feature && action
-
-      if !authorization_handler_name
-        :ok
-      elsif !authorization
-        :missing
-      elsif !authorization.granted?
-        :pending
-      elsif unmatched_fields.any?
-        [:invalid, fields: unmatched_fields]
-      elsif missing_fields.any?
-        [:incomplete, fields: missing_fields]
-      else
-        :ok
-      end
-    end
-
-    def status(status_code, data = {})
-      AuthorizationStatus.new(status_code, authorization_handler_name, data)
-    end
-
     attr_reader :user, :feature, :action
 
     def authorization
-      return nil unless user
+      return nil unless user && authorization_handler_name
 
-      handler = permission["authorization_handler_name"]
-      return nil unless handler
-
-      @authorization ||= Verifications::Authorizations.new(user: user, name: handler).first
+      @authorization ||= Verifications::Authorizations.new(user: user, name: authorization_handler_name).first
     end
 
-    def unmatched_fields
-      (permission_options.keys & authorization.metadata.to_h.keys).each_with_object({}) do |field, unmatched|
-        unmatched[field] = permission_options[field] if authorization.metadata[field] != permission_options[field]
-        unmatched
-      end
-    end
+    def authorization_handler
+      return unless authorization_handler_name
 
-    def missing_fields
-      permission_options.keys.each_with_object([]) do |field, missing|
-        missing << field if authorization.metadata[field].blank?
-        missing
-      end
-    end
-
-    def permission_options
-      permission["options"] || {}
+      @authorization_handler ||= Verifications::Adapter.from_element(authorization_handler_name)
     end
 
     def authorization_handler_name
       permission&.fetch("authorization_handler_name", nil)
     end
 
+    def permission_options
+      permission&.fetch("options", {})
+    end
+
     def permission
-      return nil unless feature
-      return nil unless action
+      return nil unless feature && action
 
       @permission ||= feature.permissions&.fetch(action, nil)
     end
@@ -99,32 +69,26 @@ module Decidim
     class AuthorizationStatus
       attr_reader :code, :data
 
-      def initialize(code, handler_name, data)
+      def initialize(code, authorization_handler, data)
         @code = code.to_sym
-        @handler_name = handler_name
+        @authorization_handler = authorization_handler
         @data = data.symbolize_keys
       end
 
-      def auth_method
-        return unless @handler_name
-
-        @auth_method ||= Verifications::Adapter.from_element(@handler_name)
-      end
-
       def current_path(redirect_url: nil)
-        return unless auth_method
+        return unless @authorization_handler
 
         if pending?
-          auth_method.resume_authorization_path(redirect_url: redirect_url)
+          @authorization_handler.resume_authorization_path(redirect_url: redirect_url)
         else
-          auth_method.root_path(redirect_url: redirect_url)
+          @authorization_handler.root_path(redirect_url: redirect_url)
         end
       end
 
       def handler_name
-        return unless auth_method
+        return unless @authorization_handler
 
-        auth_method.key
+        @authorization_handler.key
       end
 
       def ok?

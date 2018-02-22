@@ -10,13 +10,19 @@ shared_examples "scope helpers" do
   let(:scope) { create(:scope, organization: organization) }
   let(:resource) { create(:dummy_resource, feature: feature, scope: scope) }
 
-  subject { helper.has_visible_scopes?(resource) }
-
   before do
     allow(helper).to receive(:current_participatory_space).and_return(participatory_space)
   end
+  let(:helper) do
+    Class.new.tap do |v|
+      v.extend(Decidim::ScopesHelper)
+      v.extend(Decidim::TranslationsHelper)
+    end
+  end
 
   describe "has_visible_scopes?" do
+    subject { helper.has_visible_scopes?(resource) }
+
     context "when all conditions are met" do
       it { is_expected.to be_truthy }
     end
@@ -26,14 +32,45 @@ shared_examples "scope helpers" do
       it { is_expected.to be_falsey }
     end
 
-    context "when the process has a scope" do
+    context "when the process has a different scope than the organization" do
       let(:participatory_space_scope) { create(:scope, organization: organization) }
+      it { is_expected.to be_truthy }
+    end
+
+    context "when the process has the same scope as the organization" do
+      let(:participatory_space_scope) { scope }
       it { is_expected.to be_falsey }
     end
 
     context "when the resource has not a scope" do
       let(:scope) { nil }
       it { is_expected.to be_falsey }
+    end
+  end
+
+  describe "scope_name_for_picker" do
+    let(:global_name) { "Global name" }
+    subject { helper.scope_name_for_picker(scope, global_name) }
+
+    context "when a scope is given" do
+      context "when the scope has a scope type" do
+        it { is_expected.to include(scope.name["en"]) }
+        it { is_expected.to include(scope.scope_type.name["en"]) }
+      end
+
+      context "when the scope has no type" do
+        before do
+          scope.scope_type = nil
+        end
+
+        it { is_expected.to eq(scope.name["en"]) }
+      end
+    end
+
+    context "when no scope is given" do
+      let(:scope) { nil }
+
+      it { is_expected.to eq("Global name") }
     end
   end
 end

@@ -35,20 +35,42 @@ module Decidim
       attr_reader :form
 
       def create_comment
+        parsed = Decidim::ContentProcessor.parse(form.body)
+
         @comment = Comment.create!(author: @author,
                                    commentable: @commentable,
                                    root_commentable: root_commentable(@commentable),
-                                   body: form.body,
+                                   body: parsed.rewrite,
                                    alignment: form.alignment,
                                    decidim_user_group_id: form.user_group_id)
+
+        mentioned_users = parsed.metadata[:user].users
+        send_mention_notifications(mentioned_users) if mentioned_users.any?
       end
 
       def send_notification
+        recipient_ids = (@commentable.users_to_notify_on_comment_created - [@author]).pluck(:id)
+        recipient_ids += @author.followers.pluck(:id)
+
         Decidim::EventsManager.publish(
           event: "decidim.events.comments.comment_created",
           event_class: Decidim::Comments::CommentCreatedEvent,
           resource: @comment.root_commentable,
           recipient_ids: (@commentable.users_to_notify_on_comment_created - [@author]).pluck(:id),
+          extra: {
+            comment_id: @comment.id
+          }
+        )
+      end
+
+      def send_mention_notifications(mentioned_users)
+        recipient_ids = mentioned_users.pluck(:id)
+
+        Decidim::EventsManager.publish(
+          event: "decidim.events.comments.user_mentioned",
+          event_class: Decidim::Comments::UserMentionedEvent,
+          resource: @comment.root_commentable,
+          recipient_ids: recipient_ids.uniq,
           extra: {
             comment_id: @comment.id
           }

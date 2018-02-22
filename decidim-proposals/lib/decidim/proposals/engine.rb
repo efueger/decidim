@@ -2,6 +2,7 @@
 
 require "kaminari"
 require "social-share-button"
+require "ransack"
 
 module Decidim
   module Proposals
@@ -13,6 +14,9 @@ module Decidim
 
       routes do
         resources :proposals, except: [:destroy] do
+          member do
+            put :withdraw
+          end
           resource :proposal_vote, only: [:create, :destroy]
           resource :proposal_widget, only: :show, path: "embed"
         end

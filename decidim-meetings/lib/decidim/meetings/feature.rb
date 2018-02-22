@@ -28,6 +28,7 @@ Decidim.register_feature(:meetings) do |feature|
   feature.settings(:global) do |settings|
     settings.attribute :announcement, type: :text, translated: true, editor: true
     settings.attribute :comments_enabled, type: :boolean, default: true
+    settings.attribute :comments_upstream_moderation_enabled, type: :boolean, default: false
   end
 
   feature.settings(:step) do |settings|
@@ -83,9 +84,12 @@ Decidim.register_feature(:meetings) do |feature|
           password: "password1234",
           password_confirmation: "password1234",
           name: name,
+          nickname: Faker::Twitter.unique.screen_name,
           organization: feature.organization,
           tos_agreement: "1",
-          confirmed_at: Time.current
+          confirmed_at: Time.current,
+          personal_url: Faker::Internet.url,
+          about: Faker::Lorem.paragraph(2)
         )
 
         Decidim::Meetings::Registration.create!(

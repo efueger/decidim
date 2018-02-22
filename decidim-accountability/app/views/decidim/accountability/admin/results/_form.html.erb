@@ -22,7 +22,7 @@
 
       <% if current_participatory_space.has_subscopes? %>
         <div class="row column">
-          <%= form.scopes_select :decidim_scope_id, prompt: I18n.t("decidim.scopes.global"), remote_path: decidim.scopes_search_path(root: current_participatory_space.scope) %>
+          <%= scopes_picker_field form, :decidim_scope_id %>
         </div>
       <% end %>
 
@@ -56,6 +56,16 @@
       <% if @form.proposals %>
         <%= form.select :proposal_ids,
                         @form.proposals,
+                        {},
+                        { multiple: true, class: "chosen-select" }
+        %>
+      <% end %>
+    </div>
+
+    <div class="row column">
+      <% if @form.projects %>
+        <%= form.select :project_ids,
+                        @form.projects,
                         {},
                         { multiple: true, class: "chosen-select" }
         %>

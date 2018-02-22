@@ -135,6 +135,7 @@ export class AddCommentForm extends React.Component<AddCommentFormProps, AddComm
         <form onSubmit={this.addComment}>
           {this._renderCommentAs()}
           <div className="field">
+            <em> Votre commentaire sera publié après modération par un administrateur </em>
             <label className="show-for-sr" htmlFor={`add-comment-${type}-${id}`}>{I18n.t("components.add_comment_form.form.body.label")}</label>
             {this._renderTextArea()}
             {this._renderTextAreaError()}
@@ -366,14 +367,13 @@ const AddCommentFormWithMutation = graphql<addCommentMutation, AddCommentFormPro
                 type: "Decidim::Comments::Comment",
                 createdAt: new Date().toISOString(),
                 body,
+                formattedBody: body,
                 alignment,
                 author: {
                   __typename: "User",
                   name: ownProps.session && ownProps.session.user.name,
                   avatarUrl: ownProps.session && ownProps.session.user.avatarUrl,
                   deleted: false,
-                  isVerified: true,
-                  isUser: true,
                 },
                 comments: [],
                 hasComments: false,
@@ -419,26 +419,29 @@ const AddCommentFormWithMutation = graphql<addCommentMutation, AddCommentFormPro
               };
             };
 
-            if (type === "Decidim::Comments::Comment") {
-                comments = prev.commentable.comments.map(commentReducer);
-              } else {
-                comments = [
-                  ...prev.commentable.comments,
-                  newComment,
-                ];
-              }
+            if (prev) {
+              if (type === "Decidim::Comments::Comment") {
+                  comments = prev.commentable.comments.map(commentReducer);
+                } else {
+                  comments = [
+                    ...prev.commentable.comments,
+                    newComment,
+                  ];
+                }
 
-            store.writeQuery({
-              query: getCommentsQuery,
-              data: {
-                ...prev,
-                commentable: {
-                  ...prev.commentable,
-                  comments,
+              store.writeQuery({
+                query: getCommentsQuery,
+                data: {
+                  ...prev,
+                  commentable: {
+                    ...prev.commentable,
+                    totalCommentsCount: prev.commentable.totalCommentsCount + 1,
+                    comments,
+                  },
                 },
-              },
-              variables,
-            });
+                variables,
+              });
+            }
           },
         });
       }

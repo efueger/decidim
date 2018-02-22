@@ -2,11 +2,11 @@
 
 module Decidim
   module Proposals
-    
+
     unless (const_defined?(:STATES))
       STATES = %w(accepted rejected evaluating doable notdoable tovote)
     end
-    
+
     # The data store for a Proposal in the Decidim::Proposals component.
     class Proposal < Proposals::ApplicationRecord
       include Decidim::Resourceable
@@ -23,6 +23,7 @@ module Decidim
       feature_manifest_name "proposals"
 
       has_many :votes, foreign_key: "decidim_proposal_id", class_name: "ProposalVote", dependent: :destroy, counter_cache: "proposal_votes_count"
+      has_many :notes, foreign_key: "decidim_proposal_id", class_name: "ProposalNote", dependent: :destroy, counter_cache: "proposal_notes_count"
 
       validates :title, :body, presence: true
 
@@ -31,6 +32,8 @@ module Decidim
       scope :accepted, -> { where(state: "accepted") }
       scope :rejected, -> { where(state: "rejected") }
       scope :evaluating, -> { where(state: "evaluating") }
+      scope :withdrawn, -> { where(state: "withdrawn") }
+      scope :except_withdrawn, -> { where.not(state: "withdrawn").or(where(state: nil)) }
       scope :doable, -> { where(state: "doable") }
       scope :notdoable, -> { where(state: "notdoable") }
       scope :tovote, -> { where(state: "tovote") }
@@ -41,15 +44,6 @@ module Decidim
           connection.execute("SELECT setseed(#{connection.quote(seed)})")
           order("RANDOM()").load
         end
-      end
-
-      def author_name
-        return I18n.t("decidim.proposals.models.proposal.fields.official_proposal") if official?
-        user_group&.name || author.name
-      end
-
-      def author_avatar_url
-        author&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
       end
 
       # Public: Check if the user has voted the proposal.
@@ -87,6 +81,11 @@ module Decidim
         answered? && state == "evaluating"
       end
 
+      # Public: Checks if the author has withdrawn the proposal.
+      #
+      # Returns Boolean.
+      def withdrawn?
+        state == "withdrawn"
       # Public: Checks if the organization has marked the proposal as doable it.
       #
       # Returns Boolean.
@@ -139,6 +138,7 @@ module Decidim
         ResourceLocatorPresenter.new(self).url
       end
 
+
       # Public: Whether the proposal is official or not.
       def official?
         author.nil?
@@ -176,6 +176,26 @@ module Decidim
       # user - the user to check for authorship
       def editable_by?(user)
         authored_by?(user) && !answered? && within_edit_time_limit?
+      end
+
+      # Checks whether the user can withdraw the given proposal.
+      #
+      # user - the user to check for withdrawability.
+      def withdrawable_by?(user)
+        user && !withdrawn? && authored_by?(user)
+      end
+
+      # method for sort_link by number of comments
+      ransacker :commentable_comments_count do
+        query = <<-SQL
+              (SELECT COUNT(decidim_comments_comments.id)
+                 FROM decidim_comments_comments
+                WHERE decidim_comments_comments.decidim_commentable_id = decidim_proposals_proposals.id
+                  AND decidim_comments_comments.decidim_commentable_type = 'Decidim::Proposals::Proposal'
+                GROUP BY decidim_comments_comments.decidim_commentable_id
+              )
+            SQL
+        Arel.sql(query)
       end
 
       private

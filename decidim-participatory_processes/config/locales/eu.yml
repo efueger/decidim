@@ -2,6 +2,7 @@ eu:
   activemodel:
     attributes:
       participatory_process:
+        announcement: Anuntzio
         banner_image: Bannerra
         copy_categories: Kopiatu kategoriak
         copy_features: Kopiatu funtzionalitateak
@@ -21,6 +22,7 @@ eu:
         scope_id: Esparrua
         scopes_enabled: Esparru gaituak
         short_description: Deskribapen laburra
+        show_statistics: Erakutsi estatistikak
         slug: URL laburra
         start_date: Hasiera-data
         subtitle: Azpititulua
@@ -151,7 +153,7 @@ eu:
           success: Prozesu partizipatiboaren fasea zuzen eguneratu da.
       participatory_process_user_roles:
         create:
-          error: Errorea gertatu da prozesu partizipatibo honetarako erabiltzailea sortzean.
+          error: Errore bat gertatu da partaidetza prozesu honetan erabiltzailea gehitzea.
           success: Ongi sortu da erabiltzailea prozesu partizipatibo honetarako.
         destroy:
           success: Ongi deuseztatu da erabiltzailea prozesu partizipatibo honetarako.
@@ -164,7 +166,7 @@ eu:
           create: Sortu
           title: Prozesuaren erabiltzaile berria.
         update:
-          error: Errorea gertatu da prozesu partizipatibo honetarako erabiltzailea sortzean.
+          error: Errore bat gertatu da parte hartzaile prozesu honetarako erabiltzaile bat.
           success: Ongi eguneratu da erabiltzailea prozesu partizipatibo honetarako.
       participatory_processes:
         create:
@@ -217,6 +219,7 @@ eu:
             slug_help: 'URL slugs erabiltzen dira prozesu hau adierazten duten URLak sortzeko. Letrak, zenbakiak eta marratxoak soilik onartzen ditu eta letra batekin hasi behar duzu. Adibidea: %{url}'
         participatory_processes:
           form:
+            announcement_help: Hemen sartzen duzun testua erabiltzaileari erakutsiko zaio prozesuaren informazioaren azpitik.
             slug_help: 'URL slugs erabiltzen dira prozesu hau adierazten duten URLak sortzeko. Letrak, zenbakiak eta marratxoak soilik onartzen ditu eta letra batekin hasi behar duzu. Adibidea: %{url}'
       index:
         title: Prozesu partizipatiboak
@@ -259,8 +262,6 @@ eu:
         surveys_count: Inkestak
         users_count: Parte-hartzaileak
         votes_count: Euskarriak
-    scopes:
-      global: Esparrua orokorra
   layouts:
     decidim:
       participatory_process_groups:

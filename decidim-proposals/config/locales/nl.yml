@@ -4,12 +4,35 @@ nl:
       proposal:
         body: Body
         category_id: Categorie
+        has_address: Heeft adres
         scope_id: Reikwijdte
         title: Titel
         user_group_id: Maak een voorstel als
       proposal_answer:
         answer: Antwoord
   decidim:
+    events:
+      proposals:
+        proposal_accepted:
+          email_intro: 'Het voorstel "%{resource_title}" is geaccepteerd. U kunt het antwoord op deze pagina lezen:'
+          email_outro: Je hebt deze melding ontvangen omdat je "%{resource_title}" volgt. Je kunt het niet meer volgen vanaf de vorige link.
+          email_subject: Een voorstel dat u volgt, is geaccepteerd
+          notification_title: Het voorstel <a href="%{resource_path}">%{resource_title}</a> is geaccepteerd.
+        proposal_created:
+          email_intro: "%{author_name} %{author_nickname}, wie je volgt, heeft een nieuw voorstel gemaakt, bekijk het en draag bij:"
+          email_outro: Je hebt deze melding ontvangen omdat je %{author_nickname} volgt. Je kunt stoppen met het ontvangen van meldingen na de vorige link.
+          email_subject: Nieuw voorstel van %{author_nickname}
+          notification_title: Het voorstel <a href="%{resource_path}">%{resource_title}</a> is gemaakt door <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
+        proposal_evaluating:
+          email_intro: 'Het voorstel "%{resource_title}" wordt momenteel geëvalueerd. U kunt op deze pagina zoeken naar een antwoord:'
+          email_outro: Je hebt deze melding ontvangen omdat je "%{resource_title}" volgt. Je kunt het niet meer volgen vanaf de vorige link.
+          email_subject: Een voorstel dat u volgt, wordt geëvalueerd
+          notification_title: Het voorstel <a href="%{resource_path}">%{resource_title}</a> wordt beoordeeld.
+        proposal_rejected:
+          email_intro: 'Het voorstel "%{resource_title}" is afgewezen. U kunt het antwoord op deze pagina lezen:'
+          email_outro: Je hebt deze melding ontvangen omdat je "%{resource_title}" volgt. Je kunt het niet meer volgen vanaf de vorige link.
+          email_subject: Een voorstel dat u volgt, is afgewezen
+          notification_title: Het voorstel <a href="%{resource_path}">%{resource_title}</a> is afgewezen.
     features:
       proposals:
         actions:
@@ -41,6 +64,7 @@ nl:
       actions:
         answer: Antwoord
         new: nieuwe
+        private_notes: Privé notities
         title: Acties
       admin:
         actions:
@@ -58,6 +82,12 @@ nl:
             evaluating: Aan het beoordelen
             rejected: Verworpen
             title: Antwoord voor voorstel %{title}
+        proposal_notes:
+          form:
+            note: Notitie
+            submit: voorleggen
+          leave_your_note: Laat je briefje achter
+          title: Privé notities
         proposals:
           answer:
             invalid: Er is een probleem opgetreden bij het beantwoorden van dit voorstel
@@ -73,11 +103,18 @@ nl:
           new:
             create: Creëren
             title: Maak een voorstel
+        shared:
+          info_proposal:
+            body: Lichaam
+            created_at: Aanmaakdatum
+            proposal_votes_count: Stemmen tellen
+            proposals: voorstellen
       answers:
         accepted: Aanvaard
         evaluating: Aan het beoordelen
         not_answered: Nog niet beantwoord
         rejected: Geweigerd
+        withdrawn: teruggetrokken
       create:
         error: Er zijn fouten geweest bij het opslaan van het voorstel.
         success: Voorstel is succesvol gemaakt.
@@ -85,7 +122,10 @@ nl:
         proposal:
           fields:
             category: Categorie
+            comments: Comments
+            created_at: Gemaakt bij
             id: ID
+            notes: Notes
             official_proposal: Officieel voorstel
             scope: Scope
             state: Staat
@@ -97,15 +137,11 @@ nl:
         create:
           error: Er zijn fouten geweest bij het stemmen van het voorstel.
       proposals:
-        author:
-          deleted: Verwijderde gebruiker
-          verified_user_group: Geverifieerde organisatie
         count:
           proposals_count:
             one: 1 voorstel
             other: "%{count} voorstellen"
         edit:
-          attachment_legend: "(Optioneel) Voeg een bijlage toe"
           back: Terug
           select_a_category: Selecteer een categorie
           send: Verzenden
@@ -122,8 +158,6 @@ nl:
           origin: Oorsprong
           rejected: Geweigerd
           related_to: Gerelateerd aan
-          scope_prompt: Selecteer een scope
-          scopes: Scopes
           search: Zoeken
           state: Status
           voted: Gestemd
@@ -134,6 +168,7 @@ nl:
           unfold: Uitvouwen
         index:
           new_proposal: Nieuw voorstel
+          see_all_withdrawn: Bekijk alle ingetrokken voorstellen
           view_proposal: Bekijk voorstel
         linked_proposals:
           proposal_votes:
@@ -154,14 +189,16 @@ nl:
           random: Willekeurig
           recent: Recentelijk
         proposal:
+          creation_date: 'Aangemaakt op: %{date}'
           view_proposal: Bekijk voorstel
         show:
-          contact: Contact
           edit_proposal: Bewerk voorstel
           proposal_accepted_reason: 'Dit voorstel is geaccepteerd omdat:'
           proposal_in_evaluation_reason: Dit voorstel wordt geëvalueerd
           proposal_rejected_reason: 'Dit voorstel is afgewezen omdat:'
           report: Rapporteren
+          withdraw_confirmation: Weet je zeker dat je dit voorstel wilt intrekken?
+          withdraw_proposal: Voorstel intrekken
         vote_button:
           already_voted: Al gestemd
           already_voted_hover: Stem Intrekken
@@ -187,6 +224,8 @@ nl:
         error: Er zijn fouten opgetreden bij het opslaan van het voorstel.
         success: Voorstel succesvol bijgewerkt.
     resource_links:
+      included_projects:
+        project_results: 'Resultaten die in dit project verschijnen:'
       included_proposals:
         proposal_projects: 'Voorstel in deze projecten:'
         proposal_results: 'Voorstel dat in deze resultaten voorkomt:'

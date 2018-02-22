@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "decidim/settings_manifest"
+require "decidim/participatory_space_context_manifest"
 
 module Decidim
   # This class handles all the logic associated to configuring a participatory
@@ -11,9 +12,6 @@ module Decidim
   class ParticipatorySpaceManifest
     include ActiveModel::Model
     include Virtus.model
-
-    attribute :admin_engine, Rails::Engine
-    attribute :engine, Rails::Engine
 
     attribute :name, Symbol
 
@@ -29,6 +27,32 @@ module Decidim
     attribute :icon, String
 
     validates :name, presence: true
+
+    # A context used to set the layout and behavior of a participatory space. Full documentation can
+    # be found looking at the `ParticipatorySpaceContextManifest` class.
+    #
+    # Example:
+    #
+    #     context(:public) do |context|
+    #       context.layout "layouts/decidim/some_layout"
+    #     end
+    #
+    #     context(:public).layout
+    #     # => "layouts/decidim/some_layout"
+    #
+    # Returns Nothing.
+    def context(name = :public, &block)
+      name = name.to_sym
+      @contexts ||= {}
+
+      if block
+        context = ParticipatorySpaceContextManifest.new
+        context.instance_eval(&block)
+        @contexts[name] = context
+      end
+
+      @contexts.fetch(name)
+    end
 
     # Public: A block that gets called when seeding for this feature takes place.
     #
@@ -49,6 +73,15 @@ module Decidim
     # Returns a String.
     def route_name
       super || model_class_name.demodulize.underscore
+    end
+
+    # Public: A block that retrieves all the participatory spaces for the manifest.
+    # The block receives a `Decidim::Organization` as a parameter in order to filter.
+    # The block is expected to return an `ActiveRecord::Association`.
+    #
+    # Returns nothing.
+    def participatory_spaces(&block)
+      @participatory_spaces ||= block
     end
   end
 end

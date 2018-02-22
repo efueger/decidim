@@ -4,12 +4,35 @@ it:
       proposal:
         body: Corpo del testo
         category_id: Categoria
+        has_address: Ha un indirizzo
         scope_id: Visibilità
         title: Titolo
         user_group_id: Crea proposta come
       proposal_answer:
         answer: Risposta
   decidim:
+    events:
+      proposals:
+        proposal_accepted:
+          email_intro: 'La proposta "%{resource_title}" è stata accettata. Puoi leggere la risposta in questa pagina:'
+          email_outro: Hai ricevuto questa notifica perché stai seguendo "%{resource_title}". Puoi smettere di seguirlo dal link precedente.
+          email_subject: Una proposta che stai seguendo è stata accettata
+          notification_title: La proposta <a href="%{resource_path}">%{resource_title}</a> è stata accettata.
+        proposal_created:
+          email_intro: "%{author_name} %{author_nickname}, che stai seguendo, ha creato una nuova proposta, verificala e contribuisci:"
+          email_outro: Hai ricevuto questa notifica perché stai seguendo %{author_nickname}. È possibile interrompere la ricezione di notifiche seguendo il collegamento precedente.
+          email_subject: Nuova proposta di %{author_nickname}
+          notification_title: La proposta <a href="%{resource_path}">%{resource_title}</a> è stata creata da <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
+        proposal_evaluating:
+          email_intro: 'La proposta "%{resource_title}" è attualmente in fase di valutazione. Puoi trovare una risposta in questa pagina:'
+          email_outro: Hai ricevuto questa notifica perché stai seguendo "%{resource_title}". Puoi smettere di seguirlo dal link precedente.
+          email_subject: Una proposta che stai seguendo è in corso di valutazione
+          notification_title: La proposta <a href="%{resource_path}">%{resource_title}</a> è in fase di valutazione.
+        proposal_rejected:
+          email_intro: 'La proposta "%{resource_title}" è stata respinta. Puoi leggere la risposta in questa pagina:'
+          email_outro: Hai ricevuto questa notifica perché stai seguendo "%{resource_title}". Puoi smettere di seguirlo dal link precedente.
+          email_subject: Una proposta che stai seguendo è stata respinta
+          notification_title: La proposta <a href="%{resource_path}">%{resource_title}</a> è stata respinta.
     features:
       proposals:
         actions:
@@ -41,6 +64,7 @@ it:
       actions:
         answer: Risposta
         new: Nuovo
+        private_notes: Note private
         title: Azioni
       admin:
         actions:
@@ -58,6 +82,12 @@ it:
             evaluating: Valutare
             rejected: Rifiutata
             title: Risposta per la proposta %{title}
+        proposal_notes:
+          form:
+            note: Nota
+            submit: Sottoscrivi
+          leave_your_note: Lascia il tuo messaggio
+          title: Note private
         proposals:
           answer:
             invalid: E' stato riscontrato un problema nella risposta per questa proposta
@@ -73,11 +103,18 @@ it:
           new:
             create: Crea
             title: Crea una proposta
+        shared:
+          info_proposal:
+            body: Corpo
+            created_at: Data di creazione
+            proposal_votes_count: Contare i voti
+            proposals: proposte
       answers:
         accepted: Accettata
         evaluating: Valutare
         not_answered: Non risposto
         rejected: Rifiutata
+        withdrawn: Ritirato
       create:
         error: C'è stato un errore durante il salvataggio di questa proposta.
         success: OK, la proposta è stata creata.
@@ -85,7 +122,10 @@ it:
         proposal:
           fields:
             category: Categoria
+            comments: Commenti
+            created_at: Creato a
             id: ID
+            notes: Gli appunti
             official_proposal: Proposta ufficiale
             scope: Visibilità
             state: Stato
@@ -97,15 +137,11 @@ it:
         create:
           error: Ci sono stati errori durante la votazione della proposta.
       proposals:
-        author:
-          deleted: Utente cancellato
-          verified_user_group: Organizzazione verificata
         count:
           proposals_count:
             one: 1 proposta
             other: "%{count} proposte"
         edit:
-          attachment_legend: "(Facoltativo) Aggiungere un allegato"
           back: Indietro
           select_a_category: Seleziona una categoria
           send: Inviare
@@ -122,8 +158,6 @@ it:
           origin: Origine
           rejected: Rifiutata
           related_to: Associata a
-          scope_prompt: Selezionare un ambito
-          scopes: Visibilità
           search: Cerca
           state: Stato
           voted: Votata
@@ -134,6 +168,7 @@ it:
           unfold: Espandi
         index:
           new_proposal: Nuova proposta
+          see_all_withdrawn: Vedi tutte le proposte ritirate
           view_proposal: Visualizza proposta
         linked_proposals:
           proposal_votes:
@@ -154,14 +189,16 @@ it:
           random: A caso
           recent: le più recenti
         proposal:
+          creation_date: 'Creazione: %{date}'
           view_proposal: Visualizza la proposta
         show:
-          contact: Contatto
           edit_proposal: Modifica la proposta
           proposal_accepted_reason: 'Questa proposta è stata accettata perché:'
           proposal_in_evaluation_reason: Questa proposta è in fase di valutazione
           proposal_rejected_reason: 'Questa proposta è stata rifiutata perché:'
           report: Report
+          withdraw_confirmation: Sei sicuro di ritirare questa proposta?
+          withdraw_proposal: Ritirare la proposta
         vote_button:
           already_voted: Già votata
           already_voted_hover: Annullare il voto
@@ -187,6 +224,8 @@ it:
         error: Ci sono stati errori quando si salva la proposta.
         success: La proposta è stata aggiornata correttamente.
     resource_links:
+      included_projects:
+        project_results: 'Risultati che appaiono in questo progetto:'
       included_proposals:
         proposal_projects: 'Le proposte compaiono nei seguenti progetti:'
         proposal_results: 'Le proposte compaiono nei seguenti risultati:'

@@ -6,13 +6,16 @@ fragment CommentData on Comment {
   sgid
   type
   body
+  formattedBody
   createdAt
+  formattedCreatedAt
   author {
     name
+    nickname
     avatarUrl
-    isVerified
-    isUser
+    profilePath
     deleted
+    badge
   }
   hasComments
   acceptsNewComments

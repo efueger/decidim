@@ -4,6 +4,7 @@ uk:
       proposal:
         body: Основний текст
         category_id: Розділ
+        has_address: Має адресу
         scope_id: Терен
         title: Назва
         user_group_id: Внести пропозицію як
@@ -85,7 +86,9 @@ uk:
         proposal:
           fields:
             category: Розділ
-            id: Ідентифікатор
+            comments: Коментарі
+            created_at: 'Створено:'
+            id: Псевдонім
             official_proposal: Офіційна пропозиція
             scope: Терен
             state: Стан
@@ -97,9 +100,6 @@ uk:
         create:
           error: При голосуванні пропозиції сталися помилки.
       proposals:
-        author:
-          deleted: Видалений учасник
-          verified_user_group: Перевірена організація
         count:
           proposals_count:
             one: 1 пропозиція
@@ -107,7 +107,6 @@ uk:
             many: "%{count} пропозицій"
             other: "%{count} пропозицій"
         edit:
-          attachment_legend: "(Необов'язково) Додати вкладений файл"
           back: Назад
           select_a_category: Будь ласка, оберіть розділ
           send: Надіслати
@@ -124,8 +123,6 @@ uk:
           origin: Джерело
           rejected: Відхилено
           related_to: Пов'язане з
-          scope_prompt: Оберіть терен
-          scopes: Терени
           search: Шукати
           state: Стан
           voted: Проголосоване
@@ -160,6 +157,7 @@ uk:
           random: Довільно
           recent: Нещодавні
         proposal:
+          creation_date: 'Створено: %{date}'
           view_proposal: Переглянути пропозицію
         show:
           edit_proposal: Редагувати пропозицію
@@ -194,6 +192,8 @@ uk:
         error: При збереженні цієї пропозиції сталися помилки.
         success: Пропозицію успішно оновлено.
     resource_links:
+      included_projects:
+        project_results: 'Підсумки, які є в цьому проекті:'
       included_proposals:
         proposal_projects: 'Пропозиція є в таких проектах:'
         proposal_results: 'Пропозиція є в таких підсумках:'

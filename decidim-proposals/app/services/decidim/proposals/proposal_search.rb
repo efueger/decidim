@@ -62,8 +62,12 @@ module Decidim
           query.tovote
         when "not_answered"
           query.not_answered
-        else # Assume 'all'
-          query
+        when "withdrawn"
+          query.withdrawn
+        else # Assume 'not_withdrawn'
+          query.except_withdrawn
+        # else # Assume 'all'
+        #   query
         end
       end
 

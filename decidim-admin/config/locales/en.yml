@@ -25,13 +25,24 @@ en:
         cta_button_path: Call To Action button path
         cta_button_text: Call To Action button text
         description: Description
+        enable_omnipresent_banner: Show omnipresent banner
         favicon: Icon
         header_snippets: Header snippets
+        highlighted_content_banner_action_subtitle: Action button subtitle
+        highlighted_content_banner_action_title: Action button title
+        highlighted_content_banner_action_url: Action button URL
+        highlighted_content_banner_enabled: Show the highlighted content banner
+        highlighted_content_banner_image: Image
+        highlighted_content_banner_short_description: Short description
+        highlighted_content_banner_title: Title
         homepage_image: Homepage image
         logo: Logo
         official_img_footer: Official logo footer
         official_img_header: Official logo header
         official_url: Official organization URL
+        omnipresent_banner_short_description: Short description
+        omnipresent_banner_title: Title
+        omnipresent_banner_url: URL
         show_statistics: Show statistics
         welcome_text: Welcome text
       scope:
@@ -198,6 +209,7 @@ en:
         new:
           create: Create
           new_managed_user: New managed user
+          no_authorization_handlers: There are no available authorization handlers to manage users. Please contact your system administrator.
           select_authorization_method: Select an authorization method
           step: Step %{current} of %{total}
         promotion:
@@ -215,6 +227,7 @@ en:
         dashboard: Dashboard
         managed_users: Managed users
         newsletters: Newsletters
+        officializations: Officializations
         scope_types: Scope types
         scopes: Scopes
         settings: Settings
@@ -282,9 +295,15 @@ en:
           fields:
             title: Title
             link: Link
+            weight: Weight
       moderations:
         index:
           title: Moderations
+          title:
+            upstream: Upstream moderation
+            downstream: Downstream moderation
+          moderated: Moderated
+          unmoderated: Unmoderated
         report:
           reasons:
             does_not_belong: Does not belong
@@ -319,6 +338,33 @@ en:
         update:
           error: There's been an error updating this newsletter.
           success: Newsletter updated successfully. Please review it before sending.
+      officializations:
+        create:
+          success: User officialized successfully
+        destroy:
+          success: User unofficialized successfully
+        index:
+          actions: Actions
+          badge: Badge
+          created_at: Created At
+          filter:
+            all: All
+            not_officialized: Not officialized
+            officialized: Officialized
+          filter_by: Filter by
+          name: Name
+          nickname: Nickname
+          not_officialized: Not officialized
+          officialize: Officialize
+          officialized: Officialized
+          reofficialize: Reofficialize
+          search: Search
+          status: Status
+          unofficialize: Unofficialize
+        new:
+          badge: Officialization badge
+          officialize: Officialize
+          title: Officialize user "%{name}"
       organization:
         edit:
           title: Edit organization
@@ -342,7 +388,9 @@ en:
           cta_button_text_help: You can overwrite the Call To Action button text in the homepage for each available language in your organization. If not set, the default value will be used. The Call To Action button is shown in the homepage between the welcome text and the description.
           header_snippets_help: Use this field to add things to the HTML head. The most common use is to integrate third-party services that require some extra JavaScript or CSS. Also, you can use it to add extra meta tags to the HTML. Note that this will only be rendered in public pages, not in the admin section.
           homepage_appearance_title: Edit homepage appearance
+          homepage_highlighted_content_banner_title: Highligted content banner
           layout_appearance_title: Edit layout appearance
+          omnipresent_banner_appearance_title: Edit omnipresent
       scope_types:
         create:
           error: There was an error creating a new scope type.
@@ -386,7 +434,7 @@ en:
           title: Edit page
           update: Update
         new:
-          create: New
+          create: Create
           title: New page
         update:
           error: There was an error when updating this page.
@@ -396,6 +444,7 @@ en:
         dashboard: Dashboard
         impersonations: Impersonations
         managed_users: Managed users
+        officializations: Officializations
         scope_types: Scope types
         scopes: Scopes
         static_pages: Pages
@@ -438,6 +487,12 @@ en:
           title: Invite user as administrator
       navbar_links:
         no_links: No links created
+        form:
+          title: Title
+          link: Link
+          weight: Weight
+          new_tab: Open in a new tab
+          same_tab: Open in the same tab
         new:
           title: New navbar link
           create: Create
@@ -459,6 +514,11 @@ en:
         not_hidden: Not hidden
         title: Actions
         unreport: Unreport
+        moderated: Moderated
+        unmoderated: Unmoderated
+        authorize: Authorize
+        refuse: Refuse
+
       admin:
         reportable:
           hide:
@@ -476,6 +536,9 @@ en:
             reported_content_url: Reported content URL
             reports: Reports
             visit_url: Visit URL
+            date: Date
+            type: Type
+            status: Status
   errors:
     messages:
       invalid_json: Invalid JSON

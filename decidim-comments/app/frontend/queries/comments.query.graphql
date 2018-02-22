@@ -5,6 +5,7 @@ query GetComments($commentableId: String!, $commentableType: String!, $orderBy: 
   session {
     user {
       name
+      nickname
       avatarUrl
       organizationName
     }
@@ -14,6 +15,7 @@ query GetComments($commentableId: String!, $commentableType: String!, $orderBy: 
     acceptsNewComments
     commentsHaveAlignment
     commentsHaveVotes
+    totalCommentsCount
     comments(orderBy: $orderBy) {
       id
       ...CommentThread

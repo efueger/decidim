@@ -4,12 +4,43 @@ fr:
       proposal:
         body: Corps du texte
         category_id: Catégorie
+        has_address: Renseignez une adresse
         scope_id: Zone d'application
         title: Titre
         user_group_id: Créer une proposition en tant que
       proposal_answer:
         answer: Répondre
   decidim:
+    events:
+      proposal_created:
+        notification_title: Nouvelle proposition de %{author_name} dans <a href="%{resource_path}">%{resource_title}</a>
+        url: "Url de la proposition : %{resource_url}"
+        email_subject: 'Nouvelle proposition de %{author_name}'
+        moderation:
+          email_intro: "%{author_name} a publié une nouvelle proposition dans"
+          moderation_url: "Vous pouvez modérer le contenu en suivant ce lien : %{moderation_url}"
+          email_subject: 'Nouvelle proposition de %{author_name} en attente de modération'
+      proposals:
+        proposal_accepted:
+          email_intro: 'La proposition "%{resource_title}" a été acceptée. Vous pouvez lire la réponse dans cette page:'
+          email_outro: Vous avez reçu cette notification parce que vous suivez "%{resource_title}". Vous pouvez le retirer du lien précédent.
+          email_subject: Une proposition que vous suivez a été acceptée
+          notification_title: La proposition <a href="%{resource_path}">%{resource_title}</a> a été acceptée.
+        proposal_created:
+          email_intro: "%{author_name} %{author_nickname}, que vous suivez, a créé une nouvelle proposition, vérifiez-la et contribuez:"
+          email_outro: Vous avez reçu cette notification, car vous suivez %{author_nickname}. Vous pouvez arrêter de recevoir des notifications en suivant le lien précédent.
+          email_subject: Nouvelle proposition par %{author_nickname}
+          notification_title: La proposition <a href="%{resource_path}">%{resource_title}</a> a été créée par <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
+        proposal_evaluating:
+          email_intro: 'La proposition "%{resource_title}" est en cours d''évaluation. Vous pouvez vérifier une réponse dans cette page:'
+          email_outro: Vous avez reçu cette notification parce que vous suivez "%{resource_title}". Vous pouvez le retirer du lien précédent.
+          email_subject: Une proposition que vous suivez est en cours d'évaluation
+          notification_title: La proposition <a href="%{resource_path}">%{resource_title}</a> est en cours d'évaluation.
+        proposal_rejected:
+          email_intro: 'La proposition "%{resource_title}" a été rejetée. Vous pouvez lire la réponse dans cette page:'
+          email_outro: Vous avez reçu cette notification parce que vous suivez "%{resource_title}". Vous pouvez le retirer du lien précédent.
+          email_subject: Une proposition que vous suivez a été rejetée
+          notification_title: La proposition <a href="%{resource_path}">%{resource_title}</a> a été rejetée.
     features:
       proposals:
         actions:
@@ -18,7 +49,7 @@ fr:
         name: Propositions
         settings:
           global:
-            announcement: Annonce
+            announcement: Message d'annonce
             attachments_allowed: Autoriser les pièces jointes
             comments_enabled: Commentaires activés
             geocoding_enabled: Géocodage activé
@@ -29,8 +60,10 @@ fr:
             proposal_edit_before_minutes: Les propositions peuvent être éditées par les auteurs avant que ces minutes soit écoulées
             proposal_limit: Maximum de propositions par utilisateur
             vote_limit: Nombre maximum de votes par utilisateur
+            upstream_moderation_enabled: Modération à priori des propositions activée
+            comments_upstream_moderation_enabled: Modération à priori des commentaires activée
           step:
-            announcement: Annonce
+            announcement: Message d'annonce
             comments_blocked: Commentaires bloqués
             creation_enabled: Module propositions activé
             proposal_answering_enabled: '"Réponses aux propositions" activé'
@@ -41,6 +74,7 @@ fr:
       actions:
         answer: Répondre
         new: Nouvelle
+        private_notes: Notes privées
         title: Actions
       admin:
         actions:
@@ -61,13 +95,19 @@ fr:
             tovote: Soumis au vote
             rejected: Non recevable
             title: Réponse à la proposition %{title}
+        proposal_notes:
+          form:
+            note: Remarque
+            submit: Soumettre
+          leave_your_note: Laissez votre note
+          title: Notes privées
         proposals:
           answer:
             invalid: Il y a eu un problème concernant la réponse à cette proposition
             success: La réponse à la proposition a publiée avec succès
           create:
             invalid: Il y a eu un problème lors de la création de cette proposition
-            success: Proposition créée avec succès
+            success: Proposition créée avec succès.
           form:
             attachment_legend: "(Facultatif) Ajouter une pièce jointe"
             select_a_category: Sélectionner une catégorie
@@ -76,6 +116,12 @@ fr:
           new:
             create: Créer
             title: Créer une proposition
+        shared:
+          info_proposal:
+            body: Corps
+            created_at: Date de création
+            proposal_votes_count: Les votes comptent
+            proposals: Les propositions
       answers:
         accepted: Recevable
         evaluating: En cours d'évaluation
@@ -84,14 +130,27 @@ fr:
         doable: Réalisable
         notdoable: Non réalisable
         tovote: Soumis au vote
+        withdrawn: Retiré
       create:
         error: Il y a eu des erreurs lors de la sauvegarde de la proposition.
         success: Proposition créée avec succès.
+        moderation:
+          success: Proposition créée avec succès. Elle sera publiée dès qu'un administrateur l'aura validée.
+      events:
+        create_proposal_event:
+          email_intro: |-
+            Bonjour, %{author_name} %{author_nickname}, que vous suivez, a créé une nouvelle proposition. Prenez-en connaissance et contribuez :
+          email_outro: Vous avez reçu cette notification, car vous suivez %{author_nickname}. Vous pouvez arrêter de recevoir des notifications à partir du lien précédent.
+          email_subject: Nouvelle proposition par %{author_nickname}
+          notification_title: La proposition <a href="%{resource_path}">%{resource_title}</a> a été créée par <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
       models:
         proposal:
           fields:
             category: Catégorie
+            comments: Commentaires
+            created_at: Créé à
             id: ID
+            notes: Remarques
             official_proposal: Proposition officielle
             scope: Zone d'application
             state: Etat
@@ -103,15 +162,11 @@ fr:
         create:
           error: Des erreurs se sont produites lors du vote de la proposition.
       proposals:
-        author:
-          deleted: Utilisateur supprimé
-          verified_user_group: Organisation vérifiée
         count:
           proposals_count:
             one: 1 proposition
             other: "%{count} propositions"
         edit:
-          attachment_legend: "(Facultatif) Ajouter une pièce jointe"
           back: Retour
           select_a_category: Veuillez sélectionner une catégorie
           send: Envoyer
@@ -128,8 +183,6 @@ fr:
           origin: Auteurs
           rejected: Non recevable
           related_to: Liée à
-          scope_prompt: Sélectionnez un périmètre d'application
-          scopes: Zones d'application
           search: Rechercher
           state: État
           voted: Votées
@@ -145,10 +198,11 @@ fr:
           unfold: Déplier
         index:
           new_proposal: Nouvelle proposition
+          see_all_withdrawn: Voir toutes les propositions retirées
           view_proposal: Voir la proposition
         linked_proposals:
           proposal_votes:
-            one: voter
+            one: vote
             other: votes
         new:
           attachment_legend: "(Facultatif) Ajouter une pièce jointe"
@@ -165,9 +219,9 @@ fr:
           random: Aléatoire
           recent: Les plus récents
         proposal:
+          creation_date: 'Création: %{date}'
           view_proposal: Voir la proposition
         show:
-          contact: Contact
           edit_proposal: Modifier la proposition
           proposal_accepted_reason: 'Cette proposition est recevable parce que :'
           proposal_in_evaluation_reason: "Cette proposition est en cours d'évaluation :"
@@ -176,6 +230,8 @@ fr:
           proposal_notdoable_reason: 'Cette proposition a été jugée non réalisable parce que :'
           proposal_tovote_reason: 'Cette proposition est soumise au vote :'
           report: Signaler
+          withdraw_confirmation: Êtes-vous sûr de retirer cette proposition?
+          withdraw_proposal: Retirer la proposition
         vote_button:
           already_voted: Déjà voté
           already_voted_hover: Retirer le vote
@@ -201,6 +257,8 @@ fr:
         error: Des erreurs se sont produites lors de l'enregistrement de la proposition.
         success: Proposition mise à jour avec succès.
     resource_links:
+      included_projects:
+        project_results: 'Résultats apparaissant dans ce projet :'
       included_proposals:
         proposal_projects: 'Proposition figurant dans ces projets :'
         proposal_results: 'Proposition figurant dans ces résultats :'

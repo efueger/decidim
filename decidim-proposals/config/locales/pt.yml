@@ -4,12 +4,35 @@ pt:
       proposal:
         body: Corpo
         category_id: Categoria
+        has_address: Tem endereço
         scope_id: Âmbito
         title: Título
         user_group_id: Criar proposta como
       proposal_answer:
         answer: Responder
   decidim:
+    events:
+      proposals:
+        proposal_accepted:
+          email_intro: 'A proposta "%{resource_title}" foi aceita. Você pode ler a resposta nesta página:'
+          email_outro: Você recebeu esta notificação porque está seguindo "%{resource_title}". Você pode ignorá-lo do link anterior.
+          email_subject: Uma proposta que você está seguindo foi aceita
+          notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi aceita.
+        proposal_created:
+          email_intro: "%{author_name} %{author_nickname}, quem você está seguindo, criou uma nova proposta, confira e contribui:"
+          email_outro: Você recebeu esta notificação porque está seguindo %{author_nickname}. Você pode parar de receber notificações após o link anterior.
+          email_subject: Nova proposta por %{author_nickname}
+          notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi criada por <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
+        proposal_evaluating:
+          email_intro: 'A proposta "%{resource_title}" está sendo avaliada atualmente. Você pode verificar uma resposta nesta página:'
+          email_outro: Você recebeu esta notificação porque está seguindo "%{resource_title}". Você pode ignorá-lo do link anterior.
+          email_subject: Uma proposta que você está seguindo está sendo avaliada
+          notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> está sendo avaliada.
+        proposal_rejected:
+          email_intro: 'A proposta "%{resource_title}" foi rejeitada. Você pode ler a resposta nesta página:'
+          email_outro: Você recebeu esta notificação porque está seguindo "%{resource_title}". Você pode ignorá-lo do link anterior.
+          email_subject: Uma proposta que você está seguindo foi rejeitada
+          notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi rejeitada.
     features:
       proposals:
         actions:
@@ -41,6 +64,7 @@ pt:
       actions:
         answer: Responda
         new: Novo
+        private_notes: Notas privadas
         title: Ações
       admin:
         actions:
@@ -58,6 +82,12 @@ pt:
             evaluating: Avaliando
             rejected: Rejeitado
             title: Resposta para a proposta %{title}
+        proposal_notes:
+          form:
+            note: Nota
+            submit: Enviar
+          leave_your_note: Deixe sua nota
+          title: Notas privadas
         proposals:
           answer:
             invalid: Tem havido um problema na resposta a esta proposta
@@ -71,13 +101,20 @@ pt:
           index:
             title: Propostas
           new:
-            create: Crio
+            create: Criar
             title: Criar proposta
+        shared:
+          info_proposal:
+            body: Corpo
+            created_at: Data de criação
+            proposal_votes_count: Contagem de votos
+            proposals: Propostas
       answers:
         accepted: Aceitaram
         evaluating: Avaliando
         not_answered: Não respondido
         rejected: Rejeitado
+        withdrawn: Retirado
       create:
         error: Ocorreu erros ao salvar a proposta.
         success: Proposta criada com sucesso.
@@ -85,9 +122,12 @@ pt:
         proposal:
           fields:
             category: Categoria
+            comments: Comentários
+            created_at: Criado em
             id: identidade
+            notes: Notas
             official_proposal: Proposta oficial
-            scope: Escopo
+            scope: Âmbito
             state: Estado
             title: Título
             votes: Votos
@@ -97,15 +137,11 @@ pt:
         create:
           error: Houve erros ao votar a proposta.
       proposals:
-        author:
-          deleted: Usuário deletado
-          verified_user_group: Organização verificada
         count:
           proposals_count:
             one: 1 proposta
             other: "%{count} propostas"
         edit:
-          attachment_legend: "(Opcional) Adicionar um anexo"
           back: Voltar
           select_a_category: Selecione uma categoria
           send: Enviar
@@ -122,8 +158,6 @@ pt:
           origin: Origem
           rejected: Rejeitado
           related_to: Relacionado a
-          scope_prompt: Selecione um escopo
-          scopes: Escopos
           search: Pesquisa
           state: Estado
           voted: Votado
@@ -134,6 +168,7 @@ pt:
           unfold: Desdobrar
         index:
           new_proposal: Nova proposta
+          see_all_withdrawn: Veja todas as propostas retiradas
           view_proposal: Ver proposta
         linked_proposals:
           proposal_votes:
@@ -154,14 +189,16 @@ pt:
           random: Aleatória
           recent: Recente
         proposal:
+          creation_date: 'Criação: %{date}'
           view_proposal: Ver proposta
         show:
-          contact: Contato
           edit_proposal: Editar proposta
           proposal_accepted_reason: 'Esta proposta foi aceita porque:'
           proposal_in_evaluation_reason: Esta proposta está sendo avaliada
           proposal_rejected_reason: 'Esta proposta foi rejeitada porque:'
           report: Relatório
+          withdraw_confirmation: Tem certeza de retirar essa proposta?
+          withdraw_proposal: Retirar proposta
         vote_button:
           already_voted: Já votou
           already_voted_hover: Unvote
@@ -187,6 +224,8 @@ pt:
         error: Ocorreu erros ao salvar a proposta.
         success: Proposta atualizada com sucesso.
     resource_links:
+      included_projects:
+        project_results: 'Resultados que aparecem neste projeto:'
       included_proposals:
         proposal_projects: 'Proposta que aparece nesses projetos:'
         proposal_results: 'Proposta que aparece nesses resultados:'

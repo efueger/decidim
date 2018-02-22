@@ -2,6 +2,7 @@ ru:
   activemodel:
     attributes:
       participatory_process:
+        announcement: Объявление
         banner_image: Изображение баннера
         copy_categories: Скопировать категории
         copy_features: Копировать составляющие
@@ -21,6 +22,7 @@ ru:
         scope_id: Охват
         scopes_enabled: Охваты включены
         short_description: Краткое описание
+        show_statistics: Показывать статистику
         slug: Сокращенный URL-адрес
         start_date: Дата начала
         subtitle: Подзаголовок
@@ -151,7 +153,6 @@ ru:
           success: Шаг движения соучастия успешно обновлен.
       participatory_process_user_roles:
         create:
-          error: При добавлении участника в это движение соучастия произошла ошибка.
           success: В это движение соучастия успешно добавлен участник.
         destroy:
           success: Успешно удален участник этого движения соучастия.
@@ -164,7 +165,6 @@ ru:
           create: Создать
           title: Новый участник движения соучастия.
         update:
-          error: При обновлении участника этого движения соучастия произошла ошибка.
           success: Успешно обновлен участник этого движения соучастия.
       participatory_processes:
         create:
@@ -205,6 +205,7 @@ ru:
     participatory_process_groups:
       show:
         group_participatory_processes: Движения для %{group}
+        title: Группы движений соучастия
     participatory_process_steps:
       index:
         process_steps: Шаги движения
@@ -216,11 +217,13 @@ ru:
             slug_help: 'Сокращенные URL-адреса используются для создания ссылок на это движение. В них допустимы только буквы, цифры и тире, и они должны начинаться с буквы. Пример: %{url}'
         participatory_processes:
           form:
+            announcement_help: Текст, который вы введете здесь, будет показан участнику прямо под описанием движения.
             slug_help: 'Сокращенные URL-адреса используются для создания ссылок на это движение. В них допустимы только буквы, цифры и тире, и они должны начинаться с буквы. Пример: %{url}'
       index:
         title: Движения соучастия
       order_by_processes:
         active: Начатые
+        all: Все
         past: Прошедшие
         upcoming: Предстоящие
       pages:
@@ -257,8 +260,6 @@ ru:
         surveys_count: Опросы
         users_count: Участники
         votes_count: Голоса
-    scopes:
-      global: Всеобщий охват
   layouts:
     decidim:
       participatory_process_groups:

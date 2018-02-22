@@ -44,11 +44,19 @@ module Decidim
       end
 
       def after_sign_in_path_for(user)
-        if first_login_and_not_authorized?(user)
+        if !pending_redirect?(user) && first_login_and_not_authorized?(user)
           decidim_verifications.authorizations_path
         else
           super
         end
+      end
+
+      # Calling the `stored_location_for` method removes the key, so in order
+      # to check if there's any pending redirect after login I need to call
+      # this method and use the value to set a pending redirect. This is the
+      # only way to do this without checking the session directly.
+      def pending_redirect?(user)
+        store_location_for(user, stored_location_for(user))
       end
 
       def first_login_and_not_authorized?(user)
@@ -75,6 +83,7 @@ module Decidim
           provider: oauth_data[:provider],
           uid: oauth_data[:uid],
           name: oauth_data[:info][:name],
+          nickname: oauth_data[:info][:nickname],
           oauth_signature: OmniauthRegistrationForm.create_signature(oauth_data[:provider], oauth_data[:uid])
         }
       end

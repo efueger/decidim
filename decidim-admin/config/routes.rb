@@ -7,7 +7,7 @@ Decidim::Admin::Engine.routes.draw do
     end
 
     Decidim.participatory_space_manifests.each do |manifest|
-      mount manifest.admin_engine, at: "/", as: "decidim_admin_#{manifest.name}"
+      mount manifest.context(:admin).engine, at: "/", as: "decidim_admin_#{manifest.name}"
     end
 
     resources :static_pages
@@ -29,6 +29,8 @@ Decidim::Admin::Engine.routes.draw do
         post :resend_invitation, to: "users#resend_invitation"
       end
     end
+
+    resources :officializations, only: [:new, :create, :index, :destroy], param: :user_id
 
     resources :managed_users, controller: "managed_users", except: [:edit, :update] do
       resources :promotions, controller: "managed_users/promotions", only: [:new, :create]

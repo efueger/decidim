@@ -21,6 +21,9 @@ module Decidim
   autoload :Participable, "decidim/participable"
   autoload :Publicable, "decidim/publicable"
   autoload :Scopable, "decidim/scopable"
+  autoload :ContentParsers, "decidim/content_parsers"
+  autoload :ContentRenderers, "decidim/content_renderers"
+  autoload :ContentProcessor, "decidim/content_processor"
   autoload :Features, "decidim/features"
   autoload :HasAttachments, "decidim/has_attachments"
   autoload :FeatureValidator, "decidim/feature_validator"
@@ -29,6 +32,8 @@ module Decidim
   autoload :HasScope, "decidim/has_scope"
   autoload :HasCategory, "decidim/has_category"
   autoload :Followable, "decidim/followable"
+  autoload :FriendlyDates, "decidim/friendly_dates"
+  autoload :Nicknamizable, "decidim/nicknamizable"
   autoload :HasReference, "decidim/has_reference"
   autoload :Attributes, "decidim/attributes"
   autoload :StatsRegistry, "decidim/stats_registry"
@@ -43,6 +48,7 @@ module Decidim
   autoload :EngineRouter, "decidim/engine_router"
   autoload :Events, "decidim/events"
   autoload :ViewHooks, "decidim/view_hooks"
+  autoload :NewsletterEncryptor, "decidim/newsletter_encryptor"
 
   include ActiveSupport::Configurable
 
@@ -87,7 +93,24 @@ module Decidim
 
   # Exposes a configuration option: The application available locales.
   config_accessor :available_locales do
-    %w(en ca es eu it fi fr nl uk ru)
+    %w(en ca es eu fi fr gl it nl pt pr-BR ru sv uk)
+  end
+
+  # Exposes a configuration option: an array of symbols representing processors
+  # that will be automatically executed when a content is parsed or rendered.
+  #
+  # A content processor is a concept to refer to a set of two classes:
+  # the content parser class and the content renderer class.
+  # e.g. If we register a content processor named `user`:
+  #
+  #   Decidim.content_processors += [:user]
+  #
+  # we must declare the following classes:
+  #
+  #   Decidim::ContentParsers::UserParser < BaseParser
+  #   Decidim::ContentRenderers::UserRenderer < BaseRenderer
+  config_accessor :content_processors do
+    []
   end
 
   # Exposes a configuration option: The application default locale.
@@ -128,6 +151,11 @@ module Decidim
     10.megabytes
   end
 
+  # Exposes a configuration option: The maximum height or width of an attachment.
+  config_accessor :maximum_attachment_height_or_width do
+    3840
+  end
+
   # Exposes a configuration option: The maximum file size for user avatar images.
   config_accessor :maximum_avatar_size do
     5.megabytes
@@ -143,11 +171,53 @@ module Decidim
     true
   end
 
+  # Allow organization's administrators to track newsletter links
+  config_accessor :track_newsletter_links do
+    true
+  end
+
   # A base path for the uploads. If set, make sure it ends in a slash.
   # Uploads will be set to `<base_path>/uploads/`. This can be useful if you
   # want to use the same uploads place for both staging and production
   # environments, but in different folders.
   config_accessor :base_uploads_path
+
+  # Public: Registers a global engine. This method is intended to be used
+  # by feature engines that also offer unscoped functionality
+  #
+  # name    - The name of the engine to register. Should be unique.
+  # engine  - The engine to register.
+  # options - Options to pass to the engine.
+  #           :at - The route to mount the engine to.
+  #
+  # Returns nothing.
+  def self.register_global_engine(name, engine, options = {})
+    return if global_engines.keys.include?(name)
+
+    options[:at] ||= "/#{name}"
+
+    global_engines[name.to_sym] = {
+      at: options[:at],
+      engine: engine
+    }
+  end
+
+  # Semiprivate: Removes a global engine from the registry. Mostly used on testing,
+  # no real reason to use this on production.
+  #
+  # name - The name of the global engine to remove.
+  #
+  # Returns nothing.
+  def self.unregister_global_engine(name)
+    global_engines.delete(name.to_sym)
+  end
+
+  # Public: Finds all registered engines via the 'register_global_engine' method.
+  #
+  # Returns an Array[::Rails::Engine]
+  def self.global_engines
+    @global_engines ||= {}
+  end
 
   # Public: Registers a feature, usually held in an external library or in a
   # separate folder in the main repository. Exposes a DSL defined by

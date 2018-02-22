@@ -8,6 +8,8 @@ module Decidim
     # message, namely, the interlocutors of the sender in the conversation.
     #
     class Message < ApplicationRecord
+      include Decidim::FriendlyDates
+
       belongs_to :sender,
                  foreign_key: :decidim_sender_id,
                  class_name: "Decidim::User"
@@ -23,6 +25,8 @@ module Decidim
 
       validates :sender, :body, presence: true
       validates :body, length: { maximum: 1_000 }
+
+      default_scope { order(created_at: :asc) }
 
       validate :sender_is_participant
 

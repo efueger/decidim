@@ -23,11 +23,13 @@ shared_examples "comments" do
     end
   end
 
-  it "allows user to sort the comments" do
+  it "allows user to sort the comments", :slow do
     comment = create(:comment, commentable: commentable, body: "Most Rated Comment")
     create(:comment_vote, comment: comment, author: user, weight: 1)
 
     visit resource_path
+
+    expect(page).to have_no_content("Comments are disabled at this time")
 
     expect(page).to have_css(".comment", minimum: 1)
     page.find(".order-by .dropdown.menu .is-dropdown-submenu-parent").hover
@@ -88,7 +90,7 @@ shared_examples "comments" do
       end
     end
 
-    context "when a user replies to a comment" do
+    context "when a user replies to a comment", :slow do
       let!(:comment_author) { create(:user, :confirmed, organization: organization) }
       let!(:comment) { create(:comment, commentable: commentable, author: comment_author) }
 
@@ -99,6 +101,7 @@ shared_examples "comments" do
 
         within "#comments #comment_#{comment.id}" do
           click_button "Reply"
+          expect(page).to have_selector(".add-comment")
           fill_in "add-comment-Decidim::Comments::Comment-#{comment.id}", with: "This is a reply"
           click_button "Send"
         end

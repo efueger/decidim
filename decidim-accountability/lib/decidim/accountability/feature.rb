@@ -19,11 +19,16 @@ Decidim.register_feature(:accountability) do |feature|
 
   feature.settings(:global) do |settings|
     settings.attribute :comments_enabled, type: :boolean, default: true
+    settings.attribute :comments_upstream_moderation_enabled, type: :boolean, default: false
     settings.attribute :intro, type: :text, translated: true, editor: true
     settings.attribute :categories_label, type: :string, translated: true, editor: true
     settings.attribute :subcategories_label, type: :string, translated: true, editor: true
     settings.attribute :heading_parent_level_results, type: :string, translated: true, editor: true
     settings.attribute :heading_leaf_level_results, type: :string, translated: true, editor: true
+  end
+
+  feature.register_stat :results_count, primary: true, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |features, _start_at, _end_at|
+    Decidim::Accountability::Result.where(feature: features).count
   end
 
   feature.settings(:step) do |settings|

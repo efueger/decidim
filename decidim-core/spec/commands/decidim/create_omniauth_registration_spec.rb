@@ -20,6 +20,7 @@ module Decidim
               "email" => email,
               "email_verified" => true,
               "name" => "Facebook User",
+              "nickname" => "facebook_user",
               "oauth_signature" => oauth_signature
             }
           }
@@ -41,7 +42,7 @@ module Decidim
           end
         end
 
-        describe "when the form is not valid" do
+        context "when the form is not valid" do
           before do
             expect(form).to receive(:invalid?).and_return(true)
           end
@@ -50,14 +51,14 @@ module Decidim
             expect { command.call }.to broadcast(:invalid)
           end
 
-          it "doesn't create a comment" do
+          it "doesn't create a user" do
             expect do
               command.call
             end.not_to change { User.count }
           end
         end
 
-        describe "when the form is valid" do
+        context "when the form is valid" do
           it "broadcasts ok" do
             expect { command.call }.to broadcast(:ok)
           end
@@ -73,6 +74,8 @@ module Decidim
             expect(user.encrypted_password).not_to be_nil
             expect(user.email).to eq(form.email)
             expect(user.organization).to eq(organization)
+            expect(user.newsletter_notifications).to eq(true)
+            expect(user.email_on_notification).to eq(true)
             expect(user).to be_confirmed
             expect(user.valid_password?("abcde1234")).to eq(true)
           end
@@ -119,7 +122,7 @@ module Decidim
           end
         end
 
-        describe "when a user exists with that identity" do
+        context "when a user exists with that identity" do
           it "broadcasts ok" do
             user = create(:user, email: email, organization: organization)
             create(:identity, user: user, provider: provider, uid: uid)

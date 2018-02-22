@@ -53,6 +53,8 @@ module Decidim
           "alert"
         when "evaluating"
           "secondary"
+        when "withdrawn"
+          "alert"
         else
           # here is not_answer
           "warning"

@@ -23,10 +23,14 @@ Decidim::Core::Engine.routes.draw do
   resource :locale, only: [:create]
 
   Decidim.participatory_space_manifests.each do |manifest|
-    mount manifest.engine, at: "/", as: "decidim_#{manifest.name}"
+    mount manifest.context(:public).engine, at: "/", as: "decidim_#{manifest.name}"
   end
 
   mount Decidim::Verifications::Engine, at: "/", as: "decidim_verifications"
+
+  Decidim.global_engines.each do |name, engine_data|
+    mount engine_data[:engine], at: engine_data[:at], as: name
+  end
 
   authenticate(:user) do
     resource :account, only: [:show, :update, :destroy], controller: "account" do
@@ -44,9 +48,11 @@ Decidim::Core::Engine.routes.draw do
     resources :own_user_groups, only: [:index]
   end
 
+  resources :profiles, only: [:show], param: :nickname
+
   resources :pages, only: [:index, :show], format: false
 
-  get "/scopes/search", to: "scopes#search", as: :scopes_search
+  get "/scopes/picker", to: "scopes#picker", as: :scopes_picker
 
   get "/static_map", to: "static_map#show", as: :static_map
   get "/cookies/accept", to: "cookie_policy#accept", as: :accept_cookies
@@ -56,6 +62,10 @@ Decidim::Core::Engine.routes.draw do
 
   resource :follow, only: [:create, :destroy]
   resource :report, only: [:create]
+
+  resources :newsletters, only: [:show] do
+    get :unsubscribe, on: :collection
+  end
 
   root to: "pages#show", id: "home"
 end

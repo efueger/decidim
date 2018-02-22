@@ -19,7 +19,7 @@ Decidim.register_feature(:budgets) do |feature|
     resource.template = "decidim/budgets/projects/linked_projects"
   end
 
-  feature.register_stat :projects_count, primary: true, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |features, start_at, end_at|
+  feature.register_stat :projects_count, primary: true, priority: Decidim::StatsRegistry::LOW_PRIORITY do |features, start_at, end_at|
     Decidim::Budgets::FilteredProjects.for(features, start_at, end_at).count
   end
 
@@ -39,6 +39,7 @@ Decidim.register_feature(:budgets) do |feature|
     settings.attribute :total_budget, type: :integer, default: 100_000_000
     settings.attribute :vote_threshold_percent, type: :integer, default: 70
     settings.attribute :comments_enabled, type: :boolean, default: true
+    settings.attribute :comments_upstream_moderation_enabled, type: :boolean, default: false
     settings.attribute :announcement, type: :text, translated: true, editor: true
   end
 

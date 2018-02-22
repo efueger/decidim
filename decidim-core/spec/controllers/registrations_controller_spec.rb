@@ -20,11 +20,12 @@ module Decidim
           user: {
             sign_up_as: "user",
             name: "User",
+            nickname: "nickname",
             email: email,
             password: "password1234",
             password_confirmation: "password1234",
             tos_agreement: "1",
-            newsletter_notifications: "1"
+            newsletter: "1"
           }
         }
       end

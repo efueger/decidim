@@ -8,6 +8,7 @@ fr:
         description: Description
         end_date: Date et heure de fin
         progress: Avancement
+        project_ids: Projets inclus
         proposal_ids: Propositions incluses
         start_date: Date de début
         title: Titre
@@ -96,7 +97,7 @@ fr:
       models:
         result:
           fields:
-            end_date: Date et heure de fin
+            end_date: Date de fin
             progress: Avancement
             start_date: Date de début
             status: Statut
@@ -118,7 +119,6 @@ fr:
             other: "%{count} résultats"
         filters:
           all: Tous
-          global: Global
           scopes: Périmètre d'application
         home:
           categories_label: Catégories
@@ -132,7 +132,7 @@ fr:
         show:
           stats:
             attendees: Participants
-            back_to_result: Retour aux résultats
+            back_to_result: Revenir au résultat
             comments: Commentaires
             contributions: Contributions
             last_edited_by: Dernière édition par
@@ -163,6 +163,7 @@ fr:
           global:
             categories_label: Nom pour "Catégories"
             comments_enabled: Commentaires activés
+            comments_upstream_moderation_enabled: Modération à priori des commentaires activée
             heading_leaf_level_results: Nom pour "Projets"
             heading_parent_level_results: Nom pour "Résultats"
             intro: Intro
@@ -170,5 +171,7 @@ fr:
           step:
             comments_blocked: Commentaires bloqués
     resource_links:
+      included_projects:
+        result_projects: Projets inclus dans ce résultat
       included_proposals:
         result_proposals: Propositions incluses dans ce résultat

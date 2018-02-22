@@ -9,6 +9,7 @@ module Decidim
       include Decidim::Reportable
       include Decidim::Authorable
       include Decidim::Comments::Commentable
+      include Decidim::FriendlyDates
 
       # Limit the max depth of a comment tree. If C is a comment and R is a reply:
       # C          (depth 0)
@@ -34,6 +35,7 @@ module Decidim
       before_save :compute_depth
 
       delegate :organization, :feature, to: :commentable
+
 
       # Public: Override Commentable concern method `accepts_new_comments?`
       def accepts_new_comments?
@@ -62,6 +64,11 @@ module Decidim
         ResourceLocatorPresenter.new(root_commentable).url(anchor: "comment_#{id}")
       end
 
+      # Public: Returns the comment message ready to display (it is expected to include HTML)
+      def formatted_body
+        @formatted_body ||= Decidim::ContentProcessor.render(sanitized_body)
+      end
+
       private
 
       # Private: Check if commentable can have comments and if not adds
@@ -73,6 +80,11 @@ module Decidim
       # Private: Compute comment depth inside the current comment tree
       def compute_depth
         self.depth = commentable.depth + 1 if commentable.respond_to?(:depth)
+      end
+
+      # Private: Returns the comment body sanitized, stripping HTML tags
+      def sanitized_body
+        Rails::Html::Sanitizer.full_sanitizer.new.sanitize(body)
       end
     end
   end

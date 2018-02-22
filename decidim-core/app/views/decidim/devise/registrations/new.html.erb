@@ -33,6 +33,12 @@
               </div>
             </div>
 
+            <div class="user-person">
+              <div class="field">
+                <%= f.text_field :nickname, help_text: t(".nickname_help") %>
+              </div>
+            </div>
+
             <div class="field">
               <%= f.email_field :email %>
             </div>
@@ -61,7 +67,7 @@
 
             <fieldset>
               <div class="field">
-                <%= f.check_box :newsletter_notifications, label: t(".newsletter_notifications") %>
+                <%= f.check_box :newsletter, label: t(".newsletter"), checked: true %>
               </div>
 
               <div class="field">

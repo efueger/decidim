@@ -15,9 +15,7 @@ Decidim.register_feature(:surveys) do |feature|
   end
 
   feature.on(:before_destroy) do |instance|
-    if Decidim::Surveys::Survey.where(feature: instance).any?
-      raise "Can't destroy this feature when there are surveys"
-    end
+    raise "Can't destroy this feature when there are surveys" if Decidim::Surveys::Survey.where(feature: instance).any?
   end
 
   feature.register_stat :surveys_count do |features, start_at, end_at|
@@ -27,7 +25,7 @@ Decidim.register_feature(:surveys) do |feature|
     surveys.count
   end
 
-  feature.register_stat :answers_count, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |features, start_at, end_at|
+  feature.register_stat :answers_count, priority: Decidim::StatsRegistry::MEDIUM_PRIORITY do |features, start_at, end_at|
     surveys = Decidim::Surveys::Survey.where(feature: features)
     answers = Decidim::Surveys::SurveyAnswer.where(survey: surveys)
     answers = answers.where("created_at >= ?", start_at) if start_at.present?

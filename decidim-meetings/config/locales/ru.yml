@@ -51,7 +51,7 @@ ru:
         invites:
           create:
             error: При попытке пригласить этого участника на встречу возникла проблема.
-            success: Пользователь успешно приглашен на встречу.
+            success: Участник успешно приглашен на встречу.
           new:
             explanation: Участник будет приглашен на встречу. Если эл-адрес не зарегистрирован, он также будет приглашен в организацию.
             invite: Пригласить
@@ -96,36 +96,10 @@ ru:
           update:
             invalid: При попытке сохранить настройки регистрации возникла проблема.
             success: Настройки регистрации на встречу успешно сохранены.
-      events:
-        close_meeting_event:
-          email_intro: 'Встреча «%{resource_title}» завершена. Вы можете прочитать итоги на странице:'
-          email_outro: Вы получили это уведомление, потому что вы следите за встречей «%{resource_title}». Вы можете перестать за ней следить, перейдя по приведенной выше ссылке.
-          email_subject: Встреча "%{resource_title}" завершена
-          notification_title: Встреча <a href="%{resource_path}">%{resource_title}</a> завершена.
-        meeting_registrations_enabled:
-          email_intro: 'Открылась регистрация на встречу «%{resource_title}». Вы можете зарегистрироваться на странице:'
-          email_outro: Вы получили это уведомление, потому что вы следите за встречей «%{resource_title}». Вы можете перестать за ней следить, перейдя по приведенной выше ссылке.
-          email_subject: Открылась регистрация на встречу «%{resource_title}».
-          notification_title: Открыта регистрация на встречу <a href="%{resource_path}">%{resource_title}</a>.
-        meeting_registrations_over_percentage:
-          email_intro: Число мест, забронированных на встречу "%{resource_title}", превысило %{percentage}% процентов%.
-          email_outro: Вы получили это уведомление, потому что вы являетесь администратором пространства соучастия этой встречи.
-          email_subject: Число мест, забронированных на встречу "%{resource_title}", превысило %{percentage}% процентов
-          notification_title: На встречу <a href="%{resource_path}">%{resource_title}</a> забронировано более %{percentage}% процентов мест.
-        upcoming_meeting_event:
-          email_intro: Встреча "%{resource_title}" начнется менее чем через 48 часов.
-          email_outro: Вы получили это уведомление, потому что вы следите за встречей «%{resource_title}». Вы можете перестать за ней следить, перейдя по приведенной выше ссылке.
-          email_subject: Встреча "%{resource_title}" начнется менее чем через 48 часов.
-          notification_title: Встреча <a href="%{resource_path}">%{resource_title}</a> начнется менее чем через 48 часов.
-        update_meeting_event:
-          email_intro: 'Встреча «%{resource_title}» обновлена. Вы можете прочитать новую версию на странице:'
-          email_outro: Вы получили это уведомление, потому что вы следите за встречей «%{resource_title}». Вы можете перестать за ней следить, перейдя по приведенной выше ссылке.
-          email_subject: Встреча "%{resource_title}" обновлена
-          notification_title: Встреча <a href="%{resource_path}">%{resource_title}</a> обновлена.
       mailer:
         invite_join_meeting_mailer:
           invite:
-            subject: Тема
+            subject: Приглашение присоединиться к встрече
         registration_mailer:
           confirmation:
             subject: Ваша регистрация на встречу подтверждена
@@ -135,8 +109,6 @@ ru:
           category_prompt: Выберите категорию
           date: Дата
           past: Прошедшие
-          scope_prompt: Выбрать охват
-          scopes: Охваты
           search: Искать
           upcoming: Предстоящие
         filters_small_view:
@@ -195,4 +167,4 @@ ru:
   devise:
     mailer:
       join_meeting:
-        subject: Тема
+        subject: Приглашение присоединиться к встрече

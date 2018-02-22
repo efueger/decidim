@@ -21,11 +21,15 @@ module Decidim
 
       field :body, !types.String, "The comment message"
 
+      field :formattedBody, !types.String, "The comment message ready to display (it is expected to include HTML)", property: :formatted_body
+
       field :createdAt, !types.String, "The creation date of the comment" do
         resolve lambda { |obj, _args, _ctx|
           obj.created_at.iso8601
         }
       end
+
+      field :formattedCreatedAt, !types.String, "The creation date of the comment in relative format", property: :friendly_created_at
 
       field :author, !Decidim::AuthorInterface, "The comment's author" do
         resolve lambda { |obj, _args, _ctx|
@@ -61,7 +65,7 @@ module Decidim
 
       field :hasComments, !types.Boolean, "Check if the commentable has comments" do
         resolve lambda { |obj, _args, _ctx|
-          obj.accepts_new_comments? && obj.comments.size.positive?
+          obj.accepts_new_comments? && obj.comment_threads.size.positive?
         }
       end
 

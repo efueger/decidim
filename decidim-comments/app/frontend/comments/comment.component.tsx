@@ -1,5 +1,4 @@
 import * as classnames from "classnames";
-import * as moment from "moment";
 import * as React from "react";
 
 import Icon from "../application/icon.component";
@@ -88,8 +87,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
   public getNodeReference = (commentNode: HTMLElement) => this.commentNode = commentNode;
 
   public render(): JSX.Element {
-    const { session, comment: { id, author, body, createdAt }, articleClassName } = this.props;
-    const formattedCreatedAt = ` ${moment(createdAt).format("LLL")}`;
+    const { session, comment: { id, author, formattedBody, createdAt, formattedCreatedAt }, articleClassName } = this.props;
     let modalName = "loginModal";
 
     if (session && session.user) {
@@ -101,24 +99,8 @@ class Comment extends React.Component<CommentProps, CommentState> {
         <div className="comment__header">
           <div className="author-data">
             <div className="author-data__main">
-              <div className="author author--inline">
-                <a className="author__avatar">
-                  <img src={author.avatarUrl} alt="author-avatar" />
-                </a>
-                { author.deleted ?
-                    <span className="label label--small label--basic">{I18n.t("components.comment.deleted_user")}</span> :
-                    <a className="author__name">{author.name}</a>
-                }
-                { !author.isUser && author.isVerified &&
-                  <span>
-                    &nbsp;
-                    <span className="label success label--small">
-                      {I18n.t("components.comment.verified_user_group")}
-                    </span>
-                  </span>
-                }
-                <time dateTime={createdAt}>{formattedCreatedAt}</time>
-              </div>
+              {this._renderAuthorReference()}
+              <span><time dateTime={createdAt} title={createdAt}>{formattedCreatedAt}</time></span>
             </div>
             <div className="author-data__extra">
               <button type="button" title={I18n.t("components.comment.report.title")} data-open={modalName}>
@@ -131,7 +113,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
         <div className="comment__content">
           <p>
             {this._renderAlignmentBadge()}
-            {body}
+            <span dangerouslySetInnerHTML={{__html: formattedBody}} />
           </p>
         </div>
         <div className="comment__footer">
@@ -139,7 +121,6 @@ class Comment extends React.Component<CommentProps, CommentState> {
           {this._renderVoteButtons()}
         </div>
         {this._renderReplies()}
-        {this._renderAdditionalReplyButton()}
         {this._renderReplyForm()}
       </article>
     );
@@ -148,6 +129,82 @@ class Comment extends React.Component<CommentProps, CommentState> {
   private toggleReplyForm = () => {
     const { showReplyForm } = this.state;
     this.setState({ showReplyForm: !showReplyForm });
+  }
+
+  /**
+   * Render author information as a link to author's profile
+   * @private
+   * @returns {DOMElement} - Render a link with the author information
+   */
+  private _renderAuthorReference() {
+    const { comment: { author } } = this.props;
+
+    if (author.profilePath === "") {
+      return this._renderAuthor();
+    }
+
+    return <a href={author.profilePath}>{this._renderAuthor()}</a>;
+  }
+
+  /**
+   * Render author information
+   * @private
+   * @returns {DOMElement} - Render all the author information
+   */
+  private _renderAuthor() {
+    const { comment: { author } } = this.props;
+
+    if (author.deleted) {
+      return this._renderDeletedAuthor();
+    }
+
+    return this._renderActiveAuthor();
+  }
+
+  /**
+   * Render deleted author information
+   * @private
+   * @returns {DOMElement} - Render all the author information
+   */
+  private _renderDeletedAuthor() {
+    const { comment: { author } } = this.props;
+
+    return (
+      <div className="author author--inline">
+        <span className="author__avatar">
+          <img src={author.avatarUrl} alt="author-avatar" />
+        </span>
+        <span className="author__name">
+          <span className="label label--small label--basic">
+            {I18n.t("components.comment.deleted_user")}
+          </span>
+        </span>
+      </div>
+    );
+  }
+
+  /**
+   * Render active author information
+   * @private
+   * @returns {DOMElement} - Render all the author information
+   */
+  private _renderActiveAuthor() {
+    const { comment: { author } } = this.props;
+
+    return (
+      <div className="author author--inline">
+        <span className="author__avatar">
+          <img src={author.avatarUrl} alt="author-avatar" />
+        </span>
+        <span className="author__name">{author.name}</span>
+        { author.badge === "" ||
+          <span className="author__badge">
+            <Icon name={`icon-${author.badge}`} />
+          </span>
+        }
+        <span className="author__nickname">{author.nickname}</span>
+      </div>
+    );
   }
 
   /**
@@ -178,26 +235,26 @@ class Comment extends React.Component<CommentProps, CommentState> {
    * @private
    * @returns {Void|DOMElement} - Render the reply button or not if user can reply
    */
-  private _renderAdditionalReplyButton() {
-    const { comment: { acceptsNewComments, hasComments }, session, isRootComment } = this.props;
+  // private _renderAdditionalReplyButton() {
+  //   const { comment: { acceptsNewComments, hasComments }, session, isRootComment } = this.props;
 
-    if (session && acceptsNewComments) {
-      if (hasComments && isRootComment) {
-        return (
-          <div className="comment__additionalreply">
-            <button
-              className="comment__reply muted-link"
-              aria-controls="comment1-reply"
-              onClick={this.toggleReplyForm}
-            >
-              {I18n.t("components.comment.reply")}
-            </button>
-          </div>
-        );
-      }
-    }
-    return null;
-  }
+  //   if (session && acceptsNewComments) {
+  //     if (hasComments && isRootComment) {
+  //       return (
+  //         <div className="comment__additionalreply">
+  //           <button
+  //             className="comment__reply muted-link"
+  //             aria-controls="comment1-reply"
+  //             onClick={this.toggleReplyForm}
+  //           >
+  //             {I18n.t("components.comment.reply")}
+  //           </button>
+  //         </div>
+  //       );
+  //     }
+  //   }
+  //   return null;
+  // }
 
   /**
    * Render upVote and downVote buttons when the comment is votable

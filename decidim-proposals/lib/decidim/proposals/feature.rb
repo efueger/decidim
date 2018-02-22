@@ -8,12 +8,10 @@ Decidim.register_feature(:proposals) do |feature|
   feature.icon = "decidim/proposals/icon.svg"
 
   feature.on(:before_destroy) do |instance|
-    if Decidim::Proposals::Proposal.where(feature: instance).any?
-      raise "Can't destroy this feature when there are proposals"
-    end
+    raise "Can't destroy this feature when there are proposals" if Decidim::Proposals::Proposal.where(feature: instance).any?
   end
 
-  feature.actions = %w(vote create)
+  feature.actions = %w(vote create withdraw)
 
   feature.settings(:global) do |settings|
     settings.attribute :vote_limit, type: :integer, default: 0
@@ -23,6 +21,8 @@ Decidim.register_feature(:proposals) do |feature|
     settings.attribute :proposal_answering_enabled, type: :boolean, default: true
     settings.attribute :official_proposals_enabled, type: :boolean, default: true
     settings.attribute :comments_enabled, type: :boolean, default: true
+    settings.attribute :upstream_moderation_enabled, type: :boolean, default: false
+    settings.attribute :comments_upstream_moderation_enabled, type: :boolean, default: false
     settings.attribute :geocoding_enabled, type: :boolean, default: false
     settings.attribute :attachments_allowed, type: :boolean, default: false
     settings.attribute :announcement, type: :text, translated: true, editor: true
@@ -45,10 +45,14 @@ Decidim.register_feature(:proposals) do |feature|
   end
 
   feature.register_stat :proposals_count, primary: true, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |features, start_at, end_at|
-    Decidim::Proposals::FilteredProposals.for(features, start_at, end_at).not_hidden.count
+    Decidim::Proposals::FilteredProposals.for(features, start_at, end_at).not_hidden.authorized.count
   end
 
-  feature.register_stat :votes_count, priority: Decidim::StatsRegistry::MEDIUM_PRIORITY do |features, start_at, end_at|
+  feature.register_stat :proposals_accepted, primary: true, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |features, start_at, end_at|
+    Decidim::Proposals::FilteredProposals.for(features, start_at, end_at).accepted.count
+  end
+
+  feature.register_stat :votes_count, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |features, start_at, end_at|
     proposals = Decidim::Proposals::FilteredProposals.for(features, start_at, end_at).not_hidden
     Decidim::Proposals::ProposalVote.where(proposal: proposals).count
   end
@@ -139,12 +143,25 @@ Decidim.register_feature(:proposals) do |feature|
           password: "password1234",
           password_confirmation: "password1234",
           name: name,
+          nickname: Faker::Twitter.unique.screen_name,
           organization: feature.organization,
           tos_agreement: "1",
-          confirmed_at: Time.current
+          confirmed_at: Time.current,
+          personal_url: Faker::Internet.url,
+          about: Faker::Lorem.paragraph(2)
         )
 
         Decidim::Proposals::ProposalVote.create!(proposal: proposal, author: author) unless proposal.answered? && proposal.rejected?
+      end
+
+      (n % 3).times do
+        author_admin = Decidim::User.where(organization: feature.organization, admin: true).all.sample
+
+        Decidim::Proposals::ProposalNote.create!(
+          proposal: proposal,
+          author: author_admin,
+          body: Faker::Lorem.paragraphs(2).join("\n")
+        )
       end
 
       Decidim::Comments::Seed.comments_for(proposal)

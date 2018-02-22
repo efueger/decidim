@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ParameterLists
 require "decidim/form_builder"
 
 module Decidim
@@ -41,8 +40,8 @@ module Decidim
       end
     end
 
-    # Wrap the scopes select in a custom fieldset.
-    def scopes_select(method, options = {})
+    # Wrap the scopes picker in a custom fieldset.
+    def scopes_picker(method, options = {})
       fieldset_wrapper options[:legend_title] do
         super(method, options)
       end
