@@ -22,6 +22,7 @@ module Decidim
         @citizens_proposals = proposals_search.citizens
         @param_list = params[:display_type] == "list"
         @no_filter_origin = no_filter_origin?
+
         @voted_proposals = if current_user
                              ProposalVote.where(
                                author: current_user,
@@ -36,7 +37,10 @@ module Decidim
       end
 
       def show
-        @proposal = Proposal.not_hidden.where(feature: current_feature).find(params[:id])
+        @proposal = Proposal
+                    .not_hidden
+                    .where(feature: current_feature)
+                    .find(params[:id])
         @report_form = form(Decidim::ReportForm).from_params(reason: "spam")
       end
 
@@ -55,7 +59,11 @@ module Decidim
 
         CreateProposal.call(@form, current_user) do
           on(:ok) do |proposal|
-            flash[:notice] = I18n.t("proposals.create.success", scope: "decidim")
+            if proposal.feature.settings.upstream_moderation_enabled
+              flash[:notice] = I18n.t("proposals.create.moderation.success", scope: "decidim")
+            else
+              flash[:notice] = I18n.t("proposals.create.success", scope: "decidim")
+            end
             redirect_to Decidim::ResourceLocatorPresenter.new(proposal).path
           end
 
