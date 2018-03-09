@@ -9,7 +9,7 @@ module Decidim
     include Nicknamizable
     include Decidim::Followable
 
-    OMNIAUTH_PROVIDERS = [:facebook, :twitter, :google_oauth2, (:developer if Rails.env.development?)].compact
+    OMNIAUTH_PROVIDERS = [:facebook, :twitter, :google_oauth2, :saml, (:developer if Rails.env.development?)].compact
     ROLES = %w(admin user_manager).freeze
 
     devise :invitable, :database_authenticatable, :registerable, :confirmable,

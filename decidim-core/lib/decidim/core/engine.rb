@@ -26,6 +26,8 @@ require "truncato"
 require "file_validators"
 require "omniauth"
 require "omniauth-facebook"
+require "omniauth-saml"
+
 require "omniauth-twitter"
 require "omniauth-google-oauth2"
 require "invisible_captcha"
