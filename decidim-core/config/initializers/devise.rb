@@ -302,13 +302,10 @@ Devise.setup do |config|
   # up on your models and hooks.
 
   config.omniauth :saml,
-    idp_cert_fingerprint: '33:66:B6:FF:DD:C4:D4:F4:9E:FC:B6:FC:74:42:E4:C3:79:B0:3B:02:00:4A:2D:B5:81:26:35:22:8D:C8:AB:CF',
-    idp_sso_target_url: "https://happy-dev.okta.com/app/happydev_dcd_1/exksz7yycwdXj2H8g2p6/sso/saml"
+    idp_cert_fingerprint: Rails.application.secrets.omniauth[:saml][:idp_cert_fingerprint],
+    idp_sso_target_url: Rails.application.secrets.omniauth[:saml][:idp_sso_target_url]
+
   config.omniauth :developer, fields: [:name, :nickname, :email] if Rails.application.secrets.dig(:omniauth, :developer).present?
-  # if Rails.application.secrets.dig(:omniauth, :saml).present?
-  #                   Rails.application.secrets.omniauth[:saml][:idp_cert_fingerprint],
-  #                   Rails.application.secrets.omniauth[:saml][:idp_sso_target_url]
-  # end
   if Rails.application.secrets.dig(:omniauth, :facebook).present?
     config.omniauth :facebook,
                     Rails.application.secrets.omniauth[:facebook][:app_id],
