@@ -1,6 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :saml,
-    :assertion_consumer_service_url     => "http://decidim.local.osp.cat:3000/auth/saml/callback",
+    :assertion_consumer_service_url     => Rails.application.secrets.omniauth[:saml][:assertion_consumer_service_url],
     :issuer                             => "Decidim BOSA",
     :idp_sso_target_url                 => Rails.application.secrets.omniauth[:saml][:idp_sso_target_url],
     :idp_sso_target_url_runtime_params  => {:original_request_param => :mapped_idp_param},
