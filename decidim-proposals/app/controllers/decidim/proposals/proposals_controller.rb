@@ -19,8 +19,7 @@ module Decidim
         @proposals = proposals_search
         @officials_proposals = proposals_search.officials
         @citizens_proposals = proposals_search.citizens
-        @param_list = params[:display_type] == "list"
-        @no_filter_origin = no_filter_origin?
+        @filter_origin = filter_origin?
 
         @voted_proposals = if current_user
                              ProposalVote.where(
@@ -30,7 +29,7 @@ module Decidim
                            else
                              []
                            end
-
+        keep_filter_params
         @proposals = paginate(@proposals)
         @proposals = reorder(@proposals)
       end
@@ -116,6 +115,17 @@ module Decidim
 
       private
 
+      def keep_filter_params
+        @param_list = params[:display_type] == "list"
+        @param_search_text = params[:filter][:search_text] if params[:filter]
+        @param_activity = params[:filter][:activity] if params[:filter]
+        @param_category_id = params[:filter][:category_id] if params[:filter]
+        @param_scope_id = params[:filter][:scope_id] if params[:filter]
+        @param_related_to = params[:filter][:related_to] if params[:filter]
+        @param_origin = params[:filter][:origin] if params[:filter]
+        @param_state = params[:filter][:state] if params[:filter]
+      end
+
       def officials_proposals
         @officials_proposals.any?
       end
@@ -124,7 +134,7 @@ module Decidim
         @citizens_proposals.any?
       end
 
-      def no_filter_origin?
+      def filter_origin?
        (params[:filter][:origin] != ("all" || nil)) if params[:filter]
       end
 
