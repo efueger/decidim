@@ -29,9 +29,11 @@ module Decidim
                            else
                              []
                            end
+        @param_list = params[:display_type] == "list"
         keep_filter_params
         @proposals = paginate(@proposals)
         @proposals = reorder(@proposals)
+        @filter_origin = filter_origin?
       end
 
       def show
@@ -115,8 +117,12 @@ module Decidim
 
       private
 
+      def filter_origin?
+       (params[:filter][:origin] != ("all" || nil)) if params[:filter]
+      end
+
       def keep_filter_params
-        @param_list = params[:display_type] == "list"
+        @param_display_type = params[:display_type]
         @param_search_text = params[:filter][:search_text] if params[:filter]
         @param_activity = params[:filter][:activity] if params[:filter]
         @param_category_id = params[:filter][:category_id] if params[:filter]
