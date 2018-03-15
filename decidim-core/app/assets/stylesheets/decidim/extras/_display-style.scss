@@ -38,6 +38,10 @@ $order-border: $border;
   max-width: 22em;
 }
 
+.author-data {
+  max-width: 22em;
+}
+
 @include breakpoint(large down){
   .card--side-container{
     width: 100%;
