@@ -31,7 +31,11 @@ $order-border: $border;
 }
 
 .tags--proposal-list{
-  max-width: 35em;
+  max-width: 30em;
+}
+
+.card__title-list{
+  max-width: 22em;
 }
 
 @include breakpoint(large down){
