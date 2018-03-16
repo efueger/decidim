@@ -179,6 +179,12 @@ fr:
           officials_proposals_count:
             one: 1 proposition officielle
             other: "%{count} propositions officielles"
+          citizens_proposals:
+            one: Proposition citoyenne
+            other: Propositions citoyennes
+          officials_proposals:
+            one: Proposition officielle
+            other: Propositions officielles
         edit:
           back: Retour
           select_a_category: Veuillez sélectionner une catégorie

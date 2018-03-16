@@ -181,6 +181,12 @@ en:
           officials_proposals_count:
             one: 1 official proposal
             other: "%{count} officials proposals"
+          citizens_proposals:
+            one: Citizen proposal
+            other: Citizens proposals
+          officials_proposals:
+            one: Official proposal
+            other: Officials proposals
         edit:
           back: Back
           select_a_category: Please select a category
