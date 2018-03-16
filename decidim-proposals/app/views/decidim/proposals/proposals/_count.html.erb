@@ -1,1 +1,1 @@
-<%= t(".proposals_count", count: @proposals.total_count) %>
+<%= t(".proposals_count", count: current_feature.settings.split_proposal_enabled? && feature_settings.official_proposals_enabled ? @proposals.count : @proposals.total_count ) %>

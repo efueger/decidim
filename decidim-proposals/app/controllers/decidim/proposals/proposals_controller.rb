@@ -17,8 +17,7 @@ module Decidim
 
       def index
         @proposals = proposals_search
-        @officials_proposals = proposals_search.officials
-        @citizens_proposals = proposals_search.citizens
+
         @filter_origin = filter_origin?
 
         @voted_proposals = if current_user
@@ -31,8 +30,15 @@ module Decidim
                            end
         @param_list = params[:display_type] == "list"
         keep_filter_params
-        @proposals = paginate(@proposals)
-        @proposals = reorder(@proposals)
+
+        if current_feature.settings.split_proposal_enabled? && feature_settings.official_proposals_enabled
+          @officials_proposals = @proposals.officials.order(created_at: :asc).all
+          @citizens_proposals =  @proposals.citizens.order(created_at: :asc).all
+        else
+          @proposals = paginate(@proposals)
+          @proposals = reorder(@proposals)
+        end
+
         @filter_origin = filter_origin?
       end
 
@@ -122,6 +128,9 @@ module Decidim
       end
 
       def keep_filter_params
+        @param_page = params[:page]
+        @param_per_page = params[:per_page]
+        @param_order = params[:order]
         @param_display_type = params[:display_type]
         @param_search_text = params[:filter][:search_text] if params[:filter]
         @param_activity = params[:filter][:activity] if params[:filter]

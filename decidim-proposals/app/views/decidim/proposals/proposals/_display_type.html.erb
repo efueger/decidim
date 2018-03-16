@@ -1,11 +1,11 @@
 <div class="display-style">
   <div class="display-style__all">
     <span class="display-style__text"><%= t(".label") %></span>
-    <%= link_to proposals_path(display_type: 'column', 'filter[origin]' => @param_origin, 'filter[state]' => @param_state, 'filter[search_text]' => @param_search_text, 'filter[activity]' => @param_activity, 'filter[category_id]' => @param_category_id, 'filter[scope_id]' => @param_scope_id, 'filter[related_to]' => @param_related_to) do %>
+    <%= link_to proposals_path(display_type: 'column', 'filter[origin]' => @param_origin, 'filter[state]' => @param_state, 'filter[search_text]' => @param_search_text, 'filter[activity]' => @param_activity, 'filter[category_id]' => @param_category_id, 'filter[scope_id]' => @param_scope_id, 'filter[related_to]' => @param_related_to), 'order' => @param_order, 'per_page' => @param_per_page do %>
       <%= icon 'grid-two-up', class: "icon external-icon" %>
     <% end %>
 
-    <%= link_to proposals_path(display_type: 'list', 'filter[origin]' => @param_origin, 'filter[state]' => @param_state, 'filter[search_text]' => @param_search_text, 'filter[activity]' => @param_activity, 'filter[category_id]' => @param_category_id, 'filter[scope_id]' => @param_scope_id, 'filter[related_to]' => @param_related_to)  do %>
+    <%= link_to proposals_path(display_type: 'list', 'filter[origin]' => @param_origin, 'filter[state]' => @param_state, 'filter[search_text]' => @param_search_text, 'filter[activity]' => @param_activity, 'filter[category_id]' => @param_category_id, 'filter[scope_id]' => @param_scope_id, 'filter[related_to]' => @param_related_to), 'order' => @param_order, 'per_page' => @param_per_page do %>
       <%= icon 'list', class: "icon external-icon" %>
     <% end %>
   </div>
