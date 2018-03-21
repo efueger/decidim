@@ -301,9 +301,59 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
 
-  config.omniauth :saml,
-    idp_cert_fingerprint: Rails.application.secrets.omniauth[:saml][:idp_cert_fingerprint],
-    idp_sso_target_url: Rails.application.secrets.omniauth[:saml][:idp_sso_target_url]
+  # config.omniauth :saml,
+  #   idp_cert_fingerprint: Rails.application.secrets.omniauth[:saml][:idp_cert_fingerprint],
+  #   idp_sso_target_url: Rails.application.secrets.omniauth[:saml][:idp_sso_target_url],
+    config.omniauth :saml,
+      assertion_consumer_service_url:     "http://dcd.local.osp.cat:3000/users/saml/auth",
+      protocol_binding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+      issuer:                             "http://dcd.local.osp.cat:3000/users/saml/metadata",
+      authn_context:                      "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport",
+
+      #line configuration
+      idp_sso_target_url:                 "https://idp.iamfas.belgium.be/fas/SSORedirect/metaAlias/idp",
+      idp_cert_fingerprint:               "B5:19:B2:01:C2:34:60:71:82:93:34:0B:EA:7A:E3:BA:EA:D7:CE:63:DC:0B:17:32:51:0B:31:19:E0:5E:B9:B3",
+      idp_cert_fingerprint_algorithm:     'http://www.w3.org/2000/09/xmldsig#sha256',
+      name_identifier_format:             "context:urn:be:fedict:iam:fas:citizen:Level450",
+      authn_context_comparison:       "minimun",
+      entity_id: "http://dcd.local.osp.cat:3000/",
+      idp_cert: "-----BEGIN CERTIFICATE-----
+MIIFdDCCA1wCCQDn4xP4v1+3IzANBgkqhkiG9w0BAQsFADB8MQswCQYDVQQGEwJG
+UjEOMAwGA1UECAwFUGFyaXMxHTAbBgNVBAoMFE9wZW4gU291cmNlIFBvbGl0aWNz
+MSEwHwYDVQQDDBhodHRwOi8vZGNkLmxvY2FsLm9zcC5jYXQxGzAZBgkqhkiG9w0B
+CQEWDG1ha29Ab3NwLmNhdDAeFw0xODAzMjAxNzE2NDRaFw0yODAzMTkxNzE2NDRa
+MHwxCzAJBgNVBAYTAkZSMQ4wDAYDVQQIDAVQYXJpczEdMBsGA1UECgwUT3BlbiBT
+b3VyY2UgUG9saXRpY3MxITAfBgNVBAMMGGh0dHA6Ly9kY2QubG9jYWwub3NwLmNh
+dDEbMBkGCSqGSIb3DQEJARYMbWFrb0Bvc3AuY2F0MIICIjANBgkqhkiG9w0BAQEF
+AAOCAg8AMIICCgKCAgEAs2P0WIIDGGsMqmSU1ToMUELoSk43AwCz0JQwRGEYwwUQ
+f06cR1JTrZXDkN6x0E0JX5AhEKdfNQ3fsk/Swy9uK3u+5zfjFviBLiVTb2TLmflB
+lclQhJhMGDjwBFWK2bqZEcBjsD0sQx/nEdV8QhwTHfcBt7cFQ3HoZ/41UO1Raa66
+wFcNay5LK4WD7jkV0rqFZp9Eo65Q0p1oXN3PUDsh+XyaK2DhUjEAzyGkRTS5dsDN
+HD+t0QN7kRxtDqgpOsvVwy1TNcNTZU4pgOAK883Lmvg6Z104nZ5RzmZR3gDDmwk1
+tuzOipLQCrcOpQ/A423VJvpI2CmcmlJrZz5kEZdAcWHoBLRqieIlBmGzzZbDxJAy
+csUM9iOpqWgrJPvEdQdUQxhElNBUJotFpOoYzke/QdYHMVQ2TXo6FA3Zd/BIXiNr
+n+/R1jyA7m1BwINt9//fPH9QAX4hY/9LjAJhvGIVa08Ow/Wr3EYOH+SfJYRNqzs9
+bT31PRCZOD6ReZSX2aMU9TryLsj/HvZsmRHL6vEmCHWUzQsmrI/J03yAHBZbTFlz
+65W6qFe5gBSreS9RynePAcO8oW0LeF0zWUQB3FwCFwhoLE2r6Z/qS46Pf9sy1UjF
+q4pyinzAze30MpLCmui1Sn8IEGiMO4FCtRDts+x4ZH1vLEWMc2jVm8Z8Eohkcr8C
+AwEAATANBgkqhkiG9w0BAQsFAAOCAgEAfj9MWpwp4eePoAEc7cRKEYO46OL3/NZP
+Rp0a07oxrp/HTaOlD7Osir1WCXP56CCP/HIcpw4IB/nW9fr4j8TQoPtTL2UzFgdW
+8iu+VyZ9HqScUTYbL3ALAO6CORQfOnJ9/4ivTOJhcibHwe21DCgJCs6sPshJC3y0
+ZeGE/IVdPFHMdnn52B4YAaq2zBz3icWvWFu3RpEtCgLsmc24bX+SYxPhIf9kCVwN
+Rf8zvYQA4wK/oAfKGfAkzw34GfrVeVveK1UZTrsWDd9sf3XnQ/SdyDRDOy/bMpZA
+I0kkS31ZdpMmb/gyOnm2kn9mCnBMvtEyf/ybP26g0kRywUGkAEKgPaf4WrRWtGIy
+7p+AWQV/Xe01upFcpqiL4Yl2WElklU9vTBkCFo6i7HppCvP+NZcvMtyZNXZEICre
+hYK+h5jGp88IrcoKmHVJmun2w+ATAK5yPRiIjzCdKMXvWZlRS3WSHJch8F2LslBq
+wHMMjswjz6jYT+fPzQiAsVgd0m9E0HA0X+I5FESY1As48ZFmgJ092+dpZ5CPdQlM
+PfhRc1MzhN8DbDTQrtda0Ofgp5BOtQ8umhbEIB/8bMJVzUS8egtywU7Yer0GtC1D
+tX1A+7ccyd3JEgFQbEUmbgr8LRzT/cND0EziGMsfzVlwKMkDn0Na4d3CDuOQHMyT
+qwp553T/h1I=
+-----END CERTIFICATE-----
+",
+key_descriptor: "signin",
+single_logout_service_location: "https://monopinion.belgium.be/auth/saml/slo",
+assertion_consumer_service_location: "https://monopinion.belgium.be/auth/saml/callback"
+
 
   config.omniauth :developer, fields: [:name, :nickname, :email] if Rails.application.secrets.dig(:omniauth, :developer).present?
   if Rails.application.secrets.dig(:omniauth, :facebook).present?
