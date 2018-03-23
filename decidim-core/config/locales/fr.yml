@@ -342,6 +342,9 @@ fr:
       version_author:
         deleted: Utilisateur supprimé
   devise:
+    shared:
+      links:
+        sign_up_with_provider: S'inscrire avec %{provider}
     invitations:
       edit:
         header: Définir votre mot de passe
