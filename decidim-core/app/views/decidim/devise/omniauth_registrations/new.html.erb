@@ -22,16 +22,16 @@
 
             <div class="user-person">
               <div class="field">
-                <%=f.password_field :password %>
-                <%=f.password_field :password_confirmation %>
-
+                <%= f.email_field :email, value: f.object.uid %>
               </div>
             </div>
 
-            <div class="field">
-              <%= f.email_field :email, value: f.object.uid %>
+            <div class="user-person">
+              <div class="field">
+                <%=f.password_field :password %>
+                <%=f.password_field :password_confirmation %>
+              </div>
             </div>
-
             <%= f.hidden_field :uid %>
             <%= f.hidden_field :provider %>
             <%= f.hidden_field :oauth_signature %>

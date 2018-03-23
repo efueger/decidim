@@ -342,6 +342,13 @@ fr:
       version_author:
         deleted: Utilisateur supprimé
   devise:
+    shared:
+      links:
+        facebook: Facebook
+        twitter: Twitter
+        saml: e-ID
+        google: Google
+        developer: Developpeur
     invitations:
       edit:
         header: Définir votre mot de passe

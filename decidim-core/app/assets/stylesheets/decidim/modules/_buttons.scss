@@ -143,6 +143,15 @@
   }
 }
 
+.button--saml{
+  background-color: $saml;
+
+  &:hover{
+    background-color: lighten($saml, 5);
+  }
+}
+
+
 .button--google{
   background-color: $google;
 

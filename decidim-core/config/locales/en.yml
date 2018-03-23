@@ -343,6 +343,13 @@ en:
       version_author:
         deleted: Deleted user
   devise:
+    shared:
+      links:
+        facebook: Facebook
+        twitter: Twitter
+        saml: e-ID
+        google: Google
+        developer: Developer
     invitations:
       edit:
         header: Set your password
