@@ -39,7 +39,7 @@ module Decidim
 
     attr_reader :form, :verified_email
 
-    def create_or_find_user
+    def create_or_find_user # this method has been extended in create_omniauth_registration_extend.rb
       generated_password = SecureRandom.hex
 
       @user = User.find_or_initialize_by(

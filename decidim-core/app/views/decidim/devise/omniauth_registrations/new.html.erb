@@ -22,12 +22,14 @@
 
             <div class="user-person">
               <div class="field">
-                <%= f.text_field :nickname, help_text: t(".nickname_help") %>
+                <%=f.password_field :password %>
+                <%=f.password_field :password_confirmation %>
+
               </div>
             </div>
 
             <div class="field">
-              <%= f.email_field :email %>
+              <%= f.email_field :email, value: f.object.uid %>
             </div>
 
             <%= f.hidden_field :uid %>
