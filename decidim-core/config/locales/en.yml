@@ -343,9 +343,6 @@ en:
       version_author:
         deleted: Deleted user
   devise:
-    shared:
-      links:
-        sign_up_with_provider: Sign up with %{provider}
     invitations:
       edit:
         header: Set your password

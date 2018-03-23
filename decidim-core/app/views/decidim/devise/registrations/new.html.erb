@@ -19,17 +19,7 @@
     <div class="columns large-6 medium-10 medium-centered">
       <div class="card">
         <div class="card__content">
-         <% if devise_mapping.omniauthable? && any_social_provider_enabled? %>
-          <%- resource_class.omniauth_providers.each do |provider| %>
-            <% if social_provider_enabled? provider %>
-              <div class="actions">
-                <%= link_to decidim.send("user_#{provider}_omniauth_authorize_path"), class: "button expanded" do %>
-                  <%= t("devise.shared.links.sign_up_with_provider", provider: "e-ID")  %>
-                <% end %>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
+          <%= render "decidim/devise/shared/omniauth_buttons" %>
          <%= render "decidim/devise/shared/links" %>
         </div>
       </div>
