@@ -1,6 +1,6 @@
 module UserExtend
   def eid_verified?
-    true
+    identities.map(&:provider).include?("saml")
   end
 end
 
