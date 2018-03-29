@@ -1,6 +1,6 @@
 module UserGroupPresenterExtend
-  def badge
-    return "" unless verified?
+  def badges
+    return [] unless verified?
 
     ["verified-badge"] # return as an array because sometimes there are multiple badges and we should be able to loop on it.
   end

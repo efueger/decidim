@@ -1,5 +1,5 @@
 module UserPresenterExtend
-  def badge
+  def badges
     badges = []
 
     if officialized?
