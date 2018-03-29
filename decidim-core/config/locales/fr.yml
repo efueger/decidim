@@ -260,6 +260,7 @@ fr:
         title: Plus d'information
     profiles:
       default_officialization_text: L'identité de ce participant a été vérifiée. Son nom ou son rôle correspondent avec son vrai nom ou son vrai rôle dans le monde réel
+      eid_verified: Vérifié.e e-ID
       show:
         about_me: À propos de moi
         personal_url: Site Web personnel
