@@ -51,24 +51,9 @@
               <span>
                 <%= icon "verified-badge" %>
               </span>
+
               <span>
                 <%= translated_attribute(profile_user.officialized_as).presence || t("decidim.profiles.default_officialization_text") %>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <%if profile_user.eid_verified? %>
-      <div class="row">
-        <div class="mediumlarge-6 large-6">
-          <div class="card">
-            <div class="badge-card__content">
-              <span>
-                <%= icon "eid-verified" %>
-              </span>
-              <span>
-                <%= t("decidim.profiles.eid_verified") %>
               </span>
             </div>
           </div>
