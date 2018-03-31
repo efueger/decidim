@@ -13,7 +13,7 @@ module Decidim
       false
     end
 
-    def badge
+    def badge # This method has been extended in lib/decidim/extends/presenters/user_group_presenter_extend.rb
       return "" unless verified?
 
       "verified-badge"

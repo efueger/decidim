@@ -15,7 +15,7 @@ module Decidim
       "@#{super}"
     end
 
-    def badge
+    def badge # This method has been extended in lib/decidim/extends/presenters/user_presenter_extend.rb
       return "" unless officialized?
 
       "verified-badge"

@@ -261,6 +261,7 @@ en:
         title: More information
     profiles:
       default_officialization_text: This participant is publicly verified, his/her name or role has been verified to correspond with his/her real name and role
+      eid_verified: e-ID verified
       show:
         about_me: About me
         personal_url: Personal website

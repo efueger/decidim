@@ -15,7 +15,7 @@ fragment CommentData on Comment {
     avatarUrl
     profilePath
     deleted
-    badge
+    badges
   }
   hasComments
   acceptsNewComments
