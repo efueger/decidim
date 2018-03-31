@@ -112,7 +112,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
         </div>
         <div className="comment__content">
           <p>
-            {this._renderAlignmentBadge()}
+            {this._renderAlignmentBadges()}
             <span dangerouslySetInnerHTML={{__html: formattedBody}} />
           </p>
         </div>
@@ -190,7 +190,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
    */
   private _renderActiveAuthor() {
     const { comment: { author } } = this.props;
-    var badges = author.badges.map((badge, index) => <span key={`${index}`} className="author__badge">
+    var badgesContainer = author.badges.map((badge, index) => <span key={`${index}`} className="author__badge">
                                                        <Icon key={`${badge}`} name={`icon-${badge}`} />
                                                      </span>);
       return (
@@ -201,7 +201,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
           <span className="author__name">{author.name}</span>
 
             { author.badges === [] ||
-                badges
+                badgesContainer
             }
             <span className="author__nickname">{author.nickname}</span>
           </div>
@@ -345,7 +345,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
    * @private
    * @returns {Void|DOMElement} - The alignment's badge or not
    */
-  private _renderAlignmentBadge() {
+  private _renderAlignmentBadges() {
     const { comment: { alignment } } = this.props;
     const spanClassName = classnames("label alignment", {
       success: alignment === 1,
