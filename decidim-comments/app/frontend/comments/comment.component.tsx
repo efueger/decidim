@@ -190,9 +190,9 @@ class Comment extends React.Component<CommentProps, CommentState> {
    */
   private _renderActiveAuthor() {
     const { comment: { author } } = this.props;
-    var badges = author.badges.map(badge => <span className="author__badge">
-                                              <Icon name={`icon-${badge}`} />
-                                            </span>;
+    var badges = author.badges.map((badge, index) => <span key={index} className="author__badge">
+                                                        <Icon key={badge} name={`icon-${badge}`} />
+                                                       </span>;
                                   );
       return (
         <div className="author author--inline">
