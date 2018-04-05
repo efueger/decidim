@@ -6,7 +6,7 @@
 
 <%= render partial: "voting_rules" %>
 <div class="row column view-header">
-  <h2 class="heading2"><%= @proposal.title %></h2>
+  <h2 class="heading2" id="proposal-title"><%= @proposal.title %></h2>
   <div class="author-data">
     <%= render partial: "decidim/shared/author_reference", locals: { author: Decidim::Proposals::ProposalPresenter.new(@proposal).author } %>
     <div class="author-data__extra">
@@ -16,6 +16,8 @@
       <% unless @proposal.official? %>
         <%= link_to_current_or_new_conversation_with(@proposal.author) %>
       <% end %>
+      <!-- Use @proposal.title and @proposal.body for traduction -->
+      <a id="see-trad">Voir la traduction</a>
     </div>
     <% if @proposal.withdrawable_by?(current_user) %>
       <%= action_authorized_link_to :withdraw, withdraw_proposal_path(@proposal), method: :put, class: "title-action__action button small hollow", title: t('.withdraw_btn_hint'), data: {confirm: t('.withdraw_confirmation')}  do %>
@@ -56,7 +58,9 @@
   <div class="columns mediumlarge-8 mediumlarge-pull-4">
     <div class="section">
       <%= render partial: "proposal_badge", locals: { proposal: @proposal } %>
-      <%= simple_format @proposal.body %>
+      <div id="proposal-body">
+        <%= simple_format @proposal.body %>
+      </div>
       <% if feature_settings.geocoding_enabled? %>
         <%= render partial: "decidim/shared/static_map", locals: { icon_name: "proposals", geolocalizable: @proposal } %>
       <% end %>
@@ -108,3 +112,66 @@
     url: decidim.report_path(sgid: @proposal.to_sgid.to_s)
   }
 %>
+
+<script>
+
+  // route : get '/babor', to: 'users#babor'
+
+  // def babor
+  //   uri = URI.parse("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UC61GK_nOLSJdzAK5hoR2mJA&fields=items/statistics/subscriberCount&key=AIzaSyBVOBi6H8DKh1MyEs7542AJtV-HKgJOLGI")
+  //   request = Net::HTTP::Get.new(uri)
+  //   request.content_type = "application/json"
+  //   req_options = {
+  //     use_ssl: uri.scheme == "https",
+  //   }
+  //   response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+  //     my_req = http.request(request)
+  //     my_hash = JSON.parse(my_req.body)
+  //     puts "Parametres ! : #{params[:bouf]}"
+  //     render json: my_hash["items"][0]["statistics"]["subscriberCount"]
+  //   end
+  // end
+
+  function get_traduction(original_text, callback) {
+    $.ajax({
+      url : "/api/traduction",
+      type : 'GET',
+      data : "original=" + original_text,
+      dataType : 'json',
+
+      success : function(body, status) {
+        callback(body["translations"][0]["text"]);
+      },
+
+      error : function(body, status, error) {
+        console.log(original_text);
+        console.log(status + error);
+        console.log("Nope : " + body);
+      },
+
+      complete : function(resultat, status) {
+
+      }
+    });
+  }
+
+  function reverseString(str) {
+    array = str.split("");
+    array.reverse();
+    str = array.join('');
+    return str;
+  }
+
+  $("#see-trad").on("click", function() {
+    console.log("THIS.txt : " + $(this).text());
+    console.log("THIS.parent : " + $(this).parent());
+    var original_text = $("#proposal-title").html();
+    get_traduction(original_text, function(converted_text) {
+      $("#proposal-title").html(converted_text);
+    });
+    get_traduction($("#proposal-body").text(), function(converted_text) {
+      $("#proposal-body").html("<p>" + converted_text + "</p>");
+    });
+  });
+
+</script>
