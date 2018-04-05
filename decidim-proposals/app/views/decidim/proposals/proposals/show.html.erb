@@ -114,64 +114,44 @@
 %>
 
 <script>
-
-  // route : get '/babor', to: 'users#babor'
-
-  // def babor
-  //   uri = URI.parse("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UC61GK_nOLSJdzAK5hoR2mJA&fields=items/statistics/subscriberCount&key=AIzaSyBVOBi6H8DKh1MyEs7542AJtV-HKgJOLGI")
-  //   request = Net::HTTP::Get.new(uri)
-  //   request.content_type = "application/json"
-  //   req_options = {
-  //     use_ssl: uri.scheme == "https",
-  //   }
-  //   response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-  //     my_req = http.request(request)
-  //     my_hash = JSON.parse(my_req.body)
-  //     puts "Parametres ! : #{params[:bouf]}"
-  //     render json: my_hash["items"][0]["statistics"]["subscriberCount"]
-  //   end
-  // end
-
+  // REMARKS :
+  // 1. Maybe its too long to wait for 2 requests to be completed ?
+  // 2. We need to set traductions for the #see-trad link
+  // 3. Need to try to put function get_traduction in a global .js file
+  // 4. Need to hide the deepl key (take inspiration from polis key)
   function get_traduction(original_text, callback) {
     $.ajax({
       url : "/api/traduction",
       type : 'GET',
       data : "original=" + original_text,
       dataType : 'json',
-
       success : function(body, status) {
         callback(body["translations"][0]["text"]);
       },
-
       error : function(body, status, error) {
-        console.log(original_text);
         console.log(status + error);
-        console.log("Nope : " + body);
-      },
-
-      complete : function(resultat, status) {
-
       }
     });
   }
 
-  function reverseString(str) {
-    array = str.split("");
-    array.reverse();
-    str = array.join('');
-    return str;
-  }
-
+  var is_trad = false;
+  var original_title = $("#proposal-title").text();
+  var original_body = $("#proposal-body").text();
   $("#see-trad").on("click", function() {
-    console.log("THIS.txt : " + $(this).text());
-    console.log("THIS.parent : " + $(this).parent());
-    var original_text = $("#proposal-title").html();
-    get_traduction(original_text, function(converted_text) {
-      $("#proposal-title").html(converted_text);
-    });
-    get_traduction($("#proposal-body").text(), function(converted_text) {
-      $("#proposal-body").html("<p>" + converted_text + "</p>");
-    });
+    if (is_trad == true) {
+      $("#proposal-title").html(original_title);
+      $("#proposal-body").html("<p>" + original_body + "</p>");
+      $("#see-trad").text("Voir la traduction");
+      is_trad = !is_trad;
+    } else {
+      get_traduction(original_title, function(converted_title) {
+        get_traduction(original_body, function(converted_body) {
+          $("#proposal-title").html(converted_title);
+          $("#proposal-body").html("<p>" + converted_body + "</p>");
+          $("#see-trad").text("Voir l'original");
+       });
+      });
+      is_trad = !is_trad;
+    }
   });
-
 </script>
