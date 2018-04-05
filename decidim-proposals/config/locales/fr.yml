@@ -7,7 +7,7 @@ fr:
         body: Corps du texte
         category_id: Catégorie
         has_address: Renseignez une adresse
-        scope_id: Zone d'application
+        scope_id: Périmètre d'application
         state: Etat
         title: Titre
         user_group_id: Créer une proposition en tant que
@@ -241,7 +241,7 @@ fr:
             id: ID
             notes: Remarques
             official_proposal: Proposition officielle
-            scope: Zone d'application
+            scope: Périmètre d'application
             state: Etat
             title: Titre
             votes: Soutiens
@@ -305,7 +305,7 @@ fr:
           voted: Votées
           doable: Réalisable
           notdoable: Non réalisable
-          tovote: Soumis au vote
+          tovote: Soumise au vote
           not_answered: Pas encore évaluée
         filters_small_view:
           close_modal: Fermer la fenêtre de dialogue
