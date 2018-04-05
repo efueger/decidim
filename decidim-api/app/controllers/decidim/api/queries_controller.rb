@@ -9,25 +9,13 @@ module Decidim
       around_action :store_current_user
 
       def traduction
-        # uri = URI.parse("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UC61GK_nOLSJdzAK5hoR2mJA&fields=items/statistics/subscriberCount&key=AIzaSyBVOBi6H8DKh1MyEs7542AJtV-HKgJOLGI")
-        # request = Net::HTTP::Get.new(uri)
-        # request.content_type = "application/json"
-        # req_options = {
-        #    use_ssl: uri.scheme == "https",
-        # }
-        # response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-        #   my_req = http.request(request)
-        #   my_hash = JSON.parse(my_req.body)
-        #   puts "Parametres ! : #{params[:bouf]}"
-        #   render json: my_hash["items"][0]["statistics"]["subscriberCount"]
-        # end
 
         # https://api.deepl.com/v1/translate
         # /v1/translate?text=Hallo%20Welt!&target_lang=EN&auth_key=123
-
         # { "translations": [ { "detected_source_language": "DE", "text": "Hello World!" } ] }
-
-        uri = URI.parse("https://api.deepl.com/v1/translate?text=#{params[:original]}&target_lang=FR&auth_key=e4661e18-b983-08df-6335-d19ad787fed6")
+        
+        auth_key = "e4661e18-b983-08df-6335-d19ad787fed6"
+        uri = URI.parse("https://api.deepl.com/v1/translate?text=#{params[:original]}&target_lang=FR&auth_key=#{auth_key}")
         request = Net::HTTP::Get.new(uri)
         request.content_type = "application/json"
         req_options = {
@@ -36,14 +24,9 @@ module Decidim
         response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
           my_req = http.request(request)
           my_hash = JSON.parse(my_req.body)
-
           puts my_hash
-
-
           render json: my_hash
         end
-
-
       end
 
       def create
