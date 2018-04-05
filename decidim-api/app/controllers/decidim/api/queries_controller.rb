@@ -10,12 +10,14 @@ module Decidim
 
       def traduction
 
-        # https://api.deepl.com/v1/translate
-        # /v1/translate?text=Hallo%20Welt!&target_lang=EN&auth_key=123
-        # { "translations": [ { "detected_source_language": "DE", "text": "Hello World!" } ] }
-        
+        # DEEPL API : https://api.deepl.com/v1/translate
+        # example : /v1/translate?text=Hallo%20Welt!&target_lang=EN&auth_key=123
+        # reponse : { "translations": [ { "detected_source_language": "DE", "text": "Hello World!" } ] }
+
         auth_key = "e4661e18-b983-08df-6335-d19ad787fed6"
-        uri = URI.parse("https://api.deepl.com/v1/translate?text=#{params[:original]}&target_lang=FR&auth_key=#{auth_key}")
+        target_lang = "FR"
+
+        uri = URI.parse("https://api.deepl.com/v1/translate?text=#{params[:original]}&target_lang=#{target_lang}&auth_key=#{auth_key}")
         request = Net::HTTP::Get.new(uri)
         request.content_type = "application/json"
         req_options = {
