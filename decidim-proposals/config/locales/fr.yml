@@ -148,10 +148,13 @@ fr:
             name: Proposition
         proposal_answers:
           edit:
-            accepted: Retenue
+            accepted: Recevable
             answer_proposal: Répondre
             evaluating: En cours d'évaluation
-            rejected: Refusée
+            doable: Réalisable
+            notdoable: Non réalisable
+            tovote: Soumise au vote
+            rejected: Non recevable
             title: Réponse à la proposition %{title}
         proposal_notes:
           create:
@@ -209,10 +212,13 @@ fr:
         proposal_note:
           create: "%{user_name} a publié une note privée sur la proposition %{resource_name} sur l'espace %{space_name}"
       answers:
-        accepted: Retenue
+        accepted: Recevable
         evaluating: En cours d'évaluation
-        not_answered: En attente de réponse
-        rejected: Refusée
+        not_answered: Pas encore évaluée
+        rejected: Non recevable
+        doable: Réalisable
+        notdoable: Non réalisable
+        tovote: Soumise au vote
         withdrawn: Retiré
       create:
         error: Il y a eu des erreurs lors de la sauvegarde de la proposition.
@@ -283,7 +289,7 @@ fr:
           see_less: Voir moins
           title: Liste des promoteurs
         filters:
-          accepted: Retenue
+          accepted: Recevable
           activity: Activité
           all: Toutes
           category: Catégorie
@@ -292,11 +298,15 @@ fr:
           evaluating: En cours d'évaluation
           official: Propositions officielles
           origin: Auteurs
-          rejected: Refusée
+          rejected: Non recevable
           related_to: Liée à
           search: Rechercher
           state: État
-          voted: Soutenues
+          voted: Votées
+          doable: Réalisable
+          notdoable: Non réalisable
+          tovote: Soumis au vote
+          not_answered: Pas encore évaluée
         filters_small_view:
           close_modal: Fermer la fenêtre de dialogue
           filter: Filtrer
@@ -332,9 +342,12 @@ fr:
           view_proposal: Voir la proposition
         show:
           edit_proposal: Modifier la proposition
-          proposal_accepted_reason: 'Cette proposition a été retenue parce que :'
-          proposal_in_evaluation_reason: Cette proposition est en cours d'évaluation
-          proposal_rejected_reason: 'Cette proposition a été refusée parce que:'
+          proposal_accepted_reason: 'Cette proposition est recevable parce que :'
+          proposal_in_evaluation_reason: "Cette proposition est en cours d'évaluation :"
+          proposal_rejected_reason: 'Cette proposition est non recevable parce que :'
+          proposal_doable_reason: 'Cette proposition a été jugée réalisable :'
+          proposal_notdoable_reason: 'Cette proposition a été jugée non réalisable parce que :'
+          proposal_tovote_reason: 'Cette proposition est soumise au vote :'
           report: Signaler
           sign_in: se connecter
           sign_in_or_up: "%{in} ou %{up} pour participer"

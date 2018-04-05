@@ -151,6 +151,9 @@ en:
             accepted: Accepted
             answer_proposal: Answer
             evaluating: Evaluating
+            doable: Doable
+            notdoable: Not doable
+            tovote: Submit to vote
             rejected: Rejected
             title: Answer for proposal %{title}
         proposal_notes:
@@ -214,6 +217,10 @@ en:
         not_answered: Not answered
         rejected: Rejected
         withdrawn: Withdrawn
+        doable: Doable
+        notdoable: Not doable
+        tovote: Submit to vote
+
       create:
         error: There's been errors when saving the proposal.
         success: Proposal created successfully. Saved as a Draft.
@@ -298,6 +305,11 @@ en:
           search: Search
           state: State
           voted: Voted
+          doable: Doable
+          notdoable: Not doable
+          tovote: Submit to vote
+          not_answered: Not answered
+
         filters_small_view:
           close_modal: Close modal
           filter: Filter
@@ -336,6 +348,9 @@ en:
           proposal_accepted_reason: 'This proposal has been accepted because:'
           proposal_in_evaluation_reason: This proposal is being evaluated
           proposal_rejected_reason: 'This proposal has been rejected because:'
+          proposal_doable_reason: 'This proposal has been judged doable because:'
+          proposal_notdoable_reason: 'This proposal has been judged not doable because:'
+          proposal_tovote_reason: 'This proposal has been submitted to vote because:'
           report: Report
           sign_in: Sign in
           sign_in_or_up: "%{in} or %{up} to participate"
