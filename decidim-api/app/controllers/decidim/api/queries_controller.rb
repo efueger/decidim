@@ -9,15 +9,14 @@ module Decidim
       around_action :store_current_user
 
       def traduction
-
         # DEEPL API : https://api.deepl.com/v1/translate
         # example : /v1/translate?text=Hallo%20Welt!&target_lang=EN&auth_key=123
         # reponse : { "translations": [ { "detected_source_language": "DE", "text": "Hello World!" } ] }
-
         auth_key = "e4661e18-b983-08df-6335-d19ad787fed6"
-        target_lang = "FR"
+        target_lang = params[:target]
+        original_txt = params[:original]
 
-        uri = URI.parse("https://api.deepl.com/v1/translate?text=#{params[:original]}&target_lang=#{target_lang}&auth_key=#{auth_key}")
+        uri = URI.parse("https://api.deepl.com/v1/translate?text=#{original_txt}&target_lang=#{target_lang}&auth_key=#{auth_key}")
         request = Net::HTTP::Get.new(uri)
         request.content_type = "application/json"
         req_options = {
@@ -26,7 +25,6 @@ module Decidim
         response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
           my_req = http.request(request)
           my_hash = JSON.parse(my_req.body)
-          puts my_hash
           render json: my_hash
         end
       end

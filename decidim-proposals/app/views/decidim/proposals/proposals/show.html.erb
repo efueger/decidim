@@ -117,15 +117,16 @@
   var is_trad = false;
   var original_title = $("#proposal-title").text();
   var original_body = $("#proposal-body").text();
+  var target_lang = "<%= current_user.locale.upcase %>";
 
-  function get_traduction(original_text, callback) {
+  function get_traduction(original_text, target_lang, callback) {
     $.ajax({
       url : "/api/traduction",
       type : 'GET',
-      data : "original=" + original_text,
+      data : "target=" + target_lang + "&original=" + original_text,
       dataType : 'json',
       success : function(body, status) {
-        callback(body["translations"][0]["text"]);
+        callback([body["translations"][0]["detected_source_language"], body["translations"][0]["text"]]);
       },
       error : function(body, status, error) {
         console.log(status + error);
@@ -146,11 +147,11 @@
       $("#see-trad").text("<%= t('.show_traduction') %>");
       is_trad = !is_trad;
     } else {
-      get_traduction(original_title, function(converted_title) {
-        get_traduction(original_body, function(converted_body) {
-          $("#proposal-title").html(converted_title);
-          $("#proposal-body").html("<p>" + converted_body + "</p>");
-          $("#see-trad").text(decodeHtml("<%= t('.show_the_original') %>")); // because of the -> '
+      get_traduction(original_title, target_lang, function(converted_title) {
+        get_traduction(original_body, target_lang, function(converted_body) {
+          $("#proposal-title").html(converted_title[1]);
+          $("#proposal-body").html("<p>" + converted_body[1] + "</p>");
+          $("#see-trad").text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_body[0] + ")")); // because of the -> '
        });
       });
       is_trad = !is_trad;

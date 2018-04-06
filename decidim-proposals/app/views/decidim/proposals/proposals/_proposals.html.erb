@@ -14,7 +14,6 @@
 <%= decidim_paginate @proposals, random_seed: random_seed %>
 
 <script>
-
 	function decodeHtml(html) {
 		var txt = document.createElement("textarea");
 		txt.innerHTML = html;
@@ -29,6 +28,7 @@
 	    trad_btn = param.find("#see-trad");
 	    hidden_title = param.find(".hidden_title");
 	    hidden_body = param.find(".hidden_body");
+	    target_lang = "<%= current_user.locale.upcase %>";
 
 	    if (hidden_title.text() !== "") {
 	    	title.text(hidden_title.text());
@@ -37,7 +37,7 @@
 	    	trad_btn.text("<%= t('.show_traduction') %>");
 	    	hidden_title.text("");
 	    } else {
-	    	get_traduction(title.text(), function(converted_title) {
+	    	get_traduction(title.text(), target_lang, function(converted_title) {
 	    		get_traduction(body.text(), function(converted_body) {
 	    			trad_btn.text(decodeHtml("<%= t('.show_the_original') %>"));
 	    			hidden_title.text(title.text());
@@ -50,11 +50,11 @@
 	    }
 	}
 
-	function get_traduction(original_text, callback) {
+	function get_traduction(original_text, target_lang, callback) {
 		$.ajax({
 			url : "/api/traduction",
 			type : 'GET',
-			data : "original=" + original_text,
+			data : "target=" + target_lang + "&original=" + original_text,
 			dataType : 'json',
 			success : function(body, status) {
 				callback(body["translations"][0]["text"]);
@@ -64,6 +64,5 @@
 			}
 		});
 	}
-
   
 </script>
