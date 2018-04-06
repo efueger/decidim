@@ -12,3 +12,58 @@
   <%= render @proposals %>
 </div>
 <%= decidim_paginate @proposals, random_seed: random_seed %>
+
+<script>
+
+	function decodeHtml(html) {
+		var txt = document.createElement("textarea");
+		txt.innerHTML = html;
+		return txt.value;
+	}
+
+	function trad_card(param) {
+	    param = param.parent().parent();
+
+	    title = param.find(".card__title");
+	    body = param.find("p");
+	    trad_btn = param.find("#see-trad");
+	    hidden_title = param.find(".hidden_title");
+	    hidden_body = param.find(".hidden_body");
+
+	    if (hidden_title.text() !== "") {
+	    	title.text(hidden_title.text());
+	    	body.text(hidden_body.text());
+	    	console.log(body.text());
+	    	trad_btn.text("<%= t('.show_traduction') %>");
+	    	hidden_title.text("");
+	    } else {
+	    	get_traduction(title.text(), function(converted_title) {
+	    		get_traduction(body.text(), function(converted_body) {
+	    			trad_btn.text(decodeHtml("<%= t('.show_the_original') %>"));
+	    			hidden_title.text(title.text());
+	    			hidden_body.text(body.text());
+	    			console.log(body.text());
+	    			title.text(converted_title);
+	    			body.text(converted_body);
+	    		});
+	    	});
+	    }
+	}
+
+	function get_traduction(original_text, callback) {
+		$.ajax({
+			url : "/api/traduction",
+			type : 'GET',
+			data : "original=" + original_text,
+			dataType : 'json',
+			success : function(body, status) {
+				callback(body["translations"][0]["text"]);
+			},
+			error : function(body, status, error) {
+				console.log(status + error);
+			}
+		});
+	}
+
+  
+</script>

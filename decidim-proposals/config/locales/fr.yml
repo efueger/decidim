@@ -329,6 +329,11 @@ fr:
         proposal:
           creation_date: 'Création: %{date}'
           view_proposal: Voir la proposition
+          show_traduction: Voir la traduction
+          show_the_original: Voir l'original
+        proposals:        
+          show_traduction: Voir la traduction
+          show_the_original: Voir l'original
         show:
           edit_proposal: Modifier la proposition
           proposal_accepted_reason: 'Cette proposition a été retenue parce que :'
@@ -341,6 +346,8 @@ fr:
           withdraw_btn_hint: Vous pouvez retirer votre proposition si vous changez d'avis, tant que vous n'avez reçu aucun support. La proposition n'est pas supprimée, elle apparaîtra dans la liste des propositions retirées.
           withdraw_confirmation: Êtes-vous sûr de retirer cette proposition?
           withdraw_proposal: Retirer la proposition
+          show_traduction: Voir la traduction
+          show_the_original: Voir l'original
         vote_button:
           already_voted: Déjà voté
           already_voted_hover: Retirer le vote

@@ -17,7 +17,7 @@
         <%= link_to_current_or_new_conversation_with(@proposal.author) %>
       <% end %>
       <!-- Use @proposal.title and @proposal.body for traduction -->
-      <a id="see-trad">Voir la traduction</a>
+      <a id="see-trad" onclick="traduct_action()"><%= t('.show_traduction') %></a>
     </div>
     <% if @proposal.withdrawable_by?(current_user) %>
       <%= action_authorized_link_to :withdraw, withdraw_proposal_path(@proposal), method: :put, class: "title-action__action button small hollow", title: t('.withdraw_btn_hint'), data: {confirm: t('.withdraw_confirmation')}  do %>
@@ -114,11 +114,10 @@
 %>
 
 <script>
-  // REMARKS :
-  // 1. Maybe its too long to wait for 2 requests to be completed ?
-  // 2. We need to set traductions for the #see-trad link
-  // 3. Need to try to put function get_traduction in a global .js file
-  // 4. Need to hide the deepl key (take inspiration from polis key)
+  var is_trad = false;
+  var original_title = $("#proposal-title").text();
+  var original_body = $("#proposal-body").text();
+
   function get_traduction(original_text, callback) {
     $.ajax({
       url : "/api/traduction",
@@ -134,24 +133,27 @@
     });
   }
 
-  var is_trad = false;
-  var original_title = $("#proposal-title").text();
-  var original_body = $("#proposal-body").text();
-  $("#see-trad").on("click", function() {
+  function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
+  function traduct_action() {
     if (is_trad == true) {
       $("#proposal-title").html(original_title);
       $("#proposal-body").html("<p>" + original_body + "</p>");
-      $("#see-trad").text("Voir la traduction");
+      $("#see-trad").text("<%= t('.show_traduction') %>");
       is_trad = !is_trad;
     } else {
       get_traduction(original_title, function(converted_title) {
         get_traduction(original_body, function(converted_body) {
           $("#proposal-title").html(converted_title);
           $("#proposal-body").html("<p>" + converted_body + "</p>");
-          $("#see-trad").text("Voir l'original");
+          $("#see-trad").text(decodeHtml("<%= t('.show_the_original') %>")); // because of the -> '
        });
       });
       is_trad = !is_trad;
     }
-  });
+  }
 </script>

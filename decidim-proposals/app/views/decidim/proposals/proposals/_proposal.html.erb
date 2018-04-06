@@ -5,7 +5,8 @@
         <%= link_to proposal do%>
           <h5 class="card__title"><%= proposal.title %></h5>
           <!-- Use @proposal.title and @proposal.body for traduction -->
-          <a id="see-trad" onclick="trad_card($(this))">Voir la traduction</a>
+          <a id="see-trad" onclick="trad_card($(this))"><%= t('.show_traduction') %></a>
+          <div class="hidden_title" style="display: none;"></div>
         <% end %>
         <div class="card__author author-data author-data--small">
           <%= render partial: "decidim/shared/author_reference", locals: { author: present(proposal).author } %>
@@ -17,6 +18,7 @@
       </div>
       <%= render partial: "proposal_badge", locals: { proposal: proposal } %>
       <p><%= truncate(proposal.body, length: 100) %></p>
+      <div class="hidden_body" style="display: none;"></div>
       <%= render partial: "decidim/shared/tags", locals: { resource: proposal, tags_class_extra: "tags--proposal" } %>
     </div>
     <div class="card__footer">
@@ -32,21 +34,3 @@
     </div>
   </article>
 </div>
-
-<script>
-  // REMARKS :
-  // 1. Maybe its too long to wait for 2 requests to be completed ?
-  // 2. We need to set traductions for the #see-trad link
-  // 3. Need to try to put function get_traduction in a global .js file
-
-  function trad_card(param) {
-    param = param.parent().parent();
-    console.log(param.find(".card__title").text());
-    console.log(param.find("p").text());
-
-    // Don't forget to do the reals calls haha
-    param.find(".card__title").text("Traducted title");
-    param.find("p").text("Traducted body...");
-  }
-  
-</script>
