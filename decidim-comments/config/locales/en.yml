@@ -44,6 +44,8 @@ en:
         remaining_characters_1: "%{count} character left"
         title: Add your comment
       comment:
+        show_traduction: Show traduction
+        show_the_original: Show original
         alignment:
           against: Against
           in_favor: In favor

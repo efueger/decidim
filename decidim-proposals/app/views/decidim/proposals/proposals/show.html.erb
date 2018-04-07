@@ -123,7 +123,7 @@
     $.ajax({
       url : "/api/traduction",
       type : 'GET',
-      data : "target=" + target_lang + "&original=" + original_text,
+      data : "target=" + target_lang + "&original=" + encodeURI(original_text),
       dataType : 'json',
       success : function(body, status) {
         callback([body["translations"][0]["detected_source_language"], body["translations"][0]["text"]]);
@@ -157,4 +157,33 @@
       is_trad = !is_trad;
     }
   }
+
+  function handleSeeTraductionClick(argument) {
+    $(document).on("click", ".comment__votes > .see_trad_comment_button", function (ev) {
+      var $btnClicked = $(this);
+      var $textToTranslateContainer = $btnClicked.closest(".comment").find(".comment__content p");
+      var $hiddenTranslatedTextContainer = $btnClicked.closest(".comment").find(".hidden_trad_comment");
+      if ($hiddenTranslatedTextContainer.text() !== "") {
+        // Set back the original
+        $textToTranslateContainer.text($hiddenTranslatedTextContainer.text());
+        $btnClicked.text(decodeHtml("<%= t('.show_traduction') %>"));
+        $hiddenTranslatedTextContainer.text("");
+      } else {
+        // Traduct
+        get_traduction($textToTranslateContainer.text(), target_lang, function (converted_comment) {
+          $hiddenTranslatedTextContainer.text($textToTranslateContainer.text());
+          $textToTranslateContainer.text(converted_comment[1]);
+          $btnClicked.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_comment[0].toLowerCase() + ")"));
+        });
+      }
+    });  
+  }
+
+  $(function () {
+    handleSeeTraductionClick();
+  });
 </script>
+
+
+
+

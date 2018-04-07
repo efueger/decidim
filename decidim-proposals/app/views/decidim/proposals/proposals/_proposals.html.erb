@@ -14,6 +14,8 @@
 <%= decidim_paginate @proposals, random_seed: random_seed %>
 
 <script>
+	var target_lang = "<%= current_user.locale.upcase %>";
+
 	function decodeHtml(html) {
 		var txt = document.createElement("textarea");
 		txt.innerHTML = html;
@@ -22,7 +24,6 @@
 
 	function trad_card(param) {
 	    param = param.parent().parent();
-
 	    title = param.find(".card__title");
 	    body = param.find("p");
 	    trad_btn = param.find("#see-trad");
@@ -33,18 +34,16 @@
 	    if (hidden_title.text() !== "") {
 	    	title.text(hidden_title.text());
 	    	body.text(hidden_body.text());
-	    	console.log(body.text());
 	    	trad_btn.text("<%= t('.show_traduction') %>");
 	    	hidden_title.text("");
 	    } else {
 	    	get_traduction(title.text(), target_lang, function(converted_title) {
-	    		get_traduction(body.text(), function(converted_body) {
-	    			trad_btn.text(decodeHtml("<%= t('.show_the_original') %>"));
+	    		get_traduction(body.text(), target_lang, function(converted_body) {
+	    			trad_btn.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_body[0] + ")"));
 	    			hidden_title.text(title.text());
 	    			hidden_body.text(body.text());
-	    			console.log(body.text());
-	    			title.text(converted_title);
-	    			body.text(converted_body);
+	    			title.text(converted_title[1]);
+	    			body.text(converted_body[1]);
 	    		});
 	    	});
 	    }
@@ -57,7 +56,7 @@
 			data : "target=" + target_lang + "&original=" + original_text,
 			dataType : 'json',
 			success : function(body, status) {
-				callback(body["translations"][0]["text"]);
+				callback([body["translations"][0]["detected_source_language"], body["translations"][0]["text"]]);
 			},
 			error : function(body, status, error) {
 				console.log(status + error);

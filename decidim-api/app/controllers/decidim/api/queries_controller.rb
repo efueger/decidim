@@ -9,13 +9,9 @@ module Decidim
       around_action :store_current_user
 
       def traduction
-        # DEEPL API : https://api.deepl.com/v1/translate
-        # example : /v1/translate?text=Hallo%20Welt!&target_lang=EN&auth_key=123
-        # reponse : { "translations": [ { "detected_source_language": "DE", "text": "Hello World!" } ] }
-        auth_key = "e4661e18-b983-08df-6335-d19ad787fed6"
+        auth_key = ENV["DEEPL_API_KEY"] # DEEPL_API_KEY="your_api_key" rails s 
         target_lang = params[:target]
-        original_txt = params[:original]
-
+        original_txt = URI.encode(params[:original])
         uri = URI.parse("https://api.deepl.com/v1/translate?text=#{original_txt}&target_lang=#{target_lang}&auth_key=#{auth_key}")
         request = Net::HTTP::Get.new(uri)
         request.content_type = "application/json"

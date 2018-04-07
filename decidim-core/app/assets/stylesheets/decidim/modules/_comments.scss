@@ -33,6 +33,10 @@ $comment-form-bg: $light-gray;
 .comment__content{
   padding: 0 $comment-padding;
 
+  .hidden_trad_comment {
+    display: none;
+  }
+
   > :last-child{
     margin-bottom: 0;
   }
@@ -67,6 +71,9 @@ $comment-form-bg: $light-gray;
 
 .comment__votes{
   float: right;
+  .see_trad_comment_button {
+    margin-right: 1em;
+  }
 }
 
 .comment__votes--up{
