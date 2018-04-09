@@ -310,7 +310,14 @@ nl:
         proposal:
           creation_date: 'Aangemaakt op: %{date}'
           view_proposal: Bekijk voorstel
+          show_traduction: Zie de vertaling
+          show_the_original: Zie het origineel
+        proposals:
+          show_traduction: Zie de vertaling
+          show_the_original: Zie het origineel
         show:
+          show_traduction: Zie de vertaling
+          show_the_original: Zie het origineel
           edit_proposal: Bewerk voorstel
           proposal_accepted_reason: 'Dit voorstel is geaccepteerd omdat:'
           proposal_in_evaluation_reason: Dit voorstel wordt geëvalueerd
