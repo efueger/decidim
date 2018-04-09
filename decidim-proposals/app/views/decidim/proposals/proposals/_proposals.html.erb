@@ -15,13 +15,11 @@
 
 <script>
 	var target_lang = "<%= current_user.locale.upcase %>";
-
 	function decodeHtml(html) {
 		var txt = document.createElement("textarea");
 		txt.innerHTML = html;
 		return txt.value;
 	}
-
 	function trad_card(param) {
 	    param = param.parent().parent();
 	    title = param.find(".card__title");
@@ -48,7 +46,6 @@
 	    	});
 	    }
 	}
-
 	function get_traduction(original_text, target_lang, callback) {
 		$.ajax({
 			url : "/api/traduction",

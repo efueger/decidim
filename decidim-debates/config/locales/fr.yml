@@ -57,6 +57,11 @@ fr:
             one: Commentaire
             other: Commentaires
           participate: Participer
+          show_traduction: Voir la traduction
+          show_the_original: Voir l'original
+        debates:
+          show_traduction: Voir la traduction
+          show_the_original: Voir l'original
         filters:
           all: Tout
           category: Catégorie
@@ -82,6 +87,8 @@ fr:
           share: Partager
           share_link: Lien de partage
         show:
+          show_traduction: Voir la traduction
+          show_the_original: Voir l'original
           comments: Commentaires
           report: Rapport
       models:

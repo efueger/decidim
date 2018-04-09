@@ -5,7 +5,7 @@
 }) %>
 
 <div class="row column view-header">
-  <h2 class="heading2">
+  <h2 class="heading2" id="debate-title">
     <%== translated_attribute debate.title %>
   </h2>
   <div class="author-data">
@@ -17,6 +17,7 @@
       <% unless debate.official? %>
         <%= link_to_current_or_new_conversation_with(debate.author) %>
       <% end %>
+      <a id="see-trad" onclick="traduct_action()"><%= t('.show_traduction') %></a>
     </div>
     <% if debate.commentable? %>
       <a href="#comments" title="<%= t('.comments') %>">
@@ -46,7 +47,11 @@
   </div>
   <div class="columns mediumlarge-8 mediumlarge-pull-4">
     <div class="section">
-      <p><%= simple_format(translated_attribute(debate.description)) %></p>
+      <p>
+        <div id="debate-body">
+          <%= simple_format(translated_attribute(debate.description)) %>
+        </div> 
+      </p>
       <% if translated_attribute(debate.instructions).present? %>
         <div class="callout secondary">
           <%= simple_format(translated_attribute(debate.instructions)) %>
@@ -78,3 +83,74 @@
     url: decidim.report_path(sgid: debate.to_sgid.to_s)
   }
 %>
+
+<script>
+  var is_trad = false;
+  var original_title = $("#debate-title").text();
+  var original_body = $("#debate-body").text();
+  var target_lang = "<%= current_user.locale.upcase %>";
+
+  function get_traduction(original_text, target_lang, callback) {
+    $.ajax({
+      url : "/api/traduction",
+      type : 'GET',
+      data : "target=" + target_lang + "&original=" + encodeURI(original_text),
+      dataType : 'json',
+      success : function(body, status) {
+        callback([body["translations"][0]["detected_source_language"], body["translations"][0]["text"]]);
+      },
+      error : function(body, status, error) {
+        console.log(status + error);
+      }
+    });
+  }
+
+  function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
+  function traduct_action() {
+    if (is_trad == true) {
+      $("#debate-title").html(original_title);
+      $("#debate-body").html("<p>" + original_body + "</p>");
+      $("#see-trad").text("<%= t('.show_traduction') %>");
+      is_trad = !is_trad;
+    } else {
+      get_traduction(original_title, target_lang, function(converted_title) {
+        get_traduction(original_body, target_lang, function(converted_body) {
+          $("#debate-title").html(converted_title[1]);
+          $("#debate-body").html("<p>" + converted_body[1] + "</p>");
+          $("#see-trad").text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_body[0] + ")")); // because of the -> '
+       });
+      });
+      is_trad = !is_trad;
+    }
+  }
+
+  function handleSeeTraductionClick(argument) {
+    $(document).on("click", ".comment__votes > .see_trad_comment_button", function (ev) {
+      var $btnClicked = $(this);
+      var $textToTranslateContainer = $btnClicked.closest(".comment").find(".comment__content p");
+      var $hiddenTranslatedTextContainer = $btnClicked.closest(".comment").find(".hidden_trad_comment");
+      if ($hiddenTranslatedTextContainer.text() !== "") {
+        // Set back the original
+        $textToTranslateContainer.text($hiddenTranslatedTextContainer.text());
+        $btnClicked.text(decodeHtml("<%= t('.show_traduction') %>"));
+        $hiddenTranslatedTextContainer.text("");
+      } else {
+        // Traduct
+        get_traduction($textToTranslateContainer.text(), target_lang, function (converted_comment) {
+          $hiddenTranslatedTextContainer.text($textToTranslateContainer.text());
+          $textToTranslateContainer.text(converted_comment[1]);
+          $btnClicked.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_comment[0].toLowerCase() + ")"));
+        });
+      }
+    });  
+  }
+
+  $(function () {
+    handleSeeTraductionClick();
+  });
+</script>

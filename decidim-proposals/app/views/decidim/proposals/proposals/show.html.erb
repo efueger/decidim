@@ -16,7 +16,6 @@
       <% unless @proposal.official? %>
         <%= link_to_current_or_new_conversation_with(@proposal.author) %>
       <% end %>
-      <!-- Use @proposal.title and @proposal.body for traduction -->
       <a id="see-trad" onclick="traduct_action()"><%= t('.show_traduction') %></a>
     </div>
     <% if @proposal.withdrawable_by?(current_user) %>
