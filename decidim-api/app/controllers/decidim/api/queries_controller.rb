@@ -9,7 +9,7 @@ module Decidim
       around_action :store_current_user
 
       def traduction
-        auth_key = "5a759d84-bab3-6b62-073e-ef367ff8e3f9" # DEEPL_API_KEY="your_api_key" rails s 
+        auth_key = ENV['DEEPL_API_KEY'] # DEEPL_API_KEY="your_api_key" rails s 
         puts "AUTH KEY : #{auth_key}"
         target_lang = params[:target]
         original_txt = URI.encode(params[:original])
