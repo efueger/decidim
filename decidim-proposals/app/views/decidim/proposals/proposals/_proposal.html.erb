@@ -4,7 +4,7 @@
       <div class="card__header">
         <%= link_to proposal do%>
           <h5 class="card__title"><%= proposal.title %></h5>
-          <span><a id="see-trad" style="font-size:small;" onclick="trad_card($(this))"><%= t('.show_traduction') %></a></span>
+          <a id="see-trad" style="font-size:small;" onclick="trad_card($(this))"><%= t('.show_traduction') %></a>
           <div class="hidden_title" style="display: none;"></div>
         <% end %>
         <div class="card__author author-data author-data--small">

@@ -4,7 +4,7 @@
 <%= decidim_paginate paginated_debates %>
 
 <script>
-  var target_lang = "<%= current_user.locale.upcase %>";
+  var target_lang = "<%= I18n.locale.upcase %>";
   function decodeHtml(html) {
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
@@ -17,7 +17,6 @@
       trad_btn = param.find("#see-trad");
       hidden_title = param.find(".hidden_title");
       hidden_body = param.find(".hidden_body");
-      target_lang = "<%= current_user.locale.upcase %>";
       if (hidden_title.text() !== "") {
         title.text(hidden_title.text());
         body.text(hidden_body.text());

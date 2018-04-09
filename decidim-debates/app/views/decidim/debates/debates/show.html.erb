@@ -88,7 +88,7 @@
   var is_trad = false;
   var original_title = $("#debate-title").text();
   var original_body = $("#debate-body").text();
-  var target_lang = "<%= current_user.locale.upcase %>";
+  var target_lang = "<%= I18n.locale.upcase %>";
 
   function get_traduction(original_text, target_lang, callback) {
     $.ajax({
