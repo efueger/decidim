@@ -9,21 +9,13 @@ module Decidim
       around_action :store_current_user
 
       def traduction
-        auth_key = ENV['DEEPL_API_KEY'] # DEEPL_API_KEY="your_api_key" rails s 
-        puts "AUTH KEY : #{auth_key}"
-        target_lang = params[:target]
+        auth_key = ENV['DEEPL_API_KEY']
+        target_lang = target_lang = params[:target]
+        puts target_lang
         original_txt = URI.encode(params[:original])
         uri = URI.parse("https://api.deepl.com/v1/translate?text=#{original_txt}&target_lang=#{target_lang}&auth_key=#{auth_key}")
-        request = Net::HTTP::Get.new(uri)
-        request.content_type = "application/json"
-        req_options = {
-           use_ssl: uri.scheme == "https",
-        }
-        response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-          my_req = http.request(request)
-          my_hash = JSON.parse(my_req.body)
-          render json: my_hash
-        end
+        result = trad_api_request(uri) 
+        render json: result
       end
 
       def create
@@ -34,6 +26,19 @@ module Decidim
       end
 
       private
+
+      def trad_api_request(uri)
+        request = Net::HTTP::Get.new(uri)
+        request.content_type = "application/json"
+        req_options = {
+           use_ssl: uri.scheme == "https",
+        }
+        response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+          my_req = http.request(request)
+          my_hash = JSON.parse(my_req.body)
+          return my_hash
+        end
+      end
 
       def context
         {

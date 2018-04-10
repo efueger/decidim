@@ -25,11 +25,13 @@
       } else {
         get_traduction(title.text(), target_lang, function(converted_title) {
           get_traduction(body.text(), target_lang, function(converted_body) {
-            trad_btn.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_body[0] + ")"));
-            hidden_title.text(title.text());
-            hidden_body.text(body.text());
-            title.text(converted_title[1]);
-            body.text(converted_body[1]);
+            if (target_lang !== converted_body[0]) {
+              trad_btn.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_body[0] + ")"));
+              hidden_title.text(title.text());
+              hidden_body.text(body.text());
+              title.text(converted_title[1]);
+              body.text(converted_body[1]);
+            }
           });
         });
       }

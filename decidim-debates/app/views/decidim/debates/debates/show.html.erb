@@ -135,16 +135,16 @@
       var $textToTranslateContainer = $btnClicked.closest(".comment").find(".comment__content p");
       var $hiddenTranslatedTextContainer = $btnClicked.closest(".comment").find(".hidden_trad_comment");
       if ($hiddenTranslatedTextContainer.text() !== "") {
-        // Set back the original
         $textToTranslateContainer.text($hiddenTranslatedTextContainer.text());
         $btnClicked.text(decodeHtml("<%= t('.show_traduction') %>"));
         $hiddenTranslatedTextContainer.text("");
       } else {
-        // Traduct
         get_traduction($textToTranslateContainer.text(), target_lang, function (converted_comment) {
-          $hiddenTranslatedTextContainer.text($textToTranslateContainer.text());
-          $textToTranslateContainer.text(converted_comment[1]);
-          $btnClicked.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_comment[0].toLowerCase() + ")"));
+          if (target_lang !== converted_comment[0]) {
+            $hiddenTranslatedTextContainer.text($textToTranslateContainer.text());
+            $textToTranslateContainer.text(converted_comment[1]);
+            $btnClicked.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_comment[0].toLowerCase() + ")"));
+          }
         });
       }
     });  
