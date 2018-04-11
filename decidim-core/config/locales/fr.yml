@@ -559,3 +559,7 @@ fr:
       next: Suivant &rsaquo;
       previous: "&lsaquo; Précédent"
       truncate: "&hellip;"
+  trads:
+    show_traduction: Voir la traduction 
+    show_the_original: Voir l'original 
+    automatic_translation: Traduction automatique par %{trad_service}
