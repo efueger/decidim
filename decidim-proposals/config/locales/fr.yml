@@ -50,7 +50,6 @@ fr:
             votes_enabled: Votes activés
             votes_hidden: Cacher les votes (si les votes sont activés, le compte des votes sera caché)
     proposals:
-      no_proposal: 0 proposition 
       actions:
         answer: Répondre
         new: Nouvelle
@@ -121,6 +120,7 @@ fr:
       proposals:
         count:
           proposals_count:
+            zero: "%{count} proposition"
             one: 1 proposition
             other: "%{count} propositions"
         edit:
