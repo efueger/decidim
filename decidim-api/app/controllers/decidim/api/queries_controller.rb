@@ -9,7 +9,7 @@ module Decidim
       around_action :store_current_user
 
       def traduction
-        render json: do_it_all(params[:original], params[:target])
+        render json: translate(params[:original], params[:target])
       end
 
       def create
@@ -58,7 +58,7 @@ module Decidim
         return thread_list
       end
 
-      def final_chirurgie(traducted_threads)
+      def get_text_from_threads(traducted_threads)
         final_text = "".dup
         traducted_threads.each do |p|
           final_text << "<p>#{p[:ret]["translations"][0]["text"]}</p>"
@@ -76,7 +76,7 @@ module Decidim
       end
 
 
-      def do_it_all(text, target_lang)
+      def translate(text, target_lang)
         html = text
         parsed_by_p = parse_by_p(html)
         threads_food = get_ready_for_threads(parsed_by_p)
@@ -88,7 +88,7 @@ module Decidim
         end
         threads.each { |thr| thr.join }
         average_language = get_average_language(threads_food)
-        final_text = final_chirurgie(threads_food)
+        final_text = get_text_from_threads(threads_food)
         return {translations: [{detected_source_language: average_language, text: final_text}]}
       end
 
