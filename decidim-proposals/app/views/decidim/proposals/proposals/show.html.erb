@@ -165,8 +165,8 @@
   function handleSeeTraductionClick(argument) {
     $(document).on("click", ".comment__votes > .see_trad_comment_button", function (ev) {
       var $btnClicked = $(this);
-      var $textToTranslateContainer = $btnClicked.closest(".comment").find(".comment__content p");
-      var $hiddenTranslatedTextContainer = $btnClicked.closest(".comment").find(".hidden_trad_comment");
+      var $textToTranslateContainer = $btnClicked.closest(".comment").find(".comment__content p").first();
+      var $hiddenTranslatedTextContainer = $btnClicked.closest(".comment").find(".hidden_trad_comment").first();
       if ($hiddenTranslatedTextContainer.text() !== "") {
         $textToTranslateContainer.text($hiddenTranslatedTextContainer.text());
         $btnClicked.text(decodeHtml("<%= t('.show_traduction') %>"));
@@ -175,7 +175,8 @@
         get_traduction($textToTranslateContainer.text(), target_lang, function (converted_comment) {
           if (target_lang !== converted_comment[0]) {
             $hiddenTranslatedTextContainer.text($textToTranslateContainer.text());
-            $textToTranslateContainer.text(converted_comment[1]);
+            $textToTranslateContainer.text($(converted_comment[1]).text());
+            $textToTranslateContainer.append("<p id=trad-info style='font: small-caption;font-style: italic;color: grey;'><%= I18n.t("automatic_translation", trad_service: "Deepl", scope: "trads") %></p>");
             $btnClicked.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_comment[0] + ")"));
           }
         });
