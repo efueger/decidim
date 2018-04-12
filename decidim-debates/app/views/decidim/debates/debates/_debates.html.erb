@@ -29,8 +29,8 @@
               trad_btn.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_body[0] + ")"));
               hidden_title.text(title.text());
               hidden_body.text(body.text());
-              title.text(converted_title[1]);
-              body.text(converted_body[1]);
+              title.text($(converted_title[1]).text());
+              body.text($(converted_body[1]).text());
             }
           });
         });

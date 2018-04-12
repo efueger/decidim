@@ -20,6 +20,7 @@
 		txt.innerHTML = html;
 		return txt.value;
 	}
+
 	function trad_card(param) {
 	    param = param.parent().parent();
 	    title = param.find(".card__title");
@@ -40,13 +41,14 @@
 	    				trad_btn.text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_body[0] + ")"));
 		    			hidden_title.text(title.text());
 		    			hidden_body.text(body.text());
-		    			title.text(converted_title[1]);
-		    			body.text(converted_body[1]);
+		    			title.text($(converted_title[1]).text());
+		    			body.text($(converted_body[1]).text());
 	    			}
 	    		});
 	    	});
 	    }
 	}
+
 	function get_traduction(original_text, target_lang, callback) {
 		$.ajax({
 			url : "/api/traduction",

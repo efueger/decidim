@@ -9,13 +9,7 @@ module Decidim
       around_action :store_current_user
 
       def traduction
-        auth_key = ENV['DEEPL_API_KEY']
-        target_lang = target_lang = params[:target]
-        puts target_lang
-        original_txt = URI.encode(params[:original])
-        uri = URI.parse("https://api.deepl.com/v1/translate?text=#{original_txt}&target_lang=#{target_lang}&auth_key=#{auth_key}")
-        result = trad_api_request(uri) 
-        render json: result
+        render json: do_it_all(params[:original], params[:target])
       end
 
       def create
@@ -38,6 +32,64 @@ module Decidim
           my_hash = JSON.parse(my_req.body)
           return my_hash
         end
+      end
+
+      def traduire(text, target_lang) 
+        auth_key = ENV['DEEPL_API_KEY']
+        encode_text = URI.encode(text)
+        uri = URI.parse("https://api.deepl.com/v1/translate?text=#{encode_text}&target_lang=#{target_lang}&auth_key=#{auth_key}")
+        result = trad_api_request(uri)
+        return result
+      end
+
+      def parse_by_p(html)
+        document = Nokogiri::HTML(html).search("p")
+        parsed_by_p = document.to_s.gsub("<p>", "").gsub("</p>", "\n").split("\n")
+        return (parsed_by_p)
+      end
+
+      def get_ready_for_threads(parsed_html)
+        thread_list = []
+        parsed_html.each do |p|
+          if p.empty? == false
+            thread_list << {text: p, ret: ""}
+          end
+        end
+        return thread_list
+      end
+
+      def final_chirurgie(traducted_threads)
+        final_text = "".dup
+        traducted_threads.each do |p|
+          final_text << "<p>#{p[:ret]["translations"][0]["text"]}</p>"
+        end
+        return final_text
+      end
+
+      def get_average_language(traducted_threads)
+        arr = []
+        traducted_threads.each do |i|
+          arr << i[:ret]["translations"][0]["detected_source_language"]
+        end
+        freq = arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+        return arr.max_by { |v| freq[v] }
+      end
+
+
+      def do_it_all(text, target_lang)
+        html = text
+        parsed_by_p = parse_by_p(html)
+        threads_food = get_ready_for_threads(parsed_by_p)
+        threads = []
+        threads_food.each do |p|
+            threads << Thread.new do
+              p[:ret] = traduire(p[:text], target_lang)
+            end
+        end
+        threads.each { |thr| thr.join }
+        average_language = get_average_language(threads_food)
+        final_text = final_chirurgie(threads_food)
+        return {translations: [{detected_source_language: average_language, text: final_text}]}
       end
 
       def context
