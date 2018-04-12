@@ -14,7 +14,7 @@ module Decidim
         ""
       end
 
-      def badge
+      def badge # This method has been extended in lib/decidim/extends/presenters/official_author_presenter_extend.rb
         ""
       end
 
