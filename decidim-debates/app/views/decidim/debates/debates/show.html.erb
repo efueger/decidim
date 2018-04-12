@@ -123,7 +123,7 @@
     } else {
       get_traduction(original_title, target_lang, function(converted_title) {
         get_traduction(original_body, target_lang, function(converted_body) {
-          $("#debate-title").html(converted_title[1]);
+          $("#debate-title").html($(converted_title[1]).text());
           $("#debate-body").html(converted_body[1]);
           $("#see-trad").text(decodeHtml("<%= t('.show_the_original') %>" + " (" + converted_body[0] + ")")); // because of the -> '
        });

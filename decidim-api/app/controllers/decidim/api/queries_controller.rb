@@ -44,14 +44,14 @@ module Decidim
 
       def parse_by_p(html)
         document = Nokogiri::HTML(html).search("p")
-        parsed_by_p = document.to_s.gsub("<p>", "").gsub("</p>", "\n").split("\n")
+        parsed_by_p = document.to_s.gsub("<p>", "").split("</p>")
         return (parsed_by_p)
       end
 
       def get_ready_for_threads(parsed_html)
         thread_list = []
         parsed_html.each do |p|
-          if p.empty? == false
+          if p.strip.empty? == false
             thread_list << {text: p, ret: ""}
           end
         end
