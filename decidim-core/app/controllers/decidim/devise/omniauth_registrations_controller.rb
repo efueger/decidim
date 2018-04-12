@@ -11,7 +11,7 @@ module Decidim
         @form = form(OmniauthRegistrationForm).from_params(params[:user])
       end
 
-      def create
+      def create # This method has been extended in lib/decidim/extends/controllers/omniauth_registrations_controller_extend.rb
 
         form_params = user_params_from_oauth_hash || params[:user]
         @form = form(OmniauthRegistrationForm).from_params(form_params)
