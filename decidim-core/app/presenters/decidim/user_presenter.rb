@@ -12,7 +12,7 @@ module Decidim
     # nickname presented in a twitter-like style
     #
     def nickname
-      "@#{super}"
+      "@#{__getobj__.nickname}"
     end
 
     def badge # This method has been extended in lib/decidim/extends/presenters/user_presenter_extend.rb

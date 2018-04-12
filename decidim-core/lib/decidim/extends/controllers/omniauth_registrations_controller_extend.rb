@@ -33,6 +33,6 @@ module OmniauthRegistrationsControllerExtend
   end
 end
 
-Decidim::OmniauthRegistrationsController.class_eval do
+Decidim::Devise::OmniauthRegistrationsController.class_eval do
   prepend(OmniauthRegistrationsControllerExtend)
 end

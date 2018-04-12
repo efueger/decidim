@@ -38,7 +38,7 @@ const generateCommentsData = (num = 1) => {
       downVotes: random.number(),
       downVoted: false,
       sgid: random.uuid(),
-      alreadyReported: false,
+      alreadyReported: false
     });
   }
 
