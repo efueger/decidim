@@ -13,9 +13,14 @@ module CreateOmniauthRegistrationExtend
       @user.nickname = form.normalized_nickname
       @user.newsletter_notifications = true
       @user.email_on_notification = true
-      @user.password = form.password
-      @user.password_confirmation = form.password_confirmation
       @user.skip_confirmation! if verified_email
+      if form.provider.uid == "saml"
+        @user.password = form.password
+        @user.password_confirmation = form.password_confirmation
+      else
+        @user.password = generated_password
+        @user.password_confirmation = generated_password
+      end
     end
 
     @user.tos_agreement = "1"
