@@ -9,7 +9,7 @@ fr:
         decidim_area_id: Région
         decidim_scope_id: Portée
         description: Description
-        developer_group: Promoteur
+        developer_group: Organisateur
         domain: Domaine
         hashtag: Hashtag
         hero_image: Image de la page d'accueil
@@ -19,10 +19,10 @@ fr:
         participatory_structure: Modalités
         promoted: Mis en avant
         published_at: Publié à
-        scope_id: Zone d'application
-        scopes_enabled: Zone d'application activées
+        scope_id: Périmètre d'application
+        scopes_enabled: Périmètres d'application activés
         short_description: Résumé
-        show_statistics: Montrez les statistiques
+        show_statistics: Montrer les statistiques
         slug: Identifiant
         subtitle: Sous-titre
         target: Participants
@@ -84,9 +84,9 @@ fr:
       menu:
         assemblies: Agora
         assemblies_submenu:
-          assembly_admins: Utilisateurs de l'assemblée
-          attachment_collections: Collections
-          attachment_files: Des dossiers
+          assembly_admins: Utilisateurs de l'agora
+          attachment_collections: Dossiers
+          attachment_files: Fichiers
           attachments: Documents liés
           categories: Catégories
           features: Fonctionnalités
@@ -95,7 +95,7 @@ fr:
       models:
         assembly:
           fields:
-            created_at: Crée le
+            created_at: Créé le
             promoted: Mis en évidence
             published: Publié
             title: Titre
@@ -105,7 +105,7 @@ fr:
             email: Email
             name: Nom
             role: Rôle
-          name: Utilisateur de l'assemblée
+          name: Utilisateur de l'agora
           roles:
             admin: Administrateur
             collaborator: Collaborateur
@@ -140,17 +140,17 @@ fr:
             see_all_assemblies: Voir toutes les Agora
       show:
         area: Région
-        developer_group: Promoteur
+        developer_group: Organisateur
         local_area: Périmètre
         participatory_scope: Objectif
         participatory_structure: Modalités
-        scope: Zone d'application
+        scope: Échelle
         target: Participants
       statistics:
         answers_count: Réponses
         assemblies_count: Agora
         comments_count: Commentaires
-        endorsements_count: Les avenants
+        endorsements_count: Liste des recommandations
         headline: Activité
         meetings_count: Réunions
         orders_count: Votes
