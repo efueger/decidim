@@ -13,6 +13,7 @@ Decidim.register_feature(:debates) do |feature|
 
   feature.settings(:global) do |settings|
     settings.attribute :comments_enabled, type: :boolean, default: true
+    settings.attribute :comments_upstream_moderation_enabled, type: :boolean, default: false
   end
 
   feature.settings(:step) do |settings|
