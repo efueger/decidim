@@ -2,10 +2,10 @@ module OmniauthRegistrationsControllerExtend
   def create
 
     form_params = user_params_from_oauth_hash || params[:user]
-    @form = form(OmniauthRegistrationForm).from_params(form_params)
+    @form = form(Decidim::OmniauthRegistrationForm).from_params(form_params)
     @form.email ||= verified_email
 
-    CreateOmniauthRegistration.call(@form, verified_email) do
+    Decidim::CreateOmniauthRegistration.call(@form, verified_email) do
       on(:ok) do |user|
         if user.active_for_authentication?
           sign_in_and_redirect user, event: :authentication

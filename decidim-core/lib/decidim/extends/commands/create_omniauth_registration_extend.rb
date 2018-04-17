@@ -14,7 +14,7 @@ module CreateOmniauthRegistrationExtend
       @user.newsletter_notifications = true
       @user.email_on_notification = true
       @user.skip_confirmation! if verified_email
-      if form.provider.uid == "saml"
+      if form.provider == "saml"
         @user.password = form.password
         @user.password_confirmation = form.password_confirmation
       else
