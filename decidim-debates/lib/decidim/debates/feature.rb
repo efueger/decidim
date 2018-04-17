@@ -18,6 +18,7 @@ Decidim.register_feature(:debates) do |feature|
   feature.settings(:step) do |settings|
     settings.attribute :creation_enabled, type: :boolean, default: false
     settings.attribute :comments_blocked, type: :boolean, default: false
+    settings.attribute :comments_upstream_moderation_enabled, type: :boolean, default: false
   end
 
   feature.register_resource do |resource|
