@@ -66,13 +66,17 @@ module Decidim
         return final_text
       end
 
-      def get_average_language(traducted_threads)
+      def get_average_language(traducted_threads, target_lang)
         arr = []
         traducted_threads.each do |i|
           arr << i[:ret]["translations"][0]["detected_source_language"]
         end
         freq = arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-        return arr.max_by { |v| freq[v] }
+        average_language = arr.max_by { |v| freq[v] }
+        if average_language == ""
+          return target_lang
+        end
+        return average_language
       end
 
 
@@ -87,7 +91,7 @@ module Decidim
             end
         end
         threads.each { |thr| thr.join }
-        average_language = get_average_language(threads_food)
+        average_language = get_average_language(threads_food, target_lang)
         final_text = get_text_from_threads(threads_food)
         return {translations: [{detected_source_language: average_language, text: final_text}]}
       end
