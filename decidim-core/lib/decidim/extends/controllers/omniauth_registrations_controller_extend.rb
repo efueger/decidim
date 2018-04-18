@@ -3,8 +3,6 @@ module OmniauthRegistrationsControllerExtend
     form_params = user_params_from_oauth_hash || params[:user]
     @form = form(Decidim::OmniauthRegistrationForm).from_params(form_params)
     @form.email ||= verified_email
-    @form.name ||= verified_name
-
     Decidim::CreateOmniauthRegistration.call(@form, verified_email, verified_name) do
       on(:ok) do |user|
         if user.active_for_authentication?
@@ -36,7 +34,12 @@ end
 Decidim::Devise::OmniauthRegistrationsController.class_eval do
   prepend(OmniauthRegistrationsControllerExtend)
   private
+
   def verified_name
-    @verified_name ||= oauth_data.dig(:info, :name)
+    @verified_name ||= if request.env["omniauth.auth"] && @form.provider == "saml"
+                        request.env["omniauth.auth"].extra.raw_info.attributes["uid"]
+                        elsif params["user"]&& params["user"]["uid_name"]
+                          params["user"]["uid_name"]
+                        end
   end
 end
