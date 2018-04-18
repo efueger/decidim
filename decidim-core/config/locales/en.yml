@@ -126,7 +126,18 @@ en:
       actions:
         unauthorized: You are not authorized to perform this action
     devise:
+      omniauth_callbacks:
+        facebook: Facebook
+        twitter: Twitter
+        google: Google
+        developer: Developpeur
+        saml: e-ID
       omniauth_registrations:
+        facebook: Facebook
+        twitter: Twitter
+        google: Google
+        developer: Developpeur
+        saml: e-ID
         create:
           email_already_exists: Another account is using the same email address
         new:

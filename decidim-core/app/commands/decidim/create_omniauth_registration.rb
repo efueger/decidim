@@ -1,5 +1,6 @@
-# frozen_string_literal: true
+# THIS FILE HAS BEEN PATCHED IN lib/extends/decidim/create_omniauth_registration_extend.rb
 
+# frozen_string_literal: true
 module Decidim
   # A command with all the business logic to create a user from omniauth
   class CreateOmniauthRegistration < Rectify::Command
@@ -39,7 +40,7 @@ module Decidim
 
     attr_reader :form, :verified_email
 
-    def create_or_find_user # this method has been extended in create_omniauth_registration_extend.rb
+    def create_or_find_user
       generated_password = SecureRandom.hex
 
       @user = User.find_or_initialize_by(

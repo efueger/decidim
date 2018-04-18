@@ -414,12 +414,19 @@ fr:
       version_author:
         deleted: Utilisateur supprimé
   devise:
+    omniauth_registrations:
+      facebook: Facebook
+      twitter: Twitter
+      google: Google
+      developer: Developpeur
+      saml: e-ID
     omniauth_callbacks:
       facebook: Facebook
       twitter: Twitter
       saml: e-ID
       google: Google
       developer: Developpeur
+      saml: e-ID
     shared:
       links:
         facebook: Facebook
