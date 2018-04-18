@@ -7,7 +7,7 @@ module OmniauthRegistrationsControllerExtend
       on(:ok) do |user|
         if user.active_for_authentication?
           sign_in_and_redirect user, event: :authentication
-          set_flash_message :notice, :success, kind: t(".#{@form.provider}")
+          set_flash_message :notice, :success, kind: t("decidim/devise.omniauth_registrations.#{@form.provider}")
         else
           expire_data_after_sign_in!
           redirect_to root_path
@@ -16,13 +16,13 @@ module OmniauthRegistrationsControllerExtend
       end
 
       on(:invalid) do
-        set_flash_message :notice, :success, kind: t(".#{@form.provider}")
+        set_flash_message :notice, :success, kind: t("decidim.devise.omniauth_registrations.#{@form.provider}")
         render :new
       end
 
       on(:error) do |user|
         if user.errors[:email]
-          set_flash_message :alert, :failure, kind: t(".#{@form.provider}"), reason: t("decidim.devise.omniauth_registrations.create.email_already_exists")
+          set_flash_message :alert, :failure, kind: t("decidim.devise.omniauth_registrations.#{@form.provider}"), reason: t("decidim.devise.omniauth_registrations.create.email_already_exists")
         end
 
         render :new
