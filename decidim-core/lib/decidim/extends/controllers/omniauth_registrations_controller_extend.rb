@@ -7,7 +7,7 @@ module OmniauthRegistrationsControllerExtend
       on(:ok) do |user|
         if user.active_for_authentication?
           sign_in_and_redirect user, event: :authentication
-          set_flash_message :notice, :success, kind: t("decidim/devise.omniauth_registrations.#{@form.provider}")
+          set_flash_message :notice, :success, kind: t("decidim.devise.omniauth_registrations.#{@form.provider}")
         else
           expire_data_after_sign_in!
           redirect_to root_path
