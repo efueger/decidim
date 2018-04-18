@@ -27,7 +27,6 @@ const generateCommentsData = (num = 1) => {
         avatarUrl: image.imageUrl(),
         profilePath: `/profiles/${nickname}`,
         deleted: false,
-        badges: ["verified-badge"],
       },
       hasComments: false,
       comments: [],

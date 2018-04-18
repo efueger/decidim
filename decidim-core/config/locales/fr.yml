@@ -131,7 +131,18 @@ fr:
       actions:
         unauthorized: Vous n'êtes pas autorisé à effectuer cette action
     devise:
+      omniauth_callbacks:
+        facebook: Facebook
+        twitter: Twitter
+        google: Google
+        developer: Developpeur
+        saml: e-ID
       omniauth_registrations:
+        facebook: Facebook
+        twitter: Twitter
+        google: Google
+        developer: Developpeur
+        saml: e-ID
         create:
           email_already_exists: Un autre compte utilise la même adresse de email
         new:

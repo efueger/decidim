@@ -199,7 +199,6 @@ class Comment extends React.Component<CommentProps, CommentState> {
             <img src={author.avatarUrl} alt="author-avatar" />
           </span>
           <span className="author__name">{author.name}</span>
-
             { author.badges === [] ||
                 badgesContainer
             }
