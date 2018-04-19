@@ -124,6 +124,11 @@ en:
         proposal:
           creation_date: 'Creation: %{date}'
           view_proposal: View proposal
+      participatory_processes:
+        show:
+          show_traduction: Show translation
+          show_the_original: Show the original
+          automatic_translation: Automatic translation by %{trad_service}
     participatory_spaces:
       highlighted_proposals:
         proposals: Proposals
@@ -131,6 +136,9 @@ en:
       proposal:
         creation_date: 'Creation: %{date}'
         view_proposal: View proposal
+        show_traduction: Show translation
+        show_the_original: Show the original
+        automatic_translation: Automatic translation by %{trad_service}
     proposals:
       actions:
         answer: Answer
@@ -400,3 +408,7 @@ en:
       included_proposals:
         proposal_projects: 'Proposal appearing in these projects:'
         proposal_results: 'Proposal appearing in these results:'
+    trads:
+      show_traduction: Show translation
+      show_the_original: Show the original
+      automatic_translation: Automatic translation by %{trad_service}
