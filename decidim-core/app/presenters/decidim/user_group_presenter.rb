@@ -9,14 +9,21 @@ module Decidim
       ""
     end
 
+
     def deleted?
       false
     end
 
-    def badge # This method has been extended in lib/decidim/extends/presenters/user_group_presenter_extend.rb
+    def badge
       return "" unless verified?
 
       "verified-badge"
+    end
+
+    def badges
+      return [] unless verified?
+
+      ["verified-badge"] # return as an array because sometimes there are multiple badges and we should be able to loop on it.
     end
 
     def profile_path

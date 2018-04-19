@@ -7,7 +7,6 @@ module Decidim
   class UserPresenter < SimpleDelegator
     include Rails.application.routes.mounted_helpers
     include ActionView::Helpers::UrlHelper
-
     #
     # nickname presented in a twitter-like style
     #
@@ -15,10 +14,24 @@ module Decidim
       "@#{__getobj__.nickname}"
     end
 
-    def badge # This method has been extended in lib/decidim/extends/presenters/user_presenter_extend.rb
+    def badge
       return "" unless officialized?
 
       "verified-badge"
+    end
+
+    def badges
+      badges = []
+
+      if officialized?
+        badges << "verified-badge"
+      end
+
+      if eid_verified?
+        badges << "eid-verified"
+      end
+
+      badges
     end
 
     delegate :url, to: :avatar, prefix: true
