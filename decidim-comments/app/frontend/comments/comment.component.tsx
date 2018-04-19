@@ -111,6 +111,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
           </div>
         </div>
         <div className="comment__content">
+        <div className="hidden_trad_comment"></div>
           <p>
             {this._renderAlignmentBadges()}
             <span dangerouslySetInnerHTML={{__html: formattedBody}} />
@@ -263,10 +264,17 @@ class Comment extends React.Component<CommentProps, CommentState> {
    */
   private _renderVoteButtons() {
     const { session, comment, votable, rootCommentable, orderBy } = this.props;
+    let label = I18n.t('components.comment.show_traduction');
 
     if (votable) {
       return (
         <div className="comment__votes">
+          <a 
+            className="see_trad_comment_button"
+            id="see_trad_comment"
+          >
+            {label}
+          </a>
           <UpVoteButton session={session} comment={comment} rootCommentable={rootCommentable} orderBy={orderBy} />
           <DownVoteButton session={session} comment={comment} rootCommentable={rootCommentable} orderBy={orderBy} />
         </div>

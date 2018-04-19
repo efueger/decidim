@@ -582,3 +582,7 @@ en:
       next: Next &rsaquo;
       previous: "&lsaquo; Prev"
       truncate: "&hellip;"
+  trads:
+    show_traduction: Show translation
+    show_the_original: Show the original
+    automatic_translation: Automatic translation by %{trad_service}

@@ -21,6 +21,8 @@ fr:
         remaining_characters_1: "%{count} caractères restants"
         title: Ajoutez votre commentaire
       comment:
+        show_traduction: Voir la traduction
+        show_the_original: Voir l'original
         alignment:
           against: Contre
           in_favor: Pour

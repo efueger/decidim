@@ -559,3 +559,7 @@ nl:
       next: Volgende &rsaquo;
       previous: "&lsaquo; Vorige"
       truncate: "&hellip;"
+  trads:
+    show_traduction: Zie de vertaling
+    show_the_original: Zie het origineel
+    automatic_translation: Automatische vertaling door %{trad_service}
