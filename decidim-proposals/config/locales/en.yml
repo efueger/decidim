@@ -115,7 +115,6 @@ en:
             proposal_answering_enabled: Proposal answering enabled
             votes_blocked: Votes blocked
             votes_enabled: Votes enabled
-            votes_weight_enabled: Up / Down / Neutral votes enabled
             votes_hidden: Votes hidden (if votes are enabled, checking this will hide the number of votes)
     participatory_processes:
       participatory_process_groups:
@@ -124,11 +123,6 @@ en:
         proposal:
           creation_date: 'Creation: %{date}'
           view_proposal: View proposal
-      participatory_processes:
-        show:
-          show_traduction: Show translation
-          show_the_original: Show the original
-          automatic_translation: Automatic translation by %{trad_service}
     participatory_spaces:
       highlighted_proposals:
         proposals: Proposals
@@ -136,9 +130,6 @@ en:
       proposal:
         creation_date: 'Creation: %{date}'
         view_proposal: View proposal
-        show_traduction: Show translation
-        show_the_original: Show the original
-        automatic_translation: Automatic translation by %{trad_service}
     proposals:
       actions:
         answer: Answer
@@ -265,11 +256,6 @@ en:
         create:
           error: There's been errors when voting the proposal.
       proposals:
-        vote_weight_button:
-          neutral: Neutral
-          maximum_votes_reached: Vote limit reached
-          no_votes_remaining: No votes remaining
-          votes_blocked: Voting disabled
         compare:
           mine_is_different: My proposal is different
           no_similars_found: Well done! No similar proposals found
@@ -408,7 +394,3 @@ en:
       included_proposals:
         proposal_projects: 'Proposal appearing in these projects:'
         proposal_results: 'Proposal appearing in these results:'
-    trads:
-      show_traduction: Show translation
-      show_the_original: Show the original
-      automatic_translation: Automatic translation by %{trad_service}

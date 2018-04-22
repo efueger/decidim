@@ -53,15 +53,10 @@ nl:
           invalid: Er is een probleem geweest tijdens het maken van het debat.
           success: Debat succesvol aangemaakt.
         debate:
-          show_traduction: Zie de vertaling
-          show_the_original: Zie het origineel
           comments:
             one: Commentaar
             other: Comments
           participate: Deelnemen
-        debates:
-            show_traduction: Zie de vertaling
-            show_the_original: Zie het origineel
         filters:
           all: Alle
           category: Categorie
@@ -89,8 +84,6 @@ nl:
         show:
           comments: Comments
           report: Verslag doen van
-          show_traduction: Zie de vertaling
-          show_the_original: Zie het origineel
       models:
         debate:
           fields:

@@ -112,11 +112,6 @@ nl:
         proposal:
           creation_date: 'Aanmaak: %{date}'
           view_proposal: Bekijk voorstel
-      participatory_processes:
-        show:
-          show_traduction: Zie de vertaling
-          show_the_original: Zie het origineel
-          automatic_translation: Automatische vertaling door %{trad_service}
     participatory_spaces:
       highlighted_proposals:
         proposals: voorstellen
@@ -124,9 +119,6 @@ nl:
       proposal:
         creation_date: 'Aanmaak: %{date}'
         view_proposal: Bekijk voorstel
-        show_traduction: Zie de vertaling
-        show_the_original: Zie het origineel
-        automatic_translation: Automatische vertaling door %{trad_service}
     proposals:
       actions:
         answer: Antwoord
@@ -318,14 +310,7 @@ nl:
         proposal:
           creation_date: 'Aangemaakt op: %{date}'
           view_proposal: Bekijk voorstel
-          show_traduction: Zie de vertaling
-          show_the_original: Zie het origineel
-        proposals:
-          show_traduction: Zie de vertaling
-          show_the_original: Zie het origineel
         show:
-          show_traduction: Zie de vertaling
-          show_the_original: Zie het origineel
           edit_proposal: Bewerk voorstel
           proposal_accepted_reason: 'Dit voorstel is geaccepteerd omdat:'
           proposal_in_evaluation_reason: Dit voorstel wordt geëvalueerd
@@ -388,7 +373,3 @@ nl:
       included_proposals:
         proposal_projects: 'Voorstel in deze projecten:'
         proposal_results: 'Voorstel dat in deze resultaten voorkomt:'
-  trads:
-    show_traduction: Zie de vertaling
-    show_the_original: Zie het origineel
-    automatic_translation: Automatische vertaling door %{trad_service}
