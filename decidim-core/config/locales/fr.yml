@@ -549,7 +549,7 @@ fr:
         answers_count: Réponses
         assemblies_count: Agora
         comments_count: Commentaires
-        endorsements_count: Liste des recommandations
+        endorsements_count: Recommandations
         headline: État actuel de %{organization}
         meetings_count: Rencontres
         orders_count: Soutiens
@@ -600,6 +600,6 @@ fr:
       previous: "&lsaquo; Précédent"
       truncate: "&hellip;"
   trads:
-    show_traduction: Voir la traduction 
-    show_the_original: Voir l'original 
+    show_traduction: Voir la traduction
+    show_the_original: Voir l'original
     automatic_translation: Traduction automatique par %{trad_service}
