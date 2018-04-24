@@ -157,6 +157,7 @@ module Decidim
         search
           .results
           .not_hidden
+          .authorized
           .includes(:author)
           .includes(:category)
           .includes(:scope)
