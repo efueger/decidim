@@ -81,18 +81,11 @@ Decidim::CreateOmniauthRegistration.class_eval do
   end
 
   def existing_identity
-    if form.provider == "saml"
-      @existing_identity ||= Decidim::Identity.where(
-        user: organization.users,
-        provider: form.provider
-      ).first
-    else
-      @existing_identity ||= Decidim::Identity.where(
-        user: organization.users,
-        provider: form.provider,
-        uid: form.uid
-      ).first
-    end
+    @existing_identity ||= Decidim::Identity.where(
+      user: organization.users,
+      provider: form.provider,
+      uid: form.uid
+    ).first
   end
 
   def verify_oauth_signature!

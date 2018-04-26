@@ -10,6 +10,7 @@ Devise.setup do |config|
       authn_force: Rails.application.secrets.omniauth[:saml][:authn_force],
       idp_slo_target_url: Rails.application.secrets.omniauth[:saml][:idp_slo_target_url],
       name_identifier_format: Rails.application.secrets.omniauth[:saml][:name_identifier_format],
+      uid_attribute: Rails.application.secrets.omniauth[:saml][:uid_attribute],
       idp_cert_fingerprint: Rails.application.secrets.omniauth[:saml][:idp_cert_fingerprint],
       idp_cert_fingerprint_validator: lambda { |fingerprint| fingerprint },
       idp_cert: Rails.application.secrets.omniauth[:saml][:idp_cert]
