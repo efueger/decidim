@@ -52,7 +52,7 @@ module Decidim
       private
 
       def terms_and_conditions_page
-        @terms_and_conditions_page ||= Decidim::StaticPage.find_by(slug: "terms-and-conditions")
+        @terms_and_conditions_page ||= Decidim::StaticPage.find_by(slug: "terms-and-conditions", organization: current_organization)
       end
 
       protected
