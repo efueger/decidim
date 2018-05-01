@@ -136,13 +136,13 @@ fr:
         twitter: Twitter
         google: Google
         developer: Developpeur
-        saml: e-ID
+        saml: SAML
       omniauth_registrations:
         facebook: Facebook
         twitter: Twitter
         google: Google
         developer: Developpeur
-        saml: e-ID
+        saml: SAML
         create:
           email_already_exists: Un autre compte utilise la même adresse de email
         new:
@@ -430,19 +430,18 @@ fr:
       twitter: Twitter
       google: Google
       developer: Developpeur
-      saml: e-ID
+      saml: SAML
     omniauth_callbacks:
       facebook: Facebook
       twitter: Twitter
-      saml: e-ID
       google: Google
       developer: Developpeur
-      saml: e-ID
+      saml: SAML
     shared:
       links:
         facebook: Facebook
         twitter: Twitter
-        saml: e-ID
+        saml: SAML
         google: Google
         developer: Developpeur
     invitations:
