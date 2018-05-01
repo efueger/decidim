@@ -36,10 +36,21 @@ Decidim::Devise::OmniauthRegistrationsController.class_eval do
   private
 
   def verified_name
-    @verified_name ||= if request.env["omniauth.auth"] && @form.provider == "saml"
-                        request.env["omniauth.auth"].extra.raw_info.attributes["uid"]
-                        elsif params["user"]&& params["user"]["uid_name"]
-                          params["user"]["uid_name"]
-                        end
+    if request.env["omniauth.auth"] && @form.provider == "saml"
+      @verified_name ||= request.env["omniauth.auth"].extra.raw_info.attributes["uid"]
+    elsif params["user"]&& params["user"]["uid_name"]
+      @verified_name ||= params["user"]["uid_name"]
+    end
+  end
+
+  def user_params_from_oauth_hash
+    return nil unless request.env["omniauth.auth"]
+    {
+      provider: oauth_data[:provider],
+      uid: oauth_data[:uid],
+      name: (oauth_data[:info][:first_name] + ' ' + oauth_data[:info][:last_name]).strip,
+      nickname: oauth_data[:info][:name],
+      oauth_signature: Decidim::OmniauthRegistrationForm.create_signature(oauth_data[:provider], oauth_data[:uid])
+    }
   end
 end
