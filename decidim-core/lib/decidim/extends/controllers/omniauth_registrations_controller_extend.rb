@@ -48,7 +48,7 @@ Decidim::Devise::OmniauthRegistrationsController.class_eval do
     {
       provider: oauth_data[:provider],
       uid: oauth_data[:uid],
-      name: (oauth_data[:info][:first_name] + ' ' + oauth_data[:info][:last_name]).strip,
+      name: (oauth_data[:info][:first_name].to_s + ' ' + oauth_data[:info][:last_name].to_s).strip,
       nickname: oauth_data[:info][:name],
       oauth_signature: Decidim::OmniauthRegistrationForm.create_signature(oauth_data[:provider], oauth_data[:uid])
     }
