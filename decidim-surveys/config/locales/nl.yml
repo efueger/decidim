@@ -68,7 +68,7 @@ nl:
           success: Enquête met succes beantwoord.
         show:
           answer_survey:
-            anonymous_user_message: <a href="%{sign_in_link}">Meld u aan met uw account</a> of <a href="%{sign_up_link}">schrijf u in</a> om uw reactie toe te voegen.
+            anonymous_user_message: <a href="%{sign_in_link}">Meld u aan met uw account</a> of <a href="%{sign_up_link}">schrijf je</a> om uw reactie toe te voegen.
             title: Antwoorden op de enquête
           are_you_sure: Deze actie kan niet ongedaan gemaakt worden en u kunt uw antwoorden niet wijzigen. Weet u het zeker?
           submit: Verzenden
