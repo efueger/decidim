@@ -73,7 +73,7 @@ nl:
       proposals:
         actions:
           create: Creëren
-          endorse: Aanbevelen
+          endorse: Aanbevelingen
           vote: Stem
           withdraw: Intrekken
         name: Voorstellen
@@ -230,7 +230,7 @@ nl:
       proposal_endorsements_helper:
         endorsement_button:
           already_endorsed: Al goedgekeurd
-          endorse: Aanbevelen
+          endorse: Aanbevelingen
       proposal_votes:
         create:
           error: Er zijn fouten geweest bij het stemmen van het voorstel.
@@ -255,13 +255,13 @@ nl:
           already_endorsed: Al goedgekeurd
           already_endorsed_hover: Goedkeuring annuleren
         endorsement_identities_cabin:
-          endorse: Aanbevelen
+          endorse: Aanbevelingen
         endorsements_card_row:
-          endorse: Aanbevelen
+          endorse: Aanbevelingen
         endorsements_listing:
           see_all: Alles bekijken
           see_less: Minder bekijken
-          title: Lijst met stemmen
+          title: Lijst met aanbevelingen
         filters:
           accepted: Aanvaard
           activity: Activiteit
@@ -342,7 +342,7 @@ nl:
             description: Je kan maximaal %{limit} voorstellen doen.
           threshold_per_proposal:
             description: Je voorstel moet minimum %{limit} stemmen ontvangen voordat het aanvaard wordt
-          title: 'Stemmen zijn onderworpen aan de volgende regels:'
+          title: 'Je deelname is onderworpen aan volgende regels:'
           vote_limit:
             description: U kunt tot %{limit} voorstellen stemmen.
             left: Resterend
