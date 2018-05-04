@@ -52,7 +52,8 @@ Decidim::CreateOmniauthRegistration.class_eval do
       @user.email = (verified_email || form.email)
       @user.name = form.name
       @user.nickname = form.normalized_nickname
-      @user.newsletter_notifications = true
+      @user.newsletter_notifications = form.newsletter
+      @user.tos_agreement = form.tos_agreement
       @user.email_on_notification = true
       @user.skip_confirmation! if verified_email
       if form.provider == "saml"
@@ -64,7 +65,6 @@ Decidim::CreateOmniauthRegistration.class_eval do
       end
     end
 
-    @user.tos_agreement = "1"
     @user.save!
   end
 
