@@ -73,7 +73,7 @@ nl:
       proposals:
         actions:
           create: Creëren
-          endorse: Aanbevelingen
+          endorse: Aanbevelen
           vote: Stem
           withdraw: Intrekken
         name: Voorstellen
@@ -229,8 +229,8 @@ nl:
           select_identity: Selecteer gebruiker
       proposal_endorsements_helper:
         endorsement_button:
-          already_endorsed: Al goedgekeurd
-          endorse: Aanbevelingen
+          already_endorsed: Al aanbevolen
+          endorse: Aanbevelen
       proposal_votes:
         create:
           error: Er zijn fouten geweest bij het stemmen van het voorstel.
@@ -252,12 +252,12 @@ nl:
           send: Voorbeeldweergave
           title: Bewerk voorstel
         endorsement_button:
-          already_endorsed: Al goedgekeurd
+          already_endorsed: Al aanbevolen
           already_endorsed_hover: Goedkeuring annuleren
         endorsement_identities_cabin:
-          endorse: Aanbevelingen
+          endorse: Aanbevelen
         endorsements_card_row:
-          endorse: Aanbevelingen
+          endorse: Aanbevelen
         endorsements_listing:
           see_all: Alles bekijken
           see_less: Minder bekijken
