@@ -142,9 +142,12 @@ en:
           email_already_exists: Another account is using the same email address
         new:
           complete_profile: Complete profile
+          newsletter: Receive an occasional newsletter with relevant information
           nickname_help: Your short, unique identifier in decidim
           sign_up: Please complete your profile
           subtitle: Please fill in the following form in order to complete the sign up
+          terms: the terms and conditions of use
+          tos_agreement: By signing up you agree to %{link}.
           username_help: Public name that appears on your posts. With the aim of guaranteeing the anonymity, can be any name.
       registrations:
         new:

@@ -33,6 +33,18 @@ end
 
 Decidim::Devise::OmniauthRegistrationsController.class_eval do
   prepend(OmniauthRegistrationsControllerExtend)
+
+  helper_method :terms_and_conditions_page
+
+  before_action :configure_permitted_parameters
+  helper_method :terms_and_conditions_page
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :tos_agreement])
+  end
+
   private
 
   def verified_name
@@ -53,4 +65,15 @@ Decidim::Devise::OmniauthRegistrationsController.class_eval do
       oauth_signature: Decidim::OmniauthRegistrationForm.create_signature(oauth_data[:provider], oauth_data[:uid])
     }
   end
+
+  def terms_and_conditions_page
+    @terms_and_conditions_page ||= Decidim::StaticPage.find_by(slug: "terms-and-conditions", organization: current_organization)
+  end
+
+  # Called before resource.save
+  def build_resource(hash = nil)
+    super(hash)
+    resource.organization = current_organization
+  end
+
 end

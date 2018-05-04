@@ -128,9 +128,12 @@ nl:
           email_already_exists: Er is een ander account met hetzelfde e-mailadres
         new:
           complete_profile: Volledig profiel
+          newsletter: Ontvang af en toe een nieuwsbrief met relevante informatie
           nickname_help: Jouw korte unieke ID in decidim
           sign_up: Gelieve uw profiel te voltooien
           subtitle: Vul onderstaand formulier in om de aanmelding te voltooien
+          terms: de bepalingen en voorwaarden van gebruik
+          tos_agreement: Door het aanmelden gaat u akkoord met %{link}.
           username_help: Publieke naam die op uw berichten verschijnt. Met het oog op het waarborgen van de anonimiteit hoeft dit niet uw echte naam te zijn.
       registrations:
         new:
