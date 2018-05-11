@@ -337,11 +337,11 @@ nl:
           need_more_votes: Meer stemmen nodig
         voting_rules:
           can_accumulate_supports_beyond_threshold:
-            description: Elk voorstel kan meer dan %{limit} stemmen verzamelen
+            description: De indicatieve steundrempel mag worden overschreden
           proposal_limit:
             description: Je kan maximaal %{limit} voorstellen doen.
           threshold_per_proposal:
-            description: Je voorstel moet minimum %{limit} stemmen ontvangen voordat het aanvaard wordt
+            description: Steun de voorstellen die u het meest relevant acht
           title: 'Je deelname is onderworpen aan volgende regels:'
           vote_limit:
             description: U kunt tot %{limit} voorstellen stemmen.
