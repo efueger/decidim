@@ -364,13 +364,13 @@ fr:
           need_more_votes: Besoin de plus de soutiens
         voting_rules:
           can_accumulate_supports_beyond_threshold:
-            description: Chaque proposition peut accumuler plus que le nombre maximum de soutiens
+            description: Le seuil indicatif de soutien peut être dépassé
           maximum_votes_per_proposal:
             description: Chaque proposition peut recevoir un maximum de %{limit} soutiens.
           proposal_limit:
             description: Vous pouvez créer jusqu'à %{limit} propositions.
           threshold_per_proposal:
-            description: Pour être acceptée une proposition doit atteindre un minimum de %{limit} soutiens
+            description: Apportez votre soutien aux propositions que vous jugez les plus pertinentes
           title: 'La participation est soumise aux règles suivantes :'
           vote_limit:
             description: Vous pouvez soutenir %{limit} propositions au maximum.
