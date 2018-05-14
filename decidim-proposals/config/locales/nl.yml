@@ -341,7 +341,7 @@ nl:
           proposal_limit:
             description: Je kan maximaal %{limit} voorstellen doen.
           threshold_per_proposal:
-            description: Steun de voorstellen die u het meest relevant acht
+            description: Stem op de voorstellen die je het meest relevant vindt
           title: 'Je deelname is onderworpen aan volgende regels:'
           vote_limit:
             description: U kunt tot %{limit} voorstellen stemmen.
