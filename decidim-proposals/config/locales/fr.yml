@@ -9,7 +9,7 @@ fr:
         has_address: Renseignez une adresse
         scope_id: Périmètre d'application
         state: Etat
-        title: Titre
+        title: Titre (entre 16 et 150 caractères)
         user_group_id: Créer une proposition en tant que
       proposal_answer:
         answer: Répondre
@@ -126,7 +126,7 @@ fr:
           view_proposal: Voir la proposition
     participatory_spaces:
       highlighted_proposals:
-        proposals: Les propositions
+        proposals: 4 propositions aléatoires
         see_all_proposals: Voir toutes les propositions
       proposal:
         creation_date: 'Création: %{date}'
