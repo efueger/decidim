@@ -19,7 +19,7 @@ fr:
           neutral: Neutre
         remaining_characters: "%{count} caractères restants"
         remaining_characters_1: "%{count} caractères restants"
-        title: Ajoutez votre commentaire
+        title: Ajouter un commentaire
       comment:
         alignment:
           against: Contre
