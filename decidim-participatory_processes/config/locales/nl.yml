@@ -292,7 +292,7 @@ nl:
         results_count: Resultaten
         surveys_count: Enquêtes
         users_count: Deelnemers
-        votes_count: Stemmen
+        votes_count: Reacties
   layouts:
     decidim:
       participatory_process_groups:

@@ -510,7 +510,7 @@ nl:
         results_count: Resultaten
         surveys_count: Enquête
         users_count: Deelnemers
-        votes_count: Stemmen
+        votes_count: Reacties
       sub_hero:
         register: Registeren
   social_share_button:

@@ -295,7 +295,7 @@ fr:
         results_count: Résultats
         surveys_count: Enquêtes
         users_count: Participants
-        votes_count: Soutiens
+        votes_count: Réactions
   layouts:
     decidim:
       participatory_process_groups:
