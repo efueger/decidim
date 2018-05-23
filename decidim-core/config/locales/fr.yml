@@ -563,7 +563,7 @@ fr:
         results_count: Résultats
         surveys_count: Enquêtes
         users_count: Participants
-        votes_count: Réactions
+        votes_count: Votes
       sub_hero:
         register: S'inscrire
   social_share_button:

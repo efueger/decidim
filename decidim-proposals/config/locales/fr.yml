@@ -324,7 +324,7 @@ fr:
           title: Créez votre proposition
         orders:
           label: 'Classement des propositions par:'
-          most_voted: Le plus de réactions
+          most_voted: Le plus de votes
           random: Aléatoire
           recent: Les plus récents
         preview:
