@@ -40,6 +40,7 @@ Decidim.register_feature(:proposals) do |feature|
     settings.attribute :endorsements_enabled, type: :boolean, default: true
     settings.attribute :endorsements_blocked, type: :boolean
     settings.attribute :votes_enabled, type: :boolean
+    settings.attribute :votes_weight_enabled, type: :boolean
     settings.attribute :votes_blocked, type: :boolean
     settings.attribute :votes_hidden, type: :boolean, default: false
     settings.attribute :comments_blocked, type: :boolean, default: false

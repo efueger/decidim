@@ -13,7 +13,7 @@ fr:
         end_date: Date de fin
         hashtag: Hashtag
         hero_image: Image de la page d'accueil
-        local_area: Périmètre
+        local_area: Espace d'organisation
         meta_scope: Échelle
         participatory_process_group_id: Groupe de concertations
         participatory_scope: Objectif
@@ -73,7 +73,7 @@ fr:
             upstream: A priori
             downstream: A posteriori
           process_admins: Administrateurs de la concertation
-          steps: Etapes
+          steps: Étapes
       models:
         participatory_process:
           fields:
@@ -91,7 +91,7 @@ fr:
             end_date: Date de fin
             start_date: Date de début
             title: Titre
-          name: Etape de la concertation
+          name: Étape de la concertation
         participatory_process_user_role:
           fields:
             email: Email
@@ -133,11 +133,11 @@ fr:
       participatory_process_step_activations:
         create:
           error: Une erreur s'est produite lors de l'activation de cette étape de la concertation.
-          success: Etape de la concertation activée avec succès.
+          success: Étape de la concertation activée avec succès.
       participatory_process_steps:
         create:
           error: Une erreur s'est produite lors de la création d'une nouvelle étape de la concertation.
-          success: Etape de la concertation créée avec succès.
+          success: Étape de la concertation créée avec succès.
         default_title: Introduction
         destroy:
           error:
@@ -148,7 +148,7 @@ fr:
           title: Modifier l'étape de la concertation
           update: Mettre à jour
         index:
-          steps_title: Etapes
+          steps_title: Étapes
         new:
           create: Créer
           title: Nouvelle étape de la concertation
@@ -156,7 +156,7 @@ fr:
           error: Une erreur s'est produite lors de la réorganisation des étapes de la concertation.
         update:
           error: Une erreur s'est produite lors de la mise à jour de cette étape de la concertation.
-          success: Etape de la concertation mise à jour avec succès.
+          success: Étape de la concertation mise à jour avec succès.
       participatory_process_user_roles:
         create:
           error: Une erreur s'est produite lors de l'ajout d'un utilisateur pour cette concertation.
@@ -243,8 +243,8 @@ fr:
         title: Groupes de concertations
     participatory_process_steps:
       index:
-        process_steps: Etapes de la concertation
-        title: Etapes de la concertation
+        process_steps: Étapes de la concertation
+        title: Étapes de la concertation
     participatory_processes:
       admin:
         participatory_process_copies:
@@ -265,8 +265,8 @@ fr:
         home:
           highlighted_processes:
             active_processes: Concertations actives
-            active_step: Étape active
-            see_all_processes: Voir toutes les concertation
+            active_step: 'Étape actuelle :'
+            see_all_processes: Voir toutes les concertations
       participatory_process_groups:
         none: Aucun
       participatory_processes:
@@ -284,9 +284,9 @@ fr:
       statistics:
         answers_count: Réponses
         comments_count: Commentaires
-        endorsements_count: Liste des recommandations
+        endorsements_count: Recommandations
         headline: Activité
-        meetings_count: Réunions
+        meetings_count: Rencontres
         orders_count: Soutiens
         pages_count: Pages
         processes_count: Concertations
@@ -303,11 +303,11 @@ fr:
           browse: Parcourir
       participatory_process_widgets:
         show:
-          active_step: "Etape actuelle :"
+          active_step: "Étape actuelle :"
           take_part: Participer
       participatory_processes:
         index:
-          promoted_processes: Concertation mise en avant
+          promoted_processes: Concertations mises en avant
         order_by_processes:
           processes:
             one: "%{count} concertation"

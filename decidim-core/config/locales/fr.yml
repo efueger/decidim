@@ -136,7 +136,7 @@ fr:
           email_already_exists: Un autre compte utilise la même adresse de email
         new:
           complete_profile: Complétez votre profil
-          nickname_help: Votre identifiant court et unique sur cette plateforme
+          nickname_help: Votre identifiant court et unique sur cette plateforme (ne pas utiliser d'espace)
           sign_up: Veuillez compléter votre profil
           subtitle: Remplissez le formulaire suivant pour compléter l'inscription
           username_help: Nom public qui apparaît pour vos messages. Dans le but de garantir l'anonymat, vous pouvez choisir n'importe quel nom.
@@ -144,7 +144,8 @@ fr:
         new:
           already_have_an_account?: Vous avez déjà un compte ?
           newsletter: Recevoir une newsletter sur l'actualité de la plateforme.
-          nickname_help: Votre identifiant court et unique pour Decidim
+          newsletter_title: Autorisation de contact
+          nickname_help: Votre identifiant court et unique sur cette plateforme (ne pas utiliser d'espace)
           sign_in: S'identifier
           sign_up: S'inscrire
           sign_up_as:
@@ -154,10 +155,11 @@ fr:
           subtitle: Inscrivez-vous pour participer aux discussions et pour exprimer votre soutien aux propositions de votre choix.
           terms: les termes et conditions d'utilisation
           tos_agreement: En vous inscrivant, vous acceptez %{link}.
+          tos_title: Conditions d'utilisation
           username_help: Nom public qui apparaît pour vos messages. Dans le but de garantir l'anonymat, vous pouvez choisir n'importe quel nom.
       sessions:
         new:
-          are_you_new?: Nouveau sur la plateforme?
+          are_you_new?: Nouveau sur la plateforme ?
           register: Créer un compte
       shared:
         omniauth_buttons:
@@ -253,14 +255,14 @@ fr:
       remove_this_file: Supprimer ce fichier
     log:
       base_presenter:
-        create: "%{user_name} créé %{resource_name}"
-        create_with_space: "%{user_name} créé %{resource_name} dans %{space_name}"
+        create: "%{user_name} a créé %{resource_name}"
+        create_with_space: "%{user_name} a créé %{resource_name} dans %{space_name}"
         delete: "%{user_name} supprimé %{resource_name}"
-        delete_with_space: "%{user_name} supprimé %{resource_name} dans %{space_name}"
-        unknown_action: "%{user_name} effectué une action sur %{resource_name}"
-        unknown_action_with_space: "%{user_name} effectué une action sur %{resource_name} dans %{space_name}"
-        update: "%{user_name} mis à jour %{resource_name}"
-        update_with_space: "%{user_name} mis à jour %{resource_name} dans %{space_name}"
+        delete_with_space: "%{user_name} a supprimé %{resource_name} dans %{space_name}"
+        unknown_action: "%{user_name} a effectué une action sur %{resource_name}"
+        unknown_action_with_space: "%{user_name} a effectué une action sur %{resource_name} dans %{space_name}"
+        update: "%{user_name} a mis à jour %{resource_name}"
+        update_with_space: "%{user_name} a mis à jour %{resource_name} dans %{space_name}"
       value_types:
         area_presenter:
           not_found: 'La zone n''a pas été trouvée sur la base de données (ID: %{id})'
@@ -272,7 +274,7 @@ fr:
       expired_session: La session de connexion a expiré.
     menu:
       home: Accueil
-      more_information: Plus d'information
+      more_information: Plus d'informations
     messaging:
       conversation_mailer:
         new_conversation:
@@ -324,11 +326,11 @@ fr:
     own_user_groups:
       index:
         pending: En attente
-        rejected: Refusée
+        rejected: Non retenue
         verified: Vérifié
     pages:
       index:
-        title: Plus d'information
+        title: Plus d'informations
     profiles:
       default_officialization_text: L'identité de ce participant a été vérifiée. Son nom ou son rôle correspondent avec son vrai nom ou son vrai rôle dans le monde réel
       show:
@@ -416,7 +418,7 @@ fr:
     invitations:
       edit:
         header: Définir votre mot de passe
-        nickname_help: Votre identifiant unique pour Decidim.
+        nickname_help: Votre identifiant court et unique sur cette plateforme (ne pas utiliser d'espace)
         submit_button: Sauvegarder
     mailer:
       invitation_instructions:
@@ -502,7 +504,7 @@ fr:
         debates_explanation: Débattez et discutez, partagez vos points de vue et enrichissez les sujets pertinents.
         how_to_participate: Comment participer ?
         meetings: Rencontres
-        meetings_explanation: Découvrez où et quand vous pouvez participer à des réunions publiques.
+        meetings_explanation: Découvrez où et quand vous pouvez participer à des rencontres publiques.
         more_info: En savoir plus
         proposals: Propositions
         proposals_explanation: Faites des propositions, soutenez les projets existants et favorisez les changements que vous souhaitez voir.
@@ -517,7 +519,7 @@ fr:
         answers_count: Réponses
         assemblies_count: Agora
         comments_count: Commentaires
-        endorsements_count: Liste des recommandations
+        endorsements_count: Recommandations
         headline: État actuel de %{organization}
         meetings_count: Rencontres
         orders_count: Soutiens
