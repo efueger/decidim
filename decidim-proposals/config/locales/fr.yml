@@ -382,7 +382,7 @@ fr:
         wizard_steps:
           see_steps: voir les étapes
           step_1: Créez votre proposition
-          step_2: Comparer
+          step_2: Comparez avec les autres propositions
           step_3: Publiez votre proposition
           step_of: Étape %{current_step_num} de %{total_steps}
       publish:
