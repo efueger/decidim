@@ -69,9 +69,6 @@ fr:
           features: Fonctionnalités
           info: Information
           moderations: Modérations
-          moderation:
-            upstream: A priori
-            downstream: A posteriori
           process_admins: Administrateurs de la concertation
           steps: Etapes
       models:

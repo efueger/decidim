@@ -18,6 +18,8 @@ module Decidim
       linked_resources = resource.linked_resources(type, link_name).group_by { |linked_resource| linked_resource.class.name }
 
       safe_join(linked_resources.map do |klass, resources|
+        next unless resources.any? { |r| r.component.published? }
+
         resource_manifest = klass.constantize.resource_manifest
         content_tag(:div, class: "section") do
           i18n_name = "#{resource.class.name.demodulize.underscore}_#{resource_manifest.name}"

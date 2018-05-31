@@ -386,11 +386,6 @@ en:
       moderations:
         index:
           title: Moderations
-          title:
-            upstream: Upstream moderation
-            downstream: Downstream moderation
-          moderated: Moderated
-          unmoderated: Unmoderated
         report:
           reasons:
             does_not_belong: Does not belong

@@ -74,20 +74,12 @@ nl:
             email_subject: Er is een nieuwe reactie van %{author_name} in %{resource_title}
             notification_title: Er is een nieuwe reactie van <a href="%{author_path}">%{author_name} %{author_nickname}</a> in <a href="%{resource_path}">%{resource_title}</a>
             url: "Commentaar Url: %{resource_url}"
-            moderation:
-              email_intro: "%{author_name} heeft een nieuw commentaar geplaatst op"
-              email_subject: 'Nieuwe opmerking van %{author_name} in afwachting van matiging'
-              moderation_url: "U kunt de inhoud modereren door deze link te volgen: %{moderation_url}"
           reply:
             email_intro: De "%{resource_title}" heeft een reactie ontvangen
             email_outro: Je hebt deze melding ontvangen omdat je '%{resource_title}' of de auteur ervan volgt. Ontvolgen kan door te klikken op de vorige link.
             email_subject: Er is een nieuw antwoord op je reactie van %{author_name} in <a href="%{resource_url}">%{resource_title}</a>
             notification_title: Er is een nieuw antwoord op je reactie van <a href="%{author_path}">%{author_name} %{author_nickname}</a> in <a href="%{resource_path}">%{resource_title}</a>
             url: "Commentaar Url: %{resource_url}"
-            moderation:
-              email_intro: "%{author_name} heeft een nieuw commentaar geplaatst op"
-              email_subject: 'Nieuw commentaar van %{author_name} afwachtende matiging'
-              moderation_url: U kunt de inhoud modereren door deze link te volgen %{moderation_url}
         user_mentioned:
           email_intro: Iemand heeft je getagd
           email_outro: Je hebt deze melding ontvangen omdat iemand je heeft genoemd in "%{resource_title}".
