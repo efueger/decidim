@@ -116,8 +116,8 @@ en:
             announcement: Announcement
             comments_enabled: Comments enabled
             projects_per_page: Projects per page
-            vote_per_budget: project number enabled
-            vote_per_project: budget sum enables
+            vote_per_budget: budget sum enabled
+            vote_per_project: project number enabled
             total_projects: Total projects
             total_budget: Total budget
             vote_threshold_percent: Vote threshold percent
