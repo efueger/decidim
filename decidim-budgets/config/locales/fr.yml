@@ -91,11 +91,15 @@ fr:
           unfold: Déplier
         order_progress:
           vote: Voter
-        order_total_projects:
+        order_selected_projects:
+          vote: Voter
           total_projects:
             one: projet
             other: projets
-        order_selected_projects:
+          choose: Choisissez encore
+          remaining_projects:
+            one: 1 projet pour valider votre vote.
+            other: "%{count} projets pour valider votre vote."
           remove: Supprimer
           per_project:
             one: projet sélectionné sur un total de

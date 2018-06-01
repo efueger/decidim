@@ -19,7 +19,7 @@ module Decidim
 
       validates :total_budget, numericality: {
         greater_than_or_equal_to: :minimum_budget
-      }, if: :checked_out? && :per_budget
+      }, if: :checked_out?
 
       validates :total_budget, numericality: {
         less_than_or_equal_to: :maximum_budget
@@ -27,7 +27,7 @@ module Decidim
 
       validates :total_project, numericality: {
         less_than_or_equal_to: :number_of_projects
-      }, unless: :per_budget
+      }, if: :per_budget
 
       validates :total_project, numericality: {
         less_than_or_equal_to: :number_of_projects
@@ -41,6 +41,10 @@ module Decidim
         !component.settings.vote_per_project?
       end
 
+      def limit_project_reached?
+        total_project == number_of_projects
+      end
+
       # Public: Returns the sum of project budgets
       def total_budget
         projects.to_a.sum(&:budget)
@@ -50,6 +54,10 @@ module Decidim
         projects.count
       end
 
+      def remaining_projects
+        number_of_projects - projects.count
+      end
+
       # Public: Returns true if the order has been checked out
       def checked_out?
         checked_out_at.present?
@@ -57,7 +65,11 @@ module Decidim
 
       # Public: Check if the order total budget is enough to checkout
       def can_checkout?
-        total_budget.to_f >= minimum_budget
+        if component.settings.vote_per_project?
+          limit_project_reached?
+        else
+          total_budget.to_f >= minimum_budget
+        end
       end
 
       # Public: Returns the order budget percent from the settings total budget

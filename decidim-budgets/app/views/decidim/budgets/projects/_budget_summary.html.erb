@@ -30,7 +30,7 @@
     <%= render partial: "order_progress" %>
 
     <div>
-      <span class="mini-title">
+      <span class="mini-title <%= 'hidden' if component_settings.vote_per_project? %>">
         <%= t(".assigned") %>
         <%= render partial: "order_total_budget" %>
       </span>

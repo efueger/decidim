@@ -2,10 +2,11 @@
   <div id="order-selected-projects">
     <% if current_order&.projects&.any? %>
       <div class="card__content budget-summary__selected">
-        <button>
-          <strong><%= current_order.projects.size %> </strong><%= t(".per_project", count: current_order.projects.size, total_count: component_settings.total_projects) %>
-          <%= render partial: "order_total_projects" %>
-        </button>
+        <strong><%= current_order.projects.size %> </strong><%= t(".per_project", count: current_order.projects.size, total_count: component_settings.total_projects) %>
+        <strong id="order-total-projects">
+          <%= component_settings.total_projects %>
+          <%= t(".total_projects", count: component_settings.total_projects) %>
+        </strong>
         <ul class="budget-summary__selected-list">
           <% current_order.projects.each do |project| %>
             <li class="budget-summary__selected-item">
@@ -21,7 +22,18 @@
             </li>
           <% end %>
         </ul>
-              <%= render partial: "vote_button" %>
+        <% unless current_order.can_checkout? %>
+          <p><%= t(".choose") %>
+             <%= t(".remaining_projects", count: current_order.remaining_projects) %>
+          </p>
+        <% end %>
+        <% unless current_order_checked_out? %>
+          <% if current_order_can_be_checked_out? %>
+            <button class="button small button--sc" data-toggle="budget-confirm"><%= t(".vote") %></button>
+          <% else %>
+            <button class="button small button--sc" data-toggle="budget-confirm" disabled><%= t(".vote") %></button>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
