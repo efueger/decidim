@@ -160,7 +160,7 @@ nl:
         results_count: Resultaten
         surveys_count: Enquêtes
         users_count: Deelnemers
-        votes_count: Reacties
+        votes_count: Stemmen
     menu:
       assemblies: Events
   layouts:
