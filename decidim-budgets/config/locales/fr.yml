@@ -52,6 +52,8 @@ fr:
           fields:
             title: Titre
       projects:
+        vote_button:
+          vote: Voter
         budget_confirm:
           are_you_sure: Êtes-vous d'accord ? Une fois que vous aurez confirmé votre vote, vous ne pourrez plus le modifier.
           cancel: Annuler
@@ -89,8 +91,15 @@ fr:
           unfold: Déplier
         order_progress:
           vote: Voter
+        order_total_projects:
+          total_projects:
+            one: projet
+            other: projets
         order_selected_projects:
           remove: Supprimer
+          per_project:
+            one: projet sélectionné sur un total de
+            other: projets sélectionnés sur un total de
           selected_projects:
             one: projet sélectionné
             other: projets sélectionnés
