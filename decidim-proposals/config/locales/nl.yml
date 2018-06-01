@@ -297,7 +297,7 @@ nl:
           title: Maak voorstel aan
         orders:
           label: 'Bestelling sorteren op:'
-          most_voted: Meeste reacties
+          most_voted: Meeste stemmen
           random: Willekeurig
           recent: Meest recent
         preview:
