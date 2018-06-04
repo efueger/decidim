@@ -1,6 +1,6 @@
 module OrderExtend
-  def per_budget
-    !component.settings.vote_per_project?
+  def per_project
+    component.settings.vote_per_project?
   end
 
   def limit_project_reached?
@@ -31,14 +31,14 @@ end
 Decidim::Budgets::Order.class_eval do
   validates :total_budget, numericality: {
         less_than_or_equal_to: :maximum_budget
-  }, if: :per_budget
+  }, unless: :per_project
 
   validates :total_projects, numericality: {
     less_than_or_equal_to: :number_of_projects
-  }, if: :per_budget
+  }, unless: :per_project
 
   validates :total_projects, numericality: {
     less_than_or_equal_to: :number_of_projects
-  }, unless: :per_budget
+  }, if: :per_project
   prepend(OrderExtend)
 end
