@@ -22,6 +22,10 @@ module OrderExtend
       total_budget.to_f >= minimum_budget
     end
   end
+
+  def number_of_projects
+    component.settings.total_projects
+  end
 end
 
 Decidim::Budgets::Order.class_eval do

@@ -60,10 +60,6 @@ module Decidim
         component.settings.total_budget.to_f
       end
 
-      def number_of_projects
-        component.settings.total_projects
-      end
-
       private
 
       def user_belongs_to_organization

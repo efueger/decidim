@@ -53,8 +53,6 @@ en:
           fields:
             title: Title
       projects:
-        vote_button:
-          vote: Voter
         budget_confirm:
           are_you_sure: Do you agree? Once you have confirmed your vote, you can not change it.
           cancel: Cancel
@@ -92,6 +90,14 @@ en:
         order_progress:
           vote: Vote
         order_selected_projects:
+          vote: Voter
+          total_projects:
+            one: projet
+            other: projets
+          choose: Choisissez encore
+          remaining_projects:
+            one: 1 projet pour valider votre vote.
+            other: "%{count} projets pour valider votre vote."
           remove: Remove
           per_project:
             one: projet sélectionné sur un total de
