@@ -52,8 +52,6 @@ fr:
           fields:
             title: Titre
       projects:
-        vote_button:
-          vote: Voter
         budget_confirm:
           are_you_sure: Êtes-vous d'accord ? Une fois que vous aurez confirmé votre vote, vous ne pourrez plus le modifier.
           cancel: Annuler

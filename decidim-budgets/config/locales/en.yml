@@ -91,10 +91,6 @@ en:
           unfold: Unfold
         order_progress:
           vote: Vote
-        order_total_projects:
-          total_projects:
-            one: projet
-            other: projets
         order_selected_projects:
           remove: Remove
           per_project:
