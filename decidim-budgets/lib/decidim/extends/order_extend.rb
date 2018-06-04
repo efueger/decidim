@@ -35,7 +35,7 @@ Decidim::Budgets::Order.class_eval do
 
   validates :total_projects, numericality: {
     less_than_or_equal_to: :number_of_projects
-  }, unless: :per_project
+  }, if: :per_project
 
   validates :total_projects, numericality: {
     less_than_or_equal_to: :number_of_projects
