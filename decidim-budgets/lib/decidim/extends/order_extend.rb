@@ -30,7 +30,7 @@ end
 
 Decidim::Budgets::Order.class_eval do
   validates :total_budget, numericality: {
-        less_than_or_equal_to: :maximum_budget
+    less_than_or_equal_to: :maximum_budget
   }, unless: :per_project
 
   validates :total_projects, numericality: {
