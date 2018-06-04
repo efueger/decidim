@@ -4,10 +4,10 @@ module OrderExtend
   end
 
   def limit_project_reached?
-    total_project == number_of_projects
+    total_projects == number_of_projects
   end
 
-  def total_project
+  def total_projects
     projects.count
   end
 
@@ -33,11 +33,11 @@ Decidim::Budgets::Order.class_eval do
         less_than_or_equal_to: :maximum_budget
   }, if: :per_budget
 
-  validates :total_project, numericality: {
+  validates :total_projects, numericality: {
     less_than_or_equal_to: :number_of_projects
   }, if: :per_budget
 
-  validates :total_project, numericality: {
+  validates :total_projects, numericality: {
     less_than_or_equal_to: :number_of_projects
   }, unless: :per_budget
   prepend(OrderExtend)
