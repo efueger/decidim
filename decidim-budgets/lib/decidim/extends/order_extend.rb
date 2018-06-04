@@ -4,6 +4,7 @@ module OrderExtend
   end
 
   def limit_project_reached?
+    return false unless per_project
     total_projects == number_of_projects
   end
 
@@ -26,19 +27,14 @@ module OrderExtend
   def number_of_projects
     component.settings.total_projects
   end
+
+  def maximum_budget
+    return 0 unless component || !per_project
+    component.settings.total_budget.to_f
+  end
+
 end
 
 Decidim::Budgets::Order.class_eval do
-  validates :total_budget, numericality: {
-    less_than_or_equal_to: :maximum_budget
-  }, unless: :per_project
-
-  validates :total_projects, numericality: {
-    less_than_or_equal_to: :number_of_projects
-  }, if: :per_project
-
-  validates :total_projects, numericality: {
-    less_than_or_equal_to: :number_of_projects
-  }, if: :per_project
   prepend(OrderExtend)
 end

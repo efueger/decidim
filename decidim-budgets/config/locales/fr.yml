@@ -58,11 +58,13 @@ fr:
           confirm: Confirmer
           description: Voici les projets que vous avez choisis pour le budget.
           title: Confirmez votre vote
-        budget_excess:
+        limit_excess:
           close: Fermer
-          description: Ce projet dépasse le budget maximum et ne peut pas être ajouté. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné ou voter selon vos préférences.
+          description_per_budget: Ce projet dépasse le budget maximum et ne peut pas être ajouté. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné ou voter selon vos préférences.
+          description_per_project: Vous avez atteint le nombre maximum de projets autorisés pour ce budget. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné.
           ok: D'accord
-          title: Budget maximum dépassé
+          title_per_budget: Budget maximum dépassé
+          title_per_project: Nombre de projets maximum atteint
         budget_summary:
           are_you_sure: Êtes-vous certain de vouloir annuler votre vote ?
           assigned: 'Affecté à :'
