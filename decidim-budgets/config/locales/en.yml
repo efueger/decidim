@@ -52,6 +52,7 @@ en:
         project:
           fields:
             title: Title
+            map: Map
       projects:
         budget_confirm:
           are_you_sure: Do you agree? Once you have confirmed your vote, you can not change it.
@@ -135,6 +136,7 @@ en:
             total_projects: Total projects
             total_budget: Total budget
             vote_threshold_percent: Vote threshold percent
+            geocoding_enabled: Geocoding enabled
           step:
             announcement: Announcement
             comments_blocked: Comments blocked
