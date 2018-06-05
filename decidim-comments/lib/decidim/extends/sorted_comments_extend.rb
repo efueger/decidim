@@ -39,7 +39,7 @@ module SortedCommentsExtend
   def admin_or_moderator?
     current_user &&
       (current_user.admin? ||
-        @commentable.feature.organization.users_with_any_role.include?(current_user) || get_user_with_process_role(@commentable.feature.participatory_space.id).include?(current_user)
+        @commentable.component.organization.users_with_any_role.include?(current_user) || get_user_with_process_role(@commentable.component.participatory_space.id).include?(current_user)
       )
   end
 

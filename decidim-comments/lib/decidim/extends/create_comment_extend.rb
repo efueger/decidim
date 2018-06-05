@@ -12,7 +12,7 @@ module CreateCommentExtend
         comment_id: @comment.id,
         moderation_event: @comment.moderation.upstream_activated? ? true : false,
         new_content: true,
-        process_slug: @comment.root_commentable.feature.participatory_space.slug
+        process_slug: @comment.root_commentable.component.participatory_space.slug
       }
     )
   end
