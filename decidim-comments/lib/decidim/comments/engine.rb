@@ -36,9 +36,9 @@ module Decidim
       end
 
       initializer "decidim.stats" do
-        Decidim.stats.register :comments_count, priority: StatsRegistry::MEDIUM_PRIORITY do |features, start_at, end_at|
+        Decidim.stats.register :comments_count, priority: StatsRegistry::MEDIUM_PRIORITY do |organization|
           Decidim.feature_manifests.sum do |feature|
-            feature.stats.filter(tag: :comments).with_context(features, start_at, end_at).map { |_name, value| value }.sum
+            feature.stats.filter(tag: :comments).with_context(organization.published_features).map { |_name, value| value }.sum
           end
         end
       end
