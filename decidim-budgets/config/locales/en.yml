@@ -66,7 +66,7 @@ en:
           description_per_project: Vous avez atteint le nombre maximum de projets autorisés pour ce budget. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné.
           ok: OK
           title_per_budget: Budget maximum dépassé
-          title_per_project: Nombre de projets maximum atteint
+          title_per_project: Nombre de projets maximum atteints
         budget_summary:
           are_you_sure: Are you sure you want to cancel your vote?
           assigned: 'Assigned:'
@@ -131,7 +131,7 @@ en:
             announcement: Announcement
             comments_enabled: Comments enabled
             projects_per_page: Projects per page
-            vote_per_budget: budget sum enabled
+            vote_per_budget: budget sum enabled (default)
             vote_per_project: project number enabled
             total_projects: Total projects
             total_budget: Total budget
