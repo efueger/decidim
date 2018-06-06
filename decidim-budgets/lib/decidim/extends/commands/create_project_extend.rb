@@ -1,7 +1,7 @@
 module CreateProjectExtend
   def create_project
     @project = Decidim.traceability.create!(
-      Project,
+      Decidim::Budgets::Project,
       @form.current_user,
       scope: @form.scope,
       category: @form.category,

@@ -134,9 +134,9 @@ fr:
             announcement: Message d'annonce
             comments_enabled: Activer le module de commentaire
             projects_per_page: Projets par page
-            vote_per_budget: Activer le vote selon un budget
-            vote_per_project: Activer le vote par nombre de projet
-            total_projects: Nombre de projet total
+            vote_per_budget: Activer le vote selon un budget (par défaut)
+            vote_per_project: Activer le vote par nombre de projets
+            total_projects: Nombre de projets total
             total_budget: Budget total
             vote_threshold_percent: Pourcentage du budget à atteindre pour voter
             geocoding_enabled: Géocodage activé
