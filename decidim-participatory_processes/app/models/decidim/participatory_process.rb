@@ -75,5 +75,10 @@ module Decidim
     def to_param
       slug
     end
+
+    # Overrides the method from `Participable`.
+    def moderators
+      "#{admin_module_name}::Moderators".constantize.for(self)
+    end
   end
 end
