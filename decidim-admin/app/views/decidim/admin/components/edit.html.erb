@@ -54,6 +54,25 @@ function switchDisabling(check1, check2, field1, field2){
   })
 }
 
+function disableOtherField(field, actionCheck){
+  if (actionCheck.is(":checked")){
+    disableField(field)
+  // When the checkbox is followed by an input
+  } else {
+    enableField(field)
+  }
+
+  actionCheck.change(function(){
+    if (actionCheck.is(":checked")){
+      disableField(field)
+    // When the checkbox is followed by an input
+    } else {
+      enableField(field)
+    }
+  });
+
+
+}
 
 function disableField(field){
   field.prop("disabled", true);
@@ -79,12 +98,13 @@ $(document).ready(function() {
   var $perProject = $('input[name="component[settings][vote_per_project]"]')
   var $BudgetSumField = $('input[name="component[settings][total_budget]"]')
   var $projectNumberField = $('input[name="component[settings][total_projects]"]')
+  var $voteTreshold = $('input[name="component[settings][vote_threshold_percent]"]')
 
   switchDisabling($perBudget, $perProject, $BudgetSumField, $projectNumberField)
   switchDisabling($perProject, $perBudget, $projectNumberField, $BudgetSumField)
   disableClick($perBudget, $perProject, $BudgetSumField, $projectNumberField)
   disableClick($perProject, $perBudget, $projectNumberField, $BudgetSumField)
-
+  disableOtherField($voteTreshold, $perProject)
 });
 
 
