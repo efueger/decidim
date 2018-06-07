@@ -51,7 +51,7 @@ module Decidim
         authorize! :create, Proposal
         @step = :step_1
         if proposal_draft.present?
-          redirect_to edit_draft_proposal_path proposal_draft.id
+          redirect_to edit_draft_proposal_path(proposal_draft, feature_id: proposal_draft.feature.id, question_slug: proposal_draft.feature.participatory_space.slug)
         else
           @form = form(ProposalForm).from_params(
             attachment: form(AttachmentForm).from_params({})
@@ -202,7 +202,7 @@ module Decidim
       end
 
       def proposal_draft
-        Proposal.not_hidden.where(feature: current_feature).find_by(published_at: nil)
+        Proposal.not_hidden.where(feature: current_feature, author: current_user).find_by(published_at: nil)
       end
 
       def ensure_is_draft
