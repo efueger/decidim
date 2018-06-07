@@ -27,21 +27,13 @@ function disableClick(check1, check2, field1, field2){
 
 function switchDisabling(check1, check2, field1, field2){
    check1.change(function(){
-      if ($(this).is(":checked")){
+    if ($(this).is(":checked")){
       check2.prop("disabled", true);
       // When the checkbox is followed by an input
       if(field2){
         disableField(field2)
       }
-    } else if (!check2.is(":checked") && !$(this).is(":checked")){
 
-      $(this).prop("disabled", false);
-      check2.prop("disabled", false);
-      // When the checkbox is followed by an input
-      if(field2 && field1){
-        enableField(field2)
-        enableField(field1)
-      }
     } else {
 
       $(this).prop("disabled", false);
@@ -57,7 +49,6 @@ function switchDisabling(check1, check2, field1, field2){
 function disableOtherField(field, actionCheck){
   if (actionCheck.is(":checked")){
     disableField(field)
-  // When the checkbox is followed by an input
   } else {
     enableField(field)
   }
@@ -65,13 +56,10 @@ function disableOtherField(field, actionCheck){
   actionCheck.change(function(){
     if (actionCheck.is(":checked")){
       disableField(field)
-    // When the checkbox is followed by an input
     } else {
       enableField(field)
     }
   });
-
-
 }
 
 function disableField(field){
