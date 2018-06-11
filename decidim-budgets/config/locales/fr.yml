@@ -24,6 +24,9 @@ fr:
           project:
             name: Projet
         projects:
+          form:
+            fields:
+              address: Adresse
           create:
             invalid: Il y a eu un problème lors de la création de ce projet
             success: Projet créé avec succès
