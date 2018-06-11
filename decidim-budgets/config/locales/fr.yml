@@ -126,7 +126,7 @@ fr:
           added: Ajouté
         show:
           budget: Budget
-          view_all_projects: Voir tous les projets
+          view_all_projects: Retourner à la liste des projets
     components:
       budgets:
         actions:

@@ -120,7 +120,7 @@ en:
           added: Added
         show:
           budget: Budget
-          view_all_projects: View all projects
+          view_all_projects: Back to projects list
     components:
       budgets:
         actions:
