@@ -45,11 +45,11 @@ module Decidim
       end
 
       def after_sign_in_path_for(user)
-        if !pending_redirect?(user) && first_login_and_not_authorized?(user)
-          decidim_verifications.authorizations_path
-        else
+        # if !pending_redirect?(user) && first_login_and_not_authorized?(user)
+        #   decidim_verifications.authorizations_path
+        # else
           super
-        end
+        # end
       end
 
       # Calling the `stored_location_for` method removes the key, so in order
