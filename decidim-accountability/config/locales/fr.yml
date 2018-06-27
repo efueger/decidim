@@ -4,7 +4,7 @@ fr:
       result:
         decidim_accountability_status_id: statut
         decidim_category_id: Catégorie
-        decidim_scope_id: Périmètre d'application
+        decidim_scope_id: Secteur
         description: Description
         end_date: Date et heure de fin
         progress: Avancement
@@ -130,7 +130,7 @@ fr:
             other: "%{count} résultats"
         filters:
           all: Tous
-          scopes: Périmètre d'application
+          scopes: Secteur
         home:
           categories_label: Catégories
           subcategories_label: Sous-catégories
@@ -156,7 +156,7 @@ fr:
             version_created_at: Version créée à
             version_number: Numéro de version
             version_number_out_of_total: "%{current_version} sur %{total_count}"
-            votes: Soutiens
+            votes: Votes
         timeline:
           title: Evolution du projet
       versions:

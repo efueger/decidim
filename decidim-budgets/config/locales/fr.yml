@@ -4,7 +4,7 @@ fr:
       project:
         budget: Budget
         decidim_category_id: Catégorie
-        decidim_scope_id: Périmètre d'application
+        decidim_scope_id: Secteur
         description: Description
         proposal_ids: Propositions liées
         title: Titre
@@ -91,8 +91,8 @@ fr:
         project:
           add: Ajouter
           count:
-            one: 1 soutien
-            other: "%{count} soutiens"
+            one: 1 vote
+            other: "%{count} votes"
           remove: Supprimer
         project_budget_button:
           add: Ajouter

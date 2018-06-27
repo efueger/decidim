@@ -152,7 +152,7 @@ fr:
             legend: S'inscrire en tant que
             user: Individu
             user_group: Organisation / Collectif
-          subtitle: Inscrivez-vous pour participer aux discussions et pour exprimer votre soutien aux propositions de votre choix.
+          subtitle: Inscrivez-vous pour participer aux discussions et pour exprimer votre vote aux propositions de votre choix.
           terms: les termes et conditions d'utilisation
           tos_agreement: En vous inscrivant, vous acceptez %{link}.
           tos_title: Conditions d'utilisation
@@ -357,8 +357,8 @@ fr:
         cancel: Annuler
         choose: Sélectionner
         title: Sélectionnez %{field}
-      prompt: Sélectionner un périmètre d'application
-      scopes: Périmètres d'application
+      prompt: Sélectionner un secteur
+      scopes: Secteurs
     shared:
       action_authorization_modal:
         expired:
@@ -443,7 +443,7 @@ fr:
   errors:
     messages:
       content_type_whitelist_error: Le type de fichier n'est pas valide
-      cycle_detected: un périmètre d'application ne peut pas être du même niveau que ses descendants
+      cycle_detected: un secteur ne peut pas être du même niveau que ses descendants
       file_size_is_less_than_or_equal_to: la taille du fichier doit être inférieure ou égale à %{count}
       invalid_manifest: Manifeste invalide
       invalid_participatory_process: Concertation invalide
@@ -519,10 +519,10 @@ fr:
         answers_count: Réponses
         assemblies_count: Agora
         comments_count: Commentaires
-        endorsements_count: Recommandations
+        endorsements_count: Soutiens
         headline: État actuel de %{organization}
         meetings_count: Rencontres
-        orders_count: Soutiens
+        orders_count: Votes
         pages_count: Pages
         processes_count: Concertations
         projects_count: Projets
@@ -531,7 +531,7 @@ fr:
         results_count: Résultats
         surveys_count: Enquêtes
         users_count: Participants
-        votes_count: Soutiens
+        votes_count: Votes
       sub_hero:
         register: S'inscrire
   social_share_button:

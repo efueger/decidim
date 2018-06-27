@@ -16,7 +16,7 @@ fr:
         title: Titre
       attachment_collection:
         description: Description
-        name: Titre
+        name: Titre de la pièce jointe
       category:
         description: Description
         name: Nom
@@ -66,8 +66,8 @@ fr:
         name: Nom
         organization: Organisation
         parent_id: Parent
-        scope_type: Type de périmètre d'application
-        scope_type_id: Type de périmètre d'application
+        scope_type: Type de secteur
+        scope_type_id: Type de secteur
       scope_type:
         name: Nom
         organization: Organisation
@@ -92,7 +92,7 @@ fr:
         participatory_scope: Objectif
         participatory_structure: Modalités
         promoted: Mis en avant
-        scope: Périmètre d’application
+        scope: Secteur
         short_description: Résumé
         slug: Identifiant
         start_date: Date de début
@@ -302,8 +302,8 @@ fr:
         managed_users: Utilisateurs représentés
         newsletters: Bulletins d'information (newsletter)
         officializations: Validation d'utilisateurs
-        scope_types: Types de périmètre d'application
-        scopes: Périmètres d’application
+        scope_types: Types de secteur
+        scopes: Secteurs
         settings: Paramètres
         static_pages: Pages
         user_groups: Groupes d'utilisateurs
@@ -348,7 +348,7 @@ fr:
         scope:
           fields:
             name: Nom
-            scope_type: Type de périmètre d'application
+            scope_type: Type de secteur
         scope_type:
           fields:
             name: Singulier
@@ -479,35 +479,35 @@ fr:
           omnipresent_banner_appearance_title: Modifier la bannière d'actualités
       scope_types:
         create:
-          error: Une erreur s'est produite lors de la création d'un nouveau type de périmètre d'application.
-          success: Type de périmètre d'application créé avec succès.
+          error: Une erreur s'est produite lors de la création d'un nouveau type de secteur.
+          success: Type de secteur créé avec succès.
         destroy:
-          success: Le type de périmètre d'application a été détruit avec succès
+          success: Le type de secteur a été détruit avec succès
         edit:
-          title: Modifier le type de périmètre d'application
+          title: Modifier le type de secteur
           update: Mettre à jour
         new:
-          create: Créer un type de périmètre d'application
-          title: Nouveau périmètre d'application
+          create: Créer un type de secteur
+          title: Nouveau secteur
         update:
-          error: Une erreur s'est produite lors de la mise à jour du périmètre d'application.
-          success: Type de périmètre d'application mis à jour avec succès
+          error: Une erreur s'est produite lors de la mise à jour du secteur.
+          success: Type de secteur mis à jour avec succès
       scopes:
         create:
-          error: Une erreur s'est produite lors de la création d'une nouvelle périmètre d’application.
-          success: Périmètre d'application créé avec succès.
+          error: Une erreur s'est produite lors de la création d'un nouveau secteur.
+          success: Secteur créé avec succès.
         destroy:
-          success: Périmètre d'application supprimé avec succès
+          success: Secteur supprimé avec succès
         edit:
-          title: Editer le périmètre d'application
+          title: Editer le secteur
           update: Mettre à jour
         new:
-          create: Créer un périmètre d'application
-          title: Nouveau périmètre d'application
-        no_scopes: Pas de périmètre d'application à ce niveau.
+          create: Créer un secteur
+          title: Nouveau secteur
+        no_scopes: Pas de secteur à ce niveau.
         update:
-          error: Une erreur s'est produite lors de la mise à jour du périmètre d'application.
-          success: Périmètre d'applicaiton mis à jour avec succès
+          error: Une erreur s'est produite lors de la mise à jour du secteur.
+          success: Secteur mis à jour avec succès
       static_pages:
         actions:
           view: Voir la page publique
@@ -534,8 +534,8 @@ fr:
         impersonations: Représentations d'utilisateurs
         managed_users: Utilisateurs représentés
         officializations: Validation d'utilisateurs
-        scope_types: Types de périmètre d'application
-        scopes: Périmètres d'application
+        scope_types: Types de secteur
+        scopes: Secteurs
         static_pages: Pages
         user_groups: Groupes d'utilisateurs
         users: Utilisateurs

@@ -19,8 +19,8 @@ fr:
         participatory_structure: Modalités
         promoted: Mis en avant
         published_at: Publié à
-        scope_id: Périmètre d'application
-        scopes_enabled: Périmètres d'application activés
+        scope_id: Secteur
+        scopes_enabled: Secteurs activés
         short_description: Résumé
         show_statistics: Montrer les statistiques
         slug: Identifiant
@@ -150,7 +150,7 @@ fr:
         answers_count: Réponses
         assemblies_count: Agora
         comments_count: Commentaires
-        endorsements_count: Recommandations
+        endorsements_count: Soutiens
         headline: Activité
         meetings_count: Rencontres
         orders_count: Votes
