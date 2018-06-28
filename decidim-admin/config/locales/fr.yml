@@ -13,10 +13,10 @@ fr:
         attachment_collection_id: Dossier
         description: Description
         file: Fichier
-        title: Titre
+        title: Titre de la pièce jointe
       attachment_collection:
         description: Description
-        name: Titre de la pièce jointe
+        name: Titre
       category:
         description: Description
         name: Nom
