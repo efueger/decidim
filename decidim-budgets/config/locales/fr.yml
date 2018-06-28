@@ -72,7 +72,7 @@ fr:
             one: 1 projet
             other: "%{count} projets"
         filters:
-          category: Catégorie
+          category: Catégories
           category_prompt: Sélectionner une catégorie
           search: Rechercher
         filters_small_view:
