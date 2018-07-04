@@ -118,7 +118,8 @@ fr:
         project:
           add: Ajouter
           count:
-            one: 1 soutien
+            zero: "%{count} soutien"
+            one: "%{count} soutien"
             other: "%{count} soutiens"
           remove: Supprimer
         project_budget_button:
