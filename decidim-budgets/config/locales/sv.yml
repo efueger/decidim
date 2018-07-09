@@ -1,0 +1,143 @@
+sv:
+  activemodel:
+    attributes:
+      project:
+        budget: Budget
+        decidim_category_id: Kategori
+        decidim_scope_id: Omfattning
+        description: Beskrivning
+        proposal_ids: Relaterade förslag
+        title: Titel
+  activerecord:
+    models:
+      decidim/budgets/project:
+        one: Projekt
+        other: projekt
+  decidim:
+    budgets:
+      actions:
+        attachment_collections: mappar
+        attachments: Bifogade filer
+        confirm_destroy: Är du säker på att du vill radera detta projekt?
+        destroy: Radera
+        edit: Redigera
+        new: Nytt projekt
+        preview: Förhandsvisa
+        title: Handlingar
+      admin:
+        models:
+          project:
+            name: Projekt
+        projects:
+          create:
+            invalid: Det här har uppstått ett problem
+            success: Projekt skapades med framgång
+          destroy:
+            success: Projektet har tagits bort
+          edit:
+            title: Redigera projekt
+            update: Uppdatera
+          index:
+            finished_orders: Avslutade röster
+            pending_orders: Avventer röster
+            title: Projekt
+          new:
+            create: Skapa
+            title: Nytt projekt
+          update:
+            invalid: Det har varit ett problem att uppdatera projektet
+            success: Projektet har blivit uppdaterat
+      admin_log:
+        project:
+          create: "%{user_name} skapade projektet %{resource_name} i %{space_name} -utrymmet"
+          delete: "%{user_name} raderade projektet %{resource_name} i %{space_name} -utrymmet"
+          update: "%{user_name} uppdaterade projektet %{resource_name} i %{space_name} -utrymmet"
+      models:
+        project:
+          fields:
+            title: Titel
+      projects:
+        budget_confirm:
+          are_you_sure: Håller du med? När du har bekräftat din röst kan du inte ändra den.
+          cancel: Avbryt
+          confirm: Bekräfta
+          description: Det här är de projekt du valt att vara en del av budgeten.
+          title: Bekräfta omröstning
+        budget_excess:
+          close: Stäng
+          description: Detta projekt överstiger den maximala budgeten och kan inte läggas till. Om du vill kan du ta bort ett projekt som du redan har valt för att lägga till eller göra din röst med dina önskemål.
+          ok: OK
+          title: Maximal budget överskridits
+        budget_summary:
+          are_you_sure: Är du säker på att du vill avbryta din röst?
+          assigned: 'Tilldelat:'
+          cancel_order: ta bort din röst och börja om
+          checked_out:
+            description: Du har redan röstat för budgeten. Om du har ändrat dig kan du %{cancel_link}.
+            title: Budgetröstning slutförd
+          description: Vilka projekt tycker du att vi borde avsätta budget för? Tilldela minst %{minimum_budget} till de projekt du vill ha och rösta med dina preferenser för att definiera budgeten.
+          title: Du bestämmer budgeten
+        count:
+          projects_count:
+            one: 1 projekt
+            other: "%{count} projekt"
+        filters:
+          category: Kategori
+          category_prompt: Välj en kategori
+          search: Sök
+        filters_small_view:
+          close_modal: Stäng fönstret
+          filter: Filtrera
+          filter_by: Filtrera efter
+          unfold: Veckla ut
+        order_progress:
+          vote: Rösta
+        order_selected_projects:
+          remove: Avlägsna
+          selected_projects:
+            one: projekt valt
+            other: utvalda projekt
+          view: Visa
+        project:
+          add: Lägg till
+          count:
+            one: 1 stöd
+            other: "%{count} stöder"
+          remove: Avlägsna
+          view: Se
+        project_budget_button:
+          add: Lägg till
+          added: Tillagd
+        show:
+          budget: Budget
+          view_all_projects: Visa alla projekt
+    components:
+      budgets:
+        actions:
+          vote: Rösta
+        name: Budgetar
+        settings:
+          global:
+            announcement: Meddelande
+            comments_enabled: Kommentarer aktiverade
+            projects_per_page: Projekt per sida
+            total_budget: Total budget
+            vote_threshold_percent: Rösta tröskel procent
+          step:
+            announcement: Meddelande
+            comments_blocked: Kommentarer blockerade
+            show_votes: Visa röster
+            votes_enabled: Röstning aktiverad
+    orders:
+      checkout:
+        error: Ett fel uppstod när du behandlade din röst
+        success: Din röst har godkänts framgångsrikt
+      destroy:
+        error: Ett fel uppstod när du avbröt din röst
+        success: Din röst har avbrutits framgångsrikt
+    resource_links:
+      included_proposals:
+        project_proposal: 'Förslag som ingår i detta projekt:'
+  index:
+    confirmed_orders_count: Antal röster
+  total_budget: Total budget

@@ -1,0 +1,341 @@
+sv:
+  activemodel:
+    attributes:
+      assembly:
+        area_id: Område
+        assembly_type: Monteringstyp
+        assembly_type_other: Monteringstyp annat
+        banner_image: Bannerbild
+        closing_date: Slutdatum
+        closing_date_reason: Slutdatum årsskäl
+        composition: Sammansättning
+        copy_categories: Kopiera kategorier
+        copy_components: Kopiera komponenter
+        copy_features: Kopiera funktioner
+        created_by: Skapad av
+        created_by_other: Skapat av andra
+        creation_date: Skapat datum
+        decidim_area_id: Område
+        decidim_scope_id: Omfattning
+        description: Beskrivning
+        developer_group: Promotorgrupp
+        domain: Domän
+        duration: Varaktighet
+        facebook: Facebook
+        github: GitHub
+        hashtag: Hashtag
+        hero_image: Hembild
+        included_at: Ingår på
+        instagram: Instagram
+        internal_organisation: Intern organisation
+        is_transparent: Är transparent
+        local_area: Lokalt område
+        meta_scope: Omfattning metadata
+        participatory_processes_ids: Relaterade deltagande processer
+        participatory_scope: Deltagande räckvidd
+        participatory_structure: Deltagande struktur
+        private_space: Privat utrymme
+        promoted: främjas
+        published_at: Publicerad på
+        purpose_of_action: Syftet med åtgärden
+        scope_id: Omfattning
+        scopes_enabled: Omfattningar aktiverade
+        short_description: Kort beskrivning
+        show_statistics: Visa statistik
+        slug: URL slug
+        special_features: Specialfunktioner
+        subtitle: Underrubrik
+        target: Mål
+        title: Titel
+        twitter: Twitter
+        youtube: Youtube
+      assembly_member:
+        birthday: Födelsedag
+        birthplace: Födelseort
+        ceased_date: Upphämtat datum
+        designation_date: Beteckning datum
+        designation_mode: Beteckningsläge
+        full_name: Fullständiga namn
+        gender: Kön
+        position: Placera
+      assembly_user_role:
+        email: E-post
+        name: Namn
+        role: Roll
+  activerecord:
+    models:
+      decidim/assembly:
+        one: hopsättning
+        other: Assemblies
+      decidim/assembly_member:
+        one: Församlingsmedlem
+        other: Församlingsmedlemmar
+      decidim/assembly_user_role:
+        one: Montering användarroll
+        other: Montera användarroller
+  decidim:
+    admin:
+      actions:
+        new_assembly: Ny sammansättning
+      assemblies:
+        create:
+          error: Det uppstod ett fel vid att skapa en ny enhet.
+          success: Församlingen skapades framgångsrikt.
+        destroy:
+          success: Sammansättning raderas framgångsrikt.
+        edit:
+          update: Uppdatera
+        form:
+          title: Allmän information
+        index:
+          not_published: Ej publicerad
+          private: Privat
+          public: Offentlig
+          published: Publicerad
+        new:
+          create: Skapa
+          title: Ny sammansättning
+        update:
+          error: Det uppstod ett fel vid uppdateringen av den här enheten.
+          success: Församlingen uppdaterades framgångsrikt.
+      assemblies_copies:
+        create:
+          error: Det uppstod ett fel vid duplicering av den här enheten.
+          success: Sammansättning dupliceras framgångsrikt.
+      assembly_copies:
+        new:
+          copy: Kopiera
+          select: Välj vilken data du vill duplicera
+          title: Duplikat montering
+      assembly_members:
+        create:
+          error: Det gick inte att lägga till en medlem för den här enheten.
+          success: Medlem skapades framgångsrikt för denna församling.
+        destroy:
+          success: Medlemmen har tagits bort framgångsrikt för denna sammansättning.
+        edit:
+          title: Uppdatera monteringsmedlem.
+          update: Uppdatering
+        index:
+          assembly_members_title: Församlingsmedlemmar
+        new:
+          create: Skapa
+          title: Ny monteringsdel.
+        update:
+          error: Det uppstod ett fel vid uppdatering av medlemmen för den här enheten.
+          success: Medlem uppdaterad framgångsrikt för denna samling.
+      assembly_publications:
+        create:
+          error: Det uppstod ett fel vid publicering av denna montering.
+          success: Församling publiceras framgångsrikt.
+        destroy:
+          error: Ett fel uppstod vid publicering av denna montering.
+          success: Sammansättningen avpubliceras framgångsrikt.
+      assembly_user_roles:
+        create:
+          error: Det gick inte att lägga till en användare för den här enheten.
+          success: Användaren har tillagts med framgång till den här enheten.
+        destroy:
+          success: Användaren avlägsnades framgångsrikt från den här enheten.
+        edit:
+          title: Uppdatera monteringsanvändaren.
+          update: Uppdatera
+        index:
+          assembly_admins_title: Monteringsanvändare
+        new:
+          create: Skapa
+          title: Ny monteringsanvändare.
+        update:
+          error: Det uppstod ett fel som uppdaterade en användare för den här enheten.
+          success: Användaren uppdaterades framgångsrikt för denna montering.
+      menu:
+        assemblies: Assemblies
+        assemblies_submenu:
+          assembly_admins: Monteringsanvändare
+          assembly_members: medlemmar
+          attachment_collections: mappar
+          attachment_files: Filer
+          attachments: Bifogade filer
+          categories: Kategorier
+          components: Komponenter
+          info: Info
+          moderations: Moderering
+          private_users: Privata användare
+      models:
+        assembly:
+          fields:
+            created_at: Skapad vid
+            private: Privat
+            promoted: Markerad
+            published: Publicerad
+            title: Titel
+          name: hopsättning
+        assembly_member:
+          fields:
+            ceased_date: Upphämtat datum
+            designation_date: Beteckning datum
+            full_name: namn
+            position: Placera
+          name: Medlem
+          positions:
+            other: Andra
+            president: President
+            secretary: Sekreterare
+            vice_president: Vice President
+        assembly_user_role:
+          fields:
+            email: E-post
+            name: Namn
+            role: Roll
+          name: Monteringsanvändare
+          roles:
+            admin: Administratör
+            collaborator: Medarbetare
+            moderator: Moderator
+      titles:
+        assemblies: Assemblies
+    admin_log:
+      assembly:
+        create: "%{user_name} skapade %{resource_name} -enheten"
+        publish: "%{user_name} publicerade %{resource_name} -enheten"
+        unpublish: "%{user_name} upublicerade %{resource_name} -enheten"
+        update: "%{user_name} uppdaterade %{resource_name} -enheten"
+      assembly_member:
+        create: "%{user_name} skapade %{resource_name} medlem i %{space_name} enheten"
+        delete: "%{user_name} bort %{resource_name} medlem från %{space_name} enheten"
+        update: "%{user_name} uppdaterade %{resource_name} medlem i %{space_name} enheten"
+      assembly_user_role:
+        create: "%{user_name} inbjudna %{resource_name} till sammansättningen %{space_name}"
+        delete: "%{user_name} tog bort användaren %{resource_name} från enheten %{space_name}"
+        update: "%{user_name} ändrade rollen som %{resource_name} i sammansättningen %{space_name}"
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            duration_help: Om varaktigheten för denna montering är begränsad, välj slutdatum. Annars kommer det att visas som obestämt.
+            included_at_help: Välj datum då denna montering lagts till Decidim. Det behöver inte nödvändigtvis vara detsamma som skapningsdatumet.
+            select_a_created_by: Välj en skapad av
+            select_an_area: Välj ett område
+            select_an_assembly_type: Välj en monterings typ
+            slug_help: 'URL-slitsar används för att generera de webbadresser som pekar på den här enheten. Accepterar bara bokstäver, siffror och bindestreck, och måste börja med ett brev. Exempel: %{url}'
+            social_handlers: Social
+        assembly_copies:
+          form:
+            slug_help: 'URL-slitsar används för att generera de webbadresser som pekar på den här enheten. Accepterar bara bokstäver, siffror och bindestreck, och måste börja med ett brev. Exempel: %{url}'
+        assembly_members:
+          form:
+            existing_user: Existerande användare
+            non_user: Icke-användare
+            select_a_position: Välj en position
+            select_user: Välj en användare
+            user_type: Användartyp
+          index:
+            filter:
+              all: Allt
+              ceased: upphörde
+              not_ceased: Inte upphört
+            filter_by: Filtrera efter
+            search: Sök
+      assembly_members:
+        index:
+          members: medlemmar
+      assembly_types:
+        commission: Comission
+        consultative_advisory: Rådgivande / rådgivande
+        executive: Verkställande
+        government: Regering
+        others: Övriga
+        participatory: Deltagande
+        working_group: Arbetsgrupp
+      created_by:
+        city_council: Statsråd
+        others: Övriga
+        public: offentlig
+      index:
+        title: Assemblies
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Aktiva aggregat
+            see_all_assemblies: Se alla församlingar
+        user_profile:
+          member_of:
+            member_of: Medlem i
+      show:
+        area: Område
+        assembly_type: Monteringstyp
+        children: Assemblies
+        closing_date: Slutdatum
+        composition: Sammansättning
+        created_by: Skapad av
+        creation_date: Skapat datum
+        developer_group: Promotorgrupp
+        duration: Varaktighet
+        included_at: Ingår på
+        indefinite_duration: Obestämd
+        internal_organisation: Intern organisation
+        is_transparent:
+          'false': ogenomskinlig
+          'true': transparent
+        local_area: Lokalt område
+        participatory_scope: Deltagande räckvidd
+        participatory_structure: Deltagande struktur
+        private_space: Detta är en privat sammansättning
+        purpose_of_action: Syftet med åtgärden
+        read_less: Läs mindre
+        read_more: Läs mer
+        related_participatory_processes: Relaterade deltagande processer
+        scope: Omfattning
+        social_networks: Sociala nätverk
+        target: Mål
+      statistics:
+        answers_count: Svar
+        assemblies_count: Assemblies
+        comments_count: Kommentarer
+        debates_count: Debatter
+        endorsements_count: påskrifter
+        headline: Aktivitet
+        meetings_count: Möten
+        orders_count: Röster
+        pages_count: Sidor
+        projects_count: Projekt
+        proposals_count: Förslag
+        results_count: Resultat
+        surveys_count: Undersökningar
+        users_count: Deltagare
+        votes_count: Röster
+    assembly_members:
+      assembly_member:
+        designated_on: Anges den
+      index:
+        title: medlemmar
+    log:
+      value_types:
+        assembly_presenter:
+          not_found: 'Samlingen hittades inte i databasen (ID: %{id})'
+    menu:
+      assemblies: Assemblies
+  errors:
+    messages:
+      cannot_be_blank: kan inte vara tom
+  layouts:
+    decidim:
+      assemblies:
+        assembly:
+          take_part: Delta
+        index:
+          promoted_assemblies: Utrustade församlingar
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} montering"
+            other: "%{count} sammansättningar"
+        promoted_assembly:
+          more_info: Mer information
+          take_part: Delta
+      assembly_header:
+        assembly_member_menu_item: medlemmar
+        assembly_menu_item: Sammansättningen
+        unfold: Veckla ut
+      assembly_widgets:
+        show:
+          take_part: Delta

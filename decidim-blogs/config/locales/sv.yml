@@ -1,0 +1,77 @@
+sv:
+  activemodel:
+    models:
+      decidim/blogs/create_post_event: Nytt blogginlägg
+  activerecord:
+    models:
+      decidim/blogs/post:
+        one: Posta
+        other: inlägg
+  decidim:
+    blogs:
+      actions:
+        confirm_destroy: Är du säker på att du vill radera det här inlägget?
+        destroy: Radera
+        edit: Redigera
+        new: Nytt brev
+        title: Handlingar
+      admin:
+        models:
+          components:
+            body: Kropp
+          post:
+            name: Posta
+        posts:
+          create:
+            invalid: Det har varit ett problem att skapa det här inlägget
+            success: Post med framgång skapad
+          destroy:
+            success: Posten har tagits bort
+          edit:
+            save: Uppdatering
+          index:
+            title: inlägg
+          new:
+            create: Skapa
+            title: Skapa inlägg
+          update:
+            invalid: Det har varit fel när du sparar inlägget.
+            success: Inlägg sparas framgångsrikt
+      models:
+        post:
+          fields:
+            author: Författare
+            body: Kropp
+            created_at: Skapad vid
+            title: titel
+      posts:
+        show:
+          view: Se
+        sidebar_blog:
+          comments: kommentarer
+          most_commented_posts: Mest kommenterade inlägg
+      read_more: Läs mer
+    components:
+      blogs:
+        name: blogg
+        settings:
+          global:
+            announcement: Meddelande
+            comments_enabled: Kommentarer aktiverade
+          step:
+            announcement: Meddelande
+            comments_blocked: Kommentarer blockerad
+    events:
+      blogs:
+        post_created:
+          email_intro: Posten "%{resource_title}" har publicerats i "%{participatory_space_title}" som du följer.
+          email_outro: Du har fått den här meddelandet eftersom du följer "%{participatory_space_title}". Du kan följa det från föregående länk.
+          email_subject: Nytt inlägg publicerat i %{participatory_space_title}
+          notification_title: Posten <a href="%{resource_path}">%{resource_title}</a> har publicerats i %{participatory_space_title}
+    pages:
+      home:
+        statistics:
+          posts_count: inlägg
+    participatory_processes:
+      statistics:
+        posts_count: inlägg
