@@ -3,7 +3,7 @@ sv:
     admin_log:
       page:
         update: "%{user_name} uppdaterade %{resource_name} sidan i %{space_name}"
-    features:
+    components:
       pages:
         name: Sida
         settings:
@@ -15,10 +15,10 @@ sv:
       admin:
         models:
           components:
-            body: Kropp
+            body: Innehåll
         pages:
           edit:
-            save: Uppdatering
+            save: Uppdatera
             title: Redigera sida
           update:
             invalid: Det har varit fel när du sparar sidan.

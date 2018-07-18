@@ -21,14 +21,20 @@ fi:
         description: Kuvaus
         name: Nimi
         parent_id: Yläaihepiiri
-      feature:
+      component:
         name: Nimi
         published_at: Julkaistu osoitteessa
-        weight: Painoarvo
+        weight: Paino
       id: ID
       newsletter:
         body: Runko
         subject: Otsikko
+      oauth_application:
+        name: Nimi
+        organization_logo: Organisaation logo (neliö)
+        organization_name: Organisaation nimi
+        organization_url: Organisaation URL-osoite
+        redirect_uri: Uudelleenohjata URI
       organization:
         cta_button_path: Call To Action -painikkeen polku
         cta_button_text: Call To Action -painikkeen teksti
@@ -77,6 +83,12 @@ fi:
         organization: Organisaatio
         slug: URL-tunniste
         title: Otsikko
+    errors:
+      models:
+        oauth_application:
+          attributes:
+            redirect_uri:
+              must_be_ssl: 'Uudelleenohjaus URI: n on oltava SSL-URI'
   activerecord:
     attributes:
       decidim/participatory_process:
@@ -111,6 +123,14 @@ fi:
         content: Sisältö
         slug: URL-tunniste
         title: Otsikko
+      doorkeeper/application:
+        authorize_url: Hyväksy URL-osoite
+        client_id: Asiakastunnus
+        client_secret: Client Secret
+        organization_name: Organisaation nimi
+        organization_url: Organisaation URL-osoite
+        redirect_uri: Uudelleenohjata URI
+        site: paikka
   date:
     formats:
       datepicker: "%d. %m. %Y"
@@ -209,6 +229,44 @@ fi:
         update:
           error: Tämän aihepiirin luonnissa tapahtui virhe.
           success: Aihepiiri päivitetty onnistuneesti.
+      component_permissions:
+        edit:
+          everyone: jokainen
+          submit: Tallenna käyttöoikeudet
+          title: Muokkaa käyttöoikeuksia
+        update:
+          success: Käyttöoikeudet päivitettiin onnistuneesti.
+      components:
+        create:
+          error: Tämän komponentin luomisessa tapahtui virhe.
+          success: Komponentti on luotu onnistuneesti.
+        destroy:
+          error: Tämän komponentin tuhoaminen on tapahtunut.
+          success: Komponentti poistettiin onnistuneesti.
+        edit:
+          title: Muokkaa komponenttia
+          update: Päivittää
+        form:
+          default_step_settings: Oletusasetusasetukset
+          global_settings: Yleiset asetukset
+          step_settings: Vaiheasetukset
+        index:
+          add: Lisää osa
+          headers:
+            actions: Toimet
+            name: Komponentin nimi
+            type: Osien tyyppi
+        new:
+          add: Lisää osa
+          title: 'Lisää osa: %{name}'
+        publish:
+          success: Komponentti on julkaistu onnistuneesti.
+        title: komponentit
+        unpublish:
+          success: Komponentti on julkaistu onnistuneesti.
+        update:
+          error: Tämän komponentin päivittämisessä tapahtui virhe.
+          success: Komponentti päivitettiin onnistuneesti.
       dashboard:
         show:
           view_more_logs: Näytä lisää lokeja
@@ -216,73 +274,43 @@ fi:
       exports:
         export_as: "%{name} muodossa %{export_format}"
         notice: Tietojen vienti on käynnissä. Saat sähköpostiviestin, kun se valmistuu.
-      feature_permissions:
-        edit:
-          everyone: Kaikki
-          submit: Tallenna oikeudet
-          title: Muokkaa oikeuksia
-        update:
-          success: Oikeudet päivitetty onnistuneesti.
-      features:
-        create:
-          error: Tämän ominaisuuden luonnissa tapahtui virhe.
-          success: Ominaisuus luotu onnistuneesti.
-        destroy:
-          error: Tämän ominaisuuden tuhoamisessa tapahtui virhe.
-          success: Ominaisuus poistettu onnistuneesti.
-        edit:
-          title: Muokkaa ominaisuutta
-          update: Päivitä
-        form:
-          default_step_settings: Oletusvaiheen asetukset
-          global_settings: Globaalit asetukset
-          step_settings: Vaiheen asetukset
+      impersonatable_users:
         index:
-          add: Lisää ominaisuus
-          headers:
-            actions: Toiminnot
-            name: Ominaisuuden nimi
-            type: Ominaisuuden tyyppi
-        new:
-          add: Lisää ominaisuus
-          title: 'Lisää ominaisuus: %{name}'
-        publish:
-          success: Tämä ominaisuus on onnistuneesti julkaistu.
-        title: Ominaisuudet
-        unpublish:
-          success: Tämän ominaisuuden julkaisu on onnistuneesti peruttu.
-        update:
-          error: Tämän ominaisuuden päivityksessä tapahtui virhe.
-          success: Ominaisuus päivitetty onnistuneesti.
-      logs:
-        logs_list:
-          no_logs_yet: Ei vielä lokeja
-      managed_users:
+          filter:
+            all: Kaikki
+            managed: Ylläpito
+            not_managed: Ei onnistunut
+          filter_by: Suodata
+          impersonate: Esiinny käyttäjänä
+          impersonate_new_managed_user: Käyttäkää uutta hallinnoitavaa käyttäjää
+          managed: Ylläpito
+          name: Nimi
+          needs_authorization_warning: Tällä organisaatiolla tulee olla vähintään yksi tunnistautumisväylä käytössä.
+          not_managed: Ei onnistunut
+          promote: Edistää
+          search: Hae
+          status: Status
+          view_logs: Näytä lokitiedot
+      impersonations:
         close_session:
           error: Toisena käyttäjänä esiintymisen istunnon sulkemisessa tapahtui virhe.
           success: Toisena käyttäjänä esiintymisen istunto on onnistuneesti päätetty.
         create:
-          error: Hallitun käyttäjän luonnissa tapahtui virhe.
+          error: Käyttäjä on esiintynyt virheessä.
           success: Hallittu käyttäjä on luotu onnistuneesti.
         form:
+          authorization_method: Lupamenettely
           name: Nimi
-        impersonate:
-          error: Hallittuna käyttäjänä esiintymisessä tapahtui virhe.
-        impersonations:
-          new:
-            impersonate: Esiinny käyttäjänä
-            new_managed_user_impersonation: Uusi hallittuna käyttäjänä esiintyminen
-        index:
-          impersonate: Esiinny käyttäjänä
-          needs_authoriation_warning: Tällä organisaatiolla tulee olla vähintään yksi tunnistautumisväylä käytössä.
-          promote: Korota oikeudet
-          view_logs: Näytä lokitiedot
+          reason: Syy
         new:
-          create: Luo
-          new_managed_user: Uusi hallittu käyttäjä
-          no_authorization_handlers: Käyttäjien hallintaan ei ole käytettävissä valtuutusten käsittelijöitä. Ota yhteyttä järjestelmänvalvojaan.
-          select_authorization_method: Valitse tunnistautumistapa
-          step: Vaihe %{current} / %{total}
+          impersonate: Esiinny käyttäjänä
+          impersonate_existing_managed_user: Käyttäkää hallinnoitettu käyttäjä "%{name}"
+          impersonate_existing_user: Käyttäjäkäyttäjä "%{name}"
+          impersonate_new_managed_user: Käyttäkää uutta hallinnoitavaa käyttäjää
+      logs:
+        logs_list:
+          no_logs_yet: Ei vielä lokeja
+      managed_users:
         promotion:
           error: Hallitun käyttäjän oikeuksien korotuksessa tapahtui virhe.
           success: Hallitun käyttäjän taso on onnistuneesti korotettu.
@@ -299,8 +327,9 @@ fi:
         areas: alueet
         configuration: Asetukset
         dashboard: Hallintapaneeli
-        managed_users: Hallinnoitavat käyttäjät
+        impersonations: huumorinsa
         newsletters: Uutiskirjeet
+        oauth_applications: OAuth-sovellukset
         officializations: Virallistamiset
         scope_types: Kontekstityypit
         scopes: Kontekstit
@@ -333,10 +362,9 @@ fi:
             admin: Ylläpitäjä
             ended_at: Päättynyt
             expired_at: Vanhentunut
+            reason: Syy
             started_at: Aloitettu
             user: Käyttäjä
-        managed_user:
-          name: Hallittu käyttäjä
         newsletter:
           fields:
             created_at: Luonnin ajankohta
@@ -344,6 +372,13 @@ fi:
             sent_at: Lähetyksen ajankohta
             subject: Otsikko
           name: Uutiskirje
+        oauth_application:
+          fields:
+            created_at: Luotu osoitteessa
+            name: Nimi
+          name: OAuth-sovellus
+        participatory_space_private_user:
+          name: Osallistuva tila yksityinen käyttäjä
         scope:
           fields:
             name: Nimi
@@ -413,6 +448,25 @@ fi:
         update:
           error: Tämän uutiskirjeen päivityksessä tapahtui virhe.
           success: Uutiskirje päivitetty onnistuneesti. Tarkasta se läpi ennen lähetystä.
+      oauth_applications:
+        create:
+          error: Sovelluksen luominen tapahtui virheellisesti.
+          success: Sovellus on luotu onnistuneesti.
+        destroy:
+          error: Tämä sovellus on tuhonnut virheen.
+          success: Sovellus tuhoutui onnistuneesti
+        edit:
+          save: Tallentaa
+          title: Muokkaa sovellusta
+        index:
+          confirm_delete: Haluatko varmasti poistaa tämän sovelluksen?
+          title: OAuth-sovellukset
+        new:
+          save: Tallentaa
+          title: Uusi sovellus
+        update:
+          error: Sovelluksen päivittämisessä tapahtui virhe.
+          success: Sovellus on päivitetty onnistuneesti.
       officializations:
         create:
           success: Käyttäjä virallistettu onnistuneesti
@@ -466,6 +520,17 @@ fi:
           homepage_highlighted_content_banner_title: Korkeatasoinen sisältöbanneri
           layout_appearance_title: Muokkaa sivupohjan ulkoasua
           omnipresent_banner_appearance_title: Muokkaa kaikkialla näkyvää banneria
+      participatory_space_private_users:
+        create:
+          error: Yksityishenkilöä oli lisätty tähän osallistuvaan tilaan.
+          success: Osallistumistilaa yksityisen käyttäjän käyttöoikeus luotiin onnistuneesti.
+        destroy:
+          success: Osallistuva tila yksityisen käyttäjän pääsy tuhoutui onnistuneesti.
+        index:
+          title: Osallistuva tila yksityinen käyttäjä
+        new:
+          create: Luoda
+          title: Uusi osallistuva tila yksityinen käyttäjä.
       scope_types:
         create:
           error: Uuden kontekstityypin luomisessa tapahtui virhe.
@@ -520,8 +585,8 @@ fi:
         areas: alueet
         authorization_workflows: Vahvistusmenetelmät
         dashboard: Hallintapaneeli
+        impersonatable_users: Epäilyttävät käyttäjät
         impersonations: Esiintymiset käyttäjinä
-        managed_users: Hallinnoitavat käyttäjät
         officializations: Virallistamiset
         scope_types: Kontekstityypit
         scopes: Kontekstit
@@ -562,6 +627,10 @@ fi:
         new:
           create: Kutsu
           title: Kutsu käyttäjä hallinnoijaksi
+    forms:
+      errors:
+        impersonate_user:
+          reason: Sinun on annettava syy epäonnistuneelle käyttäjälle
     moderations:
       actions:
         hidden: Piilotettu

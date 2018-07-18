@@ -76,7 +76,6 @@ uk:
           attachment_files: Файли
           attachments: Вкладені файли
           categories: Розділи
-          features: Складові
           info: Відомості
           moderations: Дії з модерації
       models:

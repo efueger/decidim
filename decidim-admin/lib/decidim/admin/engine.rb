@@ -12,6 +12,8 @@ require "foundation-rails"
 require "foundation_rails_helper"
 require "autoprefixer-rails"
 require "rectify"
+require "doorkeeper"
+require "doorkeeper-i18n"
 
 module Decidim
   module Admin
@@ -57,11 +59,11 @@ module Decidim
                     if: can?(:read, Decidim::StaticPage)
 
           menu.item I18n.t("menu.users", scope: "decidim.admin"),
-                    can?(:read, :admin_users) ? decidim_admin.users_path : decidim_admin.managed_users_path,
+                    can?(:read, :admin_users) ? decidim_admin.users_path : decidim_admin.impersonatable_users_path,
                     icon_name: "person",
                     position: 5,
-                    active: [%w(decidim/admin/user_groups decidim/admin/users decidim/admin/managed_users decidim/admin/authorization_workflows), []],
-                    if: can?(:read, :admin_users) || can?(:read, :managed_users)
+                    active: [%w(user_groups users managed_users impersonatable_users authorization_workflows).map { |segment| "/decidim/admin/#{segment}" }, []],
+                    if: can?(:read, :admin_users) || can?(:read, :impersonatable_users)
 
           menu.item I18n.t("menu.newsletters", scope: "decidim.admin"),
                     decidim_admin.newsletters_path,
@@ -83,6 +85,13 @@ module Decidim
                     position: 10,
                     active: [%w(decidim/admin/logs), []],
                     if: can?(:read, :admin_log)
+
+          menu.item I18n.t("menu.oauth_applications", scope: "decidim.admin"),
+                    decidim_admin.oauth_applications_path,
+                    icon_name: "dashboard",
+                    position: 11,
+                    active: [%w(decidim/admin/oauth_applications), []],
+                    if: can?(:read, :oauth_applications)
         end
       end
     end

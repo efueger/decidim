@@ -1,0 +1,13 @@
+ru:
+  activemodel:
+    attributes:
+      sortition:
+        additional_info: Жеребьевкой информация
+        title: Название
+  decidim:
+    sortitions:
+      admin:
+        models:
+          sortition:
+            fields:
+              title: Название

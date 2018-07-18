@@ -35,6 +35,7 @@ module Decidim
             category: @form.category,
             title: @form.title,
             description: @form.description,
+            services: @form.services_to_persist.map { |service| { "title" => service.title, "description" => service.description } },
             end_time: @form.end_time,
             start_time: @form.start_time,
             address: @form.address,
@@ -42,7 +43,8 @@ module Decidim
             longitude: @form.longitude,
             location: @form.location,
             location_hints: @form.location_hints,
-            feature: @form.current_feature
+            registration_terms: @form.current_component.settings.default_registration_terms,
+            component: @form.current_component
           )
         end
 

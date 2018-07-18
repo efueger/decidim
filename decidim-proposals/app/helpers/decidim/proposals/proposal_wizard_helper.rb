@@ -68,6 +68,7 @@ module Decidim
             #{proposal_wizard_stepper_step(:step_1, current_step)}
             #{proposal_wizard_stepper_step(:step_2, current_step)}
             #{proposal_wizard_stepper_step(:step_3, current_step)}
+            #{proposal_wizard_stepper_step(:step_4, current_step)}
           ).html_safe
         end
       end
@@ -89,7 +90,7 @@ module Decidim
       #
       # step - A symbol of the target step
       def proposal_wizard_step_help_text?(step)
-        translated_attribute(feature_settings.try("proposal_wizard_#{step}_help_text")).present?
+        translated_attribute(component_settings.try("proposal_wizard_#{step}_help_text")).present?
       end
 
       # Renders a user_group select field in a form.

@@ -22,7 +22,7 @@ es:
         description: Descripción
         name: Nombre
         parent_id: Superior
-      feature:
+      component:
         name: Nombre
         published_at: Publicado en
         weight: Peso
@@ -30,6 +30,12 @@ es:
       newsletter:
         body: Cuerpo
         subject: Asunto
+      oauth_application:
+        name: Nombre
+        organization_logo: Logotipo de la organización (cuadrado)
+        organization_name: Nombre de la organización
+        organization_url: URL de organización
+        redirect_uri: Redirigir URI
       organization:
         cta_button_path: Ruta del botón de acción principal
         cta_button_text: Texto del botón de acción principal
@@ -78,6 +84,12 @@ es:
         organization: Organización
         slug: Texto corto de URL
         title: Título
+    errors:
+      models:
+        oauth_application:
+          attributes:
+            redirect_uri:
+              must_be_ssl: El URI de redirección debe ser un URI SSL
   activerecord:
     attributes:
       decidim/participatory_process:
@@ -112,6 +124,14 @@ es:
         content: Contenido
         slug: Texto corto de URL
         title: Título
+      doorkeeper/application:
+        authorize_url: Autorizar URL
+        client_id: Identificación del cliente
+        client_secret: Secreto del cliente
+        organization_name: Nombre de la organización
+        organization_url: URL de organización
+        redirect_uri: Redirigir URI
+        site: Sitio Web
   date:
     formats:
       datepicker: "%d/%m/%Y"
@@ -210,6 +230,44 @@ es:
         update:
           error: Se ha producido un error al actualizar esta categoría.
           success: Categoría actualizada correctamente.
+      component_permissions:
+        edit:
+          everyone: Todo el mundo
+          submit: Guardar permisos
+          title: Editar permisos
+        update:
+          success: Permisos actualizados con éxito.
+      components:
+        create:
+          error: Hubo un error al crear este componente.
+          success: Componente creado con éxito.
+        destroy:
+          error: Ha habido un error al eliminar este componente.
+          success: Componente borrado con éxito.
+        edit:
+          title: Editar componente
+          update: Actualizar
+        form:
+          default_step_settings: Configuraciones de paso predeterminadas
+          global_settings: Ajustes globales
+          step_settings: Configuración de paso
+        index:
+          add: Agregar componente
+          headers:
+            actions: Comportamiento
+            name: Nombre del componente
+            type: Tipo de componente
+        new:
+          add: Agregar componente
+          title: 'Agregar componente: %{name}'
+        publish:
+          success: El componente se ha publicado con éxito.
+        title: Componentes
+        unpublish:
+          success: El componente se ha despublicado sin éxito.
+        update:
+          error: Se ha producido un error al actualizar este componente.
+          success: El componente se actualizó con éxito.
       dashboard:
         show:
           view_more_logs: Ver más registros
@@ -217,73 +275,43 @@ es:
       exports:
         export_as: "%{name} como %{export_format}"
         notice: Su exportación está actualmente en curso. Recibirá un correo electrónico cuando esté completo.
-      feature_permissions:
-        edit:
-          everyone: Todo el mundo
-          submit: Guardar permisos
-          title: Editar permisos
-        update:
-          success: Permisos actualizados correctamente.
-      features:
-        create:
-          error: Se ha producido un error al añadir esta funcionalidad.
-          success: Funcionalidad añadida correctamente.
-        destroy:
-          error: Se ha producido un error destruir esta funcionalidad.
-          success: Funcionalidad eliminada correctamente.
-        edit:
-          title: Editar funcionalidad
-          update: Actualizar
-        form:
-          default_step_settings: Configuración por defecto
-          global_settings: Ajustes globales
-          step_settings: Configuración de fase
+      impersonatable_users:
         index:
-          add: Añadir funcionalidad
-          headers:
-            actions: Acciones
-            name: Nombre de la funcionalidad
-            type: Tipo de funcionalidad
-        new:
-          add: Añadir funcionalidad
-          title: 'Añadir funcionalidad: %{name}'
-        publish:
-          success: La funcionalidad se ha publicado correctamente.
-        title: Funcionalidades
-        unpublish:
-          success: La funcionalidad se ha despublicado correctamente.
-        update:
-          error: Se ha producido un error al actualizar esta funcionalidad.
-          success: La funcionalidad se ha actualizado correctamente.
-      logs:
-        logs_list:
-          no_logs_yet: Aún no hay ningún registro de actividad
-      managed_users:
+          filter:
+            all: Todas
+            managed: Administrado
+            not_managed: No gestionado
+          filter_by: Filtrado por
+          impersonate: Suplantar
+          impersonate_new_managed_user: Impersonar a un nuevo usuario administrado
+          managed: Administrado
+          name: Nombre
+          needs_authorization_warning: Necesita al menos una autorización habilitada para esta organización.
+          not_managed: No gestionado
+          promote: Promover
+          search: Buscar
+          status: Estado
+          view_logs: Ver los registros
+      impersonations:
         close_session:
           error: Se ha producido un error al cerrar la sesión de suplantación actual.
           success: Se ha finalizado con éxito la sesión de suplantación actual.
         create:
-          error: Se ha producido un error al crear el usuario gestionado.
+          error: Se ha producido un error al promocionar el usuario gestionado.
           success: El usuario gestionado se ha creado correctamente.
         form:
+          authorization_method: Método de autorización
           name: Nombre
-        impersonate:
-          error: Se ha producido un error al representar al usuario gestionado.
-        impersonations:
-          new:
-            impersonate: Suplantar
-            new_managed_user_impersonation: Nueva suplantación de usuario gesionado
-        index:
-          impersonate: Suplantar
-          needs_authoriation_warning: Necesita al menos una autorización habilitada para esta organización.
-          promote: Promocionar
-          view_logs: Ver los registros
+          reason: Razón
         new:
-          create: Crear
-          new_managed_user: Nuevo usuario gestionado
-          no_authorization_handlers: No hay autorizaciones disponibles para gestionar usuarios. Por favor, póngase en contacto con el administrador del sistema.
-          select_authorization_method: Seleccione un método de autorización
-          step: Fase %{current} de %{total}
+          impersonate: Suplantar
+          impersonate_existing_managed_user: Impersonar al usuario administrado "%{name}"
+          impersonate_existing_user: Impersonar usuario "%{name}"
+          impersonate_new_managed_user: Impersonar a un nuevo usuario administrado
+      logs:
+        logs_list:
+          no_logs_yet: Aún no hay ningún registro de actividad
+      managed_users:
         promotion:
           error: Se ha producido un error al promocionar el usuario gestionado.
           success: El usuario gestionado se ha promocionado correctamente.
@@ -300,8 +328,9 @@ es:
         areas: Áreas
         configuration: Configuración
         dashboard: Panel de control
-        managed_users: Usuarios gestionados
+        impersonations: Impersonaciones
         newsletters: Boletines
+        oauth_applications: Aplicaciones OAuth
         officializations: Oficializaciones
         scope_types: Tipos de ámbito
         scopes: Ámbitos
@@ -334,10 +363,9 @@ es:
             admin: Administrador
             ended_at: Terminó el
             expired_at: Caduca el
+            reason: Razón
             started_at: Empezó a las
             user: Usuario
-        managed_user:
-          name: Usuario gestionado
         newsletter:
           fields:
             created_at: Fecha de creación
@@ -345,6 +373,13 @@ es:
             sent_at: Enviado el
             subject: Asunto
           name: Boletín
+        oauth_application:
+          fields:
+            created_at: Creado en
+            name: Nombre
+          name: Aplicación OAuth
+        participatory_space_private_user:
+          name: Usuario privado de espacio participativo
         scope:
           fields:
             name: Nombre
@@ -414,6 +449,25 @@ es:
         update:
           error: Se ha producido un error al actualizar este boletín.
           success: Boletín actualizado correctamente. Por favor revísalo antes de enviarlo.
+      oauth_applications:
+        create:
+          error: Se ha producido un error al crear esta aplicación.
+          success: Aplicación creada con éxito.
+        destroy:
+          error: Se ha producido un error al destruir esta aplicación.
+          success: Aplicación eliminada con éxito.
+        edit:
+          save: Guardar
+          title: Editar aplicación
+        index:
+          confirm_delete: '¿Estás seguro que quieres eliminar esta aplicación?'
+          title: Aplicaciones OAuth
+        new:
+          save: Guardar
+          title: Nueva aplicación
+        update:
+          error: Se ha producido un error al actualizar esta aplicación.
+          success: Aplicación actualizada con éxito.
       officializations:
         create:
           success: Usuario oficializado con éxito
@@ -467,6 +521,17 @@ es:
           homepage_highlighted_content_banner_title: Banner de contenido resaltado
           layout_appearance_title: Editar apariencia de diseño global
           omnipresent_banner_appearance_title: Editar banner omnipresente
+      participatory_space_private_users:
+        create:
+          error: Hubo un error al agregar un usuario privado para este espacio participativo.
+          success: El acceso a usuarios privados de espacio participativo creado con éxito.
+        destroy:
+          success: El acceso de usuarios privados del espacio participativo se eliminado con éxito.
+        index:
+          title: Usuario privado de espacio participativo.
+        new:
+          create: Crear
+          title: Nuevo usuario privado en el espacio participativo.
       scope_types:
         create:
           error: Se ha producido un error al crear un nuevo tipo de ámbito.
@@ -521,8 +586,8 @@ es:
         areas: Áreas
         authorization_workflows: Métodos de verificación
         dashboard: Panel de control
+        impersonatable_users: Usuarios impersonables
         impersonations: Suplantaciones
-        managed_users: Usuarios gestionados
         officializations: Oficializaciones
         scope_types: Tipos de ámbito
         scopes: Ámbitos
@@ -563,6 +628,10 @@ es:
         new:
           create: Invitar
           title: Invitar a un usuario como administrador
+    forms:
+      errors:
+        impersonate_user:
+          reason: Debe proporcionar una razón para impersonar a un usuario no administrado
     moderations:
       actions:
         hidden: Ocultas

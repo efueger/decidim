@@ -52,8 +52,12 @@ module Decidim
         endorsements_enabled?
       end
 
-      def endorsement_identity(endorsement)
-        endorsement.user_group ? endorsement.user_group : endorsement.author
+      def endorsement_identity_presenter(endorsement)
+        if endorsement.user_group
+          Decidim::UserGroupPresenter.new(endorsement.user_group)
+        else
+          Decidim::UserPresenter.new(endorsement.author)
+        end
       end
 
       # Public: Renders a button to endorse the given proposal.
@@ -67,7 +71,7 @@ module Decidim
           from_proposals_list: from_proposals_list,
           user_group_id: user_group&.id
         )
-        endorse_label = btn_label || t(".endorse")
+        endorse_label = btn_label || t("decidim.proposals.proposal_endorsements_helper.endorsement_button.endorse")
         unendorse_label = btn_label || t("decidim.proposals.proposal_endorsements_helper.endorsement_button.already_endorsed")
 
         render partial: "decidim/proposals/proposals/endorsement_button", locals: { proposal: proposal,

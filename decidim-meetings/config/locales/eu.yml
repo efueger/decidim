@@ -21,6 +21,28 @@ eu:
         start_time: Hasiera-ordua
         title: Titulua
   decidim:
+    admin:
+      meeting_copies:
+        create:
+          error: Akatsa gertatu da bilera hau bikoiztea.
+          success: Bildutako bilera bikoiztua behar bezala egin da.
+        new:
+          copy: Copy
+          select: Aukeratu zein datu bikoiztu nahi dituzun
+          title: Bilera bikoiztua
+    components:
+      meetings:
+        actions:
+          join: Parte hartu
+        name: Bilerak
+        settings:
+          global:
+            announcement: Anuntzio
+            comments_enabled: Iruzkinak gaituta
+            default_registration_terms: Izen-emate baldintzak lehenetsiak
+          step:
+            announcement: Anuntzio
+            comments_blocked: Iruzkinak blokeatuta
     events:
       meetings:
         meeting_closed:
@@ -53,18 +75,6 @@ eu:
           email_outro: Jakinarazpen hori jaso duzu "%{resource_title}" bilera jarraitzen duzulako. Aurreko esteka estekan jarrai dezakezu.
           email_subject: '"%{resource_title}" topaketa 48 ordu baino gutxiagotan hasiko da.'
           notification_title: <a href="%{resource_path}">%{resource_title}</a> topaketa 48 ordu baino gutxiagoan hasiko da.
-    features:
-      meetings:
-        actions:
-          join: Bat egin
-        name: Topaketa-zerrenda
-        settings:
-          global:
-            announcement: Oharra
-            comments_enabled: Iruzkinak gaituta
-          step:
-            announcement: Oharra
-            comments_blocked: Iruzkinak blokeatuta
     meetings:
       actions:
         attachment_collections: Bilduma
@@ -112,6 +122,16 @@ eu:
           new:
             create: Sortu
             title: Sortu topaketa
+          service:
+            description: deskribapena
+            down: Down
+            remove: Kendu
+            service: zerbitzua
+            title: Izenburua
+            up: up
+          services:
+            add_service: Gehitu zerbitzua
+            services: Zerbitzuak
           update:
             invalid: Arazo bat izan da topaketa hau eguneratzean.
             success: Topaketa zuzen eguneratu da.
@@ -127,6 +147,8 @@ eu:
             registrations_count:
               one: Izen-emate bat egin da.
               other: '%{count} izen-emate egin dira.'
+            reserved_slots_help: Utzi 0 aukerarik ez baduzu erreserbatutako slotarik
+            reserved_slots_less_than: '%{count} baino gutxiago izan behar du'
           update:
             invalid: Arazo bat izan da izen-ematearen konfigurazioa gordetzean.
             success: Topaketen izen-emateen konfigurazioak zuzen gorde dira.
@@ -135,6 +157,7 @@ eu:
           close: "%{user_name} %{resource_name} bilera %{space_name} espazioan itxi zen"
           create: "%{user_name} %{resource_name} bilera sortu zen %{space_name} espazioan"
           delete: "%{user_name} %{resource_name} topaketa ezabatu da %{space_name} espazioan"
+          export_registrations: "%{user_name} %{resource_name} bilera erregistratu dira %{space_name} espazioan"
           update: "%{user_name} %{resource_name} topaketa %{space_name} espazioan eguneratu zen"
       mailer:
         invite_join_meeting_mailer:

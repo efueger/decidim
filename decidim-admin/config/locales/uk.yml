@@ -21,9 +21,6 @@ uk:
         description: Опис
         name: Ім'я
         parent_id: Батьківський об'єкт
-      feature:
-        name: Ім'я
-        weight: Вага
       id: Псевдонім
       newsletter:
         body: Основний текст
@@ -213,70 +210,20 @@ uk:
       exports:
         export_as: "%{name} як %{export_format}"
         notice: Зараз відбувається збереження у вигляді файлу. Ви отримаєте електронного листа після його завершення.
-      feature_permissions:
-        edit:
-          everyone: Будь-хто
-          submit: Зберегти права доступу
-          title: Редагувати права доступу
-        update:
-          success: Права доступу успішно оновлено.
-      features:
-        create:
-          error: При додаванні цієї складової сталася помилка.
-          success: Складову успішно додано.
-        destroy:
-          error: При видаленні цієї складової сталася помилка.
-          success: Складову успішно видалено.
-        edit:
-          title: Редагувати складову
-          update: Оновити
-        form:
-          default_step_settings: Налаштування за замовчуванням для кроків
-          global_settings: Загальні налаштування
-          step_settings: Налаштування кроку
+      impersonatable_users:
         index:
-          add: Додати складову
-          headers:
-            actions: Дії
-            name: Назва складової
-            type: Різновид складової
-        new:
-          add: Додати складову
-          title: 'Додати складову: %{name}'
-        publish:
-          success: Складову було успішно опубліковано.
-        title: Складові
-        unpublish:
-          success: Публікацію складової було успішно скасовано.
-        update:
-          error: При оновленні цієї складової сталася помилка.
-          success: Цю складову було успішно оновлено.
-      managed_users:
+          impersonate: Виступити в ролі учасника
+          needs_authorization_warning: Для цієї організації потрібно мати принаймні один спосіб підтвердження особи.
+          view_logs: Переглянути журнали
+      impersonations:
         close_session:
           error: При закритті поточного сеансу уособлення сталася помилка.
           success: Поточний сеанс виступу в ролі учасника успішно завершено.
         create:
-          error: При створенні керованого учасника сталася помилка.
           success: Керованого учасника було успішно створено.
-        form:
-          name: Ім'я
-        impersonate:
-          error: При видаванні себе за керованого учасника сталася помилка.
-        impersonations:
-          new:
-            impersonate: Виступити в ролі учасника
-            new_managed_user_impersonation: Новий виступ в ролі керованого учасника
-        index:
-          impersonate: Виступити в ролі учасника
-          needs_authoriation_warning: Для цієї організації потрібно мати принаймні один спосіб підтвердження особи.
-          promote: Підвищити
-          view_logs: Переглянути журнали
         new:
-          create: Створити
-          new_managed_user: Новий керований учасник
-          no_authorization_handlers: Немає доступних шляхів підтвердження особи для керування учасниками. Будь ласка, зв'яжіться зі своїм системним адміністратором.
-          select_authorization_method: Оберіть спосіб підтвердження своєї особи
-          step: '%{current}-й крок з %{total} кроків'
+          impersonate: Виступити в ролі учасника
+      managed_users:
         promotion:
           error: При підвищенні керованого учасника сталася помилка.
           success: Керованого учасника було успішно підвищено.
@@ -293,7 +240,6 @@ uk:
         areas: Терени
         configuration: Конфігурація
         dashboard: Приладна дошка
-        managed_users: Керовані учасники
         newsletters: Розсилання новин
         officializations: Надання офіційного статусу
         scope_types: Різновиди терену
@@ -329,8 +275,6 @@ uk:
             expired_at: 'Термін дії закінчився:'
             started_at: Започатковано о
             user: Учасник
-        managed_user:
-          name: Керований учасник
         newsletter:
           fields:
             created_at: 'Створено:'
@@ -515,7 +459,6 @@ uk:
         authorization_workflows: Методи підтвердження особи
         dashboard: Приладна дошка
         impersonations: Виступи в ролі учасника
-        managed_users: Керовані учасники
         officializations: Надання офіційного статусу
         scope_types: Різновиди терену
         scopes: Терени

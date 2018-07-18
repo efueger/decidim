@@ -87,7 +87,7 @@ if !Rails.env.production? || ENV["SEED"]
 
   admin.update!(
     name: Faker::Name.name,
-    nickname: Faker::Lorem.unique.characters(rand(1..20)),
+    nickname: Faker::Twitter.unique.screen_name,
     password: "decidim123456",
     password_confirmation: "decidim123456",
     organization: organization,
@@ -103,7 +103,7 @@ if !Rails.env.production? || ENV["SEED"]
 
   regular_user.update!(
     name: Faker::Name.name,
-    nickname: Faker::Lorem.unique.characters(rand(1..20)),
+    nickname: Faker::Twitter.unique.screen_name,
     password: "decidim123456",
     password_confirmation: "decidim123456",
     confirmed_at: Time.current,
@@ -136,4 +136,14 @@ if !Rails.env.production? || ENV["SEED"]
       )
     end
   end
+
+  Decidim::OAuthApplication.create!(
+    name: "Test OAuth application",
+    organization_name: "Example organization",
+    organization_url: "http://www.example.org",
+    organization_logo: File.new(File.join(seeds_root, "homepage_image.jpg")),
+    redirect_uri: "https://www.example.org/oauth/decidim",
+    scopes: "public",
+    organization: organization
+  )
 end

@@ -7,12 +7,18 @@ module Decidim
       include FilterResource
       include NeedsCurrentOrder
 
+      helper_method :geocoded_projects
       helper_method :projects, :random_seed, :project
 
       private
 
+      def geocoded_projects
+        @geocoded_projects ||= search.results.select(&:geocoded?)
+      end
+
+
       def projects
-        @projects ||= search.results.page(params[:page]).per(12)
+        @projects ||= search.results.page(params[:page]).per(current_component.settings.projects_per_page)
       end
 
       def random_seed
@@ -37,7 +43,7 @@ module Decidim
       end
 
       def context_params
-        { feature: current_feature, organization: current_organization }
+        { component: current_component, organization: current_organization }
       end
     end
   end

@@ -31,6 +31,8 @@ module Decidim
 
         def import_proposals
           proposals.map do |original_proposal|
+            next if proposal_already_copied?(original_proposal, target_component)
+
             origin_attributes = original_proposal.attributes.except(
               "id",
               "created_at",
@@ -38,7 +40,7 @@ module Decidim
               "state",
               "answer",
               "answered_at",
-              "decidim_feature_id",
+              "decidim_component_id",
               "reference",
               "proposal_votes_count",
               "proposal_notes_count"
@@ -46,16 +48,16 @@ module Decidim
 
             proposal = Decidim::Proposals::Proposal.new(origin_attributes)
             proposal.category = original_proposal.category
-            proposal.feature = target_feature
+            proposal.component = target_component
             proposal.save!
 
             proposal.link_resources([original_proposal], "copied_from_component")
-          end
+          end.compact
         end
 
         def proposals
           Decidim::Proposals::Proposal
-            .where(feature: origin_feature)
+            .where(component: origin_component)
             .where(state: proposal_states)
         end
 
@@ -70,12 +72,18 @@ module Decidim
           @proposal_states
         end
 
-        def origin_feature
-          @form.origin_feature
+        def origin_component
+          @form.origin_component
         end
 
-        def target_feature
-          @form.current_feature
+        def target_component
+          @form.current_component
+        end
+
+        def proposal_already_copied?(original_proposal, target_component)
+          original_proposal.linked_resources(:proposals, "copied_from_component").any? do |proposal|
+            proposal.component == target_component
+          end
         end
       end
     end

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 shared_examples "create a proposal" do |with_author|
-  let(:feature) { create(:proposal_feature) }
-  let(:organization) { feature.organization }
+  let(:component) { create(:proposal_component) }
+  let(:organization) { component.organization }
   let(:user) { create :user, :admin, :confirmed, organization: organization }
   let(:form) do
     form_klass.from_params(
@@ -10,8 +10,8 @@ shared_examples "create a proposal" do |with_author|
     ).with_context(
       current_user: user,
       current_organization: organization,
-      current_participatory_space: feature.participatory_space,
-      current_feature: feature
+      current_participatory_space: component.participatory_space,
+      current_component: component
     )
   end
 
@@ -89,8 +89,8 @@ shared_examples "create a proposal" do |with_author|
           end
 
           context "with a proposal limit" do
-            let(:feature) do
-              create(:proposal_feature, settings: { "proposal_limit" => 2 })
+            let(:component) do
+              create(:proposal_component, settings: { "proposal_limit" => 2 })
             end
 
             it "checks the author doesn't exceed the amount of proposals" do
@@ -111,18 +111,52 @@ shared_examples "create a proposal" do |with_author|
           end
 
           context "with a proposal limit" do
-            let(:feature) do
-              create(:proposal_feature, settings: { "proposal_limit" => 2 })
+            let(:component) do
+              create(:proposal_component, settings: { "proposal_limit" => 2 })
             end
 
             before do
-              create_list(:proposal, 2, feature: feature, author: author)
+              create_list(:proposal, 2, component: component, author: author)
             end
 
             it "checks the user group doesn't exceed the amount of proposals independently of the author" do
               expect { command.call }.to broadcast(:ok)
               expect { command.call }.to broadcast(:ok)
               expect { command.call }.to broadcast(:invalid)
+            end
+          end
+        end
+
+        describe "the proposal limit excludes withdrawn proposals" do
+          let(:component) do
+            create(:proposal_component, settings: { "proposal_limit" => 1 })
+          end
+
+          describe "when the author is a user" do
+            let(:user_group) { nil }
+
+            before do
+              create(:proposal, :withdrawn, author: author, component: component)
+            end
+            it "checks the user doesn't exceed the amount of proposals" do
+              expect { command.call }.to broadcast(:ok)
+              expect { command.call }.to broadcast(:invalid)
+
+              user_proposal_count = Decidim::Proposals::Proposal.where(author: author).count
+              expect(user_proposal_count).to eq(2)
+            end
+          end
+
+          describe "when the author is a user_group" do
+            before do
+              create(:proposal, :withdrawn, author: author, decidim_user_group_id: user_group.id, component: component)
+            end
+            it "checks the user_group doesn't exceed the amount of proposals" do
+              expect { command.call }.to broadcast(:ok)
+              expect { command.call }.to broadcast(:invalid)
+
+              user_group_proposal_count = Decidim::Proposals::Proposal.where(user_group: user_group).count
+              expect(user_group_proposal_count).to eq(2)
             end
           end
         end
@@ -140,7 +174,7 @@ shared_examples "create a proposal" do |with_author|
       end
 
       context "when geocoding is enabled" do
-        let(:feature) { create(:proposal_feature, :with_geocoding_enabled) }
+        let(:component) { create(:proposal_component, :with_geocoding_enabled) }
 
         context "when the has address checkbox is checked" do
           let(:has_address) { true }
@@ -167,7 +201,7 @@ shared_examples "create a proposal" do |with_author|
       end
 
       context "when attachments are allowed", processing_uploads_for: Decidim::AttachmentUploader do
-        let(:feature) { create(:proposal_feature, :with_attachments_allowed) }
+        let(:component) { create(:proposal_component, :with_attachments_allowed) }
         let(:attachment_params) do
           {
             title: "My attachment",

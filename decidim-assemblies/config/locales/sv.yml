@@ -3,30 +3,54 @@ sv:
     attributes:
       assembly:
         area_id: Område
-        banner_image: Banner image
+        assembly_type: Monteringstyp
+        assembly_type_other: Monteringstyp annat
+        banner_image: Bannerbild
+        closing_date: Slutdatum
+        closing_date_reason: Slutdatum årsskäl
+        composition: Sammansättning
         copy_categories: Kopiera kategorier
+        copy_components: Kopiera komponenter
         copy_features: Kopiera funktioner
+        created_by: Skapad av
+        created_by_other: Skapat av andra
+        creation_date: Skapat datum
         decidim_area_id: Område
         decidim_scope_id: Omfattning
         description: Beskrivning
         developer_group: Utvecklargrupp
         domain: Domän
-        hashtag: hashtag
+        duration: Varaktighet
+        facebook: Facebook
+        github: GitHub
+        hashtag: Hashtag
         hero_image: Hembild
+        included_at: Ingår på
+        instagram: Instagram
+        internal_organisation: Intern organisation
+        is_transparent: Är transparent
         local_area: Lokalt område
         meta_scope: Omfattning metadata
+        participatory_processes_ids: Relaterade deltagande processer
         participatory_scope: Deltagande räckvidd
         participatory_structure: Deltagande struktur
         promoted: främjas
         published_at: Publicerad på
+        purpose_of_action: Syftet med åtgärden
         scope_id: Omfattning
-        scopes_enabled: Scopes aktiverade
+        scopes_enabled: Omfattningar aktiverade
         short_description: Kort beskrivning
         show_statistics: Visa statistik
         slug: URL slug
-        subtitle: Texta
+        subtitle: Underrubrik
         target: Mål
         title: Titel
+        twitter: Twitter
+        youtube: Youtube
+      assembly_user_role:
+        email: E-post
+        name: Namn
+        role: Roll
   decidim:
     admin:
       assemblies:
@@ -36,11 +60,13 @@ sv:
         destroy:
           success: Församlingen förstördes framgångsrikt.
         edit:
-          update: Uppdatering
+          update: Uppdatera
         form:
           title: Allmän information
         index:
           not_published: Ej publicerad
+          private: Privat
+          public: Offentlig
           published: Publicerad
         new:
           create: Skapa
@@ -72,7 +98,7 @@ sv:
           success: Användaren förstördes framgångsrikt för denna montering.
         edit:
           title: Uppdatera monteringsanvändaren.
-          update: Uppdatering
+          update: Uppdatera
         index:
           assembly_admins_title: Monteringsanvändare
         new:
@@ -85,17 +111,19 @@ sv:
         assemblies: Assemblies
         assemblies_submenu:
           assembly_admins: Monteringsanvändare
-          attachment_collections: samlingar
-          attachment_files: filer
-          attachments: bilagor
-          categories: kategorier
-          features: Funktioner
+          attachment_collections: Samlingar
+          attachment_files: Filer
+          attachments: Bifogade filer
+          categories: Kategorier
+          components: Komponenter
           info: Info
-          moderations: modere
+          moderations: Moderering
+          private_users: Privata användare
       models:
         assembly:
           fields:
             created_at: Skapad vid
+            private: Privat
             promoted: Markerad
             published: Publicerad
             title: Titel
@@ -103,13 +131,13 @@ sv:
         assembly_user_role:
           fields:
             email: E-post
-            name: namn
+            name: Namn
             role: Roll
           name: Monteringsanvändare
           roles:
             admin: Administratör
             collaborator: Medarbetare
-            moderator: moderator
+            moderator: Moderator
       titles:
         assemblies: Assemblies
     admin_log:
@@ -126,11 +154,26 @@ sv:
       admin:
         assemblies:
           form:
+            select_a_created_by: Välj en skapad av
             select_an_area: Välj ett område
+            select_an_assembly_type: Välj en monterings typ
             slug_help: 'URL-slitsar används för att generera de webbadresser som pekar på den här enheten. Accepterar bara bokstäver, siffror och bindestreck, och måste börja med ett brev. Exempel: %{url}'
+            social_handlers: Social
         assembly_copies:
           form:
             slug_help: 'URL-slitsar används för att generera de webbadresser som pekar på den här enheten. Accepterar bara bokstäver, siffror och bindestreck, och måste börja med ett brev. Exempel: %{url}'
+      assembly_types:
+        commission: Comission
+        consultative_advisory: Rådgivande / rådgivande
+        executive: Verkställande
+        government: Regering
+        others: Övriga
+        participatory: Deltagande
+        working_group: Arbetsgrupp
+      created_by:
+        city_council: Statsråd
+        others: Övriga
+        public: offentlig
       index:
         title: Assemblies
       pages:
@@ -140,34 +183,61 @@ sv:
             see_all_assemblies: Se alla församlingar
       show:
         area: Område
+        assembly_type: Monteringstyp
+        children: Assemblies
+        closing_date: Slutdatum
+        composition: Sammansättning
+        created_by: Skapad av
+        creation_date: Skapat datum
         developer_group: Utvecklargrupp
+        duration: Varaktighet
+        included_at: Ingår på
+        indefinite_duration: Obestämd
+        internal_organisation: Intern organisation
+        is_transparent:
+          'false': ogenomskinlig
+          'true': transparent
         local_area: Lokalt område
         participatory_scope: Deltagande räckvidd
         participatory_structure: Deltagande struktur
+        private_space: Detta är en privat sammansättning
+        purpose_of_action: Syftet med åtgärden
+        read_less: Läs mindre
+        read_more: Läs mer
+        related_participatory_processes: Relaterade deltagande processer
         scope: Omfattning
+        social_networks: Sociala nätverk
         target: Mål
       statistics:
-        answers_count: svar
+        answers_count: Svar
         assemblies_count: Assemblies
-        comments_count: kommentarer
+        comments_count: Kommentarer
+        debates_count: Debatter
         endorsements_count: påskrifter
         headline: Aktivitet
-        meetings_count: möten
-        orders_count: röster
-        pages_count: sidor
-        projects_count: projekt
-        proposals_count: förslag
+        meetings_count: Möten
+        orders_count: Röster
+        pages_count: Sidor
+        projects_count: Projekt
+        proposals_count: Förslag
         results_count: Resultat
         surveys_count: Undersökningar
         users_count: Deltagare
-        votes_count: röster
+        votes_count: Röster
+    log:
+      value_types:
+        assembly_presenter:
+          not_found: 'Samlingen hittades inte i databasen (ID: %{id})'
     menu:
       assemblies: Assemblies
+  errors:
+    messages:
+      cannot_be_blank: kan inte vara tom
   layouts:
     decidim:
       assemblies:
         assembly:
-          take_part: Ta del
+          take_part: Delta
         index:
           promoted_assemblies: Utrustade församlingar
         order_by_assemblies:
@@ -176,10 +246,10 @@ sv:
             other: "%{count} sammansättningar"
         promoted_assembly:
           more_info: Mer information
-          take_part: Ta del
+          take_part: Delta
       assembly_header:
         assembly_menu_item: Sammansättningen
         unfold: Veckla ut
       assembly_widgets:
         show:
-          take_part: Ta del
+          take_part: Delta

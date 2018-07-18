@@ -8,8 +8,6 @@ module Decidim
       include FormFactory
       include Decidim::DeviseControllers
 
-      helper_method :terms_and_conditions_page
-
       before_action :configure_permitted_parameters
       helper_method :terms_and_conditions_page
 

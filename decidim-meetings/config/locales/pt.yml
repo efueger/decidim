@@ -21,6 +21,28 @@ pt:
         start_time: Hora de início
         title: Título
   decidim:
+    admin:
+      meeting_copies:
+        create:
+          error: Ocorreu um erro ao duplicar esta reunião.
+          success: Reunião duplicada com sucesso.
+        new:
+          copy: cópia de
+          select: Selecione os dados que você gostaria de duplicar
+          title: Reunião duplicada
+    components:
+      meetings:
+        actions:
+          join: Junte-se
+        name: Reuniões
+        settings:
+          global:
+            announcement: Anúncio
+            comments_enabled: Comentários ativados
+            default_registration_terms: Termos de registro padrão
+          step:
+            announcement: Anúncio
+            comments_blocked: Comentários bloqueados
     events:
       meetings:
         meeting_closed:
@@ -53,18 +75,6 @@ pt:
           email_outro: Você recebeu esta notificação porque está seguindo a reunião "%{resource_title}". Você pode ignorá-lo do link anterior.
           email_subject: A reunião "%{resource_title}" começará em menos de 48h.
           notification_title: A reunião <a href="%{resource_path}">%{resource_title}</a> começará em menos de 48h.
-    features:
-      meetings:
-        actions:
-          join: Junte-se
-        name: Reuniões
-        settings:
-          global:
-            announcement: Anúncio
-            comments_enabled: Comentários ativados
-          step:
-            announcement: Anúncio
-            comments_blocked: Comentários bloqueados
     meetings:
       actions:
         attachment_collections: Coleções
@@ -112,6 +122,16 @@ pt:
           new:
             create: Criar
             title: Criar reunião
+          service:
+            description: Descrição
+            down: Baixa
+            remove: Remover
+            service: Serviço
+            title: Título
+            up: Acima
+          services:
+            add_service: Adicionar serviço
+            services: Serviços
           update:
             invalid: Tem havido um problema ao atualizar esta reunião
             success: Reunião atualizada com sucesso
@@ -127,6 +147,8 @@ pt:
             registrations_count:
               one: Houve 1 registro.
               other: Houve %{count} registos.
+            reserved_slots_help: Deixe para 0 se você não tiver slots reservados
+            reserved_slots_less_than: Deve ser menor ou igual a %{count}
           update:
             invalid: Ocorreu um problema ao salvar as configurações de registro.
             success: Configurações de registro de reunião salvas com sucesso.
@@ -135,6 +157,7 @@ pt:
           close: "%{user_name} fechou a reunião %{resource_name} no espaço %{space_name}"
           create: "%{user_name} criou a reunião %{resource_name} no espaço %{space_name}"
           delete: "%{user_name} eliminou a reunião %{resource_name} no espaço %{space_name}"
+          export_registrations: "%{user_name} exportou os registros da reunião %{resource_name} no espaço %{space_name}"
           update: "%{user_name} atualizou a reunião %{resource_name} no espaço %{space_name}"
       mailer:
         invite_join_meeting_mailer:

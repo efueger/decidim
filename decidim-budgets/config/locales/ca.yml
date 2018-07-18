@@ -43,6 +43,11 @@ ca:
           update:
             invalid: Hi ha hagut un problema actualitzant aquest projecte
             success: Projecte actualitzat correctament
+      admin_log:
+        project:
+          create: "%{user_name} ha creat el projecte %{resource_name} a l'espai %{space_name}"
+          delete: "%{user_name} ha eliminat el projecte %{resource_name} de l'espai %{space_name}"
+          update: "%{user_name} ha actualitzat el projecte %{resource_name} de l'espai %{space_name}"
       models:
         project:
           fields:
@@ -101,21 +106,22 @@ ca:
         show:
           budget: Pressupost
           view_all_projects: Veure tots els projectes
-    features:
+    components:
       budgets:
         actions:
           vote: Donar suport
         name: Pressupostos
         settings:
           global:
-            announcement: Avís
+            announcement: Anunci
             comments_enabled: Comentaris habilitats
+            projects_per_page: Projectes per pàgina
             total_budget: Pressupost total
             vote_threshold_percent: Percentatge del pressupost mínim per fer el vot
           step:
-            announcement: Avís
+            announcement: Anunci
             comments_blocked: Comentaris bloquejats
-            show_votes: Mostra vots
+            show_votes: Mostra els suports
             votes_enabled: Suports habilitats
     orders:
       checkout:

@@ -2,31 +2,55 @@ fr:
   activemodel:
     attributes:
       assembly:
-        area_id: Région
+        area_id: Zone d'application
+        assembly_type: Type d'agora
+        assembly_type_other: Autre type d'agora
         banner_image: Image d'en-tête
+        closing_date: Date de clôture
+        closing_date_reason: Cause de la clôture
+        composition: Composition
         copy_categories: Copier les catégories
+        copy_components: Copier les fonctionnalités
         copy_features: Copier les fonctionnalités
-        decidim_area_id: Région
-        decidim_scope_id: Portée
+        created_by: Créé par
+        created_by_other: Si "autres", précisez
+        creation_date: Date de création
+        decidim_area_id: Zone d'application
+        decidim_scope_id: Périmètre d'application
         description: Description
         developer_group: Organisateur
         domain: Domaine
+        duration: Durée du mandat
+        facebook: Facebook
+        github: GitHub
         hashtag: Hashtag
         hero_image: Image de la page d'accueil
+        included_at: Intégrée à cette plateforme le
+        instagram: Instagram
+        internal_organisation: Organisation interne
+        is_transparent: Est transparent
         local_area: Espace d'organisation
         meta_scope: Échelle
+        participatory_processes_ids: Processus participatifs associés
         participatory_scope: Objectif
         participatory_structure: Modalités
         promoted: Mis en avant
         published_at: Publié à
+        purpose_of_action: But de l'action
         scope_id: Périmètre d'application
         scopes_enabled: Périmètres d'application activés
         short_description: Résumé
-        show_statistics: Montrer les statistiques
+        show_statistics: Afficher les statistiques
         slug: Identifiant
         subtitle: Sous-titre
         target: Participants
         title: Titre
+        twitter: Twitter
+        youtube: Youtube
+      assembly_user_role:
+        email: E-mail
+        name: "Nom\n"
+        role: Fonction
   decidim:
     admin:
       assemblies:
@@ -41,6 +65,8 @@ fr:
           title: Informations générales
         index:
           not_published: Non publié
+          private: Privé
+          public: Publique
           published: Publié
         new:
           create: Créer
@@ -74,7 +100,7 @@ fr:
           title: Mettre à jour l'utilisateur de l'agora.
           update: Mettre à jour
         index:
-          assembly_admins_title: Utilisateurs de l'agora
+          assembly_admins_title: Administrateurs de l'agora
         new:
           create: Créer
           title: Nouvel utilisateur d'agora.
@@ -84,18 +110,20 @@ fr:
       menu:
         assemblies: Agora
         assemblies_submenu:
-          assembly_admins: Utilisateurs de l'agora
+          assembly_admins: Administrateurs de l'agora
           attachment_collections: Dossiers
           attachment_files: Fichiers
           attachments: Documents liés
           categories: Catégories
-          features: Fonctionnalités
+          components: Fonctionnalités
           info: Information
           moderations: Modérations
+          private_users: Utilisateurs privés
       models:
         assembly:
           fields:
             created_at: Créé le
+            private: Privé
             promoted: Mis en évidence
             published: Publié
             title: Titre
@@ -114,55 +142,97 @@ fr:
         assemblies: Agora
     admin_log:
       assembly:
-        create: "%{user_name} a créé l'assemblage %{resource_name}"
-        publish: "%{user_name} a publié l'assembly %{resource_name}"
-        unpublish: "%{user_name} non publié l'assemblage %{resource_name}"
-        update: "%{user_name} a mis à jour l'assemblage %{resource_name}"
+        create: "%{user_name} a créé l'agora %{resource_name}"
+        publish: "%{user_name} a publié l'agora %{resource_name}"
+        unpublish: "%{user_name} n'a pas publié l'agora %{resource_name}"
+        update: "%{user_name} a mis à jour l'agora %{resource_name}"
       assembly_user_role:
-        create: "%{user_name} invité %{resource_name} à l'assembly %{space_name}"
-        delete: "%{user_name} a supprimé l'utilisateur %{resource_name} de l'assembly %{space_name}"
-        update: "%{user_name} a changé le rôle de %{resource_name} dans l'assembly %{space_name}"
+        create: "%{user_name} a invité %{resource_name} à l'agora %{space_name}"
+        delete: "%{user_name} a supprimé l'utilisateur %{resource_name} de l'agora%{space_name}"
+        update: "%{user_name} a changé le rôle de %{resource_name} dans l'agora %{space_name}"
     assemblies:
       admin:
         assemblies:
           form:
+            select_a_created_by: Sélectionnez un créé par
             select_an_area: Sélectionnez une zone
+            select_an_assembly_type: Sélectionnez un type d'agora
             slug_help: 'Les identifiants d''URL sont utilisés pour générer les URL qui envoient vers cette agora. N''accepte que des lettres, des chiffres et des tirets et doit commencer par une lettre. Exemple: %{url}'
+            social_handlers: Réseaux sociaux
         assembly_copies:
           form:
             slug_help: 'Les identifiants d''URL sont utilisés pour générer les URL qui envoient vers cette agora. N''accepte que des lettres, des chiffres et des tirets et doit commencer par une lettre. Exemple: %{url}'
+      assembly_types:
+        commission: Commission
+        consultative_advisory: Consultatif / consultatif
+        executive: Exécutif
+        government: Gouvernement
+        others: Autres
+        participatory: Participatif
+        working_group: Groupe de travail
+      created_by:
+        city_council: Conseil municipal
+        others: Autres
+        public: Publique
       index:
         title: Agora
       pages:
         home:
           highlighted_assemblies:
             active_assemblies: Agora actives
-            see_all_assemblies: Voir toutes les Agora
+            see_all_assemblies: Voir toutes les agora
       show:
-        area: Région
+        area: Zone
+        assembly_type: Type d'agora
+        children: Agora
+        closing_date: Date de clôture
+        composition: Composition
+        created_by: Créé par
+        creation_date: Date de création
         developer_group: Organisateur
+        duration: Durée du mandat
+        included_at: Intégrée à cette plateforme le
+        indefinite_duration: Durée indéfinie
+        internal_organisation: Organisation interne
+        is_transparent:
+          'false': opaque
+          'true': transparent
         local_area: Espace d'organisation
         participatory_scope: Objectif
         participatory_structure: Modalités
+        private_space: Ceci est une agora privée
+        purpose_of_action: But de l'action
+        read_less: Lire moins
+        read_more: Lire la suite
+        related_participatory_processes: Concertations associées
         scope: Échelle
+        social_networks: Réseaux sociaux
         target: Participants
       statistics:
         answers_count: Réponses
         assemblies_count: Agora
         comments_count: Commentaires
+        debates_count: Débats
         endorsements_count: Recommandations
         headline: Activité
         meetings_count: Rencontres
-        orders_count: Votes
+        orders_count: Soutiens
         pages_count: Pages
         projects_count: Projets
         proposals_count: Propositions
         results_count: Résultats
         surveys_count: Enquêtes
         users_count: Participants
-        votes_count: Votes
+        votes_count: Soutiens
+    log:
+      value_types:
+        assembly_presenter:
+          not_found: 'L''agora n''a pas été trouvée sur la base de données (ID: %{id})'
     menu:
       assemblies: Agora
+  errors:
+    messages:
+      cannot_be_blank: ne peut être vide
   layouts:
     decidim:
       assemblies:
@@ -173,12 +243,12 @@ fr:
         order_by_assemblies:
           assemblies:
             one: "%{count} agora"
-            other: "%{count} Agora"
+            other: "%{count} agora"
         promoted_assembly:
           more_info: Plus d'informations
           take_part: Participer
       assembly_header:
-        assembly_menu_item: L'agora
+        assembly_menu_item: Présentation
         unfold: Déplier
       assembly_widgets:
         show:

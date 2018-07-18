@@ -15,8 +15,45 @@ pt-BR:
         answer: Responder
       proposals_copy:
         copy_proposals: Eu entendo que isso irá importar todas as propostas do componente selecionado para o atual e que esta ação não pode ser revertida.
-        origin_feature_id: Componente para copiar as propostas de
+        origin_component_id: Componente para copiar as propostas de
   decidim:
+    components:
+      proposals:
+        actions:
+          create: Crio
+          endorse: Endossar
+          vote: Voto
+          withdraw: retirar o
+        name: Propostas
+        settings:
+          global:
+            announcement: Anúncio
+            attachments_allowed: Permitir anexos
+            can_accumulate_supports_beyond_threshold: Pode acumular suportes além do limiar
+            comments_enabled: Comentários ativados
+            geocoding_enabled: Geocoding habilitado
+            new_proposal_help_text: Novo texto de ajuda da proposta
+            official_proposals_enabled: Proposta oficial habilitada
+            proposal_answering_enabled: Resposta de proposta ativada
+            proposal_edit_before_minutes: As propostas podem ser editadas pelos autores antes que muitos minutos passem.
+            proposal_length: Comprimento máximo do corpo da proposta
+            proposal_limit: Limite da proposta por usuário
+            proposal_wizard_step_1_help_text: Assistente de propostas "Criar" passo ajuda texto
+            proposal_wizard_step_2_help_text: Assistente de propostas "Compare" passo ajuda texto
+            proposal_wizard_step_3_help_text: Texto de ajuda da etapa "Completa" do assistente de proposta
+            proposal_wizard_step_4_help_text: Assistente de propostas "Publicar" passo ajuda texto
+            threshold_per_proposal: Limiar por proposta
+            vote_limit: Limite de voto por usuário
+          step:
+            announcement: Anúncio
+            comments_blocked: Comentários bloqueados
+            creation_enabled: Criação de proposta ativada
+            endorsements_blocked: Endossos bloqueados
+            endorsements_enabled: Endossos habilitados
+            proposal_answering_enabled: Resposta de proposta ativada
+            votes_blocked: Votos bloqueados
+            votes_enabled: Votos ativados
+            votes_hidden: Votos ocultos (se os votos estiverem ativados, verificar isso esconderá o número de votos)
     events:
       proposals:
         creation_enabled:
@@ -34,16 +71,6 @@ pt-BR:
           email_outro: Você recebeu esta notificação porque está seguindo "%{resource_title}". Você pode ignorá-lo do link anterior.
           email_subject: Uma proposta que você está seguindo foi aceita
           notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi aceita.
-        proposal_created:
-          email_intro: "%{author_name} %{author_nickname}, quem você está seguindo, criou uma nova proposta, confira e contribui:"
-          email_outro: Você recebeu esta notificação porque está seguindo %{author_nickname}. Você pode parar de receber notificações após o link anterior.
-          email_subject: Nova proposta por %{author_nickname}
-          notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi criada por <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
-        proposal_created_for_space:
-          email_intro: A proposta "%{resource_title}" foi adicionado a "%{participatory_space_title}" que você está seguindo.
-          email_outro: Você recebeu esta notificação porque está seguindo "%{participatory_space_title}". Você pode ignorá-lo do link anterior.
-          email_subject: Nova proposta adicionada a %{participatory_space_title}
-          notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi adicionado a %{participatory_space_title}
         proposal_endorsed:
           email_intro: "%{endorser_name} %{endorser_nickname}, quem você está seguindo, acabou de aprovar uma proposta que pode ser interessante para você, confira e contribua:"
           email_outro: Você recebeu esta notificação porque você está seguindo %{endorser_nickname}. Você pode parar de receber notificações após o link anterior.
@@ -54,6 +81,20 @@ pt-BR:
           email_outro: Você recebeu esta notificação porque está seguindo "%{resource_title}". Você pode ignorá-lo do link anterior.
           email_subject: Uma proposta que você está seguindo está sendo avaliada
           notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> está sendo avaliada.
+        proposal_mentioned:
+          email_intro: Sua proposta "%{mentioned_proposal_title}" foi mencionada <a href="%{resource_path}">neste espaço</a> nos comentários.
+          email_subject: Sua proposta "%{mentioned_proposal_title}" foi mencionada
+          notification_title: Sua proposta "%{mentioned_proposal_title}" foi mencionada <a href="%{resource_path}">neste espaço</a> nos comentários.
+        proposal_published:
+          email_intro: "%{author_name} %{author_nickname}, que você está seguindo, publicou uma nova proposta, confira e contribua:"
+          email_outro: Você recebeu esta notificação porque está seguindo %{author_nickname}. Você pode parar de receber notificações após o link anterior.
+          email_subject: Nova proposta de %{author_nickname}
+          notification_title: A <a href="%{resource_path}">%{resource_title}</a> proposta foi publicada por <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
+        proposal_published_for_space:
+          email_intro: A proposta "%{resource_title}" foi adicionada a "%{participatory_space_title}" que você está seguindo.
+          email_outro: Você recebeu esta notificação porque está seguindo "%{participatory_space_title}". Você pode deixar de segui-lo no link anterior.
+          email_subject: Nova proposta adicionada a %{participatory_space_title}
+          notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi adicionada a %{participatory_space_title}
         proposal_rejected:
           email_intro: 'A proposta "%{resource_title}" foi rejeitada. Você pode ler a resposta nesta página:'
           email_outro: Você recebeu esta notificação porque está seguindo "%{resource_title}". Você pode ignorá-lo do link anterior.
@@ -69,42 +110,6 @@ pt-BR:
           email_outro: Você recebeu esta notificação porque está seguindo %{participatory_space_title}. Você pode parar de receber notificações após o link anterior.
           email_subject: As propostas de votação começaram para %{participatory_space_title}
           notification_title: Agora você pode iniciar <a href="%{resource_path}">propostas de votação</a> em <a href="%{participatory_space_url}">%{participatory_space_title}</a>
-    features:
-      proposals:
-        actions:
-          create: Criar
-          endorse: Endossar
-          vote: Votar
-          withdraw: retirar o
-        name: Propostas
-        settings:
-          global:
-            announcement: Anúncio
-            attachments_allowed: Permitir anexos
-            can_accumulate_supports_beyond_threshold: Pode acumular suportes além do limiar
-            comments_enabled: Comentários ativados
-            geocoding_enabled: Geocoding ativado
-            maximum_votes_per_proposal: Máximo de votos por proposta
-            new_proposal_help_text: Novo texto de ajuda da proposta
-            official_proposals_enabled: Proposta oficial habilitada
-            proposal_answering_enabled: Resposta de proposta ativada
-            proposal_edit_before_minutes: As propostas podem ser editadas pelos autores antes que muitos minutos passem.
-            proposal_length: Comprimento máximo do corpo da proposta
-            proposal_limit: Limite da proposta por usuário
-            proposal_wizard_step_1_help_text: Assistente de propostas "Criar" passo ajuda texto
-            proposal_wizard_step_2_help_text: Assistente de propostas "Compare" passo ajuda texto
-            proposal_wizard_step_3_help_text: Assistente de propostas "Publicar" passo ajuda texto
-            vote_limit: Limite de voto por usuário
-          step:
-            announcement: Anúncio
-            comments_blocked: Comentários bloqueados
-            creation_enabled: Criação de proposta ativada
-            endorsements_blocked: Endossos bloqueados
-            endorsements_enabled: Endossos habilitados
-            proposal_answering_enabled: Resposta de proposta ativada
-            votes_blocked: Votos bloqueados
-            votes_enabled: Votos ativados
-            votes_hidden: Votos ocultos (se os votos estiverem ativados, verificar isso esconderá o número de votos)
     participatory_processes:
       participatory_process_groups:
         highlighted_proposals:
@@ -182,8 +187,8 @@ pt-BR:
             success: "%{number} propostas importadas com sucesso"
           new:
             create: Propostas de importação
-            no_features: Não há outros recursos de proposta neste espaço participativo para importar as propostas.
-            select_feature: Selecione um componente
+            no_components: Não há outros componentes da proposta neste espaço participativo para importar as propostas.
+            select_component: Selecione um componente
             select_states: Verifique os estados das propostas para importar
         shared:
           info_proposal:
@@ -206,6 +211,9 @@ pt-BR:
       create:
         error: Ocorreu erros ao salvar a proposta.
         success: Proposta criada com sucesso. Salvo como um rascunho.
+      destroy_draft:
+        error: Houve erros ao excluir o rascunho da proposta.
+        success: O rascunho da proposta foi destruído com sucesso.
       models:
         proposal:
           fields:
@@ -229,7 +237,7 @@ pt-BR:
           select_identity: Selecione a identidade
       proposal_endorsements_helper:
         endorsement_button:
-          already_endorsed: Já endossado
+          already_endorsed: Endossado
           endorse: Endossar
       proposal_votes:
         create:
@@ -239,6 +247,11 @@ pt-BR:
           mine_is_different: Minha proposta é diferente
           no_similars_found: Bem feito! Não foram encontradas propostas semelhantes
           title: Propostas semelhantes
+        complete:
+          attachment_legend: "(Opcional) Adicione um anexo"
+          select_a_category: Por favor, selecione uma categoria
+          send: Enviar
+          title: Complete sua proposta
         count:
           proposals_count:
             one: 1 proposta
@@ -249,19 +262,14 @@ pt-BR:
           send: Enviar
           title: Editar proposta
         edit_draft:
+          discard: Descarte este rascunho
+          discard_confirmation: Tem certeza de que deseja descartar este rascunho da proposta?
           send: Visualização
           title: Editar proposta de rascunho
-        endorsement_button:
-          already_endorsed: Já endossado
-          already_endorsed_hover: Unendorse
         endorsement_identities_cabin:
           endorse: Endossar
         endorsements_card_row:
           endorse: Endossar
-        endorsements_listing:
-          see_all: Veja tudo
-          see_less: Veja menos
-          title: Lista de endossos
         filters:
           accepted: Aceitaram
           activity: Atividade
@@ -282,6 +290,10 @@ pt-BR:
           filter: Filtro
           filter_by: Filtrar por
           unfold: Desdobrar
+        identities_listing:
+          see_all: Veja tudo
+          see_less: Veja menos
+          title: Lista de endossos
         index:
           new_proposal: Nova proposta
           see_all_withdrawn: Veja todas as propostas retiradas
@@ -291,8 +303,6 @@ pt-BR:
             one: voto
             other: votos
         new:
-          attachment_legend: "(Opcional) Adicionar um anexo"
-          select_a_category: Selecione uma categoria
           send: Continuar
           title: Crie sua proposta
         orders:
@@ -322,6 +332,9 @@ pt-BR:
           withdraw_btn_hint: Você pode retirar sua proposta se mudar de idéia, desde que não tenha recebido nenhum suporte. A proposta não é excluída, ela aparecerá na lista de propostas retiradas.
           withdraw_confirmation: Tem certeza de retirar essa proposta?
           withdraw_proposal: Retirar proposta
+        tags:
+          changed_from: "(alterado de <u>%{previous_category}</u> por um administrador)"
+          filed_as: Arquivado como
         vote_button:
           already_voted: Já votou
           already_voted_hover: Unvote
@@ -337,11 +350,11 @@ pt-BR:
           need_more_votes: Precisa de mais votos
         voting_rules:
           can_accumulate_supports_beyond_threshold:
-            description: Cada proposta pode acumular mais de votos máximos
-          maximum_votes_per_proposal:
-            description: Cada proposta pode receber um máximo de %{limit} votos.
+            description: Cada proposta pode acumular mais de %{limit} suporta
           proposal_limit:
             description: Você pode criar até %{limit} propostas.
+          threshold_per_proposal:
+            description: Para serem aceitos, as propostas precisam chegar aos apoios %{limit}
           title: 'A votação está sujeita às seguintes regras:'
           vote_limit:
             description: Você pode votar até %{limit} propostas.
@@ -354,7 +367,8 @@ pt-BR:
           see_steps: ver etapas
           step_1: Crie sua proposta
           step_2: Comparar
-          step_3: Publique sua proposta
+          step_3: Completo
+          step_4: Publique sua proposta
           step_of: Etapa %{current_step_num} de %{total_steps}
       publish:
         error: Houve erros ao publicar a proposta.

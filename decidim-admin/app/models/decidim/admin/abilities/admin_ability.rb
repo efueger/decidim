@@ -25,19 +25,20 @@ module Decidim
             organization == user.organization
           end
 
-          can :manage, Feature
+          can :manage, Component
           can :manage, :admin_users
 
-          can :manage, :managed_users
-
-          cannot [:new, :create], :managed_users if empty_available_authorizations?
+          can :read, :impersonatable_users
 
           can(:impersonate, Decidim::User) do |user_to_impersonate|
-            user_to_impersonate.managed? && Decidim::ImpersonationLog.active.empty?
+            available_authorization_handlers? &&
+              !user_to_impersonate.admin? &&
+              user_to_impersonate.roles.empty? &&
+              Decidim::ImpersonationLog.active.where(admin: user).empty?
           end
 
           can(:promote, Decidim::User) do |user_to_promote|
-            user_to_promote.managed? && Decidim::ImpersonationLog.active.empty?
+            user_to_promote.managed? && Decidim::ImpersonationLog.active.where(admin: user).empty?
           end
 
           can :manage, Moderation
@@ -49,6 +50,8 @@ module Decidim
           can :manage, Area
           can :manage, AreaType
           can :manage, Newsletter
+          can :manage, :oauth_applications
+          can :manage, OAuthApplication
 
           can [:create, :index, :new, :read, :invite], User
 
@@ -60,14 +63,14 @@ module Decidim
           can [:index, :new, :create, :destroy], :officializations
 
           can :index, :authorization_workflows
+
           can [:index, :update], Authorization
         end
 
         private
 
-        def empty_available_authorizations?
-          return unless @context[:current_organization]
-          @context[:current_organization].available_authorizations.empty?
+        def available_authorization_handlers?
+          user.organization.available_authorization_handlers.any?
         end
       end
     end

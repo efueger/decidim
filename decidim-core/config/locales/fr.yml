@@ -2,7 +2,7 @@ fr:
   activemodel:
     attributes:
       account:
-        delete_reason: Pour quelle raison de supprimez-vous votre compte ?
+        delete_reason: Pour quelle(s) raison(s) supprimez-vous votre compte ?
       dummy_authorization_handler:
         document_number: Numéro de document d'identité
         postal_code: Code postal
@@ -10,12 +10,12 @@ fr:
       report:
         details: Commentaires additionnels
       user:
-        about: À propos de moi
+        about: A propos de moi
         email: Votre email
         name: Votre nom
         nickname: Votre pseudonyme
-        password: Nouveau mot de passe
-        password_confirmation: Confirmez votre nouveau mot de passe
+        password: Votre mot de passe
+        password_confirmation: Confirmez votre mot de passe
         personal_url: Site internet personnel
         remove_avatar: Supprimer l'avatar
         user_group_document_number: Numéro d'identification de l'organisation
@@ -29,7 +29,7 @@ fr:
         name: Nom d'utilisateur
         nickname: Votre pseudonyme
         password: Mot de passe
-        password_confirmation: Confirmation mot de passe
+        password_confirmation: Confirmation du mot de passe
         remember_me: Retenir le mot de passe
         user_group_document_number: Numéro de document de l'organisation
         user_group_name: Nom de l'organisation
@@ -47,7 +47,7 @@ fr:
         confirm:
           close: Fermer la fenêtre
           ok: Oui, je souhaite supprimer mon compte
-          question: Êtes-vous sûr de vouloir supprimer votre compte?
+          question: Êtes-vous sûr de vouloir supprimer votre compte ?
           title: Supprimer mon compte
         explanation: Veuillez indiquer la raison pour laquelle vous souhaitez supprimer votre compte (facultatif).
       destroy:
@@ -59,42 +59,50 @@ fr:
       update:
         error: Une erreur s'est produite lors de la mise à jour de votre compte.
         success: Votre compte a été mis à jour avec succès.
-        success_with_email_confirmation: Votre compte a été mis à jour avec succès. Vous recevrez un email pour confirmer votre nouvelle adresse e-mail.
+        success_with_email_confirmation: Votre compte a été mis à jour avec succès. Vous recevrez un email pour confirmer votre nouvelle adresse email.
     admin_log:
-      feature:
-        create: "%{user_name} a ajouté le %{resource_name} caractéristique de la %{space_name} espace"
-        delete: "%{user_name} a retiré le %{resource_name} caractéristique de la %{space_name} espace"
-        publish: "%{user_name} a publié la fonctionnalité %{resource_name} dans l'espace %{space_name}"
-        unpublish: "%{user_name} a dépublié la fonctionnalité %{resource_name} de l'espace %{space_name}"
+      area:
+        create: "%{user_name} a créé la zone d'application %{resource_name}"
+        delete: "%{user_name} a supprimé la zone d'application %{resource_name}"
+        update: "%{user_name} a mis à jour la zone d'application %{resource_name}"
+      component:
+        create: "%{user_name} a ajouté le module %{resource_name} à l'espace %{space_name}"
+        delete: "%{user_name} a supprimé le module %{resource_name} de l'espace %{space_name}"
+        publish: "%{user_name} a publié le module %{resource_name} dans l'espace %{space_name}"
+        unpublish: "%{user_name} a dépublié le module %{resource_name} de l'espace %{space_name}"
       moderation:
         hide: "%{user_name} a caché une ressource de type %{resource_type} dans le %{space_name} espace"
-        unreport: "%{user_name} a affiché une ressource de type %{resource_type} dans le %{space_name} espace"
+        unreport: "%{user_name} a annulé le signalement d'une ressource de type %{resource_type} dans l'espace %{space_name}"
       newsletter:
-        create: "%{user_name} a créé le %{resource_name} bulletin"
-        delete: "%{user_name} a supprimé le %{resource_name} bulletin"
-        deliver: "%{user_name} a livré le %{resource_name} bulletin"
-        update: "%{user_name} a mis à jour le %{resource_name} bulletin"
+        create: "%{user_name} a créé la newsletter %{resource_name}"
+        delete: "%{user_name} a supprimé la newsletter %{resource_name}"
+        deliver: "%{user_name} a envoyé la newsletter %{resource_name}"
+        update: "%{user_name} a mis à jour la newsletter %{resource_name}"
+      oauth_application:
+        create: "%{user_name} a créé l'application %{resource_name} OAuth"
+        delete: "%{user_name} a supprimé l'application %{resource_name} OAuth"
+        update: "%{user_name} a mis à jour l'application %{resource_name} OAuth"
       organization:
         update: "%{user_name} a mis à jour les paramètres de l'organisation"
       scope:
-        create: "%{user_name} a créé la portée %{resource_name}"
-        create_with_parent: "%{user_name} a créé la portée %{resource_name} à l'intérieur de la portée %{parent_scope}"
-        delete: "%{user_name} a supprimé la portée %{resource_name}"
-        delete_with_parent: "%{user_name} a supprimé la portée %{resource_name} à l'intérieur de la portée %{parent_scope}"
-        update: "%{user_name} a mis à jour la portée %{resource_name}"
-        update_with_parent: "%{user_name} a mis à jour la portée %{resource_name} à l'intérieur de la portée %{parent_scope}"
+        create: "%{user_name} a créé le périmètre %{resource_name}"
+        create_with_parent: "%{user_name} a créé le périmètre %{resource_name} à l'intérieur du périmètre %{parent_scope}"
+        delete: "%{user_name} a supprimé le périmètre %{resource_name}"
+        delete_with_parent: "%{user_name} a supprimé le périmètre %{resource_name} à l'intérieur du périmètre %{parent_scope}"
+        update: "%{user_name} a mis à jour le périmètre %{resource_name}"
+        update_with_parent: "%{user_name} a mis à jour le périmètre %{resource_name} à l'intérieur du périmètre %{parent_scope}"
       static_page:
-        create: "%{user_name} a créé le %{resource_name} page statique"
-        delete: "%{user_name} a supprimé le %{resource_name} page statique"
-        update: "%{user_name} a mis à jour le %{resource_name} page statique"
+        create: "%{user_name} a créé la page statique %{resource_name}"
+        delete: "%{user_name} a supprimé la page statique %{resource_name}"
+        update: "%{user_name} a mis à jour la page statique %{resource_name}"
       user:
-        invite: "%{user_name} a invité l'utilisateur %{resource_name} avec rôle: %{role}"
+        invite: "%{user_name} a invité l'utilisateur %{resource_name} avec le rôle: %{role}"
         officialize: "%{user_name} a officialisé l'utilisateur %{resource_name}"
-        remove_from_admin: "%{user_name} a supprimé l'utilisateur %{resource_name} avec rôle: %{role}"
-        unofficialize: "%{user_name} a enlevé la validation de l'utilisateur %{resource_name}"
+        remove_from_admin: "%{user_name} a retiré le rôle: %{role} de l'utilisateur %{resource_name}"
+        unofficialize: "%{user_name} a retiré l'officialisation de l'utilisateur %{resource_name}"
       user_group:
-        reject: "%{user_name} a rejeté le %{resource_name} vérification du groupe d'utilisateurs"
-        verify: "%{user_name} a vérifié le %{resource_name} groupe d'utilisateurs"
+        reject: "%{user_name} a rejeté la vérification du groupe d'utilisateurs %{resource_name}"
+        verify: "%{user_name} a vérifié le groupe d'utilisateurs %{resource_name}"
     anonymous_user: Anonyme
     application:
       collection:
@@ -126,6 +134,21 @@ fr:
         name: Autorisation Truc
       granted_at: Accordé à %{timestamp}
       started_at: Commencé à %{timestamp}
+    components:
+      dummy:
+        actions:
+          bar: Bar
+          foo: Foo
+        name: Fonctionnalité factice
+        settings:
+          global:
+            comments_enabled: Activer le module de commentaire
+            dummy_global_attribute_1: Attribut factice 1
+            dummy_global_attribute_2: Attribut factice 2
+          step:
+            comments_blocked: Bloquer la création de nouveaux commentaires
+            dummy_step_attribute_1: Attribut d'étape factice 1
+            dummy_step_attribute_2: Attribut d'étape factice 2
     contact: Contact
     core:
       actions:
@@ -136,7 +159,7 @@ fr:
           email_already_exists: Un autre compte utilise la même adresse de email
         new:
           complete_profile: Complétez votre profil
-          nickname_help: Votre identifiant court et unique sur cette plateforme (ne pas utiliser d'espace)
+          nickname_help: Votre identifiant court et unique sur cette plateforme (ne pas utiliser d'espace).
           sign_up: Veuillez compléter votre profil
           subtitle: Remplissez le formulaire suivant pour compléter l'inscription
           username_help: Nom public qui apparaît pour vos messages. Dans le but de garantir l'anonymat, vous pouvez choisir n'importe quel nom.
@@ -164,6 +187,21 @@ fr:
       shared:
         omniauth_buttons:
           or: Ou
+    doorkeeper:
+      authorizations:
+        new:
+          authorize: Autoriser l'application
+          by_organization_link_html: <small class="heading-small">par %{link}</small>
+          cancel: Annuler
+          connect_your_account_html: Connectez-vous à votre compte en signant sur <strong>%{organization}</strong>
+          publish_content: Publier du contenu pour vous
+          see_email: Voir votre email
+          see_name: Voir votre nom
+          see_username: Voir votre nom d'utilisateur
+          this_application_will_be_able_to: 'Cette application sera capable de :'
+          this_application_will_not_be_able_to: 'Cette application ne sera pas capable d e:'
+          update_profile: Mettre à jour votre profil
+          wants_to_use_your_account_html: "<strong>%{application_name}</strong> veut utiliser votre compte"
     errors:
       internal_server_error:
         title: Il y a eu un problème avec notre serveur
@@ -175,35 +213,21 @@ fr:
     events:
       attachments:
         attachment_created:
-          email_intro: 'Un nouveau document a été ajouté à %{resource_title}. Vous pouvez le voir sur cette page:'
+          email_intro: 'Un nouveau document a été ajouté à %{resource_title}. Vous pouvez le voir sur cette page :'
           email_outro: Vous avez reçu cette notification, car vous suivez %{resource_title}. Vous pouvez arrêter de recevoir des notifications à partir du lien précédent.
           email_subject: Une mise à jour de %{resource_title}
           notification_title: Un <a href="%{resource_path}"> nouveau document</a> a été ajouté à <a href="%{attached_to_url}">%{resource_title}</a>
+      components:
+        component_published:
+          email_intro: 'La fonctionnalité %{resource_title} est maintenant active pour %{participatory_space_title}. Vous pouvez le voir sur cette page:'
+          email_outro: Vous avez reçu cette notification, car vous suivez %{participatory_space_title}. Vous pouvez arrêter de recevoir des notifications en suivant le lien précédent.
+          email_subject: Une mise à jour de %{participatory_space_title}
+          notification_title: La fonctionnalité %{resource_title} est maintenant active pour <a href="%{resource_path}">%{participatory_space_title}</a>
       email_event:
         email_greeting: Bonjour %{user_name},
         email_intro: '« %{resource_title} » a été mis à jour. Vous pouvez le voir sur cette page :'
         email_outro: Vous recevez cet notification car vous suivez « %{resource_title} ». Vous pouvez cesser de le suivre en allant sur le lien précédent.
         email_subject: Mise à jour de %{resource_title}
-        moderation:
-          email_intro: 'Un nouveau contenu est à modérer. Vous pouvez le voir sur cette page :'
-          email_subject: Nouveau contenu en attente de modération
-      feature_published_event:
-        email_intro: 'Le composant %{resource_title} est maintenant actif pour %{participatory_space_title}. Vous pouvez le voir sur cette page :'
-        email_outro: Vous recevez cette notification car vous suivez « %{participatory_space_title} ». Vous pouvez cesser de le suivre en allant sur le lien précédent.
-        email_subject: Une mise à jour de %{participatory_space_title}
-        notification_title: Le composant %{resource_title} est maintenant actif pour <a href="%{resource_path}">%{participatory_space_title}</a>
-      participatory_process:
-        step_activated:
-          email_intro: 'L''étape %{resource_title} est maintenant active pour %{participatory_space_title}. Vous pouvez y accéder sur cette page:'
-          email_outro: Vous avez reçu cette notification, car vous suivez %{participatory_space_title}. Vous pouvez arrêter de recevoir des notifications à partir du lien précédent.
-          email_subject: Une mise à jour de %{participatory_space_title}
-          notification_title: L'étape %{resource_title} est maintenant active pour <a href="%{resource_path}">%{participatory_space_title}</a>
-      features:
-        feature_published:
-          email_intro: 'Le composant %{resource_title} est maintenant actif pour %{participatory_space_title}. Vous pouvez le voir sur cette page:'
-          email_outro: Vous avez reçu cette notification, car vous suivez %{participatory_space_title}. Vous pouvez arrêter de recevoir des notifications en suivant le lien précédent.
-          email_subject: Une mise à jour de %{participatory_space_title}
-          notification_title: Le composant %{resource_title} est maintenant actif pour <a href="%{resource_path}">%{participatory_space_title}</a>
       notification_event:
         notification_title: Un événement a eu lieu à <a href="%{resource_path}">%{resource_title}</a>.
       users:
@@ -216,21 +240,6 @@ fr:
       export:
         ready: Vous trouverez ci-joint une version zippée de votre exportation.
       subject: Votre export "%{name}" est prêt
-    features:
-      dummy:
-        actions:
-          bar: Machin
-          foo: Truc
-        name: Fonctionnalité exemple
-        settings:
-          global:
-            comments_enabled: Activer le module de commentaire
-            dummy_global_attribute_1: Exemple d'attribut 1
-            dummy_global_attribute_2: Exemple d'attribut 2
-          step:
-            comments_blocked: Bloquer la création de nouveaux commentaires
-            dummy_step_attribute_1: Exemple d'attribut pour une étape 1
-            dummy_step_attribute_2: Exemple d'attribut pour une étape 2
     filters:
       linked_classes:
         all: Tout
@@ -257,7 +266,7 @@ fr:
       base_presenter:
         create: "%{user_name} a créé %{resource_name}"
         create_with_space: "%{user_name} a créé %{resource_name} dans %{space_name}"
-        delete: "%{user_name} supprimé %{resource_name}"
+        delete: "%{user_name} a supprimé %{resource_name}"
         delete_with_space: "%{user_name} a supprimé %{resource_name} dans %{space_name}"
         unknown_action: "%{user_name} a effectué une action sur %{resource_name}"
         unknown_action_with_space: "%{user_name} a effectué une action sur %{resource_name} dans %{space_name}"
@@ -265,11 +274,13 @@ fr:
         update_with_space: "%{user_name} a mis à jour %{resource_name} dans %{space_name}"
       value_types:
         area_presenter:
-          not_found: 'La zone n''a pas été trouvée sur la base de données (ID: %{id})'
+          not_found: 'La zone d''application n''a pas été trouvée sur la base de données (ID: %{id})'
+        area_type_presenter:
+          not_found: 'Le type de zone d''application n''a pas été trouvé sur la base de données (ID: %{id})'
         scope_presenter:
-          not_found: 'La portée n''a pas été trouvée sur la base de données (ID: %{id})'
+          not_found: 'Le périmètre n''a pas été trouvé sur la base de données (ID: %{id})'
         scope_type_presenter:
-          not_found: 'Le type d''étendue n''a pas été trouvé sur la base de données (ID: %{id})'
+          not_found: 'Le type de périmètre d''application n''a pas été trouvé sur la base de données (ID: %{id})'
     managed_users:
       expired_session: La session de connexion a expiré.
     menu:
@@ -278,14 +289,14 @@ fr:
     messaging:
       conversation_mailer:
         new_conversation:
-          greeting: Bonjour, %{recipient}!
-          intro: "%{sender} a commencé une nouvelle conversation avec vous. Cliquez ici pour la voir:"
-          outro: Profitez de decidim!
+          greeting: Bonjour, %{recipient} !
+          intro: "%{sender} a commencé une nouvelle conversation avec vous. Cliquez ici pour la voir :"
+          outro: Profitez de cette plateforme !
           subject: "%{sender} a commencé une conversation avec vous"
         new_message:
           greeting: Bonjour, %{recipient}!
           intro: "%{sender} a posté de nouveaux messages dans votre conversation. Cliquez ici pour les voir:"
-          outro: Profitez de decidim!
+          outro: Profitez de cette plateforme !
           subject: Vous avez de nouveaux messages de %{sender}
       conversations:
         create:
@@ -305,9 +316,9 @@ fr:
           error: Message non envoyé. Réessayez plus tard
     newsletter_mailer:
       newsletter:
-        note: Vous avez reçu ce courrier électronique parce que vous êtes abonné aux bulletins d'information de %{organization_name}. Vous pouvez modifier vos paramètres sur votre <a href="%{link}">page de notifications</a>.
-        see_on_website: Vous ne pouvez pas voir cet e-mail correctement? Consultez la <a href="%{link}" target="_blank">version web</a>.
-        unsubscribe: Pour ne plus recevoir ce type d'e-mail, <a href="%{link}" target="_blank" class="unsubscribe">Désabonnez-vous</a>.
+        note: Vous avez reçu cet email parce que vous êtes abonné aux newsletters de %{organization_name}. Vous pouvez modifier vos paramètres sur votre <a href="%{link}">page de notifications</a>.
+        see_on_website: Vous ne pouvez pas voir cet email correctement ? Consultez la <a href="%{link}" target="_blank">version web</a>.
+        unsubscribe: Pour ne plus recevoir ce type d'email, <a href="%{link}" target="_blank" class="unsubscribe">Désabonnez-vous</a>.
     newsletters:
       unsubscribe:
         check_subscription: Si vous souhaitez modifier vos préférences, vous pouvez le faire dans la <a href="%{link}" target="_blank">page configuration</a>
@@ -331,6 +342,10 @@ fr:
     pages:
       index:
         title: Plus d'informations
+    participatory_space_private_users:
+      not_allowed: Vous n'êtes pas autorisé à voir ce contenu
+    profile:
+      deleted: Utilisateur supprimé
     profiles:
       default_officialization_text: L'identité de ce participant a été vérifiée. Son nom ou son rôle correspondent avec son vrai nom ou son vrai rôle dans le monde réel
       show:
@@ -367,7 +382,7 @@ fr:
           title: Autorisation expirée
         incomplete:
           cancel: Annuler
-          explanation: 'Même si vous êtes actuellement autorisé avec "%{authorization}", nous avons besoin de vous réautoriser car nous ne disposons pas les données suivantes:'
+          explanation: 'Même si vous êtes actuellement autorisé avec "%{authorization}", nous avons besoin de vous réautoriser car nous ne disposons pas des données suivantes :'
           invalid_field: "%{field}"
           reauthorize: Réautoriser
           title: Veuillez réautoriser
@@ -376,9 +391,9 @@ fr:
           explanation: Pour effectuer cette action, vous devez être autorisé avec "%{authorization}".
           title: Autorisation requise
         pending:
-          explanation: Pour effectuer cette action, vous devez être autorisé avec "%{authorization}", mais votre autorisation est toujours en cours.
+          explanation: Pour effectuer cette action, vous devez être autorisé avec "%{authorization}", mais votre autorisation est toujours en cours de validation.
           resume: Vérifiez votre progression d'autorisation "%{authorization}"
-          title: L'autorisation est toujours en cours
+          title: L'autorisation est toujours en cours de validation
         unauthorized:
           explanation: Désolé, vous ne pouvez pas effectuer cette action car certaines de vos données d'autorisation ne correspondent pas.
           invalid_field: "%{field} valeur %{value} n'est pas valide."
@@ -393,7 +408,7 @@ fr:
       flag_modal:
         already_reported: Ce contenu a déjà été signalé et il sera examiné par un administrateur.
         close: Fermer
-        description: Ce contenu est-il inapproprié?
+        description: Ce contenu est-il inapproprié ?
         does_not_belong: Contient des activités illégales, des menaces suicidaires, des informations personnelles, ou autre chose que vous pensez ne pas être approprié à %{organization_name}.
         offensive: Contient des propos racistes, sexistes, des insultes, des attaques personnelles, des menaces de mort, des incitations au suicide ou toute forme de discours de haine.
         report: Signaler
@@ -418,7 +433,7 @@ fr:
     invitations:
       edit:
         header: Définir votre mot de passe
-        nickname_help: Votre identifiant court et unique sur cette plateforme (ne pas utiliser d'espace)
+        nickname_help: Votre identifiant court et unique sur cette plateforme (ne pas utiliser d'espace).
         submit_button: Sauvegarder
     mailer:
       invitation_instructions:
@@ -428,18 +443,25 @@ fr:
         ignore: |-
           Si vous ne souhaitez pas accepter l'invitation, ignorez cet email.<br /> Votre compte ne sera créé qu'après avoir cliqué sur le lien ci-dessus et défini votre mot de passe.
         invited_you_as_admin: "%{invited_by} vous a invité en tant qu'administrateur de %{application}. Vous pouvez accepter cette invitation grâce au lien ci-dessous."
+        invited_you_as_private_user: "%{invited_by} vous a invité en tant que utilisateur privé de %{application}. Vous pouvez l'accepter via le lien ci-dessous."
         someone_invited_you: Quelqu'un vous a invité à %{application}. Vous pouvez accepter cette invitation grâce au lien ci-dessous.
         someone_invited_you_as_admin: Quelqu'un vous a invité en tant qu'administrateur de %{application}, vous pouvez l'accepter via le lien ci-dessous.
+        someone_invited_you_as_private_user: Quelqu'un vous a invité en tant qu'utilisateur privé de %{application}, vous pouvez l'accepter via le lien ci-dessous.
       invite_admin:
         subject: Vous avez été invité à gérer %{organization}
       invite_collaborator:
         subject: Vous avez été invité à collaborer sur %{organization}
+      invite_private_user:
+        subject: Vous avez été invité à un processus participatif privé sur %{organization}
       organization_admin_invitation_instructions:
         subject: Vous avez été invité à gérer %{organization}
       password_change:
-        greeting: Bonjour %{recipient}!
+        greeting: Bonjour %{recipient} !
         message: Nous vous contactons pour vous informer que votre mot de passe a été modifié.
         subject: Mot de passe modifié
+  doorkeeper:
+    scopes:
+      public: Votre information publique
   errors:
     messages:
       content_type_whitelist_error: Le type de fichier n'est pas valide
@@ -514,11 +536,12 @@ fr:
         register: S'inscrire
       hero:
         participate: Participez
-        welcome: Bienvenue sur %{organization}!
+        welcome: Bienvenue sur %{organization} !
       statistics:
-        answers_count: Réponses
+        answers_count: Enquêtes terminées
         assemblies_count: Agora
         comments_count: Commentaires
+        debates_count: Débats
         endorsements_count: Recommandations
         headline: État actuel de %{organization}
         meetings_count: Rencontres
@@ -548,7 +571,7 @@ fr:
     reddit: Reddit
     share_to: Partager sur %{name}
     tumblr: Tumblr
-    twitter: Gazouillement
+    twitter: Twitter
     vkontakte: Vkontakte
     wechat: WeChat
     wechat_footer: Ouvrez WeChat, cliquez sur le bouton "Découvrir" puis cliquez sur le menu "Scanner le QR Code".

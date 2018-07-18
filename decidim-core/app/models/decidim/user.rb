@@ -23,6 +23,8 @@ module Decidim
     has_many :memberships, class_name: "Decidim::UserGroupMembership", foreign_key: :decidim_user_id, dependent: :destroy
     has_many :user_groups, through: :memberships, class_name: "Decidim::UserGroup", foreign_key: :decidim_user_group_id
     has_many :notifications, foreign_key: "decidim_user_id", class_name: "Decidim::Notification", dependent: :destroy
+    has_many :access_grants, class_name: "Doorkeeper::AccessGrant", foreign_key: :resource_owner_id, dependent: :destroy
+    has_many :access_tokens, class_name: "Doorkeeper::AccessToken", foreign_key: :resource_owner_id, dependent: :destroy
 
     validates :name, presence: true, unless: -> { deleted? }
     validates :nickname, presence: true, unless: -> { deleted? || managed? }
@@ -36,7 +38,12 @@ module Decidim
     mount_uploader :avatar, Decidim::AvatarUploader
 
     scope :not_deleted, -> { where(deleted_at: nil) }
+
     scope :managed, -> { where(managed: true) }
+    scope :not_managed, -> { where(managed: false) }
+
+    scope :officialized, -> { where.not(officialized_at: nil) }
+    scope :not_officialized, -> { where(officialized_at: nil) }
 
     # Public: Allows customizing the invitation instruction email content when
     # inviting a user.
