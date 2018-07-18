@@ -1,18 +1,26 @@
 fr:
+  activemodel:
+    models:
+      decidim/blogs/create_post_event: Nouvel article
+  activerecord:
+    models:
+      decidim/blogs/post:
+        one: Article
+        other: Articles
   decidim:
     blogs:
       actions:
-        confirm_destroy: Es-tu sûr de vouloir supprimer cette annonce ?
-        destroy: Effacer
+        confirm_destroy: Êtes-vous certain de vouloir supprimer cette article ?
+        destroy: Supprimer
         edit: Modifier
-        new: Nouveau
+        new: Nouvel article
         title: Actions
       admin:
         models:
           components:
-            body: Corps
+            body: Corps du texte
           post:
-            name: Publier l'article
+            name: Publier
         posts:
           create:
             invalid: Un problème est survenu lors de la création de cet article
@@ -33,26 +41,26 @@ fr:
         post:
           fields:
             author: Auteur
-            body: Corps
+            body: Corps du texte
             created_at: Créé à
-            title: Titre
+            title: titre
       posts:
-        author_data:
-          comments: commentaires
+        show:
+          view: Voir
         sidebar_blog:
           comments: commentaires
           most_commented_posts: Articles les plus commentés
-      read_more: Lire la suite
+      read_more: Voir la suite
     components:
       blogs:
         name: Actualités
         settings:
           global:
             announcement: Annonce
-            comments_enabled: Commentaires activés
+            comments_enabled: Activer le module de commentaire
           step:
             announcement: Annonce
-            comments_blocked: Commentaires bloqués
+            comments_blocked: Commentaires désactivés
     events:
       blogs:
         post_created:
@@ -60,10 +68,10 @@ fr:
           email_outro: Vous avez reçu cette notification parce que vous suivez "%{participatory_space_title}". Vous pouvez le retirer du lien précédent.
           email_subject: Nouvel article publié dans %{participatory_space_title}
           notification_title: L'article <a href="%{resource_path}">%{resource_title}</a> a été publié dans %{participatory_space_title}
+    pages:
+      home:
+        statistics:
+          posts_count: Articles
     participatory_processes:
-      statistics:
-        posts_count: Articles
-  pages:
-    home:
       statistics:
         posts_count: Articles

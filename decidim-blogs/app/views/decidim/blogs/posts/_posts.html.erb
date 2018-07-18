@@ -9,10 +9,10 @@
           </h5>
           <% end %>
           <div class="card__author">
-            <%= render partial: "author_data", locals: { post: post } %>
+            <%= cell "decidim/author", present(post.author), from: post %>
           </div>
         </div>
-        <%= sanitize post_description(post) %>
+        <%= decidim_sanitize post_description(post) %>
       </div>
     </article>
   <% end %>

@@ -74,6 +74,23 @@ module Decidim
             expect(resource.sibling_scope(:dummy)).not_to include(other_resource)
           end
         end
+
+        context "when the target component is unpublished" do
+          let(:participatory_process) { create(:participatory_process) }
+
+          let!(:resource) { create(:dummy_resource, component: current_component) }
+          let!(:current_component) { create(:component, manifest_name: :dummy, participatory_space: participatory_process) }
+          let!(:target_component) { create(:component, manifest_name: :dummy, participatory_space: participatory_process) }
+          let!(:target_resource) { create(:dummy_resource, component: target_component) }
+
+          before do
+            target_component.unpublish!
+          end
+
+          it "doesn't return anything from that component" do
+            expect(resource.sibling_scope(:dummy)).to be_empty
+          end
+        end
       end
 
       context "when there's no resource manifest" do
@@ -110,6 +127,34 @@ module Decidim
 
       it "finds the linked classes for a given component" do
         expect(subject.linked_classes_for(proposals_component_1)).to eq ["Decidim::Meetings::Meeting"]
+      end
+    end
+
+    describe "#visible" do
+      subject { resource }
+
+      context "when all hierarchy is visible" do
+        before { subject.update(published_at: DateTime.current) }
+
+        it { is_expected.to be_visible }
+      end
+
+      context "when ParticipatorySpace is private" do
+        before { subject.component.participatory_space.update(private_space: true) }
+
+        it { is_expected.not_to be_visible }
+      end
+
+      context "when component is NOT published" do
+        before { subject.component.update(published_at: nil) }
+
+        it { is_expected.not_to be_visible }
+      end
+
+      context "when resource is NOT visible" do
+        before { subject.update(published_at: nil) }
+
+        it { is_expected.not_to be_visible }
       end
     end
   end

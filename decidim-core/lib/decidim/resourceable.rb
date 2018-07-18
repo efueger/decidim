@@ -48,8 +48,7 @@ module Decidim
 
         scope = manifest.resource_scope(component)
         scope = scope.where("#{self.class.table_name}.id != ?", id) if manifest.model_class == self.class
-
-        scope
+        scope.includes(:component).where.not(decidim_components: { published_at: nil })
       end
 
       # Links the given resources to this model, replaces any previous links with the same name.
@@ -79,6 +78,30 @@ module Decidim
               )
             end
           end
+        end
+      end
+
+      delegate :resource_manifest, to: :class
+
+      # Checks throughout all its parent hierarchy if this Resource is visible.
+      # i.e. checks
+      # - the visibility of its parent Component
+      # - the visibility of its participatory space.
+      # - the visibility of the resource itself.
+      def visible?
+        !component.participatory_space.try(:private_space?) && component.published? && resource_visible?
+      end
+
+      # Check only the resource visibility not its hierarchy.
+      # This method is intended to be overriden by classes that include this module and have the
+      # need to impose its own visibility rules.
+      #
+      # @return If the resource is also Publicable checks if the resource is published, otherwise returns true by default.
+      def resource_visible?
+        if respond_to?(:published?)
+          published?
+        else
+          true
         end
       end
     end

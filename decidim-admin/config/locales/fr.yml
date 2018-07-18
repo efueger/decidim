@@ -13,7 +13,7 @@ fr:
         attachment_collection_id: Dossier
         description: Description
         file: Fichier
-        title: Titre
+        title: Titre de la pièce jointe
       attachment_collection:
         description: Description
         name: Titre
@@ -23,7 +23,7 @@ fr:
         parent_id: Parent
       component:
         name: Titre
-        published_at: Publié à
+        published_at: Publiée à
         weight: Rang d'affichage
       id: ID
       newsletter:
@@ -64,21 +64,23 @@ fr:
         omnipresent_banner_url: URL
         reference_prefix: Préfixe de référence
         show_statistics: Montrer les statistiques
+        tos_version: Version des conditions d'utilisation
         twitter_handler: Gestionnaire Twitter
         welcome_text: Texte de bienvenue
         youtube_handler: Gestionnaire YouTube
       scope:
         code: Code
-        name: Singulier
+        name: Titre
         organization: Organisation
         parent_id: Parent
-        scope_type: Type de périmètre d'application
-        scope_type_id: Type de périmètre d'application
+        scope_type: Type de secteur
+        scope_type_id: Type de secteur
       scope_type:
-        name: Singulier
+        name: Titre
         organization: Organisation
         plural: Pluriel
       static_page:
+        changed_notably: Il y a eu des changements notables.
         content: Contenu
         organization: Organisation
         slug: Identifiant
@@ -130,7 +132,7 @@ fr:
         organization_name: Nom de l'organisation
         organization_url: URL de l'organisation
         redirect_uri: Rediriger l'URI
-        site: Site
+        site: Site Internet
   date:
     formats:
       datepicker: "%d/%m/%Y"
@@ -141,6 +143,7 @@ fr:
         browse: Parcourir
         export: Exporter
         manage: Gérer
+        new: Nouveau %{name}
         permissions: Autorisations
         reject: Rejeter
         verify: Vérifier
@@ -162,31 +165,31 @@ fr:
       areas:
         create:
           error: Une erreur s'est produite lors de la création d'une nouvelle zone d'application.
-          success: La zone d'application a été créée avec succès.
+          success: Zone d'application créée avec succès.
         destroy:
-          success: La zone d'application a bien été détruite.
+          success: La zone d'application a bien été supprimée
         edit:
           title: Modifier la zone d'application
           update: Mettre à jour
         new:
           create: Créer une zone d'application
           title: Nouvelle zone d'application
-        no_areas: Pas de zones d'application
+        no_areas: Aucune zone d'application
         update:
           error: Une erreur s'est produite lors de la mise à jour de cette zone d'application.
           success: Zone d'application mise à jour avec succès
       attachment_collections:
         create:
           error: Une erreur s'est produite lors de la création d'un nouveau dossier.
-          success: Dossier créé avec succès.
+          success: Le dossier a été créé avec succès.
         destroy:
-          success: Dossier détruit avec succès.
+          success: Dossier supprimé avec succès.
         edit:
           title: Modifier le dossier
           update: Mettre à jour
         index:
-          attachment_collection_used: Ce dossier ne peut pas être supprimé car celui-ci est en cours d'utilisation.
-          attachment_collections_title: Dossier de pièces jointes
+          attachment_collection_used: Ce dossier ne peut pas être supprimé car il est en cours d'utilisation.
+          attachment_collections_title: Dossiers de pièces jointes
         new:
           create: Créer
           title: Nouveau dossier
@@ -198,7 +201,7 @@ fr:
           error: Une erreur s'est produite lors de la création d'un nouveau document lié.
           success: Document lié créé avec succès.
         destroy:
-          success: Document lié détruit avec succès.
+          success: Document lié supprimé avec succès.
         edit:
           title: Modifier le document lié
           update: Mettre à jour
@@ -210,6 +213,9 @@ fr:
         update:
           error: Une erreur s'est produite lors de la mise à jour de ce document lié.
           success: Document lié mis à jour avec succès.
+      autocomplete:
+        no_results: Aucun résultat trouvé
+        search_prompt: Renseignez au moins trois caractères pour lancer la recherche
       categories:
         create:
           error: Une erreur s'est produite lors de la création de cette catégorie.
@@ -229,13 +235,6 @@ fr:
         update:
           error: Une erreur s'est produite lors de la mise à jour de cette catégorie.
           success: Catégorie mise à jour avec succès.
-      dashboard:
-        show:
-          view_more_logs: Voir plus de journaux
-          welcome: Bienvenue dans l'espace d'administration de Decidim.
-      exports:
-        export_as: "%{name} sous format .%{export_format}"
-        notice: Votre exportation est en cours. Vous recevrez un e-mail quand elle sera terminée.
       component_permissions:
         edit:
           everyone: Tout le monde
@@ -267,7 +266,7 @@ fr:
           add: Ajouter une fonctionnalité
           title: 'Ajouter une fonctionnalité : %{name}'
         publish:
-          success: La fonctionnalité a été publié avec succès.
+          success: La fonctionnalité a été publiée avec succès.
         title: Fonctionnalités
         unpublish:
           success: La fonctionnalité a été dépubliée avec succès.
@@ -289,13 +288,13 @@ fr:
             not_managed: Non géré
           filter_by: Filtrer par
           impersonate: Représenter
-          impersonate_new_managed_user: Nouvel utilisateur représenté
+          impersonate_new_managed_user: Représenter un nouvel utilisateur
           managed: Représenté
           name: Nom
           needs_authorization_warning: Vous avez besoin d'au moins une autorisation activée pour cette organisation.
           not_managed: Non représenté
           promote: Promouvoir
-          search: Chercher
+          search: Rechercher
           status: Statut
           view_logs: Consultez les journaux d'activité
       impersonations:
@@ -312,18 +311,18 @@ fr:
         new:
           impersonate: Représenter
           impersonate_existing_managed_user: Représenter l'utilisateur "%{name}"
-          impersonate_existing_user: Représenter l'identité de "%{name}"
-          impersonate_new_managed_user: Nouvel utilisateur représenté
+          impersonate_existing_user: Représenter l'utilisateur standard "%{name}"
+          impersonate_new_managed_user: Représenter un nouvel utilisateur
       logs:
         logs_list:
           no_logs_yet: Il n'y a pas encore de journal d'activité
       managed_users:
         promotion:
-          error: Une erreur s'est produite lors de la transformation de l'utilisateur représenté.
+          error: Une erreur s'est produite lors de la promotion de l'utilisateur représenté.
           success: L'utilisateur représenté a été promu avec succès.
         promotions:
           new:
-            explanation: Les utilisateurs représentés peuvent être promu utilisateurs standard. Cela signifie qu'ils seront invités à l'application et vous ne pourrez plus agir à leur place. L'utilisateur recevra un courriel pour accepter votre invitation.
+            explanation: Les utilisateurs représentés peuvent être promu utilisateurs standard. Cela signifie qu'ils seront invités à s'inscrire sur l'application et vous ne pourrez plus agir à leur place. L'utilisateur recevra un email pour accepter votre invitation.
             new_managed_user_promotion: Promouvoir un utilisateur représenté en utilisateur standard
             promote: Promouvoir
       menu:
@@ -335,17 +334,17 @@ fr:
         configuration: Configuration
         dashboard: Tableau de bord
         impersonations: Utilisateurs représentés
-        oauth_applications: Applications OAuth
         managed_users: Utilisateurs représentés
+        navbar_links: Liens de navigation
         newsletters: Bulletins d'information (newsletter)
+        oauth_applications: Applications OAuth
         officializations: Validation d'utilisateurs
-        scope_types: Types de périmètre d'application
+        scope_types: Types de secteur
         scopes: Périmètres d’application
         settings: Paramètres
         static_pages: Pages
         user_groups: Groupes d'utilisateurs
         users: Utilisateurs
-        navbar_links: Liens de navigation
       models:
         area:
           fields:
@@ -353,7 +352,7 @@ fr:
             name: Titre
         area_type:
           fields:
-            name: Singulier
+            name: Titre
             plural: Pluriel
         attachment:
           fields:
@@ -376,29 +375,29 @@ fr:
             user: Utilisateur
         newsletter:
           fields:
-            created_at: Créé le
+            created_at: Créée le
             progress: Avancement
             sent_at: Envoyé à
             subject: Objet
-          name: Newsletter
+          name: Bulletin d'information (newsletter)
         oauth_application:
           fields:
-            created_at: Créé le
-            name: Singulier
+            created_at: Créée le
+            name: Titre
           name: Application OAuth
         participatory_space_private_user:
-          name: Utilisateur privé de l'espace participatif
+          name: Utilisateur de l'espace participatif
         scope:
           fields:
-            name: Nom
-            scope_type: Type de périmètre d'application
+            name: Titre
+            scope_type: Type de secteur
         scope_type:
           fields:
             name: Titre
             plural: Pluriel
         static_page:
           fields:
-            created_at: Créé le
+            created_at: Créée le
             title: Titre
         user:
           fields:
@@ -460,7 +459,7 @@ fr:
           error: Il y a eu une erreur lors de la création de cette newsletter.
           success: Newsletter créée avec succès. Veuillez la vérifier avant de l'envoyer.
         deliver:
-          error: Erreur lors de l'envoi de cette newsletter.
+          error: Il y a eu une erreur lors de l'envoi de cette newsletter.
           success: Newsletter envoyée avec succès.
         destroy:
           error_already_sent: 'Suppression impossible car la newsletter a déjà été envoyée.'
@@ -469,7 +468,7 @@ fr:
           save_and_preview: Enregistrer et prévisualiser
           title: Modifier la newsletter
         form:
-          interpolations_hint: 'Astuce : Vous pouvez utiliser "%{name}" n''importe où dans le corps ou le sujet et il sera remplacé par le nom du destinataire.'
+          interpolations_hint: 'Astuce : Vous pouvez utiliser "%{name}" (sans les guillemets) n''importe où dans le corps ou le sujet et il sera remplacé par le nom du destinataire.'
         index:
           confirm_delete: Êtes-vous sûr de vouloir supprimer cette newsletter ?
           title: Newsletters
@@ -511,7 +510,7 @@ fr:
         index:
           actions: Actions
           badge: Badge
-          created_at: Créé le
+          created_at: Créée le
           filter:
             all: Tout
             not_officialized: Non validé
@@ -523,7 +522,7 @@ fr:
           officialize: Valider
           officialized: Validé
           reofficialize: De nouveau validé
-          search: Chercher
+          search: Rechercher
           status: Statut
           unofficialize: Invalider
         new:
@@ -549,13 +548,13 @@ fr:
         edit:
           update: Mettre à jour
         form:
-          cta_button_path_help: 'Vous pouvez remplacer le lien vers lequel renvoie le bouton de la page d''accueil. Utilisez ici des chemins partiels et non des URL complets. Accepte les lettres, les chiffres, les tirets et les barres obliques, et doit commencer par une lettre. Le bouton apparaît sur la page d''accueil entre le texte de bienvenue et la description. Exemple: %{url}'
+          cta_button_path_help: 'Vous pouvez remplacer le lien vers lequel renvoie le bouton de la page d''accueil. Utilisez ici des chemins partiels et non des URL complets. Il accepte les lettres, les chiffres, les tirets et les barres obliques, et doit commencer par une lettre. Le bouton apparaît sur la page d''accueil entre le texte de bienvenue et la description. Exemple : %{url}'
           cta_button_text_help: Vous pouvez remplacer le texte du bouton dans la page d'accueil pour chaque langue disponible dans votre organisation. Si elle n'est pas définie, la valeur par défaut sera utilisée. Le bouton apparaît sur la page d'accueil entre le texte de bienvenue et la description.
           header_snippets_help: Utilisez ce champ pour ajouter des éléments entre les balises HTML <head> </head>. L'utilisation la plus courante de champs consiste à intégrer des services tiers nécessitant du JavaScript ou du CSS supplémentaire. Vous pouvez aussi l'utiliser pour ajouter des méta-tags supplémentaires au code HTML. Notez que cela ne fonctionnera que dans sur les pages publiques, et non dans la section admin.
           homepage_appearance_title: Modifier l'apparence de la page d'accueil
           homepage_highlighted_content_banner_title: Bannière de contenu mis en valeur
           layout_appearance_title: Modifier l’aspect de la mise en page
-          omnipresent_banner_appearance_title: Modifier la bannière d'actualités
+          omnipresent_banner_appearance_title: Modifier la bannière permanente
       participatory_space_private_users:
         create:
           error: Une erreur s'est produite lors de l'ajout d'un utilisateur pour cet espace participatif.
@@ -563,41 +562,41 @@ fr:
         destroy:
           success: L'accès utilisateur à l'espace participatif privé a été supprimé avec succès.
         index:
-          title: Espace participatif privé de l'utilisateur
+          title: Utilisateur privé de l'espace participatif
         new:
           create: Créer
-          title: Nouvel utilisateur de l'espace participatif.
+          title: Nouvel utilisateur privé de l'espace participatif.
       scope_types:
         create:
-          error: Une erreur s'est produite lors de la création d'un nouveau type de périmètre d'application.
-          success: Type de périmètre d'application créé avec succès.
+          error: Une erreur s'est produite lors de la création d'un nouveau type de secteur.
+          success: Type de secteur créé avec succès.
         destroy:
-          success: Le type de périmètre d'application a été supprimé avec succès
+          success: Le type de secteur a été supprimé avec succès
         edit:
-          title: Modifier le type de périmètre d'application
+          title: Modifier le type de secteur
           update: Mettre à jour
         new:
-          create: Créer un type de périmètre d'application
-          title: Nouveau périmètre d'application
+          create: Créer un type de secteur
+          title: Nouveau secteur
         update:
-          error: Une erreur s'est produite lors de la mise à jour de ce périmètre d'application.
-          success: Type de périmètre d'application mis à jour avec succès
+          error: Une erreur s'est produite lors de la mise à jour de ce secteur.
+          success: Type de secteur mis à jour avec succès
       scopes:
         create:
           error: Une erreur s'est produite lors de la création d'un nouveau périmètre d’application.
-          success: Périmètre d'application créé avec succès.
+          success: Secteur créé avec succès.
         destroy:
-          success: Périmètre d'application supprimé avec succès
+          success: Secteur supprimé avec succès
         edit:
-          title: Editer le périmètre d'application
+          title: Modifier le secteur
           update: Mettre à jour
         new:
-          create: Créer un périmètre d'application
-          title: Nouveau périmètre d'application
-        no_scopes: Pas de périmètre d'application à ce niveau.
+          create: Créer un secteur
+          title: Nouveau secteur
+        no_scopes: Pas de secteur à ce niveau.
         update:
-          error: Une erreur s'est produite lors de la mise à jour de ce périmètre d'application.
-          success: Périmètre d'application mis à jour avec succès
+          error: Une erreur s'est produite lors de la mise à jour de ce secteur.
+          success: Secteur mis à jour avec succès
       static_pages:
         actions:
           view: Voir la page publique
@@ -607,8 +606,11 @@ fr:
         destroy:
           success: La page a été détruite avec succès
         edit:
+          changed_notably_help: Si cette case est cochée, les utilisateurs devront accepter les nouvelles conditions d'utilisation.
           title: Modifier la page
           update: Mettre à jour
+        index:
+          last_notable_change: Dernier changement notable
         new:
           create: Créer
           title: Nouvelle page
@@ -622,18 +624,17 @@ fr:
         authorization_workflows: Méthodes de vérification
         dashboard: Tableau de bord
         impersonatable_users: Utilisateurs représentés
-        impersonations: Utilisateurs représentés
-        managed_users: Utilisateurs représentés
+        impersonations: Représentations d'utilisateurs
+        navbar_links: Liens de navigation
         officializations: Validation d'utilisateurs
-        scope_types: Types de périmètre d'application
-        scopes: Périmètres d'application
+        scope_types: Types de secteur
+        scopes: Secteurs
         static_pages: Pages
         user_groups: Groupes d'utilisateurs
         users: Utilisateurs
-        navbar_links: Liens de navigation
       user_group:
         reject:
-          invalid: Une erreur s'est produite lors du rejet de ce groupe d'utilisateurs.
+          invalid: Une erreur s'est produite lors du refus de ce groupe d'utilisateurs.
           success: Groupe d'utilisateurs refusé avec succès
         verify:
           invalid: Une erreur s'est produite lors de la vérification de ce groupe d'utilisateurs.
@@ -668,7 +669,7 @@ fr:
     forms:
       errors:
         impersonate_user:
-          reason: Vous devez fournir une raison lors de l'emprunt d'identité d'un utilisateur non géré
+          reason: Vous devez fournir une raison lors de l'emprunt d'identité d'un utilisateur standard
       navbar_links:
         create:
           error: Une erreur s'est produite lors de la création d'un nouveau lien.
@@ -698,18 +699,14 @@ fr:
         not_hidden: Visibles
         title: Actions
         unreport: Annuler le signalement
-        moderated: Modéré
-        unmoderated: Non modéré
-        authorize: Autoriser
-        refuse: Refuser
       admin:
         reportable:
           hide:
-            invalid: Il y a eu un problème au moment de masquer la ressource.
-            success: Ressource masquée avec succès.
+            invalid: Il y a eu un problème au moment de masquer le contenu.
+            success: Contenu masqué avec succès.
           unreport:
-            invalid: Il y a eu un problème lors de l'annulation du signalement de la ressource.
-            success: La ressource n'est plus signalée.
+            invalid: Il y a eu un problème lors de l'annulation du signalement du contenu.
+            success: Le contenu n'est plus signalé.
       models:
         moderation:
           fields:
@@ -719,9 +716,6 @@ fr:
             reported_content_url: URL
             reports: Motif
             visit_url: Visitez l'URL
-            date: Date
-            type: Type
-            status: Statut
   errors:
     messages:
       invalid_json: JSON non valide

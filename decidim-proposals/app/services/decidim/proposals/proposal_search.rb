@@ -64,6 +64,8 @@ module Decidim
           query.not_answered
         when "withdrawn"
           query.withdrawn
+        when "except_rejected"
+          query.except_rejected
         else # Assume 'not_withdrawn'
           query.except_withdrawn
         # else # Assume 'all'

@@ -20,7 +20,7 @@ module Decidim
       #
       # Returns a string with the value of the css classes.
       def vote_button_classes(from_proposals_list)
-        return "small" if from_proposals_list
+        return "card__button button--sc" if from_proposals_list
         "expanded button--sc"
       end
 
@@ -65,7 +65,7 @@ module Decidim
       #
       # Returns true if enabled, false otherwise.
       def votes_enabled?
-        current_settings.votes_enabled || current_settings.votes_weight_enabled
+        current_settings.votes_enabled
       end
 
       # Public: Checks if voting is blocked in this step.
