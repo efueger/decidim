@@ -1,5 +1,5 @@
-<%= decidim_form_for([current_participatory_space, @form], url: feature_path(current_participatory_space, @feature), method: "put", html: { class: "form edit_feature" }) do |form| %>
-  <%= render partial: 'form', object: form, locals: { feature: @feature, title: t(".title", name: t("#{@feature.manifest.name}.name", scope: "decidim.features"))} %>
+<%= decidim_form_for([current_participatory_space, @form], url: component_path(current_participatory_space, @component), method: "put", html: { class: "form edit_component" }) do |form| %>
+  <%= render partial: 'form', object: form, locals: { component: @component, title: t(".title", name: t("#{@component.manifest.name}.name", scope: "decidim.components"))} %>
 
   <div class="button--double form-general-submit">
     <%= form.submit t(".update") %>
@@ -31,8 +31,8 @@ function switchDisabling(check1, check2){
 
 $(document).ready(function() {
   var participatory_space_id = <%= current_participatory_space.id %>;
-  var $supports = $('input[name="feature[step_settings][' + participatory_space_id + '][votes_enabled]"]')
-  var $votes = $('input[name="feature[step_settings][' + participatory_space_id + '][votes_weight_enabled]"]')
+  var $supports = $('input[name="component[step_settings][' + participatory_space_id + '][votes_enabled]"]')
+  var $votes = $('input[name="component[step_settings][' + participatory_space_id + '][votes_weight_enabled]"]')
   console.log($supports)
   disableClick($supports, $votes)
   switchDisabling($supports, $votes)
