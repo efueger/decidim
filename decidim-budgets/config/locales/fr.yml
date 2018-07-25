@@ -120,7 +120,7 @@ fr:
             other: projets sélectionnés
           view: Voir
         project:
-          add: Ajouter
+          add: Choisir
           count:
             zero: "%{count} soutien"
             one: "%{count} soutien"
@@ -128,8 +128,8 @@ fr:
           remove: Supprimer
           view: Voir
         project_budget_button:
-          add: Ajouter
-          added: Ajouté
+          add: Choisir
+          added: Choisi
         show:
           budget: Budget
           view_all_projects: Retourner à la liste des projets
