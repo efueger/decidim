@@ -71,7 +71,7 @@ fr:
           title: Confirmez votre vote
         limit_excess:
           close: Fermer
-          description_per_budget: Ce projet dépasse le budget maximum et ne peut pas être ajouté. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné ou voter selon vos préférences.
+          description_per_budget: Ce projet dépasse le budget maximum et ne peut pas être ajouté. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné.
           description_per_project: Vous avez atteint le nombre maximum de projets autorisés pour ce budget. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné.
           ok: D'accord
           title_per_budget: Budget maximum dépassé
@@ -83,10 +83,9 @@ fr:
           checked_out:
             description: Vous avez déjà voté pour le budget. Si vous avez changé d'avis, vous pouvez %{cancel_link}.
             title: Vote du budget terminé
-          description: A quels projets pensez-vous que nous devrions allouer un budget ? Assignez au moins %{minimum_budget} aux projets que vous soutenez et votez selon vos préférences pour définir le budget.
-          description_per_budget: A quels projets pensez-vous que nous devrions allouer un budget ? Assignez au moins %{minimum_budget} aux projets que vous soutenez et votez selon vos préférences pour définir le budget.
-          description_per_project: A quels projets pensez-vous que nous devrions allouer un budget ? Choisissez %{minimum_project} projets et validez votre vote. Attention tout vote est définitif.
-
+          description: À quels projets pensez-vous que nous devrions allouer un budget ? Assignez au moins %{minimum_budget} aux projets que vous soutenez et validez votre vote.
+          description_per_budget: À quels projets pensez-vous que nous devrions allouer un budget ? Assignez au moins %{minimum_budget} aux projets que vous soutenez et validez votre vote.
+          description_per_project: À quels projets pensez-vous que nous devrions allouer un budget ? Choisissez %{minimum_project} projets et validez votre vote.
           title: Vous décidez du budget
         count:
           projects_count:
