@@ -11,8 +11,8 @@ en:
         email: Your email
         name: Your name
         nickname: Your short, unique identifier
-        password: New password
-        password_confirmation: Confirm your new password
+        password: Password
+        password_confirmation: Confirm your password
         personal_url: Personal URL
         remove_avatar: Remove avatar
         user_group_document_number: Organization document number
@@ -53,6 +53,11 @@ en:
       decidim_with_month_name: "%d %B %Y"
   decidim:
     account:
+      data_portability_export:
+        file_no_exists: File does not exist
+        invalid_token: The provided token is invalid.
+        no_token: No token provided
+        notice: Your data is currently in progress. You'll receive an email when it's complete.
       delete:
         alert: This action cannot be undone. If you delete your account you won't be able to log in.
         confirm:
@@ -178,6 +183,13 @@ en:
     core:
       actions:
         unauthorized: You are not authorized to perform this action
+    data_portability:
+      export:
+        ready: Ready
+      show:
+        download_data: Download the data
+        download_data_description: A file with all the information associated with the account will be sent to <strong>%{user_email}</strong>
+        request_data: Request data
     devise:
       omniauth_registrations:
         create:
@@ -213,8 +225,19 @@ en:
         newsletter_modal:
           buttons:
             check: Check and continue
+            close_modal: Close modal
             uncheck: Keep uncheck
-          notice: Hey, are you sure you don't want to receive a newsletter? Please consider again ticking the newsletter checkbox below. It is very important for us that you can receive occasional emails to make important announcements, you can always change this on your notifications settings page. If you don't tick the box you might be missing relevant information about new participatory opportunities within the platform. If you still want to avoid receiving newsletters, we perfectly understand your decision. Thanks for reading this!
+          notice: |-
+            <p>Hey, are you sure you don't want to receive a newsletter?<br>
+            Please consider again ticking the newsletter checkbox below.<br>
+            It is very important for us that you can receive occasional emails
+            to make important announcements, you can always change this on your
+            notifications settings page.</p>
+            <p>If you don't tick the box you might be missing relevant information
+            about new participatory opportunities within the platform.<br>
+            If you still want to avoid receiving newsletters, we perfectly
+            understand your decision.</p>
+            <p>Thanks for reading this!</p>
           title: Newsletter notifications
         omniauth_buttons:
           or: Or
@@ -284,6 +307,9 @@ en:
           email_subject: "%{nickname} updated their profile"
           notification_title: The <a href="%{resource_path}">profile page</a> of %{name} (%{nickname}), who you are following, has been updated.
     export_mailer:
+      data_portability_export:
+        click_button: Click the next button to download your data. <br/> You will have the file available until %{date}.
+        download: Download
       export:
         ready: Please find attached a zipped version of your export.
       subject: Your export "%{name}" is ready
@@ -321,6 +347,18 @@ en:
       errors:
         error: There's an error in this field.
       remove_this_file: Remove this file
+    invitations:
+      create:
+        error: There were some problems while inviting your friends
+        error_empty_form: Please enter some email addresses
+        success: We've sent the invites to your friends!
+      index:
+        customize_message: Customize the invitation message
+        friend_email: 'Friend #%{index} email'
+        invitations_subtitle: Let your friends know about this site
+        invitations_title: Do you think more voices should be heard in %{organization_name}?
+        invite: Invite
+        visit_your_profile: Visit your profile
     log:
       base_presenter:
         create: "%{user_name} created %{resource_name}"
@@ -385,6 +423,20 @@ en:
         success: You are unsubscribed successfully.
         token_error: The link has expired.
         unsubscribe: Unsubscribe
+    newsletters_opt_in:
+      unathorized: Sorry, this link is no longer available
+      update:
+        error: Something wrong happened
+        success: Newsletter settings updated successfully
+    newsletters_opt_in_mailer:
+      notify:
+        body_1: The processing of personal data and its protection is becoming increasingly important for all of us. With the new General Data Protection Regulation (GDPR) of May 25, 2018, individuals have better control over their personal data. For this reason we need your "OK" to continue sending relevant information about the activities of the %{organization_name}.
+        body_2: 'How can you give us your consent? Just click the following button:'
+        body_3: With this consent you will be able to continue receiving information about the services of the platform. If, on the contrary, we do not receive a positive confirmation on your part we will stop sending you our messages. If you confirm that you want to keep being informed, you will always have the option to cancel at any time.
+        button: Yes, I want to continue receiving relevant information
+        greetings: Greetings,<br/>%{organization_name}<br/><a href="%{organization_url}">%{organization_url}</a>
+        hello: Hello,
+        subject: Do you want to keep receiving relevant information about %{organization_name}?
     notifications:
       no_notifications: No notifications yet.
     notifications_settings:
@@ -452,6 +504,7 @@ en:
           modal_btn_continue: Accept terms and continue
           modal_btn_exit: I'll review it later
           modal_button: Refuse the terms
+          modal_close: Close modal
           modal_title: Do you really refuse the updated Terms and Conditions?
         required_review:
           alert: We've updated our Terms of Service, please review them.
@@ -576,6 +629,7 @@ en:
           If you don't want to accept the invitation, please ignore this email.<br />
           Your account won't be created until you access the link above and set your nickname and password.
         invited_you_as_admin: "%{invited_by} has invited you as an admin of %{application}. You can accept it through the link below."
+        invited_you_as_friend: "%{invited_by} has invited you to %{application}."
         invited_you_as_private_user: "%{invited_by} has invited you as a private user of %{application}. You can accept it through the link below."
         someone_invited_you: Someone has invited you to %{application}. You can accept it through the link below.
         someone_invited_you_as_admin: Someone has invited you as an admin of %{application}, you can accept it through the link below.
@@ -584,6 +638,10 @@ en:
         subject: You've been invited to manage %{organization}
       invite_collaborator:
         subject: You've been invited to collaborate on %{organization}
+      invite_friend:
+        accept_invitation: 'You can accept the invitation through the link below:'
+        friend_custom_text: 'They left this message for you:'
+        subject: You've been invited to %{organization}
       invite_private_user:
         subject: You've been invited to a private participatory process on %{organization}
       organization_admin_invitation_instructions:
@@ -633,6 +691,7 @@ en:
       user_menu:
         admin_dashboard: Admin dashboard
         conversations: Conversations
+        invite_friends: Invite friends
         notifications: Notifications
         profile: My account
         public_profile: My public profile
@@ -641,6 +700,7 @@ en:
         account: Account
         authorizations: Authorizations
         delete_my_account: Delete my account
+        my_data: My data
         notifications_settings: Notifications settings
         title: User settings
         user_groups: Organizations
@@ -648,6 +708,16 @@ en:
         see_more: See more
   locale:
     name: English
+  password_validator:
+    domain_included_in_password: is too similar to this domain name
+    email_included_in_password: is too similar to your email
+    fallback: is not valid
+    name_included_in_password: is too similar to your name
+    not_enough_unique_characters: does not have enough unique characters
+    password_not_allowed: is not allowed
+    password_too_common: is too common
+    password_too_long: is too long
+    password_too_short: is too short
   social_share_button:
     delicious: Delicious
     douban: Douban

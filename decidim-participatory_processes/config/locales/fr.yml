@@ -1,4 +1,3 @@
----
 fr:
   activemodel:
     attributes:
@@ -21,8 +20,8 @@ fr:
         participatory_structure: Modalités
         promoted: Mise en avant
         published_at: Publiée à
-        scope_id: Secteur
-        scopes_enabled: Secteurs activés
+        scope_id: Périmètre d'application
+        scopes_enabled: Périmètres d'application activés
         short_description: Résumé
         show_statistics: Montrer les statistiques
         slug: Identifiant
@@ -68,6 +67,10 @@ fr:
         destroy: Supprimer
         duplicate: Dupliquer
         edit: Modifier
+        new_process: Nouvelle concertation
+        new_process_group: Nouveau groupe de concertations
+        new_process_step: Nouvelle étape
+        new_process_user_role: Nouvel utilisateur de la concertation
         preview: Aperçu
         publish: Publier
         resend_invitation: Renvoyer l'invitation
@@ -254,7 +257,7 @@ fr:
       processes: Concertations
     participatory_process_groups:
       show:
-        group_participatory_processes: Concertations pour %{group}
+        group_participatory_processes: Processus participatifs pour %{group}
         title: Groupes de concertations
     participatory_process_steps:
       index:
@@ -272,9 +275,9 @@ fr:
       index:
         title: Concertations
       order_by_processes:
-        active: Actives
-        all: Toutes
-        past: Passées
+        active: Actifs
+        all: Tous
+        past: Passés
         upcoming: À venir
       pages:
         home:
@@ -294,7 +297,7 @@ fr:
         participatory_scope: Objectifs
         participatory_structure: Modalités
         private_space: Ceci est une concertation privée
-        scope: Échelle
+        scope: Périmètre d'application
         start_date: Date de début
         target: Participants
         unspecified: Non précisé
@@ -329,8 +332,8 @@ fr:
           promoted_processes: Concertations mises en avant
         order_by_processes:
           processes:
-            one: "%{count} concertation"
-            other: "%{count} concertations"
+            one: "%{count} processus participatif"
+            other: "%{count} processus participatifs"
         participatory_process:
           active_step: 'Étape actuelle :'
           take_part: Participer

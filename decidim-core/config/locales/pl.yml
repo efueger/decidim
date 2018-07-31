@@ -11,8 +11,8 @@ pl:
         email: Twój email
         name: Twoje imię
         nickname: Twój krótki, niepowtarzalny identyfikator
-        password: Nowe hasło
-        password_confirmation: Potwierdź swoje nowe hasło
+        password: Hasło
+        password_confirmation: Potwierdź swoje hasło
         personal_url: Osobisty URL
         remove_avatar: Usuń awatar
         user_group_document_number: Numer dokumentu organizacji
@@ -57,6 +57,11 @@ pl:
       decidim_with_month_name: "%d %B %Y"
   decidim:
     account:
+      data_portability_export:
+        file_no_exists: Plik nie istnieje
+        invalid_token: Podany token jest nieprawidłowy.
+        no_token: Nie podano tokena
+        notice: Twoje dane są obecnie w toku. Otrzymasz e-mail po zakończeniu.
       delete:
         alert: Nie można cofnąć tej czynności. Jeśli usuniesz konto, nie będzie można się już logować z jego pomocą.
         confirm:
@@ -188,6 +193,13 @@ pl:
     core:
       actions:
         unauthorized: Nie masz uprawnień do wykonywania tej czynności
+    data_portability:
+      export:
+        ready: Gotowy
+      show:
+        download_data: Pobierz dane
+        download_data_description: Plik zawierający wszystkie informacje powiązane z kontem zostanie wysłany na <strong>%{user_email}</strong>
+        request_data: Poproś o dane
     devise:
       omniauth_registrations:
         create:
@@ -223,8 +235,15 @@ pl:
         newsletter_modal:
           buttons:
             check: Sprawdź i kontynuuj
+            close_modal: Zamknij modalne
             uncheck: Pozostaw niezaznaczone
-          notice: Hej, jesteś pewien, że nie chcesz otrzymywać biuletynu? Rozważ ponownie zaznaczenie pola wyboru biuletynu poniżej. Bardzo ważne jest dla nas, że możesz odbierać od czasu do czasu e-maile, by tworzyć ważne ogłoszenia. Zawsze możesz to zmienić na stronie ustawień powiadomień. Jeśli nie zaznaczysz tego pola, być może brakuje odpowiednich informacji o nowych możliwościach uczestnictwa w ramach platformy. Jeśli nadal chcesz uniknąć otrzymywania biuletynów, doskonale rozumiemy Twoją decyzję. Dziękuję za przeczytanie tego!
+          notice: |-
+            <p>Hej, jesteś pewien, że nie chcesz otrzymywać biuletynu?<br>
+            Proszę rozważyć ponownie zaznaczenie pola wyboru biuletynu poniżej.<br>
+            Jest dla nas bardzo ważne, abyś mógł otrzymywać od czasu do czasu e-maile do ważnych ogłoszeń, zawsze możesz to zmienić na stronie ustawień powiadomień.</p>
+            <p>Jeśli nie zaznaczysz tego pola, może brakować odpowiednich informacji o nowych możliwościach uczestnictwa w ramach platformy.<br>
+            Jeśli nadal nie chcesz otrzymywać biuletynów, doskonale rozumiemy Twoją decyzję.</p>
+            <p>Dziękuję za przeczytanie tego!</p>
           title: Powiadomienia biuletynu
         omniauth_buttons:
           or: Lub
@@ -294,6 +313,9 @@ pl:
           email_subject: "%{nickname} zaktualizował (a) swój profil"
           notification_title: Zmieniono <a href="%{resource_path}">profil strony</a> z %{name} (%{nickname}), którego obserwujesz.
     export_mailer:
+      data_portability_export:
+        click_button: Kliknij następny przycisk, aby pobrać swoje dane. <br/> Plik będzie dostępny do %{date}.
+        download: Pobieranie
       export:
         ready: Znajdź załączoną wersję eksportowanego pliku.
       subject: Twój eksport "%{name}" jest gotowy
@@ -331,6 +353,18 @@ pl:
       errors:
         error: W tym polu wystąpił błąd.
       remove_this_file: Usuń ten plik
+    invitations:
+      create:
+        error: Podczas zapraszania znajomych pojawiły się pewne problemy
+        error_empty_form: Wprowadź adresy e-mail
+        success: Wysłaliśmy zaproszenia do Twoich znajomych!
+      index:
+        customize_message: Dostosuj wiadomość z zaproszeniem
+        friend_email: 'Friend #%{index} email'
+        invitations_subtitle: Powiadom znajomych o tej stronie
+        invitations_title: Czy uważasz, że więcej głosów powinno być słyszanych w %{organization_name}?
+        invite: Zapraszam
+        visit_your_profile: Odwiedź swój profil
     log:
       base_presenter:
         create: "%{user_name} stworzony %{resource_name}"
@@ -395,6 +429,20 @@ pl:
         success: Zyskujesz subskrypcję.
         token_error: Link wygasł.
         unsubscribe: Anuluj subskrypcję
+    newsletters_opt_in:
+      unathorized: Przepraszamy, ten link nie jest już dostępny
+      update:
+        error: Stało się coś złego
+        success: Ustawienia newslettera zostały pomyślnie zaktualizowane
+    newsletters_opt_in_mailer:
+      notify:
+        body_1: Przetwarzanie danych osobowych i ich ochrona stają się coraz ważniejsze dla nas wszystkich. Wraz z nowym ogólnym rozporządzeniem o ochronie danych (GDPR) z 25 maja 2018 r. Osoby fizyczne mają lepszą kontrolę nad swoimi danymi osobowymi. Z tego powodu potrzebujemy twojego "OK", aby kontynuować wysyłanie odpowiednich informacji o działaniach %{organization_name}.
+        body_2: 'Jak możesz wyrazić zgodę? Po prostu kliknij następujący przycisk:'
+        body_3: Za tą zgodą będziesz mógł nadal otrzymywać informacje o usługach platformy. Jeśli, wręcz przeciwnie, nie otrzymamy potwierdzenia z Twojej strony, przestaniemy wysyłać Ci nasze wiadomości. Jeśli potwierdzisz, że chcesz być na bieżąco informowany, zawsze będziesz mieć możliwość anulowania w dowolnym momencie.
+        button: Tak, chcę nadal otrzymywać odpowiednie informacje
+        greetings: Pozdrowienia,<br/>%{organization_name}<br/><a href="%{organization_url}">%{organization_url}</a>
+        hello: Cześć,
+        subject: Czy chcesz nadal otrzymywać odpowiednie informacje o %{organization_name}?
     notifications:
       no_notifications: Nie powiadomienia.
     notifications_settings:
@@ -462,6 +510,7 @@ pl:
           modal_btn_continue: Zaakceptuj warunki i kontynuuj
           modal_btn_exit: Sprawdzę to później
           modal_button: Odrzuć warunki
+          modal_close: Zamknij modalne
           modal_title: Czy rzeczywiście odmawiasz zaktualizowanego regulaminu?
         required_review:
           alert: Zaktualizowaliśmy nasze Warunki korzystania z usługi, zapoznaj się z nimi.
@@ -586,6 +635,7 @@ pl:
           Jeśli nie chcesz zaakceptować zaproszenia, zignoruj ​​ten e-mail.<br />
           Twoje konto nie zostanie utworzone, dopóki nie uzyskasz dostępu do powyższego linku i nie ustawisz nicka ani hasła.
         invited_you_as_admin: "%{invited_by} zaprosił Cię jako administrator o numerze %{application}. Możesz to zaakceptować za pomocą poniższego linku."
+        invited_you_as_friend: "%{invited_by} zaprosił cię na %{application}."
         invited_you_as_private_user: "%{invited_by} zaprasza Cię jako prywatnego użytkownika %{application}. Możesz zaakceptować to za pomocą poniższego linku."
         someone_invited_you: Ktoś zaprosił Cię do %{application}. Możesz to zaakceptować za pomocą poniższego linku.
         someone_invited_you_as_admin: Ktoś zaprosił Cię jako administrator o numerze %{application}, możesz go zaakceptować za pomocą poniższego linku.
@@ -594,6 +644,10 @@ pl:
         subject: Zaproszono Cię do zarządzania %{organization}
       invite_collaborator:
         subject: Zaproszono Cię do współpracy w %{organization}
+      invite_friend:
+        accept_invitation: 'Możesz zaakceptować zaproszenie, klikając poniższy link:'
+        friend_custom_text: 'Zostawili tę wiadomość dla Ciebie:'
+        subject: Zostałeś zaproszony do %{organization}
       invite_private_user:
         subject: Zostałeś zaproszony do prywatnego udziału w procesie %{organization}
       organization_admin_invitation_instructions:
@@ -643,6 +697,7 @@ pl:
       user_menu:
         admin_dashboard: Panel administracyjny
         conversations: Rozmowy
+        invite_friends: Zaprosić przyjaciół
         notifications: Powiadomienia
         profile: Moje konto
         public_profile: Mój profil publiczny
@@ -651,6 +706,7 @@ pl:
         account: Konto
         authorizations: Zezwolenia
         delete_my_account: Usuń moje konto
+        my_data: Moje dane
         notifications_settings: Ustawienia powiadomień
         title: Ustawienia użytkownika
         user_groups: Organizacje
@@ -658,6 +714,16 @@ pl:
         see_more: Zobacz więcej
   locale:
     name: język angielski
+  password_validator:
+    domain_included_in_password: jest zbyt podobny do tej nazwy domeny
+    email_included_in_password: jest zbyt podobny do twojego adresu e-mail
+    fallback: nie jest poprawny
+    name_included_in_password: jest zbyt podobny do twojego imienia
+    not_enough_unique_characters: nie ma wystarczającej liczby unikalnych znaków
+    password_not_allowed: nie jest dozwolone
+    password_too_common: jest zbyt powszechne
+    password_too_long: jest zbyt długi
+    password_too_short: jest za krótki
   social_share_button:
     delicious: Pyszne
     douban: Douban

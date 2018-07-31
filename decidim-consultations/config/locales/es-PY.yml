@@ -1,4 +1,3 @@
----
 es-PY:
   activemodel:
     attributes:
@@ -6,12 +5,12 @@ es-PY:
         banner_image: Imagen de banner
         decidim_highlighted_scope_id: Alcance resaltado
         description: Descripción
-        end_voting_date: Fecha final
+        end_voting_date: La votación ha terminado
         introductory_image: Imagen introductoria
         introductory_video_url: URL de vídeo introductoria
         questions: Preguntas
-        slug: URL slug
-        start_voting_date: Fecha de inicio
+        slug: Texto corto de URL
+        start_voting_date: Empieza la votación
         subtitle: Subtitular
         title: Título
       question:
@@ -28,7 +27,7 @@ es-PY:
         question_context: Contexto
         reference: Referencia
         scope: Área municipal
-        slug: URL slug
+        slug: Texto corto de URL
         subtitle: Subtitular
         title: Título
         vote: Sistema de votación externa
@@ -54,6 +53,9 @@ es-PY:
   decidim:
     admin:
       actions:
+        new_consultation: Nueva consulta
+        new_question: Nueva pregunta
+        new_response: Nueva respuesta
         publish_results: Publicar resultados
         unpublish_results: Anular la publicación de resultados
       consultation_publications:
@@ -75,7 +77,7 @@ es-PY:
           error: Hubo un error al crear una nueva consulta.
           success: Consulta creada con éxito.
         destroy:
-          success: Consulta eliminada exitosamente.
+          success: Consulta eliminada con éxito.
         edit:
           update: Actualizar
         form:
@@ -156,7 +158,7 @@ es-PY:
           success: Respuesta creada con éxito.
         destroy:
           error: Hubo un error al eliminar la respuesta.
-          success: Pregunta eliminada con éxito.
+          success: Respuesta eliminada con éxito
         edit:
           update: Actualizar
         form:
@@ -173,7 +175,7 @@ es-PY:
         responses: Respuestas
     consultations:
       consultation:
-        start_voting_date: Votando desde
+        start_voting_date: Empieza la votación
         view_results: Ver resultados
       consultation_card:
         view_results: Ver resultados
@@ -240,7 +242,7 @@ es-PY:
         assistants_count_title: Asistentes
         comments_count_title: Comentarios
         meetings_count_title: Reuniones
-        supports_count_title: Adherencias
+        supports_count_title: Apoyos
       technical_info:
         technical_data: Datos técnicos
       vote_button:
@@ -263,7 +265,7 @@ es-PY:
           attachments: Archivos adjuntos
           categories: Categorías
       consultation_voting_data:
-        start_voting_date: Votando desde
+        start_voting_date: Empieza la votación
       question_components:
         question_menu_item: La pregunta
         unfold: Desplegar

@@ -82,7 +82,7 @@ FactoryBot.define do
   factory :user, class: "Decidim::User" do
     email { generate(:email) }
     password "password1234"
-    password_confirmation "password1234"
+    password_confirmation { password }
     name { generate(:name) }
     nickname { generate(:nickname) }
     organization
@@ -287,6 +287,14 @@ FactoryBot.define do
   factory :area, class: "Decidim::Area" do
     name { Decidim::Faker::Localized.literal(generate(:area_name)) }
     organization
+  end
+
+  factory :coauthorship, class: "Decidim::Coauthorship" do
+    coauthorable { create(:dummy_resource) }
+    transient do
+      organization { coauthorable.component.participatory_space.organization }
+    end
+    author { create(:user, :confirmed, organization: organization) }
   end
 
   factory :dummy_resource, class: "Decidim::DummyResources::DummyResource" do

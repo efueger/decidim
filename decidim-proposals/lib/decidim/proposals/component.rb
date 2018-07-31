@@ -11,6 +11,8 @@ Decidim.register_component(:proposals) do |component|
     raise "Can't destroy this component when there are proposals" if Decidim::Proposals::Proposal.where(component: instance).any?
   end
 
+  component.data_portable_entities = ["Decidim::Proposals::Proposal"]
+
   component.actions = %w(endorse vote create withdraw)
 
   component.query_type = "Decidim::Proposals::ProposalsType"
@@ -145,13 +147,12 @@ Decidim.register_component(:proposals) do |component|
         scope: Faker::Boolean.boolean(0.5) ? global : scopes.sample,
         title: Faker::Lorem.sentence(2),
         body: Faker::Lorem.paragraphs(2).join("\n"),
-        author: author,
-        user_group: user_group,
         state: state,
         answer: answer,
         answered_at: Time.current,
         published_at: Time.current
       )
+      proposal.add_coauthor(author, user_group: user_group) if n.even?
 
       (n % 3).times do |m|
         email = "vote-author-#{participatory_space.underscored_name}-#{participatory_space.id}-#{n}-#{m}@example.org"

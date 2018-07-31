@@ -19,7 +19,7 @@ fi:
         decidim_area_id: alue
         decidim_scope_id: laajuus
         description: Kuvaus
-        developer_group: Kehittäjäryhmä
+        developer_group: Promoottoriryhmä
         domain: Toimintaympäristö
         duration: Kesto
         facebook: Facebook
@@ -76,12 +76,14 @@ fi:
         other: Asennuksen käyttäjäroolit
   decidim:
     admin:
+      actions:
+        new_assembly: Uusi kokoonpano
       assemblies:
         create:
           error: Virhe luotaessa uutta kehitysryhmää.
           success: Kehitysryhmän luonti onnistui.
         destroy:
-          success: Kehitysryhmän tuhoaminen onnistui.
+          success: Kokoonpano poistettiin onnistuneesti.
         edit:
           update: Päivitä
         form:
@@ -111,7 +113,7 @@ fi:
           error: Virhe lisäsi tämän kokoonpanon jäsentä.
           success: Jäsen perustettiin onnistuneesti kokoonpanoon.
         destroy:
-          success: Jäsenet tuhoutuivat onnistuneesti tämän kokoonpanon yhteydessä
+          success: Jäsen poistettiin onnistuneesti kokoonpanoa varten.
         edit:
           title: Päivitä kokoonpanoryhmä.
           update: Päivittää
@@ -133,9 +135,9 @@ fi:
       assembly_user_roles:
         create:
           error: Virhe lisätessä käyttäjää tälle kehitysryhmälle.
-          success: Käyttäjä on luotu onnistuneesti kehitysryhmään.
+          success: Käyttäjä lisättiin onnistuneesti tähän kokoonpanoon.
         destroy:
-          success: Käyttäjä tuhottu onnistuneesti kehitysryhmästä.
+          success: Käyttäjä poistettiin onnistuneesti tästä kokoonpanosta.
         edit:
           title: Päivitä kehitysryhmän käyttäjän tietoja.
           update: Päivitä
@@ -152,7 +154,7 @@ fi:
         assemblies_submenu:
           assembly_admins: Kehitysryhmän käyttäjät
           assembly_members: Jäsenet
-          attachment_collections: kokoelmat
+          attachment_collections: kansiot
           attachment_files: Tiedostot
           attachments: Liitteet
           categories: Aihepiirit
@@ -268,7 +270,7 @@ fi:
         composition: Sävellys
         created_by: Luonut
         creation_date: Päivämäärä luotu
-        developer_group: Kehittäjäryhmä
+        developer_group: Promoottoriryhmä
         duration: Kesto
         included_at: Mukana osoitteessa
         indefinite_duration: epämääräinen

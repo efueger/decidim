@@ -91,8 +91,8 @@ pl:
             endorsements_blocked: Zatwierdzenia zostały zablokowane
             endorsements_enabled: Adnotacje włączone
             proposal_answering_enabled: Włączono odpowiadanie na propozycję
-            votes_blocked: Głosy zablokowane
-            votes_enabled: Głosowanie włączone
+            votes_blocked: Głosowanie zablokowane
+            votes_enabled: Włączone głosowanie
             votes_hidden: Głosy są ukryte (jeśli głosy są włączone, zaznaczenie tego ukryje liczbę głosów)
             votes_weight_enabled: Up / Down / Neutral votes enabled
     events:
@@ -105,7 +105,7 @@ pl:
           email_intro: 'Możesz teraz tworzyć nowe propozycje w %{participatory_space_title}! Zacznij uczestniczyć w tej stronie:'
           email_outro: Otrzymałeś to powiadomienie, ponieważ obserwujesz %{participatory_space_title}. Możesz przestać otrzymywać powiadomienia po poprzednim linku.
           email_subject: Propozycje są teraz dostępne w %{participatory_space_title}
-          notification_title: Możesz teraz uruchomić <a href="%{resource_path}">nowych propozycji</a> w <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+          notification_title: Możesz teraz przesłać <a href="%{resource_path}">nowych propozycji</a> w <a href="%{participatory_space_url}">%{participatory_space_title}</a>
         endorsing_enabled:
           email_intro: 'Możesz zgłaszać propozycje w %{participatory_space_title}! Zacznij uczestniczyć w tej stronie:'
           email_outro: Otrzymałeś to powiadomienie, ponieważ obserwujesz %{participatory_space_title}. Możesz przestać otrzymywać powiadomienia po poprzednim linku.
@@ -167,7 +167,7 @@ pl:
       actions:
         answer: Odpowiedź
         import: Importuj z innego komponentu
-        new: Nowy
+        new: Nowa propozycja
         private_notes: Prywatne notatki
         title: działania
       admin:
@@ -252,17 +252,17 @@ pl:
         success: Propozycja została utworzona pomyślnie. Zapisany jako wersja robocza.
       destroy_draft:
         error: Wystąpiły błędy podczas usuwania wersji roboczej propozycji.
-        success: Projekt propozycji został pomyślnie zniszczony.
+        success: Projekt propozycji został pomyślnie usunięty.
       models:
         proposal:
           fields:
             category: Kategoria
             comments: Komentarze
-            created_at: Utworzono w
             endorsements: Adnotacje
             id: ID
             notes: Uwagi
             official_proposal: Oficjalny wniosek
+            published_at: Opublikowano na
             scope: Zakres
             state: Stan
             title: Tytuł

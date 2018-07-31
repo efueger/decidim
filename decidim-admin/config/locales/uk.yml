@@ -133,7 +133,7 @@ uk:
         organization_name: Назва організації
         organization_url: Адреса сайту організації
         redirect_uri: URI перенаправлення
-        site: Сайт
+        site: Веб-сайт
   date:
     formats:
       datepicker: "%d.%m.%Y"
@@ -144,6 +144,7 @@ uk:
         browse: Переглянути
         export: Зберегти у вигляді файлу
         manage: Керувати
+        new: Додати %{name}
         permissions: Права
         reject: Відхилити
         verify: Підтвердити
@@ -189,10 +190,10 @@ uk:
           update: Оновити
         index:
           attachment_collection_used: Цю теку не можна видалити, оскільки вона використовується.
-          attachment_collections_title: Тека вкладень
+          attachment_collections_title: Теки вкладень
         new:
           create: Додати
-          title: Створити теку
+          title: Додати теку
         update:
           error: При спробі оновити цю теку сталася помилка.
           success: Теку успішно оновлено.
@@ -390,7 +391,7 @@ uk:
             progress: Перебіг
             sent_at: 'Надіслане:'
             subject: Тема
-          name: Випуск новин
+          name: Розсилання новин
         oauth_application:
           fields:
             created_at: 'Створено:'
@@ -469,14 +470,14 @@ uk:
           success: Випуск новин успішно доставлено.
         destroy:
           error_already_sent: 'Неможливо видалити цей випуск новин: його вже надіслано.'
-          success: Випуск новин успішно видалено.
+          success: Розсилання новин успішно видалено.
         edit:
           save_and_preview: Зберегти та попередньо переглянути
-          title: Редагувати випуск новин
+          title: Редагувати розсилання новин
         form:
           interpolations_hint: 'Підказка: Ви можете використовувати "%{name}" будь-де в основному тексті або темі, і воно буде замінене на ім''я одержувача.'
         index:
-          confirm_delete: Ви дійсно бажаєте видалити цей випуск новин?
+          confirm_delete: Ви дійсно бажаєте видалити це розсилання новин?
           title: Розсилання новин
         new:
           save: Зберегти

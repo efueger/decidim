@@ -12,7 +12,7 @@ ca:
         name: El teu nom
         nickname: El teu identificador curt i únic
         password: Contrasenya
-        password_confirmation: Confirma la teva contrasenya
+        password_confirmation: Confirmar la contrasenya
         personal_url: URL personal
         remove_avatar: Elimina la imatge d'usuari
         user_group_document_number: Número de document acreditatiu
@@ -53,6 +53,11 @@ ca:
       decidim_with_month_name: "%d %B %Y"
   decidim:
     account:
+      data_portability_export:
+        file_no_exists: L'arxiu no existeix
+        invalid_token: El símbol proporcionat no és vàlid.
+        no_token: No s'ha proporcionat cap testimoni
+        notice: Les teves dades estan en curs. Rebràs un correu electrònic quan estigui complet.
       delete:
         alert: Aquesta acció no es pot desfer. Si elimines el teu compte no seràs capaç d'iniciar sessió.
         confirm:
@@ -178,6 +183,13 @@ ca:
     core:
       actions:
         unauthorized: No tens permís per realitzar aquesta acció
+    data_portability:
+      export:
+        ready: Preparat
+      show:
+        download_data: Baixa't les dades
+        download_data_description: Un fitxer amb tota la informació associada al compte s'enviarà a <strong>%{user_email}</strong>
+        request_data: Sol·licita dades
     devise:
       omniauth_registrations:
         create:
@@ -213,8 +225,15 @@ ca:
         newsletter_modal:
           buttons:
             check: Marca i continua
+            close_modal: Tanca el modal
             uncheck: Deixa desmarcada
-          notice: Hola, estàs segur que no vols rebre un butlletí informatiu? Si us plau, avalua tornar a fer clic a la casella de verificació que apareix a continuació. Per a nosaltres és molt important que rebis correus ocasionals per fer anuncis importants, i sempre pots canviar-ho a la pàgina de configuració de les notificacions. Si no marques la casella, és possible que no rebis informació rellevant sobre noves oportunitats de participació dins de la plataforma. Si encara vols evitar rebre butlletins, entenem perfectament la teva decisió. Gràcies per llegir això!
+          notice: |-
+            <p>Hola, estàs segur que no vols rebre un butlletí?<br>
+            Si us plau, torna a marcar la casella de selecció de butlletí a continuació.<br>
+            Per a nosaltres és molt important que rebeu correus ocasionals per fer anuncis importants, sempre podeu canviar-lo a la pàgina de configuració de les notificacions.</p>
+            <p>Si no marques la casella, pot ser que falti informació rellevant sobre noves oportunitats de participació dins de la plataforma.<br>
+            Si encara vols evitar rebre butlletins, entenem perfectament la teva decisió.</p>
+            <p>Gràcies per llegir això.</p>
           title: Notificacions de butlletins
         omniauth_buttons:
           or: O
@@ -284,6 +303,9 @@ ca:
           email_subject: En/na %{nickname} ha actualitzat el seu perfil
           notification_title: El <a href="%{resource_path}">perfil</a> d'en/na %{name} (%{nickname}), a qui estàs seguint, s'ha actualitzat.
     export_mailer:
+      data_portability_export:
+        click_button: Fes clic al botó següent per descarregar les teves dades. <br/> tindràs disponible el fitxer fins a %{date}.
+        download: Descarregar
       export:
         ready: S'adjunta una versió comprimida de l'exportació.
       subject: L'exportació "%{name}" està a punt
@@ -321,6 +343,18 @@ ca:
       errors:
         error: Hi ha un error en aquest camp.
       remove_this_file: Eliminar aquest arxiu
+    invitations:
+      create:
+        error: Hi ha hagut alguns problemes mentre es convidava els teus amics
+        error_empty_form: Introdueix algunes adreces de correu electrònic
+        success: Hem enviat les invitacions als teus amics!
+      index:
+        customize_message: Personalitza el missatge d'invitació
+        friend_email: 'Correu electrònic de l''amic #%{index}'
+        invitations_subtitle: Fes saber als teus amics sobre aquest lloc web
+        invitations_title: Creus que cal escoltar més veus en %{organization_name}?
+        invite: Convidar
+        visit_your_profile: Visiteu el teu perfil
     log:
       base_presenter:
         create: "%{user_name} creat %{resource_name}"
@@ -385,6 +419,20 @@ ca:
         success: Has cancel·lat la subscripció amb èxit.
         token_error: L'enllaç ha caducat.
         unsubscribe: Anul·la la subscripció
+    newsletters_opt_in:
+      unathorized: Ho sentim, aquest enllaç ja no està disponible
+      update:
+        error: S'ha produït un error
+        success: Configuració del butlletí de notícies actualitzada amb èxit
+    newsletters_opt_in_mailer:
+      notify:
+        body_1: El processament de les dades personals i la seva protecció cada vegada és més important per a tots nosaltres. Amb el nou Reglament General de Protecció de Dades (GDPR) del 25 de maig de 2018, les persones tenen un millor control sobre les seves dades personals. Per aquest motiu, necessitem el vostre "D'acord" per continuar enviant informació rellevant sobre les activitats del %{organization_name}.
+        body_2: 'Com ens podeu donar el vostre consentiment? Només cal que feu clic al botó següent:'
+        body_3: Donant consentiment podràs continuar rebent informació sobre els serveis de la plataforma. Si, al contrari, no rebem una confirmació positiva de la teva part, deixarem d'enviar-te els nostres missatges. Si confirmes que vols mantenir-te informat, sempre tindràs l'opció de cancel·lar en qualsevol moment.
+        button: Sí, vull continuar rebent informació rellevant
+        greetings: Salutacions,<br/>%{organization_name}<br/><a href="%{organization_url}">%{organization_url}</a>
+        hello: Hola,
+        subject: Vols seguir rebent informació rellevant sobre %{organization_name}?
     notifications:
       no_notifications: Encara no hi ha notificacions.
     notifications_settings:
@@ -452,6 +500,7 @@ ca:
           modal_btn_continue: Acceptar els termes i continuar
           modal_btn_exit: Ho revisaré més tard
           modal_button: Rebutjar els termes
+          modal_close: Tanca el modal
           modal_title: Confirmes que no vols acceptar els Termes i Condicions actualitzats?
         required_review:
           alert: Hem actualitzat els nostres Termes de Servei, si us plau, revisa'ls.
@@ -576,6 +625,7 @@ ca:
           Si no vols acceptar la invitació, si us plau, ignora aquest correu electrònic.<br />
           El teu compte no es crearà fins que no accedeixis a l'enllaç anterior i estableixis el teu nom d'usuari/a i contrasenya.
         invited_you_as_admin: "%{invited_by} t'ha convidat com a administrador de %{application}. Pots acceptar-ho a través de l'enllaç següent."
+        invited_you_as_friend: "%{invited_by} t'ha convidat a %{application}."
         invited_you_as_private_user: "%{invited_by} t'ha convidat com a usuari privat de %{application}. Podeu acceptar-lo a través de l'enllaç següent."
         someone_invited_you: Algú t'ha convidat a %{application}. Pots acceptar-ho a través de l'enllaç següent.
         someone_invited_you_as_admin: Algú t'ha convidat com a administrador de %{application}, pots acceptar-lo a través de l'enllaç següent.
@@ -584,6 +634,10 @@ ca:
         subject: Has estat convidat a gestionar %{organization}
       invite_collaborator:
         subject: Has estat convidat a col·laborar a %{organization}
+      invite_friend:
+        accept_invitation: 'Pots acceptar la invitació a través del següent enllaç:'
+        friend_custom_text: 'T''han deixat aquest missatge:'
+        subject: Has estat convidat a %{organization}
       invite_private_user:
         subject: Has estat convidat a un procés participatiu privat a %{organization}
       organization_admin_invitation_instructions:
@@ -635,6 +689,7 @@ ca:
       user_menu:
         admin_dashboard: Tauler d'administració
         conversations: Converses
+        invite_friends: Convidar amics
         notifications: Notificacions
         profile: El meu compte
         public_profile: El meu perfil públic
@@ -643,6 +698,7 @@ ca:
         account: Compte
         authorizations: Autoritzacions
         delete_my_account: Eliminar el meu compte
+        my_data: Les meves dades
         notifications_settings: Configuració de les notificacions
         title: Configuració d'usuari
         user_groups: Organitzacions
@@ -650,6 +706,16 @@ ca:
         see_more: Veure més
   locale:
     name: Català
+  password_validator:
+    domain_included_in_password: és massa semblant a aquest nom de domini
+    email_included_in_password: és massa similar al teu correu electrònic
+    fallback: no és vàlid
+    name_included_in_password: és massa semblant al teu nom
+    not_enough_unique_characters: no té prou caràcters únics
+    password_not_allowed: no està permès
+    password_too_common: és massa comú
+    password_too_long: és massa llarg
+    password_too_short: és massa curt
   social_share_button:
     delicious: Delicious
     douban: Douban

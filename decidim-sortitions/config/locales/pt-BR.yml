@@ -43,7 +43,7 @@ pt-BR:
         actions:
           destroy: Cancelar a classificação
           edit: Editar
-          new: Novo
+          new: Nova classificação
           show: Detalhes da classificação
         models:
           sortition:
@@ -104,7 +104,7 @@ pt-BR:
           all: Todos
           cancelled: Cancelado
           category: Categoria
-          category_prompt: Selecione uma categoria
+          category_prompt: Selecionar uma categoria
           search: Pesquisa
           state: Estado
         filters_small_view:

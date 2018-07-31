@@ -14,7 +14,7 @@ en:
         confirm_destroy: Are you sure you want to delete this post?
         destroy: Delete
         edit: Edit
-        new: New
+        new: New post
         title: Actions
       admin:
         models:
@@ -61,7 +61,7 @@ en:
             comments_enabled: Comments enabled
           step:
             announcement: Announcement
-            comments_blocked: Comments Blocked
+            comments_blocked: Comments blocked
     events:
       blogs:
         post_created:

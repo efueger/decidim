@@ -9,7 +9,7 @@ fi:
         copy_components: Kopioi komponentit
         copy_steps: Kopioi vaiheet
         description: Kuvaus
-        developer_group: Kehitysryhmä
+        developer_group: Promoottoriryhmä
         domain: Toimintaympäristö
         end_date: Päättymisaika
         hashtag: Hashtag
@@ -64,11 +64,14 @@ fi:
       actions:
         activate: Aktivoi
         configure: Asetukset
-        confirm_destroy: Vahvista poisto
-        destroy: Tuhoa
+        confirm_destroy: Vahvista poistaminen
+        destroy: Poistaa
         duplicate: Kopioi
         edit: Muokkaa
-        new: Uusi
+        new_process: Uusi prosessi
+        new_process_group: Uusi prosessiryhmä
+        new_process_step: Uusi askel
+        new_process_user_role: Uusi prosessikäyttäjä
         preview: Esikatsele
         publish: Julkaise
         resend_invitation: Lähetä kutsu uudelleen
@@ -77,7 +80,7 @@ fi:
         participatory_process_groups: Prosessiryhmät
         participatory_processes: Prosessit
         participatory_processes_submenu:
-          attachment_collections: kokoelmat
+          attachment_collections: kansiot
           attachment_files: Tiedostot
           attachments: Liitteet
           categories: Aihepiirit
@@ -111,7 +114,7 @@ fi:
             email: Sähköposti
             name: Nimi
             role: Rooli
-          name: Osallistumisprosessin käyttäjä
+          name: Osallistuva prosessikäyttäjä
           roles:
             admin: Järjestelmänvalvoja
             collaborator: Kollaboraattori
@@ -127,7 +130,7 @@ fi:
           title: Kopioi osallistumisprosessi
       participatory_process_groups:
         destroy:
-          success: Osallistumisprosessien ryhmä poistettu onnistuneesti.
+          success: Osallistuva prosessiryhmä poistettiin onnistuneesti.
         edit:
           title: Muokkaa prosessiryhmää
           update: Päivitä
@@ -157,7 +160,7 @@ fi:
           error:
             active_step: Aktiivista vaihetta ei voi poistaa.
             last_step: Prosessin viimeistä vaihetta ei voi poistaa.
-          success: Osallistumisprosessin vaihe tuhottu onnistuneesti.
+          success: Osallistuvan prosessin vaihe poistettiin onnistuneesti.
         edit:
           title: Muokkaa osallistumisprosessin vaihetta
           update: Päivitä
@@ -174,9 +177,9 @@ fi:
       participatory_process_user_roles:
         create:
           error: Tapahtui virhe lisätessä käyttäjää osallistumisprosessiin.
-          success: Käyttäjä luotu onnistuneesti tähän osallistumisprosessiin.
+          success: Käyttäjä lisäsi menestyksekkäästi tähän osallistuvaan prosessiin.
         destroy:
-          success: Käyttäjä poistettu onnistuneesti tästä osallistumisprosessista.
+          success: Käyttäjä poistettiin onnistuneesti tästä osallistumisprosessista.
         edit:
           title: Päivitä osallistumisprosessin käyttäjä.
           update: Päivitä
@@ -193,7 +196,7 @@ fi:
           error: Uuden osallistumisprosessin luonnissa tapahtui virhe.
           success: Osallistumisprosessi luotu onnistuneesti. Määritä nyt sen vaiheet.
         destroy:
-          success: Osallistumisprosessi tuhottu onnistuneesti.
+          success: Osallistumisprosessi poistettiin onnistuneesti.
         edit:
           update: Päivitä
         form:
@@ -289,7 +292,7 @@ fi:
         index:
           loading: Ladataan tulokset...
       show:
-        developer_group: Kehitysryhmä
+        developer_group: Promoottoriryhmä
         end_date: Päättymisaika
         local_area: Organisaatioalue
         participatory_scope: Mitä päätetään

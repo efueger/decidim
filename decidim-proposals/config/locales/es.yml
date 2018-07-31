@@ -83,8 +83,8 @@ es:
             endorsements_blocked: Adhesiones bloqueados
             endorsements_enabled: Adhesiones habilitados
             proposal_answering_enabled: Contestación de propuesta habilitada
-            votes_blocked: Apoyos bloqueados
-            votes_enabled: Votos habilitados
+            votes_blocked: Votación bloqueada
+            votes_enabled: Votación habilitada
             votes_hidden: Votos ocultos (si los votos están habilitados, marcar esto ocultará el número de votos)
             votes_weight_enabled: Up / Down / Neutral votes enabled
     events:
@@ -97,7 +97,7 @@ es:
           email_intro: "¡Ahora puedes crear nuevas propuestas en %{participatory_space_title}! Comienza a participar en esta página:"
           email_outro: Recibiste esta notificación porque estás siguiendo %{participatory_space_title}. Puedes dejar de recibir notificaciones siguiendo el enlace anterior.
           email_subject: Propuestas ahora disponibles en %{participatory_space_title}
-          notification_title: Puedes crear <a href="%{resource_path}">nuevas propuestas</a> en <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+          notification_title: Ahora puedes presentar <a href="%{resource_path}">nuevas propuestas</a> en <a href="%{participatory_space_url}">%{participatory_space_title}</a>
         endorsing_enabled:
           email_intro: "¡Puedes adherirte a propuestas en %{participatory_space_title}! Comienza a participar en esta página:"
           email_outro: Recibiste esta notificación porque estás siguiendo %{participatory_space_title}. Puedes dejar de recibir notificaciones siguiendo el enlace anterior.
@@ -159,7 +159,7 @@ es:
       actions:
         answer: Respuesta
         import: Importar desde otro componente
-        new: Nueva
+        new: Nueva propuesta
         private_notes: Notas privadas
         title: Acciones
       admin:
@@ -244,17 +244,17 @@ es:
         success: Propuesta creada con éxito. Guardada como borrador.
       destroy_draft:
         error: Se han producido errores al eliminar el borrador de la propuesta.
-        success: El borrador de la propuesta fue eliminado exitosamente.
+        success: El borrador de la propuesta fue eliminado con éxito.
       models:
         proposal:
           fields:
             category: Categoría
             comments: Comentarios
-            created_at: Creado el
             endorsements: Adhesión
             id: Identificador
             notes: Notas
             official_proposal: Propuesta oficial
+            published_at: Publicado el
             scope: Ámbito
             state: Estado
             title: Título

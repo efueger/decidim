@@ -12,7 +12,7 @@ eu:
         name: Zure izena
         nickname: Zure identifikatzaile labur eta berezia
         password: Pasahitza
-        password_confirmation: Baieztatu zure pasahitz berria
+        password_confirmation: Berretsi pasahitza
         personal_url: URL pertsonala
         remove_avatar: Kendu avatar-a
         user_group_document_number: Egiaztagiri-zenbakia
@@ -53,6 +53,11 @@ eu:
       decidim_with_month_name: "%d %B %Y"
   decidim:
     account:
+      data_portability_export:
+        file_no_exists: Fitxategia ez dago
+        invalid_token: Ordezkatutako tokia baliogabea da.
+        no_token: No token emandako
+        notice: Zure datuak une honetan egiten ari dira. Mezu elektroniko bat jasoko duzu beteta dagoenean.
       delete:
         alert: Ekintza hau ezin da desegin. Zure kontua ezabatzen baduzu, ezin izango duzu saioa hasi.
         confirm:
@@ -178,6 +183,13 @@ eu:
     core:
       actions:
         unauthorized: Ez duzu baimenik ekintza honi heltzeko.
+    data_portability:
+      export:
+        ready: prest
+      show:
+        download_data: Deskargatu datuak
+        download_data_description: Kontuarekin lotutako informazio guztia duen fitxategia <strong>%{user_email}</strong>bidaliko da
+        request_data: Eskaera datuak
     devise:
       omniauth_registrations:
         create:
@@ -213,8 +225,15 @@ eu:
         newsletter_modal:
           buttons:
             check: Egiaztatu eta jarraitu
+            close_modal: Itxi modal
             uncheck: Mantendu uncheck
-          notice: Kaixo, ziur zaude buletin bat jaso nahi duzula? Berriro begiratu berriro buletina kontrol-laukia markatuta. Oso garrantzitsua da guretzat noizean behin mezu elektronikoak jasotzea iragarki garrantzitsuak egiteko, zure jakinarazpenen ezarpenen orrian alda dezakezu beti. Kutxa markatzen ez baduzu, parte hartzaileen aukera berriei buruzko informazio garrantzitsua falta zaizu plataforman. Buletinak jasotzea saihestu nahi baduzu, zure erabakia erabat ulertzen dugu. Eskerrik asko irakurri hau!
+          notice: |-
+            <p>Hola, ziur zaude buletin bat jaso nahi duzula?<br>
+            Berriro begiratu berriro buletina kontrol-laukia markatuta.<br>
+            Oso garrantzitsua da guretzat noizean behin mezu elektronikoak jasotzea iragarki garrantzitsuak egiteko, beti ere zure jakinarazpen ezarpenen orrian alda dezakezu.</p>
+            <p>Kutxa markatzen ez baduzu, plataformaren barruan aukera partaide berriei buruzko informazio garrantzitsua falta zaizu.<br>
+            Buletinak jasotzea saihestu nahi baduzu, zure erabakia erabat ulertzen dugu.</p>
+            <p>Eskerrik asko irakurri hau!</p>
           title: Buletina jakinarazpenak
         omniauth_buttons:
           or: Edo
@@ -284,6 +303,9 @@ eu:
           email_subject: "%{nickname} profilean eguneratu dute"
           notification_title: <a href="%{resource_path}">profile orriaren 1233_4_1_321 %{name} (%{nickname}) jarraitzen ari zarenean, eguneratu egin da.
     export_mailer:
+      data_portability_export:
+        click_button: Egin klik hurrengo botoian zure datuak deskargatzeko. <br/> Fitxategia eskuragarri izango duzu %{date}arte.
+        download: Deskarga
       export:
         ready: Atxikita aurkituko duzu zure esportazioaren bertsio trinkotua.
       subject: Prest duzu "%{name}" izeneko esportazioa
@@ -321,6 +343,18 @@ eu:
       errors:
         error: Errorea bat dago eremu honetan.
       remove_this_file: Ezabatu artxibo hau
+    invitations:
+      create:
+        error: Arazo batzuk egon dira zure lagunak gonbidatuz
+        error_empty_form: Sartu helbide elektroniko batzuk
+        success: Gonbidatu ditugu zure lagunei!
+      index:
+        customize_message: Pertsonalizatu gonbidapen mezua
+        friend_email: 'Lagunaren #%{index} posta elektronikoa'
+        invitations_subtitle: Eman zure lagunek gune honi buruz
+        invitations_title: Uste duzu gehiago ahotsak behar entzun %{organization_name}?
+        invite: gonbidatu
+        visit_your_profile: Bisitatu zure profila
     log:
       base_presenter:
         create: "%{user_name} sortu %{resource_name}"
@@ -385,6 +419,20 @@ eu:
         success: Harpidetuta zaude ondo.
         token_error: Lotura iraungi da.
         unsubscribe: Baja eman
+    newsletters_opt_in:
+      unathorized: Esteka hau jada ez dago erabilgarri
+      update:
+        error: Zerbait gaizki gertatu zen
+        success: Buletinaren ezarpenak behar bezala eguneratu dira
+    newsletters_opt_in_mailer:
+      notify:
+        body_1: Datu pertsonalen tratamendua eta babesak gero eta garrantzi handiagoa hartzen ari dira guztiontzat. 2018ko maiatzaren 25eko Datuen Babeserako Datu Orokor berriaren (GDPR) datu pertsonalak hobeto kontrolatzen ditu. Horregatik, "OK" behar dugu, %{organization_name}jardueren inguruko informazio garrantzitsua bidaltzen jarraitzeko.
+        body_2: 'Nola eman dezakezun zure baimena? Egin klik botoi honetan:'
+        body_3: Baimen honekin plataformaren zerbitzuei buruzko informazioa jasotzen jarraitu ahal izango duzu. Aitzitik, ez badugu baieztapen positiboa jasoko, zure mezuak bidaltzen jarraituko dugu. Jakinarazten jarraitu nahi duzula baieztatzen baduzu, edonoiz bertan behera uzteko aukera izango duzu beti.
+        button: Bai, informazio garrantzitsua jasotzen jarraitu nahi dut
+        greetings: Agurrak,<br/>%{organization_name}<br/><a href="%{organization_url}">%{organization_url}</a>
+        hello: Kaixo,
+        subject: '%{organization_name}inguruko informazio garrantzitsua jasotzen jarraitu nahi al duzu?'
     notifications:
       no_notifications: Oraindik ez dago jakinarazpenik.
     notifications_settings:
@@ -452,6 +500,7 @@ eu:
           modal_btn_continue: Baldintzak onartu eta jarraitu
           modal_btn_exit: Berriro berrikusiko dut geroago
           modal_button: Ezetsi terminoak
+          modal_close: Itxi modal
           modal_title: Baldintza eta baldintza eguneratuak uko dituzu benetan?
         required_review:
           alert: Zerbitzu-baldintzak eguneratu ditugu, mesedez, berrikusi.
@@ -576,6 +625,7 @@ eu:
           Gonbidapena onartu nahi ez baduzu, ez ikusi mezu hau.<br />
           Zure kontua ez da sortu goiko estekan sartzeko eta zure ezizena eta pasahitza ezartzeko.
         invited_you_as_admin: "%{invited_by} %{application} administratzaile gisa gonbidatu zaitu. Beheko estekan onartu dezakezu."
+        invited_you_as_friend: "%{invited_by} gonbidatu nahi duzun %{application}."
         invited_you_as_private_user: "%{invited_by} erabiltzaile gonbidatu zaitu %{application}erabiltzaile pribatu gisa. Beheko estekan onartu dezakezu."
         someone_invited_you: Norbaitek %{application} gonbidatu zaitu. Beheko estekan onartu dezakezu.
         someone_invited_you_as_admin: Norbaitek %{application} admin gisa gonbidatu zaitu, beheko estekan onartu dezakezu.
@@ -584,6 +634,10 @@ eu:
         subject: 'Gonbita jaso duzu erakunde hau kudeatzeko: %{organization}'
       invite_collaborator:
         subject: 'Gonbita jaso duzu erakunde honekin lankidetzan aritzeko: %{organization}'
+      invite_friend:
+        accept_invitation: 'Gonbidapena onartu dezakezu beheko estekan:'
+        friend_custom_text: 'Mezu hau utzi duzu zuretzat:'
+        subject: '%{organization}gonbidatu zaituzte'
       invite_private_user:
         subject: Parte hartzaile prozesu pribatu batera gonbidatu zaituzte %{organization} helbidean
       organization_admin_invitation_instructions:
@@ -633,6 +687,7 @@ eu:
       user_menu:
         admin_dashboard: Administrazioko aginte-mahaia
         conversations: Elkarrizketak
+        invite_friends: Lagunak gonbidatu
         notifications: jakinarazpenak
         profile: Nire kontua
         public_profile: Nire profil publikoa
@@ -641,6 +696,7 @@ eu:
         account: Kontua
         authorizations: Baimenak
         delete_my_account: Ezabatu nire kontua
+        my_data: Nire datuak
         notifications_settings: Jakinarazpen-konfigurazioa
         title: Erabiltzaile-ezarpenak
         user_groups: Erakundeak
@@ -648,6 +704,16 @@ eu:
         see_more: Ikusi gehiago
   locale:
     name: Euskera
+  password_validator:
+    domain_included_in_password: domeinu izen honen antzekoa da
+    email_included_in_password: zure posta elektronikoaren antzekoa da
+    fallback: ez da baliozkoa
+    name_included_in_password: zure izenaren antzekoa da
+    not_enough_unique_characters: ez da nahikoa karaktere berezirik
+    password_not_allowed: ez da onartzen
+    password_too_common: oso ohikoa da
+    password_too_long: luzeegia da
+    password_too_short: oso laburra da
   social_share_button:
     delicious: Delicious
     douban: Douban

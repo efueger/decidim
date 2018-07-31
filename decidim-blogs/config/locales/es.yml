@@ -14,7 +14,7 @@ es:
         confirm_destroy: "¿Seguro que quieres eliminar esta publicación?"
         destroy: Borrar
         edit: Editar
-        new: Nuevo
+        new: Nueva publicación
         title: Comportamiento
       admin:
         models:

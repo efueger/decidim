@@ -5,6 +5,7 @@ module Decidim
   class UserGroup < ApplicationRecord
     include Decidim::Traceable
     include Decidim::Loggable
+    include Decidim::DataPortability
 
     belongs_to :organization, foreign_key: "decidim_organization_id", class_name: "Decidim::Organization"
 
@@ -53,6 +54,14 @@ module Decidim
         user_group_document_number = SecureRandom.random_number(random_range)
       end
       user_group_document_number
+    end
+
+    def self.user_collection(user)
+      user.user_groups
+    end
+
+    def self.export_serializer
+      Decidim::DataPortabilitySerializers::DataPortabilityUserGroupSerializer
     end
 
     private

@@ -43,7 +43,7 @@ fi:
         actions:
           destroy: Peruuta järjestely
           edit: Muokata
-          new: Uusi
+          new: Uusi lajittelu
           show: Järjestelytiedot
         models:
           sortition:

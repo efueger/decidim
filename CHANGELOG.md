@@ -1,8 +1,9 @@
 # Change Log
 
 ## [Unreleased](https://github.com/decidim/decidim/tree/0.11-stable)
+## [Unreleased](https://github.com/decidim/decidim/tree/0.13-stable)
 
-**Upgrade notes**:
+**Fixed**:
 
 This version has breaking changes, `Decidim::Feature` has been renamed to `Decidim::Component`,
 and also everything related to it (controllers, views, etc.). If you have customised some
@@ -50,26 +51,32 @@ example, if you were filtering an authorization only to users in the 08001
 postal code via an authorization option (by introducing `{ "postal_code" :
 "08001" }` in the options field of a participatory space action permissions),
 you'll need to define it in the workflow manifest as:
+## [0.13.1](https://github.com/decidim/decidim/tree/v0.13.1)
 
-```ruby
-Decidim::Verifications.register_workflow(:my_handler) do |workflow|
-  # ... stuff ...
+**Fixed**:
 
-  workflow.options do |options|
-    options.attribute :postal_code, type: :string, required: false
-  end
-end
+- **decidim-surveys**: Order survey answer options by date and time. [#3869](https://github.com/decidim/decidim/pull/3869)
+
+- **decidim-core**: Fix newsletterable not being able to use `Time.zone.parse` when eager-loding the dependencies [#3830](https://github.com/decidim/decidim/pull/3847)
+
+## [0.13.0](https://github.com/decidim/decidim/tree/v0.13.0)
+
+**Upgrade notes: avatars**:
+
+As per [\#3716](https://github.com/decidim/decidim/pull/3716), you'll need to
+re-create the existing avatars versions. Connect to your server and run this on
+your terminal:
+
+```console
+bin/rails c
 ```
 
-If you have some custom modules from which you are registering a resource, you
-will need to tweak how those resources are being registered as per #3416. You
-must now set a resource name:
+And then copy and paste this piece of code:
 
 ```ruby
-  # inside decidim-my-module/lib/decidim/my-module/component.rb
-  component.register_resource(:my_resource) do |resource|
-    resource.model_class_name = "Decidim::MyComponent::MyResource"
-  end
+Decidim::User.find_each do |user|
+  user.avatar.recreate_versions! if user.avatar?
+end
 ```
 
 **Upgrade notes (search)**:
@@ -169,9 +176,15 @@ Decidim::Organization.find_each { |organization| Decidim::System::CreateDefaultP
 - **decidim-core**: GDPR: Track TOS page version in Organization [\#3491](https://github.com/decidim/decidim/pull/3491)
 - **decidim-core**: GDPR: User must review TOS when updated [\#3494](https://github.com/decidim/decidim/pull/3494)
 - **decidim-core**: Requests are throttled to prevent DoS attacks [\#3588](https://github.com/decidim/decidim/pull/3588)
+- **decidim-core**: GDPR: Add Right of data portability. [\#3489](https://github.com/decidim/decidim/pull/3489)
+- **decidim-core**: GDPR: Opt-in for all the users with newsletters [\#3492](https://github.com/decidim/decidim/issues/3492)
+- **decidim-initiatives**: Notify the followers when an initiative's signatures end date has been extended [\#3621](https://github.com/decidim/decidim/pull/3621)
+- **decidim-core**: Add a new avatar size so that it is displayed properly on the profile page [\#3716](https://github.com/decidim/decidim/pull/3716)
 
 **Changed**:
 
+- **decidim-verifications**: Added a current component reference to the action authorizer. Custom ActionAuthorizer classes should receive it in a third argument of the initializer method, as `DefaultActionAuthorizer` does. [\#3708](https://github.com/decidim/decidim/pull/3708)
+- **decidim-core**: Introduce coauthorable concern and coauthorship model. [\#3310](https://github.com/decidim/decidim/pull/3310)
 - **decidim-core**: New user profile design [\#3415](https://github.com/decidim/decidim/pull/3290)
 - **decidim-core**: Force user_group.name uniqueness in user_group test factory. [\#3290](https://github.com/decidim/decidim/pull/3290)
 - **decidim-admin**: Admins no longer need to introduce raw json to define options for an authorization workflow. [\#3300](https://github.com/decidim/decidim/pull/3300)
@@ -210,6 +223,9 @@ Decidim::Organization.find_each { |organization| Decidim::System::CreateDefaultP
 - **decidim-consultations**: Improve overall navigation [\#3524](https://github.com/decidim/decidim/pull/3524)
 - **decidim-comments**: Let comments have paragraphs to increase readability [\#3538](https://github.com/decidim/decidim/pull/3538)
 - **decidim-core**: Sessions expire in one week by default. [\#3586](https://github.com/decidim/decidim/pull/3586)
+- **decidim-participatory_processes**: Make process moderators receive notifications about flagged content [\#3605](https://github.com/decidim/decidim/pull/3605)
+- **decidim-meetings**: Do not let users join a meeting from the Search page, as the button fails [\#3612](https://github.com/decidim/decidim/pull/3612)
+- **decidim-core**: Scope nicknames in organizations, so they don't have to be unique in a multi-tenant setup [\#3671](https://github.com/decidim/decidim/pull/3671)
 
 **Fixed**:
 
@@ -294,6 +310,7 @@ Decidim::Organization.find_each { |organization| Decidim::System::CreateDefaultP
 
 **Fixed**:
 
+- **decidim-core**: Search results should be paginated so that server does not hang when search term is too wide. [\#3605](https://github.com/decidim/decidim/pull/3605)
 - **decidim-assemblies**: Fix private assemblies showing more than once for private users. [\#3638](https://github.com/decidim/decidim/pull/3638)
 - **decidim-proposals**: Do not index non published Proposals. [\#3618](https://github.com/decidim/decidim/pull/3618)
 - **decidim-proposals**: Fix link to endorsements behaviour, now it does not link when there are no endorsements. [\#3531](https://github.com/decidim/decidim/pull/3531)
@@ -308,7 +325,23 @@ Decidim::Organization.find_each { |organization| Decidim::System::CreateDefaultP
 - **decidim-assemblies**: Let space users access the admin area from the public one [\#3666](https://github.com/decidim/decidim/pull/3683)
 - **decidim-assemblies**: Let space admins access other spaces [\#3772](https://github.com/decidim/decidim/pull/3772)
 - **decidim-participatory_processes**: Let space admins access other spaces [\#3772](https://github.com/decidim/decidim/pull/3772)
+- **decidim-core**: Adds a missing migration to properly rename features to components [\#3657](https://github.com/decidim/decidim/pull/3657)
+- **decidim-blogs**: Use custom sanitizer in views instead of the default one [\#3655](https://github.com/decidim/decidim/pull/3655)
+- **decidim-core**: Use custom sanitizer in views instead of the default one [\#3655](https://github.com/decidim/decidim/pull/3655)
+- **decidim-initiatives**: Use custom sanitizer in views instead of the default one [\#3655](https://github.com/decidim/decidim/pull/3655)
+- **decidim-sortitions**: Use custom sanitizer in views instead of the default one [\#3655](https://github.com/decidim/decidim/pull/3655)
+- **decidim-assemblies**: Let space users access the admin area from the public one [\#3666](https://github.com/decidim/decidim/pull/3666)
+- **decidim-participatory_processes**: Let space users access the admin area from the public one [\#3666](https://github.com/decidim/decidim/pull/3666)
+- **decidim-core**: Fix comments count failing in AuthorCell [\#3668](https://github.com/decidim/decidim/pull/3668)
+- **decidim-proposals**: Fix proposal date to published_at in: card_m, details, admin and exporter [\#3649](https://github.com/decidim/decidim/pull/3649)
+- **decidim-assemblies**: Let assembly admins access all content [\#3706](https://github.com/decidim/decidim/pull/3706)
+- **decidim-admin**: Let user managers access the public space [\#3720](https://github.com/decidim/decidim/pull/3720)
+- **decidim-generators**: Generated application not including bootsnap.
+- **decidim-generators**: Generated application not including optional gems.
+- **decidim-core**: Fix invitations form newsletter optin [\#3789](https://github.com/decidim/decidim/issues/3789)
 
 **Removed**:
 
-Please check [0.11-stable](https://github.com/decidim/decidim/blob/0.11-stable/CHANGELOG.md) for previous changes.
+## Previous versions
+
+Please check [0.12-stable](https://github.com/decidim/decidim/blob/0.12-stable/CHANGELOG.md) for previous changes.

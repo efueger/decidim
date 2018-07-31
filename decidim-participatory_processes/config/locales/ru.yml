@@ -70,11 +70,14 @@ ru:
       actions:
         activate: Начать
         configure: Настроить
-        confirm_destroy: Подтвердить удаление
+        confirm_destroy: Подтвердите удаление
         destroy: Удалить
         duplicate: Создать копию
         edit: Редактировать
-        new: Добавить
+        new_process: Добавить новое движение
+        new_process_group: Создать группу движений
+        new_process_step: Новый шаг
+        new_process_user_role: Добавить участника движения
         preview: Предпросмотр
         publish: Обнародовать
         resend_invitation: Еще раз отправить приглашение
@@ -133,7 +136,7 @@ ru:
           title: Создать копию движения соучастия
       participatory_process_groups:
         destroy:
-          success: Группа движения соучастия успешно удалена.
+          success: Группа движений соучастия успешно удалена.
         edit:
           title: Редактировать группу движений
           update: Обновить

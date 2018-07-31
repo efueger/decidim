@@ -1,4 +1,3 @@
----
 fr:
   activemodel:
     attributes:
@@ -16,7 +15,7 @@ fr:
         address: Adresse
         available_slots: Places disponibles pour cette rencontre
         decidim_category_id: Catégorie
-        decidim_scope_id: Secteur
+        decidim_scope_id: Périmètre d'application
         description: Description
         end_time: Heure de fin
         location: Lieu
@@ -39,10 +38,6 @@ fr:
             base:
               too_many_minutes: La durée des éléments dépasse la durée de la réunion de %{count} minutes
               too_many_minutes_child: La durée du sous-événement dépasse la durée de l'événement concerné "%{parent_title}" de %{count} minutes
-        meeting_registration_invite:
-          attributes:
-            email:
-              already_invited: Cet email a déjà été invité
     models:
       decidim/meetings/close_meeting_event: Rencontre terminée
       decidim/meetings/create_meeting_event: Rencontre
@@ -165,7 +160,7 @@ fr:
           registrations: Inscriptions
         invite_join_meeting_mailer:
           invite:
-            invited_you_to_join_a_meeting: "%{invited_by} a invité à rejoindre une réunion à %{application}. Vous pouvez le refuser ou l'accepter via les liens ci-dessous."
+            invited_you_to_join_a_meeting: "%{invited_by} vous a invité à une rencontre à %{application}. Vous pouvez confirmer votre présence par le lien ci-dessous."
             join: Rejoignez la rencontre '%{meeting_title}'
         invites:
           create:
@@ -233,7 +228,7 @@ fr:
             save: Sauvegarder
           form:
             available_slots_help: Laisser à 0 si le nombre de places disponibles n'est pas limité.
-            invite_user: Invite user
+            invite_user: Inviter un utilisateur
             registrations_count:
               one: Il y a eu 1 inscription.
               other: Il y a eu %{count} inscriptions.
@@ -243,10 +238,6 @@ fr:
             invalid: Il y a eu un problème lors de l'enregistrement des paramètres d'inscription.
             success: Les paramètres d'inscription ont été enregistrés avec succès.
       admin_log:
-        invite:
-          create: "%{user_name} invité %{attendee_name} à rejoindre %{resource_name} réunion sur l'espace %{space_name}"
-          deleted: "%{user_name} non invité %{attendee_name} de rejoindre %{resource_name} réunion sur l'espace %{space_name}"
-          update: "%{user_name} invité %{attendee_name} à rejoindre %{resource_name} réunion sur l'espace %{space_name}"
         meeting:
           close: "%{user_name} a fermé la rencontre %{resource_name} sur l'espace %{space_name}"
           create: "%{user_name} a créé la rencontre %{resource_name} sur l'espace %{space_name}"
@@ -302,7 +293,7 @@ fr:
           organizations: Organisations participantes
           remaining_slots:
             one: Il reste 1 place
-            other: Il reste %{count} places
+            other: "Il reste %{count} places"
           view: Voir
       models:
         meeting:

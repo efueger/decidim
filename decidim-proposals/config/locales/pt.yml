@@ -83,8 +83,8 @@ pt:
             endorsements_blocked: Endossos bloqueados
             endorsements_enabled: Endossos habilitados
             proposal_answering_enabled: Resposta de proposta ativada
-            votes_blocked: Votos bloqueados
-            votes_enabled: Votos ativados
+            votes_blocked: Votação bloqueada
+            votes_enabled: Votação habilitada
             votes_hidden: Votos ocultos (se os votos estiverem ativados, verificar isso esconderá o número de votos)
             votes_weight_enabled: Up / Down / Neutral votes enabled
     events:
@@ -97,7 +97,7 @@ pt:
           email_intro: 'Agora você pode criar novas propostas em %{participatory_space_title}! Comece a participar nesta página:'
           email_outro: Você recebeu esta notificação porque está seguindo %{participatory_space_title}. Você pode parar de receber notificações após o link anterior.
           email_subject: Propostas agora disponíveis em %{participatory_space_title}
-          notification_title: Agora você pode iniciar <a href="%{resource_path}">novas propostas</a> em <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+          notification_title: Agora você pode apresentar <a href="%{resource_path}">novas propostas</a> em <a href="%{participatory_space_url}">%{participatory_space_title}</a>
         endorsing_enabled:
           email_intro: 'Você pode endossar propostas em %{participatory_space_title}! Comece a participar nesta página:'
           email_outro: Você recebeu esta notificação porque está seguindo %{participatory_space_title}. Você pode parar de receber notificações após o link anterior.
@@ -159,7 +159,7 @@ pt:
       actions:
         answer: Responda
         import: Importar de outro componente
-        new: Novo
+        new: Nova proposta
         private_notes: Notas privadas
         title: Ações
       admin:
@@ -244,17 +244,17 @@ pt:
         success: Proposta criada com sucesso. Salvo como um rascunho.
       destroy_draft:
         error: Houve erros ao excluir o rascunho da proposta.
-        success: O rascunho da proposta foi destruído com sucesso.
+        success: O rascunho da proposta foi excluído com sucesso.
       models:
         proposal:
           fields:
             category: Categoria
             comments: Comentários
-            created_at: Criado em
             endorsements: Endossos
             id: identidade
             notes: Notas
             official_proposal: Proposta oficial
+            published_at: Publicado em
             scope: Âmbito
             state: Estado
             title: Título

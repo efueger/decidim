@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_dependency "devise/models/decidim_validatable"
+require_dependency "devise/models/decidim_newsletterable"
 require "valid_email2"
 
 module Decidim
@@ -10,12 +11,14 @@ module Decidim
     include Resourceable
     include Decidim::Followable
     include Decidim::Loggable
+    include Decidim::DataPortability
 
     OMNIAUTH_PROVIDERS = [:facebook, :twitter, :google_oauth2, (:developer if Rails.env.development?)].compact
     ROLES = %w(admin user_manager).freeze
 
     devise :invitable, :database_authenticatable, :registerable, :confirmable, :timeoutable,
            :recoverable, :rememberable, :trackable, :decidim_validatable,
+           :decidim_newsletterable,
            :omniauthable, omniauth_providers: OMNIAUTH_PROVIDERS,
                           request_keys: [:env], reset_password_keys: [:decidim_organization_id, :email],
                           confirmation_keys: [:decidim_organization_id, :email]
@@ -30,7 +33,7 @@ module Decidim
     has_many :following_follows, foreign_key: "decidim_user_id", class_name: "Decidim::Follow", dependent: :destroy
 
     validates :name, presence: true, unless: -> { deleted? }
-    validates :nickname, presence: true, unless: -> { deleted? || managed? }, length: { maximum: Decidim::User.nickname_max_length }
+    validates :nickname, presence: true, unless: -> { deleted? || managed? || name.blank? }, length: { maximum: Decidim::User.nickname_max_length }
     validates :locale, inclusion: { in: :available_locales }, allow_blank: true
     validates :tos_agreement, acceptance: true, allow_nil: false, on: :create
     validates :tos_agreement, acceptance: true, if: :user_invited?
@@ -48,6 +51,8 @@ module Decidim
 
     scope :officialized, -> { where.not(officialized_at: nil) }
     scope :not_officialized, -> { where(officialized_at: nil) }
+
+    attr_accessor :newsletter_notifications
 
     def user_invited?
       invitation_token_changed? && invitation_accepted_at_changed?
@@ -135,6 +140,18 @@ module Decidim
         email: warden_conditions[:email],
         decidim_organization_id: organization.id
       )
+    end
+
+    def self.user_collection(user)
+      where(id: user.id)
+    end
+
+    def self.export_serializer
+      Decidim::DataPortabilitySerializers::DataPortabilityUserSerializer
+    end
+
+    def self.data_portability_images(user)
+      user_collection(user).map(&:avatar)
     end
 
     def tos_accepted?

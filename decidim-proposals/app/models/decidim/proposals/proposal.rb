@@ -5,7 +5,7 @@ module Decidim
     # The data store for a Proposal in the Decidim::Proposals component.
     class Proposal < Proposals::ApplicationRecord
       include Decidim::Resourceable
-      include Decidim::Authorable
+      include Decidim::Coauthorable
       include Decidim::HasComponent
       include Decidim::ScopableComponent
       include Decidim::HasReference
@@ -18,6 +18,7 @@ module Decidim
       include Decidim::Traceable
       include Decidim::Loggable
       include Decidim::Fingerprintable
+      include Decidim::DataPortability
 
       fingerprint fields: [:title, :body]
 
@@ -58,6 +59,14 @@ module Decidim
 
       def self.log_presenter_class_for(_log)
         Decidim::Proposals::AdminLog::ProposalPresenter
+      end
+
+      # Returns a collection scoped by user.
+      # Overrides this method in DataPortability to support Coauthorable.
+      def self.user_collection(user)
+        joins(:coauthorships)
+          .where("decidim_coauthorships.coauthorable_type = ?", name)
+          .where("decidim_coauthorships.decidim_author_id = ?", user.id)
       end
 
       # Public: Check if the user has voted the proposal.
@@ -124,7 +133,7 @@ module Decidim
 
       # Public: Whether the proposal is official or not.
       def official?
-        author.nil?
+        authors.empty?
       end
 
       # Public: The maximum amount of votes allowed for this proposal.
@@ -184,6 +193,14 @@ module Decidim
               )
             SQL
         Arel.sql(query)
+      end
+
+      def self.export_serializer
+        Decidim::Proposals::ProposalSerializer
+      end
+
+      def self.data_portability_images(user)
+        user_collection(user).map { |p| p.attachments.collect(&:file_url) }
       end
 
       private

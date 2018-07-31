@@ -47,6 +47,7 @@ module Decidim
       include Followable
       include Traceable
       include Publicable
+      include Decidim::DataPortability
       include Searchable
 
       searchable_fields(
@@ -61,6 +62,14 @@ module Decidim
 
       def reported_content_url
         ResourceLocatorPresenter.new(self).url
+      end
+
+      def self.user_collection(user)
+        where(decidim_author_id: user.id)
+      end
+
+      def self.export_serializer
+        DummySerializer
       end
     end
   end
@@ -130,6 +139,7 @@ RSpec.configure do |config|
           t.float :latitude
           t.float :longitude
           t.datetime :published_at
+          t.integer :coauthorships_count, null: false, default: 0
 
           t.references :decidim_component, index: false
           t.references :decidim_author, index: false

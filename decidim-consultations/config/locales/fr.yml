@@ -1,10 +1,9 @@
----
 fr:
   activemodel:
     attributes:
       consultation:
         banner_image: Image de la bannière
-        decidim_highlighted_scope_id: Secteur mis en avant
+        decidim_highlighted_scope_id: Périmètre d'application mis en avant
         description: Description
         end_voting_date: Le vote prend fin le
         introductory_image: Image d'introduction
@@ -16,7 +15,7 @@ fr:
         title: Titre
       question:
         banner_image: Image de la bannière
-        decidim_scope_id: Secteur
+        decidim_scope_id: Périmètre d'application
         hashtag: Hashtag
         hero_image: Image de la page d'accueil
         i_frame_url: URL du système de vote externe
@@ -27,7 +26,7 @@ fr:
         promoter_group: Organisateur
         question_context: Contexte
         reference: Référence
-        scope: Échelle
+        scope: Périmètre d'application
         slug: Identifiant
         subtitle: Sous-titre
         title: Titre
@@ -54,6 +53,9 @@ fr:
   decidim:
     admin:
       actions:
+        new_consultation: Nouvelle votation
+        new_question: Nouvelle question
+        new_response: Nouvelle réponse
         publish_results: Publier les résultats
         unpublish_results: Dépublier des résultats
       consultation_publications:
@@ -109,7 +111,6 @@ fr:
           name:
             one: Votation
             other: Votations
-            zero: Votation
         question:
           fields:
             created_at: Créée le
@@ -118,7 +119,6 @@ fr:
           name:
             one: Question
             other: Questions
-            zero: Question
         response:
           fields:
             created_at: Créée le
@@ -188,7 +188,6 @@ fr:
         title:
           one: "%{count} votation"
           other: "%{count} votations"
-          zero: "%{count} votation"
       filters:
         active: Actives
         all: Tout

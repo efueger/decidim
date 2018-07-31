@@ -1,4 +1,3 @@
----
 es-PY:
   activemodel:
     attributes:
@@ -39,10 +38,6 @@ es-PY:
             base:
               too_many_minutes: La duración de los ítems supera la duración del encuentro en %{count} minutos
               too_many_minutes_child: La duración de los sub-ítems excede el punto "%{parent_title}" del orden del dia en %{count} minuto
-        meeting_registration_invite:
-          attributes:
-            email:
-              already_invited: Cet email a déjà été invité
     models:
       decidim/meetings/close_meeting_event: Encuentro cerrado
       decidim/meetings/create_meeting_event: Encuentro
@@ -119,14 +114,14 @@ es-PY:
     meetings:
       actions:
         agenda: Orden del día
-        attachment_collections: Colecciones
+        attachment_collections: Carpetas
         attachments: Archivos adjuntos
         close: Cerrar
-        confirm_destroy: "¿Está seguro de que quiere eliminar este encuentro?"
+        confirm_destroy: '¿Está seguro de que quiere eliminar este encuentro?'
         destroy: Borrar
         edit: Editar
         minutes: Acta
-        new: Nuevo
+        new: Nuevo encuentro
         preview: Previsualizar
         registrations: Inscripciones
         title: Acciones
@@ -243,10 +238,6 @@ es-PY:
             invalid: Se ha producido un problema al guardar la configuración de la inscripción.
             success: Se han guardado correctamente las configuraciones de inscripciones de encuentros.
       admin_log:
-        invite:
-          create: "%{user_name} invité %{attendee_name} à rejoindre %{resource_name} réunion sur l'espace %{space_name}"
-          deleted: "%{user_name} non invité %{attendee_name} de rejoindre %{resource_name} réunion sur l'espace %{space_name}"
-          update: "%{user_name} invité %{attendee_name} à rejoindre %{resource_name} réunion sur l'espace %{space_name}"
         meeting:
           close: "%{user_name} cerró el encuentro %{resource_name} en el espacio %{space_name}"
           create: "%{user_name} creó el encuentro %{resource_name} en el espacio %{space_name}"

@@ -11,8 +11,8 @@ nl:
         email: Je e-mailadres
         name: Uw naam
         nickname: Jouw korte unieke ID
-        password: Nieuw wachtwoord
-        password_confirmation: Bevestig uw nieuwe wachtwoord
+        password: Wachtwoord
+        password_confirmation: Bevestig uw wachtwoord
         personal_url: Persoonlijke URL
         remove_avatar: Verwijder avatar
         user_group_document_number: Organisatie documentnummer
@@ -53,6 +53,11 @@ nl:
       decidim_with_month_name: "%d %B %Y"
   decidim:
     account:
+      data_portability_export:
+        file_no_exists: Bestand bestaat niet
+        invalid_token: Het geleverde token is ongeldig.
+        no_token: Geen token verstrekt
+        notice: Uw gegevens worden momenteel verwerkt. Je ontvangt een e-mail als deze is voltooid.
       delete:
         alert: Deze actie kan niet ongedaan gemaakt worden. Als u uw account verwijdert, zal u zich niet meer kunnen aanmelden.
         confirm:
@@ -178,6 +183,13 @@ nl:
     core:
       actions:
         unauthorized: U bent niet gemachtigd dit te doen
+    data_portability:
+      export:
+        ready: Klaar
+      show:
+        download_data: Download de gegevens
+        download_data_description: Een bestand met alle informatie die aan het account is gekoppeld, wordt naar <strong>%{user_email}</strong>gestuurd
+        request_data: Gegevens aanvragen
     devise:
       omniauth_registrations:
         create:
@@ -213,8 +225,15 @@ nl:
         newsletter_modal:
           buttons:
             check: Controleer en ga door
+            close_modal: Modal sluiten
             uncheck: Blijf uitgeschakeld
-          notice: Hé, weet je zeker dat je geen nieuwsbrief wilt ontvangen? Overweeg nogmaals om het onderstaande vakje voor de nieuwsbrief aan te vinken. Het is erg belangrijk voor ons dat u af en toe e-mails kunt ontvangen om belangrijke mededelingen te doen, u kunt dit altijd wijzigen op de pagina met meldingen-instellingen. Als u het selectievakje niet aanvinkt, mist u mogelijk relevante informatie over nieuwe participatiemogelijkheden binnen het platform. Als u nog steeds geen nieuwsbrieven meer wilt ontvangen, begrijpen we uw beslissing perfect. Bedankt voor het lezen van dit!
+          notice: |-
+            <p>Hé, weet je zeker dat je geen nieuwsbrief wilt ontvangen?<br>
+            Overweeg nogmaals om het selectievakje voor de nieuwsbrief hieronder aan te vinken.<br>
+            Het is erg belangrijk voor ons dat u af en toe e-mails kunt ontvangen om belangrijke mededelingen te doen, u kunt dit altijd wijzigen op de pagina met meldingen-instellingen.</p>
+            <p>Als u het selectievakje niet aanvinkt, mist u mogelijk relevante informatie over nieuwe participatiemogelijkheden binnen het platform.<br>
+            Als u nog steeds geen nieuwsbrieven meer wilt ontvangen, begrijpen we uw beslissing perfect.</p>
+            <p>Bedankt voor het lezen van dit!</p>
           title: Nieuwsbriefmeldingen
         omniauth_buttons:
           or: Of
@@ -284,6 +303,9 @@ nl:
           email_subject: "%{nickname} heeft zijn/haar profiel bijgewerkt"
           notification_title: De <a href="%{resource_path}">profile page</a> van %{name} (%{nickname}), die je volgt, is bijgewerkt.
     export_mailer:
+      data_portability_export:
+        click_button: Klik op de volgende knop om uw gegevens te downloaden. <br/> U hebt het bestand beschikbaar tot %{date}.
+        download: Download
       export:
         ready: In de bijlage vindt u een versie van uw export.
       subject: Uw export "%{name}" is klaar
@@ -321,6 +343,18 @@ nl:
       errors:
         error: Er is een fout in dit veld.
       remove_this_file: Verwijder dit bestand
+    invitations:
+      create:
+        error: Er waren enkele problemen terwijl je je vrienden uitnodigde
+        error_empty_form: Voer alstublieft enkele e-mailadressen in
+        success: We hebben de uitnodigingen naar je vrienden gestuurd!
+      index:
+        customize_message: Pas het uitnodigingsbericht aan
+        friend_email: 'Vriend #%{index} email'
+        invitations_subtitle: Laat je vrienden op de hoogte van deze site
+        invitations_title: Denk je dat meer stemmen gehoord moeten worden in %{organization_name}?
+        invite: Nodig uit
+        visit_your_profile: Ga naar je profiel
     log:
       base_presenter:
         create: "%{user_name} gemaakt %{resource_name}"
@@ -385,6 +419,20 @@ nl:
         success: Je bent succesvol uitgeschreven.
         token_error: De link is verlopen.
         unsubscribe: Uitschrijven
+    newsletters_opt_in:
+      unathorized: Sorry, deze link is niet langer beschikbaar
+      update:
+        error: Er gebeurde iets verkeerds
+        success: Nieuwsbriefinstellingen succesvol bijgewerkt
+    newsletters_opt_in_mailer:
+      notify:
+        body_1: De verwerking van persoonlijke gegevens en de bescherming ervan worden steeds belangrijker voor ons allemaal. Met de nieuwe Algemene Verordening Gegevensbescherming (GDPR) van 25 mei 2018 hebben individuen betere controle over hun persoonlijke gegevens. Om deze reden hebben we uw "OK" nodig om relevante informatie over de activiteiten van de %{organization_name}te blijven verzenden.
+        body_2: 'Hoe kunt u ons uw toestemming geven? Klik gewoon op de volgende knop:'
+        body_3: Met deze toestemming kunt u doorgaan met het ontvangen van informatie over de diensten van het platform. Als we daarentegen geen positieve bevestiging van u ontvangen, zullen wij u niet langer onze berichten toesturen. Als u bevestigt dat u op de hoogte wilt blijven, heeft u altijd de mogelijkheid om op elk gewenst moment te annuleren.
+        button: Ja, ik wil relevante informatie blijven ontvangen
+        greetings: Groeten,<br/>%{organization_name}<br/><a href="%{organization_url}">%{organization_url}</a>
+        hello: Hallo,
+        subject: Wilt u relevante informatie over %{organization_name}blijven ontvangen?
     notifications:
       no_notifications: Nog geen meldingen.
     notifications_settings:
@@ -452,6 +500,7 @@ nl:
           modal_btn_continue: Voorwaarden accepteren en doorgaan
           modal_btn_exit: Ik zal het later bekijken
           modal_button: Weigeren de voorwaarden
+          modal_close: Modal sluiten
           modal_title: Weig je de bijgewerkte Algemene voorwaarden echt af?
         required_review:
           alert: We hebben onze Servicevoorwaarden bijgewerkt. Bekijk ze alstublieft.
@@ -576,6 +625,7 @@ nl:
           Als u de uitnodiging niet wilt accepteren, negeert u deze e-mail.<br />
           Uw account zal pas worden aangemaakt als u de bovenstaande link opent en uw bijnaam en wachtwoord instelt.
         invited_you_as_admin: "%{invited_by} heeft je uitgenodigd als admin van %{application}. U kunt het accepteren via de onderstaande link."
+        invited_you_as_friend: "%{invited_by} heeft je uitgenodigd voor %{application}."
         invited_you_as_private_user: "%{invited_by} heeft je uitgenodigd als een privégebruiker van %{application}. Accepteren kan via onderstaande link."
         someone_invited_you: Iemand heeft u uitgenodigd voor %{application}. U kunt het accepteren via de onderstaande link.
         someone_invited_you_as_admin: Iemand heeft u uitgenodigd als administrator van %{application}, u kunt het accepteren via onderstaande link.
@@ -584,6 +634,10 @@ nl:
         subject: U bent uitgenodigd om %{organization} te beheren
       invite_collaborator:
         subject: U bent uitgenodigd om samen te werken bij %{organization}
+      invite_friend:
+        accept_invitation: 'U kunt de uitnodiging accepteren via de onderstaande link:'
+        friend_custom_text: 'Ze hebben dit bericht voor je achtergelaten:'
+        subject: Je bent uitgenodigd voor %{organization}
       invite_private_user:
         subject: Je bent uitgenodigd voor een privé burgerinspraak thema op %{organization}
       organization_admin_invitation_instructions:
@@ -633,6 +687,7 @@ nl:
       user_menu:
         admin_dashboard: Beheer dashboard
         conversations: conversaties
+        invite_friends: Nodig vrienden uit
         notifications: Meldingen
         profile: Mijn account
         public_profile: Mijn openbaar profiel
@@ -641,6 +696,7 @@ nl:
         account: Account
         authorizations: Bevoegdheden
         delete_my_account: Verwijder mijn account
+        my_data: Mijn data
         notifications_settings: Notificatie instellingen
         title: Gebruikersinstellingen
         user_groups: Organisaties
@@ -648,6 +704,16 @@ nl:
         see_more: Zie meer
   locale:
     name: Nederlands
+  password_validator:
+    domain_included_in_password: lijkt te veel op deze domeinnaam
+    email_included_in_password: lijkt te veel op uw e-mail
+    fallback: is niet geldig
+    name_included_in_password: lijkt te veel op jouw naam
+    not_enough_unique_characters: heeft niet genoeg unieke tekens
+    password_not_allowed: is niet toegestaan
+    password_too_common: is te gebruikelijk
+    password_too_long: is te lang
+    password_too_short: is te kort
   social_share_button:
     delicious: Heerlijk
     douban: Douban

@@ -1,4 +1,3 @@
----
 fr:
   activemodel:
     attributes:
@@ -8,7 +7,7 @@ fr:
         body: Corps du texte
         category_id: Catégorie
         has_address: Renseigner une adresse
-        scope_id: Secteur
+        scope_id: Périmètre d'application
         state: État
         title: Titre
         user_group_id: Créer une proposition en tant que
@@ -86,12 +85,7 @@ fr:
             votes_blocked: Bloquer les votes
             votes_enabled: Activer le module de vote simple
             votes_hidden: Cacher les votes (si le module de votes est activé, le décompte des votes sera caché)
-            votes_weight_enabled: Activer le module de votes "Pour/Contre/Abstention"
     events:
-      proposal_created:
-        email_subject: Nouvelle proposition de %{author_name}.
-        notification_title: Il y a une nouvelle proposition de %{author_name} dans <a href="%{resource_path}">%{resource_title}</a>a>a
-        url: 'url de commentaire : %{resource_url}'
       proposals:
         creation_enabled:
           email_intro: 'Vous pouvez maintenant créer de nouvelles propositions dans %{participatory_space_title} ! Commencez à participer sur cette page :'
@@ -153,7 +147,7 @@ fr:
           proposals: Propositions
     participatory_spaces:
       highlighted_proposals:
-        proposals: Quelques propositions aléatoires
+        proposals: Propositions
         see_all_proposals: Voir toutes les propositions
     proposals:
       actions:
@@ -250,12 +244,12 @@ fr:
           fields:
             category: Catégorie
             comments: Commentaires
-            created_at: Créé le
             endorsements: Soutiens
             id: ID
             notes: Remarques
             official_proposal: Proposition officielle
-            scope: Secteur
+            published_at: Publiée à
+            scope: Périmètre d'application
             state: État
             title: Titre
             votes: Votes
@@ -288,7 +282,6 @@ fr:
           proposals_count:
             one: 1 proposition
             other: "%{count} propositions"
-            zero: "%{count} proposition"
         edit:
           back: Retour
           select_a_category: Veuillez sélectionner une catégorie
@@ -327,7 +320,7 @@ fr:
           unfold: Voir plus
         index:
           new_proposal: Nouvelle proposition
-          see_all_withdrawn: Voir toutes les propositions retirées par leurs auteurs
+          see_all_withdrawn: Voir toutes les propositions retirées
           view_proposal: Voir la proposition
         linked_proposals:
           proposal_votes:
@@ -353,7 +346,7 @@ fr:
           view_proposal: Voir la proposition
         show:
           edit_proposal: Modifier la proposition
-          endorsements_list: Liste des soutiens
+          endorsements_list: Liste des promoteurs
           hidden_endorsers_count:
             one: et 1 autre personne
             other: et %{count} autres personnes
@@ -377,19 +370,7 @@ fr:
           no_votes_remaining: Aucun vote restant
           vote: Voter
           votes_blocked: Votes désactivés
-        vote_weight:
-          maximum_votes_reached: Nombre maximum de votes atteint
-          most_popular_proposal: Proposition la plus populaire
-          need_more_votes: Besoin de plus de votes
-          no_votes_remaining: Aucun vote restant
-          votes_blocked: Votes désactivés
         votes_count:
-          count:
-            one: VOTE
-            other: VOTES
-          most_popular_proposal: Proposition la plus populaire
-          need_more_votes: Besoin de plus de votes
-        votes_weight:
           count:
             one: VOTE
             other: VOTES
@@ -430,7 +411,7 @@ fr:
       copied_from_component:
         proposal_proposal: Propositions associées
       included_projects:
-        project_result: 'Réalisations apparaissant dans ce projet :'
+        project_result: 'Résultats apparaissant dans ce projet :'
       included_proposals:
         proposal_project: 'Proposition figurant dans ces projets :'
-        proposal_result: 'Proposition figurant dans ces réalisations :'
+        proposal_result: 'Proposition figurant dans ces résultats :'
