@@ -10,6 +10,13 @@ en:
         document_type: Type of your document
         user: User
         verification_attachment: Scanned copy of your document
+      postal_letter_address:
+        full_address: Full address
+      postal_letter_confirmation:
+        verification_code: Verification code
+      postal_letter_postage:
+        full_address: Full address
+        verification_code: Verification code
   decidim:
     admin:
       menu:
@@ -45,6 +52,7 @@ en:
           success: You've been successfully authorized.
         first_login:
           actions:
+            another_dummy_authorization_handler: Verify against another example of authorization handler
             dummy_authorization_handler: Verify against the example authorization handler
             dummy_authorization_workflow: Verify against the example authorization workflow
             id_documents: Get verified by uploading your identity document
@@ -56,6 +64,10 @@ en:
           authorize_with: Verify with %{authorizer}
         skip_verification: You can skip this for now and %{link}
         start_exploring: start exploring
+      dummy_authorization:
+        extra_explanation:
+          one: Participation is restricted to users with the postal code %{postal_codes}.
+          other: 'Participation is restricted to users with any of the following postal codes: %{postal_codes}.'
       id_documents:
         admin:
           confirmations:

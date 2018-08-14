@@ -1,3 +1,4 @@
+---
 eu:
   activemodel:
     attributes:
@@ -5,7 +6,7 @@ eu:
         announcement: Anuntzio
         banner_image: Bannerra
         copy_categories: Kopiatu kategoriak
-        copy_features: Kopiatu funtzionalitateak
+        copy_components: Kopiatu osagaiak
         copy_steps: Kopiatu faseak
         description: Deskribapena
         developer_group: Talde sustatzailea
@@ -19,6 +20,7 @@ eu:
         participatory_scope: Partehartze esparrua
         participatory_structure: Partehartze egitura
         promoted: Nabarmendua
+        published_at: Argitaratu at
         scope_id: Esparrua
         scopes_enabled: Esparru gaituak
         short_description: Deskribapen laburra
@@ -43,6 +45,20 @@ eu:
         email: Helbide elektronikoa
         name: Izena
         role: Rola
+    models:
+      decidim/participatory_process_step_activated_event: Urratsera aktibatuta
+      decidim/participatory_process_step_changed_event: Pasartea aldatu da
+  activerecord:
+    models:
+      decidim/participatory_process:
+        one: Parte hartze prozesua
+        other: Parte hartze prozesuak
+      decidim/participatory_process_group:
+        one: Parte-hartze prozesuaren taldea
+        other: Parte-hartze prozesuko taldeak
+      decidim/participatory_process_step:
+        one: Step
+        other: Urratsak
   decidim:
     admin:
       actions:
@@ -61,17 +77,21 @@ eu:
         participatory_process_groups: Prozesu-multzoak
         participatory_processes: Prozesuak
         participatory_processes_submenu:
+          attachment_collections: Bilduma
+          attachment_files: Fitxategiak
           attachments: Eranskinak
           categories: Kategoriak
-          features: Funtzionalitateak
+          components: Osagaiak
           info: Informazioa
           moderations: Moderazioak
+          private_users: Erabiltzaile pribatuak
           process_admins: Prozesuaren erabiltzaileak
           steps: Prozesuaren faseak
       models:
         participatory_process:
           fields:
             created_at: Sortze-data
+            private: Pribatua
             promoted: Nabarmendua
             published: Argitaratua
             title: Titulua
@@ -153,7 +173,7 @@ eu:
           success: Prozesu partizipatiboaren fasea zuzen eguneratu da.
       participatory_process_user_roles:
         create:
-          error: Errorea gertatu da prozesu partizipatibo honetarako erabiltzailea sortzean.
+          error: Errore bat gertatu da partaidetza prozesu honetan erabiltzailea gehitzea.
           success: Ongi sortu da erabiltzailea prozesu partizipatibo honetarako.
         destroy:
           success: Ongi deuseztatu da erabiltzailea prozesu partizipatibo honetarako.
@@ -166,7 +186,7 @@ eu:
           create: Sortu
           title: Prozesuaren erabiltzaile berria.
         update:
-          error: Errorea gertatu da prozesu partizipatibo honetarako erabiltzailea sortzean.
+          error: Errore bat gertatu da parte hartzaile prozesu honetarako erabiltzaile bat.
           success: Ongi eguneratu da erabiltzailea prozesu partizipatibo honetarako.
       participatory_processes:
         create:
@@ -180,6 +200,8 @@ eu:
           title: Informazio orokorra
         index:
           not_published: Argitaratu gabe
+          private: Pribatua
+          public: Publiko
           published: Argitaratua
         new:
           create: Sortu
@@ -202,11 +224,38 @@ eu:
         resend_invitation:
           error: Errorea gertatu zen gonbita berriro bidaltzean.
           success: Gonbita ongi birbidali da.
+    admin_log:
+      participatory_process:
+        create: "%{user_name} sortu %{resource_name} prozesu parte-hartzailea"
+        publish: "%{user_name} argitaratu du %{resource_name} prozesu parte-hartzailea"
+        unpublish: "%{user_name} argitaratu gabe %{resource_name} prozesu parte-hartzailea"
+        update: "%{user_name} %{resource_name} partehartze prozesua eguneratu du"
+      participatory_process_step:
+        activate: "%{user_name} %{resource_name} urratsa %{space_name} prozesu parte-hartzailean aktibatuta"
+        create: "%{user_name} %{resource_name} urratsa %{space_name} partaidetzazko prozesuan sortu zen"
+        delete: "%{user_name} %{resource_name} urratsa %{space_name} partaidetzazko prozesuan ezabatu da"
+        update: "%{user_name} %{resource_name} urratsa %{space_name} parte hartze prozesuan eguneratua"
+      participatory_process_user_role:
+        create: "%{user_name} %{resource_name} erabiltzaile gonbidatu %{space_name} parte hartzerako prozesura"
+        delete: "%{user_name} erabiltzaileak kendu %{resource_name} from %{space_name} prozesu parte-hartzailea"
+        update: "%{user_name} erabiltzailearen rola aldatu %{resource_name} en %{space_name} prozesu parte-hartzailea"
+    events:
+      participatory_process:
+        step_activated:
+          email_intro: "%{resource_title} urratsa aktibo dago %{participatory_space_title}-ra. Orrialde hau ikusi dezakezu:"
+          email_outro: Jakinarazpena jaso duzu %{participatory_space_title}jarraituz gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki dezakezu.
+          email_subject: "%{participatory_space_title} eguneratze bat"
+          notification_title: '%{resource_title} urratsa aktiboa da <a href="%{resource_path}">%{participatory_space_title}</a>'
+        step_changed:
+          email_intro: "%{participatory_space_title} %{resource_title} urratsen datak eguneratu dira. Orrialde hau ikusi dezakezu:"
+          email_outro: Jakinarazpena jaso duzu %{participatory_space_title}jarraituz gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki dezakezu.
+          email_subject: "%{participatory_space_title} eguneratze bat"
+          notification_title: <a href="%{resource_path}">%{resource_title}</a> urratsean datak <a href="%{participatory_space_url}">%{participatory_space_title}</a> eguneratu dira.
     menu:
       processes: Prozesuak
     participatory_process_groups:
       show:
-        group_participatory_processes: '%{group} talderako prozesuak'
+        group_participatory_processes: "%{group} talderako prozesuak"
         title: Parte-hartze prozesuko taldeak
     participatory_process_steps:
       index:
@@ -245,12 +294,16 @@ eu:
         local_area: Antolakuntza eremua
         participatory_scope: Zer erabaki
         participatory_structure: Nola erabakitzen da?
+        private_space: Prozesu pribatua da
         scope: Esparrua
         start_date: Hasiera-data
         target: Nork parte hartzen du
+        unspecified: Zehaztu gabea
       statistics:
         answers_count: Erantzunak
         comments_count: Iruzkinak
+        debates_count: eztabaidak
+        endorsements_count: Oniritziak
         headline: Jarduera
         meetings_count: Topaketak
         orders_count: Euskarriak
@@ -267,6 +320,7 @@ eu:
       participatory_process_groups:
         participatory_process_group:
           browse: Arakatu
+          processes_count: 'Prozesuak:'
       participatory_process_widgets:
         show:
           active_step: Fase aktiboa
@@ -289,5 +343,5 @@ eu:
         process_menu_item: Prozesua
         unfold: Zabaldu
       process_header_steps:
-        step: '%{total} fasetatik %{current}.a'
+        step: "%{total} fasetatik %{current}.a"
         view_steps: Ikusi faseak

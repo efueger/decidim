@@ -56,7 +56,9 @@ search:
       <%= "- #{path}/app/helpers\n" %>
       <%= "- #{path}/app/mailers\n" %>
       <%= "- #{path}/app/presenters\n" %>
+      <%= "- #{path}/app/services\n" %>
       <%= "- #{path}/app/views\n" %>
+      <%= "- #{path}/app/cells\n" %>
     <% end -%>
 
   ## Files or `File.fnmatch` patterns to exclude from search. Some files are always excluded regardless of this setting:
@@ -85,15 +87,23 @@ search:
 # Do not consider these keys missing:
 ignore_missing:
   - '{devise,components}.*'
+  - email_subject
+  - email_intro
+  - email_outro
+  - notification_title
 
 # Consider these keys used:
 ignore_unused:
   - activemodel.attributes.*
+  - activemodel.errors.*
+  - activemodel.models.*
   - activerecord.attributes.*
+  - activerecord.models.*
   - booleans.*
   - '{date,time.formats}.*'
   - decidim.admin.participatory_process_steps.default_title
   - decidim.authorization_handlers.{direct,multistep}
+  - decidim.admin.models.assembly_member.positions.*
   - decidim.assemblies.statistics.*
   - decidim.components.*
   - decidim.filters.linked_classes.*
@@ -106,11 +116,36 @@ ignore_unused:
   - decidim.verifications.id_documents.{dni,nie,passport}
   - errors.messages.*
   - invisible_captcha.*
-  - pages.home.statistics.*
+  - decidim.pages.home.statistics.*
   - social_share_button.*
   - decidim.features.accountability.name
   - decidim.features.accountability.settings.*
   - decidim.accountability.models.project.valid_statuses.*
+  - decidim.accountability.admin_log.*
+  - decidim.proposals.admin_log.*
+  - decidim.log.base_presenter.*
+  - decidim.admin_log.*
+  - decidim.debates.debates.filters.*
+  - decidim.debates.admin_log.*
+  - decidim.meetings.admin_log.*
+  - decidim.budgets.admin_log.*
+  - decidim.sortitions.admin_log.*
+  - decidim.sortitions.sortitions.orders.*
+  - decidim.consultations.admin_log.*
+  - decidim.consultations.consultations.orders.*
+  - decidim.consultations.show.badge_name.*
+  - decidim.initiatives.admin_log.*
+  - decidim.initiatives.initiatives.orders.*
+  - decidim.initiatives.states.*
+  - decidim.initiatives.admin_states.*
+  - decidim.initiatives.events.*
+  - decidim.initiatives.initiatives.author_list.hidden_authors_count.*
+  - decidim.initiatives.initiatives.signatures_count.*
+  - decidim.collapsible_list.hidden_elements_count.*
+  - decidim.events.*
+  - doorkeeper.scopes.*
+  - decidim.proposals.proposals.votes_count.count.*
+  - decidim.proposals.proposals.show.hidden_endorsers_count.*
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:

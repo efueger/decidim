@@ -6,6 +6,13 @@ module Decidim
   describe StaticPage do
     let(:page) { build(:static_page) }
 
+    it { is_expected.to be_versioned }
+
+    it "overwrites the log presenter" do
+      expect(described_class.log_presenter_class_for(:foo))
+        .to eq Decidim::AdminLog::StaticPagePresenter
+    end
+
     describe "validations" do
       let(:invalid_slug) { "#Invalid.Slug" }
 
@@ -32,6 +39,22 @@ module Decidim
         invalid_page = build(:static_page, slug: invalid_slug, organization: page.organization)
 
         expect(invalid_page).not_to be_valid
+      end
+    end
+
+    describe ".sorted_by_i18n_title" do
+      let!(:page1) { create :static_page, title: { ca: "Bcde", en: "Afgh" } }
+      let!(:page2) { create :static_page, title: { ca: "Abcd", en: "Defg" } }
+
+      before { I18n.locale = :ca }
+      after { I18n.locale = :en }
+
+      it "orders by the title in the current locale" do
+        expect(described_class.sorted_by_i18n_title).to eq [page2, page1]
+      end
+
+      it "orders by the title in the specified locale" do
+        expect(described_class.sorted_by_i18n_title(:en)).to eq [page1, page2]
       end
     end
 

@@ -10,6 +10,13 @@ ca:
         document_type: Tipus del teu document
         user: Usuari
         verification_attachment: Còpia escanejada del teu document
+      postal_letter_address:
+        full_address: Adreça completa
+      postal_letter_confirmation:
+        verification_code: Codi de verificació
+      postal_letter_postage:
+        full_address: Adreça completa
+        verification_code: Codi de verificació
   decidim:
     admin:
       menu:
@@ -45,6 +52,7 @@ ca:
           success: Has estat autoritzat amb èxit.
         first_login:
           actions:
+            another_dummy_authorization_handler: Verifiqueu contra un altre exemple de controlador d'autorització
             dummy_authorization_handler: Verificar contra l'autorització d'exemple
             dummy_authorization_workflow: Verificar contra l'exemple de flux d'autorització
             id_documents: Verifica't carregant el teu document d'identitat
@@ -56,6 +64,10 @@ ca:
           authorize_with: Verifica amb %{authorizer}
         skip_verification: Pots ometre-ho per ara i %{link}
         start_exploring: comença a explorar
+      dummy_authorization:
+        extra_explanation:
+          one: La participació està restringida als usuaris amb el codi postal %{postal_codes}.
+          other: 'La participació està restringida als usuaris amb algun dels següents codis postals: %{postal_codes}.'
       id_documents:
         admin:
           confirmations:

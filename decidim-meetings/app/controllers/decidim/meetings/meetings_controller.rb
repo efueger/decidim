@@ -22,14 +22,20 @@ module Decidim
         end
       end
 
+      def show
+        return if meeting.current_user_can_visit_meeting?(current_user)
+        flash[:alert] = I18n.t("meeting.not_allowed", scope: "decidim.meetings")
+        redirect_to action: "index"
+      end
+
       private
 
       def meeting
-        @meeting ||= Meeting.where(feature: current_feature).find(params[:id])
+        @meeting ||= Meeting.where(component: current_component).find(params[:id])
       end
 
       def meetings
-        @meetings ||= paginate(search.results)
+        @meetings ||= paginate(search.results).visible_meeting_for(current_user)
       end
 
       def geocoded_meetings
@@ -50,7 +56,7 @@ module Decidim
       end
 
       def context_params
-        { feature: current_feature, organization: current_organization }
+        { component: current_component, organization: current_organization }
       end
     end
   end

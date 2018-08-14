@@ -1,21 +1,22 @@
+---
 fi:
+  activemodel:
+    models:
+      decidim/comments/comment_by_followed_user_event: Kommentti
+      decidim/comments/comment_created_event: Kommentti
+      decidim/comments/reply_created_event: Kommentti vastaus
+      decidim/comments/user_mentioned_event: Mainita
+  activerecord:
+    models:
+      decidim/comments/comment:
+        one: Kommentti
+        other: Kommentit
+      decidim/comments/comment_vote:
+        one: Äänestys
+        other: ääntä
   decidim:
     comments:
-      events:
-        comment_created:
-          comment:
-            email_intro: '"%{resource_title}" on kommentoinut. Voit lukea kommentin tällä sivulla:'
-            email_outro: Olet saanut tämän ilmoituksen, koska seuraat kohdetta "%{resource_title}". Voit lopettaa seurannan edellisestä linkistä.
-            email_subject: Uusi kommentti henkilöltä %{author_name} kohteeseen %{resource_title}
-            notification_title: Uusi kommentti henkilöltä %{author_name} kohteeseen <a href="%{resource_path}">%{resource_title}</a>
-            moderation:
-              email_intro: 'A new comment have been posted, you can moderate it in this page:'
-              email_subject: 'New comment from %{author_name} waiting for moderation'
-          reply:
-            email_intro: Kohdetta "%{resource_title}" on kommentoitu
-            email_outro: Olet saanut tämän ilmoituksen, koska seuraat kohdetta "%{resource_title}". Voit lopettaa seuraamisen edellisestä linkistä.
-            email_subject: '%{author_name} on vastannut kommenttiisi kohteessa <a href="%{resource_url}">%{resource_title}</a>'
-            notification_title: '%{author_name} on vastannut kommenttiisi kohteessa <a href="%{resource_path}">%{resource_title}</a>'
+      comments: Kommentit
       votes:
         create:
           error: Äänestettäessä kommenttia tapahtui virhe.
@@ -62,11 +63,33 @@ fi:
       comment_thread:
         title: Keskustelu henkilön %{authorName} kanssa
       comments:
-        blocked_comments_warning: Kommentit on poistettu käytöstä tällä hetkellä, mutta voit lukea edelliset.
+        blocked_comments_warning: Kommentit on poistettu käytöstä tällä hetkellä, mutta voit lukea aikaisempia kommentteja.
         loading: Ladataan kommentteja ...
         title: "%{count} kommenttia"
-      featured_comment:
-        title: Esille nostettu kommentti
+        title_0: Il n'y a pas encore de commentaire
+        title_1: "%{count} commentaire"
+    events:
+      comments:
+        comment_by_followed_user:
+          email_intro: "%{author_name} on jättänyt kommentin %{resource_title}. Voit lukea sen tällä sivulla:"
+          email_outro: Olet saanut tämän ilmoituksen, koska seuraat %{author_name}. Voit poistaa tämän käyttäjän profiilisivulta.
+          email_subject: "%{author_name} : ssa on uusi kommentti %{resource_title}: ssa"
+          notification_title: Uusi kommentti on <a href="%{author_path}">%{author_name} %{author_nickname}</a> <a href="%{resource_path}">%{resource_title}</a>.
+        comment_created:
+          email_intro: "%{resource_title} on kommentoinut. Voit lukea kommentin tällä sivulla:"
+          email_outro: Olet saanut tämän ilmoituksen, koska seuraat "%{resource_title}" tai sen kirjoittajaa. Voit purkaa sen edellisestä linkistä.
+          email_subject: "%{author_name} : ssa on uusi kommentti %{resource_title}: ssa"
+          notification_title: Uusi kommentti <a href="%{author_path}">%{author_name} %{author_nickname}</a> <a href="%{resource_path}">%{resource_title}</a>
+        reply_created:
+          email_intro: "%{author_name} on vastannut kommenteisi %{resource_title}. Voit lukea sen tällä sivulla:"
+          email_outro: Olet saanut tämän ilmoituksen, koska kommenttisi vastattiin.
+          email_subject: "%{author_name} on vastannut kommenteisi %{resource_title}"
+          notification_title: <a href="%{author_path}">%{author_name} %{author_nickname}</a> on vastannut kommentiooni <a href="%{resource_path}">%{resource_title}</a>
+        user_mentioned:
+          email_intro: Sinut on mainittu
+          email_outro: Olet saanut tämän ilmoituksen, koska olet maininnut numerossa %{resource_title}.
+          email_subject: Olet maininnut %{resource_title}
+          notification_title: Olet maininnut <a href="%{resource_path}">%{resource_title}</a> mennessä <a href="%{author_path}">%{author_name} %{author_nickname}</a>
   errors:
     messages:
       cannot_have_comments: ei voi sisältää kommentteja

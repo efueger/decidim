@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "jquery-tmpl-rails"
-
 module Decidim
   module Surveys
     # This is the engine that runs on the public interface of `Surveys`.
@@ -17,15 +15,6 @@ module Decidim
 
       initializer "decidim_surveys.admin_assets" do |app|
         app.config.assets.precompile += %w(admin/decidim_surveys_manifest.js)
-      end
-
-      initializer "decidim_surveys.inject_abilities_to_user" do |_app|
-        Decidim.configure do |config|
-          config.admin_abilities += [
-            "Decidim::Surveys::Abilities::AdminAbility",
-            "Decidim::Surveys::Abilities::ParticipatoryProcessAdminAbility"
-          ]
-        end
       end
 
       def load_seed

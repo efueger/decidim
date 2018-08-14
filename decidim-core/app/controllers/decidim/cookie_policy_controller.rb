@@ -3,7 +3,7 @@
 module Decidim
   # This controller allows the user to accept the cookie policy.
   class CookiePolicyController < Decidim::ApplicationController
-    skip_authorization_check
+    skip_before_action :store_current_location
 
     def accept
       response.set_cookie "decidim-cc", value: "true",

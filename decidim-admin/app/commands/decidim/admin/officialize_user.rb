@@ -24,7 +24,7 @@ module Decidim
 
         Decidim::EventsManager.publish(
           event: "decidim.events.users.user_officialized",
-          event_class: Decidim::Admin::UserOfficializedEvent,
+          event_class: Decidim::ProfileUpdatedEvent,
           resource: form.user,
           recipient_ids: form.user.followers.pluck(:id)
         )
@@ -37,10 +37,23 @@ module Decidim
       attr_reader :form
 
       def officialize_user
-        form.user.update!(
-          officialized_at: Time.current,
-          officialized_as: form.officialized_as
-        )
+        timestamp = Time.current
+        Decidim.traceability.perform_action!(
+          "officialize",
+          form.user,
+          form.current_user,
+          extra: {
+            officialized_user_badge: form.officialized_as,
+            officialized_user_badge_previous: form.user.officialized_as,
+            officialized_user_at: timestamp,
+            officialized_user_at_previous: form.user.officialized_at
+          }
+        ) do
+          form.user.update!(
+            officialized_at: timestamp,
+            officialized_as: form.officialized_as
+          )
+        end
       end
     end
   end

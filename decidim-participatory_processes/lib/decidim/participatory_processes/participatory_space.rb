@@ -1,13 +1,36 @@
 # frozen_string_literal: true
 
 Decidim.register_participatory_space(:participatory_processes) do |participatory_space|
-  participatory_space.engine = Decidim::ParticipatoryProcesses::Engine
-  participatory_space.admin_engine = Decidim::ParticipatoryProcesses::AdminEngine
   participatory_space.icon = "decidim/participatory_processes/icon.svg"
   participatory_space.model_class_name = "Decidim::ParticipatoryProcess"
 
   participatory_space.participatory_spaces do |organization|
     Decidim::ParticipatoryProcesses::OrganizationParticipatoryProcesses.new(organization).query
+  end
+
+  participatory_space.query_type = "Decidim::ParticipatoryProcesses::ParticipatoryProcessType"
+
+  participatory_space.permissions_class_name = "Decidim::ParticipatoryProcesses::Permissions"
+
+  participatory_space.register_resource(:participatory_process) do |resource|
+    resource.model_class_name = "Decidim::ParticipatoryProcess"
+    resource.card = "decidim/participatory_processes/process"
+  end
+
+  participatory_space.register_resource(:participatory_process_group) do |resource|
+    resource.model_class_name = "Decidim::ParticipatoryProcessGroup"
+    resource.card = "decidim/participatory_processes/process_group"
+  end
+
+  participatory_space.context(:public) do |context|
+    context.engine = Decidim::ParticipatoryProcesses::Engine
+    context.layout = "layouts/decidim/participatory_process"
+    context.helper = "Decidim::ParticipatoryProcesses::ParticipatoryProcessHelper"
+  end
+
+  participatory_space.context(:admin) do |context|
+    context.engine = Decidim::ParticipatoryProcesses::AdminEngine
+    context.layout = "layouts/decidim/admin/participatory_process"
   end
 
   participatory_space.seeds do
@@ -26,7 +49,7 @@ Decidim.register_participatory_space(:participatory_processes) do |participatory
       )
     end
 
-    2.times do
+    2.times do |n|
       process = Decidim::ParticipatoryProcess.create!(
         title: Decidim::Faker::Localized.sentence(5),
         slug: Faker::Internet.unique.slug(nil, "-"),
@@ -52,7 +75,7 @@ Decidim.register_participatory_space(:participatory_processes) do |participatory
         start_date: Time.current,
         end_date: 2.months.from_now.at_midnight,
         participatory_process_group: process_groups.sample,
-        scope: Faker::Boolean.boolean(0.5) ? nil : Decidim::Scope.reorder("RANDOM()").first
+        scope: n.positive? ? nil : Decidim::Scope.reorder(Arel.sql("RANDOM()")).first
       )
 
       Decidim::ParticipatoryProcessStep.find_or_initialize_by(
@@ -90,6 +113,20 @@ Decidim.register_participatory_space(:participatory_processes) do |participatory
         )
       end
 
+      attachment_collection = Decidim::AttachmentCollection.create!(
+        name: Decidim::Faker::Localized.word,
+        description: Decidim::Faker::Localized.sentence(5),
+        collection_for: process
+      )
+
+      Decidim::Attachment.create!(
+        title: Decidim::Faker::Localized.sentence(2),
+        description: Decidim::Faker::Localized.sentence(5),
+        file: File.new(File.join(seeds_root, "Exampledocument.pdf")),
+        attachment_collection: attachment_collection,
+        attached_to: process
+      )
+
       Decidim::Attachment.create!(
         title: Decidim::Faker::Localized.sentence(2),
         description: Decidim::Faker::Localized.sentence(5),
@@ -114,7 +151,7 @@ Decidim.register_participatory_space(:participatory_processes) do |participatory
         )
       end
 
-      Decidim.feature_manifests.each do |manifest|
+      Decidim.component_manifests.each do |manifest|
         manifest.seed!(process.reload)
       end
     end

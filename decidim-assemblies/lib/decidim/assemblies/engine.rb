@@ -17,20 +17,21 @@ module Decidim
           assembly ? "/assemblies/#{assembly.slug}" : "/404"
         }, constraints: { assembly_id: /[0-9]+/ }
 
-        get "/assemblies/:assembly_id/f/:feature_id", to: redirect { |params, _request|
+        get "/assemblies/:assembly_id/f/:component_id", to: redirect { |params, _request|
           assembly = Decidim::Assembly.find(params[:assembly_id])
-          assembly ? "/assemblies/#{assembly.slug}/f/#{params[:feature_id]}" : "/404"
+          assembly ? "/assemblies/#{assembly.slug}/f/#{params[:component_id]}" : "/404"
         }, constraints: { assembly_id: /[0-9]+/ }
 
         resources :assemblies, only: [:index, :show], param: :slug, path: "assemblies" do
+          resources :assembly_members, only: :index, path: "members"
           resource :assembly_widget, only: :show, path: "embed"
         end
 
-        scope "/assemblies/:assembly_slug/f/:feature_id" do
-          Decidim.feature_manifests.each do |manifest|
+        scope "/assemblies/:assembly_slug/f/:component_id" do
+          Decidim.component_manifests.each do |manifest|
             next unless manifest.engine
 
-            constraints CurrentFeature.new(manifest) do
+            constraints CurrentComponent.new(manifest) do
               mount manifest.engine, at: "/", as: "decidim_assembly_#{manifest.name}"
             end
           end
@@ -41,18 +42,14 @@ module Decidim
         app.config.assets.precompile += %w(decidim_assemblies_manifest.js)
       end
 
-      initializer "decidim_assemblies.inject_abilities_to_user" do |_app|
-        Decidim.configure do |config|
-          config.abilities += [
-            "Decidim::Assemblies::Abilities::EveryoneAbility",
-            "Decidim::Assemblies::Abilities::AdminAbility"
-          ]
-        end
+      initializer "decidim_assemblies.add_cells_view_paths" do
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Assemblies::Engine.root}/app/cells")
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Assemblies::Engine.root}/app/views") # for partials
       end
 
       initializer "decidim.stats" do
         Decidim.stats.register :assemblies_count, priority: StatsRegistry::HIGH_PRIORITY do |organization, _start_at, _end_at|
-          Decidim::Assembly.where(organization: organization).published.count
+          Decidim::Assembly.where(organization: organization).public_spaces.count
         end
       end
 
@@ -68,7 +65,7 @@ module Decidim
 
       initializer "decidim_assemblies.view_hooks" do
         Decidim.view_hooks.register(:highlighted_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
-          highlighted_assemblies = OrganizationPrioritizedAssemblies.new(view_context.current_organization)
+          highlighted_assemblies = OrganizationPrioritizedAssemblies.new(view_context.current_organization, view_context.current_user)
 
           next unless highlighted_assemblies.any?
 
@@ -76,6 +73,23 @@ module Decidim
             partial: "decidim/assemblies/pages/home/highlighted_assemblies",
             locals: {
               highlighted_assemblies: highlighted_assemblies
+            }
+          )
+        end
+
+        Decidim.view_hooks.register(:user_profile_bottom, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
+          assemblies = OrganizationPublishedAssemblies.new(view_context.current_organization, view_context.current_user)
+                                                      .query.distinct
+                                                      .joins(:members)
+                                                      .merge(Decidim::AssemblyMember.where(user: view_context.user))
+                                                      .reorder(title: :asc)
+
+          next unless assemblies.any?
+
+          view_context.render(
+            partial: "decidim/assemblies/pages/user_profile/member_of",
+            locals: {
+              assemblies: assemblies
             }
           )
         end

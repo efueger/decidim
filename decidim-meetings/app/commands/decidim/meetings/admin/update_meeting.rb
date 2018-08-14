@@ -35,18 +35,24 @@ module Decidim
         attr_reader :form, :meeting
 
         def update_meeting!
-          meeting.update_attributes!(
+          Decidim.traceability.update!(
+            meeting,
+            form.current_user,
             scope: form.scope,
             category: form.category,
             title: form.title,
             description: form.description,
+            services: form.services_to_persist.map { |service| { "title" => service.title, "description" => service.description } },
             end_time: form.end_time,
             start_time: form.start_time,
             address: form.address,
             latitude: form.latitude,
             longitude: form.longitude,
             location: form.location,
-            location_hints: form.location_hints
+            location_hints: form.location_hints,
+            private_meeting: form.private_meeting,
+            transparent: form.transparent,
+            organizer: form.organizer
           )
         end
 

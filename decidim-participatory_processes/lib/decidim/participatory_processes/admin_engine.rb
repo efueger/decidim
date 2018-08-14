@@ -30,14 +30,15 @@ module Decidim
               post :resend_invitation, to: "participatory_process_user_roles#resend_invitation"
             end
           end
+          resources :attachment_collections, controller: "participatory_process_attachment_collections"
           resources :attachments, controller: "participatory_process_attachments"
         end
 
         scope "/participatory_processes/:participatory_process_slug" do
           resources :categories
 
-          resources :features do
-            resource :permissions, controller: "feature_permissions"
+          resources :components do
+            resource :permissions, controller: "component_permissions"
             member do
               put :publish
               put :unpublish
@@ -52,13 +53,18 @@ module Decidim
               put :authorize
             end
           end
+          resources :participatory_space_private_users, controller: "participatory_space_private_users" do
+            member do
+              post :resend_invitation, to: "participatory_space_private_users#resend_invitation"
+            end
+          end
         end
 
-        scope "/participatory_processes/:participatory_process_slug/features/:feature_id/manage" do
-          Decidim.feature_manifests.each do |manifest|
+        scope "/participatory_processes/:participatory_process_slug/components/:component_id/manage" do
+          Decidim.component_manifests.each do |manifest|
             next unless manifest.admin_engine
 
-            constraints CurrentFeature.new(manifest) do
+            constraints CurrentComponent.new(manifest) do
               mount manifest.admin_engine, at: "/", as: "decidim_admin_participatory_process_#{manifest.name}"
             end
           end
@@ -69,14 +75,6 @@ module Decidim
         app.config.assets.precompile += %w(admin/decidim_participatory_processes_manifest.js)
       end
 
-      initializer "decidim_participatory_processes.inject_abilities_to_user" do |_app|
-        Decidim.configure do |config|
-          config.admin_abilities += [
-            "Decidim::ParticipatoryProcesses::Abilities::Admin::AdminAbility"
-          ]
-        end
-      end
-
       initializer "decidim_participatory_processes.admin_menu" do
         Decidim.menu :admin_menu do |menu|
           menu.item I18n.t("menu.participatory_processes", scope: "decidim.admin"),
@@ -84,14 +82,14 @@ module Decidim
                     icon_name: "target",
                     position: 2,
                     active: :inclusive,
-                    if: can?(:read, Decidim::ParticipatoryProcess)
+                    if: allowed_to?(:enter, :space_area, space_name: :processes)
 
           menu.item I18n.t("menu.participatory_process_groups", scope: "decidim.admin"),
                     decidim_admin_participatory_processes.participatory_process_groups_path,
                     icon_name: "layers",
                     position: 3,
                     active: :inclusive,
-                    if: can?(:read, Decidim::ParticipatoryProcessGroup)
+                    if: allowed_to?(:enter, :space_area, space_name: :process_groups)
         end
       end
     end

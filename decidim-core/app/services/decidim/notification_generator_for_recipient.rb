@@ -29,8 +29,15 @@ module Decidim
       return unless event_class
       return unless resource
       return unless recipient
+      return unless notification.event_class_instance.notifiable?
 
-      Notification.create!(
+      notification.save!
+    end
+
+    private
+
+    def notification
+      @notification ||= Notification.new(
         user: recipient,
         event_class: event_class,
         resource: resource,
@@ -39,12 +46,10 @@ module Decidim
       )
     end
 
-    private
-
     attr_reader :event, :event_class, :resource, :recipient_id, :extra
 
     def recipient
-      @recipient ||= User.where(id: recipient_id).first
+      @recipient ||= User.find_by(id: recipient_id)
     end
   end
 end

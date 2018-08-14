@@ -1,22 +1,22 @@
 ---
 ca:
+  activemodel:
+    models:
+      decidim/comments/comment_by_followed_user_event: Comentari
+      decidim/comments/comment_created_event: Comentari
+      decidim/comments/reply_created_event: Resposta al comentari
+      decidim/comments/user_mentioned_event: Menció
+  activerecord:
+    models:
+      decidim/comments/comment:
+        one: Comentari
+        other: Comentaris
+      decidim/comments/comment_vote:
+        one: Votació
+        other: Vots
   decidim:
     comments:
-      events:
-        comment_created:
-          comment:
-            email_intro: 'S''ha comentat "%{resource_title}". Pots llegir-lo en aquesta pàgina:'
-            email_outro: Has rebut aquesta notificació perquè que segueixes "%{resource_title}". El pots deixar de seguir al link anterior.
-            email_subject: Hi ha un nou comentari de %{author_name} a %{resource_title}
-            notification_title: Hi ha un nou comentari de %{author_name} a <a href="%{resource_path}">%{resource_title}</a>
-            moderation:
-              email_intro: 'A new comment have been posted, you can moderate it in this page:'
-              email_subject: 'New comment from %{author_name} waiting for moderation'
-          reply:
-            email_intro: S'ha comentat "%{resource_title}"
-            email_outro: Has rebut aquesta notificació perquè que segueixes "%{resource_title}". El pots deixar de seguir al link anterior.
-            email_subject: Hi ha una nova resposta del vostre comentari de %{author_name} a <a href="%{resource_url}">%{resource_title}</a>
-            notification_title: Hi ha una nova resposta del teu comentari de %{author_name} a <a href="%{resource_path}">%{resource_title}</a>
+      comments: Comentaris
       votes:
         create:
           error: Hi ha hagut errors en votar el comentari.
@@ -66,8 +66,30 @@ ca:
         blocked_comments_warning: Els comentaris estan desactivats en aquest moment, però podeu llegir els anteriors.
         loading: Carregant els comentaris ...
         title: "%{count} comentaris"
-      featured_comment:
-        title: Comentari destacat
+        title_0: Il n'y a pas encore de commentaire
+        title_1: "%{count} commentaire"
+    events:
+      comments:
+        comment_by_followed_user:
+          email_intro: "%{author_name} ha deixat un comentari a %{resource_title}. Podeu llegir-lo en aquesta pàgina:"
+          email_outro: Hasrebut aquesta notificació perquè estàs seguint %{author_name}. Pots deixar de seguir aquest usuari des de la seva pàgina de perfil.
+          email_subject: Hi ha un nou comentari de %{author_name} en %{resource_title}
+          notification_title: Hi ha un nou comentari per <a href="%{author_path}">%{author_name} %{author_nickname}</a> a <a href="%{resource_path}">%{resource_title}</a>.
+        comment_created:
+          email_intro: 'S''ha comentat %{resource_title}. Pots llegir el comentari d''aquesta pàgina:'
+          email_outro: Has rebut aquesta notificació perquè estàs seguint "%{resource_title}" o el seu autor. Pots deixar de seguir-lo des de l'enllaç anterior.
+          email_subject: Hi ha un nou comentari de %{author_name} a %{resource_title}
+          notification_title: Hi ha un nou comentari de <a href="%{author_path}">%{author_name} %{author_nickname}</a> en <a href="%{resource_path}">%{resource_title}</a>
+        reply_created:
+          email_intro: "%{author_name} ha respost el teu comentari a %{resource_title}. Pots llegir-lo en aquesta pàgina:"
+          email_outro: Has rebut aquesta notificació perquè s'ha respost el teu comentari.
+          email_subject: "%{author_name} ha respost el teu comentari a %{resource_title}"
+          notification_title: <a href="%{author_path}">%{author_name} %{author_nickname}</a> ha respost el teu comentari a <a href="%{resource_path}">%{resource_title}</a>
+        user_mentioned:
+          email_intro: Has estat esmentat
+          email_outro: Has rebut aquesta notificació perquè has esmentat a %{resource_title}.
+          email_subject: Has estat esmentat a %{resource_title}
+          notification_title: Has estat esmentat a <a href="%{resource_path}">%{resource_title}</a> per <a href="%{author_path}">%{author_name} %{author_nickname}</a>
   errors:
     messages:
       cannot_have_comments: no pot tenir comentaris

@@ -6,10 +6,14 @@ module Decidim
       # This controller allows the user to update a Page.
       class PagesController < Admin::ApplicationController
         def edit
+          enforce_permission_to :update, :page
+
           @form = form(Admin::PageForm).from_model(page)
         end
 
         def update
+          enforce_permission_to :update, :page
+
           @form = form(Admin::PageForm).from_params(params)
 
           Admin::UpdatePage.call(@form, page) do
@@ -28,7 +32,7 @@ module Decidim
         private
 
         def page
-          @page ||= Pages::Page.find_by(feature: current_feature)
+          @page ||= Pages::Page.find_by(component: current_component)
         end
       end
     end

@@ -5,6 +5,7 @@ module Decidim
     # This controller customizes the behaviour of Devise::Invitiable.
     class InvitationsController < ::Devise::InvitationsController
       include Decidim::DeviseControllers
+      include NeedsTosAccepted
 
       before_action :configure_permitted_parameters
 
@@ -18,20 +19,21 @@ module Decidim
       # invitation. Using the param `invite_redirect` we can redirect the user
       # to a custom path after it has accepted the invitation.
       def after_accept_path_for(resource)
-        params[:invite_redirect] || super
+        params[:invite_redirect] || after_sign_in_path_for(resource)
       end
 
       # When a managed user accepts the invitation is promoted to non-managed user.
       def accept_resource
         resource = resource_class.accept_invitation!(update_resource_params)
-        resource.update_attributes!(managed: false) if resource.managed?
+        resource.update!(managed: false) if resource.managed?
+        resource.update!(accepted_tos_version: resource.organization.tos_version)
         resource
       end
 
       protected
 
       def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:accept_invitation, keys: [:nickname])
+        devise_parameter_sanitizer.permit(:accept_invitation, keys: [:nickname, :tos_agreement, :newsletter_notifications])
       end
     end
   end

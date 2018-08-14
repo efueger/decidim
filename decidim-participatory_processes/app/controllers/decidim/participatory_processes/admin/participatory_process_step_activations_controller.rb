@@ -9,9 +9,9 @@ module Decidim
         include Concerns::ParticipatoryProcessAdmin
 
         def create
-          authorize! :activate, process_step
+          enforce_permission_to :activate, :process_step, process_step: process_step
 
-          ActivateParticipatoryProcessStep.call(process_step) do
+          ActivateParticipatoryProcessStep.call(process_step, current_user) do
             on(:ok) do
               flash[:notice] = I18n.t("participatory_process_step_activations.create.success", scope: "decidim.admin")
             end

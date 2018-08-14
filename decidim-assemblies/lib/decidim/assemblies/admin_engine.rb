@@ -17,15 +17,23 @@ module Decidim
         resources :assemblies, param: :slug, except: :show do
           resource :publish, controller: "assembly_publications", only: [:create, :destroy]
           resources :copies, controller: "assembly_copies", only: [:new, :create]
+          resources :members, controller: "assembly_members"
 
+          resources :user_roles, controller: "assembly_user_roles" do
+            member do
+              post :resend_invitation, to: "assembly_user_roles#resend_invitation"
+            end
+          end
+
+          resources :attachment_collections, controller: "assembly_attachment_collections"
           resources :attachments, controller: "assembly_attachments"
         end
 
         scope "/assemblies/:assembly_slug" do
           resources :categories
 
-          resources :features do
-            resource :permissions, controller: "feature_permissions"
+          resources :components do
+            resource :permissions, controller: "component_permissions"
             member do
               put :publish
               put :unpublish
@@ -39,13 +47,19 @@ module Decidim
               put :hide
             end
           end
+
+          resources :participatory_space_private_users, controller: "participatory_space_private_users" do
+            member do
+              post :resend_invitation, to: "participatory_space_private_users#resend_invitation"
+            end
+          end
         end
 
-        scope "/assemblies/:assembly_slug/features/:feature_id/manage" do
-          Decidim.feature_manifests.each do |manifest|
+        scope "/assemblies/:assembly_slug/components/:component_id/manage" do
+          Decidim.component_manifests.each do |manifest|
             next unless manifest.admin_engine
 
-            constraints CurrentFeature.new(manifest) do
+            constraints CurrentComponent.new(manifest) do
               mount manifest.admin_engine, at: "/", as: "decidim_admin_assembly_#{manifest.name}"
             end
           end
@@ -56,14 +70,6 @@ module Decidim
         app.config.assets.precompile += %w(admin/decidim_assemblies_manifest.js)
       end
 
-      initializer "decidim_assemblies.inject_abilities_to_user" do |_app|
-        Decidim.configure do |config|
-          config.admin_abilities += [
-            "Decidim::Assemblies::Abilities::Admin::AdminAbility"
-          ]
-        end
-      end
-
       initializer "decidim_assemblies.admin_menu" do
         Decidim.menu :admin_menu do |menu|
           menu.item I18n.t("menu.assemblies", scope: "decidim.admin"),
@@ -71,7 +77,7 @@ module Decidim
                     icon_name: "dial",
                     position: 3.5,
                     active: :inclusive,
-                    if: can?(:manage, Decidim::Assembly)
+                    if: allowed_to?(:enter, :space_area, space_name: :assemblies)
         end
       end
     end

@@ -1,9 +1,29 @@
+---
 pl:
+  activemodel:
+    attributes:
+      dummy_resource:
+        created_at: Utworzono w
+        field: Moja dziedzina
+        start_date: Data rozpoczęcia
+        title: Tytuł
+        updated_at: Zaktualizowano na
   decidim:
     dummy:
       admin:
         exports:
           dummies: Manekiny
+    pages:
+      home:
+        statistics:
+          bar: Bar
+          dummies_count_high: Atrapy wysokie
+          dummies_count_medium: Średni manekin
+          foo: bla
+    participatory_processes:
+      statistics:
+        dummies_count_high: Atrapy wysokie
+        dummies_count_medium: Średni manekin
     resource_links:
       test_link:
         dummy_resource_dummy: Podobne manekina

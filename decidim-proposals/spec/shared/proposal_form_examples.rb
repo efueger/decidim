@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
-shared_examples "a proposal form" do
+shared_examples "a proposal form" do |options|
   subject { form }
 
   let(:organization) { create(:organization, available_locales: [:en]) }
   let(:participatory_space) { create(:participatory_process, :with_steps, organization: organization) }
-  let(:feature) { create(:proposal_feature, participatory_space: participatory_space) }
+  let(:component) { create(:proposal_component, participatory_space: participatory_space) }
   let(:title) { "Oriol for president!" }
   let(:body) { "Everything would be better" }
   let(:author) { create(:user, organization: organization) }
+  let(:user_group_id) { create(:user_group, :verified, users: [author], organization: organization).id }
   let(:category) { create(:category, participatory_space: participatory_space) }
   let(:scope) { create(:scope, organization: organization) }
   let(:category_id) { category.try(:id) }
@@ -33,8 +34,8 @@ shared_examples "a proposal form" do
 
   let(:form) do
     described_class.from_params(params).with_context(
-      current_feature: feature,
-      current_organization: feature.organization,
+      current_component: component,
+      current_organization: component.organization,
       current_participatory_space: participatory_space
     )
   end
@@ -47,6 +48,11 @@ shared_examples "a proposal form" do
     let(:title) { nil }
 
     it { is_expected.to be_invalid }
+
+    it "only adds errors to this field" do
+      subject.valid?
+      expect(subject.errors.keys).to eq [:title]
+    end
   end
 
   context "when there's no body" do
@@ -80,7 +86,7 @@ shared_examples "a proposal form" do
   end
 
   context "when geocoding is enabled" do
-    let(:feature) { create(:proposal_feature, :with_geocoding_enabled, participatory_space: participatory_space) }
+    let(:component) { create(:proposal_component, :with_geocoding_enabled, participatory_space: participatory_space) }
 
     context "when the has address checkbox is checked" do
       let(:has_address) { true }
@@ -169,9 +175,17 @@ shared_examples "a proposal form" do
   end
 
   it "properly maps category id from model" do
-    proposal = create(:proposal, feature: feature, category: category)
+    proposal = create(:proposal, component: component, category: category)
 
     expect(described_class.from_model(proposal).category_id).to eq(category_id)
+  end
+
+  if options && options[:user_group_check]
+    it "properly maps user group id from model" do
+      proposal = create(:proposal, component: component, author: author, decidim_user_group_id: user_group_id)
+
+      expect(described_class.from_model(proposal).user_group_id).to eq(user_group_id)
+    end
   end
 
   context "when the attachment is present" do
@@ -183,5 +197,15 @@ shared_examples "a proposal form" do
     end
 
     it { is_expected.to be_valid }
+
+    context "when the form has some errors" do
+      let(:title) { nil }
+
+      it "adds an error to the `:attachment` field" do
+        expect(subject).not_to be_valid
+        expect(subject.errors.full_messages).to match_array(["Title can't be blank", "Attachment Needs to be reattached"])
+        expect(subject.errors.keys).to match_array([:title, :attachment])
+      end
+    end
   end
 end

@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require "decidim/settings_manifest"
+
 module Decidim
   module Verifications
+    autoload :DefaultActionAuthorizer, "decidim/verifications/default_action_authorizer"
+
     #
     # This class serves as a DSL to declaratively specify a verification method.
     #
@@ -29,6 +33,7 @@ module Decidim
       attribute :admin_engine, Rails::Engine
       attribute :form, String
       attribute :expires_in, ActiveSupport::Duration, default: 0.minutes
+      attribute :action_authorizer, String
 
       validate :engine_or_form
 
@@ -51,6 +56,34 @@ module Decidim
 
       def description
         "#{fullname} (#{I18n.t(type, scope: "decidim.authorization_handlers")})"
+      end
+
+      def action_authorizer_class
+        if @action_authorizer.present?
+          @action_authorizer.constantize
+        else
+          DefaultActionAuthorizer
+        end
+      end
+
+      # Public: Adds configurable settings for this verification workflow. It
+      # uses the DSL specified under `Decidim::SettingsManifest`.
+      #
+      # &block - The DSL present on `Decidim::SettingsManifest`
+      #
+      # Examples:
+      #
+      #   workflow.options do |options|
+      #     options.attribute :minimum_age, type: :integer, default: 18
+      #   end
+      #
+      # Returns nothing.
+      def options
+        @options ||= SettingsManifest.new
+
+        yield(@options) if block_given?
+
+        @options
       end
     end
   end

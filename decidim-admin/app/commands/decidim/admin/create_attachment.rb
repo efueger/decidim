@@ -27,11 +27,10 @@ module Decidim
 
         if @attachment.valid?
           @attachment.save!
+          notify_followers
           broadcast(:ok)
         else
-          if @attachment.errors.has_key? :file
-            @form.errors.add :file, @attachment.errors[:file]
-          end
+          @form.errors.add :file, @attachment.errors[:file] if @attachment.errors.has_key? :file
           broadcast(:invalid)
         end
       end
@@ -45,7 +44,20 @@ module Decidim
           title: form.title,
           description: form.description,
           file: form.file,
-          attached_to: @attached_to
+          attached_to: @attached_to,
+          weight: form.weight,
+          attachment_collection: form.attachment_collection
+        )
+      end
+
+      def notify_followers
+        return unless @attachment.attached_to.is_a?(Decidim::Followable)
+
+        Decidim::EventsManager.publish(
+          event: "decidim.events.attachments.attachment_created",
+          event_class: Decidim::AttachmentCreatedEvent,
+          resource: @attachment,
+          recipient_ids: @attachment.attached_to.followers.pluck(:id)
         )
       end
     end

@@ -1,6 +1,17 @@
+---
 pl:
+  activerecord:
+    models:
+      decidim/pages/page:
+        few: Strony
+        many: Strony
+        one: Strona
+        other: Strony
   decidim:
-    features:
+    admin_log:
+      page:
+        update: "%{user_name} zaktualizował stronę %{resource_name} w %{space_name}"
+    components:
       pages:
         name: Strona
         settings:

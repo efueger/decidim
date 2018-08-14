@@ -1,10 +1,10 @@
-module ProjectExtend
-  def users_to_notify_on_comment_created
-    get_all_users_with_role
-  end
+# frozen_string_literal: true
 
-  def users_to_notify_on_comment_authorized
-    followers
+module ProjectExtend
+  include Decidim::HasClassExtends
+
+  def users_to_notify_on_comment_created
+    users_with_role
   end
 end
 

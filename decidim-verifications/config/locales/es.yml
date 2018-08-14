@@ -10,6 +10,13 @@ es:
         document_type: Tipo de tu documento
         user: Usuario
         verification_attachment: Copia escaneada de tu documento
+      postal_letter_address:
+        full_address: Dirección completa
+      postal_letter_confirmation:
+        verification_code: Código de verificación
+      postal_letter_postage:
+        full_address: Dirección completa
+        verification_code: Código de verificación
   decidim:
     admin:
       menu:
@@ -45,6 +52,7 @@ es:
           success: Has sido autorizado/a correctamente.
         first_login:
           actions:
+            another_dummy_authorization_handler: Verificar contra otro ejemplo de controlador de autorización
             dummy_authorization_handler: Verificar contra el gestor de autorización de ejemplo
             dummy_authorization_workflow: Verificar contra el flujo de autorización de ejemplo
             id_documents: Verifícate subiendo tu documento de identidad
@@ -56,6 +64,10 @@ es:
           authorize_with: Verificar con %{authorizer}
         skip_verification: Puedes saltarte este paso por ahora y %{link}
         start_exploring: empezar a explorar
+      dummy_authorization:
+        extra_explanation:
+          one: La participación está restringida a usuarios con el código postal %{postal_codes}.
+          other: 'La participación está restringida a usuarios con cualquiera de los siguientes códigos postales: %{postal_codes}.'
       id_documents:
         admin:
           confirmations:

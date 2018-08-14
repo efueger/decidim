@@ -1,3 +1,4 @@
+---
 it:
   activemodel:
     attributes:
@@ -8,9 +9,15 @@ it:
         description: Descrizione
         proposal_ids: Proposte correlate
         title: Titolo
+  activerecord:
+    models:
+      decidim/budgets/project:
+        one: Progetto
+        other: progetti
   decidim:
     budgets:
       actions:
+        attachment_collections: collezioni
         attachments: Allegati
         confirm_destroy: Sei certo di voler cancellare questo progetto?
         destroy: Cancella
@@ -41,6 +48,11 @@ it:
           update:
             invalid: C'è stato un problema durante l'aggiornamento di questo progetto.
             success: OK, progetto aggiornato.
+      admin_log:
+        project:
+          create: "%{user_name} ha creato il progetto %{resource_name} nello spazio %{space_name}"
+          delete: "%{user_name} eliminato il progetto %{resource_name} nello spazio %{space_name}"
+          update: "%{user_name} ha aggiornato il progetto %{resource_name} nello spazio %{space_name}"
       models:
         project:
           fields:
@@ -93,27 +105,29 @@ it:
             one: 1 supporto/voto
             other: "%{count} supportati/voti"
           remove: Elimina
+          view: vista
         project_budget_button:
           add: Aggiungi
           added: Aggiunto
         show:
           budget: Budget
           view_all_projects: Visualizza tutti i progetti
-    features:
+    components:
       budgets:
         actions:
           vote: Votazione
-        name: Investimenti
+        name: i bilanci
         settings:
           global:
             announcement: Annuncio
             comments_enabled: Commenti abilitati
+            projects_per_page: Progetti per pagina
             total_budget: Budget totale
-            vote_threshold_percent: Soglia voti (percentuale)
+            vote_threshold_percent: Vota la percentuale di soglia
           step:
             announcement: Annuncio
             comments_blocked: Commenti bloccati
-            show_votes: Visualizza voti
+            show_votes: Mostra voti
             votes_enabled: Voti abilitati
     orders:
       checkout:
@@ -124,7 +138,7 @@ it:
         success: OK, il tuo voto è stato cancellato.
     resource_links:
       included_proposals:
-        project_proposals: 'Proposte incluse in questo progetto:'
+        project_proposal: 'Proposte incluse in questo progetto:'
   index:
     confirmed_orders_count: Computo dei voti
   total_budget: Budget totale

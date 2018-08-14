@@ -3,7 +3,7 @@
 module Decidim
   module Accountability
     # This class handles search and filtering of results. Needs a
-    # `current_feature` param with a `Decidim::Feature` in order to
+    # `current_component` param with a `Decidim::Component` in order to
     # find the results.
     class ResultSearch < ResourceSearch
       # Public: Initializes the service.
@@ -11,9 +11,16 @@ module Decidim
       # options - A hash of options to modify the search. These options will be
       #          converted to methods by SearchLight so they can be used on filter
       #          methods. (Default {})
-      #          * feature - A Decidim::Feature to get the results from.
+      #          * component - A Decidim::Component to get the results from.
       #          * organization - A Decidim::Organization object.
+      #          * parent_id - The parent ID of the result. The value is forced to false to force
+      #                        the filter execution when the value is nil
+      #          * deep_search - Whether to perform the search on all children levels or just the
+      #                          first one. True by default.
       def initialize(options = {})
+        options = options.dup
+        options[:deep_search] = true if options[:deep_search].nil?
+        options[:parent_id] = "root" if options[:parent_id].nil?
         super(Result.all, options)
       end
 
@@ -24,7 +31,23 @@ module Decidim
           .or(query.where(localized_search_text_in(:description), text: "%#{search_text}%"))
       end
 
+      # Handle parent_id filter
+      def search_parent_id
+        parent_id = options[:parent_id]
+        parent_id = nil if parent_id == "root"
+
+        if options[:deep_search]
+          query.where(parent_id: [parent_id] + children_ids(parent_id))
+        else
+          query.where(parent_id: parent_id)
+        end
+      end
+
       private
+
+      def children_ids(parent_id)
+        Result.where(parent_id: parent_id).pluck(:id)
+      end
 
       # Internal: builds the needed query to search for a text in the organization's
       # available locales. Note that it is intended to be used as follows:

@@ -1,12 +1,29 @@
+$icon-size: rem-calc(14);
+$icon-size-sm: rem-calc(10);
+$icon-size-l: rem-calc(24);
+$icon-size-xl: rem-calc(30);
+
 .icon{
-  width: 14px;
-  height: 14px;
+  width: $icon-size;
+  height: $icon-size;
   fill: currentColor;
+
+  @include modifiers(color, (muted: $muted));
 }
 
 .icon--small{
-  width: 10px;
-  height: 10px;
+  width: $icon-size-sm;
+  height: $icon-size-sm;
+}
+
+.icon--big{
+  width: $icon-size-l;
+  height: $icon-size-l;
+}
+
+.icon--large{
+  width: $icon-size-xl;
+  height: $icon-size-xl;
 }
 
 .icon--action{
@@ -30,4 +47,9 @@ a:hover .icon--action{
   margin-bottom: -2px;
   width: 12px;
   height: 12px;
+}
+
+.icon--thumb-neutral{
+  transform: rotate(270deg);
+  transform-origin: 50% 50%;
 }

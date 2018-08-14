@@ -22,40 +22,32 @@ module Decidim
       def call
         return broadcast(:invalid) if form.invalid?
 
-        transaction do
-          create_comment
-          send_notification
-        end
+        create_comment
 
-        broadcast(:ok, @comment)
+        broadcast(:ok, comment)
       end
 
       private
 
-      attr_reader :form
+      attr_reader :form, :comment
 
       def create_comment
+        parsed = Decidim::ContentProcessor.parse(form.body, current_organization: form.current_organization)
+
         @comment = Comment.create!(author: @author,
                                    commentable: @commentable,
                                    root_commentable: root_commentable(@commentable),
-                                   body: form.body,
+                                   body: parsed.rewrite,
                                    alignment: form.alignment,
                                    decidim_user_group_id: form.user_group_id)
+
+        mentioned_users = parsed.metadata[:user].users
+        CommentCreation.publish(@comment, parsed.metadata)
+        send_notifications(mentioned_users)
       end
 
-      def send_notification
-        recipient_ids = (@commentable.users_to_notify_on_comment_created - [@author]).pluck(:id)
-        recipient_ids += @author.followers.pluck(:id)
-
-        Decidim::EventsManager.publish(
-          event: "decidim.events.comments.comment_created",
-          event_class: Decidim::Comments::CommentCreatedEvent,
-          resource: @comment.root_commentable,
-          recipient_ids: recipient_ids.uniq,
-          extra: {
-            comment_id: @comment.id
-          }
-        )
+      def send_notifications(mentioned_users)
+        NewCommentNotificationCreator.new(comment, mentioned_users).create
       end
 
       def root_commentable(commentable)

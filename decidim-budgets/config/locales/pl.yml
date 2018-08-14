@@ -1,3 +1,4 @@
+---
 pl:
   activemodel:
     attributes:
@@ -8,9 +9,17 @@ pl:
         description: Opis
         proposal_ids: Proponowane propozycje
         title: Tytuł
+  activerecord:
+    models:
+      decidim/budgets/project:
+        few: Projektowanie
+        many: Projektowanie
+        one: Projekt
+        other: Projektowanie
   decidim:
     budgets:
       actions:
+        attachment_collections: Kolekcje
         attachments: Załączniki
         confirm_destroy: Czy na pewno chcesz usunąć ten projekt?
         destroy: Kasować
@@ -41,6 +50,11 @@ pl:
           update:
             invalid: Wystąpił problem z aktualizacją tego projektu
             success: Zaktualizowano projekt
+      admin_log:
+        project:
+          create: "%{user_name} utworzył projekt %{resource_name} w przestrzeni %{space_name}"
+          delete: "%{user_name} usunął projekt %{resource_name} z przestrzeni %{space_name}"
+          update: "%{user_name} zaktualizował projekt %{resource_name} w przestrzeni %{space_name}"
       models:
         project:
           fields:
@@ -68,8 +82,9 @@ pl:
           title: Ty decydujesz budżet
         count:
           projects_count:
-            one: 1 projekt
             few: "%{count} projektów"
+            many: "%{count} projektowanie"
+            one: 1 projekt
             other: "%{count} projektów"
         filters:
           category: Kategoria
@@ -85,24 +100,27 @@ pl:
         order_selected_projects:
           remove: Usunąć
           selected_projects:
-            one: Wybrany projekt
             few: Wybranych projektów
+            many: wybrane projekty
+            one: Wybrany projekt
             other: Wybranych projektów
           view: Widok
         project:
           add: Dodaj
           count:
-            one: 1
             few: "%{count} obsługuje"
+            many: "%{count} obsługuje"
+            one: 1
             other: "%{count} obsługuje"
           remove: Usunąć
+          view: Widok
         project_budget_button:
           add: Dodaj
           added: W dodatku
         show:
           budget: Budżet
           view_all_projects: Wyświetl wszystkie projekty
-    features:
+    components:
       budgets:
         actions:
           vote: Głosować
@@ -110,14 +128,15 @@ pl:
         settings:
           global:
             announcement: Ogłoszenie
-            comments_enabled: Włączone komentarze
+            comments_enabled: Komentarze włączone
+            projects_per_page: Projekty na stronę
             total_budget: Cały budżet
-            vote_threshold_percent: Procentowy procent głosu
+            vote_threshold_percent: Procent progu głosowania
           step:
             announcement: Ogłoszenie
             comments_blocked: Komentarze zablokowane
             show_votes: Pokaż głosy
-            votes_enabled: Głosy włączone
+            votes_enabled: Głosowanie włączone
     orders:
       checkout:
         error: Podczas przetwarzania Twojego głosu wystąpił błąd
@@ -127,7 +146,7 @@ pl:
         success: Twój głos został pomyślnie zakończony
     resource_links:
       included_proposals:
-        project_proposals: 'Propozycje zawarte w tym projekcie:'
+        project_proposal: 'Propozycje zawarte w tym projekcie:'
   index:
     confirmed_orders_count: Liczba głosów
   total_budget: Cały budżet

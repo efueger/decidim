@@ -23,11 +23,11 @@
     <%= form_tag "", method: :get do %>
       <div class="filters__search">
         <div class="input-group">
-          <%= search_field_tag :q, @query,label: false, class: "input-group-field", placeholder: t('.search') %>
+          <%= search_field_tag :q, @query,label: false, class: "input-group-field", placeholder: t(".search") %>
           <%= hidden_field_tag :state, @state %>
           <div class="input-group-button">
             <button type="submit" class="button button--muted">
-              <%= icon "magnifying-glass", aria_label: t('.search') %>
+              <%= icon "magnifying-glass", aria_label: t(".search") %>
             </button>
           </div>
         </div>
@@ -69,12 +69,12 @@
               <% if user_group.rejected? %>
                 <%= t(".state.rejected") %>
               <% end %>
-              <% if user_group.pending?%>
+              <% if user_group.pending? %>
                 <%= t(".state.pending") %>
               <% end %>
               </td>
               <td class="table-list__actions">
-                <% if can?(:verify, user_group) %>
+                <% if allowed_to?(:verify, :user_group, user_group: user_group) %>
                   <% if !user_group.verified? %>
                     <%= icon_link_to "circle-check", decidim_admin.verify_user_group_path(user_group), t("actions.verify", scope: "decidim.admin"), method: :put, class: "action-icon--verify" %>
                   <% else %>
@@ -82,7 +82,7 @@
                   <% end %>
                 <% end %>
 
-                <% if can?(:reject, user_group) %>
+                <% if allowed_to?(:reject, :user_group, user_group: user_group) %>
                   <% if !user_group.rejected? %>
                     <%= icon_link_to "circle-x", decidim_admin.reject_user_group_path(user_group), t("actions.reject", scope: "decidim.admin"), method: :put, class: "action-icon--reject" %>
                   <% else %>

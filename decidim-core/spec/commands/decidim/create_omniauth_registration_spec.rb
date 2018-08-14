@@ -6,7 +6,7 @@ module Decidim
   module Comments
     describe CreateOmniauthRegistration do
       describe "call" do
-        let(:organization) { create(:organization) }
+        let(:organization) { create(:organization, :with_tos) }
         let(:email) { "user@from-facebook.com" }
         let(:provider) { "facebook" }
         let(:uid) { "12345" }
@@ -21,7 +21,8 @@ module Decidim
               "email_verified" => true,
               "name" => "Facebook User",
               "nickname" => "facebook_user",
-              "oauth_signature" => oauth_signature
+              "oauth_signature" => oauth_signature,
+              "avatar_url" => "http://www.example.com/foo.jpg"
             }
           }
         end
@@ -42,6 +43,11 @@ module Decidim
           end
         end
 
+        before do
+          stub_request(:get, "http://www.example.com/foo.jpg")
+            .to_return(status: 200, body: File.read("spec/assets/avatar.jpg"), headers: { "Content-Type" => "image/jpeg" })
+        end
+
         context "when the form is not valid" do
           before do
             expect(form).to receive(:invalid?).and_return(true)
@@ -54,7 +60,7 @@ module Decidim
           it "doesn't create a user" do
             expect do
               command.call
-            end.not_to change { User.count }
+            end.not_to change(User, :count)
           end
         end
 
@@ -68,12 +74,14 @@ module Decidim
 
             expect do
               command.call
-            end.to change { User.count }.by(1)
+            end.to change(User, :count).by(1)
 
             user = User.find_by(email: form.email)
             expect(user.encrypted_password).not_to be_nil
             expect(user.email).to eq(form.email)
             expect(user.organization).to eq(organization)
+            expect(user.newsletter_notifications).to eq(false)
+            expect(user.email_on_notification).to eq(true)
             expect(user).to be_confirmed
             expect(user.valid_password?("abcde1234")).to eq(true)
           end
@@ -84,7 +92,7 @@ module Decidim
 
               it "links a previously existing user" do
                 user = create(:user, email: email, organization: organization)
-                expect { command.call }.to change { User.count }.by(0)
+                expect { command.call }.to change(User, :count).by(0)
 
                 expect(user.identities.length).to eq(1)
               end
@@ -105,7 +113,7 @@ module Decidim
           it "creates a new identity" do
             expect do
               command.call
-            end.to change { Identity.count }.by(1)
+            end.to change(Identity, :count).by(1)
             last_identity = Identity.last
             expect(last_identity.provider).to eq(form.provider)
             expect(last_identity.uid).to eq(form.uid)

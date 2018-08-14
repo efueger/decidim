@@ -14,12 +14,27 @@ module Decidim
     mount_uploader :verification_attachment, Decidim::Verifications::AttachmentUploader
 
     belongs_to :user, foreign_key: "decidim_user_id", class_name: "Decidim::User"
+    has_one :organization, through: :user, class_name: "Decidim::Organization"
 
     validates :name, uniqueness: { scope: :decidim_user_id }
     validates :verification_metadata, absence: true, if: :granted?
     validates :verification_attachment, absence: true, if: :granted?
 
     validate :active_handler?
+
+    def self.create_or_update_from(handler)
+      authorization = find_or_initialize_by(
+        user: handler.user,
+        name: handler.handler_name
+      )
+
+      authorization.attributes = {
+        unique_id: handler.unique_id,
+        metadata: handler.metadata
+      }
+
+      authorization.grant!
+    end
 
     def grant!
       remove_verification_attachment!

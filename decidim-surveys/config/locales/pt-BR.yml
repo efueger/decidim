@@ -1,3 +1,4 @@
+---
 pt-BR:
   activemodel:
     attributes:
@@ -5,9 +6,28 @@ pt-BR:
         body: Resposta
       survey_question:
         mandatory: Obrigatório
+        max_choices: Número máximo de escolhas
         question_type: Tipo
+    errors:
+      models:
+        survey_answer:
+          attributes:
+            choices:
+              missing: não estão completos
+              too_many: são muitos
+    models:
+      decidim/surveys/closed_survey_event: Estudo finalizado
+      decidim/surveys/opened_survey_event: Enquete iniciada
+  activerecord:
+    models:
+      decidim/surveys/survey:
+        one: Enquete
+        other: Enquetes
+      decidim/surveys/survey_answer:
+        one: Resposta
+        other: Respostas
   decidim:
-    features:
+    components:
       surveys:
         actions:
           answer: Responda
@@ -18,6 +38,22 @@ pt-BR:
           step:
             allow_answers: Permitir respostas
             announcement: Anúncio
+    events:
+      surveys:
+        survey_closed:
+          email_intro: A pesquisa %{resource_title} em %{participatory_space_title} foi fechada.
+          email_outro: Você recebeu esta notificação porque está seguindo %{participatory_space_title}. Você pode parar de receber notificações após o link anterior.
+          email_subject: Uma pesquisa terminou em %{participatory_space_title}
+          notification_title: A pesquisa <a href="%{resource_path}">%{resource_title}</a> em <a href="%{participatory_space_url}">%{participatory_space_title}</a> terminou.
+        survey_opened:
+          email_intro: 'A pesquisa %{resource_title} em %{participatory_space_title} está agora aberta. Você pode participar desta página:'
+          email_outro: Você recebeu esta notificação porque está seguindo %{participatory_space_title}. Você pode parar de receber notificações após o link anterior.
+          email_subject: Uma nova pesquisa em %{participatory_space_title}
+          notification_title: A pesquisa <a href="%{resource_path}">%{resource_title}</a> em <a href="%{participatory_space_url}">%{participatory_space_title}</a> está agora aberta.
+    forms:
+      errors:
+        survey_answer:
+          body: O corpo não pode ficar em branco
     surveys:
       admin:
         exports:
@@ -29,7 +65,8 @@ pt-BR:
         surveys:
           answer_option:
             answer_option: Opção de resposta
-            remove_answer_option: Eliminar opção de resposta
+            free_text: Texto livre
+            remove: Remover
             statement: Declaração
           edit:
             save: Salve 
@@ -39,9 +76,13 @@ pt-BR:
             already_answered_warning: A pesquisa já foi respondida por alguns usuários para que você não possa modificar suas perguntas.
           question:
             add_answer_option: Adicionar opção de resposta
+            any: Qualquer
+            description: Descrição
+            down: Baixa
             question: Questão
-            remove_question: Remova a pergunta
+            remove: Remover
             statement: Declaração
+            up: Acima
           update:
             invalid: Houve erros ao salvar a pesquisa.
             success: Pesquisa salva com sucesso.
@@ -50,10 +91,13 @@ pt-BR:
         multiple_option: Opção múltipla
         short_answer: Resposta curta
         single_option: Opção única
+        sorting: Classificação
       surveys:
         answer:
           invalid: Houve erros ao responder a pesquisa.
           success: Pesquisa respondida com sucesso.
+        question:
+          max_choices: 'Escolhas máximas: %{n}'
         show:
           answer_survey:
             anonymous_user_message: <a href="%{sign_in_link}">Inscreva-se com sua conta</a> ou <a href="%{sign_up_link}">sign up</a> para responder a pesquisa.
@@ -66,4 +110,7 @@ pt-BR:
           survey_closed:
             body: A pesquisa está fechada e não pode ser respondida.
             title: Pesquisa fechada
+          survey_for_private_users:
+            body: A pesquisa está disponível apenas para usuários particulares
+            title: Inquérito encerrado
           tos_agreement: Ao participar desta pesquisa você aceita seus Termos de Serviço

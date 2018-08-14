@@ -2,7 +2,7 @@
 
 module Decidim
   module Admin
-    # Controller that allows managing user groups at the admin panel.
+    # Controller that allows managing user officializations at the admin panel.
     #
     class OfficializationsController < Decidim::Admin::ApplicationController
       layout "decidim/admin/users"
@@ -10,23 +10,23 @@ module Decidim
       helper_method :user
 
       def index
-        authorize! :index, :officializations
+        enforce_permission_to :read, :officialization
         @query = params[:q]
         @state = params[:state]
 
-        @users = Decidim::Admin::UsersOfficialization.for(@query, @state)
-                                                     .page(params[:page])
-                                                     .per(15)
+        @users = Decidim::Admin::UserFilter.for(current_organization.users, @query, @state)
+                                           .page(params[:page])
+                                           .per(15)
       end
 
       def new
-        authorize! :new, :officializations
+        enforce_permission_to :create, :officialization
 
         @form = form(OfficializationForm).from_model(user)
       end
 
       def create
-        authorize! :create, :officializations
+        enforce_permission_to :create, :officialization
 
         @form = form(OfficializationForm).from_params(params)
 
@@ -40,9 +40,9 @@ module Decidim
       end
 
       def destroy
-        authorize! :destroy, :officializations
+        enforce_permission_to :destroy, :officialization
 
-        UnofficializeUser.call(user) do
+        UnofficializeUser.call(user, current_user) do
           on(:ok) do
             notice = I18n.t("officializations.destroy.success", scope: "decidim.admin")
 

@@ -8,7 +8,8 @@ $author-data-color: $muted;
 //Styles
 
 .author-data{
-  @include clearfix();
+  @include flex;
+  @include flex-align($x: left, $y: middle);
 
   color: $author-data-color;
   font-size: .9rem;
@@ -38,6 +39,47 @@ $author-data-color: $muted;
   padding-left: 25px;
 }
 
+.author-data--big{
+  padding-left: 0;
+
+  .author-data__main{
+    margin: 0;
+  }
+
+  .author--flex,
+  .author__name--container{
+    display: flex;
+    align-items: center;
+  }
+
+  .author__avatar{
+    position: relative;
+    margin-left: 0;
+
+    img{
+      max-width: none;
+      margin-top: auto;
+      width: rem-calc(54);
+    }
+  }
+
+  .author__name{
+    @extend .heading5;
+  }
+
+  .author__nickname{
+    font-size: rem-calc(15);
+  }
+
+  .author__verified{
+    margin-left: $global-margin / 4;
+  }
+}
+
+.author-data--nopadding{
+  padding-left: 0;
+}
+
 .author-data__main{
   display: inline;
   margin-right: .8rem;
@@ -47,6 +89,7 @@ $author-data-color: $muted;
   display: inline-block;
 
   > button,
+  > span,
   > a{
     margin-right: 1rem;
   }
@@ -122,4 +165,10 @@ a:hover .author__name{
   display: block;
   color: $date-color;
   font-size: $date-font-size;
+}
+
+.author__verified{
+  display: inline-block;
+  vertical-align: middle;
+  color: $primary;
 }

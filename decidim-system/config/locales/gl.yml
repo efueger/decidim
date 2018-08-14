@@ -1,3 +1,4 @@
+---
 gl:
   decidim:
     system:
@@ -27,6 +28,7 @@ gl:
           success: Admin actualizouse con éxito
       default_pages:
         placeholders:
+          content: Engade contido significativo á páxina %{page} estática no taboleiro de administrador.
           title: Título predeterminado para %{page}
       menu:
         admins: Administradores

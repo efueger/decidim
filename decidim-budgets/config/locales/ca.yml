@@ -9,9 +9,15 @@ ca:
         description: Descripció
         proposal_ids: Propostes relacionades
         title: Títol
+  activerecord:
+    models:
+      decidim/budgets/project:
+        one: Projecte
+        other: Projectes
   decidim:
     budgets:
       actions:
+        attachment_collections: Col·leccions
         attachments: Adjunts
         confirm_destroy: Segur que vols eliminar aquest projecte?
         destroy: Esborrar
@@ -42,6 +48,11 @@ ca:
           update:
             invalid: Hi ha hagut un problema actualitzant aquest projecte
             success: Projecte actualitzat correctament
+      admin_log:
+        project:
+          create: "%{user_name} ha creat el projecte %{resource_name} a l'espai %{space_name}"
+          delete: "%{user_name} ha eliminat el projecte %{resource_name} de l'espai %{space_name}"
+          update: "%{user_name} ha actualitzat el projecte %{resource_name} de l'espai %{space_name}"
       models:
         project:
           fields:
@@ -94,27 +105,29 @@ ca:
             one: 1 suport
             other: "%{count} suports"
           remove: Esborrar
+          view: Veure
         project_budget_button:
           add: Afegir
           added: Afegit
         show:
           budget: Pressupost
           view_all_projects: Veure tots els projectes
-    features:
+    components:
       budgets:
         actions:
           vote: Donar suport
         name: Pressupostos
         settings:
           global:
-            announcement: Avís
+            announcement: Anunci
             comments_enabled: Comentaris habilitats
+            projects_per_page: Projectes per pàgina
             total_budget: Pressupost total
             vote_threshold_percent: Percentatge del pressupost mínim per fer el vot
           step:
-            announcement: Avís
+            announcement: Anunci
             comments_blocked: Comentaris bloquejats
-            show_votes: Mostra vots
+            show_votes: Mostra els suports
             votes_enabled: Suports habilitats
     orders:
       checkout:
@@ -125,7 +138,7 @@ ca:
         success: El seu vot ha estat cancel·lat correctament
     resource_links:
       included_proposals:
-        project_proposals: 'Propostes incloses en aquest projecte:'
+        project_proposal: 'Propostes incloses en aquest projecte:'
   index:
     confirmed_orders_count: Recompte de vots
   total_budget: Pressupost total

@@ -24,6 +24,8 @@ module Decidim
           return broadcast(:invalid) if form.invalid?
 
           answer_proposal
+          notify_followers
+
           broadcast(:ok)
         end
 
@@ -32,10 +34,46 @@ module Decidim
         attr_reader :form, :proposal
 
         def answer_proposal
-          proposal.update_attributes!(
-            state: @form.state,
-            answer: @form.answer,
-            answered_at: Time.current
+          Decidim.traceability.perform_action!(
+            "answer",
+            proposal,
+            form.current_user
+          ) do
+            proposal.update!(
+              state: @form.state,
+              answer: @form.answer,
+              answered_at: Time.current
+            )
+          end
+        end
+
+        def notify_followers
+          return if (proposal.previous_changes.keys & %w(state)).empty?
+
+          if proposal.accepted?
+            publish_event(
+              "decidim.events.proposals.proposal_accepted",
+              Decidim::Proposals::AcceptedProposalEvent
+            )
+          elsif proposal.rejected?
+            publish_event(
+              "decidim.events.proposals.proposal_rejected",
+              Decidim::Proposals::RejectedProposalEvent
+            )
+          elsif proposal.evaluating?
+            publish_event(
+              "decidim.events.proposals.proposal_evaluating",
+              Decidim::Proposals::EvaluatingProposalEvent
+            )
+          end
+        end
+
+        def publish_event(event, event_class)
+          Decidim::EventsManager.publish(
+            event: event,
+            event_class: event_class,
+            resource: proposal,
+            recipient_ids: proposal.followers.pluck(:id)
           )
         end
       end

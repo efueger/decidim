@@ -20,6 +20,8 @@ module Decidim
             create_result
             link_meetings
             link_proposals
+            link_projects
+            notify_proposal_followers
           end
 
           broadcast(:ok)
@@ -33,21 +35,27 @@ module Decidim
           @result = Decidim.traceability.create!(
             Result,
             @form.current_user,
-            feature: @form.current_feature,
-            scope: @form.scope,
-            category: @form.category,
-            parent_id: @form.parent_id,
-            title: @form.title,
-            description: @form.description,
-            start_date: @form.start_date,
-            end_date: @form.end_date,
-            progress: @form.progress,
-            decidim_accountability_status_id: @form.decidim_accountability_status_id
+            component:                        @form.current_component,
+            scope:                            @form.scope,
+            category:                         @form.category,
+            parent_id:                        @form.parent_id,
+            title:                            @form.title,
+            description:                      @form.description,
+            start_date:                       @form.start_date,
+            end_date:                         @form.end_date,
+            progress:                         @form.progress,
+            decidim_accountability_status_id: @form.decidim_accountability_status_id,
+            external_id:                      @form.external_id.presence,
+            weight:                           @form.weight
           )
         end
 
         def proposals
           @proposals ||= result.sibling_scope(:proposals).where(id: @form.proposal_ids)
+        end
+
+        def projects
+          @projects ||= result.sibling_scope(:projects).where(id: @form.project_ids)
         end
 
         def meeting_ids
@@ -64,8 +72,26 @@ module Decidim
           result.link_resources(proposals, "included_proposals")
         end
 
+        def link_projects
+          result.link_resources(projects, "included_projects")
+        end
+
         def link_meetings
           result.link_resources(meetings, "meetings_through_proposals")
+        end
+
+        def notify_proposal_followers
+          proposals.includes(:author).each do |proposal|
+            Decidim::EventsManager.publish(
+              event:         "decidim.events.accountability.proposal_linked",
+              event_class:   Decidim::Accountability::ProposalLinkedEvent,
+              resource:      result,
+              recipient_ids: Array(proposal&.author&.id) + proposal.followers.pluck(:id),
+              extra:         {
+                proposal_id: proposal.id
+              }
+            )
+          end
         end
       end
     end

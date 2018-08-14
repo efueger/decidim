@@ -7,7 +7,6 @@ module Decidim
   module Participable
     extend ActiveSupport::Concern
 
-    # rubocop:disable Metrics/BlockLength
     included do
       def demodulized_name
         self.class.name.demodulize
@@ -42,10 +41,6 @@ module Decidim
         }
       end
 
-      def extension_module
-        "#{module_name}::#{demodulized_name}Context".constantize
-      end
-
       def admin_extension_module
         "#{admin_module_name}::#{demodulized_name}Context".constantize
       end
@@ -69,8 +64,11 @@ module Decidim
       def manifest
         self.class.participatory_space_manifest
       end
+
+      def can_participate?(_user)
+        true
+      end
     end
-    # rubocop:enable Metrics/BlockLength
 
     class_methods do
       def slug_format

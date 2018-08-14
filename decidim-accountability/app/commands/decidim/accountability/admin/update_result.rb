@@ -25,6 +25,7 @@ module Decidim
             update_result
             link_proposals
             link_meetings
+            link_projects
           end
 
           broadcast(:ok)
@@ -38,20 +39,26 @@ module Decidim
           Decidim.traceability.update!(
             result,
             form.current_user,
-            scope: @form.scope,
-            category: @form.category,
-            parent_id: @form.parent_id,
-            title: @form.title,
-            description: @form.description,
-            start_date: @form.start_date,
-            end_date: @form.end_date,
-            progress: @form.progress,
-            decidim_accountability_status_id: @form.decidim_accountability_status_id
+            scope:                            @form.scope,
+            category:                         @form.category,
+            parent_id:                        @form.parent_id,
+            title:                            @form.title,
+            description:                      @form.description,
+            start_date:                       @form.start_date,
+            end_date:                         @form.end_date,
+            progress:                         @form.progress,
+            decidim_accountability_status_id: @form.decidim_accountability_status_id,
+            external_id:                      @form.external_id.presence,
+            weight:                           @form.weight
           )
         end
 
         def proposals
           @proposals ||= result.sibling_scope(:proposals).where(id: form.proposal_ids)
+        end
+
+        def projects
+          @projects ||= result.sibling_scope(:projects).where(id: form.project_ids)
         end
 
         def meeting_ids
@@ -66,6 +73,10 @@ module Decidim
 
         def link_proposals
           result.link_resources(proposals, "included_proposals")
+        end
+
+        def link_projects
+          result.link_resources(projects, "included_projects")
         end
 
         def link_meetings

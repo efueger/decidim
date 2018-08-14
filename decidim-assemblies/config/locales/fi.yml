@@ -1,108 +1,298 @@
+---
 fi:
   activemodel:
     attributes:
       assembly:
+        area_id: alue
+        assembly_type: Asennustyyppi
+        assembly_type_other: Kokoonpanotyyppi muu
         banner_image: Bannerikuva
+        closing_date: Sulkemispäivä
+        closing_date_reason: Sulkemispäivämäärä
+        composition: Sävellys
         copy_categories: Kopioi aihepiirit
-        copy_features: Kopioi toiminnot
+        copy_components: Kopioi komponentit
+        copy_features: Kopioi ominaisuudet
+        created_by: Luonut
+        created_by_other: Luotu muilta
+        creation_date: Päivämäärä luotu
+        decidim_area_id: alue
+        decidim_scope_id: laajuus
         description: Kuvaus
-        developer_group: Kehitysryhmä
+        developer_group: Kehittäjäryhmä
         domain: Toimintaympäristö
-        hashtag: Hashtah
+        duration: Kesto
+        facebook: Facebook
+        github: GitHub
+        hashtag: Hashtag
         hero_image: Etusivun kuva
+        included_at: Mukana osoitteessa
+        instagram: Instagram
+        internal_organisation: Sisäinen organisaatio
+        is_transparent: On läpinäkyvä
         local_area: Paikallisalue
         meta_scope: Kontekstin metadata
-        participatory_scope: Osallistumisprosessi
-        participatory_structure: Osallistumisprosessin rakenne
+        participatory_processes_ids: Asiaan liittyvät osallistumisprosessit
+        participatory_scope: Osallistumiskonteksti
+        participatory_structure: Osallistumisen rakenne
+        private_space: Yksityinen tila
         promoted: Korostettu
+        published_at: Julkaistu osoitteessa
+        purpose_of_action: Toimen tarkoitus
         scope_id: Konteksti
         scopes_enabled: Kontekstit käytössä
         short_description: Lyhyt kuvaus
+        show_statistics: Näytä tilastot
         slug: URL-tunniste
+        special_features: Lisäominaisuudet
         subtitle: Alaotsikko
         target: Kohde
         title: Otsikko
+        twitter: Viserrys
+        youtube: YouTube
+      assembly_member:
+        birthday: Syntymäpäivä
+        birthplace: Syntymäpaikka
+        ceased_date: Viivästynyt päivämäärä
+        designation_date: Nimityspäivä
+        designation_mode: Nimitystila
+        full_name: Koko nimi
+        gender: sukupuoli
+        position: asento
+      assembly_user_role:
+        email: Sähköposti
+        name: Nimi
+        role: Rooli
+  activerecord:
+    models:
+      decidim/assembly:
+        one: kokoonpano
+        other: osat
+      decidim/assembly_member:
+        one: Edustaja
+        other: Edustajat
+      decidim/assembly_user_role:
+        one: Asennuksen käyttäjärooli
+        other: Asennuksen käyttäjäroolit
   decidim:
     admin:
       assemblies:
         create:
-          error: Virhe uuden kokoonpanon luomisessa.
-          success: Kokoonpano onnistui.
+          error: Virhe luotaessa uutta kehitysryhmää.
+          success: Kehitysryhmän luonti onnistui.
         destroy:
-          success: Kokoonpano tuhoutui onnistuneesti
+          success: Kehitysryhmän tuhoaminen onnistui.
         edit:
           update: Päivitä
         form:
-          title: Yleistä tietoa
+          title: Yleiset tiedot
         index:
           not_published: Ei julkaistu
+          private: yksityinen
+          public: Julkinen
           published: Julkaistu
         new:
           create: Luo
-          title: Uusi kokoonpano
+          title: Uusi kehitysryhmä
         update:
-          error: Kokoonpanoa päivitettäessä tapahtui virhe.
-          success: Kokoonpano päivitettiin onnistuneesti.
+          error: Kehitysryhmää päivitettäessä tapahtui virhe.
+          success: Kehitysryhmä päivitettiin onnistuneesti.
       assemblies_copies:
         create:
-          error: Virhe kopioi kokoa.
-          success: Asennus kopioitiin onnistuneesti.
+          error: Virhe kopioitaessa kehitysryhmää.
+          success: Kehitysryhmä kopioitu onnistuneesti.
       assembly_copies:
         new:
-          copy: Kopio
+          copy: Kopioi
           select: Valitse, mitkä tiedot haluat kopioida
-          title: Kopioi kokoonpano
+          title: Kopioi kehitysryhmä
+      assembly_members:
+        create:
+          error: Virhe lisäsi tämän kokoonpanon jäsentä.
+          success: Jäsen perustettiin onnistuneesti kokoonpanoon.
+        destroy:
+          success: Jäsenet tuhoutuivat onnistuneesti tämän kokoonpanon yhteydessä
+        edit:
+          title: Päivitä kokoonpanoryhmä.
+          update: Päivittää
+        index:
+          assembly_members_title: Edustajat
+        new:
+          create: Luoda
+          title: Uusi kokoonpanoryhmä.
+        update:
+          error: Virhe päivitti jäsenen kokoonpanoa varten.
+          success: Jäsen päivitettiin onnistuneesti kokoonpanolla.
       assembly_publications:
         create:
-          error: Kokoonpanoa julkaistiin virhe.
-          success: Kokoonpano julkaistiin onnistuneesti.
+          error: Kehitysryhmän julkaisussa tapahtui virhe.
+          success: Kehitysryhmä julkaistiin onnistuneesti.
         destroy:
-          error: Kokoonpanon julkaisemisen epäonnistui virhe.
-          success: Kokoonpano julkaisemattomasti onnistuneesti.
+          error: Kehitysryhmän julkaisun lopettamisessa tapahtui virhe.
+          success: Kehitysryhmän julkaisu lopetettu onnistuneesti.
+      assembly_user_roles:
+        create:
+          error: Virhe lisätessä käyttäjää tälle kehitysryhmälle.
+          success: Käyttäjä on luotu onnistuneesti kehitysryhmään.
+        destroy:
+          success: Käyttäjä tuhottu onnistuneesti kehitysryhmästä.
+        edit:
+          title: Päivitä kehitysryhmän käyttäjän tietoja.
+          update: Päivitä
+        index:
+          assembly_admins_title: Kehitysryhmän käyttäjät
+        new:
+          create: Luo
+          title: Uusi kehitysryhmän käyttäjä.
+        update:
+          error: Kehitysryhmän käyttäjän päivityksessä tapahtui virhe.
+          success: Kehitysryhmän käyttäjä päivitetty onnistuneesti.
       menu:
-        assemblies: osat
+        assemblies: Kehitysryhmät
         assemblies_submenu:
+          assembly_admins: Kehitysryhmän käyttäjät
+          assembly_members: Jäsenet
+          attachment_collections: kokoelmat
+          attachment_files: Tiedostot
           attachments: Liitteet
           categories: Aihepiirit
-          features: Ominaisuudet
+          components: komponentit
           info: Tiedot
           moderations: Moderoinnit
+          private_users: Yksityiset käyttäjät
       models:
         assembly:
           fields:
             created_at: Luonnin ajankohta
+            private: yksityinen
             promoted: Korostettu
             published: Julkaistu
             title: Otsikko
-          name: kokoonpano
+          name: Kehitysryhmä
+        assembly_member:
+          fields:
+            ceased_date: Viivästynyt päivämäärä
+            designation_date: Nimityspäivä
+            full_name: Nimi
+            position: asento
+          name: Jäsen
+          positions:
+            other: muut
+            president: Presidentti
+            secretary: Sihteeri
+            vice_president: Varapresidentti
+        assembly_user_role:
+          fields:
+            email: Sähköposti
+            name: Nimi
+            role: Rooli
+          name: Kehitysryhmän käyttäjä
+          roles:
+            admin: Hallinnointikäyttäjä
+            collaborator: Osallistumiskäyttäjä
+            moderator: Moderaattori
       titles:
-        assemblies: osat
+        assemblies: Kehitysryhmät
+    admin_log:
+      assembly:
+        create: "%{user_name} loi %{resource_name} kokoonpanon"
+        publish: "%{user_name} julkaisi %{resource_name} kokoonpanon"
+        unpublish: "%{user_name} julkaisematon %{resource_name} kokoonpano"
+        update: "%{user_name} päivitti %{resource_name} kokoonpanon"
+      assembly_member:
+        create: "%{user_name} loi %{resource_name} jäsenen %{space_name} kokoonpanosta"
+        delete: "%{user_name} poisti %{resource_name} jäsenen %{space_name} kokoonpanosta"
+        update: "%{user_name} päivitti %{resource_name} jäsenen %{space_name} kokoonpanon"
+      assembly_user_role:
+        create: "%{user_name} kutsui %{resource_name} %{space_name} kokoonpanoon"
+        delete: "%{user_name} poistanut käyttäjän %{resource_name} %{space_name} kokoonpanosta"
+        update: "%{user_name} muutti %{resource_name} : n roolia %{space_name} kokoonpanossa"
     assemblies:
       admin:
         assemblies:
           form:
-            slug_help: 'URL-osoittimia käytetään tuottamaan tämän kokoonpanon osoittavat URL-osoitteet. Hyväksyy vain kirjeet, numerot ja viivat, ja se on aloitettava kirjaimella. Esimerkki: %{url}'
+            duration_help: Jos kokoonpanon kesto on rajoitettu, valitse päättymispäivä. Muussa tapauksessa se näkyy määrittelemättömänä.
+            included_at_help: Valitse päivämäärä, jolloin kokoonpano lisättiin Decidimiin. Sen ei välttämättä tarvitse olla sama kuin luomispäivä.
+            select_a_created_by: Valitse luoma
+            select_an_area: Valitse alue
+            select_an_assembly_type: Valitse kokoonpanotyyppi
+            slug_help: 'URL-tunnisteita käytetään tähän kehitysryhmään osoittavien URL-osoitteiden luonnissa. Hyväksyy kirjaimet, numerot ja viivat. Ensimmäinen merkki on oltava kirjain. Esimerkiksi: %{url}'
+            social_handlers: sosiaalinen
         assembly_copies:
           form:
-            slug_help: 'URL-osoittimia käytetään tuottamaan tämän kokoonpanon osoittavat URL-osoitteet. Hyväksyy vain kirjeet, numerot ja viivat, ja se on aloitettava kirjaimella. Esimerkki: %{url}'
+            slug_help: 'URL-tunnisteita käytetään tähän kehitysryhmään osoittavien URL-osoitteiden luonnissa. Hyväksyy kirjaimet, numerot ja viivat. Ensimmäinen merkki on oltava kirjain. Esimerkiksi: %{url}'
+        assembly_members:
+          form:
+            existing_user: Olemassa oleva käyttäjä
+            non_user: Ei käyttäjä
+            select_a_position: Valitse paikka
+            select_user: Valitse käyttäjä
+            user_type: Käyttäjätyyppi
+          index:
+            filter:
+              all: Kaikki
+              ceased: lakkasi
+              not_ceased: Ei lopeta
+            filter_by: Suodata
+            search: Hae
+      assembly_members:
+        index:
+          members: Jäsenet
+      assembly_types:
+        commission: poisjättäminen
+        consultative_advisory: Neuvoa / Advisory
+        executive: Johtaja
+        government: Hallitus
+        others: toiset
+        participatory: osallistava
+        working_group: Työryhmä
+      created_by:
+        city_council: Kaupunginvaltuusto
+        others: toiset
+        public: Julkinen
       index:
-        title: osat
+        title: Kehitysryhmät
       pages:
         home:
           highlighted_assemblies:
-            active_assemblies: Aktiiviset kokoonpanot
-            see_all_assemblies: Katso kaikki kokoonpanot
+            active_assemblies: Aktiiviset kehitysryhmät
+            see_all_assemblies: Näytä kaikki kehitysryhmät
+        user_profile:
+          member_of:
+            member_of: Jonkin jäsen
       show:
-        developer_group: Kehitysryhmä
+        area: alue
+        assembly_type: Asennustyyppi
+        children: osat
+        closing_date: Sulkemispäivä
+        composition: Sävellys
+        created_by: Luonut
+        creation_date: Päivämäärä luotu
+        developer_group: Kehittäjäryhmä
+        duration: Kesto
+        included_at: Mukana osoitteessa
+        indefinite_duration: epämääräinen
+        internal_organisation: Sisäinen organisaatio
+        is_transparent:
+          'false': himmeä
+          'true': läpinäkyvä
         local_area: Paikallisalue
-        participatory_scope: Osallistumisprosessi
-        participatory_structure: Osallistumisprosessin rakenne
+        participatory_scope: Osallistumiskonteksti
+        participatory_structure: Osallistumisen rakenne
+        private_space: Tämä on yksityinen kokoonpano
+        purpose_of_action: Toimen tarkoitus
+        read_less: Lue vähemmän
+        read_more: Lue lisää
+        related_participatory_processes: Asiaan liittyvät osallistumisprosessit
         scope: Konteksti
+        social_networks: Sosiaaliset verkostot
         target: Kohde
       statistics:
         answers_count: Vastaukset
-        assemblies_count: osat
+        assemblies_count: Kehitysryhmät
         comments_count: Kommentit
+        debates_count: keskustelut
+        endorsements_count: merkintöjen
         headline: Tilastot
         meetings_count: Tapaamiset
         orders_count: Äänet
@@ -113,24 +303,37 @@ fi:
         surveys_count: Kyselyt
         users_count: Osallistujat
         votes_count: Äänet
+    assembly_members:
+      assembly_member:
+        designated_on: Nimetty
+      index:
+        title: Jäsenet
+    log:
+      value_types:
+        assembly_presenter:
+          not_found: 'Kokoonpanoa ei löytynyt tietokannasta (ID: %{id})'
     menu:
-      assemblies: osat
+      assemblies: Kehitysryhmät
+  errors:
+    messages:
+      cannot_be_blank: ei voi olla tyhjä
   layouts:
     decidim:
       assemblies:
         assembly:
           take_part: Osallistu
         index:
-          promoted_assemblies: Korostetut kokoonpanot
+          promoted_assemblies: Korostetut kehitysryhmät
         order_by_assemblies:
           assemblies:
-            one: "%{count} kokoonpano"
-            other: "%{count} kokoonpanot"
+            one: "%{count} kehitysryhmä"
+            other: "%{count} kehitysryhmää"
         promoted_assembly:
-          more_info: Lisätietoja
+          more_info: Lisätiedot
           take_part: Osallistu
       assembly_header:
-        assembly_menu_item: Kokoonpano
+        assembly_member_menu_item: Jäsenet
+        assembly_menu_item: Kehitysryhmä
         unfold: Avaa
       assembly_widgets:
         show:

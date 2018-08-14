@@ -8,10 +8,14 @@ module Decidim
         helper_method :meeting
 
         def edit
+          enforce_permission_to :close, :meeting, meeting: meeting
+
           @form = form(CloseMeetingForm).from_model(meeting)
         end
 
         def update
+          enforce_permission_to :close, :meeting, meeting: meeting
+
           @form = form(CloseMeetingForm).from_params(params.merge(proposals: meeting.sibling_scope(:proposals)))
 
           CloseMeeting.call(@form, meeting) do
@@ -30,7 +34,7 @@ module Decidim
         private
 
         def meeting
-          @meeting ||= Meeting.where(feature: current_feature).find(params[:id])
+          @meeting ||= Meeting.where(component: current_component).find(params[:id])
         end
       end
     end

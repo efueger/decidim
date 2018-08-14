@@ -10,9 +10,8 @@ module Decidim
     included do
       include Decidim::NeedsOrganization
       include Decidim::LocaleSwitcher
-
-      include NeedsAuthorization
-      skip_authorization_check
+      include ImpersonateUsers
+      include NeedsPermission
 
       helper Decidim::TranslationsHelper
       helper Decidim::MetaTagsHelper
@@ -25,12 +24,27 @@ module Decidim
       helper Decidim::OmniauthHelper
 
       layout "layouts/decidim/application"
-    end
 
-    # Overwrites `cancancan`'s method to point to the correct ability class,
-    # since the gem expects the ability class to be in the root namespace.
-    def current_ability_klass
-      Decidim::Abilities::BaseAbility
+      # Saves the location before loading each page so we can return to the
+      # right page.
+      before_action :store_current_location
+
+      def permission_class_chain
+        [
+          Decidim::Admin::Permissions,
+          Decidim::Permissions
+        ]
+      end
+
+      def permission_scope
+        :public
+      end
+
+      def store_current_location
+        return if params[:redirect_url].blank? || !request.format.html?
+
+        store_location_for(:user, params[:redirect_url])
+      end
     end
   end
 end

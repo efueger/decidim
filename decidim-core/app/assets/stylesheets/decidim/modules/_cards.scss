@@ -1,10 +1,12 @@
 /* Variables */
 
-$card-bg: $white;
+$card-bg: $white !default;
 $card-secondary-bg: $light-gray-dark;
 $card-border: $border;
 $card-border-radius: $global-radius;
+$card-border-top-width: 8px !default;
 $card-shadow: 0 2px 7px rgba(black, .1);
+$card-id: $medium-gray;
 
 $card-padding-small: 1rem;
 $card-padding: 1.5rem;
@@ -16,6 +18,7 @@ $card-proposal: $proposals;
 $card-action: $actions;
 $card-debate: $debates;
 $card-meeting: $meetings;
+$card-spaces: $card-meeting;
 
 $datetime-bg: $primary;
 
@@ -26,6 +29,14 @@ $datetime-bg: $primary;
   border: $card-border;
   border-radius: $card-border-radius;
   overflow: hidden;
+
+  @include modifiers(border-top-color, (muted: rgba($muted, .3))){
+    border-top-width: $card-border-top-width;
+  }
+
+  &:hover{
+    @include modifiers(border-color, (muted: rgba($muted, .3)));
+  }
 }
 
 .card--nomargin{
@@ -39,10 +50,16 @@ $datetime-bg: $primary;
 
 .card__content{
   padding: $card-padding-small;
+  padding-bottom: $card-padding-small / 2;
 
   @include breakpoint(medium){
     padding: $card-padding;
+    padding-bottom: $card-padding / 2;
   }
+}
+
+.card__content--center{
+  text-align: center;
 }
 
 .card__extra{
@@ -54,12 +71,22 @@ $datetime-bg: $primary;
   @extend .heading5;
 }
 
+.card__title--strong{
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .card__header{
-  margin-bottom: 1rem;
+  margin-bottom: $card-padding / 2;
+
+  &.collapse{
+    margin-bottom: 0;
+  }
 }
 
 .card__button{
   margin-bottom: 0;
+  cursor: pointer;
 }
 
 .card__type{
@@ -84,20 +111,56 @@ $datetime-bg: $primary;
   }
 }
 
-/* Card meetings */
-.card--meeting{
-  .card__content{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+.card__text{
+  .card__text--status{
+    font-weight: bold;
+    text-transform: uppercase;
 
-    .address{
-      margin-top: auto;
+    &::after{
+      content: " ";
     }
+
+    @include modifiers(color, (muted: $muted));
+  }
+
+  .card__text--category{
+    display: block;
+    margin-top: $global-margin / 2;
+  }
+
+  &:not(:last-child){
+    margin-bottom: $global-margin / 2;
+  }
+
+  &.card--picture-offset{
+    // _author-avatar.scss:58 (.author-data--big .author__avatar img)
+    // _author-avatar.scss:133 padding (.author__avatar)
+    margin-left: calc(#{rem-calc(54)} + .5rem);
+  }
+}
+
+.card__text--separated-mid-dot{
+  @include inline-separator(' · ');
+}
+
+.card__image{
+  width: 100%;
+  max-height: 10rem;
+  min-height: 5rem;
+  object-fit: cover;
+
+  &.card__image--smaller{
+    max-height: 5rem;
+  }
+
+  &.card__image--larger{
+    max-height: 20rem;
+    min-height: 10rem;
   }
 }
 
 /* Card datetime */
+// NOTE: Possible deprecated
 .card__datetime{
   flex-shrink: 0;
   text-align: center;
@@ -136,6 +199,16 @@ $datetime-bg: $primary;
   .card__content{
     display: flex;
   }
+
+  &.card__footer--spaces{
+    background: rgba($card-spaces, .2);
+    border-top-color: rgba($card-spaces, .6);
+    border-top-width: .25rem;
+  }
+}
+
+.card__footer--transparent{
+  background: transparent;
 }
 
 .card__footer--data{
@@ -163,8 +236,12 @@ $datetime-bg: $primary;
 }
 
 .card__author{
-  margin-top: -.3rem;
   margin-bottom: .5rem;
+
+  // Hack when there's a toggler list
+  [data-toggler]{
+    margin-bottom: -.5rem;
+  }
 }
 
 .card__voting{
@@ -193,7 +270,7 @@ $datetime-bg: $primary;
   flex-grow: 1;
   text-align: center;
   text-transform: uppercase;
-  font-size: 85%;
+  font-size: rem-calc(15);
   line-height: 1;
   color: $muted;
   padding: .5em;
@@ -201,6 +278,14 @@ $datetime-bg: $primary;
   margin-right: -1px;
   border-top: $border;
   margin-top: -1px;
+
+  .card-data__item--centerblock{
+    margin: 0 auto;
+  }
+
+  &.card-data__item--expand{
+    line-height: $global-lineheight;
+  }
 }
 
 .card-data__item__number{
@@ -210,6 +295,19 @@ $datetime-bg: $primary;
   font-size: rem-calc(20);
   color: $body-font-color;
   margin-bottom: .2rem;
+}
+
+.card-data__item--multiple{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include flexgap(1rem);
+
+  > div{
+    text-align: left;
+    display: block;
+  }
 }
 
 /* Card popularity */
@@ -246,8 +344,11 @@ $datetime-bg: $primary;
     padding: $card-padding;
   }
 
+  > *:only-child{
+    margin-left: auto;
+  }
+
   .card__button{
-    //margin-left: auto;
     font-size: $small-font-size;
   }
 }
@@ -259,6 +360,23 @@ $datetime-bg: $primary;
   line-height: 1;
   margin-bottom: .2rem;
   color: $muted;
+}
+
+.card__support__data--left{
+  @extend .card__support__data;
+
+  text-align: left;
+  text-transform: none;
+  margin-bottom: 0;
+  color: $muted;
+  max-width: 60%;
+
+  strong{
+    font-size: rem-calc(16);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .card__support__number{
@@ -287,7 +405,11 @@ $datetime-bg: $primary;
 
 /* Card Link */
 .card__link{
-  color: inherit;
+  color: $anchor-color;
+
+  @include breakpoint(small only){
+    word-break: break-all;
+  }
 
   &:hover{
     color: $anchor-color;
@@ -324,6 +446,8 @@ $datetime-bg: $primary;
   display: none;
   fill: $anchor-color;
 
+  @include modifiers(fill);
+
   @include breakpoint(medium){
     margin-right: 1rem;
     display: block;
@@ -340,6 +464,10 @@ $datetime-bg: $primary;
   overflow: hidden;
   align-items: center;
   padding: 1rem 1rem 1rem 0;
+
+  &.card--list__text--top{
+    align-items: start;
+  }
 
   .card--list--mini &{
     padding: .5rem .5rem .5rem 0;
@@ -400,6 +528,15 @@ $datetime-bg: $primary;
   }
 }
 
+.card--list__data__icon--lg{
+  @extend .card--list__data__icon;
+
+  .icon{
+    width: 36px;
+    height: 36px;
+  }
+}
+
 .card--list__data__number{
   @extend .card-data__item__number;
 
@@ -447,7 +584,6 @@ $datetime-bg: $primary;
 }
 
 /* Card full width variant */
-
 .card--full{
   margin-bottom: $card-margin-bottom*2;
 
@@ -551,8 +687,7 @@ $datetime-bg: $primary;
   }
 }
 
-/* Card mini */
-
+// card mini
 .card--mini{
   .card__content{
     padding: $card-padding $card-padding-small;
@@ -568,5 +703,213 @@ $datetime-bg: $primary;
 
   .card--process__small{
     margin-top: auto;
+  }
+}
+
+// card status
+.card__status{
+  .card-data__item{
+    flex-basis: initial;
+    padding: 1em .5em;
+
+    &:empty{
+      border-right: 0;
+
+      & + .card-data__item:not(:empty){
+        border-left: $border;
+      }
+    }
+  }
+}
+
+// card label
+.card__label{
+  display: inline-flex;
+  color: $card-id;
+  padding: 0 .5rem;
+  text-transform: uppercase;
+  font-size: $small-font-size;
+  font-weight: bold;
+  position: absolute;
+  background-color: transparent;
+  text-shadow:
+    -1px -1px 0 $card-bg,
+    1px -1px 0 $card-bg,
+    -1px 1px 0 $card-bg,
+    1px 1px 0 $card-bg;
+  margin-top: ($global-margin * .6) * -1;
+  margin-left: $card-padding-small;
+  z-index: 0;
+
+  &::before{
+    content: " ";
+    height: $border-width;
+    display: inline-block;
+    background: $card-bg;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    top: $global-margin * .5;
+  }
+
+  .card.success &,
+  .card.muted &,
+  .card.warning &,
+  .card.alert &{
+    margin-top: ($global-margin * .95) * -1;
+
+    &::before{
+      height: $card-border-top-width;
+      top: $global-margin * .45;
+    }
+  }
+
+  .icon{
+    // Reduces some icon space
+    margin-left: -.25rem;
+  }
+
+  @include breakpoint(medium){
+    margin-left: $card-padding;
+  }
+
+  @include modifiers(color, (muted: tint($muted, 50))){
+    margin-top: -$global-margin * .95;
+  }
+}
+
+// card metadata with icon
+.card__icondata{
+  ul{
+    align-items: stretch;
+    border-top: $border;
+
+    li{
+      border-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > *{
+        margin: .5rem;
+      }
+    }
+
+    li:first-child{
+      color: $primary;
+      flex: 0;
+    }
+
+    li:not(:first-child){
+      font-size: $global-font-size;
+      text-transform: none;
+      justify-content: left;
+
+      strong{
+        color: $body-font-color;
+        text-transform: uppercase;
+      }
+
+      .card__icondata--address{
+        color: $body-font-color;
+        line-height: 120%;
+
+        & + a{
+          display: block;
+          margin-top: $global-margin;
+        }
+      }
+    }
+  }
+}
+
+.card__block{
+  @extend .card__icondata;
+
+  margin-bottom: $global-margin / 2;
+
+  ul{
+    border: $border;
+
+    li{
+      padding: .25em;
+    }
+  }
+}
+
+// card stack
+.card--stack{
+  position: relative;
+  overflow: visible;
+  z-index: 0;
+
+  &,
+  &::after,
+  &::before{
+    /* Add shadow to distinguish sheets from one another */
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+  }
+
+  &::after,
+  &::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: $card-border-radius;
+  }
+
+  /* Second sheet of paper */
+  &::before{
+    left: 3px;
+    top: 3px;
+    z-index: -1;
+  }
+
+  /* Third sheet of paper */
+  &::after{
+    left: 5px;
+    top: 5px;
+    z-index: -2;
+  }
+}
+
+.card--widget{
+  .card-data{
+    flex-wrap: inherit;
+
+    .card-data__item{
+      color: $body-font-color;
+      text-transform: none;
+      font-size: rem-calc(16);
+      text-align: left;
+      padding: $card-padding-small;
+
+      @include modifiers(color);
+
+      @include breakpoint(medium){
+        padding: $card-padding;
+      }
+
+      &:first-child{
+        flex-grow: 0;
+        flex-basis: 12%;
+        background-color: $card-secondary-bg;
+        position: relative;
+
+        > div{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          @include absolute-center;
+        }
+      }
+    }
+  }
+
+  &:not(:last-child){
+    margin-bottom: $global-margin;
   }
 }

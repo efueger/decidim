@@ -1,3 +1,4 @@
+---
 nl:
   activemodel:
     attributes:
@@ -8,9 +9,15 @@ nl:
         description: Beschrijving
         proposal_ids: Verwante voorstellen
         title: Titel
+  activerecord:
+    models:
+      decidim/budgets/project:
+        one: project
+        other: projecten
   decidim:
     budgets:
       actions:
+        attachment_collections: collecties
         attachments: Bijlagen
         confirm_destroy: Weet u zeker dat u dit project wilt verwijderen?
         destroy: Verwijderen
@@ -41,6 +48,11 @@ nl:
           update:
             invalid: Er is een probleem opgetreden bij het bijwerken van dit project
             success: Project succesvol bijgewerkt
+      admin_log:
+        project:
+          create: "%{user_name} heeft het project %{resource_name} in de ruimte %{space_name} gemaakt"
+          delete: "%{user_name} verwijderde het %{resource_name} project in de %{space_name} ruimte"
+          update: "%{user_name} heeft het project %{resource_name} bijgewerkt in de ruimte %{space_name}"
       models:
         project:
           fields:
@@ -93,23 +105,25 @@ nl:
             one: 1 ondersteuning
             other: "%{count} ondersteuning"
           remove: Verwijderen
+          view: Uitzicht
         project_budget_button:
           add: Toevoegen
           added: Toegevoegd
         show:
           budget: Begroting
           view_all_projects: Bekijk alle projecten
-    features:
+    components:
       budgets:
         actions:
-          vote: Stem
-        name: Begrotingen
+          vote: Stemmen
+        name: Budgetten
         settings:
           global:
             announcement: Aankondiging
             comments_enabled: Reacties ingeschakeld
-            total_budget: Totale begroting
-            vote_threshold_percent: Stem drempel percentage
+            projects_per_page: Projecten per pagina
+            total_budget: Totale budget
+            vote_threshold_percent: Percentage van het budget dat bereikt moet worden om te kunnen stemmen
           step:
             announcement: Aankondiging
             comments_blocked: Reacties geblokkeerd
@@ -124,7 +138,7 @@ nl:
         success: Uw stem is succesvol geannuleerd
     resource_links:
       included_proposals:
-        project_proposals: 'Voorstellen opgenomen in dit project:'
+        project_proposal: 'Voorstellen opgenomen in dit project:'
   index:
     confirmed_orders_count: Aantal stemmen
   total_budget: Totale begroting

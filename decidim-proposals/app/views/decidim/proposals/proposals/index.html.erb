@@ -1,6 +1,6 @@
-<%= render partial: "decidim/shared/feature_announcement" %>
+<%= render partial: "decidim/shared/component_announcement" %>
 
-<% if feature_settings.geocoding_enabled? %>
+<% if component_settings.geocoding_enabled? %>
   <%= dynamic_map_for proposals_data_for_map(geocoded_proposals) do %>
     <template id="marker-popup">
       <div class="map-info__content">
@@ -17,7 +17,7 @@
           </div>
           <div class="map-info__button">
             <a href="${link}" class="button button--sc">
-              <%= t('.view_proposal') %>
+              <%= t(".view_proposal") %>
             </a>
           </div>
         </div>
@@ -33,8 +33,8 @@
     <h2 id="proposals-count" class="title-action__title section-heading">
       <%= render partial: "count" %>
     </h2>
-    <% if current_settings.creation_enabled %>
-      <%= action_authorized_link_to :create, new_proposal_path, class: "title-action__action button small hollow" do %>
+    <% if current_settings.creation_enabled && current_component.participatory_space.can_participate?(current_user) %>
+      <%= action_authorized_link_to :create, new_proposal_path, class: "title-action__action button small hollow", data: { "redirect_url" => new_proposal_path } do %>
         <%= t(".new_proposal") %>
         <%= icon "plus" %>
       <% end %>
@@ -49,7 +49,7 @@
 <div class="row">
   <div class="columns mediumlarge-4 large-3">
     <%= render partial: "filters_small_view" %>
-    <div class="card card--secondary show-for-mediumlarge" >
+    <div class="card card--secondary show-for-mediumlarge">
       <%= render partial: "filters" %>
     </div>
   </div>
@@ -57,6 +57,10 @@
     <%= render partial: "proposals" %>
   </div>
 </div>
-
+<div class="row">
+<div class="text-right">
+  <%= link_to t(".see_all_withdrawn"), proposals_path("filter[state]" => "withdrawn") %>
+</div>
+</div>
 <%= javascript_include_tag("decidim/filters") %>
 <%= javascript_include_tag "decidim/orders" %>

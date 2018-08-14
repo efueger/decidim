@@ -7,11 +7,9 @@ module Decidim
     class RegistrationsController < ::Devise::RegistrationsController
       include FormFactory
       include Decidim::DeviseControllers
-
-      helper_method :terms_and_conditions_page
+      include NeedsTosAccepted
 
       before_action :configure_permitted_parameters
-      helper_method :terms_and_conditions_page
 
       invisible_captcha
 
@@ -26,9 +24,7 @@ module Decidim
       def create
         @form = form(RegistrationForm).from_params(params[:user])
 
-        if @form.sign_up_as == "user_group"
-          @form.user_group_document_number = UserGroup.get_unique_random_user_group_document_number(current_organization)
-        end
+        @form.user_group_document_number = UserGroup.get_unique_random_user_group_document_number(current_organization) if @form.sign_up_as == "user_group"
 
         CreateRegistration.call(@form) do
           on(:ok) do |user|
@@ -47,12 +43,6 @@ module Decidim
             render :new
           end
         end
-      end
-
-      private
-
-      def terms_and_conditions_page
-        @terms_and_conditions_page ||= Decidim::StaticPage.find_by(slug: "terms-and-conditions")
       end
 
       protected

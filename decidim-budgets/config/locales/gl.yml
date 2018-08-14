@@ -1,3 +1,4 @@
+---
 gl:
   activemodel:
     attributes:
@@ -8,9 +9,15 @@ gl:
         description: Descrición
         proposal_ids: Propostas relacionadas
         title: Título
+  activerecord:
+    models:
+      decidim/budgets/project:
+        one: Proxecto
+        other: Proxectos
   decidim:
     budgets:
       actions:
+        attachment_collections: Coleccións
         attachments: Anexos
         confirm_destroy: Estás seguro de que queres eliminar este proxecto?
         destroy: Eliminar
@@ -41,6 +48,11 @@ gl:
           update:
             invalid: Produciuse un problema ao actualizar este proxecto
             success: Proxecto actualizado correctamente
+      admin_log:
+        project:
+          create: "%{user_name} creou o proxecto %{resource_name} no espazo %{space_name}"
+          delete: "%{user_name} eliminou o %{resource_name} proxecto no espazo %{space_name}"
+          update: "%{user_name} actualizou o proxecto %{resource_name} no espazo %{space_name}"
       models:
         project:
           fields:
@@ -58,7 +70,7 @@ gl:
           ok: Ok
           title: O orzamento máximo excedeu
         budget_summary:
-          are_you_sure: '¿Estás seguro de que queres cancelar o teu voto?'
+          are_you_sure: "¿Estás seguro de que queres cancelar o teu voto?"
           assigned: 'Asignado:'
           cancel_order: elimine o seu voto e volva comezar
           checked_out:
@@ -93,13 +105,14 @@ gl:
             one: 1 apoio
             other: "%{count} soporta"
           remove: Quitar
+          view: Ver
         project_budget_button:
           add: Engadir
           added: Engadido
         show:
           budget: Orzamento
           view_all_projects: Ver todos os proxectos
-    features:
+    components:
       budgets:
         actions:
           vote: Vota
@@ -108,6 +121,7 @@ gl:
           global:
             announcement: Anuncio
             comments_enabled: Comentarios habilitados
+            projects_per_page: Proxectos por páxina
             total_budget: Orzamento total
             vote_threshold_percent: Porcentaxe de límite de voto
           step:
@@ -124,7 +138,7 @@ gl:
         success: O teu voto foi cancelado correctamente
     resource_links:
       included_proposals:
-        project_proposals: 'Propostas incluídas neste proxecto:'
+        project_proposal: 'Propostas incluídas neste proxecto:'
   index:
     confirmed_orders_count: Reconto de votos
   total_budget: Orzamento total

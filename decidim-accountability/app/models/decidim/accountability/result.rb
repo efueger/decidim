@@ -6,14 +6,15 @@ module Decidim
     # title, description and any other useful information to render a custom result.
     class Result < Accountability::ApplicationRecord
       include Decidim::Resourceable
-      include Decidim::HasFeature
-      include Decidim::HasScope
+      include Decidim::HasComponent
+      include Decidim::ScopableComponent
       include Decidim::HasCategory
       include Decidim::HasReference
       include Decidim::Comments::Commentable
       include Decidim::Traceable
+      include Decidim::Loggable
 
-      feature_manifest_name "accountability"
+      component_manifest_name "accountability"
 
       has_many :children, foreign_key: "parent_id", class_name: "Decidim::Accountability::Result", inverse_of: :parent, dependent: :destroy
       belongs_to :parent, foreign_key: "parent_id", class_name: "Decidim::Accountability::Result", inverse_of: :children, optional: true, counter_cache: :children_count
@@ -25,25 +26,43 @@ module Decidim
 
       after_save :update_parent_progress, if: -> { parent_id.present? }
 
+      def self.order_randomly(seed)
+        transaction do
+          connection.execute("SELECT setseed(#{connection.quote(seed)})")
+          order(Arel.sql("RANDOM()")).load
+        end
+      end
+
+      def self.log_presenter_class_for(_log)
+        Decidim::Accountability::AdminLog::ResultPresenter
+      end
+
       def update_parent_progress
         return if parent.blank?
 
         parent.update_progress!
       end
 
+      # Public: There are two ways to update parent's progress:
+      #   - using weights, in which case each progress is multiplied by the weigth and them summed
+      #   - not using weights, and using the average of progress of each children
       def update_progress!
-        self.progress = children.average(:progress)
+        self.progress = if children_use_weighted_progress?
+                          children.sum { |result| (result.progress.presence || 0) * (result.weight.presence || 1) }
+                        else
+                          children.average(:progress)
+                        end
         save!
       end
 
       # Public: Overrides the `commentable?` Commentable concern method.
       def commentable?
-        feature.settings.comments_enabled?
+        component.settings.comments_enabled?
       end
 
       # Public: Overrides the `accepts_new_comments?` Commentable concern method.
       def accepts_new_comments?
-        commentable? && !feature.current_settings.comments_blocked
+        commentable? && !component.current_settings.comments_blocked
       end
 
       # Public: Overrides the `comments_have_alignment?` Commentable concern method.
@@ -54,6 +73,13 @@ module Decidim
       # Public: Overrides the `comments_have_votes?` Commentable concern method.
       def comments_have_votes?
         true
+      end
+
+      private
+
+      # Private: When a row uses weight 1 and there's more than one, weight shouldn't be considered
+      def children_use_weighted_progress?
+        children.length == 1 || children.pluck(:weight).none? { |weight| weight == 1.0 }
       end
     end
   end

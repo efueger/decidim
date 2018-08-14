@@ -8,6 +8,9 @@ module Decidim
   # Pages with a default slug cannot be destroyed and its slug cannot be
   # modified.
   class StaticPage < ApplicationRecord
+    include Decidim::Traceable
+    include Decidim::Loggable
+
     belongs_to :organization, foreign_key: "decidim_organization_id", class_name: "Decidim::Organization", inverse_of: :static_pages
 
     validates :slug, presence: true, uniqueness: { scope: :organization }
@@ -27,6 +30,14 @@ module Decidim
     # Returns Boolean.
     def self.default?(slug)
       DEFAULT_PAGES.include?(slug)
+    end
+
+    def self.log_presenter_class_for(_log)
+      Decidim::AdminLog::StaticPagePresenter
+    end
+
+    def self.sorted_by_i18n_title(locale = I18n.locale)
+      order([Arel.sql("title->? ASC"), locale])
     end
 
     # Whether this is page is a default one or not.

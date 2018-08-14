@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require "decidim/verifications/engine"
+require "decidim/verifications/default_action_authorizer"
 require "decidim/verifications/workflows"
 
 require "decidim/verifications/id_documents"
 require "decidim/verifications/postal_letter"
-require "decidim/verifications/dummy"
 
 module Decidim
   def self.authorization_workflows

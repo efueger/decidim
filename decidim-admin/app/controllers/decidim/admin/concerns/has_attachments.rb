@@ -13,23 +13,23 @@ module Decidim
         extend ActiveSupport::Concern
 
         included do
-          helper_method :attached_to, :authorization_object
+          helper_method :attached_to, :attachment
 
           def index
-            authorize! :read, authorization_object
+            enforce_permission_to :read, :attachment, attached_to: attached_to
 
             render template: "decidim/admin/attachments/index"
           end
 
           def new
-            authorize! :create, authorization_object
-            @form = form(AttachmentForm).instance
+            enforce_permission_to :create, :attachment, attached_to: attached_to
+            @form = form(AttachmentForm).from_params({}, attached_to: attached_to)
             render template: "decidim/admin/attachments/new"
           end
 
           def create
-            authorize! :create, authorization_object
-            @form = form(AttachmentForm).from_params(params)
+            enforce_permission_to :create, :attachment, attached_to: attached_to
+            @form = form(AttachmentForm).from_params(params, attached_to: attached_to)
 
             CreateAttachment.call(@form, attached_to) do
               on(:ok) do
@@ -46,15 +46,15 @@ module Decidim
 
           def edit
             @attachment = collection.find(params[:id])
-            authorize! :update, authorization_object
-            @form = form(AttachmentForm).from_model(@attachment)
+            enforce_permission_to :update, :attachment, attachment: attachment
+            @form = form(AttachmentForm).from_model(@attachment, attached_to: attached_to)
             render template: "decidim/admin/attachments/edit"
           end
 
           def update
             @attachment = collection.find(params[:id])
-            authorize! :update, authorization_object
-            @form = form(AttachmentForm).from_params(attachment_params)
+            enforce_permission_to :update, :attachment, attachment: attachment
+            @form = form(AttachmentForm).from_params(attachment_params, attached_to: attached_to)
 
             UpdateAttachment.call(@attachment, @form) do
               on(:ok) do
@@ -71,13 +71,13 @@ module Decidim
 
           def show
             @attachment = collection.find(params[:id])
-            authorize! :read, authorization_object
+            enforce_permission_to :read, :attachment, attachment: attachment
             render template: "decidim/admin/attachments/show"
           end
 
           def destroy
             @attachment = collection.find(params[:id])
-            authorize! :destroy, authorization_object
+            enforce_permission_to :destroy, :attachment, attachment: attachment
             @attachment.destroy!
 
             flash[:notice] = I18n.t("attachments.destroy.success", scope: "decidim.admin")
@@ -103,13 +103,15 @@ module Decidim
           # verify the user can manage the attachments
           #
           # By default is the same as the attached_to.
-          def authorization_object
+          def attachment
             attached_to
           end
 
           def collection
             @collection ||= attached_to.attachments
           end
+
+          attr_reader :attachment
 
           private
 

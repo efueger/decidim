@@ -19,9 +19,7 @@ module Decidim
         @organization = user.organization
         @opts = opts
 
-        if opts[:invitation_instructions]
-          opts[:subject] = I18n.t("devise.mailer.#{opts[:invitation_instructions]}.subject", organization: user.organization.name)
-        end
+        opts[:subject] = I18n.t("devise.mailer.#{opts[:invitation_instructions]}.subject", organization: user.organization.name) if opts[:invitation_instructions]
       end
 
       devise_mail(user, opts[:invitation_instructions] || :invitation_instructions, opts)
@@ -33,6 +31,11 @@ module Decidim
     def devise_mail(user, action, opts = {}, &block)
       with_user(user) do
         @organization = user.organization
+        Rails.logger.debug("--- devise_mail ---")
+        unless opts[:from]
+          Rails.logger.debug("--- missing :from ---")
+          opts[:from] = Decidim.config.mailer_sender
+        end
         super
       end
     end

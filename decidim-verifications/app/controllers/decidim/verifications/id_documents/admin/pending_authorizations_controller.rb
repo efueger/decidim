@@ -8,7 +8,7 @@ module Decidim
           layout "decidim/admin/users"
 
           def index
-            authorize! :index, Authorization
+            enforce_permission_to :index, :authorization
 
             @pending_authorizations = pending_authorizations
           end
@@ -17,7 +17,7 @@ module Decidim
 
           def pending_authorizations
             Authorizations
-              .new(name: "id_documents", granted: false)
+              .new(organization: current_organization, name: "id_documents", granted: false)
               .query
               .where("verification_metadata->'rejected' IS NULL")
           end

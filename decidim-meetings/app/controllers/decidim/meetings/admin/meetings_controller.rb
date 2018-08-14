@@ -5,12 +5,18 @@ module Decidim
     module Admin
       # This controller allows an admin to manage meetings from a Participatory Process
       class MeetingsController < Admin::ApplicationController
+        helper_method :blank_service
+
         def new
+          enforce_permission_to :create, :meeting
+
           @form = form(MeetingForm).instance
         end
 
         def create
-          @form = form(MeetingForm).from_params(params, current_feature: current_feature)
+          enforce_permission_to :create, :meeting
+
+          @form = form(MeetingForm).from_params(params, current_component: current_component)
 
           CreateMeeting.call(@form) do
             on(:ok) do
@@ -26,11 +32,15 @@ module Decidim
         end
 
         def edit
+          enforce_permission_to :update, :meeting, meeting: meeting
+
           @form = form(MeetingForm).from_model(meeting)
         end
 
         def update
-          @form = form(MeetingForm).from_params(params, current_feature: current_feature)
+          enforce_permission_to :update, :meeting, meeting: meeting
+
+          @form = form(MeetingForm).from_params(params, current_component: current_component)
 
           UpdateMeeting.call(@form, meeting) do
             on(:ok) do
@@ -46,11 +56,21 @@ module Decidim
         end
 
         def destroy
-          meeting.destroy!
+          enforce_permission_to :destroy, :meeting, meeting: meeting
 
-          flash[:notice] = I18n.t("meetings.destroy.success", scope: "decidim.meetings.admin")
+          DestroyMeeting.call(meeting, current_user) do
+            on(:ok) do
+              flash[:notice] = I18n.t("meetings.destroy.success", scope: "decidim.meetings.admin")
 
-          redirect_to meetings_path
+              redirect_to meetings_path
+            end
+          end
+        end
+
+        private
+
+        def blank_service
+          @blank_service ||= Admin::MeetingServiceForm.new
         end
       end
     end

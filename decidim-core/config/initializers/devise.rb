@@ -217,7 +217,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 1.week
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -300,9 +300,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  if Rails.application.secrets.dig(:omniauth, :developer).present?
-    config.omniauth :developer, fields: [:name, :nickname, :email]
-  end
+  config.omniauth :developer, fields: [:name, :nickname, :email] if Rails.application.secrets.dig(:omniauth, :developer).present?
   if Rails.application.secrets.dig(:omniauth, :facebook).present?
     config.omniauth :facebook,
                     Rails.application.secrets.omniauth[:facebook][:app_id],
@@ -325,9 +323,9 @@ Devise.setup do |config|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-  config.warden do |manager|
-    manager.failure_app = Decidim::DeviseFailureApp
-  end
+  # config.warden do |manager|
+  #   manager.failure_app = Decidim::DeviseFailureApp
+  # end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine

@@ -23,27 +23,28 @@ module Decidim
       belongs_to :root_commentable, foreign_key: "decidim_root_commentable_id", foreign_type: "decidim_root_commentable_type", polymorphic: true
       has_many :up_votes, -> { where(weight: 1) }, foreign_key: "decidim_comment_id", class_name: "CommentVote", dependent: :destroy
       has_many :down_votes, -> { where(weight: -1) }, foreign_key: "decidim_comment_id", class_name: "CommentVote", dependent: :destroy
-
       validates :body, presence: true
       validates :depth, numericality: { greater_than_or_equal_to: 0 }
       validates :alignment, inclusion: { in: [0, 1, -1] }
-
       validates :body, length: { maximum: 1000 }
-
       validate :commentable_can_have_comments
-
       before_save :compute_depth
-
-      delegate :organization, :feature, to: :commentable
-
+      delegate :organization, :component, to: :commentable
 
       # Public: Override Commentable concern method `accepts_new_comments?`
       def accepts_new_comments?
         depth < MAX_DEPTH
       end
 
-      # Public: Override Commentable concern method `users_to_notify_on_comment_created`
-      delegate :users_to_notify_on_comment_created, to: :root_commentable
+      # Public: Override Commentable concern method `users_to_notify_on_comment_created`.
+      # Return the comment author together with whatever ActiveRecord::Relation is returned by
+      # the `commentable`. This will cause the comment author to be notified when the
+      # comment is replied
+      def users_to_notify_on_comment_created
+        Decidim::User.where(id: commentable.users_to_notify_on_comment_created).or(
+          Decidim::User.where(id: decidim_author_id)
+        )
+      end
 
       # Public: Check if the user has upvoted the comment
       #
@@ -64,6 +65,13 @@ module Decidim
         ResourceLocatorPresenter.new(root_commentable).url(anchor: "comment_#{id}")
       end
 
+      # Public: Returns the comment message ready to display (it is expected to include HTML)
+      def formatted_body
+        @formatted_body ||= Decidim::ContentProcessor.render(sanitized_body)
+      end
+
+      delegate :participatory_space, to: :root_commentable
+
       private
 
       # Private: Check if commentable can have comments and if not adds
@@ -75,6 +83,11 @@ module Decidim
       # Private: Compute comment depth inside the current comment tree
       def compute_depth
         self.depth = commentable.depth + 1 if commentable.respond_to?(:depth)
+      end
+
+      # Private: Returns the comment body sanitized, stripping HTML tags
+      def sanitized_body
+        Rails::Html::Sanitizer.full_sanitizer.new.sanitize(body)
       end
     end
   end

@@ -1,3 +1,4 @@
+---
 sv:
   activemodel:
     attributes:
@@ -9,6 +10,13 @@ sv:
         document_type: Typ av ditt dokument
         user: Användare
         verification_attachment: Skannad kopia av ditt dokument
+      postal_letter_address:
+        full_address: Fullständig adress
+      postal_letter_confirmation:
+        verification_code: Verifieringskod
+      postal_letter_postage:
+        full_address: Fullständig adress
+        verification_code: Verifieringskod
   decidim:
     admin:
       menu:
@@ -17,23 +25,23 @@ sv:
       admin:
         id_documents:
           help:
-            - Användare fyller i sin identitetsinformation och laddar upp en kopia av dokumentet.
-            - Du fyller i informationen som finns i den uppladdade bilden.
-            - Informationen ska matcha vad användaren fyllt i.
-            - Om du inte klart kan se informationen eller du inte kan verifiera den, kan du avvisa förfrågan och användaren kommer att kunna åtgärda den.
+          - Användare fyller i sin identitetsinformation och laddar upp en kopia av dokumentet.
+          - Du fyller i informationen som finns i den uppladdade bilden.
+          - Informationen ska matcha vad användaren fyllt i.
+          - Om du inte klart kan se informationen eller du inte kan verifiera den, kan du avvisa förfrågan och användaren kommer att kunna åtgärda den.
         postal_letter:
           help:
-            - Användare begär en verifieringskod som ska skickas till deras adress.
-            - Du skickar brevet till deras adress med verifieringskoden.
-            - Du markerar brevet som skickat.
-            - När du markerar brevet som skickat kommer användaren att kunna införa koden och bli verifierad.
+          - Användare begär en verifieringskod som ska skickas till deras adress.
+          - Du skickar brevet till deras adress med verifieringskoden.
+          - Du markerar brevet som skickat.
+          - När du markerar brevet som skickat kommer användaren att kunna införa koden och bli verifierad.
       direct: Direkt
       help: Hjälp
       id_documents:
         explanation: Ladda upp dina identitetshandlingar så att vi kan kontrollera din identitet
         name: Identitetsdokument
       multistep: Flerstegs
-      name: namn
+      name: Namn
       postal_letter:
         explanation: Vi skickar dig ett brev med en kod som du måste ange så vi kan verifiera din adress
         name: Kod med postbrev
@@ -44,6 +52,7 @@ sv:
           success: Du har godkänts.
         first_login:
           actions:
+            another_dummy_authorization_handler: Verifiera mot ett annat exempel på behörighetshanteraren
             dummy_authorization_handler: Verifiera mot exemplet behörighetshanteraren
             dummy_authorization_workflow: Verifiera mot arbetsflödet för godkännande av exempel
             id_documents: Få verifierad genom att ladda upp ditt identitetsdokument
@@ -55,6 +64,10 @@ sv:
           authorize_with: Verifiera med %{authorizer}
         skip_verification: Du kan hoppa över det här för tillfället och %{link}
         start_exploring: börja utforska
+      dummy_authorization:
+        extra_explanation:
+          one: Deltagande är begränsat till användare med postnummer %{postal_codes}.
+          other: 'Deltagande är begränsat till användare med någon av följande postnummer: %{postal_codes}.'
       id_documents:
         admin:
           confirmations:
@@ -68,7 +81,7 @@ sv:
           pending_authorizations:
             index:
               title: Väntar på kontroller
-              verification_number: 'Verifiering # %{n}'
+              verification_number: 'Verifiering #%{n}'
           rejections:
             create:
               success: Verifikationen avvisades. Användaren kommer att uppmanas att ändra sina dokument
@@ -88,27 +101,27 @@ sv:
           update:
             error: Ett problem uppstod vid uppladdning av dokumentet
             success: Dokumentet uppladdades framgångsrikt
-        dni: DNI
-        nie: NIE
+        dni: ID-kort
+        nie: Personnummer
         passport: Pass
       postal_letter:
         admin:
           pending_authorizations:
             index:
               address: Adress
-              letter_sent_at: Brevet skickat till
+              letter_sent_at: Brev skickat till
               mark_as_sent: Markera som skickat
               not_yet_sent: inte skickat än
               title: Pågående kontroller
               username: Användarnamn
-              verification_code: Verifierings kod
+              verification_code: Verifieringskod
           postages:
             create:
               error: Felmarkeringsbrev som skickat
               success: Brev framgångsrikt märkt som skickat
         authorizations:
           create:
-            error: Ett problem uppstod med din förfrågan
+            error: Det uppstod ett problem med din förfrågan
             success: Tack! Vi skickar en verifieringskod till din adress
           edit:
             send: Bekräfta
@@ -122,4 +135,4 @@ sv:
             success: Grattis. Du har blivit verifierad
   errors:
     messages:
-      uppercase_only_letters_numbers: måste vara stort och endast innehålla bokstäver och / eller siffror
+      uppercase_only_letters_numbers: måste vara versaler och endast innehålla bokstäver och/eller siffror

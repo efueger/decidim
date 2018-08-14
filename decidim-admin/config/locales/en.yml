@@ -2,52 +2,96 @@
 en:
   activemodel:
     attributes:
+      area:
+        area_type: Area type
+        name: Name
+        organization: Organization
+      area_type:
+        name: Name
+        organization: Organization
+        plural: Plural
       attachment:
+        attachment_collection_id: Collection
         description: Description
         file: File
         title: Title
+      attachment_collection:
+        description: Description
+        name: Name
       category:
         description: Description
         name: Name
         parent_id: Parent
-      feature:
+      component:
         name: Name
+        published_at: Published at
         weight: Weight
       id: ID
       newsletter:
         body: Body
         subject: Subject
-      organization:
-        default_locale: Default locale
+      oauth_application:
         name: Name
-        reference_prefix: Reference prefix
-      organization_appearance:
+        organization_logo: Organization logo (square)
+        organization_name: Organization name
+        organization_url: Organization URL
+        redirect_uri: Redirect URI
+      organization:
         cta_button_path: Call To Action button path
         cta_button_text: Call To Action button text
+        default_locale: Default locale
         description: Description
+        enable_omnipresent_banner: Show omnipresent banner
+        facebook_handler: Facebook handler
         favicon: Icon
+        github_handler: GitHub handler
         header_snippets: Header snippets
+        highlighted_content_banner_action_subtitle: Action button subtitle
+        highlighted_content_banner_action_title: Action button title
+        highlighted_content_banner_action_url: Action button URL
+        highlighted_content_banner_enabled: Show the highlighted content banner
+        highlighted_content_banner_image: Image
+        highlighted_content_banner_short_description: Short description
+        highlighted_content_banner_title: Title
         homepage_image: Homepage image
+        instagram_handler: Instagram handler
         logo: Logo
+        name: Name
         official_img_footer: Official logo footer
         official_img_header: Official logo header
         official_url: Official organization URL
+        omnipresent_banner_short_description: Short description
+        omnipresent_banner_title: Title
+        omnipresent_banner_url: URL
+        reference_prefix: Reference prefix
         show_statistics: Show statistics
+        tos_version: Terms of service version
+        twitter_handler: Twitter handler
         welcome_text: Welcome text
+        youtube_handler: YouTube handler
       scope:
         code: Code
         name: Name
         organization: Organization
+        parent_id: Parent
         scope_type: Scope type
+        scope_type_id: Scope type
       scope_type:
         name: Name
         organization: Organization
         plural: Plural
       static_page:
+        changed_notably: There have been noticeable changes.
         content: Content
         organization: Organization
         slug: URL slug
         title: Title
+    errors:
+      models:
+        oauth_application:
+          attributes:
+            redirect_uri:
+              must_be_ssl: The redirect URI must be a SSL URI
   activerecord:
     attributes:
       decidim/participatory_process:
@@ -82,6 +126,14 @@ en:
         content: Content
         slug: URL slug
         title: Title
+      doorkeeper/application:
+        authorize_url: Authorize URL
+        client_id: Client ID
+        client_secret: Client Secret
+        organization_name: Organization name
+        organization_url: Organization URL
+        redirect_uri: Redirect URI
+        site: Site
   date:
     formats:
       datepicker: "%m/%d/%Y"
@@ -95,6 +147,55 @@ en:
         permissions: Permissions
         reject: Reject
         verify: Verify
+      area_types:
+        create:
+          error: There was an error creating a new area type.
+          success: Area type created successfully.
+        destroy:
+          success: Area type successfully destroyed
+        edit:
+          title: Edit area type
+          update: Update
+        new:
+          create: Create area type
+          title: New area type
+        update:
+          error: There was an error when updating this area type.
+          success: Area type updated successfully
+      areas:
+        create:
+          error: There was an error creating a new area.
+          success: Area created successfully.
+        destroy:
+          success: Area successfully destroyed
+        edit:
+          title: Edit area
+          update: Update
+        new:
+          create: Create area
+          title: New area
+        no_areas: No Areas
+        update:
+          error: There was an error when updating this area.
+          success: Area updated successfully
+      attachment_collections:
+        create:
+          error: There was an error creating a new collection.
+          success: Collection created successfully.
+        destroy:
+          success: Collection destroyed successfully.
+        edit:
+          title: Edit collection
+          update: Update
+        index:
+          attachment_collection_used: This collection cannot be removed because it is in use.
+          attachment_collections_title: Attachment collections
+        new:
+          create: Create
+          title: New collection
+        update:
+          error: There was an error when updating this collection.
+          success: Collection updated successfully.
       attachments:
         create:
           error: There was an error creating a new attachment.
@@ -112,6 +213,9 @@ en:
         update:
           error: There was an error when updating this attachment.
           success: Attachment updated successfully.
+      autocomplete:
+        no_results: No results found
+        search_prompt: Type at least three characters to search
       categories:
         create:
           error: There was an error creating this category.
@@ -131,81 +235,93 @@ en:
         update:
           error: There was an error updating this category.
           success: Category updated successfully.
-      dashboard:
-        show:
-          welcome: Welcome to the Decidim Admin Panel.
-      events:
-        user_officialized_event:
-          email_intro: The <a href="%{profile_path}">profile page</a> of %{name} (%{nickname}), who you are following, has been updated.
-          email_outro: You have received this notification because you are following %{nickname}. You can stop receiving notifications following the previous link.
-          email_subject: "%{nickname} updated their profile"
-          notification_title: The <a href="%{profile_path}">profile page</a> of %{name} (%{nickname}), who you are following, has been updated.
-      exports:
-        export_as: "%{name} as %{export_format}"
-        notice: Your export is currently in progress. You'll receive an email when it's complete.
-      feature_permissions:
+      component_permissions:
         edit:
           everyone: Everyone
           submit: Save permissions
           title: Edit permissions
         update:
           success: Permissions updated successfully.
-      features:
+      components:
         create:
-          error: There was an error creating this feature.
-          success: Feature created successfully.
+          error: There was an error creating this component.
+          success: Component created successfully.
         destroy:
-          error: There has been an error destroying this feature.
-          success: Feature deleted successfully.
+          error: There has been an error destroying this component.
+          success: Component deleted successfully.
         edit:
-          title: Edit feature
+          title: Edit component
           update: Update
         form:
           default_step_settings: Default step settings
           global_settings: Global settings
           step_settings: Step settings
         index:
-          add: Add feature
+          add: Add component
           headers:
             actions: Actions
-            name: Feature name
-            type: Feature type
+            name: Component name
+            type: Component type
         new:
-          add: Add feature
-          title: 'Add feature: %{name}'
+          add: Add component
+          title: 'Add component: %{name}'
         publish:
-          success: The feature has been successfully published.
-        title: Features
+          success: The component has been successfully published.
+        title: Components
         unpublish:
-          success: The feature has been successfully unpublished.
+          success: The component has been successfully unpublished.
         update:
-          error: There has been an error updating this feature.
-          success: The feature was updated successfully.
-      managed_users:
+          error: There has been an error updating this component.
+          success: The component was updated successfully.
+      dashboard:
+        show:
+          view_more_logs: View more logs
+          welcome: Welcome to the Decidim Admin Panel.
+      exports:
+        export_as: "%{name} as %{export_format}"
+        notice: Your export is currently in progress. You'll receive an email when it's complete.
+      impersonatable_users:
+        index:
+          filter:
+            all: All
+            managed: Managed
+            not_managed: Not managed
+          filter_by: Filter by
+          impersonate: Impersonate
+          impersonate_new_managed_user: Impersonate new managed user
+          managed: Managed
+          name: Name
+          needs_authorization_warning: You need at least one authorization enabled for this organization.
+          not_managed: Not managed
+          promote: Promote
+          search: Search
+          status: Status
+          view_logs: View logs
+      impersonations:
         close_session:
           error: There has been an error closing the current impersonation session.
           success: The current impersonation session has been successfully ended.
         create:
-          error: There has been an error creating the managed user.
+          error: There has been an error impersonating the user.
           success: The managed user has been successfully created.
         form:
+          authorization_method: Authorization method
           name: Name
-        impersonate:
-          error: There has been an error impersonating the managed user.
-        impersonations:
-          new:
-            impersonate: Impersonate
-            new_managed_user_impersonation: New managed user impersonation
+          reason: Reason
+        new:
+          impersonate: Impersonate
+          impersonate_existing_managed_user: Impersonate managed user "%{name}"
+          impersonate_existing_user: Impersonate user "%{name}"
+          impersonate_new_managed_user: Impersonate new managed user
+      logs:
+        logs_list:
+          no_logs_yet: There are no logs yet
+      managed_users:
         index:
           impersonate: Impersonate
-          needs_authoriation_warning: You need at least one authorization enabled for this organization.
+          needs_authoriation_warning: Needs authoriation warning
           promote: Promote
           view_logs: View logs
-        new:
-          create: Create
-          new_managed_user: New managed user
-          select_authorization_method: Select an authorization method
-          step: Step %{current} of %{total}
         promotion:
           error: There has been an error promoting the managed user.
           success: The managed user has been successfully promoted.
@@ -215,12 +331,17 @@ en:
             new_managed_user_promotion: New managed user promotion
             promote: Promote
       menu:
+        admin_log: Admin activity log
         admins: Admins
         appearance: Appearance
+        area_types: Area types
+        areas: Areas
         configuration: Configuration
         dashboard: Dashboard
-        managed_users: Managed users
+        impersonations: Impersonations
+        navbar_links: Navbar links
         newsletters: Newsletters
+        oauth_applications: OAuth applications
         officializations: Officializations
         scope_types: Scope types
         scopes: Scopes
@@ -228,13 +349,24 @@ en:
         static_pages: Pages
         user_groups: User groups
         users: Users
-        navbar_links: Navbar links
       models:
+        area:
+          fields:
+            area_type: Area type
+            name: Name
+        area_type:
+          fields:
+            name: Name
+            plural: Plural
         attachment:
           fields:
+            collection: Collection
             content_type: Type
+            file_size: Size
             title: Title
           name: Attachment
+        attachment_collection:
+          name: Collection
         category:
           name: Category
         impersonation_log:
@@ -242,10 +374,16 @@ en:
             admin: Admin
             ended_at: Ended at
             expired_at: Expired at
+            reason: Reason
             started_at: Started at
             user: User
         managed_user:
-          name: Managed user
+          name: Name
+        navbar_link:
+          fields:
+            link: Link
+            title: Title
+            weight: Weight
         newsletter:
           fields:
             created_at: Created at
@@ -253,6 +391,13 @@ en:
             sent_at: Sent at
             subject: Subject
           name: Newsletter
+        oauth_application:
+          fields:
+            created_at: Created at
+            name: Name
+          name: OAuth application
+        participatory_space_private_user:
+          name: Participatory space private user
         scope:
           fields:
             name: Name
@@ -285,24 +430,36 @@ en:
             phone: Phone
             state: State
             users_count: Users count
-        navbar_link:
-          fields:
-            title: Title
-            link: Link
-            weight: Weight
       moderations:
         index:
           title: Moderations
-          title:
-            upstream: Upstream moderation
-            downstream: Downstream moderation
-          moderated: Moderated
-          unmoderated: Unmoderated
         report:
           reasons:
             does_not_belong: Does not belong
             offensive: Offensive
             spam: Spam
+      navbar_links:
+        create:
+          error: There was an error when creating this link.
+          success: Link created successfully
+        destroy:
+          success: Link successfully destroyed
+        edit:
+          title: Edit navbar link
+          update: Update
+        form:
+          link: Link
+          new_tab: Open in a new tab
+          same_tab: Open in the same tab
+          title: Title
+          weight: Weight
+        new:
+          create: Create
+          title: New navbar link
+        no_links: No links created
+        update:
+          error: There was an error when updating this link.
+          success: Link updated successfully
       newsletters:
         create:
           error: There's been an error creating this newsletter.
@@ -332,6 +489,25 @@ en:
         update:
           error: There's been an error updating this newsletter.
           success: Newsletter updated successfully. Please review it before sending.
+      oauth_applications:
+        create:
+          error: There's been an error creating this application.
+          success: Application created successfully.
+        destroy:
+          error: There's been an error destroying this application.
+          success: Application destroyed successfully.
+        edit:
+          save: Save
+          title: Edit application
+        index:
+          confirm_delete: Are you sure you want to delete this application?
+          title: OAuth applications
+        new:
+          save: Save
+          title: New application
+        update:
+          error: There's been an error updating this application.
+          success: Application updated successfully.
       officializations:
         create:
           success: User officialized successfully
@@ -382,7 +558,20 @@ en:
           cta_button_text_help: You can overwrite the Call To Action button text in the homepage for each available language in your organization. If not set, the default value will be used. The Call To Action button is shown in the homepage between the welcome text and the description.
           header_snippets_help: Use this field to add things to the HTML head. The most common use is to integrate third-party services that require some extra JavaScript or CSS. Also, you can use it to add extra meta tags to the HTML. Note that this will only be rendered in public pages, not in the admin section.
           homepage_appearance_title: Edit homepage appearance
+          homepage_highlighted_content_banner_title: Highligted content banner
           layout_appearance_title: Edit layout appearance
+          omnipresent_banner_appearance_title: Edit omnipresent
+      participatory_space_private_users:
+        create:
+          error: There was an error adding a private user for this participatory space.
+          success: Participatory space private user access created successfully.
+        destroy:
+          success: Participatory space private user access destroyed successfully.
+        index:
+          title: Participatory space private user
+        new:
+          create: Create
+          title: New Participatory Space private user.
       scope_types:
         create:
           error: There was an error creating a new scope type.
@@ -423,26 +612,33 @@ en:
         destroy:
           success: Page successfully destroyed
         edit:
+          changed_notably_help: If checked, users will be notified to accept the new terms and conditions.
           title: Edit page
           update: Update
+        index:
+          last_notable_change: Last notable change
         new:
-          create: New
+          create: Create
           title: New page
         update:
           error: There was an error when updating this page.
           success: Page updated successfully
       titles:
+        admin_log: Admin log
+        area_types: Area types
+        areas: Areas
         authorization_workflows: Verification methods
         dashboard: Dashboard
+        impersonatable_users: Impersonatable users
         impersonations: Impersonations
         managed_users: Managed users
+        navbar_links: Navbar links
         officializations: Officializations
         scope_types: Scope types
         scopes: Scopes
         static_pages: Pages
         user_groups: User groups
         users: Users
-        navbar_links: Navbar links
       user_group:
         reject:
           invalid: There was an error when rejecting this user group.
@@ -477,28 +673,10 @@ en:
         new:
           create: Invite
           title: Invite user as administrator
-      navbar_links:
-        no_links: No links created
-        form:
-          title: Title
-          link: Link
-          weight: Weight
-          new_tab: Open in a new tab
-          same_tab: Open in the same tab
-        new:
-          title: New navbar link
-          create: Create
-        edit:
-          title: Edit navbar link
-          update: Update
-        create:
-          error: There was an error when creating this link.
-          success: Link created successfully
-        update:
-          error: There was an error when updating this link.
-          success: Link updated successfully
-        destroy:
-          success: Link successfully destroyed
+    forms:
+      errors:
+        impersonate_user:
+          reason: You need to provide a reason when impersonating a non managed user
     moderations:
       actions:
         hidden: Hidden
@@ -506,11 +684,6 @@ en:
         not_hidden: Not hidden
         title: Actions
         unreport: Unreport
-        moderated: Moderated
-        unmoderated: Unmoderated
-        authorize: Authorize
-        refuse: Refuse
-
       admin:
         reportable:
           hide:
@@ -528,9 +701,6 @@ en:
             reported_content_url: Reported content URL
             reports: Reports
             visit_url: Visit URL
-            date: Date
-            type: Type
-            status: Status
   errors:
     messages:
       invalid_json: Invalid JSON

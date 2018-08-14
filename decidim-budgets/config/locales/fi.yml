@@ -1,3 +1,4 @@
+---
 fi:
   activemodel:
     attributes:
@@ -8,9 +9,15 @@ fi:
         description: Kuvaus
         proposal_ids: Liittyvät esitykset
         title: Otsikko
+  activerecord:
+    models:
+      decidim/budgets/project:
+        one: projekti
+        other: projektit
   decidim:
     budgets:
       actions:
+        attachment_collections: kokoelmat
         attachments: Liitteet
         confirm_destroy: Haluatko varmasti poistaa tämän projektin?
         destroy: Poista
@@ -33,7 +40,7 @@ fi:
             update: Päivitä
           index:
             finished_orders: Valmiit äänet
-            pending_orders: Odottavat äänestykset
+            pending_orders: Odottavat äänet
             title: Projektit
           new:
             create: Luo
@@ -41,6 +48,11 @@ fi:
           update:
             invalid: Tämän projektin päivityksessä tapahtui virhe
             success: Projekti päivitetty onnistuneesti
+      admin_log:
+        project:
+          create: "%{user_name} loi %{resource_name} -projektin %{space_name} -tilaan"
+          delete: "%{user_name} poistanut %{resource_name} -projektin %{space_name} -tilassa"
+          update: "%{user_name} päivitti %{resource_name} -projektin %{space_name} -tilaan"
       models:
         project:
           fields:
@@ -93,28 +105,30 @@ fi:
             one: 1 kannatus
             other: "%{count} kannatusta"
           remove: Poista
+          view: näkymä
         project_budget_button:
           add: Lisää
           added: Lisätty
         show:
           budget: Budjetti
           view_all_projects: Näytä kaikki projektit
-    features:
+    components:
       budgets:
         actions:
-          vote: Äänestä
-        name: Budjetit
+          vote: Äänestys
+        name: budjetit
         settings:
           global:
             announcement: Ilmoitus
-            comments_enabled: Kommentointi sallittu
-            total_budget: Koko budjetti
-            vote_threshold_percent: Äänestyskynnyksen prosentti
+            comments_enabled: Kommentit ovat käytössä
+            projects_per_page: Hankkeet sivua kohden
+            total_budget: Kokonaisbudjetti
+            vote_threshold_percent: Äänestä kynnysarvoa
           step:
             announcement: Ilmoitus
-            comments_blocked: Kommentointi kielletty
+            comments_blocked: Kommentit on estetty
             show_votes: Näytä äänet
-            votes_enabled: Äänestys sallittu
+            votes_enabled: Äänet käytössä
     orders:
       checkout:
         error: Äänesi käsittelyssä tapahtui virhe
@@ -124,7 +138,7 @@ fi:
         success: Äänesi on peruttu onnistuneesti
     resource_links:
       included_proposals:
-        project_proposals: 'Tähän projektiin liittyvät ehdotukset:'
+        project_proposal: 'Tähän projektiin liittyvät ehdotukset:'
   index:
-    confirmed_orders_count: Äänet lasketaan
+    confirmed_orders_count: Äänten määrä
   total_budget: Koko budjetti

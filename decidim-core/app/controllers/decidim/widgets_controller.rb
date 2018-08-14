@@ -2,7 +2,6 @@
 
 module Decidim
   class WidgetsController < Decidim::ApplicationController
-    skip_authorization_check only: :show
     skip_before_action :verify_authenticity_token
     after_action :allow_iframe, only: :show
     helper ResourceHelper
@@ -21,7 +20,7 @@ module Decidim
     private
 
     def current_participatory_space
-      @current_participatory_space ||= model.feature.participatory_space
+      @current_participatory_space ||= model.component.participatory_space
     end
 
     def iframe_url

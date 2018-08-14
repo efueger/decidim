@@ -14,13 +14,11 @@ module Decidim
       end
 
       def progress_calculator(scope_id, category_id)
-        Decidim::Accountability::ResultsCalculator.new(current_feature, scope_id, category_id).progress
+        Decidim::Accountability::ResultsCalculator.new(current_component, scope_id, category_id).progress
       end
 
       def category
-        if params[:filter] && params[:filter][:category_id].present?
-          current_participatory_space.categories.find(params[:filter][:category_id])
-        end
+        current_participatory_space.categories.find(params[:filter][:category_id]) if params[:filter] && params[:filter][:category_id].present?
       end
     end
   end

@@ -39,3 +39,66 @@
 @function shade($color, $percentage){
   @return mix(black, $color, $percentage);
 }
+
+// Status modifier mixin
+$palette: $foundation-palette;
+
+@mixin modifiers($vars, $colors: $palette){
+  $map: map-merge($palette, $colors);
+
+  @each $key, $value in $map{
+    &.#{$key}{
+      @content;
+
+      @each $property in $vars{
+        #{$property}: map-get($map, $key);
+      }
+    }
+  }
+}
+
+@mixin flexgap($gap: 0, $dir: row){
+  display: flex;
+  flex-direction: $dir;
+
+  @if $dir == row{
+    & > *{
+      margin: 0 $gap/2;
+    }
+
+    & > :first-child{
+      margin-left: 0;
+    }
+
+    & > :last-child{
+      margin-right: 0;
+    }
+  }
+
+  @else if $dir == column{
+    & > *{
+      margin: $gap/2 0;
+    }
+
+    & > :first-child{
+      margin-top: 0;
+    }
+
+    & > :last-child{
+      margin-bottom: 0;
+    }
+  }
+}
+
+@mixin ellipsis(){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: $global-lineheight;
+}
+
+@mixin inline-separator($char: ' '){
+  > *:not(:last-child)::after{
+    content: $char;
+  }
+}

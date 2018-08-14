@@ -53,6 +53,10 @@ input{
 
 hr{
   width: 50%;
+
+  &.reset{
+    width: 100%;
+  }
 }
 
 /* New typographic styles */
@@ -73,6 +77,10 @@ hr{
     background-color: $primary;
     margin-right: .5rem;
     margin-bottom: -.1rem;
+  }
+
+  &.collapse{
+    margin: 0;
   }
 }
 
@@ -121,11 +129,68 @@ hr{
   font-size: 130%;
 }
 
+.text-medium{
+  font-size: 90%;
+  color: $muted;
+}
+
 .text-small{
   font-size: 80%;
   color: $muted;
 }
 
+.text-uppercase{
+  text-transform: uppercase;
+}
+
+.text-lowercase{
+  text-transform: lowercase;
+}
+
+.text-ellipsis{
+  @include ellipsis();
+}
+
+.text-compact{
+  line-height: 1;
+}
+
 .word-wrapper{
   display: inline-block;
+}
+
+/* HTML inline text elements. Modifiers color text */
+a,
+abbr,
+acronym,
+b,
+bdo,
+big,
+br,
+button,
+cite,
+code,
+dfn,
+em,
+i,
+img,
+input,
+kbd,
+label,
+map,
+object,
+q,
+samp,
+script,
+select,
+small,
+span,
+strong,
+sub,
+sup,
+textarea,
+time,
+tt,
+var{
+  @include modifiers(color, (muted: $muted));
 }

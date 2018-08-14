@@ -1,3 +1,4 @@
+---
 gl:
   activemodel:
     attributes:
@@ -9,6 +10,13 @@ gl:
         document_type: Tipo do documento
         user: Usuario
         verification_attachment: Copia escaneada do documento
+      postal_letter_address:
+        full_address: Enderezo completo
+      postal_letter_confirmation:
+        verification_code: Código de verificación
+      postal_letter_postage:
+        full_address: Enderezo completo
+        verification_code: Código de verificación
   decidim:
     admin:
       menu:
@@ -17,16 +25,16 @@ gl:
       admin:
         id_documents:
           help:
-            - Os usuarios encherán a súa información de identidade e cargarán unha copia do seu documento.
-            - Enche a información presente na imaxe cargada.
-            - A información debe coincidir co que o usuario enche.
-            - Se non pode ver claramente a información ou non pode verificala, pode rexeitar a solicitude e o usuario poderá solucionalo.
+          - Os usuarios encherán a súa información de identidade e cargarán unha copia do seu documento.
+          - Enche a información presente na imaxe cargada.
+          - A información debe coincidir co que o usuario enche.
+          - Se non pode ver claramente a información ou non pode verificala, pode rexeitar a solicitude e o usuario poderá solucionalo.
         postal_letter:
           help:
-            - Os usuarios solicitan que se envíe un código de verificación ao seu enderezo.
-            - Envía a carta ao seu enderezo co código de verificación.
-            - Marca a letra como enviada.
-            - Unha vez que marca a letra enviada, o usuario poderá introducir o código e verificarse.
+          - Os usuarios solicitan que se envíe un código de verificación ao seu enderezo.
+          - Envía a carta ao seu enderezo co código de verificación.
+          - Marca a letra como enviada.
+          - Unha vez que marca a letra enviada, o usuario poderá introducir o código e verificarse.
       direct: Directo
       help: Axuda
       id_documents:
@@ -44,6 +52,7 @@ gl:
           success: Autorizouse con éxito.
         first_login:
           actions:
+            another_dummy_authorization_handler: Verifique contra outro exemplo de controlador de autorización
             dummy_authorization_handler: Verifique contra o controlador de autorización de exemplo
             dummy_authorization_workflow: Verifique contra o fluxo de traballo de autorización de exemplo
             id_documents: Verifique a carga do documento de identidade
@@ -55,6 +64,10 @@ gl:
           authorize_with: Verifica con %{authorizer}
         skip_verification: Podes ignorar isto por agora e %{link}
         start_exploring: comezar a explorar
+      dummy_authorization:
+        extra_explanation:
+          one: A participación está restrinxida aos usuarios co código postal %{postal_codes}.
+          other: 'A participación está restrinxida aos usuarios que conteñan algún dos seguintes códigos postais: %{postal_codes}.'
       id_documents:
         admin:
           confirmations:

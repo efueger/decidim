@@ -13,6 +13,7 @@ module Decidim
 
       def create
         form_params = user_params_from_oauth_hash || params[:user]
+
         @form = form(OmniauthRegistrationForm).from_params(form_params)
         @form.email ||= verified_email
 
@@ -44,11 +45,19 @@ module Decidim
       end
 
       def after_sign_in_path_for(user)
-        if first_login_and_not_authorized?(user)
+        if !pending_redirect?(user) && first_login_and_not_authorized?(user)
           decidim_verifications.authorizations_path
         else
           super
         end
+      end
+
+      # Calling the `stored_location_for` method removes the key, so in order
+      # to check if there's any pending redirect after login I need to call
+      # this method and use the value to set a pending redirect. This is the
+      # only way to do this without checking the session directly.
+      def pending_redirect?(user)
+        store_location_for(user, stored_location_for(user))
       end
 
       def first_login_and_not_authorized?(user)
@@ -63,25 +72,32 @@ module Decidim
       private
 
       def oauth_data
-        return {} unless request.env["omniauth.auth"]
-        @oauth_data ||= request.env["omniauth.auth"].slice(:provider, :uid, :info)
+        @oauth_data ||= oauth_hash.slice(:provider, :uid, :info)
       end
 
       # Private: Create form params from omniauth hash
       # Since we are using trusted omniauth data we are generating a valid signature.
       def user_params_from_oauth_hash
-        return nil unless request.env["omniauth.auth"]
+        return nil if oauth_data.empty?
         {
           provider: oauth_data[:provider],
           uid: oauth_data[:uid],
           name: oauth_data[:info][:name],
           nickname: oauth_data[:info][:nickname],
-          oauth_signature: OmniauthRegistrationForm.create_signature(oauth_data[:provider], oauth_data[:uid])
+          oauth_signature: OmniauthRegistrationForm.create_signature(oauth_data[:provider], oauth_data[:uid]),
+          avatar_url: oauth_data[:info][:image]
         }
       end
 
       def verified_email
         @verified_email ||= oauth_data.dig(:info, :email)
+      end
+
+      def oauth_hash
+        raw_hash = request.env["omniauth.auth"]
+        return {} unless raw_hash
+
+        raw_hash.deep_symbolize_keys
       end
     end
   end

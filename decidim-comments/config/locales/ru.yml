@@ -1,21 +1,26 @@
+---
 ru:
+  activemodel:
+    models:
+      decidim/comments/comment_by_followed_user_event: Комментарий
+      decidim/comments/comment_created_event: Комментарий
+      decidim/comments/reply_created_event: Ответ на комментарий
+      decidim/comments/user_mentioned_event: Упоминание
+  activerecord:
+    models:
+      decidim/comments/comment:
+        few: Комментария
+        many: Комментариев
+        one: Комментарий
+        other: Комментариев
+      decidim/comments/comment_vote:
+        few: Голоса
+        many: Голосов
+        one: Голос
+        other: Голосов
   decidim:
     comments:
-      events:
-        comment_created:
-          comment:
-            email_intro: '«%{resource_title}» прокомментировали. Вы можете прочитать комментарий на странице:'
-            email_outro: Вы получили это уведомление, потому что вы следите за «%{resource_title}». Вы можете перестать за ним следить, перейдя по приведенной выше ссылке.
-            email_subject: Появился новый комментарий от %{author_name} в %{resource_title}
-            notification_title: Появился новый комментарий от %{author_name} в <a href="%{resource_path}">%{resource_title}</a>
-            moderation:
-              email_intro: 'A new comment have been posted, you can moderate it in this page:'
-              email_subject: 'New comment from %{author_name} waiting for moderation'
-          reply:
-            email_intro: '«%{resource_title}» прокомментировано'
-            email_outro: Вы получили это уведомление, потому что вы следите за «%{resource_title}». Вы можете перестать за ним следить, перейдя по приведенной выше ссылке.
-            email_subject: На ваш комментарий появился новый ответ от %{author_name} в <a href="%{resource_url}">%{resource_title}</a>
-            notification_title: На ваш комментарий появился новый ответ от %{author_name} в <a href="%{resource_path}">%{resource_title}</a>
+      comments: Комментарии
       votes:
         create:
           error: При голосовании за комментарий произошли ошибки.
@@ -32,8 +37,8 @@ ru:
             label: Комментировать как
         opinion:
           neutral: Безучастно
-        remaining_characters: "Осталось %{count} символов"
-        remaining_characters_1: "Остался %{count} символ"
+        remaining_characters: Осталось %{count} символов
+        remaining_characters_1: Остался %{count} символ
         title: Добавьте свой комментарий
       comment:
         alignment:
@@ -48,7 +53,7 @@ ru:
           description: Это сообщение неприемлемо?
           details: Дополнительные комментарии
           reasons:
-            does_not_belong: Содержит незаконную деятельность, угрозы самоубийства, личную информацию или что-то еще, недопустимое, на ваш взгляд, для %{organization_name}.
+            does_not_belong: Содержит незаконную деятельность, угрозы самоубийства, личные сведения или что-то еще, недопустимое, на ваш взгляд, для %{organization_name}.
             offensive: Содержит расизм, сексизм, оскорбления, личные нападки, угрозы убийства, заявления о самоубийстве, или любую форму разжигания ненависти.
             spam: Содержит кликоловки (манипулятивно-сенсационные заголовки), рекламу, мошенничество или лохотроны.
           title: Пожаловаться на проблему
@@ -65,8 +70,30 @@ ru:
         blocked_comments_warning: Комментарии сейчас отключены, но вы можете прочитать предыдущие.
         loading: Загрузка комментариев ...
         title: "%{count} комментариев"
-      featured_comment:
-        title: Избранный комментарий
+        title_0: Il n'y a pas encore de commentaire
+        title_1: "%{count} commentaire"
+    events:
+      comments:
+        comment_by_followed_user:
+          email_intro: "%{author_name} оставил комментарий в %{resource_title}. Вы можете прочитать его на странице:"
+          email_outro: Вы получили это уведомление, потому что вы следите за %{author_name}. Вы можете отписаться от таких уведомлений, перейдя на страницу профиля этого участника.
+          email_subject: В %{resource_title} появился новый комментарий от %{author_name}
+          notification_title: В <a href="%{resource_path}">%{resource_title}</a> появился новый комментарий от <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
+        comment_created:
+          email_intro: "%{resource_title} прокомментировали. Вы можете прочитать комментарий на странице:"
+          email_outro: Вы получили это уведомление, потому что вы следите за «%{resource_title}». Вы можете перестать за ним следить, перейдя по приведенной выше ссылке.
+          email_subject: В %{resource_title} появился новый комментарий от %{author_name}
+          notification_title: В <a href="%{resource_path}">%{resource_title}</a> появился новый комментарий от <a href="%{author_path}">%{author_name} %{author_nickname}</a>
+        reply_created:
+          email_intro: "%{author_name} ответил на ваш комментарий в %{resource_title}. Вы можете прочитать его на странице:"
+          email_outro: Вы получили это уведомление, потому что на ваш комментарий был дан ответ.
+          email_subject: "%{author_name} ответил на ваш комментарий в %{resource_title}"
+          notification_title: <a href="%{author_path}">%{author_name} %{author_nickname}</a> ответил на ваш комментарий в <a href="%{resource_path}">%{resource_title}</a>
+        user_mentioned:
+          email_intro: Вы были упомянуты
+          email_outro: Вы получили это уведомление, потому что вы были упомянуты в %{resource_title}.
+          email_subject: Вы были упомянуты в %{resource_title}
+          notification_title: <a href="%{author_path}">%{author_name} %{author_nickname}</a> упомянул вас в <a href="%{resource_path}">%{resource_title}</a>
   errors:
     messages:
       cannot_have_comments: не подлежит комментированию

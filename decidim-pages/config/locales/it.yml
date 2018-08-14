@@ -1,6 +1,15 @@
+---
 it:
+  activerecord:
+    models:
+      decidim/pages/page:
+        one: Pagina
+        other: pagine
   decidim:
-    features:
+    admin_log:
+      page:
+        update: "%{user_name} ha aggiornato la pagina %{resource_name} in %{space_name}"
+    components:
       pages:
         name: Pagina
         settings:

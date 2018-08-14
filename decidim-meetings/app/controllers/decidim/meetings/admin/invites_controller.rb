@@ -9,10 +9,14 @@ module Decidim
       #
       class InvitesController < Admin::ApplicationController
         def new
+          enforce_permission_to :invite_user, :meeting, meeting: meeting
+
           @form = form(MeetingRegistrationInviteForm).instance
         end
 
         def create
+          enforce_permission_to :invite_user, :meeting, meeting: meeting
+
           @form = form(MeetingRegistrationInviteForm).from_params(params)
 
           InviteUserToJoinMeeting.call(@form, meeting, current_user) do
@@ -31,7 +35,7 @@ module Decidim
         private
 
         def meeting
-          @meeting ||= Meeting.where(feature: current_feature).find(params[:meeting_id])
+          @meeting ||= Meeting.where(component: current_component).find(params[:meeting_id])
         end
       end
     end

@@ -23,7 +23,7 @@ Decidim::Core::Engine.routes.draw do
   resource :locale, only: [:create]
 
   Decidim.participatory_space_manifests.each do |manifest|
-    mount manifest.engine, at: "/", as: "decidim_#{manifest.name}"
+    mount manifest.context(:public).engine, at: "/", as: "decidim_#{manifest.name}"
   end
 
   mount Decidim::Verifications::Engine, at: "/", as: "decidim_verifications"
@@ -39,7 +39,7 @@ Decidim::Core::Engine.routes.draw do
       end
     end
     resources :conversations, only: [:new, :create, :index, :show, :update], controller: "messaging/conversations"
-    resources :notifications, only: [:index, :destroy] do
+    resources :notifications, only: [:destroy] do
       collection do
         delete :read_all
       end
@@ -49,19 +49,41 @@ Decidim::Core::Engine.routes.draw do
   end
 
   resources :profiles, only: [:show], param: :nickname
+  scope "/profiles/:nickname" do
+    get "notifications", to: "profiles#show", as: "profile_notifications", active: "notifications"
+    get "following", to: "profiles#show", as: "profile_following", active: "following"
+    get "followers", to: "profiles#show", as: "profile_followers", active: "followers"
+  end
 
   resources :pages, only: [:index, :show], format: false
+
+  get "/search", to: "searches#index", as: :search
+
+  get :organization_users, to: "users#index"
 
   get "/scopes/picker", to: "scopes#picker", as: :scopes_picker
 
   get "/static_map", to: "static_map#show", as: :static_map
   get "/cookies/accept", to: "cookie_policy#accept", as: :accept_cookies
+  put "/pages/terms-and-conditions/accept", to: "tos#accept_tos", as: :accept_tos
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
 
   resource :follow, only: [:create, :destroy]
   resource :report, only: [:create]
+
+  resources :newsletters, only: [:show] do
+    get :unsubscribe, on: :collection
+  end
+
+  use_doorkeeper do
+    skip_controllers :applications, :authorized_applications
+  end
+
+  scope :oauth do
+    get "/me" => "doorkeeper/credentials#me"
+  end
 
   root to: "pages#show", id: "home"
 end

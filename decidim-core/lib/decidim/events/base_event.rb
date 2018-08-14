@@ -6,6 +6,12 @@ module Decidim
     # add more logic to a `Decidim::Notification` and are used to render them in the
     # notifications dashboard and to generate other notifications (emails, for example).
     class BaseEvent
+      extend ActiveModel::Translation
+      include Decidim::TranslatableAttributes
+
+      class_attribute :types
+      self.types = []
+
       # Public: Stores all the notification types this event can create. Please, do not
       # overwrite this method, consider it final. Instead, add values to the array via
       # modules, take the `NotificationEvent` module as an example:
@@ -16,7 +22,7 @@ module Decidim
       #     extend ActiveSupport::Concern
       #
       #     included do
-      #       types << :web_push_notifications
+      #       type :web_push_notifications
       #     end
       #   end
       #
@@ -25,8 +31,8 @@ module Decidim
       #   end
       #
       #   MyEvent.types # => [:web_push_notifications]
-      def self.types
-        @types ||= []
+      def self.type(type)
+        self.types += Array(type)
       end
 
       # Initializes the class.
@@ -58,12 +64,43 @@ module Decidim
         @resource_url ||= resource_locator.url
       end
 
+      # Whether this event should be notified or not. Useful when you want the
+      # event to decide based on the params.
+      #
+      # It returns false when the resource or any element in the chain is a
+      # `Decidim::Publicable` and it isn't published or participatory_space
+      # is a `Decidim::Participable` and the user can't participate.
+      def notifiable?
+        return false if resource.is_a?(Decidim::Publicable) && !resource.published?
+        return false if participatory_space.is_a?(Decidim::Publicable) && !participatory_space&.published?
+        return false unless component&.published?
+
+        return false if participatory_space.is_a?(Decidim::Participable) && !participatory_space.can_participate?(user)
+
+        true
+      end
+
       private
 
       attr_reader :event_name, :resource, :user, :extra
 
+      def component
+        return resource.component if resource.is_a?(Decidim::HasComponent)
+        return resource if resource.is_a?(Decidim::Component)
+      end
+
+      def participatory_space
+        component&.participatory_space
+      end
+
       def resource_title
-        resource.title.is_a?(Hash) ? resource.title[I18n.locale.to_s] : resource.title
+        return unless resource
+
+        if resource.respond_to?(:title)
+          translated_attribute(resource.title)
+        elsif resource.respond_to?(:name)
+          translated_attribute(resource.name)
+        end
       end
     end
   end

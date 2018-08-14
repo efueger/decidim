@@ -1,3 +1,4 @@
+---
 pt:
   activemodel:
     attributes:
@@ -8,9 +9,15 @@ pt:
         description: Descrição
         proposal_ids: Propostas relacionadas
         title: Título
+  activerecord:
+    models:
+      decidim/budgets/project:
+        one: Projeto
+        other: Projetos
   decidim:
     budgets:
       actions:
+        attachment_collections: Coleções
         attachments: Anexos
         confirm_destroy: Tem certeza de que deseja excluir esse projeto?
         destroy: Excluir
@@ -41,6 +48,11 @@ pt:
           update:
             invalid: Ocorreu um problema ao atualizar este projeto
             success: Projeto atualizado com sucesso
+      admin_log:
+        project:
+          create: "%{user_name} criou o projeto %{resource_name} no espaço %{space_name}"
+          delete: "%{user_name} excluiu o projeto %{resource_name} no espaço %{space_name}"
+          update: "%{user_name} atualizou o projeto %{resource_name} no espaço %{space_name}"
       models:
         project:
           fields:
@@ -93,13 +105,14 @@ pt:
             one: 1 suporte
             other: "%{count} suporta"
           remove: Remover
+          view: Visão
         project_budget_button:
           add: Adicionar
           added: Adicionado
         show:
           budget: Despesas
           view_all_projects: Ver todos os projetos
-    features:
+    components:
       budgets:
         actions:
           vote: Voto
@@ -108,6 +121,7 @@ pt:
           global:
             announcement: Anúncio
             comments_enabled: Comentários ativados
+            projects_per_page: Projetos por página
             total_budget: Orçamento total
             vote_threshold_percent: Porcentagem do limiar de voto
           step:
@@ -124,7 +138,7 @@ pt:
         success: Seu voto foi cancelado com sucesso
     resource_links:
       included_proposals:
-        project_proposals: 'Propostas incluídas neste projeto:'
+        project_proposal: 'Propostas incluídas neste projeto:'
   index:
     confirmed_orders_count: Contagem de votos
   total_budget: Orçamento total

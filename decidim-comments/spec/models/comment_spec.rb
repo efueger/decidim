@@ -96,9 +96,42 @@ module Decidim
       end
 
       describe "#users_to_notify_on_comment_created" do
-        it "delegates to its root commentable" do
-          expect(commentable).to receive(:users_to_notify_on_comment_created)
-          comment.users_to_notify_on_comment_created
+        let(:user) { create :user, organization: comment.organization }
+
+        it "includes the comment author" do
+          expect(comment.users_to_notify_on_comment_created)
+            .to include(author)
+        end
+
+        it "includes the values from its commentable" do
+          allow(comment.commentable)
+            .to receive(:users_to_notify_on_comment_created)
+            .and_return(Decidim::User.where(id: user.id))
+
+          expect(comment.users_to_notify_on_comment_created)
+            .to include(user)
+        end
+      end
+
+      describe "#formatted_body" do
+        let(:comment) { create(:comment, commentable: commentable, author: author, body: "<b>bold text</b> *lorem* <a href='https://example.com'>link</a>") }
+
+        before do
+          allow(Decidim).to receive(:content_processors).and_return([:dummy_foo])
+        end
+
+        it "sanitizes user input" do
+          expect(comment).to receive(:sanitized_body)
+          comment.formatted_body
+        end
+
+        it "process the body after it is sanitized" do
+          expect(Decidim::ContentProcessor).to receive(:render).with("bold text *lorem* link")
+          comment.formatted_body
+        end
+
+        it "returns the body sanitized and processed" do
+          expect(comment.formatted_body).to eq("<p>bold text <em>neque dicta enim quasi</em> link</p>")
         end
       end
     end

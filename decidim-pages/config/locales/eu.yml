@@ -1,6 +1,15 @@
+---
 eu:
+  activerecord:
+    models:
+      decidim/pages/page:
+        one: page
+        other: orrialdeak
   decidim:
-    features:
+    admin_log:
+      page:
+        update: "%{user_name} %{resource_name} orrialdea %{space_name} eguneratu du"
+    components:
       pages:
         name: Orria
         settings:

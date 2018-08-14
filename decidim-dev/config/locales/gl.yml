@@ -1,9 +1,29 @@
+---
 gl:
+  activemodel:
+    attributes:
+      dummy_resource:
+        created_at: Creado en
+        field: O meu campo
+        start_date: Data de inicio
+        title: Título
+        updated_at: Actualizado en
   decidim:
     dummy:
       admin:
         exports:
           dummies: Dummies
+    pages:
+      home:
+        statistics:
+          bar: Bar
+          dummies_count_high: Maniquís de alta
+          dummies_count_medium: Dummies medio
+          foo: Foo
+    participatory_processes:
+      statistics:
+        dummies_count_high: Maniquís de alta
+        dummies_count_medium: Dummies medio
     resource_links:
       test_link:
         dummy_resource_dummy: Dummy relacionado

@@ -8,10 +8,14 @@ module Decidim
         helper_method :statuses
 
         def new
+          enforce_permission_to :create, :status
+
           @form = form(StatusForm).instance
         end
 
         def create
+          enforce_permission_to :create, :status
+
           @form = form(StatusForm).from_params(params)
 
           CreateStatus.call(@form) do
@@ -28,10 +32,14 @@ module Decidim
         end
 
         def edit
+          enforce_permission_to :update, :status, status: status
+
           @form = form(StatusForm).from_model(status)
         end
 
         def update
+          enforce_permission_to :update, :status, status: status
+
           @form = form(StatusForm).from_params(params)
 
           UpdateStatus.call(@form, status) do
@@ -48,6 +56,8 @@ module Decidim
         end
 
         def destroy
+          enforce_permission_to :destroy, :status, status: status
+
           status.destroy!
 
           flash[:notice] = I18n.t("statuses.destroy.success", scope: "decidim.accountability.admin")
@@ -58,7 +68,7 @@ module Decidim
         private
 
         def statuses
-          @statuses ||= Status.where(feature: current_feature).page(params[:page]).per(15)
+          @statuses ||= Status.where(component: current_component).page(params[:page]).per(15)
         end
 
         def status

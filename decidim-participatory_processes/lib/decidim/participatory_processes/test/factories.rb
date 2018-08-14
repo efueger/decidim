@@ -27,8 +27,9 @@ FactoryBot.define do
     participatory_scope { Decidim::Faker::Localized.sentence(1) }
     participatory_structure { Decidim::Faker::Localized.sentence(2) }
     show_statistics true
+    private_space false
     start_date { Time.current }
-    end_date 2.months.from_now.at_midnight
+    end_date { 2.months.from_now.at_midnight }
 
     trait :promoted do
       promoted true
@@ -82,8 +83,8 @@ FactoryBot.define do
   factory :participatory_process_step, class: "Decidim::ParticipatoryProcessStep" do
     title { Decidim::Faker::Localized.sentence(3) }
     description { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
-    start_date 1.month.ago.at_midnight
-    end_date 2.months.from_now.at_midnight
+    start_date { 1.month.ago.at_midnight }
+    end_date { 2.months.from_now.at_midnight }
     position nil
     participatory_process
 
@@ -95,5 +96,56 @@ FactoryBot.define do
     trait :active do
       active true
     end
+  end
+
+  factory :process_admin, parent: :user, class: "Decidim::User" do
+    transient do
+      participatory_process { create(:participatory_process) }
+    end
+
+    organization { participatory_process.organization }
+
+    after(:create) do |user, evaluator|
+      create :participatory_process_user_role,
+             user: user,
+             participatory_process: evaluator.participatory_process,
+             role: :admin
+    end
+  end
+
+  factory :process_collaborator, parent: :user, class: "Decidim::User" do
+    transient do
+      participatory_process { create(:participatory_process) }
+    end
+
+    organization { participatory_process.organization }
+
+    after(:create) do |user, evaluator|
+      create :participatory_process_user_role,
+             user: user,
+             participatory_process: evaluator.participatory_process,
+             role: :collaborator
+    end
+  end
+
+  factory :process_moderator, parent: :user, class: "Decidim::User" do
+    transient do
+      participatory_process { create(:participatory_process) }
+    end
+
+    organization { participatory_process.organization }
+
+    after(:create) do |user, evaluator|
+      create :participatory_process_user_role,
+             user: user,
+             participatory_process: evaluator.participatory_process,
+             role: :moderator
+    end
+  end
+
+  factory :participatory_process_user_role, class: "Decidim::ParticipatoryProcessUserRole" do
+    user
+    participatory_process { create :participatory_process, organization: user.organization }
+    role "admin"
   end
 end

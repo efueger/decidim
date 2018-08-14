@@ -9,17 +9,17 @@ module Decidim
       helper_method :scope, :parent_scope, :add_scope_path, :current_scopes_path
 
       def index
-        authorize! :index, Scope
-        @scopes = children_scopes.order("name->'#{I18n.locale}' ASC")
+        enforce_permission_to :read, :scope
+        @scopes = children_scopes.order(Arel.sql("name->'#{I18n.locale}' ASC"))
       end
 
       def new
-        authorize! :new, Scope
+        enforce_permission_to :create, :scope
         @form = form(ScopeForm).instance
       end
 
       def create
-        authorize! :new, Scope
+        enforce_permission_to :create, :scope
         @form = form(ScopeForm).from_params(params)
         CreateScope.call(@form, parent_scope) do
           on(:ok) do
@@ -35,12 +35,12 @@ module Decidim
       end
 
       def edit
-        authorize! :update, scope
+        enforce_permission_to :update, :scope, scope: scope
         @form = form(ScopeForm).from_model(scope)
       end
 
       def update
-        authorize! :update, scope
+        enforce_permission_to :update, :scope, scope: scope
         @form = form(ScopeForm).from_params(params)
 
         UpdateScope.call(scope, @form) do
@@ -57,12 +57,14 @@ module Decidim
       end
 
       def destroy
-        authorize! :destroy, scope
-        scope.destroy!
+        enforce_permission_to :destroy, :scope, scope: scope
 
-        flash[:notice] = I18n.t("scopes.destroy.success", scope: "decidim.admin")
-
-        redirect_to current_scopes_path
+        DestroyScope.call(scope, current_user) do
+          on(:ok) do
+            flash[:notice] = I18n.t("scopes.destroy.success", scope: "decidim.admin")
+            redirect_to current_scopes_path
+          end
+        end
       end
 
       private
@@ -82,7 +84,7 @@ module Decidim
       end
 
       def children_scopes
-        @subscopes ||= parent_scope ? parent_scope.children : organization_scopes.top_level
+        @children_scopes ||= parent_scope ? parent_scope.children : organization_scopes.top_level
       end
 
       def current_scopes_path
