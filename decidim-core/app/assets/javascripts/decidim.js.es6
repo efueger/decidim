@@ -17,6 +17,9 @@
 // = require decidim/editor
 // = require decidim/input_tags
 // = require decidim/input_mentions
+// = require timeago.min
+// = require timeago.locales.min
+// = require decidim/timeago
 
 /* globals svg4everybody */
 
