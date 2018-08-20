@@ -5,7 +5,4 @@ $(() => {
   const timeagoInstance = timeago();
   const nodes = document.querySelectorAll(".time-ago");
   timeagoInstance.render(nodes, lang);
-
-  console.log(lang);
-  console.log(timeagoInstance);
 });
