@@ -7,23 +7,25 @@
 - **Image uploader**: Now have a quality setting which can be used by adding `process quality:%%` where %% is  your desired percentage of quality
 
 - **Banner**: banner uploader has been changed in [\#150](https://github.com/OpenSourcePolitics/decidim/pull/150)
-you should update existing image if you don't want to reupload them.
+you should update existing image if you don't want to re-upload them.
 use the following command in your rails console : `Decidim::ParticipatoryProcess.find_each { |process| process.banner_image.recreate_versions! if process.banner_image? }`
 
 - **Avatar**: Avater uploader has been changed in [\#147](https://github.com/OpenSourcePolitics/decidim/pull/147)
-you should update existing image if you don't want to reupload them.
+you should update existing image if you don't want to re-upload them.
 use the following command in your rails console : `Decidim::User.find_each { |user| user.avatar.recreate_versions! if user.avatar? }`
 
 - **decidim-accountability**: Fix accountability progress to be between 0 and 100 if provided. [\#3952](https://github.com/decidim/decidim/pull/3952)
 
-- **skip first login authorization** : Add an initializer otion to skip first login authorization [\#176](https://github.com/OpenSourcePolitics/decidim/pull/176)
+- **skip first login authorization** : Add an initializer option to skip first login authorization [\#176](https://github.com/OpenSourcePolitics/decidim/pull/176)
+
+- **Change displays of participatory process step dates** : Change format to allow only one date when there is no end or start date. ( From: 2016-01-01 - ? to: 2016-01-01 )
 
 ## [Unreleased](https://github.com/decidim/decidim/tree/0.11-stable)
 
 **Upgrade notes**:
 
 This version has breaking changes, `Decidim::Feature` has been renamed to `Decidim::Component`,
-and also everything related to it (controllers, views, etc.). If you have customised some
+and also everything related to it (controllers, views, etc.). If you have customized some
 controller or added a new module you need to rename `feature` to `component`.
 ## [Unreleased](https://github.com/decidim/decidim/tree/0.12-stable)
 
