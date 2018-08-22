@@ -11,7 +11,9 @@ module Decidim
       #
       # Returns a String with the formatted dates.
       def step_dates(participatory_process_step)
-        dates = [participatory_process_step.start_date, participatory_process_step.end_date]
+        dates = []
+        dates.push(participatory_process_step.start_date) unless participatory_process_step.start_date.nil?
+        dates.push(participatory_process_step.end_date) unless participatory_process_step.end_date.nil?
         dates.map { |date| date ? localize(date.to_date, format: :default) : "?" }.join(" - ")
       end
     end
