@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Execute two main test to avoid excessive CircleCi usage
+
+echo "########################################################"
+echo "You can bypass this hook with the --no-verify or -n flag"
+echo "########################################################"
+
+bundle exec rake test_core
+bundle exec rake test_app

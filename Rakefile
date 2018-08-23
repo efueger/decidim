@@ -77,3 +77,17 @@ task :bundle do
     end
   end
 end
+
+namespace :githooks do
+  desc "Sync githooks"
+  task :sync do
+    dir = ".githooks"
+    dest = ".git/hooks"
+    files = Dir.entries(dir).reject { |f| File.directory? f }
+    files.map do |f|
+      file = File.join(dir, f)
+      FileUtils.chmod_R 0o700, file
+      FileUtils.ln_s file, dest
+    end
+  end
+end
