@@ -86,8 +86,9 @@ namespace :githooks do
     files = Dir.entries(dir).reject { |f| File.directory? f }
     files.map do |f|
       file = File.join(dir, f)
-      FileUtils.chmod_R 766, file
-      FileUtils.ln_s file, dest
+      FileUtils.chmod "ug+x", file
+      FileUtils.cp file, dest
     end
+    puts "Copied .githooks folder into .git/hooks/"
   end
 end

@@ -3,6 +3,7 @@
 # Execute two main test to avoid excessive CircleCi usage
 
 echo "########################################################"
+echo "############  Decidim pre-push validation   ############"
 echo "You can bypass this hook with the --no-verify or -n flag"
 echo "########################################################"
 
