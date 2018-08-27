@@ -2,7 +2,7 @@ version: 2
 
 notify:
   webhooks:
-  - url: https://hooks.zapier.com/hooks/catch/3700786/quauhs/
+  - url: https://osp.rocket.chat/hooks/CWDekWnPrND2Ep9n5/2ZSkKzCSxofmY29qW3yufe8tcpBDHECZsnYaga73h7RR9WHR
 
 defaults: &defaults
   docker:
