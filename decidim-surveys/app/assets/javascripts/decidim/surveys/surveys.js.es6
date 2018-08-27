@@ -13,5 +13,5 @@
     });
   });
 
-  createSortableList({ class: "sortable-check-box-collection" })
+  createSortableList({ class: "sortable-check-box-collection", index: "sortable-index", choice: "sortable-choice" })
 })(window);

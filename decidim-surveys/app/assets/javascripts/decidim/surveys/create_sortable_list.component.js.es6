@@ -5,6 +5,8 @@
   class CreateSortableList {
     constructor(options = {}) {
       this.class = options.class;
+      this.index = options.index;
+      this.choice = options.choice;
       this._run();
     }
 
@@ -21,12 +23,9 @@
 
           for (let element of elements) {
             const idx = $(elements).index(element);
-            const $positionSelector = $(element).children(".position");
             const $positionField = $(element).children("input[name$=\\[position\\]]");
             $positionField.val(idx);
             $positionField.prop("disabled", false);
-            $positionSelector.html(`${idx + 1}.&nbsp`);
-
           }
         }
       };
@@ -34,11 +33,15 @@
       for (let sortable of sortables) {
         Sortable.create(sortable, {
           onUpdate: refreshIndex
-        }
-        );
+        });
         $(sortable).find("input[type=checkbox]").addClass("hidden");
         $(sortable).find(".position").html("&nbsp;&nbsp;");
         $(sortable).find("input[type=checkbox]").prop("checked", false);
+
+        let collectionLength = $(sortable).children($(this.index)).length;
+        for (let item = 0; item <= collectionLength; item += 1) {
+          $(`#sortable-index_${item}`).height($(`#sortable-choice_${item}`).children("label").height());
+        }
       }
     }
   }

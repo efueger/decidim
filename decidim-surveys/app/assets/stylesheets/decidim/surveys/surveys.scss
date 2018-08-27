@@ -12,6 +12,21 @@ form.answer-survey {
     .hidden {
       display: none;
     }
+    .sortable-index {
+      margin: 0.5em 0;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid $medium-gray;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      span {
+      }
+    }
+    .sortable-choice {
+      padding-right: 0;
+    }
   }
 
   .tos-agreement {
