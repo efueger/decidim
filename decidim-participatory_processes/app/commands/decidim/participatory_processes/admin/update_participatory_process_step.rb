@@ -46,6 +46,7 @@ module Decidim
           {
             title: form.title,
             start_date: form.start_date,
+            single_date: form.single_date,
             end_date: form.end_date,
             description: form.description
           }

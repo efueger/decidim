@@ -15,6 +15,7 @@ module Decidim::ParticipatoryProcesses
         title: { en: "title" },
         description: { en: "description" },
         start_date: Time.current,
+        single_date: false,
         end_date: Time.current + 1.week,
         invalid?: invalid
       )

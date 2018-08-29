@@ -40,6 +40,7 @@ module Decidim
             title: form.title,
             description: form.description,
             start_date: form.start_date,
+            single_date: form.single_date,
             end_date: form.end_date,
             participatory_process: @participatory_process,
             active: @participatory_process.steps.empty?
