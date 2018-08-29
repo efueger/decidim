@@ -7,11 +7,12 @@ module Decidim
     describe ParticipatoryProcessHelper do
       describe "#participatory_process_step_dates" do
         let(:participatory_process) do
-          double(start_date: start_date, end_date: end_date)
+          double(start_date: start_date, single_date: single_date, end_date: end_date)
         end
 
         let(:start_date) { Date.civil(2016, 1, 1) }
         let(:end_date) { Date.civil(2016, 2, 5) }
+        let(:single_date) { false }
 
         before do
           helper.extend ParticipatoryProcessHelper
@@ -39,6 +40,16 @@ module Decidim
           it "fills it in with an interrogation mark" do
             result = helper.step_dates(participatory_process)
             expect(result).to eq("2016-01-01 - ?")
+          end
+        end
+
+        describe "when single date is activated" do
+          let(:start_date) { Date.civil(2016, 1, 1) }
+          let(:single_date) { true }
+
+          it "returns a single date" do
+            result = helper.step_dates(participatory_process)
+            expect(result).to eq("2016-01-01")
           end
         end
       end
