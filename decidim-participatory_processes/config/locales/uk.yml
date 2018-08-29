@@ -109,7 +109,7 @@ uk:
         participatory_process_step:
           fields:
             end_date: Дата закінчення
-            single_date: Single date
+            single_date: This step takes place over a single day.
             start_date: Дата початку
             title: Назва
           name: Крок руху співучасті

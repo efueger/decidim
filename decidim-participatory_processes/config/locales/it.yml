@@ -103,7 +103,7 @@ it:
         participatory_process_step:
           fields:
             end_date: Data di fine
-            single_date: Single date
+            single_date: This step takes place over a single day.
             start_date: Date di inizio
             title: Nome
           name: Fase del processo partecipativo

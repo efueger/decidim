@@ -103,7 +103,7 @@ sv:
         participatory_process_step:
           fields:
             end_date: Slutdatum
-            single_date: Single date
+            single_date: This step takes place over a single day.
             start_date: Startdatum
             title: Titel
           name: Deltagande processsteg

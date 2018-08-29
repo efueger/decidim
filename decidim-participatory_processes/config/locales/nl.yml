@@ -103,7 +103,7 @@ nl:
         participatory_process_step:
           fields:
             end_date: Einddatum
-            single_date: Single date
+            single_date: This step takes place over a single day.
             start_date: Startdatum
             title: Titel
           name: Stap van de burgerinspraak

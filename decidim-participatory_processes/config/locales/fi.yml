@@ -103,7 +103,7 @@ fi:
         participatory_process_step:
           fields:
             end_date: Päättymisaika
-            single_date: Single date
+            single_date: This step takes place over a single day.
             start_date: Aloitusaika
             title: Otsikko
           name: Osallistumisprosessin vaihe
