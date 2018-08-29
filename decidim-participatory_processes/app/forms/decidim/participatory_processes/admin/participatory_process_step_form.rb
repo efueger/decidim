@@ -15,6 +15,7 @@ module Decidim
         mimic :participatory_process_step
 
         attribute :start_date, DateTime
+        attribute :single_date, Boolean, default: false
         attribute :end_date, DateTime
 
         validates :title, translatable_presence: true

@@ -109,6 +109,7 @@ ru:
         participatory_process_step:
           fields:
             end_date: Дата окончания
+            single_date: Single date
             start_date: Дата начала
             title: Название
           name: Шаг движения соучастия
@@ -179,7 +180,8 @@ ru:
           success: Шаг движения соучастия успешно обновлен.
       participatory_process_user_roles:
         create:
-          error: При попытке добавить участника в это движение соучастия произошла ошибка.
+          error: При попытке добавить участника в это движение соучастия произошла
+            ошибка.
           success: В это движение соучастия успешно добавлен участник.
         destroy:
           success: Успешно удален участник этого движения соучастия.
@@ -192,7 +194,8 @@ ru:
           create: Создать
           title: Добавить участника движения соучастия.
         update:
-          error: При попытке обновить участника этого движения соучастия произошла ошибка.
+          error: При попытке обновить участника этого движения соучастия произошла
+            ошибка.
           success: Успешно обновлен участник этого движения соучастия.
       participatory_processes:
         create:
@@ -237,26 +240,36 @@ ru:
         unpublish: "%{user_name} отменил обнародование движения соучастия %{resource_name}"
         update: "%{user_name} обновил движение соучастия %{resource_name}"
       participatory_process_step:
-        activate: "%{user_name} привел в действие шаг %{resource_name} движения соучастия %{space_name}"
+        activate: "%{user_name} привел в действие шаг %{resource_name} движения соучастия
+          %{space_name}"
         create: "%{user_name} создал шаг %{resource_name} движения соучастия %{space_name}"
         delete: "%{user_name} удалил шаг %{resource_name} движения соучастия %{space_name}"
         update: "%{user_name} обновил шаг %{resource_name} движения соучастия %{space_name}"
       participatory_process_user_role:
-        create: "%{user_name} пригласил участника %{resource_name} в движение соучастия %{space_name}"
-        delete: "%{user_name} удалил участника %{resource_name} из движения соучастия %{space_name}"
-        update: "%{user_name} изменил роль участника %{resource_name} в движении соучастия %{space_name}"
+        create: "%{user_name} пригласил участника %{resource_name} в движение соучастия
+          %{space_name}"
+        delete: "%{user_name} удалил участника %{resource_name} из движения соучастия
+          %{space_name}"
+        update: "%{user_name} изменил роль участника %{resource_name} в движении соучастия
+          %{space_name}"
     events:
       participatory_process:
         step_activated:
-          email_intro: 'Теперь в %{participatory_space_title} приведен в действие шаг %{resource_title}. Вы можете посмотреть его на странице:'
-          email_outro: Вы получили это уведомление, потому что вы следите за «%{participatory_space_title}». Вы можете отписаться от уведомлений, перейдя по приведенной выше ссылке.
+          email_intro: 'Теперь в %{participatory_space_title} приведен в действие
+            шаг %{resource_title}. Вы можете посмотреть его на странице:'
+          email_outro: Вы получили это уведомление, потому что вы следите за «%{participatory_space_title}».
+            Вы можете отписаться от уведомлений, перейдя по приведенной выше ссылке.
           email_subject: Обновление %{participatory_space_title}
-          notification_title: Теперь в <a href="%{resource_path}">%{participatory_space_title}</a> приведен в действие шаг %{resource_title}
+          notification_title: Теперь в <a href="%{resource_path}">%{participatory_space_title}</a>
+            приведен в действие шаг %{resource_title}
         step_changed:
-          email_intro: 'Обновлены даты шага %{resource_title} в %{participatory_space_title}. Вы можете посмотреть их на странице:'
-          email_outro: Вы получили это уведомление, потому что вы следите за «%{participatory_space_title}». Вы можете отписаться от уведомлений, перейдя по приведенной выше ссылке.
+          email_intro: 'Обновлены даты шага %{resource_title} в %{participatory_space_title}.
+            Вы можете посмотреть их на странице:'
+          email_outro: Вы получили это уведомление, потому что вы следите за «%{participatory_space_title}».
+            Вы можете отписаться от уведомлений, перейдя по приведенной выше ссылке.
           email_subject: Обновление %{participatory_space_title}
-          notification_title: Обновлены даты шага <a href="%{resource_path}">%{resource_title}</a> в <a href="%{participatory_space_url}">%{participatory_space_title}</a>.
+          notification_title: Обновлены даты шага <a href="%{resource_path}">%{resource_title}</a>
+            в <a href="%{participatory_space_url}">%{participatory_space_title}</a>.
     menu:
       processes: Движения
     participatory_process_groups:
@@ -271,11 +284,16 @@ ru:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'Сокращенные веб-адреса используются для создания ссылок на это движение. В них допустимы только буквы, цифры и тире, и они должны начинаться с буквы. Пример: %{url}'
+            slug_help: 'Сокращенные веб-адреса используются для создания ссылок на
+              это движение. В них допустимы только буквы, цифры и тире, и они должны
+              начинаться с буквы. Пример: %{url}'
         participatory_processes:
           form:
-            announcement_help: Текст, который вы введете здесь, будет показан участнику прямо под описанием движения.
-            slug_help: 'Сокращенные веб-адреса используются для создания ссылок на это движение. В них допустимы только буквы, цифры и тире, и они должны начинаться с буквы. Пример: %{url}'
+            announcement_help: Текст, который вы введете здесь, будет показан участнику
+              прямо под описанием движения.
+            slug_help: 'Сокращенные веб-адреса используются для создания ссылок на
+              это движение. В них допустимы только буквы, цифры и тире, и они должны
+              начинаться с буквы. Пример: %{url}'
       index:
         title: Движения соучастия
       order_by_processes:

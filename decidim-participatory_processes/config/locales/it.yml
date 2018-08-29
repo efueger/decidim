@@ -103,6 +103,7 @@ it:
         participatory_process_step:
           fields:
             end_date: Data di fine
+            single_date: Single date
             start_date: Date di inizio
             title: Nome
           name: Fase del processo partecipativo
@@ -139,18 +140,22 @@ it:
           success: OK, il gruppo di processi partecipativi è stato modificato.
       participatory_process_publications:
         create:
-          error: Si è verificato un errore durante la pubblicazione di questo processo partecipativo.
+          error: Si è verificato un errore durante la pubblicazione di questo processo
+            partecipativo.
           success: OK, il processo partecipativo è stato pubblicato.
         destroy:
-          error: Si è verificato un errore cercando di togliere dalla pubblicazione questo processo partecipativo.
+          error: Si è verificato un errore cercando di togliere dalla pubblicazione
+            questo processo partecipativo.
           success: OK, il processo partecipativo è stato tolto dalla pubblicazione.
       participatory_process_step_activations:
         create:
-          error: Si è verificato un errore cercando di attivare questa fase del processo partecipativo.
+          error: Si è verificato un errore cercando di attivare questa fase del processo
+            partecipativo.
           success: OK, il processo partecipativo è stato attivato.
       participatory_process_steps:
         create:
-          error: Si è verificato un errore creando questa nuova fase (step) di processo partecipativo.
+          error: Si è verificato un errore creando questa nuova fase (step) di processo
+            partecipativo.
           success: OK, è stato creato il nuovo processo partecipativo.
         default_title: Introduzione
         destroy:
@@ -167,13 +172,16 @@ it:
           create: Crea
           title: Nuova fase del processo partecipativo.
         ordering:
-          error: Si è verificato un errore cercando di ri-ordinare le fasi di questo processo partecipativo.
+          error: Si è verificato un errore cercando di ri-ordinare le fasi di questo
+            processo partecipativo.
         update:
-          error: Si è verificato un errore durante l'aggiornamento di questa fase del processo partecipativo.
+          error: Si è verificato un errore durante l'aggiornamento di questa fase
+            del processo partecipativo.
           success: OK, questa fase del processo partecipativo è stata aggiornata.
       participatory_process_user_roles:
         create:
-          error: Si è verificato un errore durante l'aggiunta di un utente per questo processo partecipativo.
+          error: Si è verificato un errore durante l'aggiunta di un utente per questo
+            processo partecipativo.
           success: OK, è stato creato l'utente per questo processo partecipativo.
         destroy:
           success: L'utente per questo processo processo partecipativo è stato eliminato.
@@ -186,12 +194,14 @@ it:
           create: Crea
           title: Nuovo utente per un processo partecipativo.
         update:
-          error: Si è verificato un errore durante l'aggiornamento di un utente per questo processo partecipativo.
+          error: Si è verificato un errore durante l'aggiornamento di un utente per
+            questo processo partecipativo.
           success: OK, è stato aggiornato l'utente per questo processo partecipativo.
       participatory_processes:
         create:
           error: Si è verificato un errore durante la creazione del processo partecipativo.
-          success: Il processo partecipativo è stato creato con successo. Configura ora i suoi passaggi.
+          success: Il processo partecipativo è stato creato con successo. Configura
+            ora i suoi passaggi.
         destroy:
           success: OK, il processo partecipativo è stato eliminato.
         edit:
@@ -207,7 +217,8 @@ it:
           create: Crea
           title: Nuovo processo partecipativo.
         update:
-          error: Si è verificato un errore durante l'aggiornamento di questo processo partecipativo.
+          error: Si è verificato un errore durante l'aggiornamento di questo processo
+            partecipativo.
           success: OK, il processo partecipativo è stato aggiornato.
       participatory_processes_copies:
         create:
@@ -215,7 +226,8 @@ it:
           success: OK, il processo partecipativo è stato duplicato.
       participatory_processes_group:
         create:
-          error: Si è verificato un errore cercando di creare il nuovo gruppo di processi partecipativi.
+          error: Si è verificato un errore cercando di creare il nuovo gruppo di processi
+            partecipativi.
           success: OK, il gruppo di processi partecipativi è stato creato.
       titles:
         participatory_process_groups: Gruppo di processi partecipativi
@@ -231,26 +243,41 @@ it:
         unpublish: "%{user_name} non pubblicato il %{resource_name} processo partecipativo"
         update: "%{user_name} ha aggiornato il processo partecipativo %{resource_name}"
       participatory_process_step:
-        activate: "%{user_name} attivato il passaggio %{resource_name} nel processo partecipativo %{space_name}"
-        create: "%{user_name} ha creato il passaggio %{resource_name} nel processo partecipativo %{space_name}"
-        delete: "%{user_name} eliminato il passaggio %{resource_name} nel processo partecipativo %{space_name}"
-        update: "%{user_name} ha aggiornato il passaggio %{resource_name} nel processo partecipativo %{space_name}"
+        activate: "%{user_name} attivato il passaggio %{resource_name} nel processo
+          partecipativo %{space_name}"
+        create: "%{user_name} ha creato il passaggio %{resource_name} nel processo
+          partecipativo %{space_name}"
+        delete: "%{user_name} eliminato il passaggio %{resource_name} nel processo
+          partecipativo %{space_name}"
+        update: "%{user_name} ha aggiornato il passaggio %{resource_name} nel processo
+          partecipativo %{space_name}"
       participatory_process_user_role:
-        create: "%{user_name} ha invitato l'utente %{resource_name} al %{space_name} processo partecipativo"
-        delete: "%{user_name} rimosso l'utente %{resource_name} dal %{space_name} processo partecipativo"
-        update: "%{user_name} cambiato il ruolo dell'utente %{resource_name} nel %{space_name} processo partecipativo"
+        create: "%{user_name} ha invitato l'utente %{resource_name} al %{space_name}
+          processo partecipativo"
+        delete: "%{user_name} rimosso l'utente %{resource_name} dal %{space_name}
+          processo partecipativo"
+        update: "%{user_name} cambiato il ruolo dell'utente %{resource_name} nel %{space_name}
+          processo partecipativo"
     events:
       participatory_process:
         step_activated:
-          email_intro: 'Il passaggio %{resource_title} è ora attivo per %{participatory_space_title}. Puoi vederlo da questa pagina:'
-          email_outro: Hai ricevuto questa notifica perché stai seguendo %{participatory_space_title}. È possibile interrompere la ricezione di notifiche seguendo il collegamento precedente.
+          email_intro: 'Il passaggio %{resource_title} è ora attivo per %{participatory_space_title}.
+            Puoi vederlo da questa pagina:'
+          email_outro: Hai ricevuto questa notifica perché stai seguendo %{participatory_space_title}.
+            È possibile interrompere la ricezione di notifiche seguendo il collegamento
+            precedente.
           email_subject: Un aggiornamento a %{participatory_space_title}
           notification_title: Il passaggio %{resource_title} è ora attivo per <a href="%{resource_path}">%{participatory_space_title}</a>
         step_changed:
-          email_intro: 'Le date per il passaggio %{resource_title} su %{participatory_space_title} sono state aggiornate. Puoi vederlo da questa pagina:'
-          email_outro: Hai ricevuto questa notifica perché stai seguendo %{participatory_space_title}. È possibile interrompere la ricezione di notifiche seguendo il collegamento precedente.
+          email_intro: 'Le date per il passaggio %{resource_title} su %{participatory_space_title}
+            sono state aggiornate. Puoi vederlo da questa pagina:'
+          email_outro: Hai ricevuto questa notifica perché stai seguendo %{participatory_space_title}.
+            È possibile interrompere la ricezione di notifiche seguendo il collegamento
+            precedente.
           email_subject: Un aggiornamento a %{participatory_space_title}
-          notification_title: Le date per il passaggio <a href="%{resource_path}">%{resource_title}</a> a <a href="%{participatory_space_url}">%{participatory_space_title}</a> sono state aggiornate.
+          notification_title: Le date per il passaggio <a href="%{resource_path}">%{resource_title}</a>
+            a <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+            sono state aggiornate.
     menu:
       processes: Processi
     participatory_process_groups:
@@ -265,11 +292,16 @@ it:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'Gli slug URL vengono utilizzati per generare gli URL che puntano a questo processo. Accetta solo lettere, numeri e trattini, e deve iniziare con una lettera. Esempio: %{url}'
+            slug_help: 'Gli slug URL vengono utilizzati per generare gli URL che puntano
+              a questo processo. Accetta solo lettere, numeri e trattini, e deve iniziare
+              con una lettera. Esempio: %{url}'
         participatory_processes:
           form:
-            announcement_help: Il testo che inserisci qui verrà mostrato all'utente sotto le informazioni di processo.
-            slug_help: 'Gli slug URL vengono utilizzati per generare gli URL che puntano a questo processo. Accetta solo lettere, numeri e trattini, e deve iniziare con una lettera. Esempio: %{url}'
+            announcement_help: Il testo che inserisci qui verrà mostrato all'utente
+              sotto le informazioni di processo.
+            slug_help: 'Gli slug URL vengono utilizzati per generare gli URL che puntano
+              a questo processo. Accetta solo lettere, numeri e trattini, e deve iniziare
+              con una lettera. Esempio: %{url}'
       index:
         title: Processi partecipativi
       order_by_processes:

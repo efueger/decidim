@@ -103,6 +103,7 @@ sv:
         participatory_process_step:
           fields:
             end_date: Slutdatum
+            single_date: Single date
             start_date: Startdatum
             title: Titel
           name: Deltagande processsteg
@@ -173,7 +174,8 @@ sv:
           success: Deltagande processsteg uppdateras framgångsrikt.
       participatory_process_user_roles:
         create:
-          error: Det gick inte att lägga till en användare för den här deltagande processen.
+          error: Det gick inte att lägga till en användare för den här deltagande
+            processen.
           success: Användaren skapades framgångsrikt för denna deltagande process.
         destroy:
           success: Användaren förstördes framgångsrikt för denna deltagande process.
@@ -186,12 +188,14 @@ sv:
           create: Skapa
           title: Ny deltagande processanvändare.
         update:
-          error: Det uppstod ett fel som uppdaterade en användare för den här deltagande processen.
+          error: Det uppstod ett fel som uppdaterade en användare för den här deltagande
+            processen.
           success: Användaren uppdaterades framgångsrikt för denna deltagande process.
       participatory_processes:
         create:
           error: Det uppstod ett fel vid att skapa en ny deltagande process.
-          success: Deltagande processen skapades framgångsrikt. Konfigurera nu sina steg.
+          success: Deltagande processen skapades framgångsrikt. Konfigurera nu sina
+            steg.
         destroy:
           success: Deltagande processen förstördes framgångsrikt.
         edit:
@@ -231,26 +235,39 @@ sv:
         unpublish: "%{user_name} opublicerade %{resource_name} deltagande process"
         update: "%{user_name} uppdaterade deltagandeprocessen %{resource_name}"
       participatory_process_step:
-        activate: "%{user_name} aktiverade %{resource_name} -steget i deltagarprocessen %{space_name}"
-        create: "%{user_name} skapade steget %{resource_name} i deltagande processen %{space_name}"
-        delete: "%{user_name} raderade %{resource_name} -steget i den deltagande processen %{space_name}"
-        update: "%{user_name} uppdaterade %{resource_name} -steget i den deltagande processen %{space_name}"
+        activate: "%{user_name} aktiverade %{resource_name} -steget i deltagarprocessen
+          %{space_name}"
+        create: "%{user_name} skapade steget %{resource_name} i deltagande processen
+          %{space_name}"
+        delete: "%{user_name} raderade %{resource_name} -steget i den deltagande processen
+          %{space_name}"
+        update: "%{user_name} uppdaterade %{resource_name} -steget i den deltagande
+          processen %{space_name}"
       participatory_process_user_role:
-        create: "%{user_name} bjudit in användaren %{resource_name} till %{space_name} deltagande process"
-        delete: "%{user_name} tagit bort användaren %{resource_name} från %{space_name} deltagande process"
-        update: "%{user_name} ändrade användarens roll %{resource_name} i %{space_name} deltagande process"
+        create: "%{user_name} bjudit in användaren %{resource_name} till %{space_name}
+          deltagande process"
+        delete: "%{user_name} tagit bort användaren %{resource_name} från %{space_name}
+          deltagande process"
+        update: "%{user_name} ändrade användarens roll %{resource_name} i %{space_name}
+          deltagande process"
     events:
       participatory_process:
         step_activated:
-          email_intro: "%{resource_title} -steget är nu aktivt för %{participatory_space_title}. Du kan se den från den här sidan:"
-          email_outro: Du har fått den här meddelandet eftersom du följer %{participatory_space_title}. Du kan sluta ta emot meddelanden efter föregående länk.
+          email_intro: "%{resource_title} -steget är nu aktivt för %{participatory_space_title}.
+            Du kan se den från den här sidan:"
+          email_outro: Du har fått den här meddelandet eftersom du följer %{participatory_space_title}.
+            Du kan sluta ta emot meddelanden efter föregående länk.
           email_subject: En uppdatering till %{participatory_space_title}
           notification_title: '%{resource_title} -steget är nu aktivt för <a href="%{resource_path}">%{participatory_space_title}</a>'
         step_changed:
-          email_intro: 'Dagen för %{resource_title} -steget vid %{participatory_space_title} har uppdaterats. Du kan se den från den här sidan:'
-          email_outro: Du har fått den här meddelandet eftersom du följer %{participatory_space_title}. Du kan sluta ta emot meddelanden efter föregående länk.
+          email_intro: 'Dagen för %{resource_title} -steget vid %{participatory_space_title}
+            har uppdaterats. Du kan se den från den här sidan:'
+          email_outro: Du har fått den här meddelandet eftersom du följer %{participatory_space_title}.
+            Du kan sluta ta emot meddelanden efter föregående länk.
           email_subject: En uppdatering till %{participatory_space_title}
-          notification_title: Dagen för <a href="%{resource_path}">%{resource_title}</a> steg vid <a href="%{participatory_space_url}">%{participatory_space_title}</a> har uppdaterats.
+          notification_title: Dagen för <a href="%{resource_path}">%{resource_title}</a>
+            steg vid <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+            har uppdaterats.
     menu:
       processes: Processer
     participatory_process_groups:
@@ -265,11 +282,16 @@ sv:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'URL-slitsar används för att generera de URL-adresser som pekar på denna process. Accepterar bara bokstäver, siffror och bindestreck, och måste börja med ett brev. Exempel: %{url}'
+            slug_help: 'URL-slitsar används för att generera de URL-adresser som pekar
+              på denna process. Accepterar bara bokstäver, siffror och bindestreck,
+              och måste börja med ett brev. Exempel: %{url}'
         participatory_processes:
           form:
-            announcement_help: Texten du anger här visas för användaren precis nedanför processinformationen.
-            slug_help: 'URL-slitsar används för att generera de URL-adresser som pekar på denna process. Accepterar bara bokstäver, siffror och bindestreck, och måste börja med ett brev. Exempel: %{url}'
+            announcement_help: Texten du anger här visas för användaren precis nedanför
+              processinformationen.
+            slug_help: 'URL-slitsar används för att generera de URL-adresser som pekar
+              på denna process. Accepterar bara bokstäver, siffror och bindestreck,
+              och måste börja med ett brev. Exempel: %{url}'
       index:
         title: Deltagande processer
       order_by_processes:

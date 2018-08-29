@@ -109,6 +109,7 @@ uk:
         participatory_process_step:
           fields:
             end_date: Дата закінчення
+            single_date: Single date
             start_date: Дата початку
             title: Назва
           name: Крок руху співучасті
@@ -237,26 +238,39 @@ uk:
         unpublish: "%{user_name} скасував оприлюднення руху співучасті %{resource_name}"
         update: "%{user_name} оновив рух співучасті %{resource_name}"
       participatory_process_step:
-        activate: "%{user_name} започаткував крок %{resource_name} у русі співучасті %{space_name}"
+        activate: "%{user_name} започаткував крок %{resource_name} у русі співучасті
+          %{space_name}"
         create: "%{user_name} створив крок %{resource_name} у русі співучасті %{space_name}"
         delete: "%{user_name} видалив крок %{resource_name} у русі співучасті %{space_name}"
         update: "%{user_name} оновив крок %{resource_name} у русі співучасті %{space_name}"
       participatory_process_user_role:
-        create: "%{user_name} запросив учасника %{resource_name} до руху співучасті %{space_name}"
-        delete: "%{user_name} видалив учасника %{resource_name} з руху співучасті %{space_name}"
-        update: "%{user_name} змінів роль учасника %{resource_name} у русі співучасті %{space_name}"
+        create: "%{user_name} запросив учасника %{resource_name} до руху співучасті
+          %{space_name}"
+        delete: "%{user_name} видалив учасника %{resource_name} з руху співучасті
+          %{space_name}"
+        update: "%{user_name} змінів роль учасника %{resource_name} у русі співучасті
+          %{space_name}"
     events:
       participatory_process:
         step_activated:
-          email_intro: 'У %{participatory_space_title} приведено в дію крок %{resource_title}. Ви можете переглянути його на сторінці:'
-          email_outro: Ви отримали це сповіщення, тому що ви стежите за %{participatory_space_title}. Ви можете відписатися від цих сповіщень, перейшовши за наведеним вище посиланням.
+          email_intro: 'У %{participatory_space_title} приведено в дію крок %{resource_title}.
+            Ви можете переглянути його на сторінці:'
+          email_outro: Ви отримали це сповіщення, тому що ви стежите за %{participatory_space_title}.
+            Ви можете відписатися від цих сповіщень, перейшовши за наведеним вище
+            посиланням.
           email_subject: Оновлення до %{participatory_space_title}
-          notification_title: Приведено в дію крок %{resource_title} простору співучасті <a href="%{resource_path}">%{participatory_space_title}</a>
+          notification_title: Приведено в дію крок %{resource_title} простору співучасті
+            <a href="%{resource_path}">%{participatory_space_title}</a>
         step_changed:
-          email_intro: 'Дати для кроку %{resource_title} в %{participatory_space_title} оновлено. Ви можете переглянути їх на сторінці:'
-          email_outro: Ви отримали це сповіщення, тому що ви стежите за %{participatory_space_title}. Ви можете відписатися від цих сповіщень, перейшовши за наведеним вище посиланням.
+          email_intro: 'Дати для кроку %{resource_title} в %{participatory_space_title}
+            оновлено. Ви можете переглянути їх на сторінці:'
+          email_outro: Ви отримали це сповіщення, тому що ви стежите за %{participatory_space_title}.
+            Ви можете відписатися від цих сповіщень, перейшовши за наведеним вище
+            посиланням.
           email_subject: Оновлення до %{participatory_space_title}
-          notification_title: Дати для кроку <a href="%{resource_path}">%{resource_title}</a> у <a href="%{participatory_space_url}">%{participatory_space_title}</a> були оновлені.
+          notification_title: Дати для кроку <a href="%{resource_path}">%{resource_title}</a>
+            у <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+            були оновлені.
     menu:
       processes: Рухи
     participatory_process_groups:
@@ -271,11 +285,16 @@ uk:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'Cкорочені веб-адреси використовуються для створення посилань на цей рух. В них припустимі лише букви, цифри та тире, і вони мають починатися з букви. Приклад: %{url}'
+            slug_help: 'Cкорочені веб-адреси використовуються для створення посилань
+              на цей рух. В них припустимі лише букви, цифри та тире, і вони мають
+              починатися з букви. Приклад: %{url}'
         participatory_processes:
           form:
-            announcement_help: Текст, який ви введете тут, буде показано учаснику трохи нижче опису руху.
-            slug_help: 'Cкорочені веб-адреси використовуються для створення посилань на цей рух. В них припустимі лише букви, цифри та тире, і вони мають починатися з букви. Приклад: %{url}'
+            announcement_help: Текст, який ви введете тут, буде показано учаснику
+              трохи нижче опису руху.
+            slug_help: 'Cкорочені веб-адреси використовуються для створення посилань
+              на цей рух. В них припустимі лише букви, цифри та тире, і вони мають
+              починатися з букви. Приклад: %{url}'
       index:
         title: Рухи співучасті
       order_by_processes:

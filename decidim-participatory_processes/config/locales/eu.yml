@@ -103,6 +103,7 @@ eu:
         participatory_process_step:
           fields:
             end_date: Bukaera-data
+            single_date: Single date
             start_date: Hasiera-data
             title: Titulua
           name: Prozesu partizipatiboaren fasea
@@ -186,12 +187,14 @@ eu:
           create: Sortu
           title: Prozesuaren erabiltzaile berria.
         update:
-          error: Errore bat gertatu da parte hartzaile prozesu honetarako erabiltzaile bat.
+          error: Errore bat gertatu da parte hartzaile prozesu honetarako erabiltzaile
+            bat.
           success: Ongi eguneratu da erabiltzailea prozesu partizipatibo honetarako.
       participatory_processes:
         create:
           error: Errorea gertatu da prozesu partizipatibo berri bat sortzean.
-          success: Prozesu partizipatiboa zuzen sortu da. Orain ekin iezaiozu faseak konfiguratzeari.
+          success: Prozesu partizipatiboa zuzen sortu da. Orain ekin iezaiozu faseak
+            konfiguratzeari.
         destroy:
           success: Prozesu partizipatiboa zuzen ezabatu da.
         edit:
@@ -231,26 +234,41 @@ eu:
         unpublish: "%{user_name} argitaratu gabe %{resource_name} prozesu parte-hartzailea"
         update: "%{user_name} %{resource_name} partehartze prozesua eguneratu du"
       participatory_process_step:
-        activate: "%{user_name} %{resource_name} urratsa %{space_name} prozesu parte-hartzailean aktibatuta"
-        create: "%{user_name} %{resource_name} urratsa %{space_name} partaidetzazko prozesuan sortu zen"
-        delete: "%{user_name} %{resource_name} urratsa %{space_name} partaidetzazko prozesuan ezabatu da"
-        update: "%{user_name} %{resource_name} urratsa %{space_name} parte hartze prozesuan eguneratua"
+        activate: "%{user_name} %{resource_name} urratsa %{space_name} prozesu parte-hartzailean
+          aktibatuta"
+        create: "%{user_name} %{resource_name} urratsa %{space_name} partaidetzazko
+          prozesuan sortu zen"
+        delete: "%{user_name} %{resource_name} urratsa %{space_name} partaidetzazko
+          prozesuan ezabatu da"
+        update: "%{user_name} %{resource_name} urratsa %{space_name} parte hartze
+          prozesuan eguneratua"
       participatory_process_user_role:
-        create: "%{user_name} %{resource_name} erabiltzaile gonbidatu %{space_name} parte hartzerako prozesura"
-        delete: "%{user_name} erabiltzaileak kendu %{resource_name} from %{space_name} prozesu parte-hartzailea"
-        update: "%{user_name} erabiltzailearen rola aldatu %{resource_name} en %{space_name} prozesu parte-hartzailea"
+        create: "%{user_name} %{resource_name} erabiltzaile gonbidatu %{space_name}
+          parte hartzerako prozesura"
+        delete: "%{user_name} erabiltzaileak kendu %{resource_name} from %{space_name}
+          prozesu parte-hartzailea"
+        update: "%{user_name} erabiltzailearen rola aldatu %{resource_name} en %{space_name}
+          prozesu parte-hartzailea"
     events:
       participatory_process:
         step_activated:
-          email_intro: "%{resource_title} urratsa aktibo dago %{participatory_space_title}-ra. Orrialde hau ikusi dezakezu:"
-          email_outro: Jakinarazpena jaso duzu %{participatory_space_title}jarraituz gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki dezakezu.
+          email_intro: "%{resource_title} urratsa aktibo dago %{participatory_space_title}-ra.
+            Orrialde hau ikusi dezakezu:"
+          email_outro: Jakinarazpena jaso duzu %{participatory_space_title}jarraituz
+            gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki
+            dezakezu.
           email_subject: "%{participatory_space_title} eguneratze bat"
           notification_title: '%{resource_title} urratsa aktiboa da <a href="%{resource_path}">%{participatory_space_title}</a>'
         step_changed:
-          email_intro: "%{participatory_space_title} %{resource_title} urratsen datak eguneratu dira. Orrialde hau ikusi dezakezu:"
-          email_outro: Jakinarazpena jaso duzu %{participatory_space_title}jarraituz gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki dezakezu.
+          email_intro: "%{participatory_space_title} %{resource_title} urratsen datak
+            eguneratu dira. Orrialde hau ikusi dezakezu:"
+          email_outro: Jakinarazpena jaso duzu %{participatory_space_title}jarraituz
+            gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki
+            dezakezu.
           email_subject: "%{participatory_space_title} eguneratze bat"
-          notification_title: <a href="%{resource_path}">%{resource_title}</a> urratsean datak <a href="%{participatory_space_url}">%{participatory_space_title}</a> eguneratu dira.
+          notification_title: <a href="%{resource_path}">%{resource_title}</a> urratsean
+            datak <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+            eguneratu dira.
     menu:
       processes: Prozesuak
     participatory_process_groups:
@@ -265,11 +283,16 @@ eu:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'URL slugs erabiltzen dira prozesu hau adierazten duten URLak sortzeko. Letrak, zenbakiak eta marratxoak soilik onartzen ditu eta letra batekin hasi behar duzu. Adibidea: %{url}'
+            slug_help: 'URL slugs erabiltzen dira prozesu hau adierazten duten URLak
+              sortzeko. Letrak, zenbakiak eta marratxoak soilik onartzen ditu eta
+              letra batekin hasi behar duzu. Adibidea: %{url}'
         participatory_processes:
           form:
-            announcement_help: Hemen sartzen duzun testua erabiltzaileari erakutsiko zaio prozesuaren informazioaren azpitik.
-            slug_help: 'URL slugs erabiltzen dira prozesu hau adierazten duten URLak sortzeko. Letrak, zenbakiak eta marratxoak soilik onartzen ditu eta letra batekin hasi behar duzu. Adibidea: %{url}'
+            announcement_help: Hemen sartzen duzun testua erabiltzaileari erakutsiko
+              zaio prozesuaren informazioaren azpitik.
+            slug_help: 'URL slugs erabiltzen dira prozesu hau adierazten duten URLak
+              sortzeko. Letrak, zenbakiak eta marratxoak soilik onartzen ditu eta
+              letra batekin hasi behar duzu. Adibidea: %{url}'
       index:
         title: Prozesu partizipatiboak
       order_by_processes:
