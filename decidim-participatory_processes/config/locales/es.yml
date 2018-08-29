@@ -168,11 +168,9 @@ es:
           create: Crear
           title: Nuevo fase de proceso participativo
         ordering:
-          error: Se ha producido un error en la reordenación de las fases de este
-            proceso participativo.
+          error: Se ha producido un error en la reordenación de las fases de este proceso participativo.
         update:
-          error: Se ha producido un error en la actualización de esta fase de proceso
-            participativo.
+          error: Se ha producido un error en la actualización de esta fase de proceso participativo.
           success: La fase de proceso participativo se ha actualizado correctamente.
       participatory_process_user_roles:
         create:
@@ -194,8 +192,7 @@ es:
       participatory_processes:
         create:
           error: Se ha producido un error al crear un nuevo proceso participativo.
-          success: El proceso participativo se ha creado correctamente. Sigue ahora
-            con la configuración de las fases.
+          success: El proceso participativo se ha creado correctamente. Sigue ahora con la configuración de las fases.
         destroy:
           success: El proceso participativo se ha eliminado correctamente.
         edit:
@@ -235,38 +232,26 @@ es:
         unpublish: "%{user_name} despublicó el proceso participativo %{resource_name}"
         update: "%{user_name} actualizó el proceso participativo %{resource_name}"
       participatory_process_step:
-        activate: "%{user_name} activó la fase %{resource_name} en el proceso participativo
-          %{space_name}"
-        create: "%{user_name} creó la fase %{resource_name} en el proceso participativo
-          %{space_name}"
-        delete: "%{user_name} eliminó la fase %{resource_name} en el proceso participativo
-          %{space_name}"
-        update: "%{user_name} actualizó la fase %{resource_name} en el proceso participativo
-          %{space_name}"
+        activate: "%{user_name} activó la fase %{resource_name} en el proceso participativo %{space_name}"
+        create: "%{user_name} creó la fase %{resource_name} en el proceso participativo %{space_name}"
+        delete: "%{user_name} eliminó la fase %{resource_name} en el proceso participativo %{space_name}"
+        update: "%{user_name} actualizó la fase %{resource_name} en el proceso participativo %{space_name}"
       participatory_process_user_role:
-        create: "%{user_name} invitó al usuario %{resource_name} al proceso participativo
-          %{space_name}"
-        delete: "%{user_name} eliminó al usuario %{resource_name} del proceso participativo
-          %{space_name}"
-        update: "%{user_name} cambió el rol del usuario %{resource_name} en el proceso
-          participativo %{space_name}"
+        create: "%{user_name} invitó al usuario %{resource_name} al proceso participativo %{space_name}"
+        delete: "%{user_name} eliminó al usuario %{resource_name} del proceso participativo %{space_name}"
+        update: "%{user_name} cambió el rol del usuario %{resource_name} en el proceso participativo %{space_name}"
     events:
       participatory_process:
         step_activated:
-          email_intro: 'Ya está activa la fase %{resource_title} para %{participatory_space_title}.
-            Puedes verla desde esta página:'
-          email_outro: Has recibido esta notificación porque estás siguiendo %{participatory_space_title}.
-            Puedes dejar de recibir notificaciones siguiendo el enlace anterior.
+          email_intro: 'Ya está activa la fase %{resource_title} para %{participatory_space_title}. Puedes verla desde esta página:'
+          email_outro: Has recibido esta notificación porque estás siguiendo %{participatory_space_title}. Puedes dejar de recibir notificaciones siguiendo el enlace anterior.
           email_subject: Una actualización de %{participatory_space_title}
           notification_title: Ya está activa la fase %{resource_title} para <a href="%{resource_path}">%{participatory_space_title}</a>
         step_changed:
-          email_intro: 'Se han actualizado las fechas para la fase %{resource_title}
-            en %{participatory_space_title}. Puedes verlas desde esta página:'
-          email_outro: Has recibido esta notificación porque estás siguiendo %{participatory_space_title}.
-            Puedes dejar de recibir notificaciones siguiendo el enlace anterior.
+          email_intro: 'Se han actualizado las fechas para la fase %{resource_title} en %{participatory_space_title}. Puedes verlas desde esta página:'
+          email_outro: Has recibido esta notificación porque estás siguiendo %{participatory_space_title}. Puedes dejar de recibir notificaciones siguiendo el enlace anterior.
           email_subject: Una actualización de %{participatory_space_title}
-          notification_title: Se han actualizado las fechas de la fase <a href="%{resource_path}">%{resource_title}</a>
-            en <a href="%{participatory_space_url}">%{participatory_space_title}</a>.
+          notification_title: Se han actualizado las fechas de la fase <a href="%{resource_path}">%{resource_title}</a> en <a href="%{participatory_space_url}">%{participatory_space_title}</a>.
     menu:
       processes: Procesos
     participatory_process_groups:
@@ -281,16 +266,11 @@ es:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'Los textos cortos de URL se utilizan para generar las URL
-              que apuntan a este proceso. Sólo acepta letras, números y guiones, y
-              debe comenzar con una letra. Ejemplo: %{url}'
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este proceso. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
         participatory_processes:
           form:
-            announcement_help: El texto que ingreses aquí se mostrará al usuario justo
-              debajo de la información del proceso.
-            slug_help: 'Los textos cortos de URL se utilizan para generar las URL
-              que apuntan a este proceso. Sólo acepta letras, números y guiones, y
-              debe comenzar con una letra. Ejemplo: %{url}'
+            announcement_help: El texto que ingreses aquí se mostrará al usuario justo debajo de la información del proceso.
+            slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a este proceso. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
       index:
         title: Procesos participativos
       order_by_processes:

@@ -168,11 +168,9 @@ ca:
           create: Crear
           title: Nova fase de procés participatiu
         ordering:
-          error: S'ha produït un error en la reordenació de les fases d'aquest procés
-            participatiu.
+          error: S'ha produït un error en la reordenació de les fases d'aquest procés participatiu.
         update:
-          error: S'ha produït un error en l'actualització d'aquesta fase de procés
-            participatiu.
+          error: S'ha produït un error en l'actualització d'aquesta fase de procés participatiu.
           success: La fase de procés participatiu s'ha actualitzat correctament.
       participatory_process_user_roles:
         create:
@@ -189,14 +187,12 @@ ca:
           create: Crear
           title: Nou usuari de procés participatiu.
         update:
-          error: S'ha produït un error en l'actualització d'un usuari per a aquest
-            procés participatiu.
+          error: S'ha produït un error en l'actualització d'un usuari per a aquest procés participatiu.
           success: Usuari actualitzat satisfactòriament per a aquest procés participatiu.
       participatory_processes:
         create:
           error: S'ha produït un error en crear un nou procés participatiu.
-          success: El procés participatiu s'ha creat correctament. Continua ara amb
-            la configuració de les fases.
+          success: El procés participatiu s'ha creat correctament. Continua ara amb la configuració de les fases.
         destroy:
           success: El procés participatiu s'ha eliminat correctament.
         edit:
@@ -236,39 +232,26 @@ ca:
         unpublish: "%{user_name} ha despublicat el procés participatiu %{resource_name}"
         update: "%{user_name} ha actualitzat el procés participatiu %{resource_name}"
       participatory_process_step:
-        activate: "%{user_name} ha activat la fase %{resource_name} en el procés participatiu
-          %{space_name}"
-        create: "%{user_name} ha creat la fase %{resource_name} en el procés participatiu
-          %{space_name}"
-        delete: "%{user_name} ha eliminat la fase %{resource_name} en el procés participatiu
-          %{space_name}"
-        update: "%{user_name} ha actualitzat la fase %{resource_name} en el procés
-          participatiu %{space_name}"
+        activate: "%{user_name} ha activat la fase %{resource_name} en el procés participatiu %{space_name}"
+        create: "%{user_name} ha creat la fase %{resource_name} en el procés participatiu %{space_name}"
+        delete: "%{user_name} ha eliminat la fase %{resource_name} en el procés participatiu %{space_name}"
+        update: "%{user_name} ha actualitzat la fase %{resource_name} en el procés participatiu %{space_name}"
       participatory_process_user_role:
-        create: "%{user_name} ha convidat l'usuari %{resource_name} al procés participatiu
-          %{space_name}"
-        delete: "%{user_name} ha eliminat l'usuari %{resource_name} del procés participatiu
-          %{space_name}"
-        update: "%{user_name} ha canviat el rol de l'usuari %{resource_name} en el
-          procés participatiu %{space_name}"
+        create: "%{user_name} ha convidat l'usuari %{resource_name} al procés participatiu %{space_name}"
+        delete: "%{user_name} ha eliminat l'usuari %{resource_name} del procés participatiu %{space_name}"
+        update: "%{user_name} ha canviat el rol de l'usuari %{resource_name} en el procés participatiu %{space_name}"
     events:
       participatory_process:
         step_activated:
-          email_intro: 'La fase %{resource_title} ja està activa per %{participatory_space_title}.
-            Pots veure-ho des d''aquesta pàgina:'
-          email_outro: Has rebut aquesta notificació perquè estàs seguint %{participatory_space_title}.
-            Pots deixar de rebre notificacions seguint l'enllaç anterior.
+          email_intro: 'La fase %{resource_title} ja està activa per %{participatory_space_title}. Pots veure-ho des d''aquesta pàgina:'
+          email_outro: Has rebut aquesta notificació perquè estàs seguint %{participatory_space_title}. Pots deixar de rebre notificacions seguint l'enllaç anterior.
           email_subject: Una actualització a %{participatory_space_title}
           notification_title: La fase %{resource_title} ja està activa per <a href="%{resource_path}">%{participatory_space_title}</a>
         step_changed:
-          email_intro: 'S''han actualitzat les dates de la fase %{resource_title}
-            a %{participatory_space_title}. Pots veure-ho des d''aquesta pàgina:'
-          email_outro: Has rebut aquesta notificació perquè estàs seguint %{participatory_space_title}.
-            Pots deixar de rebre notificacions seguint l'enllaç anterior.
+          email_intro: 'S''han actualitzat les dates de la fase %{resource_title} a %{participatory_space_title}. Pots veure-ho des d''aquesta pàgina:'
+          email_outro: Has rebut aquesta notificació perquè estàs seguint %{participatory_space_title}. Pots deixar de rebre notificacions seguint l'enllaç anterior.
           email_subject: Una actualització a %{participatory_space_title}
-          notification_title: Les dates de la fase <a href="%{resource_path}">%{resource_title}</a>
-            a <a href="%{participatory_space_url}">%{participatory_space_title}</a>
-            s'han actualitzat.
+          notification_title: Les dates de la fase <a href="%{resource_path}">%{resource_title}</a> a <a href="%{participatory_space_url}">%{participatory_space_title}</a> s'han actualitzat.
     menu:
       processes: Processos
     participatory_process_groups:
@@ -283,16 +266,11 @@ ca:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que
-              apunten a aquest procés. Només accepta lletres, números i guions, i
-              ha de començar amb una lletra. Exemple: %{url}'
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest procés. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
         participatory_processes:
           form:
-            announcement_help: El text que introdueixis aquí es mostrarà a l'usuari
-              just a sota de la informació del procés.
-            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que
-              apunten a aquest procés. Només accepta lletres, números i guions, i
-              ha de començar amb una lletra. Exemple: %{url}'
+            announcement_help: El text que introdueixis aquí es mostrarà a l'usuari just a sota de la informació del procés.
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest procés. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
       index:
         title: Processos participatius
       order_by_processes:

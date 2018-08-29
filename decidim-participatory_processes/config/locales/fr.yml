@@ -147,13 +147,11 @@ fr:
           success: Concertation dépubliée avec succès.
       participatory_process_step_activations:
         create:
-          error: Une erreur s'est produite lors de l'activation de cette étape de
-            la concertation.
+          error: Une erreur s'est produite lors de l'activation de cette étape de la concertation.
           success: Étape de la concertation activée avec succès.
       participatory_process_steps:
         create:
-          error: Une erreur s'est produite lors de la création d'une nouvelle étape
-            de la concertation.
+          error: Une erreur s'est produite lors de la création d'une nouvelle étape de la concertation.
           success: Étape de la concertation créée avec succès.
         default_title: Introduction
         destroy:
@@ -170,16 +168,13 @@ fr:
           create: Créer
           title: Nouvelle étape de la concertation
         ordering:
-          error: Une erreur s'est produite lors de la réorganisation des étapes de
-            la concertation.
+          error: Une erreur s'est produite lors de la réorganisation des étapes de la concertation.
         update:
-          error: Une erreur s'est produite lors de la mise à jour de cette étape de
-            la concertation.
+          error: Une erreur s'est produite lors de la mise à jour de cette étape de la concertation.
           success: Étape de la concertation mise à jour avec succès.
       participatory_process_user_roles:
         create:
-          error: Une erreur s'est produite lors de l'ajout d'un utilisateur pour cette
-            concertation.
+          error: Une erreur s'est produite lors de l'ajout d'un utilisateur pour cette concertation.
           success: Utilisateur ajouté avec succès à cette concertation.
         destroy:
           success: Utilisateur supprimé avec succès de cette concertation.
@@ -192,8 +187,7 @@ fr:
           create: Créer
           title: Nouvel utilisateur de la concertation.
         update:
-          error: Une erreur s'est produite lors de la mise à jour d'un utilisateur
-            pour cette concertation.
+          error: Une erreur s'est produite lors de la mise à jour d'un utilisateur pour cette concertation.
           success: L'utilisateur a été mis à jour avec succès pour cette concertation.
       participatory_processes:
         create:
@@ -222,8 +216,7 @@ fr:
           success: Concertation dupliquée avec succès.
       participatory_processes_group:
         create:
-          error: Une erreur s'est produite lors de la création d'un nouveau groupe
-            de concertations.
+          error: Une erreur s'est produite lors de la création d'un nouveau groupe de concertations.
           success: Groupe de concertations créé avec succès.
       titles:
         participatory_process_groups: Groupes de concertations
@@ -239,45 +232,26 @@ fr:
         unpublish: "%{user_name} n'a pas publié la concertation %{resource_name}"
         update: "%{user_name} a mis à jour la concertation %{resource_name}"
       participatory_process_step:
-        activate: "%{user_name} a activé l'étape %{resource_name} dans la concertation
-          %{space_name}"
-        create: "%{user_name} a créé l'étape %{resource_name} dans la concertation
-          %{space_name}"
-        delete: "%{user_name} a supprimé l'étape %{resource_name} de la concertation
-          %{space_name}"
-        update: "%{user_name} a mis à jour l'étape %{resource_name} de la concertation
-          %{space_name}"
+        activate: "%{user_name} a activé l'étape %{resource_name} dans la concertation %{space_name}"
+        create: "%{user_name} a créé l'étape %{resource_name} dans la concertation %{space_name}"
+        delete: "%{user_name} a supprimé l'étape %{resource_name} de la concertation %{space_name}"
+        update: "%{user_name} a mis à jour l'étape %{resource_name} de la concertation %{space_name}"
       participatory_process_user_role:
-        create: "%{user_name} a invité l'utilisateur %{resource_name} à la concertation
-          %{space_name}"
-        delete: "%{user_name} a supprimé l'utilisateur %{resource_name} de la concertation
-          %{space_name}"
-        update: "%{user_name} a changé le rôle de l'utilisateur %{resource_name} dans
-          la concertation %{space_name}"
+        create: "%{user_name} a invité l'utilisateur %{resource_name} à la concertation %{space_name}"
+        delete: "%{user_name} a supprimé l'utilisateur %{resource_name} de la concertation %{space_name}"
+        update: "%{user_name} a changé le rôle de l'utilisateur %{resource_name} dans la concertation %{space_name}"
     events:
       participatory_process:
         step_activated:
-          email_intro: 'L''étape %{resource_title} vient d''être activée pour %{participatory_space_title}.
-            Vous pouvez désormais la consulter sur cette page :'
-          email_outro: Vous venez de recevoir cette notification car vous suivez %{participatory_space_title}.
-            Vous pouvez à tout moment arrêter de recevoir ces notifications en suivant
-            le lien précédent.
-          email_subject: Une mise à jour de %{participatory_space_title} vient d'être
-            effectuée ! Nous vous invitons à venir consulter la page afin de découvrir
-            les dernières améliorations
-          notification_title: L'étape %{resource_title} est désormais activée pour
-            <a href="%{resource_path}">%{participatory_space_title}</a>
+          email_intro: 'L''étape %{resource_title} vient d''être activée pour %{participatory_space_title}. Vous pouvez désormais la consulter sur cette page :'
+          email_outro: Vous venez de recevoir cette notification car vous suivez %{participatory_space_title}. Vous pouvez à tout moment arrêter de recevoir ces notifications en suivant le lien précédent.
+          email_subject: Une mise à jour de %{participatory_space_title} vient d'être effectuée ! Nous vous invitons à venir consulter la page afin de découvrir les dernières améliorations
+          notification_title: L'étape %{resource_title} est désormais activée pour <a href="%{resource_path}">%{participatory_space_title}</a>
         step_changed:
-          email_intro: 'Les dates de l''étape %{resource_title} de %{participatory_space_title}
-            ont été mises à jour. Vous pouvez les retrouver sur cette page :'
-          email_outro: Vous venez de recevoir cette notification car vous suivez %{participatory_space_title}.
-            Vous pouvez à tout moment arrêter de recevoir ces notifications en suivant
-            le lien précédent.
-          email_subject: Une mise à jour de %{participatory_space_title} vient d'être
-            réalisée ! Nous vous invitons à venir voir les dernières améliorations
-          notification_title: Les dates de l'étape <a href="%{resource_path}">%{resource_title}</a>
-            sur <a href="%{participatory_space_url}">%{participatory_space_title}</a>
-            ont été mises à jour.
+          email_intro: 'Les dates de l''étape %{resource_title} de %{participatory_space_title} ont été mises à jour. Vous pouvez les retrouver sur cette page :'
+          email_outro: Vous venez de recevoir cette notification car vous suivez %{participatory_space_title}. Vous pouvez à tout moment arrêter de recevoir ces notifications en suivant le lien précédent.
+          email_subject: Une mise à jour de %{participatory_space_title} vient d'être réalisée ! Nous vous invitons à venir voir les dernières améliorations
+          notification_title: Les dates de l'étape <a href="%{resource_path}">%{resource_title}</a> sur <a href="%{participatory_space_url}">%{participatory_space_title}</a> ont été mises à jour.
     menu:
       processes: Concertations
     participatory_process_groups:
@@ -292,18 +266,11 @@ fr:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'Les identifiants d''URL sont utilisés pour générer les URL
-              qui envoient vers cette concertation. Ils n''acceptent que des lettres,
-              des chiffres et des tirets et doivent commencer par une lettre. Exemple
-              : %{url}'
+            slug_help: 'Les identifiants d''URL sont utilisés pour générer les URL qui envoient vers cette concertation. Ils n''acceptent que des lettres, des chiffres et des tirets et doivent commencer par une lettre. Exemple : %{url}'
         participatory_processes:
           form:
-            announcement_help: Le texte saisi ici sera affiché juste en dessous des
-              informations de la concertation.
-            slug_help: 'Les identifiants d''URL sont utilisés pour générer les URL
-              qui envoient vers cette concertation. Ils n''acceptent que des lettres,
-              des chiffres et des tirets et doivent commencer par une lettre. Exemple
-              : %{url}'
+            announcement_help: Le texte saisi ici sera affiché juste en dessous des informations de la concertation.
+            slug_help: 'Les identifiants d''URL sont utilisés pour générer les URL qui envoient vers cette concertation. Ils n''acceptent que des lettres, des chiffres et des tirets et doivent commencer par une lettre. Exemple : %{url}'
       index:
         title: Concertations
       order_by_processes:
