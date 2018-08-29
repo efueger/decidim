@@ -103,7 +103,7 @@ ca:
         participatory_process_step:
           fields:
             end_date: Data de finalització
-            single_date: This step takes place over a single day.
+            single_date: Single date
             start_date: Data d'inici
             title: Títol
           name: Name

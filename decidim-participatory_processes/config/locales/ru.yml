@@ -109,7 +109,7 @@ ru:
         participatory_process_step:
           fields:
             end_date: Дата окончания
-            single_date: This step takes place over a single day.
+            single_date: Single date
             start_date: Дата начала
             title: Название
           name: Шаг движения соучастия

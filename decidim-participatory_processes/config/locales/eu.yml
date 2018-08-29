@@ -103,7 +103,7 @@ eu:
         participatory_process_step:
           fields:
             end_date: Bukaera-data
-            single_date: This step takes place over a single day.
+            single_date: Single date
             start_date: Hasiera-data
             title: Titulua
           name: Prozesu partizipatiboaren fasea

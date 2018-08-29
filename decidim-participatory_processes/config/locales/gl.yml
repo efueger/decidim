@@ -103,7 +103,7 @@ gl:
         participatory_process_step:
           fields:
             end_date: Data de finalización
-            single_date: This step takes place over a single day.
+            single_date: Single date
             start_date: Data de inicio
             title: Título
           name: Paso de proceso participativo

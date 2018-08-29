@@ -103,7 +103,7 @@ fr:
         participatory_process_step:
           fields:
             end_date: Date de fin
-            single_date: Cette étape se déroule sur un seul jour.
+            single_date: Single date
             start_date: Date de début
             title: Titre
           name: Étape de la concertation
