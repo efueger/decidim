@@ -21,6 +21,7 @@ use the following command in your rails console : `Decidim::User.find_each { |us
 
 **Fixed**:
 
+- **decidim-core**: Fix test consistency [#221](https://github.com/OpenSourcePolitics/decidim/pull/221)
 - **decidim-core**: Add shinier signature. [#186](https://github.com/OpenSourcePolitics/decidim/pull/186)
 
 ## [Unreleased](https://github.com/decidim/decidim/tree/0.11-stable)
