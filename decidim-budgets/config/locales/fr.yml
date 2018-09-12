@@ -102,7 +102,6 @@ fr:
         project:
           add: Ajouter
           count:
-            zero: 0 soutien
             one: 1 soutien
             other: "%{count} soutiens"
           remove: Supprimer
