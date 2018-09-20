@@ -27,6 +27,8 @@
                 <% end %>
                 <% if allowed_to? :update, :process, process: process %>
                   <%= link_to translated_attribute(process.title), edit_participatory_process_path(process) %><br />
+                <% elsif (process.has_questions_component?) && (allowed_to? :manage, :questions, process: process) %>
+                  <%= link_to translated_attribute(process.title), manage_component_path(process.questions_component) %><br />
                 <% elsif allowed_to? :preview, :process, process: process %>
                   <%= link_to translated_attribute(process.title), decidim_participatory_processes.participatory_process_path(process) %><br />
                 <% elsif allowed_to? :read, :moderation, process: process %>
