@@ -208,6 +208,14 @@ module Decidim
   # environments, but in different folders.
   config_accessor :base_uploads_path
 
+  # A base path for the uploads. If set, make sure it ends in a slash.
+  # Uploads will be set to `<base_path>/uploads/`. This can be useful if you
+  # want to use the same uploads place for both staging and production
+  # environments, but in different folders.
+  config_accessor :participatory_process_user_roles do
+    %w(admin collaborator moderator)
+  end
+
   # Public: Registers a global engine. This method is intended to be used
   # by component engines that also offer unscoped functionality
   #
