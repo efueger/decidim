@@ -3,135 +3,135 @@ de:
   activemodel:
     attributes:
       debate:
-        category_id: Category
-        decidim_category_id: Category
-        description: Description
-        end_time: Ends at
-        information_updates: Information updates
-        instructions: Instructions to participate
-        start_time: Starts at
-        title: Title
-        user_group_id: Create debate as
+        category_id: Kategorie
+        decidim_category_id: Kategorie
+        description: Beschreibung
+        end_time: Endet bei
+        information_updates: Aktualisierung der Informationen
+        instructions: Anweisungen zur Teilnahme
+        start_time: Beginnt bei
+        title: Titel
+        user_group_id: Debatte erstellen als
     models:
-      decidim/debates/create_debate_event: Debate
-      decidim/debates/creation_disabled_event: Debates disabled
-      decidim/debates/creation_enabled_event: Debates enabled
+      decidim/debates/create_debate_event: Debatte
+      decidim/debates/creation_disabled_event: Debatten deaktiviert
+      decidim/debates/creation_enabled_event: Debatten aktiviert
   activerecord:
     models:
       decidim/debates/debate:
-        one: Debate
-        other: Debates
+        one: Debatte
+        other: Debatten
   decidim:
     components:
       debates:
         actions:
-          create: Create
-        name: Debates
+          create: Erstellen
+        name: Debatten
         settings:
           global:
-            announcement: Announcement
-            comments_enabled: Comments enabled
+            announcement: Ankündigung
+            comments_enabled: Kommentare aktiviert
           step:
-            announcement: Announcement
-            comments_blocked: Comments blocked
-            creation_enabled: Debate creation by users enabled
+            announcement: Ankündigung
+            comments_blocked: Kommentare gesperrt
+            creation_enabled: Debattenerstellung durch Benutzer aktiviert
     debates:
       actions:
-        confirm_destroy: Are you sure?
-        destroy: Delete
-        edit: Edit
-        new: New %{name}
-        title: Actions
+        confirm_destroy: Bist du sicher?
+        destroy: Löschen
+        edit: Bearbeiten
+        new: Neu %{name}>
+        title: Aktionen
       admin:
         debates:
           create:
-            invalid: There has been a problem while creating the debate.
-            success: Debate created successfully.
+            invalid: Es gab ein Problem bei der Erstellung der Debatte.
+            success: Debatte erfolgreich erstellt.
           destroy:
-            success: Debate deleted successfully.
+            success: Debatte erfolgreich gelöscht.
           edit:
-            title: Edit debate
-            update: Update debate
+            title: Debatte bearbeiten
+            update: Debatte aktualisieren
           index:
-            title: Debates
+            title: Debatten
           new:
-            create: Create debate
-            title: New debate
+            create: Debatte erstellen
+            title: Neue Debatte
           update:
-            invalid: There has been a problem while updating this debate.
-            success: Debate updated successfully.
+            invalid: Es gab ein Problem bei der Aktualisierung dieser Debatte.
+            success: Debatte erfolgreich aktualisiert.
         models:
           debate:
-            name: Debate
+            name: Debatte
       admin_log:
         debate:
-          create: "%{user_name} created the %{resource_name} debate on the %{space_name} space"
-          update: "%{user_name} updated the %{resource_name} debate on the %{space_name} space"
+          create: "%{Benutzername} hat die %{Ressourcenname} Debatte über den %{Raumname} Raum erstellt"
+          update: "%{Benutzername} aktualisiert die %{Ressourcenname} Debatte über den %{Raumname} Raum"
       debates:
         count:
           debates_count:
-            one: "%{count} debate"
-            other: "%{count} debates"
+            one: "%{count} Debatte"
+            other: "%{count} Debatten"
         create:
-          invalid: There has been a problem while creating the debate.
-          success: Debate created successfully.
+          invalid: Es gab ein Problem bei der Erstellung der Debatte.
+          success: Debatte erfolgreich erstellt.
         debate:
-          participate: Participate
+          participate: Teilnehmen
         filters:
-          all: All
-          category: Category
-          category_prompt: Select a category
-          citizens: Citizens
-          official: Official
-          origin: Origin
-          search: Search
+          all: Alle
+          category: Kategorie
+          category_prompt: Wählen Sie eine Kategorie
+          citizens: Bürger
+          official: Offiziell
+          origin: Herkunft
+          search: Suche
         filters_small_view:
-          close_modal: Close modal
+          close_modal: Modal schließen
           filter: Filter
-          filter_by: Filter by
-          unfold: Unfold
+          filter_by: Filtern nach
+          unfold: Aufklappen
         index:
-          new_debate: New debate
+          new_debate: Neue Debatte
         new:
-          back: Back
-          create: Create
-          select_a_category: Please select a category
-          title: New debate
+          back: Zurück
+          create: Erstellen
+          select_a_category: Bitte wählen Sie eine Kategorie aus
+          title: Neue Debatte
         share:
-          close_window: Close window
-          share: Share
-          share_link: Share link
+          close_window: Fenster schließen
+          share: Teilen
+          share_link: Link teilen
       models:
         debate:
           fields:
-            end_time: End date
-            official_debate: Official debate
-            start_time: Start date
-            title: Title
+            end_time: Enddatum
+            official_debate: Offizielle Debatte
+            start_time: Startdatum
+            title: Titel
     events:
       debates:
         create_debate_event:
           space_followers:
             email_intro: |-
               Hi,
-              A new debate has been created on the %{space_title} participatory space, check it out and contribute:
-            email_outro: You have received this notification because you are following the %{space_title} participatory space. You can stop receiving notifications following the previous link.
-            email_subject: New debate on %{space_title}
-            notification_title: The <a href="%{resource_path}">%{resource_title}</a> debate was created on <a href="%{space_path}">%{space_title}</a>.
+              Eine neue Debatte wurde über den %{space_title} partizipativen Raum geschaffen, prüfen Sie ihn und tragen Sie dazu bei:
+            email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie den %{space_title} partizipativen Raum befolgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+            email_subject: Neue Debatte über %{space_title}>
+            notification_title: Die <a href="%{Ressourcen_Pfad}">%{Ressourcen_Titel}</a> Debatte wurde erstellt bei <a href="%{space_path}">%{space_title}</a>.
           user_followers:
             email_intro: |-
               Hi,
-              %{author_name} %{author_nickname}, who you are following, has created a new debate, check it out and contribute:
-            email_outro: You have received this notification because you are following %{author_nickname}. You can stop receiving notifications following the previous link.
-            email_subject: New debate by %{author_nickname}
-            notification_title: The <a href="%{resource_path}">%{resource_title}</a> debate was created by <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
+              %{autor_name} %{autor_nickname}, dem du folgst, hat eine neue Debatte erstellt, sie ausgecheckt und beigetragen:
+            email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{author_nickname} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+            email_subject: Neue Debatte bei %{author_nickname}>
+            notification_title: Der <a href="%{resource_path}"><%{resource_title}</a> Debatte wurde erstellt von <a href="%{author_path}">%{author_name} %{author_n>>%{author_nickname}</a>.
         creation_disabled:
-          email_intro: 'Debate creation is no longer active in %{participatory_space_title}. You can still participate in opened debates from this page:'
-          email_outro: You have received this notification because you are following %{participatory_space_title}. You can stop receiving notifications following the previous link.
-          email_subject: Debate creation disabled in %{participatory_space_title}
-          notification_title: Debate creation is now disabled in <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+          email_intro: 'Die Erstellung von Debatten ist in %{partizipatory_space_title} nicht mehr aktiv. Auf dieser Seite kannst du weiterhin an offenen Debatten teilnehmen:'
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{partizipatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Debattenerstellung deaktiviert in %{teilnehmender_Raum_Titel}>
+          notification_title: Die Erstellung von Debatten ist nun deaktiviert in <a href="%{participatory_space_url}">%{participatory_space_title}</a>>
         creation_enabled:
-          email_intro: 'You can now start new debates in %{participatory_space_title}! Start participating in this page:'
-          email_outro: You have received this notification because you are following %{participatory_space_title}. You can stop receiving notifications following the previous link.
-          email_subject: Debates now available in %{participatory_space_title}
-          notification_title: You can now start <a href="%{resource_path}">new debates</a> in <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+          email_intro: 'Du kannst jetzt neue Debatten beginnen in %{partizipatory_space_title}! Beginnen Sie mit der Teilnahme an dieser Seite:'
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{partizipatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Debatten jetzt verfügbar in %{teilnehmender_Raum_Titel}>
+          notification_title: Sie können nun <a href="%{resource_path}">neue Debatten</a> in <a href="%{participatory_space_url}">%{participatory_space_title}</a>>

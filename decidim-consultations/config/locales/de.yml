@@ -3,268 +3,268 @@ de:
   activemodel:
     attributes:
       consultation:
-        banner_image: Banner image
-        decidim_highlighted_scope_id: Highlighted scope
-        description: Description
-        end_voting_date: End date
-        introductory_image: Introductory image
-        introductory_video_url: Introductory video URL
-        questions: Questions
-        slug: URL slug
-        start_voting_date: Start date
-        subtitle: Subtitle
-        title: Title
+        banner_image: Banner-Bild
+        decidim_highlighted_scope_id: Hervorgehobener Umfang
+        description: Beschreibung
+        end_voting_date: Enddatum
+        introductory_image: Einführungsbild
+        introductory_video_url: Einführungsvideo URL
+        questions: Fragen zu
+        slug: URL Slug
+        start_voting_date: Startdatum
+        subtitle: Untertitel
+        title: Titel
       question:
-        banner_image: Banner image
-        decidim_scope_id: Municipal area
+        banner_image: Banner-Bild
+        decidim_scope_id: Gemeindegebiet
         hashtag: Hashtag
-        hero_image: Home image
-        i_frame_url: External voting system URL
-        origin_scope: Scope
-        origin_title: Origin
-        origin_url: Origin URL
-        participatory_scope: Participatory scope
-        promoter_group: Promoter group
-        question_context: Context
-        reference: Reference
-        scope: Municipal area
-        slug: URL slug
-        subtitle: Subtitle
-        title: Title
-        vote: External voting system
-        what_is_decided: What is decided
+        hero_image: Homebild
+        i_frame_url: URL des externen Abstimmungssystems
+        origin_scope: Umfang
+        origin_title: Herkunft
+        origin_url: Herkunfts-URL
+        participatory_scope: Beteiligungsumfang
+        promoter_group: Promotorengruppe
+        question_context: Kontext
+        reference: Referenz
+        scope: Gemeindegebiet
+        slug: URL Slug
+        subtitle: Untertitel
+        title: Titel
+        vote: Externes Abstimmungssystem
+        what_is_decided: Was entschieden wird
     errors:
       vote:
         decidim_consultations_response_id:
-          not_found: Response not found.
+          not_found: Antwort nicht gefunden.
   activerecord:
     models:
       decidim/consultations:
-        one: Consultation
-        other: Consultations
+        one: Beratung
+        other: Konsultationen
       decidim/consultations/question:
-        one: Question
-        other: Questions
+        one: Frage
+        other: Fragen zu
       decidim/consultations/response:
-        one: Response
-        other: Responses
+        one: Antwort
+        other: Antworten
       decidim/consultations/vote:
-        one: Vote
-        other: Votes
+        one: Abstimmen
+        other: Abstimmungen
   decidim:
     admin:
       actions:
         consultation:
-          new: New consultation
-        publish_results: Publish results
-        unpublish_results: Unpublish results
+          new: Neue Beratung
+        publish_results: Ergebnisse veröffentlichen
+        unpublish_results: Ergebnisse nicht veröffentlichen
       consultation_publications:
         create:
-          error: There was an error publishing this consultation.
-          success: Consultation published successfully.
+          error: Es gab einen Fehler bei der Veröffentlichung dieser Konsultation.
+          success: Konsultation erfolgreich veröffentlicht.
         destroy:
-          error: There was an error unpublishing this consultation.
-          success: Consultation unpublished successfully.
+          error: Es gab einen Fehler, diese Konsultation nicht zu veröffentlichen.
+          success: Konsultation unveröffentlicht erfolgreich.
       consultation_results_publications:
         create:
-          error: There was an error publishing the results for this consultation.
-          success: Consultation results published successfully.
+          error: Es gab einen Fehler bei der Veröffentlichung der Ergebnisse dieser Konsultation.
+          success: Konsultationsergebnisse erfolgreich veröffentlicht.
         destroy:
-          error: There was an error unpublishing the results for this consultation.
-          success: Consultation results unpublished successfully.
+          error: Es gab einen Fehler, die Ergebnisse dieser Konsultation nicht zu veröffentlichen.
+          success: Konsultationsergebnisse erfolgreich unveröffentlicht.
       consultations:
         create:
-          error: There was an error creating a new consultation.
-          success: Consultation successfully created.
+          error: Es gab einen Fehler bei der Erstellung einer neuen Beratung.
+          success: Beratung erfolgreich erstellt.
         destroy:
-          success: Consultation successfully destroyed.
+          success: Konsultation erfolgreich beendet.
         edit:
           update: Update
         form:
-          slug_help: 'URL slugs are used to generate the URLs that point to this consultation. Only accepts letters, numbers and dashes, and must start with a letter. Example: %{url}'
-          title: General information
+          slug_help: 'URL-Slugs werden verwendet, um die URLs zu generieren, die auf diese Konsultation verweisen. Akzeptiert nur Buchstaben, Zahlen und Bindestriche und muss mit einem Buchstaben beginnen. Beispiel: %{url}>'
+          title: Allgemeine Informationen
         index:
-          not_published: Not published
-          published: Published
+          not_published: Nicht veröffentlicht
+          published: Veröffentlicht
         new:
-          create: Create
-          title: New consultation
+          create: Erstellen
+          title: Neue Beratung
         update:
-          error: There was an error when updating this consultation.
-          success: Consultation updated successfully.
+          error: Bei der Aktualisierung dieser Beratung ist ein Fehler aufgetreten.
+          success: Konsultation erfolgreich aktualisiert.
       menu:
-        consultations: Consultations
+        consultations: Konsultationen
         consultations_submenu:
-          info: Information
-          questions: Questions
+          info: Informationen
+          questions: Fragen zu
         questions_submenu:
-          components: Components
-          consultation: Consultation
-          info: Information
-          responses: Responses
+          components: Komponenten
+          consultation: Beratung
+          info: Informationen
+          responses: Antworten
       models:
         consultation:
           fields:
-            created_at: Created at
-            published: Published
-            title: Title
+            created_at: Erstellt am
+            published: Veröffentlicht
+            title: Titel
         question:
           fields:
-            created_at: Created at
-            published: Published
-            title: Title
+            created_at: Erstellt am
+            published: Veröffentlicht
+            title: Titel
           name:
-            one: Question
-            other: Questions
+            one: Frage
+            other: Fragen zu
         response:
           fields:
-            created_at: Created at
-            title: Title
+            created_at: Erstellt am
+            title: Titel
           name:
-            one: Response
-            other: Responses
+            one: Antwort
+            other: Antworten
       question_publications:
         create:
-          error: There was an error publishing this question.
-          success: Question published successfully.
+          error: Es gab einen Fehler bei der Veröffentlichung dieser Frage.
+          success: Frage erfolgreich veröffentlicht.
         destroy:
-          error: There was an error unpublishing this question.
-          success: Question unpublished successfully.
+          error: Es gab einen Fehler, diese Frage nicht zu veröffentlichen.
+          success: Frage unveröffentlicht erfolgreich.
       questions:
         create:
-          error: There was an error creating a new question.
-          success: Question successfully created.
+          error: Es gab einen Fehler beim Erstellen einer neuen Frage.
+          success: Frage erfolgreich erstellt.
         destroy:
-          success: Question successfully destroyed.
+          success: Frage erfolgreich beantwortet.
         edit:
           update: Update
         form:
-          title: General information
+          title: Allgemeine Informationen
         index:
-          not_published: Not published
-          published: Published
+          not_published: Nicht veröffentlicht
+          published: Veröffentlicht
         new:
-          create: Create
-          title: New question
+          create: Erstellen
+          title: Neue Frage
         update:
-          error: There was an error when updating this question.
-          success: Question updated successfully.
+          error: Bei der Aktualisierung dieser Frage ist ein Fehler aufgetreten.
+          success: Die Frage wurde erfolgreich aktualisiert.
       responses:
         create:
-          error: There was an error creating a new response.
-          success: Response successfully created.
+          error: Es gab einen Fehler beim Erstellen einer neuen Antwort.
+          success: Antwort erfolgreich erstellt.
         destroy:
-          error: There was an error when removing the response.
-          success: Response successfully destroyed.
+          error: Es gab einen Fehler beim Entfernen der Antwort.
+          success: Antwort erfolgreich zerstört.
         edit:
           update: Update
         form:
-          title: General information
+          title: Allgemeine Informationen
         new:
-          create: Create
-          title: New response
+          create: Erstellen
+          title: Neue Antwort
         update:
-          error: There was an error when updating this response.
-          success: Response updated successfully.
+          error: Beim Aktualisieren dieser Antwort ist ein Fehler aufgetreten.
+          success: Antwort erfolgreich aktualisiert.
       titles:
-        consultations: Consultations
-        questions: Questions
-        responses: Responses
+        consultations: Konsultationen
+        questions: Fragen zu
+        responses: Antworten
     consultations:
       consultation:
-        start_voting_date: Voting from
-        view_results: View results
+        start_voting_date: Abstimmen von
+        view_results: Ergebnisse anzeigen
       consultation_card:
-        view_results: View results
+        view_results: Ergebnisse anzeigen
       consultations:
         orders:
-          label: 'Sort consultations by:'
-          random: Random
-          recent: Most recent
+          label: 'Die Konsultationen sortieren nach:'
+          random: Zufällig
+          recent: Neueste
       count:
         title:
-          one: "%{count} consultation"
-          other: "%{count} consultations"
+          one: "%{count} Beratung"
+          other: "%{count} Konsultationen"
       filters:
-        active: Active
-        all: All
-        finished: Finished
-        search: Search
-        state: State
-        upcoming: Upcoming
+        active: Aktiv
+        all: Alle
+        finished: Fertiggestellt
+        search: Suche
+        state: Zustand
+        upcoming: Demnächst
       filters_small_view:
-        close_modal: Close window
+        close_modal: Fenster schließen
         filter: Filter
-        filter_by: Filter by
-        unfold: Unfold
+        filter_by: Filtern nach
+        unfold: Aufklappen
       highlighted_questions:
-        title: Questions from %{scope_name}
+        title: Fragen von %{scope_name}>
       index:
-        title: Consultations
+        title: Konsultationen
       question:
-        take_part: Take part
-        view_results: View results
+        take_part: Teilnehmen
+        view_results: Ergebnisse anzeigen
         votes_out_of:
-          one: vote out of
-          other: votes out of
+          one: abwählen
+          other: stimmenabgabe
       question_votes:
         create:
-          error: There have been errors when voting the question
+          error: Bei der Abstimmung der Frage sind Fehler aufgetreten
       regular_questions:
-        title: Questions for this consultation
+        title: Fragen zu dieser Beratung
       show:
         badge_name:
-          finished: Finished
-          open: Open
-          open_votes: Open votes
-          published_results: Results published
+          finished: Fertiggestellt
+          open: Offen
+          open_votes: Offene Abstimmungen
+          published_results: Veröffentlichte Ergebnisse
         footer_button_text:
-          debate: Debate
-          view: View
-          view_results: View results
-          vote: Vote
-        unspecified: Not specified
+          debate: Debatte
+          view: Ansicht
+          view_results: Ergebnisse anzeigen
+          vote: Abstimmen
+        unspecified: Nicht spezifiziert
     menu:
-      consultations: Consultations
+      consultations: Konsultationen
     pages:
       home:
         statistics:
-          consultations_count: Consultations
+          consultations_count: Konsultationen
     questions:
       results:
-        title: Results
+        title: Ergebnisse
       show:
-        read_more: Read more
+        read_more: Mehr erfahren
       statistics:
-        assistants_count_title: Assistants
-        comments_count_title: Comments
-        meetings_count_title: Meetings
-        supports_count_title: Adhesions
+        assistants_count_title: Assistenten
+        comments_count_title: Kommentare
+        meetings_count_title: Besprechungen
+        supports_count_title: Verklebungen
       technical_info:
-        technical_data: Technical data
+        technical_data: Technische Daten
       vote_button:
-        already_voted: Already voted
-        already_voted_hover: Revoke support
-        starting_from: Starting from %{date}
-        vote: Vote
+        already_voted: Bereits abgestimmt
+        already_voted_hover: Unterstützung widerrufen
+        starting_from: Ausgehend von %{Datum}>
+        vote: Abstimmen
       vote_modal:
-        contextual_help: Please, select an option.
-        title: 'Consultation: question support'
+        contextual_help: Bitte wählen Sie eine Option aus.
+        title: 'Beratung: Fragenunterstützung'
       vote_modal_confirm:
-        change: Change
-        confirm: Confirm
-        contextual_help: Please confirm the selected option.
-        title: 'Consultation: confirm support'
+        change: Ändern
+        confirm: Bestätigen
+        contextual_help: Bitte bestätigen Sie die gewählte Option.
+        title: 'Beratung: Unterstützung bestätigen'
   layouts:
     decidim:
       admin:
         question:
-          attachments: Attachments
-          categories: Categories
+          attachments: Anhänge
+          categories: Kategorien
       consultation_voting_data:
-        start_voting_date: Voting from
+        start_voting_date: Abstimmen von
       question_components:
-        question_menu_item: The question
-        unfold: Unfold
+        question_menu_item: Die Frage
+        unfold: Aufklappen
       question_header:
-        back_to_consultation: See all consultations
+        back_to_consultation: Alle Konsultationen anzeigen

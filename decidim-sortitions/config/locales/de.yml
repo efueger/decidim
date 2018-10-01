@@ -3,154 +3,154 @@ de:
   activemodel:
     attributes:
       sortition:
-        additional_info: Sortition information
-        decidim_category_id: Categories of the set of proposals in which you want to apply the draw
-        decidim_proposals_component_id: Proposals set
-        dice: Result of die roll. Roll a 6-sided die, or look for another random way to generate a number from 1 to 6, and enter here the resulting number in front of some witnesses. This contributes to the quality and guarantees of the randomness of the result
-        target_items: Number of proposals to be selected (indicates the number of proposals you want to be selected by drawing lots of the group of proposals you have previously chosen)
-        title: Title
-        witnesses: Witnesses
+        additional_info: Sortierinformationen
+        decidim_category_id: Kategorien des Vorschlagspakets, in denen Sie die Ziehung anwenden möchten
+        decidim_proposals_component_id: Vorschlagsliste
+        dice: Ergebnis der Matrizenrolle. Würfeln Sie einen 6-seitigen Würfel, oder suchen Sie nach einem anderen zufälligen Weg, um eine Zahl von 1 bis 6 zu erzeugen, und geben Sie hier die resultierende Zahl vor einigen Zeugen ein. Dies trägt zur Qualität und Garantie der Zufälligkeit des Ergebnisses bei
+        target_items: Anzahl der zu selektierenden Vorschläge (gibt die Anzahl der Vorschläge an, die Sie selektieren möchten, indem Sie Lose aus der Gruppe der Vorschläge ziehen, die Sie zuvor ausgewählt haben)
+        title: Titel
+        witnesses: Zeugen
     models:
-      decidim/sortitions/create_sortition_event: Sortition
+      decidim/sortitions/create_sortition_event: Sortierung
   activerecord:
     models:
       decidim/sortitions/sortition:
-        one: Sortition
-        other: Sortitions
+        one: Sortierung
+        other: Sortierungen
   decidim:
     components:
       sortitions:
-        name: Sortitions
+        name: Sortierungen
         settings:
           global:
-            comments_enabled: Comments enabled
+            comments_enabled: Kommentare aktiviert
     events:
       sortitions:
         sortition_created:
-          email_intro: The sortition "%{resource_title}" has been added to "%{participatory_space_title}" that you are following.
-          email_outro: You have received this notification because you are following "%{participatory_space_title}". You can unfollow it from the previous link.
-          email_subject: New sortition added to %{participatory_space_title}
-          notification_title: The sortition <a href="%{resource_path}">%{resource_title}</a> has been added to %{participatory_space_title}
+          email_intro: Die Sortierung "%{resource_title}" wurde zu "%{participatory_space_title}" hinzugefügt, der Sie folgen.
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie "%{partizipatory_space_title}" folgen. Du kannst es über den vorherigen Link wieder rückgängig machen.
+          email_subject: Neue Sortierung hinzugefügt zu %{teilnehmender_Raum_Titel}>
+          notification_title: Die Sortierung <a href="%{Ressourcenpfad}">%{Ressourcenbezeichnung}</a> wurde zu %{Teilnehmerraum_titel} hinzugefügt
     pages:
       home:
         statistics:
-          sortitions_count: Sortitions
+          sortitions_count: Sortierungen
     participatory_processes:
       statistics:
-        sortitions_count: Sortitions
+        sortitions_count: Sortierungen
     sortitions:
       admin:
         actions:
-          destroy: Cancel the sortition
-          edit: Edit
-          new: New
-          show: Sortition details
+          destroy: Abbrechen der Sortierung
+          edit: Bearbeiten
+          new: Neu
+          show: Details zur Sortierung
         models:
           sortition:
             fields:
-              category: Category
-              created_at: Creation date
-              decidim_proposals_component: Proposals component
-              dice: Dice
-              reference: Reference
-              request_timestamp: Draw time
-              seed: Seed
-              target_items: Items to select
-              title: Title
+              category: Kategorie
+              created_at: Erstellungsdatum
+              decidim_proposals_component: Angebotskomponente
+              dice: Würfel
+              reference: Referenz
+              request_timestamp: Ziehungszeit
+              seed: Saatgut
+              target_items: Zu wählende Elemente
+              title: Titel
             name:
-              one: Sortition
-              other: Sortitions
+              one: Sortierung
+              other: Sortierungen
         sortitions:
           confirm_destroy:
-            confirm_destroy: Are you sure you want to cancel this sortition?
-            destroy: Cancel sortition
-            title: Cancellation of the sortition
+            confirm_destroy: Sind Sie sicher, dass Sie diese Sortierung aufheben wollen?
+            destroy: Sortierung abbrechen
+            title: Stornierung der Sortierung
           create:
-            error: There was an error creating a new sortition.
-            success: Sortition successfully created
+            error: Es gab einen Fehler beim Erstellen einer neuen Sortierung.
+            success: Sortierung erfolgreich erstellt
           destroy:
-            error: Can not cancel the sortition.
-            success: Sortition successfully cancelled
+            error: Kann die Sortierung nicht abbrechen.
+            success: Sortierung erfolgreich abgebrochen
           edit:
-            title: Update the information about the sortition
+            title: Aktualisieren Sie die Informationen über die Sortierung
             update: Update
           form:
-            all_categories: All categories
-            select_proposal_component: Select the proposals set
-            title: New sortition for proposals
+            all_categories: Alle Kategorien
+            select_proposal_component: Wählen Sie das Vorschlags-Set aus
+            title: Neue Sortierung der Vorschläge
           index:
-            title: Sortitions
+            title: Sortierungen
           new:
-            confirm: By pressing the next button Decidim will record the date and time (with precision of seconds) and together with the dice roll, this information will be used to generate a random selection. The action will be irreversible, once the button is clicked the result of this draw will be published, together with the data entered in this form and can not be modified, please check the content carefully
-            create: Create
-            title: New sortition
+            confirm: Durch Drücken der nächsten Taste speichert Decidim Datum und Uhrzeit (mit einer Genauigkeit von Sekunden) und zusammen mit dem Würfelwurf wird diese Information verwendet, um eine Zufallsauswahl zu erzeugen. Die Aktion ist unwiderruflich, sobald auf die Schaltfläche geklickt wird, wird das Ergebnis dieser Ziehung veröffentlicht, zusammen mit den in diesem Formular eingegebenen Daten, die nicht geändert werden können. Bitte überprüfen Sie den Inhalt sorgfältig
+            create: Erstellen
+            title: Neue Sortierung
           show:
-            selected_proposals: Proposals selected for draw
+            selected_proposals: Vorschläge, die für die Ziehung ausgewählt wurden
           update:
-            error: There was an error updating the sortition.
-            success: Sortition successfully updated
+            error: Es gab einen Fehler beim Aktualisieren der Sortierung.
+            success: Sortierung erfolgreich aktualisiert
       admin_log:
         sortition:
-          create: "%{user_name} created the %{resource_name} sortition in %{space_name}"
-          delete: "%{user_name} cancelled the %{resource_name} sortition in %{space_name}"
-          update: "%{user_name} updated the %{resource_name} sortition in %{space_name}"
+          create: "%{Benutzername} hat die %{Ressourcenname} Sortierung in %{space_name} erstellt"
+          delete: "%{Benutzername} hat die %{Ressourcenname} Sortierung in %{space_name} gelöscht"
+          update: "%{Benutzername} Aktualisiert die %{Ressourcenname} Sortierung in %{space_name}"
       sortitions:
         count:
           proposals_count:
-            one: 1 proposal
-            other: "%{count} proposals"
+            one: 1 Vorschlag
+            other: "%{count} Vorschläge"
         filters:
-          active: Active
-          all: All
-          cancelled: Cancelled
-          category: Category
-          category_prompt: Select a category
-          search: Search
-          state: State
+          active: Aktiv
+          all: Alle
+          cancelled: Storniert
+          category: Kategorie
+          category_prompt: Wählen Sie eine Kategorie
+          search: Suche
+          state: Zustand
         filters_small_view:
-          close_modal: Close modal
+          close_modal: Modal schließen
           filter: Filter
-          filter_by: Filter by
-          unfold: Unfold
+          filter_by: Filtern nach
+          unfold: Aufklappen
         linked_sortitions:
-          selected_proposals: Selected proposals
+          selected_proposals: Ausgewählte Vorschläge
         orders:
-          label: 'Order sortitions by:'
-          random: Random
-          recent: Recent
+          label: 'Sortieren Sie die Sortierungen nach:'
+          random: Zufällig
+          recent: Neueste
         results_count:
           count:
-            one: selected proposal
-            other: selected proposals
+            one: ausgewählter Vorschlag
+            other: ausgewählte Vorschläge
         show:
-          algorithm: Sortition's Algorithm code
-          any_category: from all categories
-          cancelled: Cancelled sortition
-          candidate_proposal_ids: Sortition proposals order and IDs
-          candidate_proposals_info: 'The sortition was carried out among the following proposals (%{category_label}), with the following IDs (in bold the selected proposals)
+          algorithm: Algorithmuscode der Sortierung
+          any_category: aus allen Kategorien
+          cancelled: Stornierte Sortierung
+          candidate_proposal_ids: Sortierungsvorschläge Bestellung und IDs
+          candidate_proposals_info: 'Die Sortierung erfolgte unter den folgenden Vorschlägen (%{category_label}), mit folgenden IDs (in Fettdruck die ausgewählten Vorschläge)
 
 '
-          category: from the %{category} category
-          dice_result: "(1) Dice result"
-          introduction: 'This page contains the results of the sortition %{reference}. By means of this sortition, %{target_items} number of results have been selected randomly and with an equal probability distribution from the set of proposals displayed bellow. Together with the results, the information displayed on this page provides all the information required to maximize guarantees and to reproduce the results. The key to the quality of this sortition is the double randomness provided by a the rolling of a dice(verified by witnesses) and the precise time of the sortition that provides input for an algorithm that generates a random selection. The time-seed for the sortition is so accurate (seconds) that it is impossible to control by humans thus providing a double "uncontrollable" input to guarantee a fair result.
+          category: aus der %{Kategorie} Kategorie
+          dice_result: "(1) Würfelergebnis"
+          introduction: 'Diese Seite enthält die Ergebnisse der Sortierung %{reference}. Mit Hilfe dieser Sortierung wurde %{target_items} Anzahl der Ergebnisse zufällig und mit gleicher Wahrscheinlichkeitsverteilung aus dem untenstehenden Vorschlagssatz ausgewählt. Zusammen mit den Ergebnissen liefern die auf dieser Seite angezeigten Informationen alle Informationen, die erforderlich sind, um die Garantien zu maximieren und die Ergebnisse zu reproduzieren. Der Schlüssel zur Qualität dieser Sortierung ist die doppelte Zufälligkeit, die durch das Würfeln eines Würfels (verifiziert durch Zeugen) und die genaue Zeit der Sortierung entsteht, die die Eingabe für einen Algorithmus liefert, der eine zufällige Auswahl erzeugt. Die Zeitachse für die Sortierung ist so genau (Sekunden), dass es unmöglich ist, sie vom Menschen zu kontrollieren, was eine doppelte "unkontrollierbare" Eingabe ermöglicht, um ein faires Ergebnis zu gewährleisten.
 
 '
-          mathematical_result: Result (1) x (2)
-          proposals_selected_by_sortition: Proposals selected by sortition
-          sortition_reproducibility_details: Sortition reproducibility details
-          time_seed: "(2) Time seed"
-          witnesses: Witnesses
+          mathematical_result: Ergebnis (1) x (2)
+          proposals_selected_by_sortition: Vorschläge, die nach Sortierung ausgewählt wurden
+          sortition_reproducibility_details: Details zur Reproduzierbarkeit der Sortierung
+          time_seed: "(2) Zeitsaatgut"
+          witnesses: Zeugen
         sortition:
-          random_seed: Random seed
+          random_seed: Zufallssamen
           selected_proposals:
-            one: proposal selected
-            other: proposals selected
-          view: View
+            one: vorschlag ausgewählt
+            other: ausgewählte Vorschläge
+          view: Ansicht
         sortition_author:
-          deleted: Deleted user
+          deleted: Gelöschter Benutzer
         sortition_cancel_author:
-          deleted: Deleted user
+          deleted: Gelöschter Benutzer
         sortitions_count:
           count:
-            one: 1 sortition
-            other: "%{count} sortitions"
+            one: 1 Sortierung
+            other: "%{count} Sortierungen"

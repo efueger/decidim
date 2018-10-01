@@ -3,128 +3,136 @@ de:
   activemodel:
     attributes:
       id_document_information:
-        document_number: Document number (with letter)
-        document_type: Type of the document
+        document_number: Dokumentnummer (mit Buchstabe)
+        document_type: Art des Dokuments
       id_document_upload:
-        document_number: Document number (with letter)
-        document_type: Type of your document
-        user: User
-        verification_attachment: Scanned copy of your document
+        document_number: Dokumentnummer (mit Buchstabe)
+        document_type: Art Ihres Dokuments
+        user: Benutzer
+        verification_attachment: Gescannte Kopie Ihres Dokuments
       postal_letter_address:
-        full_address: Full address
+        full_address: Vollständige Adresse
       postal_letter_confirmation:
-        verification_code: Verification code
+        verification_code: Bestätigungscode
       postal_letter_postage:
-        full_address: Full address
-        verification_code: Verification code
+        full_address: Vollständige Adresse
+        verification_code: Bestätigungscode
   decidim:
     admin:
       menu:
-        authorization_workflows: Verifications
+        authorization_workflows: Überprüfungen
     authorization_handlers:
       admin:
         id_documents:
-          help: '["Users fill in their identity information and upload a copy of their document.", "You fill in the information present in the uploaded image.", "The information should match whatever the user filled in.", "If you can''t clearly see the information or you can''t get it verified, you can reject the request and the user will be able to fix it."]'
+          help:
+          - Die Benutzer geben ihre Identitätsdaten ein und laden eine Kopie ihres Dokuments hoch.
+          - Du gibst die Informationen ein, die im hochgeladenen Bild vorhanden sind.
+          - Die Informationen sollten mit den Angaben des Benutzers übereinstimmen.
+          - Wenn Sie die Informationen nicht klar sehen oder nicht überprüft werden können, können Sie die Anfrage ablehnen und der Benutzer kann sie beheben.
         postal_letter:
-          help: '["Users request a verification code to be sent to their address.", "You send the letter to their address with the verification code.", "You mark the letter as sent.", "Once you mark the letter as sent, the user will be able to introduce the code and get verified."]'
-      direct: Direct
-      help: Help
+          help:
+          - Benutzer fordern einen Bestätigungscode an, der an ihre Adresse gesendet wird.
+          - Sie senden den Brief mit dem Bestätigungscode an deren Adresse.
+          - Sie markieren den Brief als gesendet.
+          - Sobald Sie den Brief als gesendet markieren, kann der Benutzer den Code eingeben und sich verifizieren lassen.
+      direct: Direkt
+      help: Hilfe
       id_documents:
-        explanation: Upload your identity documents so we can check your identity
-        name: Identity documents
-      multistep: Multi-Step
+        explanation: Laden Sie Ihre Ausweisdokumente hoch, damit wir Ihre Identität überprüfen können
+        name: Ausweisdokumente
+      multistep: Mehrstufig
       name: Name
       postal_letter:
-        explanation: We'll send you a postal letter with a code that you'll have to enter so we can verify your address
-        name: Code by postal letter
+        explanation: Wir senden Ihnen einen Postbrief mit einem Code, den Sie eingeben müssen, damit wir Ihre Adresse überprüfen können
+        name: Code per Postbrief
     verifications:
       authorizations:
         create:
-          error: There was an error creating the authorization.
-          success: You've been successfully authorized.
+          error: Beim Anlegen der Berechtigung ist ein Fehler aufgetreten.
+          success: Du wurdest erfolgreich autorisiert.
         first_login:
           actions:
-            another_dummy_authorization_handler: Verify against another example of authorization handler
-            dummy_authorization_handler: Verify against the example authorization handler
-            dummy_authorization_workflow: Verify against the example authorization workflow
-            id_documents: Get verified by uploading your identity document
-            postal_letter: Get verified by receiving a verification code through postal mail
-          title: Verify your identity
-          verify_with_these_options: 'These are the available options to verify your identity:'
+            another_dummy_authorization_handler: Überprüfen Sie anhand eines anderen Beispiels für den Autorisierungshandler
+            dummy_authorization_handler: Verifizieren mit dem Beispiel-Autorisierungsprogramm
+            dummy_authorization_workflow: Verifizierung gegen den exemplarischen Autorisierungs-Workflow
+            id_documents: Lassen Sie sich verifizieren, indem Sie Ihren Ausweis hochladen
+            postal_letter: Lassen Sie sich verifizieren, indem Sie einen Verifizierungscode per Post erhalten
+          title: Überprüfen Sie Ihre Identität
+          verify_with_these_options: 'Dies sind die verfügbaren Optionen zur Überprüfung Ihrer Identität:'
         new:
-          authorize: Send
-          authorize_with: Verify with %{authorizer}
-        skip_verification: You can skip this for now and %{link}
-        start_exploring: start exploring
+          authorize: Senden
+          authorize_with: Verifizieren Sie mit %{authorizer}>
+        skip_verification: Sie können dies vorerst überspringen und %{link}>
+        start_exploring: mit der Erkundung beginnen
       dummy_authorization:
         extra_explanation:
-          one: Participation is restricted to users with the postal code %{postal_codes}.
-          other: 'Participation is restricted to users with any of the following postal codes: %{postal_codes}.'
+          one: Die Teilnahme ist auf Benutzer mit der Postleitzahl %{postleitzahlen} beschränkt.
+          other: 'Die Teilnahme ist auf Benutzer mit einer der folgenden Postleitzahlen beschränkt: %{postleitzahlen}.'
       id_documents:
         admin:
           confirmations:
             create:
-              error: Verification doesn't match. Try again or reject the verification so the user can amend it
-              success: User successfully verified
+              error: Die Verifizierung stimmt nicht überein. Versuchen Sie es erneut oder lehnen Sie die Überprüfung ab, damit der Benutzer sie ändern kann
+              success: Benutzer erfolgreich verifiziert
             new:
-              introduce_user_data: Introduce the data in the picture
-              reject: Reject
-              verify: Verify
+              introduce_user_data: Geben Sie die Daten im Bild ein
+              reject: Ablehnen
+              verify: Überprüfen Sie
           pending_authorizations:
             index:
-              title: Pending verifications
-              verification_number: 'Verification #%{n}'
+              title: Ausstehende Überprüfungen
+              verification_number: 'Verifizierung #%{n}>'
           rejections:
             create:
-              success: Verification rejected. User will be prompted to amend her documents
+              success: Verifizierung abgelehnt. Der Benutzer wird aufgefordert, seine Dokumente zu ändern
         authorizations:
           create:
-            error: There was a problem uploading your document
-            success: Document uploaded successfully
+            error: Es gab ein Problem beim Hochladen Ihres Dokuments
+            success: Dokument erfolgreich hochgeladen
           edit:
-            being_reviewed: We're reviewing your documents. You'll be verified shortly
-            rejection_clarity: Make sure the information is clearly visible in the uploaded image
-            rejection_correctness: Make sure the information entered is correct
-            rejection_notice: There was a problem with your verification. Please try again
-            send: Request verification again
+            being_reviewed: Wir überprüfen Ihre Dokumente. Sie werden in Kürze verifiziert
+            rejection_clarity: Stellen Sie sicher, dass die Informationen im hochgeladenen Bild deutlich sichtbar sind
+            rejection_correctness: Stellen Sie sicher, dass die eingegebenen Informationen korrekt sind
+            rejection_notice: Es gab ein Problem mit Ihrer Verifizierung. Bitte versuchen Sie es erneut
+            send: Überprüfung erneut anfordern
           new:
-            send: Request verification
-            title: Upload your identity document
+            send: Überprüfung der Anfrage
+            title: Laden Sie Ihr Identitätsdokument hoch
           update:
-            error: There was a problem reuploading your document
-            success: Document reuploaded successfully
+            error: Es gab ein Problem beim erneuten Hochladen des Dokuments
+            success: Dokument erfolgreich wieder hochgeladen
         dni: DNI
         nie: NIE
-        passport: Passport
+        passport: Reisepass
       postal_letter:
         admin:
           pending_authorizations:
             index:
-              address: Address
-              letter_sent_at: Letter sent at
-              mark_as_sent: Mark as sent
-              not_yet_sent: Not yet sent
-              title: Ongoing verifications
-              username: Username
-              verification_code: Verification code
+              address: Adresse
+              letter_sent_at: Brief gesendet an
+              mark_as_sent: Als gesendet markieren
+              not_yet_sent: Noch nicht versendet
+              title: Laufende Überprüfungen
+              username: Benutzername
+              verification_code: Bestätigungscode
           postages:
             create:
-              error: Error marking letter as sent
-              success: Letter successfully marked as sent
+              error: Fehlerkennzeichnung Brief als gesendet
+              success: Brief erfolgreich als gesendet markiert
         authorizations:
           create:
-            error: There was a problem with your request
-            success: Thanks! We'll send a verification code to your address
+            error: Es gab ein Problem mit Ihrer Anfrage
+            success: Danke! Wir senden Ihnen einen Bestätigungscode an Ihre Adresse
           edit:
-            send: Confirm
-            title: Introduce the verification code you received
-            waiting_for_letter: We'll be sending a letter to your address with your verification code soon
+            send: Bestätigen
+            title: Geben Sie den Bestätigungscode ein, den Sie erhalten haben
+            waiting_for_letter: Wir werden in Kürze einen Brief mit Ihrem Bestätigungscode an Ihre Adresse senden
           new:
-            send: Send me a letter
-            title: Request your verification code
+            send: Schicken Sie mir einen Brief
+            title: Fordern Sie Ihren Verifizierungscode an
           update:
-            error: Your verification code doesn't match ours. Please double-check the letter we sent to you
-            success: Congratulations. You've been successfully verified
+            error: Dein Verifizierungscode stimmt nicht mit unserem überein. Bitte überprüfen Sie den Brief, den wir Ihnen geschickt haben, noch einmal
+            success: Herzlichen Glückwunsch. Du wurdest erfolgreich verifiziert
   errors:
     messages:
-      uppercase_only_letters_numbers: must be all uppercase and contain only letters and/or numbers
+      uppercase_only_letters_numbers: muss in Großbuchstaben geschrieben werden und darf nur Buchstaben und/oder Zahlen enthalten

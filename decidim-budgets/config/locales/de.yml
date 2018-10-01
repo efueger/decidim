@@ -4,141 +4,141 @@ de:
     attributes:
       project:
         budget: Budget
-        decidim_category_id: Category
-        decidim_scope_id: Scope
-        description: Description
-        proposal_ids: Related proposals
-        title: Title
+        decidim_category_id: Kategorie
+        decidim_scope_id: Umfang
+        description: Beschreibung
+        proposal_ids: Zugehörige Vorschläge
+        title: Titel
   activerecord:
     models:
       decidim/budgets/project:
-        one: Project
-        other: Projects
+        one: Projekt
+        other: Projekte
   decidim:
     budgets:
       actions:
-        attachment_collections: Collections
-        attachments: Attachments
-        confirm_destroy: Are you sure you want to delete this project?
-        destroy: Delete
-        edit: Edit
-        new: New
-        preview: Preview
-        title: Actions
+        attachment_collections: Sammlungen
+        attachments: Anhänge
+        confirm_destroy: Sind Sie sicher, dass Sie dieses Projekt löschen möchten?
+        destroy: Löschen
+        edit: Bearbeiten
+        new: Neu
+        preview: Vorschau
+        title: Aktionen
       admin:
         models:
           project:
-            name: Project
+            name: Projekt
         projects:
           create:
-            invalid: There's been a problem creating this project
-            success: Project successfully created
+            invalid: Es gab ein Problem bei der Erstellung dieses Projekts
+            success: Projekt erfolgreich erstellt
           destroy:
-            success: Project successfully destroyed
+            success: Projekt erfolgreich abgeschlossen
           edit:
-            title: Edit project
+            title: Projekt bearbeiten
             update: Update
           index:
-            finished_orders: Finished votes
-            pending_orders: Pending votes
-            title: Projects
+            finished_orders: Abgeschlossene Stimmen
+            pending_orders: Ausstehende Abstimmungen
+            title: Projekte
           new:
-            create: Create
-            title: New result
+            create: Erstellen
+            title: Neues Ergebnis
           update:
-            invalid: There's been a problem updating this project
-            success: Project successfully updated
+            invalid: Es gab ein Problem bei der Aktualisierung dieses Projekts
+            success: Projekt erfolgreich aktualisiert
       admin_log:
         project:
-          create: "%{user_name} created the %{resource_name} project in the %{space_name} space"
-          delete: "%{user_name} deleted the %{resource_name} project in the %{space_name} space"
-          update: "%{user_name} updated the %{resource_name} project in the %{space_name} space"
+          create: "%{Benutzername} hat das %{Ressourcenname} Projekt im %{space_name} Raum erstellt"
+          delete: "%{Benutzername} löschte das %{Ressourcenname} Projekt im %{Raumname} Raum"
+          update: "%{Benutzername} Aktualisiert das %{Ressourcenname} Projekt im %{space_name} Raum"
       models:
         project:
           fields:
-            title: Title
+            title: Titel
       projects:
         budget_confirm:
-          are_you_sure: Do you agree? Once you have confirmed your vote, you can not change it.
-          cancel: Cancel
-          confirm: Confirm
-          description: These are the projects you have chosen to be part of the budget.
-          title: Confirm vote
+          are_you_sure: Stimmst du zu? Sobald du deine Stimme bestätigt hast, kannst du sie nicht mehr ändern.
+          cancel: Abbrechen
+          confirm: Bestätigen
+          description: Dies sind die Projekte, die Sie als Teil des Budgets ausgewählt haben.
+          title: Abstimmung bestätigen
         budget_excess:
-          close: Close
-          description: This project exceeds the maximum budget and can not be added. If you want, you can delete a project you have already selected to add, or make your vote with your preferences.
+          close: Schließen
+          description: Dieses Projekt überschreitet das maximale Budget und kann nicht hinzugefügt werden. Wenn Sie möchten, können Sie ein Projekt löschen, das Sie bereits zum Hinzufügen ausgewählt haben, oder Ihre Stimme mit Ihren Einstellungen abgeben.
           ok: OK
-          title: Maximum budget exceeded
+          title: Maximales Budget überschritten
         budget_summary:
-          are_you_sure: Are you sure you want to cancel your vote?
-          assigned: 'Assigned:'
-          cancel_order: delete your vote and start over
+          are_you_sure: Bist du sicher, dass du deine Stimme zurückziehen willst?
+          assigned: 'Zugewiesen:'
+          cancel_order: löschen Sie Ihre Stimme und beginnen Sie von vorne
           checked_out:
-            description: You've already voted for the budget. If you've changed your mind, you can %{cancel_link}.
-            title: Budget vote completed
-          description: What projects do you think we should allocate budget for? Assign at least %{minimum_budget} to the projects you want and vote with your preferences to define the budget.
-          title: You decide the budget
+            description: Du hast bereits für den Haushalt gestimmt. Wenn du deine Meinung geändert hast, kannst du %{cancel_link}.
+            title: Haushaltsabstimmung abgeschlossen
+          description: Für welche Projekte sollten wir Ihrer Meinung nach Budget bereitstellen? Weisen Sie den gewünschten Projekten mindestens %{minimum_budget} zu und stimmen Sie mit Ihren Wünschen ab, um das Budget festzulegen.
+          title: Sie bestimmen das Budget
         count:
           projects_count:
-            one: 1 project
-            other: "%{count} projects"
+            one: 1 Projekt
+            other: "%{count} Projekte"
         filters:
-          category: Category
-          category_prompt: Select a category
-          search: Search
+          category: Kategorie
+          category_prompt: Wählen Sie eine Kategorie
+          search: Suche
         filters_small_view:
-          close_modal: Close modal
+          close_modal: Modal schließen
           filter: Filter
-          filter_by: Filter by
-          unfold: Unfold
+          filter_by: Filtern nach
+          unfold: Aufklappen
         order_progress:
-          vote: Vote
+          vote: Abstimmen
         order_selected_projects:
-          remove: Remove
+          remove: Entfernen
           selected_projects:
-            one: project selected
-            other: projects selected
-          view: View
+            one: projekt ausgewählt
+            other: ausgewählte Projekte
+          view: Ansicht
         project:
-          add: Add
+          add: Hinzufügen
           count:
-            one: 1 support
-            other: "%{count} supports"
-          remove: Remove
-          view: View
+            one: 1 Stütze
+            other: "%{count} unterstützt"
+          remove: Entfernen
+          view: Ansicht
         project_budget_button:
-          add: Add
-          added: Added
+          add: Hinzufügen
+          added: Hinzugefügt
         show:
           budget: Budget
-          view_all_projects: View all projects
+          view_all_projects: Alle Projekte anzeigen
     components:
       budgets:
         actions:
-          vote: Vote
+          vote: Abstimmen
         name: Budgets
         settings:
           global:
-            announcement: Announcement
-            comments_enabled: Comments enabled
-            projects_per_page: Projects per page
-            total_budget: Total budget
-            vote_threshold_percent: Vote threshold percent
+            announcement: Ankündigung
+            comments_enabled: Kommentare aktiviert
+            projects_per_page: Projekte pro Seite
+            total_budget: Gesamtbudget
+            vote_threshold_percent: Prozentsatz der Stimmrechtsschwelle
           step:
-            announcement: Announcement
-            comments_blocked: Comments blocked
-            show_votes: Show votes
-            votes_enabled: Votes enabled
+            announcement: Ankündigung
+            comments_blocked: Kommentare gesperrt
+            show_votes: Stimmen anzeigen
+            votes_enabled: Abstimmungen aktiviert
     orders:
       checkout:
-        error: An error ocurred while processing your vote
-        success: Your vote has been accepted successfully
+        error: Bei der Bearbeitung Ihrer Stimme ist ein Fehler aufgetreten
+        success: Deine Stimme wurde erfolgreich angenommen
       destroy:
-        error: An error ocurred while canceling your vote
-        success: Your vote has been canceled successfully
+        error: Beim Abbrechen deiner Stimme ist ein Fehler aufgetreten
+        success: Deine Stimme wurde erfolgreich storniert
     resource_links:
       included_proposals:
-        project_proposal: 'Proposals included in this project:'
+        project_proposal: 'Vorschläge, die in diesem Projekt enthalten sind:'
   index:
-    confirmed_orders_count: Votes count
-  total_budget: Total budget
+    confirmed_orders_count: Die Stimmen zählen
+  total_budget: Gesamtbudget

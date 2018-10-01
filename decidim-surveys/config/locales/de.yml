@@ -3,114 +3,114 @@ de:
   activemodel:
     attributes:
       survey_answer:
-        body: Answer
+        body: Antwort
       survey_question:
-        mandatory: Mandatory
-        max_choices: Maximum number of choices
-        question_type: Type
+        mandatory: Obligatorisch
+        max_choices: Maximale Anzahl von Auswahlmöglichkeiten
+        question_type: Typ
     errors:
       models:
         survey_answer:
           attributes:
             choices:
-              missing: are not complete
-              too_many: are too many
+              missing: sind nicht vollständig
+              too_many: sind zu viele
     models:
-      decidim/surveys/closed_survey_event: Survey ended
-      decidim/surveys/opened_survey_event: Survey started
+      decidim/surveys/closed_survey_event: Umfrage beendet
+      decidim/surveys/opened_survey_event: Umfrage gestartet
   activerecord:
     models:
       decidim/surveys/survey:
-        one: Survey
-        other: Surveys
+        one: Umfrage
+        other: Umfragen
       decidim/surveys/survey_answer:
-        one: Answer
-        other: Answers
+        one: Antwort
+        other: Antworten
   decidim:
     components:
       surveys:
         actions:
-          answer: Answer
-        name: Survey
+          answer: Antwort
+        name: Umfrage
         settings:
           global:
-            announcement: Announcement
+            announcement: Ankündigung
           step:
-            allow_answers: Allow answers
-            announcement: Announcement
+            allow_answers: Antworten erlauben
+            announcement: Ankündigung
     events:
       surveys:
         survey_closed:
-          email_intro: The survey %{resource_title} in %{participatory_space_title} has been closed.
-          email_outro: You have received this notification because you are following %{participatory_space_title}. You can stop receiving notifications following the previous link.
-          email_subject: A survey has finished in %{participatory_space_title}
-          notification_title: The survey <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title}</a> has finished.
+          email_intro: Die Umfrage %{resource_title} in %{partizipatory_space_title} wurde geschlossen.
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{partizipatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Eine Umfrage wurde beendet in %{teilnehmender_Raum_Titel}
+          notification_title: Die Umfrage <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title}</a> ist beendet.
         survey_opened:
-          email_intro: 'The survey %{resource_title} in %{participatory_space_title} is now open. You can participate in it from this page:'
-          email_outro: You have received this notification because you are following %{participatory_space_title}. You can stop receiving notifications following the previous link.
-          email_subject: A new survey in %{participatory_space_title}
-          notification_title: The survey <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title}</a> is now open.
+          email_intro: 'Die Umfrage %{resource_title} in %{partizipatory_space_title} ist nun offen. Du kannst von dieser Seite aus daran teilnehmen:'
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{partizipatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Eine neue Umfrage in %{teilnehmender_Raum_Titel}>
+          notification_title: Die Umfrage <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title} ist jetzt offen.
     forms:
       errors:
         survey_answer:
-          body: Body can't be blank
+          body: Der Körper darf nicht leer sein
     surveys:
       admin:
         exports:
-          survey_user_answers: Survey user answers
+          survey_user_answers: Umfrage-Benutzerantworten
         models:
           components:
-            description: Description
-            tos: Terms of service
+            description: Beschreibung
+            tos: Allgemeine Geschäftsbedingungen
         surveys:
           answer_option:
-            answer_option: Answer option
-            free_text: Free text
-            remove: Remove
-            statement: Statement
+            answer_option: Antwortmöglichkeit
+            free_text: Freier Text
+            remove: Entfernen
+            statement: Erklärung
           edit:
-            save: Save
-            title: Title
+            save: Speichern
+            title: Titel
           form:
-            add_question: Add question
-            already_answered_warning: The survey is already answered by some users so you cannot modify its questions.
+            add_question: Frage hinzufügen
+            already_answered_warning: Die Umfrage wird von einigen Benutzern bereits beantwortet, so dass Sie ihre Fragen nicht ändern können.
           question:
-            add_answer_option: Add answer option
-            any: Any
-            description: Description
-            down: Down
-            question: Question
-            remove: Remove
-            statement: Statement
-            up: Up
+            add_answer_option: Antwortoption hinzufügen
+            any: Irgendwelche
+            description: Beschreibung
+            down: Unten
+            question: Frage
+            remove: Entfernen
+            statement: Erklärung
+            up: Nach oben
           update:
-            invalid: There's been errors when saving the survey.
-            success: Survey saved successfully.
+            invalid: Beim Speichern der Umfrage gab es Fehler.
+            success: Umfrage erfolgreich gespeichert.
       question_types:
-        long_answer: Long answer
-        multiple_option: Multiple option
-        short_answer: Short answer
-        single_option: Single option
-        sorting: Sorting
+        long_answer: Lange Antwort
+        multiple_option: Mehrere Optionen
+        short_answer: Kurze Antwort
+        single_option: Einzeloption
+        sorting: Sortierung
       surveys:
         answer:
-          invalid: There's been errors when answering the survey.
-          success: Survey answered successfully.
+          invalid: Bei der Beantwortung der Umfrage sind Fehler aufgetreten.
+          success: Umfrage erfolgreich abgeschlossen.
         question:
-          max_choices: 'Max choices: %{n}'
+          max_choices: 'Maximale Auswahl: %{n}>'
         show:
           answer_survey:
-            anonymous_user_message: <a href="%{sign_in_link}">Sign in with your account</a> or <a href="%{sign_up_link}">sign up</a> to answer the survey.
-            title: Answer the survey
-          are_you_sure: This action cannot be undone and you will not be able to edit your answers. Are you sure?
-          submit: Submit
+            anonymous_user_message: <a href="%{sign_in_link}">Anmeldung mit Ihrem Konto</a> oder <a href="%{sign_up_link}">Anmeldung</a> zur Beantwortung der Umfrage.
+            title: Beantworten Sie die Umfrage
+          are_you_sure: Diese Aktion kann nicht rückgängig gemacht werden und du kannst deine Antworten nicht bearbeiten. Bist du sicher?
+          submit: Absenden
           survey_answered:
-            body: You have already answered this survey.
-            title: Survey answered
+            body: Sie haben diese Umfrage bereits beantwortet.
+            title: Umfrage beantwortet
           survey_closed:
-            body: The survey is closed and cannot be answered.
-            title: Survey closed
+            body: Die Umfrage ist geschlossen und kann nicht beantwortet werden.
+            title: Umfrage abgeschlossen
           survey_for_private_users:
-            body: The survey is available only for private users
-            title: Survey closed
-          tos_agreement: By participating in this survey you accept its Terms of Service
+            body: Die Umfrage ist nur für Privatanwender verfügbar
+            title: Umfrage abgeschlossen
+          tos_agreement: Mit der Teilnahme an dieser Umfrage akzeptieren Sie die Allgemeinen Geschäftsbedingungen
