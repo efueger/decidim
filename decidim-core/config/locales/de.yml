@@ -424,7 +424,7 @@ de:
           comments_count: Kommentare
           debates_count: Debatten
           endorsements_count: Befürwortungen
-          headline: Aktueller Stand von %{Organisation}>
+          headline: Aktueller Stand von %{organization}>
           meetings_count: Besprechungen
           orders_count: Abstimmungen
           pages_count: Seiten
