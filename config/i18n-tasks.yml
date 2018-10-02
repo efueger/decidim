@@ -83,6 +83,10 @@ search:
 #   # Get an API key and set billing info at https://code.google.com/apis/console to use Google Translate
 #   api_key: "AbC-dEf5"
 
+## Deepl PRO Translate
+# translation:
+#   deepl_api_key: xxxxx-xxx-xx-xx-xxxxx
+
 # Do not consider these keys missing:
 ignore_missing:
   - '{devise,components}.*'

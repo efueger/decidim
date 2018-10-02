@@ -1,0 +1,133 @@
+---
+de:
+  activemodel:
+    attributes:
+      project:
+        budget: Budget
+        decidim_category_id: Kategorie
+        decidim_scope_id: Umfang
+        description: Beschreibung
+        proposal_ids: Zugehörige Vorschläge
+        title: Titel
+  decidim:
+    budgets:
+      actions:
+        attachment_collections: Sammlungen
+        attachments: Anhänge
+        confirm_destroy: Sind Sie sicher, dass Sie dieses Projekt löschen möchten?
+        destroy: Löschen
+        edit: Bearbeiten
+        new: Neu
+        preview: Vorschau
+        title: Aktionen
+      admin:
+        models:
+          project:
+            name: Projekt
+        projects:
+          create:
+            invalid: Es gab ein Problem bei der Erstellung dieses Projekts
+            success: Projekt erfolgreich erstellt
+          destroy:
+            success: Projekt erfolgreich abgeschlossen
+          edit:
+            title: Projekt bearbeiten
+            update: Update
+          index:
+            finished_orders: Abgeschlossene Stimmen
+            pending_orders: Ausstehende Abstimmungen
+            title: Projekte
+          new:
+            create: Erstellen
+            title: Neues Ergebnis
+          update:
+            invalid: Es gab ein Problem bei der Aktualisierung dieses Projekts
+            success: Projekt erfolgreich aktualisiert
+      models:
+        project:
+          fields:
+            title: Titel
+      projects:
+        budget_confirm:
+          are_you_sure: Stimmst du zu? Sobald du deine Stimme bestätigt hast, kannst du sie nicht mehr ändern.
+          cancel: Abbrechen
+          confirm: Bestätigen
+          description: Dies sind die Projekte, die Sie als Teil des Budgets ausgewählt haben.
+          title: Abstimmung bestätigen
+        budget_excess:
+          close: Schließen
+          description: Dieses Projekt überschreitet das maximale Budget und kann nicht hinzugefügt werden. Wenn Sie möchten, können Sie ein Projekt löschen, das Sie bereits zum Hinzufügen ausgewählt haben, oder Ihre Stimme mit Ihren Einstellungen abgeben.
+          ok: OK
+          title: Maximales Budget überschritten
+        budget_summary:
+          are_you_sure: Bist du sicher, dass du deine Stimme zurückziehen willst?
+          assigned: 'Zugewiesen:'
+          cancel_order: löschen Sie Ihre Stimme und beginnen Sie von vorne
+          checked_out:
+            description: Du hast bereits für den Haushalt gestimmt. Wenn du deine Meinung geändert hast, kannst du %{cancel_link}.
+            title: Haushaltsabstimmung abgeschlossen
+          description: Für welche Projekte sollten wir Ihrer Meinung nach Budget bereitstellen? Weisen Sie den gewünschten Projekten mindestens %{minimum_budget} zu und stimmen Sie mit Ihren Wünschen ab, um das Budget festzulegen.
+          title: Sie bestimmen das Budget
+        count:
+          projects_count:
+            one: 1 Projekt
+            other: "%{count} Projekte"
+        filters:
+          category: Kategorie
+          category_prompt: Wählen Sie eine Kategorie
+          search: Suche
+        filters_small_view:
+          close_modal: Modal schließen
+          filter: Filter
+          filter_by: Filtern nach
+          unfold: Aufklappen
+        order_progress:
+          vote: Abstimmen
+        order_selected_projects:
+          remove: Entfernen
+          selected_projects:
+            one: projekt ausgewählt
+            other: ausgewählte Projekte
+          view: Ansicht
+        project:
+          add: Hinzufügen
+          count:
+            one: 1 Stütze
+            other: "%{count} unterstützt"
+          remove: Entfernen
+        project_budget_button:
+          add: Hinzufügen
+          added: Hinzugefügt
+        show:
+          budget: Budget
+          view_all_projects: Alle Projekte anzeigen
+    features:
+      budgets:
+        actions:
+          vote: Abstimmen
+        name: Budgets
+        settings:
+          global:
+            announcement: Ankündigung
+            comments_enabled: Kommentare aktiviert
+            comments_upstream_moderation_enabled: Upstream-Moderation für Kommentare aktiviert
+            total_budget: Gesamtbudget
+            vote_threshold_percent: Prozentsatz der Stimmrechtsschwelle
+          step:
+            announcement: Ankündigung
+            comments_blocked: Kommentare gesperrt
+            show_votes: Stimmen anzeigen
+            votes_enabled: Abstimmungen aktiviert
+    orders:
+      checkout:
+        error: Bei der Bearbeitung Ihrer Stimme ist ein Fehler aufgetreten
+        success: Deine Stimme wurde erfolgreich angenommen
+      destroy:
+        error: Beim Abbrechen deiner Stimme ist ein Fehler aufgetreten
+        success: Deine Stimme wurde erfolgreich storniert
+    resource_links:
+      included_proposals:
+        project_proposals: 'Vorschläge, die in diesem Projekt enthalten sind:'
+  index:
+    confirmed_orders_count: Die Stimmen zählen
+  total_budget: Gesamtbudget

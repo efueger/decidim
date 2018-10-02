@@ -1,0 +1,186 @@
+---
+de:
+  activemodel:
+    attributes:
+      assembly:
+        area_id: Bereich
+        banner_image: Banner-Bild
+        copy_categories: Kategorien kopieren
+        copy_features: Kopierfunktionen
+        decidim_area_id: Bereich
+        decidim_scope_id: Umfang
+        description: Beschreibung
+        developer_group: Entwicklergruppe
+        domain: Domain
+        hashtag: Hashtag
+        hero_image: Homebild
+        local_area: Lokale Umgebung
+        meta_scope: Scope Metadaten
+        participatory_scope: Beteiligungsumfang
+        participatory_structure: Partizipative Struktur
+        promoted: Gefördert
+        published_at: Veröffentlicht unter
+        scope_id: Umfang
+        scopes_enabled: Scopes aktiviert
+        short_description: Kurzbeschreibung
+        show_statistics: Statistik anzeigen
+        slug: URL Slug
+        subtitle: Untertitel
+        target: Ziel
+        title: Titel
+  decidim:
+    admin:
+      assemblies:
+        create:
+          error: Beim Erstellen einer neuen Baugruppe ist ein Fehler aufgetreten.
+          success: Baugruppe erfolgreich erstellt.
+        destroy:
+          success: Die Baugruppe wurde erfolgreich zerstört.
+        edit:
+          update: Update
+        form:
+          title: Allgemeine Informationen
+        index:
+          not_published: Nicht veröffentlicht
+          published: Veröffentlicht
+        new:
+          create: Erstellen
+          title: Neue Baugruppe
+        update:
+          error: Beim Aktualisieren dieser Baugruppe ist ein Fehler aufgetreten.
+          success: Die Baugruppe wurde erfolgreich aktualisiert.
+      assemblies_copies:
+        create:
+          error: Beim Duplizieren dieser Baugruppe ist ein Fehler aufgetreten.
+          success: Assembly erfolgreich dupliziert.
+      assembly_copies:
+        new:
+          copy: Kopieren
+          select: Wählen Sie aus, welche Daten Sie duplizieren möchten
+          title: Doppelte Baugruppe
+      assembly_publications:
+        create:
+          error: Es gab einen Fehler bei der Veröffentlichung dieser Baugruppe.
+          success: Assembly erfolgreich veröffentlicht.
+        destroy:
+          error: Es gab einen Fehler, diese Baugruppe nicht zu veröffentlichen.
+          success: Montage erfolgreich unveröffentlicht.
+      assembly_user_roles:
+        create:
+          error: Es gab einen Fehler beim Hinzufügen eines Benutzers für diese Baugruppe.
+          success: Der Benutzer wurde erfolgreich für diese Baugruppe angelegt.
+        destroy:
+          success: Benutzer wurde für diese Baugruppe erfolgreich zerstört.
+        edit:
+          title: Aktualisieren Sie den Benutzer der Baugruppe.
+          update: Update
+        index:
+          assembly_admins_title: Benutzer der Baugruppe
+        new:
+          create: Erstellen
+          title: Neuer Montagebenutzer.
+        update:
+          error: Es gab einen Fehler, der einen Benutzer für diese Baugruppe aktualisiert hat.
+          success: Der Benutzer wurde für diese Baugruppe erfolgreich aktualisiert.
+      menu:
+        assemblies: Baugruppen
+        assemblies_submenu:
+          assembly_admins: Benutzer der Baugruppe
+          attachment_collections: Sammlungen
+          attachment_files: Dateien
+          attachments: Anhänge
+          categories: Kategorien
+          features: Merkmale
+          info: Info
+          moderations: Modifikationen
+      models:
+        assembly:
+          fields:
+            created_at: Erstellt am
+            promoted: Hervorgehoben
+            published: Veröffentlicht
+            title: Titel
+          name: Montage
+        assembly_user_role:
+          fields:
+            email: E-Mail
+            name: Name
+            role: Rolle
+          name: Montage Benutzer
+          roles:
+            admin: Administrator
+            collaborator: Mitarbeiterin
+            moderator: Moderator
+      titles:
+        assemblies: Baugruppen
+    admin_log:
+      assembly:
+        create: "%{user_name} erstellt die %{resource_name} Assembly"
+        publish: "%{user_name} veröffentlichte die %{resource_name} Assembly"
+        unpublish: "%{user_name} unveröffentlicht die %{resource_name} Assembly"
+        update: "%{user_name} Aktualisierte die %{resource_name} Assembly"
+      assembly_user_role:
+        create: "%{user_name} eingeladen %{resource_name} zur %{space_name} Assembly"
+        delete: "%{user_name} Der Benutzer %{resource_name} wurde aus der %{space_name} Assembly entfernt"
+        update: "%{user_name} hat die Rolle von %{resource_name} in der %{space_name} Assembly geändert"
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            select_an_area: Einen Bereich auswählen
+            slug_help: 'URL-Slugs werden verwendet, um die URLs zu generieren, die auf diese Assembly zeigen. Akzeptiert nur Buchstaben, Zahlen und Bindestriche und muss mit einem Buchstaben beginnen. Beispiel: %{url}'
+        assembly_copies:
+          form:
+            slug_help: 'URL-Slugs werden verwendet, um die URLs zu generieren, die auf diese Assembly zeigen. Akzeptiert nur Buchstaben, Zahlen und Bindestriche und muss mit einem Buchstaben beginnen. Beispiel: %{url}'
+      index:
+        title: Baugruppen
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Aktive Baugruppen
+            see_all_assemblies: Alle Baugruppen anzeigen
+      show:
+        area: Bereich
+        developer_group: Entwicklergruppe
+        local_area: Lokale Umgebung
+        participatory_scope: Beteiligungsumfang
+        participatory_structure: Partizipative Struktur
+        scope: Umfang
+        target: Ziel
+      statistics:
+        answers_count: Antworten
+        assemblies_count: Baugruppen
+        comments_count: Kommentare
+        endorsements_count: Befürwortungen
+        headline: Aktivität
+        meetings_count: Besprechungen
+        orders_count: Abstimmungen
+        pages_count: Seiten
+        projects_count: Projekte
+        proposals_count: Vorschläge
+        results_count: Ergebnisse
+        surveys_count: Umfragen
+        users_count: Teilnehmer
+        votes_count: Abstimmungen
+    menu:
+      assemblies: Baugruppen
+  layouts:
+    decidim:
+      assemblies:
+        assembly:
+          take_part: Teilnehmen
+        index:
+          promoted_assemblies: Hervorgehobene Baugruppen
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} Montage"
+            other: "%{count} Baugruppen"
+        promoted_assembly:
+          more_info: Mehr Informationen
+          take_part: Teilnehmen
+      assembly_header:
+        assembly_menu_item: Die Montage
+        unfold: Aufklappen
+      assembly_widgets:
+        show:
+          take_part: Teilnehmen

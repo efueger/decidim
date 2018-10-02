@@ -1,0 +1,551 @@
+---
+de:
+  activemodel:
+    attributes:
+      account:
+        delete_reason: Grund für die Löschung Ihres Kontos
+      report:
+        details: Zusätzliche Kommentare
+      user:
+        about: Über
+        email: Deine E-Mail
+        name: Dein Name
+        nickname: Ihr kurzer, eindeutiger Identifikator in decidim
+        password: Neues Passwort
+        password_confirmation: Bestätigen Sie Ihr neues Passwort
+        personal_url: Persönliche URL
+        remove_avatar: Avatar entfernen
+        user_group_document_number: Dokumentnummer des Unternehmens
+        user_group_name: Name des Unternehmens
+        user_group_phone: Organisationstelefon
+  activerecord:
+    attributes:
+      decidim/user:
+        current_password: Aktuelles Passwort
+        email: E-Mail
+        name: Benutzername
+        password: Passwort
+        password_confirmation: Passwortbestätigung
+        remember_me: Erinnern Sie sich an mich
+        user_group_document_number: Dokumentnummer des Unternehmens
+        user_group_name: Name des Unternehmens
+        user_group_phone: Organisationstelefon
+  booleans:
+    'false': Nein
+    'true': Ja
+  carrierwave:
+    errors:
+      image_too_big: Das Bild ist zu groß
+  decidim:
+    account:
+      delete:
+        alert: Diese Aktion kann nicht rückgängig gemacht werden. Wenn Sie Ihr Konto löschen, können Sie sich nicht mehr einloggen.
+        confirm:
+          close: Fenster schließen
+          ok: Ja, ich möchte mein Konto löschen
+          question: Sind Sie sicher, dass Sie Ihr Konto löschen möchten?
+          title: Mein Konto löschen
+        explanation: Bitte gib den Grund an, warum du dein Konto löschen möchtest (optional).
+      destroy:
+        error: Es gab einen Fehler beim Löschen Ihres Kontos.
+        success: Dein Konto wurde erfolgreich gelöscht.
+      show:
+        change_password: Passwort ändern
+        update_account: Konto aktualisieren
+      update:
+        error: Es ist ein Fehler bei der Aktualisierung Ihres Kontos aufgetreten.
+        success: Dein Konto wurde erfolgreich aktualisiert.
+        success_with_email_confirmation: Dein Konto wurde erfolgreich aktualisiert. Sie erhalten eine E-Mail, um Ihre neue E-Mail-Adresse zu bestätigen.
+    admin_log:
+      feature:
+        create: "%{user_name} hat die Funktion %{resource_name} zur Funktion %{space_name} Raum hinzugefügt"
+        delete: "%{user_name} entfernt die Funktion %{resource_name} aus dem %{space_name} Raum"
+        publish: "%{user_name} hat die Funktion %{resource_name} in der Funktion %{space_name} space veröffentlicht"
+        unpublish: "%{user_name} unveröffentlicht die %{resource_name} Funktion aus dem %{space_name} Raum"
+      moderation:
+        hide: "%{user_name} versteckte eine Ressource vom Typ %{resource_type} im %{space_name} Raum"
+        unreport: "%{user_name} nicht gemeldete Ressource vom Typ %{resource_type} im %{space_name} Raum"
+      newsletter:
+        create: "%{user_name} erstellt den %{resource_name} Newsletter"
+        delete: "%{user_name} hat den %{resource_name} Newsletter gelöscht"
+        deliver: "%{user_name} lieferte den %{resource_name} Newsletter"
+        update: "%{user_name} Aktualisiert den %{resource_name} Newsletter"
+      organization:
+        update: "%{user_name} Aktualisierung der Organisationseinstellungen"
+      scope:
+        create: "%{user_name} hat den %{resource_name} Bereich erstellt"
+        create_with_parent: "%{user_name} hat den %{resource_name} Bereich innerhalb des %{parent_scope} Bereichs erstellt"
+        delete: "%{user_name} hat den %{resource_name} Bereich gelöscht"
+        delete_with_parent: "%{user_name} hat den %{resource_name} Bereich innerhalb des %{parent_scope} Bereichs gelöscht"
+        update: "%{user_name} Aktualisiert den %{resource_name} Bereich"
+        update_with_parent: "%{user_name} Aktualisiert den %{resource_name} Bereich innerhalb des %{parent_scope} Bereichs"
+      static_page:
+        create: "%{user_name} hat die %{resource_name} statische Seite erstellt"
+        delete: "%{user_name} löschte die %{resource_name} statische Seite"
+        update: "%{user_name} aktualisiert die %{resource_name} statische Seite"
+      user:
+        invite: "%{user_name} hat den Benutzer %{resource_name} mit Rolle eingeladen: %{role}"
+        officialize: "%{user_name} hat den Benutzer %{resource_name} officialisiert"
+        remove_from_admin: "%{user_name} hat den Benutzer %{resource_name} mit Rolle entfernt: %{role}"
+        unofficialize: "%{user_name} nicht offiziellisiert der Benutzer %{resource_name}"
+      user_group:
+        reject: "%{user_name} hat die %{resource_name} Überprüfung der Benutzergruppe abgelehnt"
+        verify: "%{user_name} hat die %{resource_name} Benutzergruppe überprüft"
+    anonymous_user: Anonym
+    application:
+      collection:
+        documents:
+          one: Dokument
+          other: Dokumente
+      documents:
+        related_documents: Zugehörige Dokumente
+      photos:
+        related_photos: Verwandte Fotos
+    authorization_handlers:
+      dummy_authorization_handler:
+        explanation: Lassen Sie sich verifizieren, indem Sie eine Dokumentnummer eingeben, die mit "X" endet
+        fields:
+          document_number: Dokumentnummer
+          postal_code: Postleitzahl
+        name: Beispiel für eine Berechtigung
+      dummy_authorization_workflow:
+        name: Dummy-Autorisierungs-Workflow
+      errors:
+        duplicate_authorization: Ein Benutzer ist bereits mit den gleichen Daten berechtigt.
+      expired_at: Abgelaufen bei %{timestamp}
+      expires_at: Verfällt bei %{timestamp}
+      foo_authorization:
+        fields:
+          bar: Bar
+          foo: Foo
+        name: Foo-Berechtigung
+      granted_at: Gewährt bei %{timestamp}
+      started_at: Begonnen bei %{timestamp}
+    contact: Kontakt
+    core:
+      actions:
+        unauthorized: Sie sind nicht berechtigt, diese Aktion durchzuführen
+    devise:
+      omniauth_callbacks:
+        developer: Entwicklung
+        facebook: Facebook
+        google: Google
+        saml: e-ID
+        twitter: Twitter
+      omniauth_registrations:
+        create:
+          email_already_exists: Ein anderes Konto verwendet die gleiche E-Mail-Adresse
+        developer: Entwicklung
+        facebook: Facebook
+        google: Google
+        new:
+          complete_profile: Vollständiges Profil
+          newsletter: Erhalten Sie gelegentlich einen Newsletter mit relevanten Informationen
+          nickname_help: Ihr kurzer, eindeutiger Identifikator in decidim
+          sign_up: Bitte vervollständigen Sie Ihr Profil
+          subtitle: Bitte füllen Sie das folgende Formular aus, um die Anmeldung auszufüllen
+          terms: die Nutzungsbedingungen
+          tos_agreement: Mit der Anmeldung stimmst du %{link} zu.
+          username_help: Öffentlicher Name, der in deinen Beiträgen erscheint. Mit dem Ziel, die Anonymität zu gewährleisten, kann jeder Name sein.
+        saml: e-ID
+        twitter: Twitter
+      registrations:
+        new:
+          already_have_an_account?: Sie haben bereits ein Konto?
+          newsletter: Erhalten Sie gelegentlich einen Newsletter mit relevanten Informationen
+          nickname_help: Ihr kurzer, eindeutiger Identifikator in decidim
+          sign_in: Einloggen
+          sign_up: Registrieren Sie sich
+          sign_up_as:
+            legend: Registrieren als
+            user: Individuell
+            user_group: Unternehmen/Kollektiv
+          subtitle: Melden Sie sich an, um an Diskussionen und Unterstützungsvorschlägen teilzunehmen.
+          terms: die Nutzungsbedingungen
+          tos_agreement: Mit der Anmeldung stimmst du %{link} zu.
+          username_help: Öffentlicher Name, der in deinen Beiträgen erscheint. Mit dem Ziel, die Anonymität zu gewährleisten, kann jeder Name sein.
+      sessions:
+        new:
+          are_you_new?: Neu auf der Plattform?
+          register: Ein Konto erstellen
+      shared:
+        omniauth_buttons:
+          or: Oder
+    errors:
+      internal_server_error:
+        title: Es gab ein Problem mit unserem Server
+        try_later: Bitte versuchen Sie es später noch einmal.
+      not_found:
+        back_home: Zurück zu Hause
+        content_doesnt_exist: Diese Adresse ist falsch oder wurde entfernt.
+        title: Die gesuchte Seite kann nicht gefunden werden
+    events:
+      attachments:
+        attachment_created:
+          email_intro: 'Ein neues Dokument wurde hinzugefügt zu %{resource_title}. Du kannst es auf dieser Seite sehen:'
+          email_outro: Du hast diese Benachrichtigung erhalten, weil du %{resource_title} befolgst. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Ein Update auf %{resource_title}
+          notification_title: Ein <a href="%{resource_path}">neues Dokument</a> wurde zu <a href="%{attached_to_url}">%{resource_title}</a> hinzugefügt
+      email_event:
+        email_greeting: Hallo %{user_name},
+        email_intro: 'Es gab ein Update zu "%{resource_title}". Du kannst es auf dieser Seite sehen:'
+        email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie "%{resource_title}" folgen. Du kannst es über den vorherigen Link wieder rückgängig machen.
+        email_subject: Ein Update auf %{resource_title}
+        moderation:
+          email_intro: 'Es gibt einen neuen Inhalt zu moderieren. Du kannst es auf dieser Seite sehen:'
+          email_subject: Neue Inhalte, die auf Moderation warten
+      feature_published_event:
+        email_intro: 'Die Komponente %{resource_title} ist nun aktiv für %{participatory_space_title}. Du kannst es auf dieser Seite sehen:'
+        email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{participatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+        email_subject: Ein Update auf %{participatory_space_title}
+        notification_title: Die Komponente %{resource_title} ist nun aktiv für <a href="%{resource_path}"><%{participatory_space_title}</a>
+      features:
+        feature_published:
+          email_intro: 'Die Komponente %{resource_title} ist nun aktiv für %{participatory_space_title}. Du kannst es auf dieser Seite sehen:'
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{participatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Ein Update auf %{participatory_space_title}
+          notification_title: Die Komponente %{resource_title} ist nun aktiv für <a href="%{resource_path}"><%{participatory_space_title}</a>
+      notification_event:
+        notification_title: Ein Ereignis trat auf <a href="%{resource_path}">%{participatory_space_title}</a>.
+      users:
+        profile_updated:
+          email_intro: Die <a href="%{resource_url}">Profilseite</a> von %{name} (%{nickname}), der Sie folgen, wurde aktualisiert.
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{nickname} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: "%{nickname} aktualisierte ihr Profil"
+          notification_title: Die <a href="%{resource_path}">Profilseite</a> von %{name} (%{nickname}), der Sie folgen, wurde aktualisiert.
+    export_mailer:
+      export:
+        ready: Anbei finden Sie eine gezippte Version Ihres Exports.
+      subject: Ihr Export "%{name}" ist fertig
+    features:
+      dummy:
+        actions:
+          bar: Bar
+          foo: Foo
+        name: Dummy-Feature
+        settings:
+          global:
+            comments_enabled: Kommentare aktiviert
+            dummy_global_attribute_1: Dummy-Attribut 1
+            dummy_global_attribute_2: Dummy-Attribut 2
+          step:
+            comments_blocked: Kommentare gesperrt
+            dummy_step_attribute_1: Dummy-Schritt Attribut 1
+            dummy_step_attribute_2: Dummy-Schritt Attribut 2
+    filters:
+      linked_classes:
+        all: Alle
+        dummyresource: Dummy-Ressourcen
+        meeting: Besprechungen
+        project: Projekte
+        proposal: Vorschläge
+        result: Ergebnisse
+    follows:
+      create:
+        button: Folgen Sie
+        error: Bei dieser Ressource ist ein Fehler aufgetreten.
+      destroy:
+        button: Stoppen Sie die Verfolgung
+        error: Es gab einen Fehler beim Verfolgen dieser Ressource.
+    forms:
+      current_file: Aktuelle Datei
+      current_image: Aktuelles Bild
+      default_image: Standardbild
+      errors:
+        error: In diesem Feld liegt ein Fehler vor.
+      remove_this_file: Diese Datei entfernen
+    log:
+      base_presenter:
+        create: "%{user_name} erstellt %{resource_name}"
+        create_with_space: "%{user_name} erstellt %{resource_name} in %{space_name} erstellt"
+        delete: "%{user_name} Gelöscht %{resource_name}"
+        delete_with_space: "%{user_name} gelöscht %{resource_name} in %{space_name} gelöscht"
+        unknown_action: "%{user_name} hat eine Aktion auf %{resource_name} durchgeführt"
+        unknown_action_with_space: "%{user_name} hat eine Aktion auf %{resource_name} in %{space_name} durchgeführt"
+        update: "%{user_name} aktualisiert %{resource_name}"
+        update_with_space: "%{user_name} aktualisiert %{resource_name} in %{space_name} aktualisiert"
+      value_types:
+        area_presenter:
+          not_found: 'Der Bereich wurde in der Datenbank nicht gefunden (ID: %{id})'
+        scope_presenter:
+          not_found: 'Der Scope wurde nicht auf der Datenbank gefunden (ID: %{id})'
+        scope_type_presenter:
+          not_found: 'Der Scope Typ wurde nicht auf der Datenbank gefunden (ID: %{id})'
+    managed_users:
+      expired_session: Die aktuelle Imitationssitzung ist abgelaufen.
+    menu:
+      home: Startseite
+      more_information: Mehr Informationen
+    messaging:
+      conversation_mailer:
+        new_conversation:
+          greeting: Hallo, %{recipient}!
+          intro: "%{sender} hat ein neues Gespräch mit Ihnen begonnen. Klicken Sie hier, um es zu sehen:"
+          outro: Genießen Sie Decidim!
+          subject: "%{sender} hat ein Gespräch mit Ihnen begonnen"
+        new_message:
+          greeting: Hallo, %{recipient}!
+          intro: "%{sender} hat neue Nachrichten in Ihrem Gespräch veröffentlicht. Klicken Sie hier, um sie zu sehen:"
+          outro: Genießen Sie Decidim!
+          subject: Du hast neue Nachrichten von %{sender}
+      conversations:
+        create:
+          error: Gespräch nicht gestartet. Versuchen Sie es später noch einmal
+        index:
+          no_conversations: Du hast noch keine Gespräche geführt
+          title: Gespräche
+        reply:
+          send: Senden
+          title: Antwort
+        show:
+          title: Konversation mit %{usernames}
+        start:
+          send: Senden
+          title: Ein Gespräch beginnen
+        update:
+          error: Nachricht nicht gesendet. Versuchen Sie es später noch einmal
+    newsletter_mailer:
+      newsletter:
+        note: Du hast diese E-Mail erhalten, weil du Newsletter abonniert hast über %{organization_name}. Du kannst deine Einstellungen auf deiner <a href="%{link}">Benachrichtigungsseite</a> ändern.
+        see_on_website: Kann diese E-Mail nicht richtig angezeigt werden? Betrachten Sie es auf der <a href="%{link}" target="_blank">Website</a>.
+        unsubscribe: Um den Erhalt dieser Art von E-Mail abzulehnen, <a href="%{link}" target="_blank" class="unsubscribe">Unsubscribe</a>.
+    newsletters:
+      unsubscribe:
+        check_subscription: Wenn Sie Ihre Einstellungen ändern möchten, können Sie dies in der <a href="%{link}" target="_blank">Konfigurationsseite</a> tun
+        error: Es gab einen Fehler beim Abmelden des Abonnements
+        success: Du wirst erfolgreich abgemeldet.
+        token_error: Der Link ist abgelaufen.
+        unsubscribe: Abmelden
+    notifications_settings:
+      show:
+        email_on_notification: Ich möchte jedes Mal, wenn ich eine Benachrichtigung erhalte, eine E-Mail erhalten.
+        newsletter_notifications: Ich möchte Newsletter erhalten
+        update_notifications_settings: Änderungen speichern
+      update:
+        error: Es ist ein Fehler beim Aktualisieren der Benachrichtigungseinstellungen aufgetreten.
+        success: Ihre Benachrichtigungseinstellungen wurden erfolgreich aktualisiert.
+    own_user_groups:
+      index:
+        pending: Ausstehend
+        rejected: Abgelehnt
+        verified: Verifiziert
+    pages:
+      index:
+        title: Mehr Informationen
+    profiles:
+      default_officialization_text: Dieser Teilnehmer wird öffentlich verifiziert, sein Name oder seine Rolle wurde auf Übereinstimmung mit seinem tatsächlichen Namen und seiner Rolle überprüft
+      eid_verified: e-ID verifiziert
+      show:
+        about_me: Über mich
+        personal_url: Persönliche Website
+    reported_mailer:
+      hide:
+        hello: Hallo %{name},
+        manage_moderations: Moderationen verwalten
+        report_html: <p>Der folgende  <a href="%{url} "&gt;Inhalt</a> wurde automatisch ausgeblendet.</p>
+        subject: Eine Ressource wurde automatisch ausgeblendet
+      report:
+        hello: Hallo %{name},
+        manage_moderations: Moderationen verwalten
+        report_html: <p>Der folgende  <a href="%{url} "&gt;Inhalt</a> wurde gemeldet.</p>
+        subject: Es wurde eine Ressource gemeldet
+    reports:
+      create:
+        error: Beim Erstellen des Berichts ist ein Fehler aufgetreten. Bitte, versuche es noch einmal.
+        success: Der Bericht wurde erfolgreich erstellt und wird von einem Administrator überprüft.
+    scopes:
+      global: Globale Reichweite
+      picker:
+        cancel: Abbrechen
+        choose: Auswählen
+        title: Wählen Sie %{field}
+      prompt: Wählen Sie einen Bereich
+      scopes: Anwendungsbereiche
+    shared:
+      action_authorization_modal:
+        expired:
+          authorize: Re-Autorisierung mit "%{authorization}"
+          explanation: Ihre Berechtigung ist abgelaufen. Um diese Aktion durchzuführen, müssen Sie mit "%{authorization}" neu autorisiert werden.
+          title: Berechtigung ist abgelaufen
+        incomplete:
+          cancel: Abbrechen
+          explanation: 'Auch wenn Sie derzeit mit "%{authorization}" autorisiert sind, müssen Sie sich neu autorisieren, da uns die folgenden Daten fehlen:'
+          invalid_field: "%{field}"
+          reauthorize: Erneut autorisieren
+          title: Bitte um erneute Autorisierung
+        missing:
+          authorize: Autorisieren mit "%{authorization}"
+          explanation: Um diese Aktion durchführen zu können, müssen Sie mit "%{authorization}" autorisiert sein.
+          title: Berechtigung erforderlich
+        pending:
+          explanation: Um diese Aktion durchführen zu können, müssen Sie mit "%{authorization}" autorisiert sein, aber Ihre Autorisierung ist noch in Bearbeitung
+          resume: Überprüfen Sie Ihren "%{authorization}" Autorisierungsfortschritt
+          title: Die Autorisierung ist noch im Gange
+        unauthorized:
+          explanation: Leider können Sie diese Aktion nicht durchführen, da einige Ihrer Autorisierungsdaten nicht übereinstimmen.
+          invalid_field: "%{field} Wert %{value} ist nicht gültig."
+          ok: Ok
+          title: Nicht autorisiert
+      author:
+        deleted: Gelöschter Benutzer
+      embed_modal:
+        close_window: Fenster schließen
+        embed: Bitte fügen Sie diesen Code in Ihre Seite ein
+        embed_link: Einbetten
+      flag_modal:
+        already_reported: Dieser Inhalt ist bereits gemeldet und wird von einem Admin überprüft.
+        close: Schließen
+        description: Sind diese Inhalte unangemessen?
+        does_not_belong: Enthält illegale Aktivitäten, Selbstmorddrohungen, persönliche Informationen oder etwas anderes, von dem du denkst, dass es nicht zu %{organization_name} gehört.
+        offensive: Enthält Rassismus, Sexismus, Beleidigungen, persönliche Angriffe, Morddrohungen, Selbstmordanfragen oder jede Form von Hassreden.
+        report: Bericht
+        spam: Enthält Clickbait, Werbung, Betrug oder Skript-Bots.
+        title: Ein Problem melden
+      follow_button:
+        sign_in_before_follow: Bitte melden Sie sich an, bevor Sie diese Aktion durchführen
+      login_modal:
+        please_sign_in: Bitte melden Sie sich an
+        sign_up: Registrieren Sie sich
+      reference:
+        reference: 'Referenz: %{reference}'
+      results_per_page:
+        label: 'Ergebnisse pro Seite:'
+      share_modal:
+        close_window: Fenster schließen
+        share: Teilen
+        share_link: Link teilen
+      version_author:
+        deleted: Gelöschter Benutzer
+  errors:
+    messages:
+      content_type_whitelist_error: Der Dateityp ist nicht gültig
+      cycle_detected: der übergeordnete Teil eines Scopes kann nicht einer seiner Nachkommen sein
+      file_size_is_less_than_or_equal_to: die Dateigröße muss kleiner oder gleich %{count} sein
+      invalid_manifest: Ungültiges Manifest
+      invalid_participatory_process: Ungültiger partizipativer Prozess
+      long_words: Enthält Wörter, die zu lang sind
+      must_start_with_caps: Muss mit Kappen beginnen
+      nesting_too_deep: kann nicht innerhalb einer Unterkategorie liegen
+      too_many_marks: Benutzt zu viele Markierungen
+      too_much_caps: Benutzt zu viele Kappen
+      too_short: Ist zu kurz
+  forms:
+    required: Erforderlich
+  invisible_captcha:
+    sentence_for_humans: Wenn du ein Mensch bist, ignoriere dieses Feld
+    timestamp_error_message: Sorry, das war zu schnell! Bitte senden Sie es erneut.
+  layouts:
+    decidim:
+      cookie_warning:
+        description_html: Diese Website verwendet Cookies. Durch das weitere Durchsuchen der Website erklären Sie sich mit der Verwendung von Cookies einverstanden. Erfahren Sie mehr darüber. %{link}...
+        link_label: hier
+        ok: Ich stimme zu
+      footer:
+        made_with_open_source: Website erstellt mit <a target="_blank" href="https://github.com/decidim/decidim">kostenloser Software</a>.
+      header:
+        close_menu: Menü schließen
+        navigation: Navigation
+        sign_in: Anmelden
+        sign_up: Registrieren Sie sich
+      impersonation_warning:
+        close_session: Sitzung schließen
+        description_html: Sie geben sich als Benutzer aus. <b>%{user_name}</b>.
+        expire_time_html: Ihre Sitzung läuft in wenigen <b><span class="minutes">%{minutes}</span> Minuten</b> ab.
+      notifications_dashboard:
+        mark_all_as_read: Alle als gelesen markieren
+        no_notifications: Noch keine Benachrichtigungen.
+        title: Benachrichtigungen
+      user_menu:
+        admin_dashboard: Admin Dashboard
+        conversations: Gespräche
+        notifications: Benachrichtigungen
+        profile: Mein Konto
+        public_profile: Mein öffentliches Profil
+        sign_out: Abmeldung
+      user_profile:
+        account: Konto
+        authorizations: Berechtigungen
+        delete_my_account: Mein Konto löschen
+        notifications_settings: Einstellungen für Benachrichtigungen
+        title: Benutzereinstellungen
+        user_groups: Unternehmen
+      widget:
+        see_more: Mehr sehen
+  locale:
+    name: Englisch
+  pages:
+    home:
+      extended:
+        debates: Debatten
+        debates_explanation: Diskutieren und diskutieren, teilen Sie Ihre Ansichten und bereichern Sie die relevanten Themen.
+        how_to_participate: Wie nehme ich an einem Prozess teil?
+        meetings: Besprechungen
+        meetings_explanation: Erfahren Sie, wo und wann Sie an öffentlichen Meetings teilnehmen können.
+        more_info: Mehr Informationen
+        proposals: Vorschläge
+        proposals_explanation: Machen Sie Vorschläge, unterstützen Sie bestehende und fördern Sie die Veränderungen, die Sie sehen wollen.
+      footer_sub_hero:
+        footer_sub_hero_body: Lasst uns eine offenere, transparentere und kollaborativere Gesellschaft aufbauen.<br /> Beitreten, teilnehmen und entscheiden.
+        footer_sub_hero_headline: Willkommen bei der partizipativen Plattform %{organization}.
+        register: Registrieren
+      hero:
+        participate: Teilnehmen
+        welcome: Willkommen bei %{organization}!
+      statistics:
+        answers_count: Abgeschlossene Umfragen
+        assemblies_count: Baugruppen
+        comments_count: Kommentare
+        endorsements_count: Befürwortungen
+        headline: Aktueller Stand von %{organization}
+        meetings_count: Besprechungen
+        orders_count: Abstimmungen
+        pages_count: Seiten
+        processes_count: Prozesse
+        projects_count: Projekte
+        proposals_accepted: Akzeptierte Vorschläge
+        proposals_count: Vorschläge
+        results_count: Ergebnisse
+        surveys_count: Umfragen
+        users_count: Teilnehmer
+        votes_count: Abstimmungen
+      sub_hero:
+        register: Registrieren
+  social_share_button:
+    delicious: Köstlich
+    douban: Douban
+    email: E-Mail
+    facebook: Facebook
+    google_bookmark: Google Lesezeichen
+    google_plus: Google+
+    hacker_news: Hacker-Nachrichten
+    linkedin: Linkedin
+    pinterest: Pinterest
+    qq: Qzone
+    reddit: Reddit
+    share_to: Freigeben für %{name}
+    tumblr: Tumblr
+    twitter: Twitter
+    vkontakte: Vkontakte
+    wechat: WeChat
+    wechat_footer: Öffnen Sie Ihren WeChat, klicken Sie auf die Schaltfläche "Entdecken" und dann auf das Menü "QR-Code scannen".
+    weibo: Sina Weibo
+    xing: Xing
+  time:
+    formats:
+      day_of_month: "%b %d"
+      day_of_week: "%a"
+      day_of_year: "%d.%m.%m.%y"
+      decidim_day_of_year: "%d %B %B %Y"
+      decidim_short: "%d/%m/%Y %H:%M"
+      time_of_day: "%H:%M"
+  trads:
+    automatic_translation: Automatische Übersetzung durch %{trad_service}
+    show_the_original: Das Original anzeigen
+    show_traduction: Übersetzung anzeigen
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: Letzter &raquo;
+      next: Weiter &rsaquo;
+      previous: "&lsaquo; Prev"
+      truncate: "&hellip;"

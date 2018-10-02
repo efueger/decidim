@@ -1,0 +1,100 @@
+---
+de:
+  decidim:
+    comments:
+      events:
+        comment_created:
+          comment:
+            email_intro: '"%{resource_title}" wurde kommentiert. Du kannst den Kommentar auf dieser Seite lesen:'
+            email_outro: Du hast diese Benachrichtigung erhalten, weil du "%{resource_title}" oder seinem Autor folgst. Du kannst es über den vorherigen Link wieder rückgängig machen.
+            email_subject: Es gibt einen neuen Kommentar von %{author_name} in %{resource_title}
+            moderation:
+              email_intro: "%{author_name} hat einen Kommentar veröffentlicht zu"
+              email_subject: Neuer Kommentar von %{author_name} wartet auf die Moderation
+              moderation_url: 'Du kannst es hier moderieren: %{moderation_url}'
+            notification_title: Es gibt einen neuen Kommentar von <a href="%{author_path}"><%{author_name} %{author_nickname}</a> in <a href="%{resource_path}">%{resource_title}</a>
+            url: 'URL des Kommentars : %{resource_url}'
+          reply:
+            email_intro: Der "%{resource_title}" wurde kommentiert
+            email_outro: Du hast diese Benachrichtigung erhalten, weil du "%{resource_title}" oder seinem Autor folgst. Du kannst es über den vorherigen Link wieder rückgängig machen.
+            email_subject: Es gibt eine neue Antwort auf deinen Kommentar von %{author_name} in <a href="%{resource_url}"><%{resource_title}</a>>
+            moderation:
+              email_intro: "%{author_name} hat einen Kommentar veröffentlicht zu"
+              email_subject: Neuer Kommentar von %{author_name} wartet auf die Moderation
+              moderation_url: 'Du kannst es hier moderieren: %{moderation_url}'
+            notification_title: Es gibt eine neue Antwort auf deinen Kommentar von <a href="%{author_path}">%{author_name} %{autor_nickname}</a> in <a href="%{resource_path}"><%{resource_title}</a></a>
+            url: 'URL des Kommentars : %{resource_url}'
+      votes:
+        create:
+          error: Es gab Fehler bei der Abstimmung des Kommentars.
+    components:
+      add_comment_form:
+        account_message: <a href="%{sign_in_url}">Anmeldung mit Ihrem Konto</a> oder <a href="%{sign_up_url}">Anmeldung</a> um Ihren Kommentar hinzuzufügen.
+        form:
+          body:
+            label: Kommentar
+            placeholder: Was hältst du davon?
+          form_error: Der Text ist erforderlich und darf nicht länger als %{length} Zeichen sein.
+          submit: Senden
+          user_group_id:
+            label: Kommentar als
+        opinion:
+          neutral: Neutral
+        remaining_characters: "%{count} verbleibende Zeichen"
+        remaining_characters_1: "%{count} Zeichen links"
+        title: Füge deinen Kommentar hinzu
+      comment:
+        alignment:
+          against: Gegen
+          in_favor: Zu Gunsten
+        deleted_user: Gelöschter Benutzer
+        reply: Antwort
+        report:
+          action: Bericht
+          already_reported: Dieser Inhalt ist bereits gemeldet und wird von einem Admin überprüft.
+          close: Schließen
+          description: Sind diese Inhalte unangemessen?
+          details: Zusätzliche Kommentare
+          reasons:
+            does_not_belong: Enthält illegale Aktivitäten, Selbstmorddrohungen, persönliche Informationen oder etwas anderes, von dem du denkst, dass es nicht zu %{organization_name} gehört.
+            offensive: Enthält Rassismus, Sexismus, Beleidigungen, persönliche Angriffe, Morddrohungen, Selbstmordanfragen oder jede Form von Hassreden.
+            spam: Enthält Clickbait, Werbung, Betrug oder Skript-Bots.
+          title: Ein Problem melden
+        show_the_original: Original anzeigen
+        show_traduction: Traduction anzeigen
+      comment_order_selector:
+        order:
+          best_rated: Am besten bewertet
+          most_discussed: Am häufigsten diskutiert
+          older: Ältere
+          recent: Neueste
+        title: 'Sortieren nach:'
+      comment_thread:
+        title: Konversation mit %{authorName}
+      comments:
+        blocked_comments_warning: Kommentare sind zu diesem Zeitpunkt deaktiviert, aber du kannst die vorherigen lesen.
+        loading: Kommentare laden.....
+        title: "%{count} Kommentare"
+      featured_comment:
+        title: Ausgewählter Kommentar
+    events:
+      comments:
+        comment_created:
+          comment:
+            email_intro: '"%{resource_title}" wurde kommentiert. Du kannst den Kommentar auf dieser Seite lesen:'
+            email_outro: Du hast diese Benachrichtigung erhalten, weil du "%{resource_title}" oder seinem Autor folgst. Du kannst es über den vorherigen Link wieder rückgängig machen.
+            email_subject: Es gibt einen neuen Kommentar von %{author_name} in %{resource_title}
+            notification_title: Es gibt einen neuen Kommentar von <a href="%{author_path}"><%{author_name} %{author_nickname}</a> in <a href="%{resource_path}">%{resource_title}</a>
+          reply:
+            email_intro: Der "%{resource_title}" wurde kommentiert
+            email_outro: Du hast diese Benachrichtigung erhalten, weil du "%{resource_title}" oder seinem Autor folgst. Du kannst es über den vorherigen Link wieder rückgängig machen.
+            email_subject: Es gibt eine neue Antwort auf deinen Kommentar von %{author_name} in <a href="%{resource_url}"><%{resource_title}</a>>
+            notification_title: Es gibt eine neue Antwort auf deinen Kommentar von <a href="%{author_path}">%{author_name} %{autor_nickname}</a> in <a href="%{resource_path}"><%{resource_title}</a></a>
+        user_mentioned:
+          email_intro: Du wurdest erwähnt
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie in "%{resource_title}" erwähnt wurden.
+          email_subject: Du wurdest erwähnt in %{resource_title}
+          notification_title: Sie wurden in <a href="%{resource_path}"><%{resource_title}</a> von <a href="%{author_path}">%{author_name} %{autor_name} %{author_nickname}</a> erwähnt
+  errors:
+    messages:
+      cannot_have_comments: kann keine Kommentare haben

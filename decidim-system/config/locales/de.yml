@@ -1,0 +1,72 @@
+---
+de:
+  decidim:
+    system:
+      actions:
+        confirm_destroy: Bist du sicher, dass du das löschen willst?
+        destroy: Zerstören
+        edit: Bearbeiten
+        new: Neu
+        save: Speichern
+        title: Aktionen
+      admins:
+        create:
+          error: Es gab einen Fehler beim Erstellen eines neuen Admin.
+          success: Admin erfolgreich erstellt
+        destroy:
+          success: Admin erfolgreich zerstört
+        edit:
+          title: Admin bearbeiten
+          update: Update
+        index:
+          title: Administratoren
+        new:
+          create: Erstellen
+          title: Neuer Admin
+        update:
+          error: Es gab einen Fehler beim Aktualisieren dieses Admin.
+          success: Admin erfolgreich aktualisiert
+      default_pages:
+        placeholders:
+          content: Bitte fügt der %{page} statischen Seite im Admin-Dashboard sinnvolle Inhalte hinzu.
+          title: Standardtitel für %{page}
+      menu:
+        admins: Administratoren
+        dashboard: Dashboard
+        organizations: Unternehmen
+      models:
+        admin:
+          fields:
+            created_at: Erstellt am
+            email: E-Mail
+          name: Admin
+          validations:
+            email_uniqueness: ein anderer Admin mit der gleichen E-Mail existiert bereits
+        organization:
+          actions:
+            save_and_invite: Organisation erstellen & Admin einladen
+          fields:
+            created_at: Erstellt am
+            name: Name
+          name: Unternehmen
+      organizations:
+        create:
+          error: Beim Anlegen einer neuen Organisation ist ein Fehler aufgetreten.
+          success: Organisation erfolgreich erstellt.
+        edit:
+          secondary_hosts_hint: Geben Sie jeden von ihnen in eine neue Zeile ein
+        index:
+          title: Unternehmen
+        new:
+          reference_prefix_hint: Das Referenzpräfix wird verwendet, um Ressourcen in allen Unternehmen eindeutig zu identifizieren
+          secondary_hosts_hint: Geben Sie jeden von ihnen in eine neue Zeile ein
+          title: Neue Organisation
+        update:
+          error: Es gab einen Fehler bei der Aktualisierung dieser Organisation.
+          success: Organisation erfolgreich aktualisiert.
+      shared:
+        notices:
+          no_organization_warning_html: Sie müssen eine Organisation erstellen, um zu beginnen. Stellen Sie sicher, dass Sie %{guide} lesen, bevor Sie fortfahren.
+          our_getting_started_guide: unser Erste-Hilfe-Leitfaden
+      titles:
+        dashboard: Dashboard

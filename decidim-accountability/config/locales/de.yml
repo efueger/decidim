@@ -1,0 +1,205 @@
+---
+de:
+  activemodel:
+    attributes:
+      result:
+        decidim_accountability_status_id: status
+        decidim_category_id: Kategorie
+        decidim_scope_id: Umfang
+        description: Beschreibung
+        end_date: Enddatum
+        progress: Fortschritte
+        project_ids: Enthaltene Projekte
+        proposals: Enthaltene Vorschläge
+        start_date: Startdatum
+        title: Titel
+        updated_at: Aktualisiert am
+      status:
+        description: Beschreibung
+        key: Schlüssel
+        name: Name
+        progress: Fortschritte
+      timeline_entry:
+        description: Beschreibung
+        entry_date: Datum
+  decidim:
+    accountability:
+      actions:
+        confirm_destroy: Sind Sie sicher, dass Sie dieses %{name} löschen möchten?
+        destroy: Löschen
+        edit: Bearbeiten
+        new: Neu %{name}
+        preview: Vorschau
+        timeline_entries: Projektentwicklung
+        title: Aktionen
+      admin:
+        exports:
+          results: Ergebnisse
+        models:
+          result:
+            name: Ergebnis
+          status:
+            name: Status
+          timeline_entry:
+            name: Zeitachseneintrag
+        results:
+          create:
+            invalid: Es gab ein Problem bei der Erstellung dieses Ergebnisses
+            success: Ergebnis erfolgreich erstellt
+          destroy:
+            success: Ergebnis erfolgreich gelöscht
+          edit:
+            title: Ergebnis bearbeiten
+            update: Ergebnis aktualisieren
+          form:
+            add_proposal: Vorschlag hinzufügen
+          index:
+            title: Ergebnisse
+          new:
+            create: Ergebnis erstellen
+            title: Neues Ergebnis
+          proposals:
+            close: Schließen
+            current_selection: Aktuelle Auswahl
+            select: Auswählen
+          update:
+            invalid: Es gab ein Problem bei der Aktualisierung dieses Ergebnisses
+            success: Ergebnis erfolgreich aktualisiert
+        shared:
+          subnav:
+            statuses: Status
+        statuses:
+          create:
+            invalid: Es gab ein Problem beim Erstellen dieses Status
+            success: Status erfolgreich erstellt
+          destroy:
+            success: Status erfolgreich gelöscht
+          edit:
+            title: Status bearbeiten
+            update: Aktualisierungsstatus
+          index:
+            title: Status
+          new:
+            create: Status anlegen
+            title: Neuer Status
+          update:
+            invalid: Es gab ein Problem bei der Aktualisierung dieses Status
+            success: Status erfolgreich aktualisiert
+        timeline_entries:
+          create:
+            invalid: Es gab ein Problem bei der Erstellung dieses Eintrags
+            success: Eintrag erfolgreich erstellt
+          destroy:
+            success: Eintrag erfolgreich gelöscht
+          edit:
+            title: Eintrag bearbeiten
+            update: Eintrag aktualisieren
+          index:
+            title: Einträge in der Projektzeitachse
+          new:
+            create: Eintrag erstellen
+            title: Neuer Eintrag
+          update:
+            invalid: Es gab ein Problem bei der Aktualisierung dieses Eintrags
+            success: Eintrag erfolgreich aktualisiert
+      admin_log:
+        result:
+          create: "%{user_name} erstelltes Ergebnis %{resource_name} in %{space_name}"
+          update: "%{user_name} aktualisiertes Ergebnis %{resource_name} in %{space_name}"
+      models:
+        result:
+          fields:
+            end_date: Enddatum
+            progress: Fortschritte
+            start_date: Startdatum
+            status: Status
+            title: Titel
+        status:
+          fields:
+            description: Beschreibung
+            key: Schlüssel
+            name: Name
+            progress: Fortschritte
+        timeline_entry:
+          fields:
+            description: Beschreibung
+            entry_date: Datum
+      results:
+        count:
+          results_count:
+            one: 1 Ergebnis
+            other: "%{count} Ergebnisse"
+        filters:
+          all: Alle
+          scopes: Anwendungsbereiche
+        home:
+          categories_label: Kategorien
+          subcategories_label: Unterkategorien
+        home_header:
+          global_status: Globaler Ausführungsstatus
+        nav_breadcrumb:
+          global: Globale Ausführung
+        search:
+          search: Suche nach Aktionen
+        show:
+          stats:
+            attendees: Teilnehmer
+            back_to_result: Zurück zum Ergebnis
+            comments: Kommentare
+            contributions: Beiträge
+            last_edited_by: Zuletzt geändert von
+            last_updated_at: Zuletzt aktualisiert am
+            meetings: Besprechungen
+            number_of_versions: Versionen
+            proposals: Vorschläge
+            show_all_versions: Alle Versionen anzeigen
+            version_author: Versions-Autor
+            version_created_at: Version erstellt bei
+            version_number: Versionsnummer
+            version_number_out_of_total: "%{current_version} von %{total_count}"
+            votes: Unterstützt
+        timeline:
+          title: Projektentwicklung
+      versions:
+        index:
+          changes_at_title: Änderungen bei "%{title}"
+          title: Versionen
+        show:
+          changes_at_title: Änderungen bei "%{title}"
+        version:
+          version_index: Version %{index}
+    events:
+      accountability:
+        proposal_linked:
+          email_intro: 'Der Vorschlag "%{proposal_title}" wurde in ein Ergebnis aufgenommen. Du kannst es auf dieser Seite sehen:'
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie "%{proposal_title}" folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Ein Update auf %{proposal_title}
+          notification_title: Der Vorschlag <a href="%{proposal_path}">%{proposal_title}</a> wurde in das Ergebnis <a href="%{resource_path}">%{resource_title}</a> aufgenommen.
+    features:
+      accountability:
+        name: Verantwortlichkeit
+        settings:
+          global:
+            categories_label: Bezeichnung für " Kategorien
+            comments_enabled: Kommentare aktiviert
+            comments_upstream_moderation_enabled: Upstream-Moderation für Kommentare aktiviert
+            display_progress_enabled: Fortschritt anzeigen
+            heading_leaf_level_results: Bezeichnung für " Projekte
+            heading_parent_level_results: Name für " Ergebnisse "
+            intro: Intro
+            subcategories_label: Name für " Unterkategorien "
+          step:
+            comments_blocked: Kommentare gesperrt
+    participatory_processes:
+      participatory_process_groups:
+        highlighted_results:
+          results: Ergebnisse
+    participatory_spaces:
+      highlighted_results:
+        results: Ergebnisse
+        see_all_results: Alle Ergebnisse anzeigen
+    resource_links:
+      included_projects:
+        result_projects: In diesem Ergebnis enthaltene Projekte
+      included_proposals:
+        result_proposals: In diesem Ergebnis enthaltene Vorschläge

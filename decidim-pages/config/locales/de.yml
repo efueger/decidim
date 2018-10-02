@@ -1,0 +1,26 @@
+---
+de:
+  decidim:
+    admin_log:
+      page:
+        update: "%{user_name} Aktualisiert die %{resource_name} Seite in %{space_name}"
+    features:
+      pages:
+        name: Seite
+        settings:
+          global:
+            announcement: Ankündigung
+          step:
+            announcement: Ankündigung
+    pages:
+      admin:
+        models:
+          components:
+            body: Körper
+        pages:
+          edit:
+            save: Update
+            title: Seite bearbeiten
+          update:
+            invalid: Beim Speichern der Seite gab es Fehler.
+            success: Seite erfolgreich gespeichert.

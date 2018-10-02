@@ -1,0 +1,82 @@
+---
+de:
+  activemodel:
+    attributes:
+      survey_answer:
+        body: Antwort
+      survey_question:
+        mandatory: Obligatorisch
+        question_type: Typ
+  decidim:
+    events:
+      surveys:
+        survey_closed:
+          email_intro: Die Umfrage %{resource_title} in %{participatory_space_title} wurde geschlossen.
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{participatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Eine Umfrage wurde beendet in %{participatory_space_title}
+          notification_title: Die Umfrage <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title}</a> ist beendet.
+        survey_opened:
+          email_intro: 'Die Umfrage %{resource_title} in %{participatory_space_title} ist nun offen. Du kannst von dieser Seite aus daran teilnehmen:'
+          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{participatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_subject: Eine neue Umfrage in %{participatory_space_title}
+          notification_title: Die Umfrage <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title} ist jetzt offen.
+    features:
+      surveys:
+        actions:
+          answer: Antwort
+        name: Umfrage
+        settings:
+          global:
+            announcement: Ankündigung
+          step:
+            allow_answers: Antworten erlauben
+            announcement: Ankündigung
+    surveys:
+      admin:
+        exports:
+          survey_user_answers: Umfrage-Benutzerantworten
+        models:
+          components:
+            description: Beschreibung
+            tos: Allgemeine Geschäftsbedingungen
+        surveys:
+          answer_option:
+            answer_option: Antwortmöglichkeit
+            remove_answer_option: Antwortoption entfernen
+            statement: Erklärung
+          edit:
+            save: Speichern
+            title: Titel
+          form:
+            add_question: Frage hinzufügen
+            already_answered_warning: Die Umfrage wird von einigen Benutzern bereits beantwortet, so dass Sie ihre Fragen nicht ändern können.
+          question:
+            add_answer_option: Antwortoption hinzufügen
+            question: Frage
+            remove_question: Frage entfernen
+            statement: Erklärung
+          update:
+            invalid: Beim Speichern der Umfrage gab es Fehler.
+            success: Umfrage erfolgreich gespeichert.
+      question_types:
+        long_answer: Lange Antwort
+        multiple_option: Mehrere Optionen
+        short_answer: Kurze Antwort
+        single_option: Einzeloption
+      surveys:
+        answer:
+          invalid: Bei der Beantwortung der Umfrage sind Fehler aufgetreten.
+          success: Umfrage erfolgreich abgeschlossen.
+        show:
+          answer_survey:
+            anonymous_user_message: <a href="%{sign_in_link}">Anmeldung mit Ihrem Konto</a> oder <a href="%{sign_up_link}">Anmeldung</a> zur Beantwortung der Umfrage.
+            title: Beantworten Sie die Umfrage
+          are_you_sure: Diese Aktion kann nicht rückgängig gemacht werden und du kannst deine Antworten nicht bearbeiten. Bist du sicher?
+          submit: Absenden
+          survey_answered:
+            body: Sie haben diese Umfrage bereits beantwortet.
+            title: Umfrage beantwortet
+          survey_closed:
+            body: Die Umfrage ist geschlossen und kann nicht beantwortet werden.
+            title: Umfrage abgeschlossen
+          tos_agreement: Mit der Teilnahme an dieser Umfrage akzeptieren Sie die Allgemeinen Geschäftsbedingungen
