@@ -18,7 +18,13 @@ module Decidim
       #
       # Broadcasts :ok if successful, :invalid otherwise.
       def call
-        return broadcast(:invalid) if @form.invalid?
+        if @form.invalid?
+          @form.survey_answers.each do |x|
+            x.choices = []
+            x.body = nil
+          end
+          return broadcast(:invalid)
+        end
 
         answer_survey
         broadcast(:ok)
