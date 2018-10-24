@@ -256,6 +256,11 @@ de:
         create:
           error: Bei der Abstimmung über den Vorschlag gab es Fehler.
       proposals:
+        vote_weight_button:
+          neutral: Neutral
+          maximum_votes_reached: Maximale Stimmenzahl erreicht
+          no_votes_remaining: Keine Abstimmung mehr
+          votes_blocked: Stimmabgabe deaktiviert
         compare:
           mine_is_different: Mein Vorschlag ist anders
           no_similars_found: Gut gemacht! Keine ähnlichen Vorschläge gefunden

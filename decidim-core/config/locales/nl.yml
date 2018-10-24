@@ -394,6 +394,13 @@ nl:
       version_author:
         deleted: Verwijderde gebruiker
   devise:
+    shared:
+      links:
+        facebook: Facebook
+        twitter: Twitter
+        saml: SAML
+        google: Google
+        developer: Developer
     invitations:
       edit:
         header: Uw wachtwoord instellen

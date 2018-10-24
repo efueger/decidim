@@ -235,6 +235,11 @@ nl:
         create:
           error: Er zijn fouten geweest bij het stemmen van het voorstel.
       proposals:
+        vote_weight_button:
+          neutral: neutraal
+          maximum_votes_reached: Maximaal aantal stemmen bereikt
+          no_votes_remaining: geen stemmen over
+          votes_blocked: Stemmen uitgeschakeld
         compare:
           mine_is_different: Mijn voorstel is anders
           no_similars_found: Goed gedaan! Geen vergelijkbare voorstellen gevonden
