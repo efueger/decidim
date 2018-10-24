@@ -6,7 +6,7 @@ namespace :decidim do
     FileUtils.remove_dir("tmp/decidim_repo", true)
 
     branch = ENV["TARGET_BRANCH"] || "master"
-    status = system("git clone --depth=1 --single-branch --branch #{branch} https://github.com/decidim/decidim tmp/decidim_repo")
+    status = system("git clone --depth=1 --single-branch --branch #{branch} https://github.com/OpenSourcePolitics/decidim tmp/decidim_repo")
     return unless status
 
     Dir.chdir("tmp/decidim_repo") do
