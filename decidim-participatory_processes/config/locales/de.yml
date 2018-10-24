@@ -4,41 +4,41 @@ de:
     attributes:
       participatory_process:
         announcement: Ankündigung
-        banner_image: Banner-Bild
+        banner_image: Titelbild
         copy_categories: Kategorien kopieren
-        copy_features: Kopierfunktionen
+        copy_features: Funktionen kopieren
         copy_steps: Schritte kopieren
         description: Beschreibung
-        developer_group: Entwicklergruppe
+        developer_group: Organisator
         domain: Domain
         end_date: Enddatum
         hashtag: Hashtag
-        hero_image: Homebild
-        local_area: Lokale Umgebung
-        meta_scope: Scope Metadaten
-        participatory_process_group_id: Prozessgruppe
-        participatory_scope: Beteiligungsumfang
-        participatory_structure: Partizipative Struktur
-        promoted: Gefördert
-        published_at: Veröffentlicht unter
-        scope_id: Umfang
-        scopes_enabled: Scopes aktiviert
-        short_description: Kurzbeschreibung
-        show_statistics: Statistik anzeigen
-        slug: URL Slug
+        hero_image: Startseiten-Bild
+        local_area: Organisationsbereich
+        meta_scope: Skala
+        participatory_process_group_id: Konzertierungsgruppe
+        participatory_scope: Ziel
+        participatory_structure: Bedingungen
+        promoted: Hervorhebung
+        published_at: Veröffentlicht am
+        scope_id: Anwendungsumfang
+        scopes_enabled: Aktivierte Anwendungsumfänge
+        short_description: Zusammenfassung
+        show_statistics: Statistiken anzeigen
+        slug: Benutzername
         start_date: Startdatum
         subtitle: Untertitel
-        target: Ziel
+        target: Teilnehmer
         title: Titel
       participatory_process_group:
         description: Beschreibung
         hero_image: Bild
         name: Name
-        participatory_process_ids: Verwandte Prozesse
+        participatory_process_ids: Verknüpfte Konzertierungen
       participatory_process_step:
         description: Beschreibung
         end_date: Enddatum
-        short_description: Kurzbeschreibung
+        short_description: Zusammenfassung
         start_date: Startdatum
         title: Titel
       participatory_process_user_role:
@@ -50,139 +50,139 @@ de:
       actions:
         activate: Aktivieren
         configure: Konfigurieren
-        confirm_destroy: Bestätigen Sie die Zerstörung
-        destroy: Zerstören
+        confirm_destroy: Löschen bestätigen
+        destroy: Löschen
         duplicate: Duplizieren
-        edit: Bearbeiten
+        edit: Ändern
         new: Neu
         preview: Vorschau
         publish: Veröffentlichen
         resend_invitation: Einladung erneut versenden
-        unpublish: Nicht veröffentlichen
+        unpublish: Veröffentlichung aufheben
       menu:
-        participatory_process_groups: Prozessgruppen
-        participatory_processes: Prozesse
+        participatory_process_groups: Konzertierungsgruppen
+        participatory_processes: Konzertierungen
         participatory_processes_submenu:
-          attachment_collections: Sammlungen
+          attachment_collections: Ordner
           attachment_files: Dateien
-          attachments: Anhänge
+          attachments: Verknüpfte Dokumente
           categories: Kategorien
-          features: Merkmale
-          info: Info
+          features: Funktionen
+          info: Information
+          moderations: Moderationen
           moderation:
-            downstream: Stromabwärts
-            upstream: Stromabwärts
-          moderations: Modifikationen
-          process_admins: Prozessbenutzer
+            upstream: A priori
+            downstream: A posteriori
+          process_admins: Konzertierungsadministratoren
           steps: Schritte
       models:
         participatory_process:
           fields:
             created_at: Erstellt am
-            promoted: Hervorgehoben
+            promoted: Betonung
             published: Veröffentlicht
             title: Titel
-          name: Partizipativer Prozess
+          name: Konzertierung
         participatory_process_group:
           fields:
             name: Name
-          name: Prozessgruppe
+          name: Konzertierungsgruppen
         participatory_process_step:
           fields:
             end_date: Enddatum
             start_date: Startdatum
             title: Titel
-          name: Partizipativer Prozessschritt
+          name: Konzertierungsschritt
         participatory_process_user_role:
           fields:
             email: E-Mail
             name: Name
             role: Rolle
-          name: Benutzer des partizipativen Prozesses
+          name: Rolle des Konzertierungsbenutzers
           roles:
             admin: Administrator
-            collaborator: Mitarbeiterin
+            collaborator: Lektor
             moderator: Moderator
         user:
           fields:
-            invitation_accepted_at: Einladung angenommen unter
-            invitation_sent_at: Einladung gesendet an
+            invitation_accepted_at: Einladung angenommen am
+            invitation_sent_at: Einladung versendet am
       participatory_process_copies:
         new:
-          copy: Kopieren
-          select: Wählen Sie aus, welche Daten Sie duplizieren möchten
-          title: Doppelter partizipativer Prozess
+          copy: Kopie
+          select: Wählen Sie die Daten, die Sie duplizieren möchten
+          title: Konzertierung duplizieren
       participatory_process_groups:
         destroy:
-          success: Partizipative Prozessgruppe erfolgreich zerstört.
+          success: Die Konzertierungsgruppe wurde erfolgreich eliminiert.
         edit:
-          title: Prozessgruppe bearbeiten
-          update: Update
+          title: Konzertierungsgruppe ändern
+          update: Aktualisieren
         new:
           create: Erstellen
-          title: Neue Prozessgruppe
+          title: Neue Konzertierungsgruppe
         update:
-          error: Es gab einen Fehler bei der Aktualisierung dieser partizipativen Prozessgruppe.
-          success: Teilnehmende Prozessgruppe erfolgreich aktualisiert.
+          error: Bei der Aktualisierung dieser Konzertierungsgruppe ist ein Fehler aufgetreten.
+          success: Konzertierungsgruppe erfolgreich aktualisiert.
       participatory_process_publications:
         create:
-          error: Es gab einen Fehler bei der Veröffentlichung dieses partizipativen Prozesses.
-          success: Partizipativer Prozess erfolgreich veröffentlicht.
+          error: Bei der Veröffentlichung dieser Konzertierungsgruppe ist ein Fehler aufgetreten.
+          success: Konzertierung erfolgreich veröffentlicht.
         destroy:
-          error: Es gab einen Fehler, diesen partizipativen Prozess nicht zu veröffentlichen.
-          success: Partizipativer Prozess erfolgreich unveröffentlicht.
+          error: Bei der Veröffentlichung dieser Konzertierungsgruppe ist ein Fehler aufgetreten.
+          success: Veröffentlichung der Konzertierung erfolgreich aufgehoben.
       participatory_process_step_activations:
         create:
-          error: Bei der Aktivierung dieses partizipativen Prozessschrittes ist ein Fehler aufgetreten.
-          success: Partizipativer Prozessschritt erfolgreich aktiviert.
+          error: Bei der Aktivierung dieses Konzertierungsschritts ist ein Fehler aufgetreten.
+          success: Konzertierungsschritt erfolgreich aktiviert.
       participatory_process_steps:
         create:
-          error: Bei der Erstellung eines neuen partizipativen Prozessschrittes ist ein Fehler aufgetreten.
-          success: Partizipativer Prozessschritt erfolgreich erstellt.
+          error: Beim Erstellen eines neuen Konzertierungsschritts ist ein Fehler aufgetreten.
+          success: Konzertierungsschritt erfolgreich erstellt.
         default_title: Einführung
         destroy:
           error:
-            active_step: Der aktive Schritt kann nicht gelöscht werden.
-            last_step: Der letzte Schritt eines Prozesses kann nicht gelöscht werden.
-          success: Partizipativer Prozessschritt erfolgreich abgeschlossen.
+            active_step: Sie können den aktiven Konzertierungsschritt nicht löschen.
+            last_step: Sie können den letzten Schritt einer Konzertierung nicht löschen.
+          success: Der Konzertierungsschritt wurde erfolgreich gelöscht.
         edit:
-          title: Partizipativen Prozessschritt bearbeiten
-          update: Update
+          title: Konzertierungsschritt ändern.
+          update: Aktualisieren
         index:
           steps_title: Schritte
         new:
           create: Erstellen
-          title: Neuer partizipativer Prozessschritt
+          title: Neuer Konzertierungsschritt
         ordering:
-          error: Bei der Neuordnung dieser partizipativen Prozessschritte ist ein Fehler aufgetreten.
+          error: Bei der Reorganisation der Konzertierungsschritte ist ein Fehler aufgetreten.
         update:
-          error: Bei der Aktualisierung dieses partizipativen Prozessschrittes ist ein Fehler aufgetreten.
-          success: Partizipativer Prozessschritt erfolgreich aktualisiert.
+          error: Bei der Aktualisierung dieses Konzertierungsschritts ist ein Fehler aufgetreten.
+          success: Konzertierungsschritt erfolgreich aktualisiert.
       participatory_process_user_roles:
         create:
-          error: Es gab einen Fehler beim Hinzufügen eines Benutzers für diesen partizipativen Prozess.
-          success: Der Benutzer wurde erfolgreich für diesen partizipativen Prozess angelegt.
+          error: Beim Hinzufügen eines Benutzers für diese Konzertierung ist ein Fehler aufgetreten.
+          success: Benutzer für diese Konzertierung erfolgreich erstellt.
         destroy:
-          success: Benutzer erfolgreich für diesen partizipativen Prozess zerstört.
+          success: Der Benutzer wurde erfolgreich für diese Konzertierung gelöscht.
         edit:
-          title: Aktualisieren Sie den Benutzer des partizipativen Prozesses.
-          update: Update
+          title: Aktualisierung des Konzertierungsbenutzers.
+          update: Aktualisieren
         index:
-          process_admins_title: Benutzer des partizipativen Prozesses
+          process_admins_title: Konzertierungsadministratoren
         new:
           create: Erstellen
-          title: Neuer Benutzer des partizipativen Prozesses.
+          title: Neuer Konzertierungsbenutzer.
         update:
-          error: Es gab einen Fehler, der einen Benutzer für diesen partizipativen Prozess aktualisiert hat.
-          success: Der Benutzer wurde für diesen partizipativen Prozess erfolgreich aktualisiert.
+          error: Bei der Aktualisierung eines Benutzers für diese Konzertierung ist ein Fehler aufgetreten.
+          success: Der Benutzer wurde erfolgreich für diese Konzertierung aktualisiert.
       participatory_processes:
         create:
-          error: Es gab einen Fehler bei der Erstellung eines neuen partizipativen Prozesses.
-          success: Partizipativer Prozess erfolgreich erstellt. Konfiguriere jetzt seine Schritte.
+          error: Beim Erstellen einer neuen Konzertierung ist ein Fehler aufgetreten.
+          success: Konzertierung erfolgreich erstellt. Konfigurieren Sie jetzt die Schritte.
         destroy:
-          success: Partizipativer Prozess erfolgreich zerstört.
+          success: Konzertierung erfolgreich gelöscht.
         edit:
-          update: Update
+          update: Aktualisieren
         form:
           title: Allgemeine Informationen
         index:
@@ -190,113 +190,113 @@ de:
           published: Veröffentlicht
         new:
           create: Erstellen
-          title: Neuer partizipativer Prozess
+          title: Neue Konzertierung
         update:
-          error: Bei der Aktualisierung dieses partizipativen Prozesses ist ein Fehler aufgetreten.
-          success: Der Beteiligungsprozess wurde erfolgreich aktualisiert.
+          error: Bei der Aktualisierung dieser Konzertierung ist ein Fehler aufgetreten.
+          success: Konzertierung erfolgreich aktualisiert.
       participatory_processes_copies:
         create:
-          error: Es gab einen Fehler bei der Duplizierung dieses partizipativen Prozesses.
-          success: Der Beteiligungsprozess wurde erfolgreich dupliziert.
+          error: Bei der Duplizierung dieser Konzertierung ist ein Fehler aufgetreten.
+          success: Konzertierung erfolgreich dupliziert.
       participatory_processes_group:
         create:
-          error: Es gab einen Fehler bei der Erstellung einer neuen partizipativen Prozessgruppe.
-          success: Partizipative Prozessgruppe erfolgreich erstellt.
+          error: Beim Erstellen einer neuen Konzertierungsgruppe ist ein Fehler aufgetreten.
+          success: Konzertierungsgruppe erfolgreich erstellt.
       titles:
-        participatory_process_groups: Partizipative Prozessgruppen
-        participatory_processes: Partizipative Prozesse
+        participatory_process_groups: Konzertierungsgruppen
+        participatory_processes: Konzertierungen
       users:
         resend_invitation:
-          error: Es gab einen Fehler beim erneuten Senden der Einladung.
-          success: Die Einladung wurde erfolgreich erneut versendet.
+          error: Beim Versenden der Einladung ist ein Fehler aufgetreten.
+          success: Einladung erfolgreich versandt.
     admin_log:
       participatory_process:
-        create: "%{user_name} hat den %{resource_name} partizipativen Prozess erstellt"
-        publish: "%{user_name} hat den %{resource_name} partizipativen Prozess veröffentlicht"
-        unpublish: "%{user_name} unveröffentlicht der %{resource_name} Beteiligungsprozess"
-        update: "%{user_name} Aktualisierung des %{resource_name} Beteiligungsprozesses"
+        create: "%{user_name} hat die Konzertierung %{resource_name} erstellt"
+        publish: "%{user_name} hat die Konzertierung %{resource_name} veröffentlicht“
+        unpublish: "%{user_name} hat die Konzertierung %{resource_name} nicht veröffentlicht“
+        update: "%{user_name} hat die Konzertierung %{resource_name} aktualisiert“
       participatory_process_step:
-        activate: "%{user_name} aktivierte den %{resource_name} Schritt im %{space_name} Teilnahmeverfahren"
-        create: "%{user_name} hat den %{resource_name} Schritt im %{space_name} Beteiligungsprozess erstellt"
-        delete: "%{user_name} hat den %{resource_name} Schritt im %{space_name} Beteiligungsprozess gelöscht"
-        update: "%{user_name} Aktualisiert den %{resource_name} Schritt im %{space_name} Partizipativer Prozess"
+        activate: "%{user_name} hat den Schritt %{resource_name} in der Konzertierung %{space_name} aktiviert"
+        create: "%{user_name} hat den Schritt %{resource_name} in der Konzertierung %{space_name} erstellt"
+        delete: "%{user_name} hat den Schritt %{resource_name} in der Konzertierung %{space_name} gelöscht"
+        update: "%{user_name} hat den Schritt %{resource_name} in der Konzertierung %{space_name} aktualisiert"
       participatory_process_user_role:
-        create: "%{user_name} lud den Benutzer %{resource_name} zum %{space_name} partizipativen Prozess ein"
-        delete: "%{user_name} Der Benutzer %{resource_name} wurde aus dem %{space_name} Beteiligungsprozess entfernt"
-        update: "%{user_name} hat die Rolle des Benutzers %{resource_name} im %{space_name} Beteiligungsprozess geändert"
+        create: "%{user_name} hat den Benutzer %{resource_name} zur Konzertierung %{space_name} eingeladen"
+        delete: "%{user_name} hat den Benutzer %{resource_name} ausgehend aus der Konzertierung %{space_name} gelöscht“
+        update: "%{user_name} hat die Benutzerrolle %{resource_name} in der Konzertierung %{space_name} geändert"
     events:
       participatory_process:
         step_activated:
-          email_intro: 'Der Schritt %{resource_title} ist nun für %{participatory_space_title} aktiv. Du kannst es auf dieser Seite sehen:'
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{participatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
-          email_subject: Ein Update auf %{participatory_space_title}
-          notification_title: Der Schritt %{resource_title} ist nun aktiv für <a href="%{resource_path}">%{participatory_space_title}</a>>
+          email_intro: 'Der Schritt %{resource_title} ist jetzt aktiv für %{participatory_space_title}. Sie können ihn jetzt auf dieser Seite sehen'
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie %{participatory_space_title} folgen. Sie können den Erhalt der Benachrichtigungen abbestellen, indem Sie auf den vorangegangenen Link klicken.
+          email_subject: Eine Aktualisierung von %{participatory_space_title}
+          notification_title: Der Schritt %{resource_title} ist jetzt aktiv für <a href="%{resource_path}">%{participatory_space_title}</a>
         step_changed:
-          email_intro: 'Die Daten für den %{resource_title} Schritt bei %{participatory_space_title} wurden aktualisiert. Du kannst es auf dieser Seite sehen:'
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{participatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
-          email_subject: Ein Update auf %{participatory_space_title}
-          notification_title: Die Daten für den <a href="%{resource_path}"><%{resource_title}</a> Schritt bei <a href="%{participatory_space_url}">%{participatory_space_title}</a> wurden aktualisiert.
+          email_intro: 'Die Daten für Schritt %{resource_title} bis %{participatory_space_title} wurden aktualisiert. Das können Sie jetzt auf dieser Seite sehen'
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie %{participatory_space_title} folgen. Sie können den Erhalt der Benachrichtigungen abbestellen, indem Sie auf den vorangegangenen Link klicken.
+          email_subject: Eine Aktualisierung von %{participatory_space_title}
+          notification_title: Die Daten für Schritt <a href="%{resource_path}">%{resource_title}</a> bis <a href="%{participatory_space_url}">%{participatory_space_title}</a> wurden aktualisiert.
     menu:
-      processes: Prozesse
+      processes: Konzertierungen
     participatory_process_groups:
       show:
-        group_participatory_processes: Prozesse für %{group}
-        title: Partizipative Prozessgruppen
+        group_participatory_processes: Konzertierungen für %{group}
+        title: Konzertierungsgruppen
     participatory_process_steps:
       index:
-        process_steps: Prozessschritte
-        title: Partizipative Prozessschritte
+        process_steps: Konzertierungsschritte
+        title: Konzertierungsschritte
     participatory_processes:
       admin:
         participatory_process_copies:
           form:
-            slug_help: 'URL-Slugs werden verwendet, um die URLs zu generieren, die auf diesen Prozess verweisen. Akzeptiert nur Buchstaben, Zahlen und Bindestriche und muss mit einem Buchstaben beginnen. Beispiel: %{url}'
+            slug_help: 'Es wurden URL-Identifikatoren verwendet, um die URLs zu erzeugen, die zu dieser Konzertierung führen. Akzeptiert nur Buchstaben, Ziffern und Bindestriche und muss mit einem Buchstaben beginnen. Beispiel %{url}'
         participatory_processes:
           form:
-            announcement_help: Der Text, den Sie hier eingeben, wird dem Benutzer direkt unter den Prozessinformationen angezeigt.
-            slug_help: 'URL-Slugs werden verwendet, um die URLs zu generieren, die auf diesen Prozess verweisen. Akzeptiert nur Buchstaben, Zahlen und Bindestriche und muss mit einem Buchstaben beginnen. Beispiel: %{url}'
+            announcement_help: Der hier eingegeben Text wird direkt unter den Konzertierungsinformationen angezeigt.
+            slug_help: 'Es wurden URL-Identifikatoren verwendet, um die URLs zu erzeugen, die zu dieser Konzertierung führen. Akzeptiert nur Buchstaben, Ziffern und Bindestriche und muss mit einem Buchstaben beginnen. Beispiel %{url}'
       index:
-        title: Partizipative Prozesse
+        title: Konzertierung
       order_by_processes:
-        active: Aktiv
+        active: Aktive
         all: Alle
-        past: Vergangenheit
-        upcoming: Demnächst
+        past: Vergangene
+        upcoming: Zukünftige
       pages:
         home:
           highlighted_processes:
-            active_processes: Aktive Prozesse
+            active_processes: Aktivierte Konzertierungen
             active_step: Aktiver Schritt
-            see_all_processes: Alle Prozesse anzeigen
+            see_all_processes: Alle Konzertierungen anzeigen
       participatory_process_groups:
         none: Keine
       participatory_processes:
         index:
-          loading: Laden der Ergebnisse.....
+          loading: Ergebnisse werden geladen...
       show:
-        developer_group: Entwicklergruppe
+        developer_group: Organisator
         end_date: Enddatum
         local_area: Organisationsbereich
-        participatory_scope: Was entschieden wird
-        participatory_structure: Wie wird entschieden
-        scope: Umfang
+        participatory_scope: Ziel
+        participatory_structure: Bedingungen
+        scope: Skala
         start_date: Startdatum
-        target: Wer nimmt teil
+        target: Teilnehmer
       statistics:
         answers_count: Antworten
         comments_count: Kommentare
-        endorsements_count: Befürwortungen
+        endorsements_count: Empfehlungen
         headline: Aktivität
-        meetings_count: Besprechungen
-        orders_count: Abstimmungen
+        meetings_count: Versammlungen
+        orders_count: Stützen
         pages_count: Seiten
-        processes_count: Prozesse
+        processes_count: Konzertierungen
         projects_count: Projekte
         proposals_count: Vorschläge
         results_count: Ergebnisse
-        surveys_count: Umfragen
+        surveys_count: Untersuchungen
         users_count: Teilnehmer
-        votes_count: Abstimmungen
+        votes_count: Stimmen
   layouts:
     decidim:
       participatory_process_groups:
@@ -304,24 +304,24 @@ de:
           browse: Durchsuchen
       participatory_process_widgets:
         show:
-          active_step: Aktiver Schritt
+          active_step: "Aktueller Schritt"
           take_part: Teilnehmen
       participatory_processes:
         index:
-          promoted_processes: Hervorgehobene Prozesse
+          promoted_processes: Konzertierung hervorgehoben
         order_by_processes:
           processes:
-            one: "%{count} Prozess"
-            other: "%{count} Prozesse"
+            one: "%{count} Konzertierung"
+            other: "%{count} Konzertierungen"
         participatory_process:
-          active_step: 'Aktueller Schritt:'
+          active_step: 'Aktueller Schritt'
           take_part: Teilnehmen
         promoted_process:
-          active_step: 'Aktueller Schritt:'
-          more_info: Mehr Informationen
+          active_step: 'Aktueller Schritt'
+          more_info: Weitere Informationen
           take_part: Teilnehmen
       process_header:
-        process_menu_item: Der Prozess
+        process_menu_item: Kontext
         unfold: Aufklappen
       process_header_steps:
         step: Schritt %{current} von %{total}
