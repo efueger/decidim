@@ -3,80 +3,80 @@ de:
   activemodel:
     attributes:
       survey_answer:
-        body: Antwort
+        body: Antworten
       survey_question:
-        mandatory: Obligatorisch
-        question_type: Typ
+        mandatory: Erforderlich
+        question_type: Fragetyp
   decidim:
     events:
       surveys:
         survey_closed:
           email_intro: Die Umfrage %{resource_title} in %{participatory_space_title} wurde geschlossen.
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{participatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
-          email_subject: Eine Umfrage wurde beendet in %{participatory_space_title}
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie %{participatory_space_title} folgen. Sie können den Erhalt der Benachrichtigungen abbestellen, indem Sie auf den vorangegangenen Link klicken.
+          email_subject: Eine Untersuchung ist beendet um %{participatory_space_title}
           notification_title: Die Umfrage <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title}</a> ist beendet.
         survey_opened:
-          email_intro: 'Die Umfrage %{resource_title} in %{participatory_space_title} ist nun offen. Du kannst von dieser Seite aus daran teilnehmen:'
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie %{participatory_space_title} folgen. Sie können den Empfang von Benachrichtigungen über den vorherigen Link beenden.
+          email_intro: Die Umfrage %{resource_title} in %{participatory_space_title} ist jetzt geöffnet. Sie können auf dieser Seite daran teilnehmen.'
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie %{participatory_space_title} folgen. Sie können den Erhalt der Benachrichtigungen abbestellen, indem Sie auf den vorangegangenen Link klicken.
           email_subject: Eine neue Umfrage in %{participatory_space_title}
-          notification_title: Die Umfrage <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title} ist jetzt offen.
+          notification_title: Die Umfrage <a href="%{resource_path}">%{resource_title}</a> in <a href="%{participatory_space_url}">%{participatory_space_title}</a> ist jetzt geöffnet.
     features:
       surveys:
         actions:
-          answer: Antwort
-        name: Umfrage
+          answer: Antworten
+        name: Untersuchung
         settings:
           global:
-            announcement: Ankündigung
+            announcement: Ankündigungsnachricht
           step:
-            allow_answers: Antworten erlauben
-            announcement: Ankündigung
+            allow_answers: Antworten autorisieren
+            announcement: Ankündigungsnachricht
     surveys:
       admin:
         exports:
-          survey_user_answers: Umfrage-Benutzerantworten
+          survey_user_answers: Antworten der Untersuchungsteilnehmer
         models:
           components:
             description: Beschreibung
-            tos: Allgemeine Geschäftsbedingungen
+            tos: Nutzungsbedingungen
         surveys:
           answer_option:
-            answer_option: Antwortmöglichkeit
-            remove_answer_option: Antwortoption entfernen
+            answer_option: Antwortoption
+            remove_answer_option: Antwortoption löschen
             statement: Erklärung
           edit:
             save: Speichern
             title: Titel
           form:
-            add_question: Frage hinzufügen
-            already_answered_warning: Die Umfrage wird von einigen Benutzern bereits beantwortet, so dass Sie ihre Fragen nicht ändern können.
+            add_question: Eine Frage hinzufügen
+            already_answered_warning: Ihre Untersuchung hat bereits Antworten erhalten, Sie können die dazugehörigen Fragen also nicht mehr ändern.
           question:
-            add_answer_option: Antwortoption hinzufügen
+            add_answer_option: Eine Antwortoption hinzufügen
             question: Frage
-            remove_question: Frage entfernen
+            remove_question: Frage löschen
             statement: Erklärung
           update:
-            invalid: Beim Speichern der Umfrage gab es Fehler.
-            success: Umfrage erfolgreich gespeichert.
+            invalid: Beim Speichern der Untersuchung ist ein Fehler aufgetreten.
+            success: Untersuchung erfolgreich gespeichert.
       question_types:
         long_answer: Lange Antwort
         multiple_option: Mehrere Optionen
         short_answer: Kurze Antwort
-        single_option: Einzeloption
+        single_option: Einzige Option
       surveys:
         answer:
-          invalid: Bei der Beantwortung der Umfrage sind Fehler aufgetreten.
-          success: Umfrage erfolgreich abgeschlossen.
+          invalid: Ihre Antwort auf die Untersuchung enthält Fehler.
+          success: Ihre Antwort auf die Untersuchung wurde gespeichert.
         show:
           answer_survey:
-            anonymous_user_message: <a href="%{sign_in_link}">Anmeldung mit Ihrem Konto</a> oder <a href="%{sign_up_link}">Anmeldung</a> zur Beantwortung der Umfrage.
-            title: Beantworten Sie die Umfrage
-          are_you_sure: Diese Aktion kann nicht rückgängig gemacht werden und du kannst deine Antworten nicht bearbeiten. Bist du sicher?
-          submit: Absenden
+            anonymous_user_message: Um an der Untersuchung <a href="%{sign_in_link}"> teilzunehmen, müssen Sie sich mit Ihrem Konto identifizieren </a> oder <a href="%{sign_up_link}"> sich registrieren</a>.
+            title: An der Untersuchung teilnehmen
+          are_you_sure: Diese Aktion kann nicht gelöscht werden und Sie können Ihre Antworten nicht ändern. Sind Sie sicher?
+          submit: Senden
           survey_answered:
-            body: Sie haben diese Umfrage bereits beantwortet.
-            title: Umfrage beantwortet
+            body: Sie haben bereits an dieser Untersuchung teilgenommen.
+            title: Untersuchung abgeschlossen
           survey_closed:
-            body: Die Umfrage ist geschlossen und kann nicht beantwortet werden.
-            title: Umfrage abgeschlossen
-          tos_agreement: Mit der Teilnahme an dieser Umfrage akzeptieren Sie die Allgemeinen Geschäftsbedingungen
+            body: Die Untersuchung ist beendet und es werden keine Antworten mehr angenommen.
+            title: Untersuchung beendet
+          tos_agreement: Mit der Teilnahme an dieser Umfrage stimmen Sie den Nutzungsbedingungen zu

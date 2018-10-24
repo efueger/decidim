@@ -3,118 +3,118 @@ de:
   activemodel:
     attributes:
       area:
-        area_type: Bereichstyp
-        name: Name
-        organization: Unternehmen
+        area_type: Zonentyp
+        name: Titel
+        organization: Organisation
       area_type:
-        name: Name
-        organization: Unternehmen
+        name: Titel
+        organization: Organisation
         plural: Plural
       attachment:
-        attachment_collection_id: Sammlung
+        attachment_collection_id: Ordner
         description: Beschreibung
         file: Datei
         title: Titel
       attachment_collection:
         description: Beschreibung
-        name: Name
+        name: Titel
       category:
         description: Beschreibung
         name: Name
-        parent_id: Elternteil
+        parent_id: Übergeordnetes Element
       feature:
         name: Name
-        published_at: Veröffentlicht unter
-        weight: Gewicht
+        published_at: Veröffentlicht am
+        weight: Anzeigerang
       id: ID
       newsletter:
-        body: Körper
+        body: Textkörper
         subject: Betreff
       organization:
-        cta_button_path: Pfad der Schaltfläche Call To Action
-        cta_button_text: Text der Schaltfläche Aufruf zur Aktion
-        default_locale: Standard-Locale
+        cta_button_path: Pfad der Aktions-schaltfläche
+        cta_button_text: Text der Aktions-schaltfläche
+        default_locale: Standardsprache
         description: Beschreibung
-        enable_omnipresent_banner: Allgegenwärtiges Banner anzeigen
-        facebook_handler: Facebook-Handler
-        favicon: Icon
-        github_handler: GitHub Handler
-        header_snippets: Header-Ausschnitte
-        highlighted_content_banner_action_subtitle: Untertitel der Aktionstaste
-        highlighted_content_banner_action_title: Titel der Aktionstaste
-        highlighted_content_banner_action_url: URL der Aktionsschaltfläche
-        highlighted_content_banner_enabled: Zeigen Sie das markierte Inhaltsbanner an
+        enable_omnipresent_banner: Eine Nachrichtenleiste anzeigen
+        facebook_handler: Facebook-Manager
+        favicon: Symbol
+        github_handler: GitHub-Manager
+        header_snippets: Elemente, die zwischen den HTML-Tags einzufügen sind
+        highlighted_content_banner_action_subtitle: Untertitel der Aktions-schaltfläche
+        highlighted_content_banner_action_title: Titel der Aktions-schaltfläche
+        highlighted_content_banner_action_url: URL der Aktions-schaltfläche
+        highlighted_content_banner_enabled: Das hervorgehobene Inhaltsbanner anzeigen
         highlighted_content_banner_image: Bild
         highlighted_content_banner_short_description: Kurzbeschreibung
         highlighted_content_banner_title: Titel
-        homepage_image: Homepage-Bild
-        instagram_handler: Instagram-Handler
+        homepage_image: Startbild
+        instagram_handler: Instagram-Manager
         logo: Logo
         name: Name
-        official_img_footer: Offizielle Logo-Fußzeile
-        official_img_header: Offizieller Logo-Header
+        official_img_footer: Offizielles Logo in Fußzeile
+        official_img_header: Offizielles Logo in Kopfzeile
         official_url: Offizielle URL der Organisation
         omnipresent_banner_short_description: Kurzbeschreibung
         omnipresent_banner_title: Titel
         omnipresent_banner_url: URL
-        reference_prefix: Referenzpräfix
-        show_statistics: Statistik anzeigen
-        twitter_handler: Twitter-Handler
+        reference_prefix: Referenz-Präfix
+        show_statistics: Statistiken anzeigen
+        twitter_handler: Twitter-Manager
         welcome_text: Begrüßungstext
-        youtube_handler: YouTube-Handler
+        youtube_handler: YouTube-Manager
       scope:
         code: Code
         name: Name
-        organization: Unternehmen
-        parent_id: Elternteil
-        scope_type: Umfangstyp
-        scope_type_id: Umfangstyp
+        organization: Organisation
+        parent_id: Übergeordnetes Element
+        scope_type: Typ des Anwendungsperimeters
+        scope_type_id: Typ des Anwendungsperimeters
       scope_type:
         name: Name
-        organization: Unternehmen
+        organization: Organisation
         plural: Plural
       static_page:
         content: Inhalt
-        organization: Unternehmen
-        slug: URL Slug
+        organization: Organisation
+        slug: Benutzername
         title: Titel
   activerecord:
     attributes:
       decidim/participatory_process:
-        banner_image: Banner-Bild
+        banner_image: Kopfzeilenbild
         description: Beschreibung
-        developer_group: Entwicklergruppe
+        developer_group: Initiator
         domain: Domain
         end_date: Enddatum
         hashtag: Hashtag
-        hero_image: Homebild
-        local_area: Lokale Umgebung
-        meta_scope: Scope Metadaten
-        participatory_scope: Beteiligungsumfang
-        participatory_structure: Partizipative Struktur
-        promoted: Gefördert
-        scope: Umfang
-        short_description: Kurzbeschreibung
-        slug: URL Slug
+        hero_image: Startseiten-Bild
+        local_area: Organisationsbereich
+        meta_scope: Skala
+        participatory_scope: Ziel
+        participatory_structure: Bedingungen
+        promoted: Markierung
+        scope: Anwendungsperimeter
+        short_description: Zusammenfassung
+        slug: Benutzername
         start_date: Startdatum
         subtitle: Untertitel
-        target: Ziel
+        target: Teilnehmer
         title: Titel
       decidim/participatory_process_group:
         description: Beschreibung
-        hero_image: Homebild
+        hero_image: Startseiten-Bild
         name: Name
-        participatory_processes: Partizipative Prozesse
+        participatory_processes: Konzertierungen
       decidim/participatory_process_step:
         end_date: Enddatum
         start_date: Startdatum
       decidim/static_page:
         content: Inhalt
-        slug: URL Slug
+        slug: Benutzername
         title: Titel
   date:
     formats:
-      datepicker: "%m/%d/%d/%Y"
+      datepicker: "%d/%m/%Y"
   decidim:
     admin:
       actions:
@@ -122,242 +122,237 @@ de:
         browse: Durchsuchen
         export: Exportieren
         manage: Verwalten
-        permissions: Berechtigungen
+        permissions: Autorisierungen
         reject: Ablehnen
-        verify: Überprüfen Sie
+        verify: Prüfen
       area_types:
         create:
-          error: Beim Anlegen eines neuen Bereichstyps ist ein Fehler aufgetreten.
-          success: Bereichsart erfolgreich angelegt.
+          error: Beim Erstellen eines neuen Anwendungszonentyps ist ein Fehler aufgetreten.
+          success: Der Anwendungszonentyp wurde erfolgreich erstellt.
         destroy:
-          success: Gebietstyp erfolgreich zerstört
+          success: Anwendungszonentyp erfolgreich eliminiert.
         edit:
-          title: Bereichstyp bearbeiten
-          update: Update
+          title: Anwendungszonentyp ändern
+          update: Aktualisieren
         new:
-          create: Bereichsart anlegen
-          title: Neuer Bereichstyp
+          create: Einen Anwendungszonentyp erstellen
+          title: Neuer Anwendungszonentyp
         update:
-          error: Bei der Aktualisierung dieses Bereichstyps ist ein Fehler aufgetreten.
-          success: Bereichstyp erfolgreich aktualisiert
+          error: Bei der Aktualisierung dieses Anwendungszonentyps ist ein Fehler aufgetreten.
+          success: Anwendungszonentyp erfolgreich aktualisiert.
       areas:
         create:
-          error: Es gab einen Fehler beim Erstellen eines neuen Bereichs.
-          success: Bereich erfolgreich angelegt.
+          error: Beim Erstellen einer neuen Anwendungszone ist ein Fehler aufgetreten.
+          success: Anwendungszone erfolgreich erstellt.
         destroy:
-          success: Gebiet erfolgreich zerstört
+          success: Anwendungszone erfolgreich eliminiert
         edit:
-          title: Bearbeitungsbereich
-          update: Update
+          title: Anwendungszone ändern
+          update: Aktualisieren
         new:
-          create: Bereich anlegen
-          title: Neuer Bereich
-        no_areas: Keine Bereiche
+          create: Anwendungszone erstellen
+          title: Neue Anwendungszone
+        no_areas: Keine Anwendungszonen
         update:
-          error: Beim Aktualisieren dieses Bereichs ist ein Fehler aufgetreten.
-          success: Bereich erfolgreich aktualisiert
+          error: Bei der Aktualisierung dieser Anwendungszone ist ein Fehler aufgetreten.
+          success: Anwendungszone erfolgreich aktualisiert.
       attachment_collections:
         create:
-          error: Beim Erstellen einer neuen Sammlung ist ein Fehler aufgetreten.
-          success: Sammlung erfolgreich erstellt.
+          error: Beim Erstellen eines neuen Ordners ist ein Fehler aufgetreten.
+          success: Ordner erfolgreich erstellt.
         destroy:
-          success: Sammlung erfolgreich zerstört.
+          success: Ordner erfolgreich eliminiert.
         edit:
-          title: Sammlung bearbeiten
-          update: Update
+          title: Ordner ändern
+          update: Aktualisieren
         index:
-          attachment_collection_used: Diese Sammlung kann nicht entfernt werden, da sie in Gebrauch ist.
-          attachment_collections_title: Anlagensammlungen
+          attachment_collection_used: Dieser Ordner kann nicht gelöscht werden, denn er wird gerade verwendet.
+          attachment_collections_title: Ordner mit Anhängen
         new:
           create: Erstellen
-          title: Neue Kollektion
+          title: Neuer Ordner
         update:
-          error: Beim Aktualisieren dieser Sammlung ist ein Fehler aufgetreten.
-          success: Sammlung erfolgreich aktualisiert.
+          error: Bei der Aktualisierung dieses Ordners ist ein Fehler aufgetreten.
+          success: Ordner erfolgreich aktualisiert
       attachments:
         create:
-          error: Es gab einen Fehler beim Erstellen einer neuen Anlage.
-          success: Anlage erfolgreich erstellt.
+          error: Beim Erstellen eines neuen verknüpften Dokuments ist ein Fehler aufgetreten.
+          success: Verknüpftes Dokument erfolgreich erstellt.
         destroy:
-          success: Anhang erfolgreich zerstört.
+          success: Verknüpftes Dokument erfolgreich eliminiert.
         edit:
-          title: Anlage bearbeiten
-          update: Update
+          title: Verknüpftes Dokument ändern
+          update: Aktualisieren
         index:
-          attachments_title: Anhänge
+          attachments_title: Verknüpfte Dokumente
         new:
-          create: Anlage erstellen
-          title: Neuer Anhang
+          create: Dokument verknüpfen
+          title: Neues verknüpftes Dokument
         update:
-          error: Es gab einen Fehler bei der Aktualisierung dieses Anhangs.
-          success: Anhang erfolgreich aktualisiert.
+          error: Bei der Aktualisierung dieses verknüpften Dokuments ist ein Fehler aufgetreten.
+          success: Verknüpftes Dokument erfolgreich aktualisiert.
       categories:
         create:
-          error: Bei der Erstellung dieser Kategorie ist ein Fehler aufgetreten.
+          error: Beim Erstellen dieser Kategorie ist ein Fehler aufgetreten.
           success: Kategorie erfolgreich erstellt.
         destroy:
-          error: Es gab einen Fehler beim Löschen dieser Kategorie. Bitte löschen Sie zuerst eine Unterkategorie, stellen Sie sicher, dass keine andere Entität zu dieser Kategorie gehört und versuchen Sie es erneut.
+          error: Beim Löschen dieser Kategorie ist ein Fehler aufgetreten. Löschen Sie zunächst alle Unterkategorien und stellen Sie sicher, dass kein anderes Element zu dieser Kategorie gehört, bevor Sie es erneut versuchen.
           success: Kategorie erfolgreich gelöscht.
         edit:
-          title: Kategorie bearbeiten
-          update: Update
+          title: Kategorie ändern
+          update: Aktualisieren
         index:
           categories_title: Kategorien
-          category_used: Diese Kategorie kann nicht entfernt werden, da sie verwendet wird.
+          category_used: Diese Kategorie kann nicht gelöscht werden, denn sie wird benutzt.
         new:
-          create: Kategorie erstellen
+          create: Eine Kategorie erstellen
           title: Neue Kategorie
         update:
-          error: Es gab einen Fehler beim Aktualisieren dieser Kategorie.
+          error: Bei der Aktualisierung dieser Kategorie ist ein Fehler aufgetreten.
           success: Kategorie erfolgreich aktualisiert.
       dashboard:
         show:
-          view_more_logs: Weitere Protokolle anzeigen
-          welcome: Willkommen im Decidim Admin Panel.
+          view_more_logs: Mehr Protokolle sehen
+          welcome: Herzlich willkommen im Verwaltungsbereich von Decidim.
       exports:
-        export_as: "%{name} wie %{export_format}"
-        notice: Ihr Export ist derzeit in Bearbeitung. Sie erhalten eine E-Mail, wenn sie vollständig ist.
+        export_as: "%{name} im Format .%{export_format}"
+        notice: Ihr Export läuft. Sie erhalten eine E-Mail, wenn er abgeschlossen ist.
       feature_permissions:
         edit:
           everyone: Alle
-          submit: Speichern von Berechtigungen
-          title: Berechtigungen bearbeiten
+          submit: Autorisierungen speichern
+          title: Autorisierungen ändern
         update:
-          success: Berechtigungen wurden erfolgreich aktualisiert.
+          success: Autorisierungen erfolgreich aktualisiert.
       features:
         create:
-          error: Bei der Erstellung dieses Features ist ein Fehler aufgetreten.
-          success: Feature erfolgreich erstellt.
+          error: Beim Erstellen dieser Funktion ist ein Fehler aufgetreten.
+          success: Funktion erfolgreich erstellt.
         destroy:
-          error: Es ist ein Fehler aufgetreten, der diese Funktion zerstört hat.
-          success: Feature wurde erfolgreich gelöscht.
+          error: Fehler beim Löschen der Funktion.
+          success: Funktion erfolgreich gelöscht.
         edit:
-          title: Bearbeitungsfunktion
-          update: Update
+          title: Funktion bearbeiten
+          update: Aktualisieren
         form:
           default_step_settings: Standard-Schritteinstellungen
-          global_settings: Globale Einstellungen
-          step_settings: Schritt-Einstellungen
+          global_settings: Allgemeine Einstellungen
+          step_settings: Schrittdefinition
         index:
-          add: Funktion hinzufügen
+          add: Eine Funktion hinzufügen
           headers:
             actions: Aktionen
-            name: Name des Merkmals
-            type: Feature-Typ
+            name: Funktionsname
+            type: Funktionstyp
         new:
-          add: Funktion hinzufügen
-          title: 'Funktion hinzufügen: %{name}'
+          add: Eine Funktion hinzufügen
+          title: 'Die Funktion hinzufügen %{name}'
         publish:
-          success: Das Feature wurde erfolgreich veröffentlicht.
-        title: Merkmale
+          success: Die Funktion wurde erfolgreich veröffentlicht.
+        title: Funktionen
         unpublish:
-          success: Das Feature wurde erfolgreich unveröffentlicht.
+          success: Die Veröffentlichung der Funktion wurde erfolgreich aufgehoben.
         update:
-          error: Es gab einen Fehler bei der Aktualisierung dieser Funktion.
-          success: Das Feature wurde erfolgreich aktualisiert.
+          error: Bei der Aktualisierung dieser Funktion ist ein Fehler aufgetreten.
+          success: Die Funktion wurde erfolgreich aktualisiert.
       logs:
         logs_list:
           no_logs_yet: Es gibt noch keine Protokolle
       managed_users:
         close_session:
-          error: Es gab einen Fehler beim Schließen der aktuellen Imitationssitzung.
-          success: Die aktuelle Imitationssitzung wurde erfolgreich beendet.
+          error: Beim Schließen der Sitzung des Benutzers, den Sie vertreten, ist ein Fehler aufgetreten.
+          success: Die Sitzung des Benutzers, den Sie vertreten, wurde erfolgreich beendet.
         create:
-          error: Beim Erstellen des verwalteten Benutzers ist ein Fehler aufgetreten.
-          success: Der verwaltete Benutzer wurde erfolgreich angelegt.
+          error: Beim Erstellen des zu vertretenden Benutzers ist ein Fehler aufgetreten.
+          success: Der zu vertretende Benutzer wurde erfolgreich erstellt.
         form:
           name: Name
         impersonate:
-          error: Es gab einen Fehler, der sich als der verwaltete Benutzer ausgab.
+          error: In der Sitzung des Benutzers, den Sie vertreten, ist ein Fehler aufgetreten.
         impersonations:
           new:
-            impersonate: Verkörperung
-            new_managed_user_impersonation: Neue verwaltete Benutzerimitation
+            impersonate: Vertreten
+            new_managed_user_impersonation: Neuer zu vertretender Benutzer
         index:
-          impersonate: Verkörperung
-          needs_authoriation_warning: Sie benötigen mindestens eine Berechtigung, die für diese Organisation aktiviert ist.
-          promote: Bewerben
-          view_logs: Protokolle anzeigen
+          impersonate: Vertreten
+          needs_authoriation_warning: Sie benötigen mindestens eine aktive Autorisierung für diese Organisation.
+          promote: Befördern
+          view_logs: Protokolle abrufen
         new:
           create: Erstellen
-          new_managed_user: Neuer verwalteter Benutzer
-          no_authorization_handlers: Es stehen keine Berechtigungshandler zur Verfügung, um Benutzer zu verwalten. Bitte wenden Sie sich an Ihren Systemadministrator.
-          select_authorization_method: Wählen Sie eine Berechtigungsmethode aus
+          new_managed_user: Neuer zu vertretender Benutzer
+          no_authorization_handlers: Zur Verwaltung der Benutzer ist kein Autorisierungsmanager verfügbar. Bitte wenden Sie sich an den Systemadministrator.
+          select_authorization_method: Wählen Sie ein Autorisierungsverfahren
           step: Schritt %{current} von %{total}
         promotion:
-          error: Es gab einen Fehler bei der Förderung des verwalteten Benutzers.
-          success: Der verwaltete Benutzer wurde erfolgreich befördert.
+          error: Bei der Transformation des vertretenen Benutzers ist ein Fehler aufgetreten.
+          success: Der vertretene Benutzer wurde erfolgreich befördert.
         promotions:
           new:
-            explanation: Verwaltete Benutzer können zu Standardbenutzern befördert werden. Das bedeutet, dass sie zur Bewerbung eingeladen werden und Sie sich nicht noch einmal für sie ausgeben können. Der eingeladene Benutzer erhält eine E-Mail, um Ihre Einladung anzunehmen.
-            new_managed_user_promotion: Neue verwaltete Benutzerwerbung
-            promote: Bewerben
+            explanation: Die vertretenen Benutzer können zu Standardbenutzern befördert werden. Das bedeutet, dass sie zur Anwendung eingeladen werden und Sie nicht mehr an ihrer Stelle handeln können. Der Benutzer erhält eine E-Mail, in der er Ihre Einladung annehmen kann.
+            new_managed_user_promotion: Transformieren eines vertretenen Benutzers in einen Standardbenutzer
+            promote: Transformieren
       menu:
-        admin_log: Protokoll der Admin-Aktivitäten
+        admin_log: Persönliches Aktivitätsprotokoll
         admins: Administratoren
         appearance: Aussehen
-        area_types: Flächentypen
-        areas: Bereiche
+        area_types: Anwendungszonentypen
+        areas: Anwendungszonen
         configuration: Konfiguration
         dashboard: Dashboard
-        managed_users: Verwaltete Benutzer
-        navbar_links: Navbar-Links
-        newsletters: Newsletter
-        officializations: Behördengänge
-        scope_types: Scope-Typen
-        scopes: Anwendungsbereiche
+        managed_users: Vertretene Benutzer
+        newsletters: Informationsbulletins (Newsletter)
+        officializations: Benutzervalidierung
+        scope_types: Typen von Anwendungsperimetern
+        scopes: Anwendungsperimeter
         settings: Einstellungen
         static_pages: Seiten
         user_groups: Benutzergruppen
         users: Benutzer
+        navbar_links: Navigationslinks
       models:
         area:
           fields:
-            area_type: Bereichstyp
-            name: Name
+            area_type: Zonentyp
+            name: Titel
         area_type:
           fields:
-            name: Name
+            name: Singular
             plural: Plural
         attachment:
           fields:
-            collection: Sammlung
-            content_type: Typ
+            collection: Ordner
+            content_type: Inhaltstyp
             file_size: Größe
             title: Titel
-          name: Anhang
+          name: Verknüpftes Dokument
         attachment_collection:
-          name: Sammlung
+          name: Ordner
         category:
           name: Kategorie
         impersonation_log:
           fields:
-            admin: Admin
-            ended_at: Endet bei
-            expired_at: Verfallen am
-            started_at: Begonnen bei
+            admin: Administrator
+            ended_at: Beendet am
+            expired_at: Abgelaufen am
+            started_at: Begonnen am
             user: Benutzer
         managed_user:
-          name: Verwalteter Benutzer
-        navbar_link:
-          fields:
-            link: Link
-            title: Titel
-            weight: Gewicht
+          name: Vertretener Benutzer
         newsletter:
           fields:
             created_at: Erstellt am
-            progress: Fortschritte
-            sent_at: Gesendet an
+            progress: Fortschritt
+            sent_at: Versendet am
             subject: Betreff
-          name: Newsletter
+          name: Informationsbulletin (Newsletter)
         scope:
           fields:
             name: Name
-            scope_type: Umfangstyp
+            scope_type: Typ des Anwendungsperimeters
         scope_type:
           fields:
-            name: Name
+            name: Singular
             plural: Plural
         static_page:
           fields:
@@ -371,224 +366,208 @@ de:
             name: Name
             role: Rolle
             roles:
-              admin: Admin
-              user_manager: Benutzerverwaltung
+              admin: Administrator
+              user_manager: Vertreter des Benutzers
           name: Benutzer
         user_group:
           fields:
             actions: Aktionen
             created_at: Erstellt am
-            document_number: Dokumentnummer
+            document_number: Dokumentennummer
             name: Name
             phone: Telefon
-            state: Zustand
-            users_count: Benutzer zählen
+            state: Status
+            users_count: Benutzeranzahl
+        navbar_link:
+          fields:
+            title: Titel
+            link: Verknüpfung
+            weight: Anzeigerang
       moderations:
         index:
-          moderated: Moderiert
+          title: Moderationen
           title:
-            downstream: Downstream-Moderation
-            upstream: Upstream-Moderation
+            upstream: A-priori-Moderation
+            downstream: A-posteriori-Moderation
           unmoderated: Nicht moderiert
+          moderated: Moderiert
         report:
           reasons:
-            does_not_belong: Gehört nicht dazu
-            offensive: Offensive
+            does_not_belong: Gehört nicht zu
+            offensive: Aggressiv
             spam: Spam
-      navbar_links:
-        create:
-          error: Beim Erstellen dieses Links ist ein Fehler aufgetreten.
-          success: Link erfolgreich erstellt
-        destroy:
-          success: Link erfolgreich zerstört
-        edit:
-          title: Navbar-Link bearbeiten
-          update: Update
-        form:
-          link: Link
-          new_tab: Öffnen in einer neuen Registerkarte
-          same_tab: Öffnen in der gleichen Registerkarte
-          title: Titel
-          weight: Gewicht
-        new:
-          create: Erstellen
-          title: Neuer Navbar-Link
-        no_links: Keine Verknüpfungen erstellt
-        update:
-          error: Beim Aktualisieren dieses Links ist ein Fehler aufgetreten.
-          success: Link erfolgreich aktualisiert
       newsletters:
         create:
-          error: Bei der Erstellung dieses Newsletters ist ein Fehler aufgetreten.
-          success: Newsletter erfolgreich erstellt. Bitte überprüfen Sie es vor dem Versand.
+          error: Beim Erstellen dieses Informationsbulletins ist ein Fehler aufgetreten.
+          success: Informationsbulletin erfolgreich erstellt. Bitte prüfen Sie es vor dem Versenden.
         deliver:
-          error: Bei der Zustellung dieses Newsletters ist ein Fehler aufgetreten.
-          success: Newsletter erfolgreich zugestellt.
+          error: Fehler beim Versenden dieses Informationsbulletins.
+          success: Informationsbulletin erfolgreich versendet.
         destroy:
-          error_already_sent: 'Newsletter kann nicht zerstört werden: Es wurde bereits gesendet.'
-          success: Newsletter erfolgreich zerstört.
+          error_already_sent: 'Löschen nicht möglich, da das Informationsbulletin bereits versandt wurde.'
+          success: Informationsbulletin erfolgreich gelöscht.
         edit:
           save_and_preview: Speichern und Vorschau
-          title: Newsletter bearbeiten
+          title: Informationsbulletin ändern
         form:
-          interpolations_hint: 'Hinweis: Sie können "%{name}" überall im Text oder Betreff verwenden und es wird durch den Namen des Empfängers ersetzt.'
+          interpolations_hint: 'Tipp: Sie können überall im Körper oder Thema "%{name}" nutzen, und es wird vom Namen des Empfängers ersetzt.'
         index:
-          confirm_delete: Sind Sie sicher, dass Sie diesen Newsletter löschen möchten?
-          title: Newsletter
+          confirm_delete: Sind Sie sicher, dass Sie dieses Informationsbulletin löschen möchten?
+          title: Informationsbulletins (Newsletter)
         new:
           save: Speichern
-          title: Neuer Newsletter
+          title: Neues Informationsbulletin
         show:
-          confirm_deliver: Sind Sie sicher, dass Sie diesen Newsletter versenden möchten? Diese Aktion kann nicht rückgängig gemacht werden.
-          deliver: Newsletter zusenden
+          confirm_deliver: Sind Sie sicher, dass Sie dieses Informationsbulletin versenden möchten? Diese Aktion kann nicht storniert werden.
+          deliver: Informationsbulletin versenden
           preview: Vorschau
           subject: Betreff
         update:
-          error: Bei der Aktualisierung dieses Newsletters ist ein Fehler aufgetreten.
-          success: Newsletter erfolgreich aktualisiert. Bitte überprüfen Sie diese vor dem Versand.
+          error: Fehler bei der Aktualisierung des Informationsbulletins.
+          success: Informationsbulletin erfolgreich aktualisiert. Bitte prüfen Sie es vor dem Versenden.
       officializations:
         create:
-          success: Benutzer wurde erfolgreich officialisiert
+          success: Benutzer erfolgreich validiert.
         destroy:
-          success: Benutzer inoffiziell erfolgreich inoffiziellisiert
+          success: Benutzer nicht erfolgreich validiert.
         index:
           actions: Aktionen
           badge: Badge
-          created_at: Erstellt bei
+          created_at: Erstellt am
           filter:
             all: Alle
-            not_officialized: Nicht offiziell
-            officialized: Offiziell anerkannt
-          filter_by: Filtern nach
+            not_officialized: Nicht validiert
+            officialized: Validiert
+          filter_by: Gefiltert nach
           name: Name
-          nickname: Spitzname
-          not_officialized: Nicht offiziell
-          officialize: Verkünden
-          officialized: Offiziell anerkannt
-          reofficialize: Reoffiziellisieren
-          search: Suche
+          nickname: Pseudonym
+          not_officialized: Nicht validiert
+          officialize: Validieren
+          officialized: Validiert
+          reofficialize: Erneut validiert
+          search: Suchen
           status: Status
-          unofficialize: Inoffiziellisieren
+          unofficialize: Für ungültig erklären
         new:
-          badge: Offizieller Ausweis
-          officialize: Verkünden
-          title: Benutzer "%{name}" offiziell eintragen
+          badge: Validierungsbadge
+          officialize: Validieren
+          title: Benutzer validieren "%{name}"
       organization:
         edit:
-          title: Unternehmen bearbeiten
-          update: Update
+          title: Organisation ändern
+          update: Aktualisieren
         form:
           facebook: Facebook
           github: GitHub
           instagram: Instagram
-          social_handlers: Sozial
+          social_handlers: Links der sozialen Netzwerke
           twitter: Twitter
           url: Url
           youtube: YouTube
         update:
-          error: Es gab einen Fehler bei der Aktualisierung dieser Organisation.
+          error: Fehler bei der Aktualisierung dieser Organisation.
           success: Organisation erfolgreich aktualisiert.
       organization_appearance:
         edit:
-          update: Update
+          update: Aktualisieren
         form:
-          cta_button_path_help: 'Sie können überschreiben, wohin die Schaltfläche Call To Action auf der Homepage führt. Verwenden Sie hier Teilpfade, nicht vollständige URLs. Akzeptiert Buchstaben, Zahlen, Bindestriche und Schrägstriche und muss mit einem Buchstaben beginnen. Die Schaltfläche Call To Action wird auf der Homepage zwischen dem Begrüßungstext und der Beschreibung angezeigt. Beispiel: %{url}'
-          cta_button_text_help: Sie können den Text der Schaltfläche Call To Action auf der Homepage für jede verfügbare Sprache in Ihrem Unternehmen überschreiben. Wenn nicht gesetzt, wird der Standardwert verwendet. Die Schaltfläche Call To Action wird auf der Homepage zwischen dem Begrüßungstext und der Beschreibung angezeigt.
-          header_snippets_help: Verwenden Sie dieses Feld, um Dinge in den HTML-Kopf einzufügen. Die häufigste Verwendung ist die Integration von Diensten von Drittanbietern, die zusätzliches JavaScript oder CSS erfordern. Außerdem können Sie damit zusätzliche Meta-Tags zum HTML hinzufügen. Beachten Sie, dass dies nur auf öffentlichen Seiten und nicht im Admin-Bereich dargestellt wird.
-          homepage_appearance_title: Homepageerscheinung bearbeiten
-          homepage_highlighted_content_banner_title: Hochwertiges Content-Banner
-          layout_appearance_title: Layoutdarstellung bearbeiten
-          omnipresent_banner_appearance_title: Allgegenwärtig bearbeiten
+          cta_button_path_help: 'Sie können den Link, auf den die Schaltfläche der Startseite verweist, ersetzen. Nutzen Sie teilweise Pfade und keine vollständigen URLs. Akzeptiert Buchstaben, Ziffern, Bindestriche und Schrägstiche und muss mit einem Buchstaben beginnen. Die Schaltfläche erscheint auf der Startseite zwischen dem Begrüßungstext und der Beschreibung. Beispiel %{url}'
+          cta_button_text_help: Sie können den Schaltflächentext auf der Startseite für jede in Ihrer Organisation verfügbare Sprache ersetzen. Ist sie nicht definiert, wird der Standardwert verwendet. Die Schaltfläche erscheint auf der Startseite zwischen dem Begrüßungstext und der Beschreibung.
+          header_snippets_help: Verwenden Sie dieses Feld, um Elemente zwischen den HTML-Tags <head> </head> hinzuzufügen. Die häufigste Nutzung der Felder besteht aus der Integration von Dienstleistungen Dritter, die zusätzliches JavaScript oder CSS erfordern. Sie können es auch nutzen, um den HTML-Code durch zusätzliche Metatags zu ergänzen. Beachten Sie, dass dies nur auf den öffentlichen Seiten funktioniert, nicht im Administratorbereich.
+          homepage_appearance_title: Erscheinungsbild der Startseite ändern.
+          homepage_highlighted_content_banner_title: Inhaltsbanner dargestellt
+          layout_appearance_title: Layout ändern
+          omnipresent_banner_appearance_title: Newsbanner ändern
       scope_types:
         create:
-          error: Beim Erstellen eines neuen Scope Typs ist ein Fehler aufgetreten.
-          success: Scope Typ erfolgreich angelegt.
+          error: Beim Erstellen eines neuen Typs von Anwendungsperimetern ist ein Fehler aufgetreten.
+          success: Typ des Anwendungsperimeters erfolgreich erstellt.
         destroy:
-          success: Scope Typ erfolgreich zerstört
+          success: Der Typ des Anwendungsperimeters wurde erfolgreich eliminiert.
         edit:
-          title: Scope Typ bearbeiten
-          update: Update
+          title: Typ des Anwendungsperimeters ändern
+          update: Aktualisieren
         new:
-          create: Umfangsart anlegen
-          title: Neuer Anwendungsbereich
+          create: Typ des Anwendungsperimeters erstellen
+          title: Neuer Anwendungsperimeter
         update:
-          error: Beim Aktualisieren dieses Scope Typs ist ein Fehler aufgetreten.
-          success: Scope Typ erfolgreich aktualisiert
+          error: Bei der Aktualisierung des Anwendungsperimeters ist ein Fehler aufgetreten.
+          success: Typ des Anwendungsperimeters erfolgreich aktualisiert.
       scopes:
         create:
-          error: Es gab einen Fehler beim Erstellen eines neuen Scopes.
-          success: Scope erfolgreich erstellt.
+          error: Beim Erstellen eines neuen Anwendungsperimeters ist ein Fehler aufgetreten.
+          success: Anwendungsperimeter erfolgreich erstellt.
         destroy:
-          success: Scope erfolgreich zerstört
+          success: Anwendungsperimeter erfolgreich gelöscht
         edit:
-          title: Scope bearbeiten
-          update: Update
+          title: Anwendungsperimeter bearbeiten
+          update: Aktualisieren
         new:
-          create: Umfang anlegen
-          title: Neuer Anwendungsbereich
-        no_scopes: Keine Scopes auf dieser Ebene.
+          create: Einen Anwendungsperimeter erstellen
+          title: Neuer Anwendungsperimeter
+        no_scopes: Keinen Anwendungsperimeter auf dieser Ebene.
         update:
-          error: Beim Aktualisieren dieses Bereichs ist ein Fehler aufgetreten.
-          success: Scope erfolgreich aktualisiert
+          error: Bei der Aktualisierung des Anwendungsperimeters ist ein Fehler aufgetreten.
+          success: Anwendungsperimeter erfolgreich aktualisiert
       static_pages:
         actions:
-          view: Öffentliche Seite anzeigen
+          view: Siehe öffentliche Seite
         create:
-          error: Es gab einen Fehler beim Erstellen einer neuen Seite.
+          error: Beim Erstellen einer neuen Seite ist ein Fehler aufgetreten.
           success: Seite erfolgreich erstellt.
         destroy:
-          success: Seite erfolgreich zerstört
+          success: Die Seite wurde erfolgreich eliminiert
         edit:
-          title: Seite bearbeiten
-          update: Update
+          title: Seite ändern
+          update: Aktualisieren
         new:
           create: Erstellen
           title: Neue Seite
         update:
-          error: Beim Aktualisieren dieser Seite ist ein Fehler aufgetreten.
+          error: Bei der Aktualisierung dieser Seite ist ein Fehler aufgetreten.
           success: Seite erfolgreich aktualisiert
       titles:
-        admin_log: Admin-Protokoll
-        area_types: Flächentypen
-        areas: Bereiche
-        authorization_workflows: Verifizierungsmethoden
+        admin_log: Administrationsprotokoll
+        area_types: Typen von Anwendungszonen
+        areas: Anwendungszonen
+        authorization_workflows: Prüfungsverfahren
         dashboard: Dashboard
-        impersonations: Personifizierungen
-        managed_users: Verwaltete Benutzer
-        navbar_links: Navbar-Links
-        officializations: Behördengänge
-        scope_types: Scope-Typen
-        scopes: Anwendungsbereiche
+        impersonations: Benutzervertretung
+        managed_users: Vertretene Benutzer
+        officializations: Benutzervalidierung
+        scope_types: Typen von Anwendungsperimetern
+        scopes: Anwendungsperimeter
         static_pages: Seiten
         user_groups: Benutzergruppen
         users: Benutzer
+        navbar_links: Navigationslinks
       user_group:
         reject:
-          invalid: Bei der Ablehnung dieser Benutzergruppe ist ein Fehler aufgetreten.
-          success: Benutzergruppe erfolgreich abgelehnt
+          invalid: Beim Ablehnen dieser Benutzergruppe ist ein Fehler aufgetreten.
+          success: Benutzergruppe erfolgreich abgelehnt.
         verify:
-          invalid: Bei der Verifizierung dieser Benutzergruppe ist ein Fehler aufgetreten.
-          success: Benutzergruppe erfolgreich verifiziert
+          invalid: Bei der Prüfung dieser Benutzergruppe ist ein Fehler aufgetreten.
+          success: Benutzergruppe erfolgreich verifiziert.
       user_groups:
         index:
           filter:
             all: Alle
-            pending: Ausstehend
+            pending: Wartet
             rejected: Abgelehnt
-            verified: Verifiziert
-          filter_by: Filtern nach
-          search: Suche
+            verified: Geprüft
+          filter_by: Gefiltert nach
+          search: Suchen
           state:
-            pending: Ausstehend
+            pending: Wartet
             rejected: Abgelehnt
-            verified: Verifiziert
+            verified: Geprüft
       users:
         create:
           error: Bei der Einladung dieses Benutzers ist ein Fehler aufgetreten.
           success: Benutzer erfolgreich eingeladen.
         destroy:
           error: Beim Versuch, diesen Benutzer zu löschen, ist ein Fehler aufgetreten.
-          success: Der Benutzer ist kein Administrator mehr.
+          success: Der Benutzer ist nicht mehr Administrator.
         form:
           email: E-Mail
           name: Name
@@ -596,50 +575,72 @@ de:
         new:
           create: Einladen
           title: Benutzer als Administrator einladen
+      navbar_links:
+        no_links: Sie haben keinen Link erstellt
+        form:
+          title: Titel
+          link: Verknüpfung
+          weight: Anzeigerang
+          new_tab: In einer neuen Registerkarte öffnen
+          same_tab: In derselben Registerkarte öffnen
+        new:
+          title: Neuer Navigationslink
+          create: Erstellen
+        edit:
+          title: Link ändern
+          update: Ändern
+        create:
+          error: Beim Erstellen eines neuen Links ist ein Fehler aufgetreten.
+          success: Link erfolgreich erstellt.
+        update:
+          error: Bei der Aktualisierung dieses Links ist ein Fehler aufgetreten.
+          success: Link erfolgreich aktualisiert
+        destroy:
+          success: Link erfolgreich gelöscht
     moderations:
       actions:
-        authorize: Autorisieren
-        hidden: Versteckt
-        hide: Ausblenden
-        moderated: Moderiert
-        not_hidden: Nicht versteckt
-        refuse: Ablehnen
+        hidden: Verborgen
+        hide: Verbergen
+        not_hidden: Sichtbar
         title: Aktionen
+        unreport: Meldung löschen
+        moderated: Moderiert
         unmoderated: Nicht moderiert
-        unreport: Unreport
+        authorize: Autorisieren
+        refuse: Ablehnen
       admin:
         reportable:
           hide:
-            invalid: Es gab ein Problem beim Verstecken der Ressource.
-            success: Ressource erfolgreich versteckt.
+            invalid: Beim Verbergen der Ressource ist ein Problem aufgetreten.
+            success: Ressource erfolgreich verborgen.
           unreport:
-            invalid: Es gab ein Problem, die Ressource nicht zu melden.
-            success: Ressource erfolgreich nicht gemeldet.
+            invalid: Beim Löschen der Meldung der Ressource ist ein Fehler aufgetreten.
+            success: Die Ressource ist nicht mehr gemeldet.
       models:
         moderation:
           fields:
-            date: Datum
-            hidden_at: Versteckt bei
-            report_count: Anzahl
-            reportable: Meldepflichtig
-            reported_content_url: URL des gemeldeten Inhalts
-            reports: Berichte
-            status: Status
-            type: Typ
+            hidden_at: Verborgen am
+            report_count: Zähler
+            reportable: Inhalt
+            reported_content_url: URL
+            reports: Motiv
             visit_url: URL besuchen
+            date: Datum
+            type: Typ
+            status: Status
   errors:
     messages:
-      invalid_json: Ungültiges JSON
+      invalid_json: JSON nicht gültig
   layouts:
     decidim:
       admin:
         newsletters:
-          title: Newsletter
+          title: Informationsbulletins (Newsletter)
         settings:
           title: Einstellungen
         users:
           title: Benutzer
   time:
     formats:
-      datepicker: "%m/%d/%d/%Y"
-      timepicker: "%m/%d/%d/%Y %H:%M"
+      datepicker: "%d/%m/%Y"
+      timepicker: "%d/%m/%Y %H
