@@ -37,7 +37,7 @@ de:
         user_group_phone: Telefonnummer der Organisation
   booleans:
     'false': 'Nein'
-    'true: 'Ja'
+    'true': 'Ja'
   carrierwave:
     errors:
       image_too_big: Das Bild ist zu groß
@@ -370,7 +370,7 @@ de:
       picker:
         cancel: Löschen
         choose: Wählen
-        title: %{field} wählen
+        title: "%{field} wählen"
       prompt: Wählen Sie einen Anwendungsumfang
       scopes: Anwendungsumfänge
     shared:
@@ -382,7 +382,7 @@ de:
         incomplete:
           cancel: Löschen
           explanation: 'Auch wenn Sie zurzeit mit "%{authorization}" autorisiert sind, müssen Sie sich neu autorisieren, denn uns fehlen folgende Daten'
-          invalid_field: "%{field}´"
+          invalid_field: "%{field}"
           reauthorize: Erneute Autorisierung
           title: Bitte autorisieren Sie sich erneut
         missing:
