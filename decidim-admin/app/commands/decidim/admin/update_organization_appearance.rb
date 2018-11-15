@@ -71,7 +71,19 @@ module Decidim
           official_img_footer: form.official_img_footer,
           remove_official_img_footer: form.remove_official_img_footer,
           official_url: form.official_url,
-          show_statistics: form.show_statistics
+          show_statistics: form.show_statistics,
+          primary_color: form.primary_color,
+          secondary_color: form.secondary_color,
+          success_color: form.secondary_color,
+          warning_color: form.warning_color,
+          alert_color: form.alert_color,
+          proposals_color: form.proposals_color,
+          actions_color: form.actions_color,
+          debates_color: form.debates_color,
+          meetings_color: form.meetings_color,
+          twitter_color: form.twitter_color,
+          facebook_color: form.facebook_color,
+          google_color: form.google_color
         }
       end
 
