@@ -4,215 +4,215 @@ de:
     attributes:
       close_meeting:
         attendees_count: Anzahl der Teilnehmer
-        attending_organizations: Liste der Unternehmen, die teilgenommen haben
+        attending_organizations: Liste der Organisationen, die an dem Treffen teilgenommen haben
         closing_report: Bericht
         contributions_count: Anzahl der Beiträge
-        proposal_ids: In der Sitzung erstellte Vorschläge
+        proposal_ids: In dem Treffen erstellte Vorschläge
       meeting:
         address: Adresse
-        available_slots: Verfügbare Slots für dieses Meeting
+        available_slots: Verfügbare Plätze für dieses Treffen
         decidim_category_id: Kategorie
-        decidim_scope_id: Umfang
+        decidim_scope_id: Anwendungsperimeter
         description: Beschreibung
         end_time: Endzeit
         location: Ort
-        location_hints: Hinweise zum Standort
-        registration_terms: Registrierungsbedingungen
-        registrations_enabled: Registrierungen aktiviert
+        location_hints: Standortdaten
+        registration_terms: Anmeldebedingungen
+        registrations_enabled: Anmeldungen aktiviert
         start_time: Startzeit
         title: Titel
   decidim:
     events:
       meetings:
         meeting_closed:
-          email_intro: 'Die Sitzung "%{resource_title}" war geschlossen. Sie können die Schlussfolgerungen von seiner Seite lesen:'
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie an der Sitzung "%{resource_title}" teilnehmen. Du kannst es über den vorherigen Link wieder rückgängig machen.
-          email_subject: Die Sitzung "%{resource_title}" wurde geschlossen
-          notification_title: Die <a href="%{resource_path}">%{participatory_space_title}</a> Sitzung wurde geschlossen.
+          email_intro: 'Das Treffen "%{resource_title}" wurde geschlossen. Sie können die Schlussfolgerungen von seiner Seite lesen'
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie dem Treffen "%{resource_title}" folgen. Sie können es über den vorangegangenen Link wieder rückgängig machen. .
+          email_subject: Das Treffen "%{resource_title}" wurde geschlossen
+          notification_title: Das Treffen <a href="%{resource_path}">%{participatory_space_title}</a> wurde geschlossen.
         meeting_created:
-          email_intro: Das Meeting "%{resource_title}" wurde zu "%{participatory_space_title}" hinzugefügt, dem Sie folgen.
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie "%{participatory_space_title}" folgen. Du kannst es über den vorherigen Link wieder rückgängig machen.
-          email_subject: Neues Meeting hinzugefügt zu %{participatory_space_title}
-          notification_title: Das Meeting <a href="%{resource_path}">%{participatory_space_title}</a> wurde zu %{participatory_space_title} hinzugefügt
+          email_intro: Das Treffen "%{resource_title}" wurde zu "%{participatory_space_title}", dem Sie folgen, hinzugefügt.
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie "%{participatory_space_title}" folgen. Sie können es über den vorangegangenen Link wieder rückgängig machen.
+          email_subject: Neues Treffen zu %{participatory_space_title} hinzugefügt
+          notification_title: Das Treffen <a href="%{resource_path}">%{participatory_space_title}</a> wurde zu %{participatory_space_title} hinzugefügt
         meeting_registrations_over_percentage:
-          email_intro: Die "%{resource_title}" besetzten Slots für Meetings sind über %{percentage}%.
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie ein Administrator des Teilnahmebereichs der Sitzung sind.
-          email_subject: Die "%{resource_title}" besetzten Slots sind über %{percentage}%
-          notification_title: Die <a href="%{resource_path}">%{participatory_space_title}</a> Besprechungsplätze sind über %{percentage}%.
+          email_intro: Die Anzahl besetzten Plätzen für das Treffen "%{resource_title}" ist über %{percentage}%.
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie Administrator des Beteiligungsbereichs für das Treffen sind.
+          email_subject: Die besetzten Plätze für das Treffen "%{resource_title}" sind über %{percentage}%
+          notification_title: Die <a href="%{resource_path}">%{participatory_space_title}</a> besetzten Sitzungsräume sind über %{percentage}%.
         meeting_updated:
-          email_intro: 'Das Meeting "%{resource_title}" wurde aktualisiert. Du kannst die neue Version von ihrer Seite aus lesen:'
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie an der Sitzung "%{resource_title}" teilnehmen. Du kannst es über den vorherigen Link wieder rückgängig machen.
-          email_subject: Das "%{resource_title}" Meeting wurde aktualisiert
-          notification_title: Das <a href="%{resource_path}">%{participatory_space_title}</a> Meeting wurde aktualisiert.
+          email_intro: 'Das Treffen "%{resource_title}" wurde aktualisiert. Sie können die neue Version auf ihre Seite zugreifen. '
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie dem Treffen "%{resource_title}" folgen. Sie können es über den vorangegangenen Link wieder rückgängig machen.
+          email_subject: Das Treffen "%{resource_title}" wurde aktualisiert
+          notification_title: Das Treffen <a href="%{resource_path}">%{participatory_space_title}</a> wurde aktualisiert.
         registrations_enabled:
-          email_intro: 'Das Treffen "%{resource_title}" hat die Registrierung ermöglicht. Du kannst dich auf der Seite registrieren:'
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie an der Sitzung "%{resource_title}" teilnehmen. Du kannst es über den vorherigen Link wieder rückgängig machen.
-          email_subject: Das Treffen "%{resource_title}" hat die Registrierung ermöglicht.
-          notification_title: Das <a href="%{resource_path}">%{participatory_space_title}</a> Meeting hat Registrierungen ermöglicht.
+          email_intro: 'Das Treffen "%{resource_title}" hat die Registrierungen aktiviert. Sie können sich auf der Seite anmelden. '
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie dem Treffen "%{resource_title}" folgen. Sie können es über den vorangegangenen Link wieder rückgängig machen.
+          email_subject: Das Treffen "%{resource_title}" hat die Registrierungen aktiviert.
+          notification_title: Das Treffen <a href="%{resource_path}">%{participatory_space_title}</a> hat die Registrierungen aktiviert.
         upcoming_meeting:
-          email_intro: Das "%{resource_title}" Meeting beginnt in weniger als 48 Stunden.
-          email_outro: Sie haben diese Benachrichtigung erhalten, weil Sie an der Sitzung "%{resource_title}" teilnehmen. Du kannst es über den vorherigen Link wieder rückgängig machen.
-          email_subject: Das "%{resource_title}" Meeting beginnt in weniger als 48 Stunden.
-          notification_title: Das <a href="%{resource_path}">%{participatory_space_title}</a> Meeting beginnt in weniger als 48 Stunden.
+          email_intro: Das Treffen "%{resource_title}" beginnt in weniger als 48 Stunden.
+          email_outro: Sie haben diese Benachrichtigung erhalten, da Sie dem Treffen "%{resource_title}" folgen. Sie können es über den vorangegangenen Link wieder rückgängig machen.
+          email_subject: Das Treffen "%{resource_title}" beginnt in weniger als 48 Stunden.
+          notification_title: Das Treffen <a href="%{resource_path}">%{participatory_space_title}</a> beginnt in weniger als 48 Stunden.
     features:
       meetings:
         actions:
           join: Beitreten
-        name: Besprechungen
+        name: Treffen
         settings:
           global:
-            announcement: Ankündigung
-            comments_enabled: Kommentare aktiviert
-            comments_upstream_moderation_enabled: Upstream-Moderation für Kommentare aktiviert
+            announcement: Ankündigungsnachricht
+            comments_enabled: Kommentarmodul aktivieren
+            comments_upstream_moderation_enabled: A-priori-Moderation für Kommentare aktiviert
           step:
-            announcement: Ankündigung
-            comments_blocked: Kommentare gesperrt
+            announcement: Ankündigungsnachricht
+            comments_blocked: Erstellen neuer Kommentare sperren
     meetings:
       actions:
-        attachment_collections: Sammlungen
-        attachments: Anhänge
+        attachment_collections: Ordner
+        attachments: Verknüpfte Dokumente
         close: Schließen
-        confirm_destroy: Sind Sie sicher, dass Sie dieses Meeting löschen möchten?
+        confirm_destroy: Sind Sie sicher, dass Sie dieses Treffen löschen möchten?
         destroy: Löschen
-        edit: Bearbeiten
-        new: Neu
+        edit: Ändern
+        new: Neue
         preview: Vorschau
         registrations: Anmeldungen
         title: Aktionen
       admin:
         exports:
-          registrations: Anmeldungen
+          registrations: Liste der Angemeldeten
         invite_join_meeting_mailer:
           invite:
-            invited_you_to_join_a_meeting: "%{invited_by} hat Sie eingeladen, an einem Meeting unter %{application} teilzunehmen. Du kannst es über den untenstehenden Link akzeptieren."
-            join: An der Besprechung teilnehmen '%{meeting_title}''
+            invited_you_to_join_a_meeting: "Sie wurden von %{invited_by} eingeladen, an einem Treffen unter %{application} teilzunehmen. Sie können diese Einladung durch Klicken auf den Link unten annehmen."
+            join: Dem Treffen '%{meeting_title}' beitreten
         invites:
           create:
-            error: Es gab ein Problem bei der Einladung des Benutzers zur Teilnahme an der Besprechung.
-            success: Der Benutzer wurde erfolgreich zur Teilnahme an der Besprechung eingeladen.
+            error: Bei der Einladung zur Teilnahme an einem Treffen ist ein Problem aufgetreten.
+            success: Der Benutzer ist dem Treffen beigetreten.
           new:
-            explanation: Der Benutzer wird zu einem Meeting eingeladen. Wenn die E-Mail nicht registriert ist, wird sie auch an das Unternehmen eingeladen.
+            explanation: Der Benutzer wird zu einem Treffen eingeladen. Wenn seine E-Mail-Adresse nicht registriert ist, wird er auch eingeladen, sich zu der Organisation anzumelden.
             invite: Einladen
-            new_invite: Benutzer einladen
+            new_invite: Einen Benutzer einladen
         meeting_closes:
           edit:
             close: Schließen
-            title: Besprechung beenden
+            title: Das Treffen beenden
         meetings:
           close:
-            invalid: Es gab ein Problem beim Schließen dieses Treffens
-            success: Sitzung erfolgreich abgeschlossen
+            invalid: Beim Schließen dieses Treffens ist ein Problem aufgetreten.
+            success: Treffen erfolgreich abgeschlossen
           create:
-            invalid: Es gab ein Problem bei der Erstellung dieses Meetings
-            success: Meeting erfolgreich erstellt
+            invalid: Bei der Erstellung dieses Treffens ist ein Problem aufgetreten.
+            success: Treffen erfolgreich erstellt
           destroy:
-            success: Besprechung erfolgreich gelöscht
+            success: Treffen erfolgreich gelöscht
           edit:
-            update: Update
+            update: Aktualisieren
           index:
-            title: Besprechungen
+            title: Treffen
           new:
             create: Erstellen
-            title: Besprechung erstellen
+            title: Ein Treffen erstellen
           update:
-            invalid: Es gab ein Problem bei der Aktualisierung dieses Meetings
-            success: Meeting erfolgreich aktualisiert
+            invalid: Bei der Aktualisierung dieses Treffens ist ein Problem aufgetreten.
+            success: Treffen erfolgreich aktualisiert
         models:
           meeting:
-            name: Besprechung
+            name: Treffen
         registrations:
           edit:
             save: Speichern
           form:
-            available_slots_help: Lassen Sie es auf 0 stehen, wenn Sie unbegrenzte Slots zur Verfügung haben.
-            invite_user: Benutzer einladen
+            available_slots_help: Lassen Sie es auf 0 stehen, wenn Sie unbegrenzte Plätze zur Verfügung haben.
+            invite_user: Einen Benutzer einladen
             registrations_count:
-              one: Es wurde 1 Registrierung durchgeführt.
-              other: Es gab %{count} Registrierungen.
+              one: Es wurde 1 Anmeldung durchgeführt.
+              other: Es gab %{count} Anmeldungen.
               zero: Es gibt noch keine Anmeldungen.
           update:
-            invalid: Es gab ein Problem beim Speichern der Registrierungseinstellungen.
-            success: Die Einstellungen für die Meeting-Registrierung wurden erfolgreich gespeichert.
+            invalid: Beim Speichern der Anmeldeeinstellungen ist ein Problem aufgetreten.
+            success: Die Anmeldeeinstellungen wurden erfolgreich gespeichert.
       admin_log:
         meeting:
-          close: "%{user_name} schloss das %{resource_name} Meeting auf dem %{space_name} Raum"
-          create: "%{user_name} hat das %{resource_name} Meeting auf dem %{space_name} Raum erstellt"
-          delete: "%{user_name} löschte das %{resource_name} Meeting auf dem %{space_name} Raum"
-          update: "%{user_name} Aktualisiert das %{resource_name} Treffen auf dem %{space_name} Raum"
+          close: "%{user_name} hat das Treffen %{resource_name} auf dem Raum %{space_name} geschlossen"
+          create: "%{user_name} hat das Treffen %{resource_name} auf dem Raum %{space_name} erstellt"
+          delete: "%{user_name} hat das Treffen %{resource_name} auf dem Raum %{space_name} gelöscht"
+          update: "%{user_name} hat das Treffen %{resource_name} auf dem Raum %{space_name} aktualisiert"
       mailer:
         invite_join_meeting_mailer:
           invite:
-            subject: Einladung zur Teilnahme an einer Sitzung
+            subject: Einladung zur Teilnahme an einem Treffen
         registration_mailer:
           confirmation:
-            subject: Die Registrierung Ihres Meetings wurde bestätigt
+            subject: Ihre Anmeldung wurde erfolgreich gespeichert.
       meetings:
         filters:
           category: Kategorie
           category_prompt: Wählen Sie eine Kategorie
           date: Datum
-          past: Vergangenheit
-          search: Suche
-          upcoming: Demnächst
+          past: Vergangene
+          search: Suchen
+          upcoming: Zukünftige
         filters_small_view:
-          close_modal: Modal schließen
-          filter: Filter
+          close_modal: Dialogfenster schließen
+          filter: Filtern
           filter_by: Filtern nach
           unfold: Aufklappen
         index:
-          view_meeting: Besprechung anzeigen
+          view_meeting: Treffen anzeigen
         meetings:
-          no_meetings_warning: Keine Meetings entsprechen Ihren Suchkriterien oder es gibt keine geplanten Meetings.
-          upcoming_meetings_warning: Derzeit gibt es keine geplanten Meetings, aber hier finden Sie alle vergangenen Meetings aufgelistet.
+          no_meetings_warning: Keine Treffen entsprechen Ihren Suchkriterien oder es gibt keine geplanten Treffen.
+          upcoming_meetings_warning: Derzeit gibt es keine geplanten Treffen, aber hier finden Sie alle vergangenen Treffen aufgelistet.
         registration_confirm:
-          cancel: Abbrechen
+          cancel: Löschen
           confirm: Bestätigen
         show:
           attendees: Anzahl der Teilnehmer
-          contributions: Die Beiträge zählen
-          going: Gehen
-          join: An einem Meeting teilnehmen
+          contributions: Anzahl der Beiträge
+          going: vorwärts
+          join: An dem Treffen teilnehmen
           meeting_report: Besprechungsbericht
-          no_slots_available: Keine Slots verfügbar
-          organizations: Teilnehmende Unternehmen
+          no_slots_available: Keine Plätze mehr verfügbar
+          organizations: Teilnehmende Organisationen
           remaining_slots:
-            one: 1 Steckplatz übrig
-            other: "%{count} verbleibende Slots"
-            zero: Keine Slots mehr vorhanden
+            one: 1 Platz übrig
+            other: "%{count} verbleibende Plätze"
+            zero: Keine Plätze mehr vorhanden
       models:
         meeting:
           fields:
             closed: Geschlossen
-            end_time: Enddatum
+            end_time: Endzeit
             map: Karte
             start_time: Startdatum
             title: Titel
       read_more: "(mehr lesen)"
       registration_mailer:
         confirmation:
-          confirmed_html: Deine Anmeldung für das Meeting  <a href="%{url} " %{title}</a> wurde bestätigt.
-          details: Die Details zur Besprechung finden Sie im Anhang.
+          confirmed_html: Ihre Anmeldung für das Treffen <a href="%{url} " %{title}</a> wurde bestätigt.
+          details: Die Details zum Treffen finden Sie im Anhang.
       registrations:
         create:
-          invalid: Es gab ein Problem bei der Teilnahme an diesem Meeting.
-          success: Du hast erfolgreich an der Besprechung teilgenommen.
+          invalid: Bei Ihrer Anmeldung zu diesem Treffen ist ein Problem aufgetreten.
+          success: Sie sind dem Treffen erfolgreich beigetreten.
         destroy:
-          invalid: Es gab ein Problem, dieses Meeting zu verlassen.
-          success: Sie haben die Besprechung erfolgreich verlassen.
+          invalid: Beim Löschen Ihrer Anmeldung ist ein Problem aufgetreten.
+          success: Sie haben Ihre Anmeldung erfolgreich gelöscht.
     participatory_processes:
       participatory_process_groups:
         highlighted_meetings:
-          past_meetings: Vergangene Meetings
-          upcoming_meetings: Bevorstehende Treffen
+          past_meetings: Vergangene Treffen
+          upcoming_meetings: Zukünftige Treffen
     participatory_spaces:
       highlighted_meetings:
-        past_meetings: Vergangene Meetings
-        see_all_meetings: Alle Meetings anzeigen
-        upcoming_meetings: Bevorstehende Treffen
+        past_meetings: Vergangene Treffen
+        see_all_meetings: Alle Treffen anzeigen
+        upcoming_meetings: Zukünftige Treffen
     resource_links:
       meetings_through_proposals:
-        meeting_results: 'Zugehörige Ergebnisse:'
-        result_meetings: 'Verwandte Besprechungen:'
+        meeting_results: Verbundene Ergebnisse
+        result_meetings: Verbundene Treffen
       proposals_from_meeting:
-        meeting_proposals: 'Verwandte Vorschläge:'
-        proposal_meetings: 'Verwandte Besprechungen:'
+        meeting_proposals: In diesem Treffen erstellte Vorschläge
+        proposal_meetings: Verbundene Treffen
