@@ -3,24 +3,24 @@ de:
   decidim:
     admin_log:
       page:
-        update: "%{user_name} Aktualisiert die %{resource_name} Seite in %{space_name}"
+        update: "%{user_name} hat die Seite %{resource_name} in %{space_name} aktualisiert"
     features:
       pages:
         name: Seite
         settings:
           global:
-            announcement: Ankündigung
+            announcement: Ankündigungsnachricht
           step:
-            announcement: Ankündigung
+            announcement: Ankündigungsnachricht
     pages:
       admin:
         models:
           components:
-            body: Körper
+            body: Textkörper
         pages:
           edit:
-            save: Update
-            title: Seite bearbeiten
+            save: aktualisieren
+            title: Seite ändern
           update:
-            invalid: Beim Speichern der Seite gab es Fehler.
+            invalid: Beim Speichern der Seite sind Fehler aufgetreten.
             success: Seite erfolgreich gespeichert.
