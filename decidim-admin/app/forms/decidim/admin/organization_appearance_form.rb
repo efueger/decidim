@@ -85,6 +85,23 @@ module Decidim
       validates :omnipresent_banner_title, translatable_presence: true, if: :enable_omnipresent_banner?
       validates :omnipresent_banner_short_description, translatable_presence: true, if: :enable_omnipresent_banner?
 
+      def map_model(model)
+        model.custom_colors.tap do |colors|
+          self.primary_color = colors["primary_color"]
+          self.secondary_color = colors["secondary_color"]
+          self.success_color = colors["success_color"]
+          self.warning_color = colors["warning_color"]
+          self.alert_color = colors["alert_color"]
+          self.proposals_color = colors["proposals_color"]
+          self.actions_color = colors["actions_color"]
+          self.debates_color = colors["debates_color"]
+          self.twitter_color = colors["twitter_color"]
+          self.facebook_color = colors["facebook_color"]
+          self.meetings_color = colors["meetings_color"]
+          self.google_color = colors["google_color"]
+        end
+      end
+
       private
 
       def highlighted_content_banner_enabled?
