@@ -14,6 +14,7 @@
 // = require ./auto_buttons_by_position.component
 // = require ./dynamic_fields.component
 // = require ./field_dependent_inputs.component
+// = require ./color_picker
 // = require ./bundle
 // = require_self
 
