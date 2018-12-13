@@ -144,51 +144,49 @@
   <div class="card-section">
     <div class="row">
       <div class="columns xlarge-6">
-        <%= form.text_field :primary_color %>
+        <%= form.text_field :primary_color, class: "jscolor { required:false, hash:true }" %>
       </div>
       <div class="columns xlarge-6">
-        <%= form.text_field :secondary_color %>
+        <%= form.text_field :secondary_color, class: "jscolor { required:false, hash:true }" %>
       </div>
       <div class="columns xlarge-6">
-        <%= form.text_field :success_color %>
+        <%= form.text_field :success_color, class: "jscolor { required:false, hash:true }" %>
       </div>
     </div>
 
     <div class="row">
       <div class="columns small-12 medium-6">
-        <%= form.text_field :warning_color %>
+        <%= form.text_field :warning_color, class: "jscolor { required:false, hash:true }" %>
       </div>
       <div class="columns small-12 medium-6">
-        <%= form.text_field :alert_color %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="columns small-12 medium-6">
-        <%= form.text_field :proposals_color %>
-        <div id="color-picker" class="cp-normal"></div>
-        <div class="cp-reset"></div>
-      </div>
-      <div class="columns small-12 medium-6">
-        <%= form.text_field :actions_color %>
-      </div>
-      <div class="columns small-12 medium-6">
-        <%= form.text_field :debates_color %>
-      </div>
-      <div class="columns small-12 medium-6">
-        <%= form.text_field :meetings_color %>
+        <%= form.text_field :alert_color, class: "jscolor { required:false, hash:true }" %>
       </div>
     </div>
 
     <div class="row">
       <div class="columns small-12 medium-6">
-        <%= form.text_field :twitter_color %>
+        <%= form.text_field :proposals_color, class: "jscolor { required:false, hash:true }" %>
       </div>
       <div class="columns small-12 medium-6">
-        <%= form.text_field :facebook_color %>
+        <%= form.text_field :actions_color, class: "jscolor { required:false, hash:true }" %>
       </div>
       <div class="columns small-12 medium-6">
-        <%= form.text_field :google_color %>
+        <%= form.text_field :debates_color, class: "jscolor { required:false, hash:true }" %>
+      </div>
+      <div class="columns small-12 medium-6">
+        <%= form.text_field :meetings_color, class: "jscolor { required:false, hash:true }" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns small-12 medium-6">
+        <%= form.text_field :twitter_color, class: "jscolor { required:false, hash:true }" %>
+      </div>
+      <div class="columns small-12 medium-6">
+        <%= form.text_field :facebook_color, class: "jscolor { required:false, hash:true }" %>
+      </div>
+      <div class="columns small-12 medium-6">
+        <%= form.text_field :google_color, class: "jscolor { required:false, hash:true }" %>
       </div>
     </div>
   </div>
