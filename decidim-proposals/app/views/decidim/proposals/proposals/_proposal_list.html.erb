@@ -4,16 +4,16 @@
       <div class="small-up-2 medium-up-3 card-grid">
         <div class="card__content">
           <div class="card__header">
-            <%= link_to proposal do%>
+            <%= link_to proposal do %>
               <h5 class="card__title card__title-list"><%= proposal.title %></h5>
             <% end %>
             <div class="card__author author-data author-data--small">
               <%= render partial: "decidim/shared/author_reference", locals: { author: present(proposal).author } %>
-              <%=  l(proposal.created_at, format: :decidim_short) %>
+              <%= l(proposal.created_at, format: :decidim_short) %>
             </div>
           </div>
           <%= render partial: "proposal_badge", locals: { proposal: proposal } %>
-          <br/>
+          <br />
           <%= render partial: "decidim/shared/tags", locals: { resource: proposal, tags_class_extra: "tags--proposal tags--proposal-list" } %>
         </div>
           <div class="card--list__data card--side-container ">
@@ -44,4 +44,3 @@
     </article>
   </div>
 </div>
-

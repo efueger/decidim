@@ -16,8 +16,8 @@
 <% if current_component.settings.split_proposal_enabled? && component_settings.official_proposals_enabled %>
   <%= render "splitted_proposals" %>
 <% else %>
-  <div class="<%= 'row small-up-1 medium-up-2 card-grid' unless @param_list %>">
+  <div class="<%= "row small-up-1 medium-up-2 card-grid" unless @param_list %>">
     <%= render @proposals %>
   </div>
   <%= decidim_paginate @proposals, random_seed: random_seed %>
-<% end%>
+<% end %>
