@@ -39,7 +39,7 @@ module Decidim
 
         if current_component.settings.split_proposal_enabled? && component_settings.official_proposals_enabled
           @officials_proposals = @proposals.officials.order(created_at: :asc).all
-          @citizens_proposals =  @proposals.citizens.order(created_at: :asc).all
+          @citizens_proposals = @proposals.citizens.order(created_at: :asc).all
         else
           @proposals = paginate(@proposals)
           @proposals = reorder(@proposals)
@@ -218,10 +218,6 @@ module Decidim
 
       private
 
-      def filter_origin?
-       (params[:filter][:origin] != ("all" || nil)) if params[:filter]
-      end
-
       def keep_filter_params
         @param_page = params[:page]
         @param_per_page = params[:per_page]
@@ -245,7 +241,7 @@ module Decidim
       end
 
       def filter_origin?
-       (params[:filter][:origin] != ("all" || nil)) if params[:filter]
+        (params[:filter][:origin] != ("all" || nil)) if params[:filter]
       end
 
       def proposals_search
