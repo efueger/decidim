@@ -1,9 +1,25 @@
+---
 sv:
+  activemodel:
+    attributes:
+      dummy_resource:
+        created_at: Skapad vid
+        field: Mitt fält
+        start_date: Startdatum
+        title: Titel
+        updated_at: Uppdaterad på
   decidim:
     dummy:
       admin:
         exports:
           dummies: Dummies
+    pages:
+      home:
+        statistics:
+          bar: Bar
+          dummies_count_high: Dummies höga
+          dummies_count_medium: Dummies medium
+          foo: Foo
     participatory_processes:
       statistics:
         dummies_count_high: Dummies höga
@@ -11,10 +27,3 @@ sv:
     resource_links:
       test_link:
         dummy_resource_dummy: Relaterad dummy
-  pages:
-    home:
-      statistics:
-        bar: Bar
-        dummies_count_high: Dummies höga
-        dummies_count_medium: Dummies medium
-        foo: foo

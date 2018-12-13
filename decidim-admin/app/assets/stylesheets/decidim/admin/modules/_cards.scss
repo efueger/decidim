@@ -3,11 +3,26 @@ $card-padding-small: 1rem;
 .card-title{
   @include smallcaps;
 
+  button:not(.clear){
+    @include smallcaps;
+  }
+
+  // clearfix if there is no flex--* class in the same element
+  &:not([class*="flex--"]){
+    @include clearfix;
+  }
+
   font-size: 1rem;
-
-  @include clearfix;
-
   width: 100%;
+
+  &--nocaps{
+    text-transform: lowercase;
+    letter-spacing: 0;
+
+    &::first-letter{
+      text-transform: uppercase;
+    }
+  }
 }
 
 .card-footer{
@@ -86,4 +101,15 @@ $card-padding-small: 1rem;
 .card--list__heading{
   margin-bottom: 0;
   display: block;
+}
+
+.card-divider{
+  @include modifiers(background){
+    color: $white;
+  }
+}
+
+.card-divider--reduced{
+  // height adjust
+  padding: (($global-padding / 2) + rem-calc(.7)) $global-padding;
 }

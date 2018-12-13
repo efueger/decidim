@@ -1,17 +1,19 @@
+---
 nl:
   activemodel:
     attributes:
       result:
-        decidim_accountability_status_id: status
+        decidim_accountability_status_id: Status
         decidim_category_id: Categorie
         decidim_scope_id: Scope
         description: Beschrijving
         end_date: Einddatum
         progress: Vooruitgang
         project_ids: Opgenomen projecten
-        proposal_ids: Opgenomen voorstellen
-        start_date: Begin datum
+        proposals: Inbegrepen voorstellen
+        start_date: Startdatum
         title: Titel
+        updated_at: Bijgewerkt op
       status:
         description: Beschrijving
         key: sleutel
@@ -20,6 +22,13 @@ nl:
       timeline_entry:
         description: Beschrijving
         entry_date: Datum
+    models:
+      decidim/accountability/proposal_linked_event: Voorstel opgenomen in een resultaat
+  activerecord:
+    models:
+      decidim/accountability/result:
+        one: Resultaat
+        other: resultaten
   decidim:
     accountability:
       actions:
@@ -49,11 +58,17 @@ nl:
           edit:
             title: Bewerk resultaat
             update: Update resultaat
+          form:
+            add_proposal: Voeg voorstel toe
           index:
             title: Resultaten
           new:
             create: Maak resultaat
             title: Nieuw resultaat
+          proposals:
+            close: Sluit
+            current_selection: Huidige selectie
+            select: Selecteer
           update:
             invalid: Er is een probleem opgetreden bij het bijwerken van dit resultaat
             success: Resultaat met succes bijgewerkt
@@ -94,12 +109,20 @@ nl:
           update:
             invalid: Er is een probleem opgetreden met het bijwerken van dit item
             success: Item succesvol bijgewerkt
+      admin_log:
+        result:
+          create: "%{user_name} heeft het resultaat %{resource_name} gemaakt in %{space_name}"
+          delete: "%{user_name} verwijderde het resultaat %{resource_name} in %{space_name}"
+          update: "%{user_name} bijgewerkt resultaat %{resource_name} in %{space_name}"
+        value_types:
+          parent_presenter:
+            not_found: 'Het bovenliggende element is niet gevonden in de database (ID: %{id})'
       models:
         result:
           fields:
             end_date: Einddatum
             progress: Vooruitgang
-            start_date: Begin datum
+            start_date: Startdatum
             status: Status
             title: Titel
         status:
@@ -137,7 +160,7 @@ nl:
             contributions: Bijdrage
             last_edited_by: Laatst bewerkt door
             last_updated_at: Laatst bijgewerkt om
-            meetings: Vergaderingen
+            meetings: Events
             number_of_versions: versies
             proposals: Voorstellen
             show_all_versions: Toon alle versies
@@ -156,21 +179,37 @@ nl:
           changes_at_title: Veranderingen bij "%{title}"
         version:
           version_index: Versie %{index}
-    features:
+    components:
       accountability:
-        name: Verantwoording
+        name: Verantwoordelijkheid
         settings:
           global:
             categories_label: Naam voor "Categorieën"
             comments_enabled: Reacties ingeschakeld
+            display_progress_enabled: Geef de voortgang weer
             heading_leaf_level_results: Naam voor "Projecten"
             heading_parent_level_results: Naam voor "Resultaten"
-            intro: Intro
-            subcategories_label: Naam voor "Subcategorieën"
+            intro: Inleiding
+            subcategories_label: Naam voor 'Subcategorieën'
           step:
             comments_blocked: Reacties geblokkeerd
+    events:
+      accountability:
+        proposal_linked:
+          email_intro: 'Het voorstel "%{proposal_title}" is in een resultaat opgenomen. Je kan het vanaf deze pagina bekijken:'
+          email_outro: Je hebt deze melding ontvangen omdat je "%{proposal_title}" volgt. Je kan de meldingen deactiveren door te klikken op de vorige link.
+          email_subject: Een update voor %{proposal_title}
+          notification_title: Het voorstel <a href="%{proposal_path}">%{proposal_title}</a> is opgenomen in het <a href="%{resource_path}">%{resource_title}</a> resultaat.
+    participatory_processes:
+      participatory_process_groups:
+        highlighted_results:
+          results: resultaten
+    participatory_spaces:
+      highlighted_results:
+        results: resultaten
+        see_all_results: Bekijk alle resultaten
     resource_links:
       included_projects:
-        result_projects: Projecten opgenomen in dit resultaat
+        result_project: Projecten opgenomen in dit resultaat
       included_proposals:
-        result_proposals: Voorstellen opgenomen in dit resultaat
+        result_proposal: Voorstellen opgenomen in dit resultaat

@@ -50,6 +50,12 @@ module Decidim
       it { is_expected.to be_valid }
     end
 
+    context "when the email is a disposable account" do
+      let(:email) { "user@mailbox92.biz" }
+
+      it { is_expected.to be_invalid }
+    end
+
     context "when the sign_up_as is different from 'user' and 'user_group'" do
       let(:sign_up_as) { "community" }
 
@@ -86,8 +92,20 @@ module Decidim
       it { is_expected.to be_invalid }
     end
 
+    context "when the nickname is too long" do
+      let(:nickname) { "verylongnicknamethatcreatesanerror" }
+
+      it { is_expected.to be_invalid }
+    end
+
     context "when the password is not present" do
       let(:password) { nil }
+
+      it { is_expected.to be_invalid }
+    end
+
+    context "when the password confirmation is not present" do
+      let(:password_confirmation) { nil }
 
       it { is_expected.to be_invalid }
     end
@@ -121,11 +139,11 @@ module Decidim
         it { is_expected.to be_invalid }
       end
 
-      context "when user_group_document_number is not present" do
-        let(:user_group_document_number) { nil }
-
-        it { is_expected.to be_invalid }
-      end
+      # context "when user_group_document_number is not present" do
+      #   let(:user_group_document_number) { nil }
+      #
+      #   it { is_expected.to be_invalid }
+      # end
 
       context "when user_group_phone is not present" do
         let(:user_group_phone) { nil }

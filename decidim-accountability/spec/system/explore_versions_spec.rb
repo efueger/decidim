@@ -3,13 +3,13 @@
 require "spec_helper"
 
 describe "Explore versions", versioning: true, type: :system do
-  include_context "with a feature"
+  include_context "with a component"
   let(:manifest_name) { "accountability" }
 
   let(:result_path) do
     decidim_participatory_process_accountability.result_path(
       participatory_process_slug: participatory_process.slug,
-      feature_id: feature.id,
+      component_id: component.id,
       id: result.id
     )
   end
@@ -18,7 +18,7 @@ describe "Explore versions", versioning: true, type: :system do
     create(
       :result,
       progress: 25.0,
-      feature: feature
+      component: component
     )
   end
 
@@ -42,7 +42,7 @@ describe "Explore versions", versioning: true, type: :system do
     end
 
     it "shows the versions count" do
-      expect(page).to have_content("VERSIONS 2")
+      expect(page).to have_content("VERSIONS\n2")
     end
 
     it "allows going back to the result" do
@@ -68,7 +68,7 @@ describe "Explore versions", versioning: true, type: :system do
     end
 
     it "shows the version number" do
-      expect(page).to have_content("VERSION NUMBER 2 out of 2")
+      expect(page).to have_content("VERSION NUMBER\n2 out of 2")
     end
 
     it "allows going back to the result" do

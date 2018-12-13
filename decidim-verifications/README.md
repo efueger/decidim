@@ -5,6 +5,24 @@ perform certain privileged actions. This module implements several of those meth
 and also offers a way for installation to implement their custom verification
 methods.
 
+There are several use cases for this, such as
+
+* Sending a SMS code to users to verify that their have a valid cellphone
+
+* Allowing users to upload a photo or scanned image of their identity document
+
+* Sending users a code through postal code
+
+* Allowing users to go to to a physical office and check their documentation
+
+* Checking some information through other systems (as a Municipal Census on the
+  case of Municipalities, Cities or Towns)
+
+* Having a list of valid users emails
+
+Right now Decidim supports only a few of these cases, but we have an internal
+API where you can program your own kind of authorizations.
+
 ## Introduction
 
 Each decidim instance is in full control of its authorizations, and can customize:
@@ -31,8 +49,12 @@ Decidim implements two type of authorization methods:
   a census API you will need a form with some fields that your users will use to
   authenticate against a census (for example, an ID and a Postal Code). You'll
   implement this with a form class. See the documentation for the [parent
-  class][authorization handler base class] or have a look at a
-  [live example][live authorization handler example] in decidim-barcelona.
+  class][authorization handler base class] or have a look at some live examples,
+  such as:
+
+  * [Decidim Barcelona].
+  * [Decidim Terrassa].
+  * [Decidim Sant Cugat].
 
   To register your handler, use
 
@@ -75,12 +97,36 @@ Decidim implements two type of authorization methods:
   * `edit_authorization_path`: This is the entry point to resume an existing
     authorization process.
 
+## Authorization options
+
+Sometimes you want to scope authorizations only to users that meet certain
+requirements. For example, you might only allow users registered at a certain
+postal code to be verified and thus perform certain actions.
+
+You can do this with authorization options. For example, in the case just
+presented, you should define something like this in your authorization workflow:
+
+```ruby
+Decidim::Verifications.register_workflow(:my_workflow) do |workflow|
+  workflow.form = "MyAuthorizationHandler"
+
+  workflow.options do |options|
+    options.attribute :postal_code, type: :string, required: false
+  end
+end
+```
+
+The format of the options you can define is the standard for a virtus attribute,
+plus an additional `required` (true by default) option were you can choose
+whether the option is compulsory when configuring the workflow as a permission
+for an action or not.
+
 ## Custom action authorizers
 
-Custom action authorizers are an advanced feature that can be used in both types of
+Custom action authorizers are an advanced component that can be used in both types of
 authorization methods to customize some parts of the authorization process.
 These are particulary useful when used within verification options, which are
-set in the admin zone related to a feature action. As a result, a verification
+set in the admin zone related to a component action. As a result, a verification
 method will be allowed to change the authorization logic and the appearance based
 on the context where the authorization is being performed.
 
@@ -97,17 +143,18 @@ You can override default behavior implementing a class that inherits form
 implement its public methods:
 
 * The `initialize` method receives the current authorization process context and
-saves it in local variables. This include the current authorization user state (an
-`Authorization` record) and permission `options` related to the action is trying to
-perform.
+  saves it in local variables. This include the current authorization user state
+  (an `Authorization` record) and permission `options` related to the action is
+  trying to perform.
 
 * The `authorize` method is responsible of evaluating the authorization process
-context and determine if the user authorization is `:ok` or in any other status.
+  context and determine if the user authorization is `:ok` or in any other
+  status.
 
 * The `redirect_params` method allows to add additional query string parameters
-when redirecting to the authorization form. This is useful to send to the
-authorization form the permission `options` information that could be useful to
-adapt its behavior or appearance.
+  when redirecting to the authorization form. This is useful to send to the
+  authorization form the permission `options` information that could be useful
+  to adapt its behavior or appearance.
 
 To be used by the verification method, this class should be referenced by name in
 its workflow manifest:
@@ -149,4 +196,7 @@ See [Decidim](https://github.com/decidim/decidim).
 See [Decidim](https://github.com/decidim/decidim).
 
 [authorization handler base class]: https://github.com/decidim/decidim/blob/master/decidim-core/app/services/decidim/authorization_handler.rb
-[real authorization handler]: https://github.com/decidim/decidim-barcelona/blob/master/app/services/census_authorization_handler.rb
+
+[Decidim Barcelona]: https://github.com/AjuntamentdeBarcelona/decidim-barcelona/blob/master/app/services/census_authorization_handler.rb
+[Decidim Terrassa]: https://github.com/AjuntamentDeTerrassa/decidim-terrassa/blob/master/app/services/census_authorization_handler.rb
+[Decidim Sant Cugat]: https://github.com/AjuntamentdeSantCugat/decidim-sant_cugat/blob/master/app/services/census_authorization_handler.rb

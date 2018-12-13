@@ -9,6 +9,7 @@ module Decidim
   # eye view of the whole admin.
   #
   module Admin
-    autoload :Features, "decidim/admin/features"
+    autoload :Components, "decidim/admin/components"
+    autoload :FormBuilder, "decidim/admin/form_builder"
   end
 end

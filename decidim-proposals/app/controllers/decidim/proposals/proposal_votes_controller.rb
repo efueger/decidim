@@ -11,7 +11,7 @@ module Decidim
       before_action :authenticate_user!
 
       def create
-        authorize! :vote, proposal
+        enforce_permission_to :vote, :proposal, proposal: proposal
         @from_proposals_list = params[:from_proposals_list] == "true"
         weight = params[:weight]
         VoteProposal.call(proposal, current_user, weight) do
@@ -27,7 +27,7 @@ module Decidim
       end
 
       def destroy
-        authorize! :unvote, proposal
+        enforce_permission_to :unvote, :proposal, proposal: proposal
         @from_proposals_list = params[:from_proposals_list] == "true"
 
         UnvoteProposal.call(proposal, current_user) do
@@ -41,7 +41,7 @@ module Decidim
       private
 
       def proposal
-        @proposal ||= Proposal.where(feature: current_feature).find(params[:proposal_id])
+        @proposal ||= Proposal.where(component: current_component).find(params[:proposal_id])
       end
     end
   end

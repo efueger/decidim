@@ -1,5 +1,5 @@
 <% if @param_list %>
-  <%= render "proposal_list", proposal: proposal %>
+  <%= cell "decidim/proposals/proposal_l", proposal, { context: { current_user: current_user } } %>
 <% else %>
-  <%= render "proposal_column",  proposal: proposal %>
+  <%= card_for proposal, from: proposal, context: { current_user: current_user } %>
 <% end %>

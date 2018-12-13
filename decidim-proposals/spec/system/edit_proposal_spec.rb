@@ -3,12 +3,12 @@
 require "spec_helper"
 
 describe "Edit proposals", type: :system do
-  include_context "with a feature"
+  include_context "with a component"
   let(:manifest_name) { "proposals" }
 
   let!(:user) { create :user, :confirmed, organization: participatory_process.organization }
   let!(:another_user) { create :user, :confirmed, organization: participatory_process.organization }
-  let!(:proposal) { create :proposal, author: user, feature: feature }
+  let!(:proposal) { create :proposal, author: user, component: component }
 
   before do
     switch_to_host user.organization.host
@@ -23,7 +23,7 @@ describe "Edit proposals", type: :system do
     end
 
     it "can be updated" do
-      visit_feature
+      visit_component
 
       click_link proposal.title
       click_link "Edit proposal"
@@ -38,11 +38,45 @@ describe "Edit proposals", type: :system do
       expect(page).to have_content(new_body)
     end
 
+    context "with geocoding enabled" do
+      let(:component) { create(:proposal_component, :with_geocoding_enabled, participatory_space: participatory_process) }
+      let(:address) { "6 Villa des Nymphéas 75020 Paris" }
+      let(:new_address) { "6 rue Sorbier 75020 Paris" }
+      let!(:proposal) { create :proposal, address: address, author: user, component: component }
+
+      it "can be updated with address" do
+        visit_component
+
+        click_link proposal.title
+        click_link "Edit proposal"
+        check "proposal_has_address"
+
+        expect(page).to have_field("Title", with: proposal.title)
+        expect(page).to have_field("Body", with: proposal.body)
+        expect(page).to have_field("Address", with: proposal.address)
+
+        fill_in "Address", with: new_address
+
+        Geocoder.configure(lookup: :test)
+
+        Geocoder::Lookup::Test.add_stub(
+          new_address,
+          [{
+            "latitude" => 48.8682538,
+            "longitude" => 2.389643
+          }]
+        )
+
+        click_button "Send"
+        expect(page).to have_content(new_address)
+      end
+    end
+
     context "when updating with wrong data" do
-      let(:feature) { create(:proposal_feature, :with_creation_enabled, :with_attachments_allowed, participatory_space: participatory_process) }
+      let(:component) { create(:proposal_component, :with_creation_enabled, :with_attachments_allowed, participatory_space: participatory_process) }
 
       it "returns an error message" do
-        visit_feature
+        visit_component
 
         click_link proposal.title
         click_link "Edit proposal"
@@ -52,7 +86,7 @@ describe "Edit proposals", type: :system do
         fill_in "Body", with: "A"
         click_button "Send"
 
-        expect(page).to have_content("Is using too much caps, Is too short, Is using too much caps, Is too short")
+        expect(page).to have_content("is using too much caps, is too short")
       end
     end
   end
@@ -63,7 +97,7 @@ describe "Edit proposals", type: :system do
     end
 
     it "renders an error" do
-      visit_feature
+      visit_component
 
       click_link proposal.title
       expect(page).to have_no_content("Edit proposal")
@@ -74,14 +108,14 @@ describe "Edit proposals", type: :system do
   end
 
   describe "editing my proposal outside the time limit" do
-    let!(:proposal) { create :proposal, author: user, feature: feature, created_at: 1.hour.ago }
+    let!(:proposal) { create :proposal, author: user, component: component, created_at: 1.hour.ago }
 
     before do
       login_as another_user, scope: :user
     end
 
     it "renders an error" do
-      visit_feature
+      visit_component
 
       click_link proposal.title
       expect(page).to have_no_content("Edit proposal")

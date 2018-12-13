@@ -24,24 +24,22 @@ module Decidim
       end
 
       initializer "decidim_comments.query_extensions" do
-        Comments::QueryExtensions.extend!(Decidim::Api::QueryType)
-      end
-
-      initializer "decidim_comments.mutation_extensions" do
-        Comments::MutationExtensions.extend!(Decidim::Api::MutationType)
-      end
-
-      initializer "decidim.stats" do
-        Decidim.stats.register :comments_count, priority: StatsRegistry::MEDIUM_PRIORITY do |features, start_at, end_at|
-          Decidim.feature_manifests.sum do |feature|
-            feature.stats.filter(tag: :comments).with_context(features, start_at, end_at).map { |_name, value| value }.sum
-          end
+        Decidim::Api::QueryType.define do
+          QueryExtensions.define(self)
         end
       end
 
-      initializer "decidim_comments.inject_abilities_to_user" do |_app|
-        Decidim.configure do |config|
-          config.abilities += ["Decidim::Comments::Abilities::CurrentUserAbility"]
+      initializer "decidim_comments.mutation_extensions" do
+        Decidim::Api::MutationType.define do
+          MutationExtensions.define(self)
+        end
+      end
+
+      initializer "decidim.stats" do
+        Decidim.stats.register :comments_count, priority: StatsRegistry::MEDIUM_PRIORITY do |organization|
+          Decidim.component_manifests.sum do |component|
+            component.stats.filter(tag: :comments).with_context(organization.published_components).map { |_name, value| value }.sum
+          end
         end
       end
     end

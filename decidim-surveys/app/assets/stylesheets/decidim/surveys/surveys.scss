@@ -1,14 +1,37 @@
 form.answer-survey{
   .radio-button-collection,
-  .check-box-collection{
+  .check-box-collection,
+  .sortable-check-box-collection{
     margin: 0 0 1rem;
   }
 
-  .tos-agreement-help-text{
-    margin: .2rem 0 0;
+  .tos-agreement{
+    margin: 1rem 0 0;
+
+    .help-text{
+      margin: .2rem 0 0;
+    }
+
+    .form-error{
+      margin-top: .5em;
+    }
   }
 
   label.survey-question{
     font-weight: bold;
+  }
+
+  .help-text{
+    margin-top: .5em;
+
+    .ql-video{
+      margin: .5em auto;
+    }
+  }
+
+  .sortable-check-box-collection{
+    .sorted + .unsorted{
+      margin-top: 1rem;
+    }
   }
 }

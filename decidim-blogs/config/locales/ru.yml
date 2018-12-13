@@ -1,0 +1,80 @@
+---
+ru:
+  activemodel:
+    models:
+      decidim/blogs/create_post_event: Создать пост в блоге
+  activerecord:
+    models:
+      decidim/blogs/post:
+        few: Поста
+        many: Постов
+        one: Пост
+        other: Постов
+  decidim:
+    blogs:
+      actions:
+        confirm_destroy: Вы действительно хотите удалить этот пост?
+        destroy: Удалить
+        edit: Редактировать
+        new: Добавить
+        title: Действия
+      admin:
+        models:
+          components:
+            body: Основной текст
+          post:
+            name: Пост
+        posts:
+          create:
+            invalid: При попытке добавить этот пост произошла ошибка
+            success: Пост успешно создан
+          destroy:
+            success: Пост успешно удален
+          edit:
+            save: Обновить
+          index:
+            title: Посты
+          new:
+            create: Создать
+            title: Создать пост
+          update:
+            invalid: При попытке сохранить пост произошли ошибки.
+            success: Пост успешно сохранен
+      models:
+        post:
+          fields:
+            author: Автор
+            body: Основной текст
+            created_at: 'Создано:'
+            title: заголовок
+      posts:
+        show:
+          view: Посмотреть
+        sidebar_blog:
+          comments: комментарии
+          most_commented_posts: Наиболее комментируемые посты
+      read_more: Читать подробнее
+    components:
+      blogs:
+        name: Блог
+        settings:
+          global:
+            announcement: Announcement
+            comments_enabled: Comments enabled
+          step:
+            announcement: Announcement
+            comments_blocked: Comments Blocked
+    events:
+      blogs:
+        post_created:
+          email_intro: The post "%{resource_title}" has been published in "%{participatory_space_title}" that you are following.
+          email_outro: You have received this notification because you are following "%{participatory_space_title}". You can unfollow it from the previous link.
+          email_subject: New post published in %{participatory_space_title}
+          notification_title: The post <a href="%{resource_path}">%{resource_title}</a> has been published in %{participatory_space_title}
+    pages:
+      home:
+        statistics:
+          posts_count: Постов
+    participatory_processes:
+      statistics:
+        posts_count: Постов

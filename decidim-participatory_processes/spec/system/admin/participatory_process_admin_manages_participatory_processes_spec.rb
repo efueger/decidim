@@ -14,13 +14,28 @@ describe "Participatory process admin manages participatory processes", type: :s
     visit decidim_admin_participatory_processes.participatory_processes_path
   end
 
+  context "when there is more than 15 process" do
+    let!(:participatory_process) do
+      create_list(:participatory_process, 16, organization: organization)
+    end
+
+    it "displays pagination" do
+      expect(page).to have_css(".pagination")
+    end
+
+    it "displays 15 elements" do
+      within "tbody" do
+        expect(page).to have_selector("tr", count: 15)
+      end
+    end
+  end
+
   it "cannot create a new participatory_process" do
     expect(page).to have_no_selector(".actions .new")
   end
 
   context "when deleting a participatory process" do
     let!(:participatory_process2) { create(:participatory_process, organization: organization) }
-    let!(:process_user_role2) { create :participatory_process_user_role, user: user, participatory_process: participatory_process2 }
 
     before do
       visit decidim_admin_participatory_processes.participatory_processes_path

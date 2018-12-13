@@ -7,8 +7,8 @@ require "decidim/core/test/factories"
 require "decidim/participatory_processes/test/factories"
 
 FactoryBot.define do
-  factory :budget_feature, parent: :feature do
-    name { Decidim::Features::Namer.new(participatory_space.organization.available_locales, :budgets).i18n_name }
+  factory :budget_component, parent: :component do
+    name { Decidim::Components::Namer.new(participatory_space.organization.available_locales, :budgets).i18n_name }
     manifest_name :budgets
     participatory_space { create(:participatory_process, :with_steps, organization: organization) }
 
@@ -22,6 +22,20 @@ FactoryBot.define do
         {
           total_budget: total_budget,
           vote_threshold_percent: vote_threshold_percent
+        }
+      end
+    end
+
+    trait :with_vote_per_project do
+      transient do
+        total_projects 5
+        vote_per_project true
+      end
+
+      settings do
+        {
+          total_projects: total_projects,
+          vote_per_project: vote_per_project
         }
       end
     end
@@ -51,16 +65,16 @@ FactoryBot.define do
     title { Decidim::Faker::Localized.sentence(3) }
     description { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     budget { Faker::Number.number(8) }
-    feature { create(:budget_feature) }
+    component { create(:budget_component) }
   end
 
   factory :order, class: "Decidim::Budgets::Order" do
-    feature { create(:budget_feature) }
-    user { create(:user, organization: feature.organization) }
+    component { create(:budget_component) }
+    user { create(:user, organization: component.organization) }
   end
 
   factory :line_item, class: "Decidim::Budgets::LineItem" do
     order
-    project { create(:project, feature: order.feature) }
+    project { create(:project, component: order.component) }
   end
 end

@@ -9,7 +9,7 @@
     </div>
 
     <div class="row">
-      <% if result.progress.present? %>
+      <% if component_settings.display_progress_enabled? && result.progress.present? %>
         <div class="columns section mediumlarge-3 mediumlarge-push-9">
           <div class="progress-level">
             <div class="progress-label">
@@ -58,12 +58,12 @@
         </div>
       </div>
 
-      <hr>
+      <hr />
 
       <div class="small-12 mediumlarge-8 large-9 columns">
         <div class="section result-description">
           <%== translated_attribute result.description %>
-          <%= render partial: "decidim/shared/tags", locals: { resource: result, tags_class_extra: "tags--result" } %>
+          <%= cell "decidim/tags", result, context: {extra_classes: ["tags--result"]} %>
         </div>
       </div>
 

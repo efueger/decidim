@@ -4,7 +4,7 @@ module Decidim
   module ParticipatoryProcesses
     # A controller that holds the logic to show ParticipatoryProcesses in a
     # public layout.
-    class ParticipatoryProcessesController < Decidim::ApplicationController
+    class ParticipatoryProcessesController < Decidim::ParticipatoryProcesses::ApplicationController
       include ParticipatorySpaceContext
       participatory_space_layout only: :show
 
@@ -12,6 +12,7 @@ module Decidim
       helper Decidim::IconHelper
       helper Decidim::WidgetUrlsHelper
       helper Decidim::SanitizeHelper
+      helper Decidim::ResourceReferenceHelper
 
       helper ParticipatoryProcessHelper
 
@@ -20,11 +21,13 @@ module Decidim
       def index
         redirect_to "/404" if published_processes.none?
 
-        authorize! :read, ParticipatoryProcess
-        authorize! :read, ParticipatoryProcessGroup
+        enforce_permission_to :list, :process
+        enforce_permission_to :list, :process_group
       end
 
-      def show; end
+      def show
+        check_current_user_can_visit_space
+      end
 
       private
 
@@ -41,7 +44,7 @@ module Decidim
       end
 
       def published_processes
-        @published_processes ||= OrganizationPublishedParticipatoryProcesses.new(current_organization)
+        @published_processes ||= OrganizationPublishedParticipatoryProcesses.new(current_organization, current_user)
       end
 
       def collection
@@ -49,7 +52,7 @@ module Decidim
       end
 
       def filtered_participatory_processes(filter = default_filter)
-        OrganizationPrioritizedParticipatoryProcesses.new(current_organization, filter)
+        OrganizationPrioritizedParticipatoryProcesses.new(current_organization, filter, current_user)
       end
 
       def participatory_processes
@@ -57,11 +60,11 @@ module Decidim
       end
 
       def promoted_participatory_processes
-        @promoted_processes ||= filtered_participatory_processes | PromotedParticipatoryProcesses.new
+        @promoted_participatory_processes ||= filtered_participatory_processes | PromotedParticipatoryProcesses.new
       end
 
       def participatory_process_groups
-        @process_groups ||= OrganizationPrioritizedParticipatoryProcessGroups.new(current_organization, filter)
+        @participatory_process_groups ||= OrganizationPrioritizedParticipatoryProcessGroups.new(current_organization, filter)
       end
 
       def stats

@@ -8,7 +8,7 @@ module Decidim
       layout "decidim/admin/users"
 
       def index
-        authorize! :index, UserGroup
+        enforce_permission_to :index, :user_group
         @query = params[:q]
         @state = params[:state]
 
@@ -18,9 +18,9 @@ module Decidim
 
       def verify
         @user_group = collection.find(params[:id])
-        authorize! :verify, @user_group
+        enforce_permission_to :verify, :user_group, user_group: @user_group
 
-        VerifyUserGroup.call(@user_group) do
+        VerifyUserGroup.call(@user_group, current_user) do
           on(:ok) do
             flash[:notice] = I18n.t("user_group.verify.success", scope: "decidim.admin")
             redirect_back(fallback_location: decidim_admin.user_groups_path)
@@ -35,9 +35,9 @@ module Decidim
 
       def reject
         @user_group = collection.find(params[:id])
-        authorize! :reject, @user_group
+        enforce_permission_to :reject, :user_group, user_group: @user_group
 
-        RejectUserGroup.call(@user_group) do
+        RejectUserGroup.call(@user_group, current_user) do
           on(:ok) do
             flash[:notice] = I18n.t("user_group.reject.success", scope: "decidim.admin")
             redirect_back(fallback_location: decidim_admin.user_groups_path)

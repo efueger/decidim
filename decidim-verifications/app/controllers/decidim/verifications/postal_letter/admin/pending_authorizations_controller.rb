@@ -8,7 +8,7 @@ module Decidim
           layout "decidim/admin/users"
 
           def index
-            authorize! :index, Authorization
+            enforce_permission_to :index, :authorization
 
             @pending_authorizations = AuthorizationPresenter.for_collection(
               pending_authorizations
@@ -18,7 +18,7 @@ module Decidim
           private
 
           def pending_authorizations
-            Authorizations.new(name: "postal_letter", granted: false)
+            Authorizations.new(organization: current_organization, name: "postal_letter", granted: false)
           end
         end
       end

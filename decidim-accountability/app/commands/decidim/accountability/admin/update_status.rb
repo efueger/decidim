@@ -33,11 +33,11 @@ module Decidim
         attr_reader :status, :form
 
         def update_status
-          status.update_attributes!(
-            key: @form.key,
-            name: @form.name,
+          status.update!(
+            key:         @form.key,
+            name:        @form.name,
             description: @form.description,
-            progress: @form.progress
+            progress:    @form.progress
           )
         end
       end

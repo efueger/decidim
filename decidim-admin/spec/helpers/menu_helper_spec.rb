@@ -12,20 +12,24 @@ module Decidim
 
         before do
           allow(view).to receive(:current_organization).and_return(current_organization)
-          allow(view).to receive(:can?).and_return(true)
+          allow(view).to receive(:allowed_to?).and_return(true)
         end
 
         it "renders the default main menu" do
           expect(default_main_menu).to \
-            have_selector("li", count: 8) &
+            have_selector("li", count: 12) &
             have_link("Dashboard", href: "/admin/") &
             have_link("Processes", href: "/admin/participatory_processes") &
             have_link("Process groups", href: "/admin/participatory_process_groups") &
             have_link("Assemblies", href: "/admin/assemblies") &
+            have_link("Consultations", href: "/admin/consultations") &
+            have_link("Initiatives", href: "/admin/initiatives") &
             have_link("Pages", href: "/admin/static_pages") &
             have_link("Users", href: "/admin/users") &
             have_link("Newsletters", href: "/admin/newsletters") &
-            have_link("Settings", href: "/admin/organization/edit")
+            have_link("Settings", href: "/admin/organization/edit") &
+            have_link("Admin activity log", href: "/admin/logs") &
+            have_link("OAuth applications", href: "/admin/oauth_applications")
         end
 
         it "selects the correct default active option" do

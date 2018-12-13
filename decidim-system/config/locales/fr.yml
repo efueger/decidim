@@ -1,9 +1,10 @@
+---
 fr:
   decidim:
     system:
       actions:
-        confirm_destroy: Êtes-vous sûr de vouloir supprimer cela?
-        destroy: Détruire
+        confirm_destroy: Êtes-vous certain de vouloir supprimer cela ?
+        destroy: Supprimer
         edit: Modifier
         new: Nouvelle
         save: Sauvegarder
@@ -13,7 +14,7 @@ fr:
           error: Une erreur s'est produite lors de la création d'un nouvel administrateur.
           success: Admin créé avec succès
         destroy:
-          success: L'admin a détruit avec succès
+          success: Administrateur supprimé avec succès
         edit:
           title: Modifier l'administrateur
           update: Mettre à jour
@@ -36,7 +37,7 @@ fr:
       models:
         admin:
           fields:
-            created_at: Crée le
+            created_at: Créé le
             email: Courriel
           name: Administrateur
           validations:
@@ -45,7 +46,7 @@ fr:
           actions:
             save_and_invite: Créer une organisation et inviter un administrateur
           fields:
-            created_at: Crée le
+            created_at: Créé le
             name: Nom
           name: Organisation
       organizations:

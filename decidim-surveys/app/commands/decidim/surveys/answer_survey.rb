@@ -28,13 +28,24 @@ module Decidim
 
       def answer_survey
         SurveyAnswer.transaction do
-          @form.answers.each do |form_answer|
-            SurveyAnswer.create!(
+          @form.survey_answers.each do |form_answer|
+            answer = SurveyAnswer.new(
               user: @current_user,
               survey: @survey,
               question: form_answer.question,
               body: form_answer.body
             )
+
+            form_answer.selected_choices.each do |choice|
+              answer.choices.build(
+                body: choice.body,
+                custom_body: choice.custom_body,
+                decidim_survey_answer_option_id: choice.answer_option_id,
+                position: choice.position
+              )
+            end
+
+            answer.save!
           end
         end
       end

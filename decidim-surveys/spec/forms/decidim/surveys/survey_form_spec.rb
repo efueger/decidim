@@ -6,14 +6,14 @@ module Decidim
   module Surveys
     describe SurveyForm do
       subject do
-        described_class.from_model(survey).with_context(current_feature: survey.feature)
+        described_class.from_model(survey).with_context(current_component: survey.component)
       end
 
       let!(:survey) { create(:survey) }
       let!(:survey_question) { create(:survey_question, survey: survey) }
 
       it "builds empty answers for each question" do
-        expect(subject.answers.length).to eq(1)
+        expect(subject.survey_answers.length).to eq(1)
       end
 
       context "when tos_agreement is not accepted" do

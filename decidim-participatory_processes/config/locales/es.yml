@@ -6,7 +6,7 @@ es:
         announcement: Anuncio
         banner_image: Imagen de banner
         copy_categories: Copiar categorías
-        copy_features: Copiar funcionalidades
+        copy_components: Copiar componentes
         copy_steps: Copiar las fases
         description: Descripción
         developer_group: Grupo promotor
@@ -19,7 +19,9 @@ es:
         participatory_process_group_id: Grupo de procesos
         participatory_scope: Ámbito participativo
         participatory_structure: Estructura participativa
+        private_space: Espace privé
         promoted: Destacado
+        published_at: Publicado en
         scope_id: Ámbito
         scopes_enabled: Ámbitos habilitados
         short_description: Descripción breve
@@ -35,6 +37,7 @@ es:
         name: Nombre
         participatory_process_ids: Procesos relacionados
       participatory_process_step:
+        action_btn_text: Action bouton text
         description: Descripción
         end_date: Fecha de finalización
         short_description: Descripción breve
@@ -44,6 +47,20 @@ es:
         email: Correo electrónico
         name: Nombre
         role: Rol
+    models:
+      decidim/participatory_process_step_activated_event: Fase activada
+      decidim/participatory_process_step_changed_event: La fase ha cambiado
+  activerecord:
+    models:
+      decidim/participatory_process:
+        one: Proceso participativo
+        other: Procesos participativos
+      decidim/participatory_process_group:
+        one: Grupo de procesos participativos
+        other: Grupos de procesos participativos
+      decidim/participatory_process_step:
+        one: Fase
+        other: Fases
   decidim:
     admin:
       actions:
@@ -54,6 +71,8 @@ es:
         duplicate: Duplicar
         edit: Editar
         new: Nuevo/a
+        participatory_process:
+          new: nuevo proceso participativo
         preview: Previsualizar
         publish: Publicar
         resend_invitation: Reenviar invitación
@@ -62,21 +81,24 @@ es:
         participatory_process_groups: Grupos de procesos
         participatory_processes: Procesos
         participatory_processes_submenu:
+          attachment_collections: Colecciones
+          attachment_files: Archivos
           attachments: Archivos adjuntos
           categories: Categorías
-          features: Funcionalidades
+          components: Componentes
           info: Información
           moderations: Moderaciones
+          private_users: Usuarios privados
           process_admins: Usuarios del proceso
           steps: Fases del proceso
       models:
         participatory_process:
           fields:
             created_at: Fecha de creación
+            private: Privado
             promoted: Destacado
             published: Publicada
             title: Título
-          name: Proceso participativo
         participatory_process_group:
           fields:
             name: Nombre
@@ -131,6 +153,7 @@ es:
           success: La fase de proceso participativo se ha activado correctamente.
       participatory_process_steps:
         create:
+          action_btn_text_help: By default, the action button text is "Take part"
           error: Se ha producido un error al crear una nueva fase de proceso participativo.
           success: La fase de proceso participativo se ha creado correctamente.
         default_title: Introducción
@@ -181,6 +204,11 @@ es:
           title: Información general
         index:
           not_published: No publicado
+          private: Privado
+          promoted:
+            'false': 'No'
+            'true': 'Yes'
+          public: Público
           published: Publicada
         new:
           create: Crear
@@ -203,6 +231,33 @@ es:
         resend_invitation:
           error: Hubo un error al volver a enviar la invitación.
           success: Invitación reenviada con éxito.
+    admin_log:
+      participatory_process:
+        create: "%{user_name} creó el proceso participativo %{resource_name}"
+        publish: "%{user_name} publicó el proceso participativo %{resource_name}"
+        unpublish: "%{user_name} despublicó el proceso participativo %{resource_name}"
+        update: "%{user_name} actualizó el proceso participativo %{resource_name}"
+      participatory_process_step:
+        activate: "%{user_name} activó la fase %{resource_name} en el proceso participativo %{space_name}"
+        create: "%{user_name} creó la fase %{resource_name} en el proceso participativo %{space_name}"
+        delete: "%{user_name} eliminó la fase %{resource_name} en el proceso participativo %{space_name}"
+        update: "%{user_name} actualizó la fase %{resource_name} en el proceso participativo %{space_name}"
+      participatory_process_user_role:
+        create: "%{user_name} invitó al usuario %{resource_name} al proceso participativo %{space_name}"
+        delete: "%{user_name} eliminó al usuario %{resource_name} del proceso participativo %{space_name}"
+        update: "%{user_name} cambió el rol del usuario %{resource_name} en el proceso participativo %{space_name}"
+    events:
+      participatory_process:
+        step_activated:
+          email_intro: 'Ya está activa la fase %{resource_title} para %{participatory_space_title}. Puedes verla desde esta página:'
+          email_outro: Has recibido esta notificación porque estás siguiendo %{participatory_space_title}. Puedes dejar de recibir notificaciones siguiendo el enlace anterior.
+          email_subject: Una actualización de %{participatory_space_title}
+          notification_title: Ya está activa la fase %{resource_title} para <a href="%{resource_path}">%{participatory_space_title}</a>
+        step_changed:
+          email_intro: 'Se han actualizado las fechas para la fase %{resource_title} en %{participatory_space_title}. Puedes verlas desde esta página:'
+          email_outro: Has recibido esta notificación porque estás siguiendo %{participatory_space_title}. Puedes dejar de recibir notificaciones siguiendo el enlace anterior.
+          email_subject: Una actualización de %{participatory_space_title}
+          notification_title: Se han actualizado las fechas de la fase <a href="%{resource_path}">%{resource_title}</a> en <a href="%{participatory_space_url}">%{participatory_space_title}</a>.
     menu:
       processes: Procesos
     participatory_process_groups:
@@ -246,12 +301,16 @@ es:
         local_area: Área de organización
         participatory_scope: Qué se decide
         participatory_structure: Cómo se decide
+        private_space: Este es un proceso privado
         scope: Ámbito
         start_date: Fecha de inicio
         target: Quién participa
+        unspecified: No especificado
       statistics:
-        answers_count: "¿A quién va dirigida?"
+        answers_count: Respuestas
         comments_count: Comentarios
+        debates_count: Debates
+        endorsements_count: Adhesiones
         headline: Actividad
         meetings_count: Encuentros
         orders_count: Votos
@@ -268,6 +327,7 @@ es:
       participatory_process_groups:
         participatory_process_group:
           browse: Explorar
+          processes_count: 'Procesos:'
       participatory_process_widgets:
         show:
           active_step: Fase activa

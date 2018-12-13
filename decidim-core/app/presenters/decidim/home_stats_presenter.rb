@@ -9,7 +9,7 @@ module Decidim
     def highlighted
       highlighted_stats = Decidim.stats.only([:users_count, :processes_count]).with_context(organization).map { |name, data| [name, data] }
       highlighted_stats = highlighted_stats.concat(global_stats(priority: StatsRegistry::HIGH_PRIORITY))
-      highlighted_stats = highlighted_stats.concat(feature_stats(priority: StatsRegistry::HIGH_PRIORITY))
+      highlighted_stats = highlighted_stats.concat(component_stats(priority: StatsRegistry::HIGH_PRIORITY))
       highlighted_stats = highlighted_stats.reject(&:empty?)
       highlighted_stats = highlighted_stats.reject { |_name, data| data.zero? }
 
@@ -29,7 +29,7 @@ module Decidim
     # Public: Render a collection of stats that are not primary.
     def not_highlighted
       not_highlighted_stats = global_stats(priority: StatsRegistry::MEDIUM_PRIORITY)
-      not_highlighted_stats = not_highlighted_stats.concat(feature_stats(priority: StatsRegistry::MEDIUM_PRIORITY))
+      not_highlighted_stats = not_highlighted_stats.concat(component_stats(priority: StatsRegistry::MEDIUM_PRIORITY))
       not_highlighted_stats = not_highlighted_stats.reject(&:empty?)
       not_highlighted_stats = not_highlighted_stats.reject { |_name, data| data.zero? }
 
@@ -55,9 +55,9 @@ module Decidim
              .map { |name, data| [name, data] }
     end
 
-    def feature_stats(conditions)
-      Decidim.feature_manifests.flat_map do |feature|
-        feature.stats.filter(conditions).with_context(published_features).map { |name, data| [name, data] }
+    def component_stats(conditions)
+      Decidim.component_manifests.flat_map do |component|
+        component.stats.filter(conditions).with_context(published_components).map { |name, data| [name, data] }
       end
     end
 
@@ -67,21 +67,15 @@ module Decidim
           "&nbsp;".html_safe
         else
           safe_join([
-                      content_tag(:h4, I18n.t(name, scope: "pages.home.statistics"), class: "home-pam__title"),
+                      content_tag(:h4, I18n.t(name, scope: "decidim.pages.home.statistics"), class: "home-pam__title"),
                       content_tag(:span, " #{number_with_delimiter(data)}", class: "home-pam__number #{name}")
                     ])
         end
       end
     end
 
-    def public_participatory_spaces
-      @public_participatory_spaces ||= Decidim.participatory_space_manifests.flat_map do |manifest|
-        manifest.participatory_spaces.call(organization).public_spaces
-      end
-    end
-
-    def published_features
-      @published_features ||= Feature.where(participatory_space: public_participatory_spaces).published
+    def published_components
+      @published_components ||= organization.published_components
     end
   end
 end

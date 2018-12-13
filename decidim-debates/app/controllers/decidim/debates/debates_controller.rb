@@ -12,15 +12,20 @@ module Decidim
 
       helper_method :debates, :debate, :paginated_debates, :report_form
 
+      def show
+        debate
+      end
+
       def new
-        authorize! :create, Debate
+        enforce_permission_to :create, :debate
 
         @form = form(DebateForm).instance
       end
 
       def create
-        authorize! :create, Debate
-        @form = form(DebateForm).from_params(params, current_feature: current_feature)
+        enforce_permission_to :create, :debate
+
+        @form = form(DebateForm).from_params(params, current_component: current_component)
 
         CreateDebate.call(@form) do
           on(:ok) do |debate|
@@ -43,7 +48,7 @@ module Decidim
       end
 
       def debates
-        @debates ||= search.results
+        @debates ||= search.results.not_hidden
       end
 
       def debate

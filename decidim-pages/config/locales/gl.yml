@@ -1,6 +1,15 @@
+---
 gl:
+  activerecord:
+    models:
+      decidim/pages/page:
+        one: Páxina
+        other: Páxinas
   decidim:
-    features:
+    admin_log:
+      page:
+        update: "%{user_name} actualizou a páxina %{resource_name} en %{space_name}"
+    components:
       pages:
         name: Páxina
         settings:

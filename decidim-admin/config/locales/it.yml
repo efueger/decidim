@@ -1,32 +1,52 @@
+---
 it:
   activemodel:
     attributes:
+      area:
+        area_type: Tipo di area
+        name: Nome
+        organization: Organizzazione
+      area_type:
+        name: Nome
+        organization: Organizzazione
+        plural: Plurale
       attachment:
+        attachment_collection_id: Collezione
         description: Descrizione
         file: File
         title: Titolo
+        weight: Rang d'affichage
+      attachment_collection:
+        description: Descrizione
+        name: Nome
       category:
         description: Descrizione
         name: Nome
         parent_id: Su
-      feature:
+      component:
         name: Nome
+        published_at: Pubblicato a
         weight: Peso
       id: ID
       newsletter:
         body: Testo
         subject: Oggetto
-      organization:
-        default_locale: Lingua predefinita
+      oauth_application:
         name: Nome
-        reference_prefix: Prefisso
-      organization_appearance:
-        cta_button_path: Percorso del pulsante di Appello all'azione
-        cta_button_text: Percorso del pulsante di Appello all'azione
+        organization_logo: Logo dell'organizzazione (quadrato)
+        organization_name: Nome dell'organizzazione
+        organization_url: URL dell'organizzazione
+        redirect_uri: Reindirizza URI
+      organization:
+        cta_button_path: Percorso del pulsante Call To Action
+        cta_button_text: Testo del pulsante Chiamata all'azione
+        default_locale: Lingua predefinita
         description: Descrizione
         enable_omnipresent_banner: Mostra banner onnipresente
+        facebook_handler: Gestore di Facebook
         favicon: Icona
-        header_snippets: Frammenti dell'intestazione
+        github_handler: Gestore di GitHub
+        header_snippets: Frammenti di intestazione
         highlighted_content_banner_action_subtitle: Sottotitolo del pulsante di azione
         highlighted_content_banner_action_title: Titolo del pulsante di azione
         highlighted_content_banner_action_url: URL del pulsante di azione
@@ -34,30 +54,45 @@ it:
         highlighted_content_banner_image: Immagine
         highlighted_content_banner_short_description: Breve descrizione
         highlighted_content_banner_title: Titolo
-        homepage_image: Immagine per la Homepage
+        homepage_image: Immagine della home page
+        instagram_handler: Gestore di Instagram
         logo: Logo
-        official_img_footer: Logo ufficiale nel piè di pagina
-        official_img_header: Logo ufficiale nell'intestazione
-        official_url: URL dell'organizzazione ufficiale
+        name: Nome
+        official_img_footer: Logo ufficiale del footer
+        official_img_header: Intestazione logo ufficiale
+        official_url: URL ufficiale dell'organizzazione
         omnipresent_banner_short_description: Breve descrizione
         omnipresent_banner_title: Titolo
         omnipresent_banner_url: URL
-        show_statistics: Mostrare le statistiche
-        welcome_text: Testo di Benvenuto
+        reference_prefix: Prefisso
+        show_statistics: Mostra statistiche
+        tos_version: Termini di versione del servizio
+        twitter_handler: Gestore di Twitter
+        welcome_text: Testo di benvenuto
+        youtube_handler: Gestore di YouTube
       scope:
         code: Codice
         name: Nome
         organization: Organizzazione
+        parent_id: Genitore
         scope_type: Tipo di campo
+        scope_type_id: Tipo di ambito
       scope_type:
         name: Nome
         organization: Organizzazione
         plural: Plurale
       static_page:
+        changed_notably: Ci sono stati cambiamenti evidenti.
         content: Contenuto
         organization: Organizzazione
         slug: URL slug
         title: Titolo
+    errors:
+      models:
+        oauth_application:
+          attributes:
+            redirect_uri:
+              must_be_ssl: L'URI di reindirizzamento deve essere un URI SSL
   activerecord:
     attributes:
       decidim/participatory_process:
@@ -74,7 +109,7 @@ it:
         participatory_structure: Struttura partecipativa
         promoted: Promossa
         scope: Visibilità/ambito
-        short_description: Descrizione breve
+        short_description: Breve descrizione
         slug: URL slug
         start_date: Data di inizio
         subtitle: Sottotitolo
@@ -92,6 +127,14 @@ it:
         content: Contenuto
         slug: URL slug
         title: Titolo
+      doorkeeper/application:
+        authorize_url: Autorizza URL
+        client_id: Identificativo cliente
+        client_secret: Client Secret
+        organization_name: Nome dell'organizzazione
+        organization_url: URL dell'organizzazione
+        redirect_uri: Reindirizza URI
+        site: Luogo
   date:
     formats:
       datepicker: "%m/%d/%Y"
@@ -105,6 +148,55 @@ it:
         permissions: Permessi
         reject: Rifiutare
         verify: Verifica
+      area_types:
+        create:
+          error: Si è verificato un errore durante la creazione di un nuovo tipo di area.
+          success: Tipo di area creato con successo.
+        destroy:
+          success: Tipo di area distrutta con successo
+        edit:
+          title: Modifica il tipo di area
+          update: Aggiornare
+        new:
+          create: Crea il tipo di area
+          title: Nuovo tipo di area
+        update:
+          error: Si è verificato un errore durante l'aggiornamento di questo tipo di area.
+          success: Tipo di area aggiornato correttamente
+      areas:
+        create:
+          error: Si è verificato un errore durante la creazione di una nuova area.
+          success: Area creata con successo.
+        destroy:
+          success: Area distrutta con successo
+        edit:
+          title: Modifica area
+          update: Aggiornare
+        new:
+          create: Crea un'area
+          title: Nuova area
+        no_areas: Nessuna zona
+        update:
+          error: Si è verificato un errore durante l'aggiornamento di quest'area.
+          success: Area aggiornata con successo
+      attachment_collections:
+        create:
+          error: Si è verificato un errore durante la creazione di una nuova raccolta.
+          success: Raccolta creata con successo
+        destroy:
+          success: Collezione distrutta con successo.
+        edit:
+          title: Modifica raccolta
+          update: Aggiornare
+        index:
+          attachment_collection_used: Questa raccolta non può essere rimossa perché è in uso.
+          attachment_collections_title: Collezioni di allegati
+        new:
+          create: Creare
+          title: Nuova collezione
+        update:
+          error: Si è verificato un errore durante l'aggiornamento di questa raccolta.
+          success: Raccolta aggiornata con successo.
       attachments:
         create:
           error: Si è verificato un errore creando il nuovo allegato.
@@ -122,6 +214,9 @@ it:
         update:
           error: Si è verificato un errore durante l'aggiornamento di questo allegato.
           success: Allegato modificato con successo.
+      autocomplete:
+        no_results: nessun risultato trovato
+        search_prompt: Digitare almeno tre caratteri da cercare
       categories:
         create:
           error: Si è verificato un errore durante la creazione di questa categoria.
@@ -141,76 +236,93 @@ it:
         update:
           error: Si è verificato un errore aggiornando questa categoria.
           success: OK, la categoria è stata aggiornata.
+      component_permissions:
+        edit:
+          everyone: Tutti
+          submit: Salva permessi
+          title: Modifica permessi
+        update:
+          success: Autorizzazioni aggiornate correttamente.
+      components:
+        create:
+          error: Si è verificato un errore durante la creazione di questo componente.
+          success: Componente creato con successo.
+        destroy:
+          error: C'è stato un errore nel distruggere questo componente.
+          success: Componente cancellato con successo.
+        edit:
+          title: Modifica componente
+          update: Aggiornare
+        form:
+          default_step_settings: Impostazioni del passo predefinite
+          global_settings: Impostazioni globali
+          step_settings: Impostazioni del passo
+        index:
+          add: Aggiungi componente
+          headers:
+            actions: Azioni
+            name: Nome del componente
+            type: Tipo di componente
+        new:
+          add: Aggiungi componente
+          title: 'Aggiungi componente: %{name}'
+        publish:
+          success: Il componente è stato pubblicato con successo.
+        title: componenti
+        unpublish:
+          success: Il componente è stato pubblicato con successo.
+        update:
+          error: Si è verificato un errore durante l'aggiornamento di questo componente.
+          success: Il componente è stato aggiornato correttamente.
       dashboard:
         show:
+          view_more_logs: Visualizza più registri
           welcome: Benvenuti nel pannello di amministrazione di Decidim.
       exports:
         export_as: "%{name} esporta come %{export_format}"
         notice: Export in fase di elaborazione.  Riceverai un'email quando l'export sarà terminato.
-      feature_permissions:
-        edit:
-          everyone: Tutti
-          submit: Salva la configurazione dei permessi
-          title: Modifica i permessi
-        update:
-          success: OK, i permessi sono stati aggiornati.
-      features:
-        create:
-          error: Si è verificato un errore durante l'aggiunta di questa funzionalità (feature).
-          success: OK, la feature è stata creata.
-        destroy:
-          error: Si è verificato un errore durante l'eliminazione di questa funzionalità (feature).
-          success: OK, la feature è stata cancellata.
-        edit:
-          title: Modifica feature
-          update: Aggiorna
-        form:
-          default_step_settings: Impostazioni del passo predefinite
-          global_settings: Impostazioni globali
-          step_settings: Imposta le fasi (Step)
+      impersonatable_users:
         index:
-          add: Aggiungi una funzionalità (feature)
-          headers:
-            actions: Azioni
-            name: Nome della funzionalità (feature)
-            type: Tipo di funzionalità (feature)
-        new:
-          add: Aggiungi una funzionalità (feature)
-          title: 'Aggiungi la feature: %{name}'
-        publish:
-          success: OK, la feature è stata pubblicata.
-        title: Funzionalità (features)
-        unpublish:
-          success: OK, questa feature adesso non è più pubblicata.
-        update:
-          error: Si è verificato un errore durante l'aggiornamento di questa funzionalità (feature).
-          success: OK, la funzionalità (feature) è stata aggiornata.
-      managed_users:
+          filter:
+            all: Tutti
+            managed: Gestito
+            not_managed: Non gestito
+          filter_by: Filtra per
+          impersonate: Impersonare
+          impersonate_new_managed_user: Impersonare il nuovo utente gestito
+          managed: Gestito
+          name: Nome
+          needs_authorization_warning: Hai bisogno di almeno un'autorizzazione abilitata per questa organizzazione.
+          not_managed: Non gestito
+          promote: Promuovere
+          search: Ricerca
+          status: Stato
+          view_logs: Visualizza i registri
+      impersonations:
         close_session:
           error: Si è verificato un errore durante la chiusura della sessione di impersonazione corrente.
           success: La sessione di impersonazione corrente è stata terminata con successo.
         create:
-          error: Si è verificato un errore durante la creazione dell'utente gestito.
+          error: Si è verificato un errore impersonando l'utente.
           success: L'utente gestito è stato creato con successo.
         form:
+          authorization_method: Metodo di autorizzazione
           name: Nome
-        impersonate:
-          error: Si è verificato un errore che impersonava l'utente gestito.
-        impersonations:
-          new:
-            impersonate: Impersonare
-            new_managed_user_impersonation: Nuova rappresentazione utente gestita
-        index:
-          impersonate: Impersonare
-          needs_authoriation_warning: Hai bisogno di almeno un'autorizzazione abilitata per questa organizzazione.
-          promote: Promuovere
-          view_logs: Visualizza i registri
+          reason: Ragionare
         new:
-          create: Crea
-          new_managed_user: Nuovo utente gestito
-          no_authorization_handlers: Non ci sono gestori di autorizzazioni disponibili per la gestione degli utenti. Si prega di contattare l'amministratore di sistema.
-          select_authorization_method: Selezionare un metodo di autorizzazione
-          step: Fase %{current} di %{total}
+          impersonate: Impersonare
+          impersonate_existing_managed_user: Impersonare l'utente gestito "%{name}"
+          impersonate_existing_user: Impersonare l'utente "%{name}"
+          impersonate_new_managed_user: Impersonare il nuovo utente gestito
+      logs:
+        logs_list:
+          no_logs_yet: Non ci sono ancora i log
+      managed_users:
+        index:
+          impersonate: Impersonate
+          needs_authoriation_warning: Needs authoriation warning
+          promote: Promote
+          view_logs: View logs
         promotion:
           error: Si è verificato un errore che ha promosso l'utente gestito.
           success: L'utente gestito è stato promosso con successo.
@@ -220,12 +332,17 @@ it:
             new_managed_user_promotion: Nuova promozione degli utenti gestiti
             promote: Promuovere
       menu:
+        admin_log: Registro delle attività di amministrazione
         admins: Amministratori
         appearance: Aspetto
+        area_types: Tipi di area
+        areas: le zone
         configuration: Configurazione
         dashboard: Cruscotto (Dashboard)
-        managed_users: Utenti gestiti
+        impersonations: impersonations
+        navbar_links: Navbar links
         newsletters: Newsletters
+        oauth_applications: Applicazioni OAuth
         officializations: Officializations
         scope_types: Tipi di ambito
         scopes: Visibilità/ambito (Scopes)
@@ -234,11 +351,23 @@ it:
         user_groups: Gruppi di utenti
         users: Utenti
       models:
+        area:
+          fields:
+            area_type: Tipo di area
+            name: Nome
+        area_type:
+          fields:
+            name: Nome
+            plural: Plurale
         attachment:
           fields:
+            collection: Collezione
             content_type: Tipo
+            file_size: Dimensione
             title: Titolo
           name: Allegato
+        attachment_collection:
+          name: Collezione
         category:
           name: Categorie
         impersonation_log:
@@ -246,10 +375,16 @@ it:
             admin: Amministratore
             ended_at: Terminato a
             expired_at: Scaduto a
+            reason: Ragionare
             started_at: Ha iniziato a
             user: Utente
         managed_user:
-          name: Utente gestito
+          name: Name
+        navbar_link:
+          fields:
+            link: Link
+            title: Title
+            weight: Weight
         newsletter:
           fields:
             created_at: Creato il
@@ -257,6 +392,12 @@ it:
             sent_at: Inviato alle
             subject: Oggetto
           name: notiziario
+        oauth_application:
+          fields:
+            created_at: Creato a
+            name: Nome
+        participatory_space_private_user:
+          name: Utente privato dello spazio partecipativo
         scope:
           fields:
             name: Nome
@@ -279,7 +420,6 @@ it:
             roles:
               admin: Amministratore
               user_manager: Gestore utente
-          name: Utente
         user_group:
           fields:
             actions: Azioni
@@ -297,6 +437,28 @@ it:
             does_not_belong: Non appartiene
             offensive: Offensivo
             spam: Spam
+      navbar_links:
+        create:
+          error: There was an error when creating this link.
+          success: Link created successfully
+        destroy:
+          success: Link successfully destroyed
+        edit:
+          title: Edit navbar link
+          update: Update
+        form:
+          link: Link
+          new_tab: Open in a new tab
+          same_tab: Open in the same tab
+          title: Title
+          weight: Weight
+        new:
+          create: Create
+          title: New navbar link
+        no_links: No links created
+        update:
+          error: There was an error when updating this link.
+          success: Link updated successfully
       newsletters:
         create:
           error: Si è verificato un errore durante la creazione di questa newsletter.
@@ -326,6 +488,27 @@ it:
         update:
           error: Si è verificato un errore durante l'aggiornamento di questa newsletter.
           success: OK, la Newsletter è stata aggiornata. Conviene controllarla prima di inviarla.
+      oauth_application:
+        new: Nouvelle application Oauth
+      oauth_applications:
+        create:
+          error: Si è verificato un errore durante la creazione di questa applicazione.
+          success: Applicazione creata con successo.
+        destroy:
+          error: C'è stato un errore nella distruzione di questa applicazione.
+          success: Applicazione distrutta con successo.
+        edit:
+          save: Salvare
+          title: Modifica l'applicazione
+        index:
+          confirm_delete: Sei sicuro di voler eliminare questa applicazione?
+          title: Applicazioni OAuth
+        new:
+          save: Salvare
+          title: Nuova applicazione
+        update:
+          error: Si è verificato un errore durante l'aggiornamento di questa applicazione.
+          success: Applicazione aggiornata con successo.
       officializations:
         create:
           success: Utente ufficializzato con successo
@@ -379,6 +562,17 @@ it:
           homepage_highlighted_content_banner_title: Banner con contenuti Highligted
           layout_appearance_title: Modifica aspetto del layout
           omnipresent_banner_appearance_title: Modifica onnipresente
+      participatory_space_private_users:
+        create:
+          error: Si è verificato un errore durante l'aggiunta di un utente privato per questo spazio partecipativo.
+          success: Accesso utente privato spazio partecipativo creato con successo.
+        destroy:
+          success: Accesso utente privato spazio distruttivo distrutto con successo.
+        index:
+          title: Utente privato dello spazio partecipativo
+        new:
+          create: Creare
+          title: Nuovo utente privato dello spazio partecipativo.
       scope_types:
         create:
           error: Si è verificato un errore durante la creazione di un nuovo tipo di ambito.
@@ -419,8 +613,11 @@ it:
         destroy:
           success: OK, la pagina è stata eliminata.
         edit:
+          changed_notably_help: Se selezionato, gli utenti saranno avvisati di accettare i nuovi termini e condizioni.
           title: Modifica la pagina
           update: Aggiorna
+        index:
+          last_notable_change: Ultimo cambiamento notevole
         new:
           create: Creare
           title: Nuova pagina
@@ -428,16 +625,23 @@ it:
           error: Si è verificato un errore durante l'aggiornamento di questa pagina.
           success: OK, la pagina è stata aggiornata.
       titles:
+        admin_log: Registro di amministrazione
+        area_types: Tipi di area
+        areas: le zone
         authorization_workflows: Metodi di verifica
         dashboard: Cruscotto (Dashboard)
+        impersonatable_users: Utenti impersonabili
         impersonations: impersonations
-        managed_users: Utenti gestiti
+        managed_users: Managed users
+        navbar_links: Navbar links
         officializations: Officializations
         scope_types: Tipi di ambito
         scopes: Ambiti
         static_pages: Pagine
         user_groups: Gruppi di utenti
         users: Utenti
+      user:
+        new: New
       user_group:
         reject:
           invalid: Si è verificato un errore quando rifiuta questo gruppo di utenti.
@@ -472,6 +676,10 @@ it:
         new:
           create: Invita
           title: Invita l'utente in qualità di amministratore
+    forms:
+      errors:
+        impersonate_user:
+          reason: È necessario fornire un motivo durante la rappresentazione di un utente non gestito
     moderations:
       actions:
         hidden: Nascosto

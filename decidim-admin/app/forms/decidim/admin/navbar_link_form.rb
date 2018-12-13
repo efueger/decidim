@@ -9,14 +9,19 @@ module Decidim
       translatable_attribute :title, String
       attribute :link, String
       attribute :weight, Integer
-      attribute :organization_id, Integer
       attribute :target, String
 
-      validates :link, :format => { :with => URI::regexp(%w(http https)) }, presence: true
-      validates :title, translatable_presence: true, presence: true
+      validates :link, format: { with: URI.regexp(%w(http https)) }, presence: true
+      validates :title, translatable_presence: true
       validates :weight, presence: true
-      validates :organization_id, :link, presence: true
 
+      alias organization current_organization
+
+      def link_error
+        return if link.nil?
+
+        errors.add(:link, "LINK ERROR")
+      end
     end
   end
 end

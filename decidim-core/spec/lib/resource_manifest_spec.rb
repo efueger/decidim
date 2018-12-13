@@ -6,27 +6,25 @@ module Decidim
   describe ResourceManifest do
     subject do
       described_class.new(
-        feature_manifest: feature_manifest,
+        component_manifest: component_manifest,
         name: name,
         route_name: route_name,
         model_class_name: model_class
       )
     end
 
-    let(:feature_manifest) do
-      FeatureManifest.new(name: "dummy")
+    let(:component_manifest) do
+      ComponentManifest.new(name: "dummy")
     end
 
-    let(:name) { :dummy }
+    let(:name) { :dummy_resource }
     let(:route_name) { :dummy }
     let(:model_class) { "DummyResources::DummyResource" }
 
     context "when no name is set" do
       let(:name) { nil }
 
-      it "builds it" do
-        expect(subject.name).to eq(:dummy_resources)
-      end
+      it { is_expected.to be_invalid }
     end
 
     context "when no route_name is set" do
@@ -35,12 +33,6 @@ module Decidim
       it "builds it" do
         expect(subject.route_name).to eq("dummy_resource")
       end
-    end
-
-    context "without a feature manifest" do
-      let(:feature_manifest) { nil }
-
-      it { is_expected.to be_invalid }
     end
 
     context "without a model_class" do

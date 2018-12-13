@@ -6,7 +6,7 @@ module Decidim
   module Comments
     describe CreateRegistration do
       describe "call" do
-        let(:organization) { create(:organization) }
+        let(:organization) { create(:organization, :with_tos) }
 
         let(:sign_up_as) { "user" }
         let(:name) { "Username" }
@@ -59,7 +59,7 @@ module Decidim
           it "doesn't create a user" do
             expect do
               command.call
-            end.not_to change { User.count }
+            end.not_to change(User, :count)
           end
         end
 
@@ -78,10 +78,22 @@ module Decidim
               tos_agreement: form.tos_agreement,
               newsletter_notifications: form.newsletter,
               email_on_notification: true,
-              organization: organization
+              organization: organization,
+              accepted_tos_version: organization.tos_version
             ).and_call_original
 
-            expect { command.call }.to change { User.count }.by(1)
+            expect { command.call }.to change(User, :count).by(1)
+          end
+
+          describe "when user keep uncheck newsletter" do
+            let(:newsletter) { "0" }
+
+            it "creates a user with no newsletter notifications" do
+              expect do
+                command.call
+                expect(User.last.newsletter_notifications).to eq(false)
+              end.to change(User, :count).by(1)
+            end
           end
         end
 
@@ -103,7 +115,7 @@ module Decidim
             end
 
             it "doesn't create a user group" do
-              expect { command.call }.not_to change { UserGroup.count }
+              expect { command.call }.not_to change(UserGroup, :count)
             end
           end
 
@@ -123,7 +135,7 @@ module Decidim
               expect do
                 command.call
                 expect(UserGroup.last.users.first).to eq(User.last)
-              end.to change { UserGroup.count }.by(1)
+              end.to change(UserGroup, :count).by(1)
             end
           end
         end

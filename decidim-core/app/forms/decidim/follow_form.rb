@@ -8,13 +8,14 @@ module Decidim
     attribute :followable_gid, String
 
     validates :followable_gid, :followable, presence: true
+    validates :followable, exclusion: { in: ->(form) { [form.current_user] } }
 
     def followable
       @followable ||= GlobalID::Locator.locate_signed followable_gid
     end
 
     def follow
-      @follow ||= Decidim::Follow.where(user: current_user, followable: followable).first
+      @follow ||= Decidim::Follow.find_by(user: current_user, followable: followable)
     end
   end
 end

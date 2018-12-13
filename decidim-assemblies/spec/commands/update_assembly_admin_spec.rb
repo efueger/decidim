@@ -14,9 +14,11 @@ module Decidim::Assemblies
     let(:form) do
       double(
         invalid?: invalid,
+        current_user: current_user,
         role: new_role
       )
     end
+    let(:current_user) { create(:user, :admin, :confirmed) }
     let(:invalid) { false }
 
     context "when the form is not valid" do
@@ -42,8 +44,19 @@ module Decidim::Assemblies
         end.to change { user_role.reload && user_role.role }.from("admin").to(new_role)
       end
 
-      it "broadcasts invalid" do
+      it "broadcasts ok" do
         expect { subject.call }.to broadcast(:ok)
+      end
+
+      it "traces the action", versioning: true do
+        expect(Decidim.traceability)
+          .to receive(:update!)
+          .with(user_role, current_user, { role: new_role }, resource: hash_including(:title))
+          .and_call_original
+
+        expect { subject.call }.to change(Decidim::ActionLog, :count)
+        action_log = Decidim::ActionLog.last
+        expect(action_log.version).to be_present
       end
     end
   end

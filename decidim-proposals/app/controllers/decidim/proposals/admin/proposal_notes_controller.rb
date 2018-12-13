@@ -8,22 +8,22 @@ module Decidim
         helper_method :proposal
 
         def index
-          authorize! :create, ProposalNote
+          enforce_permission_to :create, :proposal_note
           @form = form(ProposalNoteForm).instance
         end
 
         def create
-          authorize! :create, ProposalNote
+          enforce_permission_to :create, :proposal_note
           @form = form(ProposalNoteForm).from_params(params)
 
-          CreateProposalNote.call(@form, proposal, current_user) do
+          CreateProposalNote.call(@form, proposal) do
             on(:ok) do
-              flash[:notice] = I18n.t("proposals.create.success", scope: "decidim")
+              flash[:notice] = I18n.t("proposal_notes.create.success", scope: "decidim.proposals.admin")
               redirect_to proposal_proposal_notes_path(proposal_id: proposal.id)
             end
 
             on(:invalid) do
-              flash.now[:alert] = I18n.t("proposals.create.error", scope: "decidim")
+              flash.now[:alert] = I18n.t("proposal_notes.create.error", scope: "decidim.proposals.admin")
               render :index
             end
           end
@@ -32,7 +32,7 @@ module Decidim
         private
 
         def proposal
-          @proposals ||= Proposal.where(feature: current_feature).find(params[:proposal_id])
+          @proposal ||= Proposal.where(component: current_component).find(params[:proposal_id])
         end
       end
     end

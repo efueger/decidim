@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe Decidim::AttachmentCreatedEvent do
-  include_context "simple event"
+  include_context "when a simple event"
 
   let(:event_name) { "decidim.events.attachments.attachment_created" }
   let(:resource) { create(:attachment) }
@@ -15,7 +15,7 @@ describe Decidim::AttachmentCreatedEvent do
     resource.file.class.configure { |config| config.asset_host = "http://example.org" }
   end
 
-  it_behaves_like "an simple event"
+  it_behaves_like "a simple event", true
 
   describe "email_subject" do
     it "is generated correctly" do

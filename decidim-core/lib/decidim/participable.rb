@@ -7,7 +7,6 @@ module Decidim
   module Participable
     extend ActiveSupport::Concern
 
-    # rubocop:disable Metrics/BlockLength
     included do
       def demodulized_name
         self.class.name.demodulize
@@ -54,6 +53,13 @@ module Decidim
         admins_query.for(self)
       end
 
+      # Public: Returns an ActiveRecord::Relation of all the users that can
+      # moderate the space. This is used when notifying of flagged/hidden
+      # content.
+      def moderators
+        admins
+      end
+
       def allows_steps?
         respond_to?(:steps)
       end
@@ -65,8 +71,11 @@ module Decidim
       def manifest
         self.class.participatory_space_manifest
       end
+
+      def can_participate?(_user)
+        true
+      end
     end
-    # rubocop:enable Metrics/BlockLength
 
     class_methods do
       def slug_format

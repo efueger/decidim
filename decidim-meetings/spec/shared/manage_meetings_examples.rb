@@ -5,6 +5,9 @@ shared_examples "manage meetings" do
   let(:latitude) { 40.1234 }
   let(:longitude) { 2.1234 }
 
+  let(:organizer) { create(:user, :confirmed, organization: organization) }
+  let(:service_titles) { ["This is the first service", "This is the second service"] }
+
   before do
     Geocoder::Lookup::Test.add_stub(
       address,
@@ -35,6 +38,30 @@ shared_examples "manage meetings" do
     within "table" do
       expect(page).to have_content("My new title")
     end
+  end
+
+  it "adds a few services to the meeting" do
+    within find("tr", text: translated(meeting.title)) do
+      click_link "Edit"
+    end
+
+    within ".edit_meeting" do
+      fill_in :meeting_address, with: address
+      fill_in_services
+
+      expect(page).to have_selector(".meeting-service", count: 2)
+
+      find("*[type=submit]").click
+    end
+
+    expect(page).to have_admin_callout("successfully")
+
+    within find("tr", text: translated(meeting.title)) do
+      click_link "Edit"
+    end
+
+    expect(page).to have_selector("input[value='This is the first service']")
+    expect(page).to have_selector("input[value='This is the second service']")
   end
 
   it "allows the user to preview the meeting" do
@@ -83,6 +110,7 @@ shared_examples "manage meetings" do
     )
 
     fill_in :meeting_address, with: address
+    fill_in_services
 
     page.execute_script("$('#datetime_field_meeting_start_time').focus()")
     page.find(".datepicker-dropdown .day", text: "12").click
@@ -94,8 +122,10 @@ shared_examples "manage meetings" do
     page.find(".datepicker-dropdown .hour", text: "12:00").click
     page.find(".datepicker-dropdown .minute", text: "12:50").click
 
-    scope_pick scopes_picker_find(:meeting_decidim_scope_id), scope
+    scope_pick select_data_picker(:meeting_decidim_scope_id), scope
     select translated(category.name), from: :meeting_decidim_category_id
+
+    autocomplete_select "#{organizer.name} (@#{organizer.nickname})", from: :organizer_id
 
     within ".new_meeting" do
       find("*[type=submit]").click
@@ -108,8 +138,69 @@ shared_examples "manage meetings" do
     end
   end
 
+  describe "duplicating a meeting" do
+    it "creates a new meeting", :slow do
+      within find("tr", text: translated(meeting.title)) do
+        click_link "Duplicate"
+      end
+
+      fill_in_i18n(
+        :meeting_title,
+        "#meeting-title-tabs",
+        en: "My duplicate meeting",
+        es: "Mi meeting duplicado",
+        ca: "El meu meeting duplicat"
+      )
+      fill_in_i18n(
+        :meeting_location,
+        "#meeting-location-tabs",
+        en: "Location",
+        es: "Location",
+        ca: "Location"
+      )
+      fill_in_i18n(
+        :meeting_location_hints,
+        "#meeting-location_hints-tabs",
+        en: "Location hints",
+        es: "Location hints",
+        ca: "Location hints"
+      )
+      fill_in_i18n_editor(
+        :meeting_description,
+        "#meeting-description-tabs",
+        en: "A longer description",
+        es: "Descripción más larga",
+        ca: "Descripció més llarga"
+      )
+
+      fill_in :meeting_address, with: address
+
+      page.execute_script("$('#datetime_field_meeting_start_time').focus()")
+      page.find(".datepicker-dropdown .day", text: "12").click
+      page.find(".datepicker-dropdown .hour", text: "10:00").click
+      page.find(".datepicker-dropdown .minute", text: "10:50").click
+
+      page.execute_script("$('#datetime_field_meeting_end_time').focus()")
+      page.find(".datepicker-dropdown .day", text: "12").click
+      page.find(".datepicker-dropdown .hour", text: "12:00").click
+      page.find(".datepicker-dropdown .minute", text: "12:50").click
+
+      autocomplete_select "#{organizer.name} (@#{organizer.nickname})", from: :organizer_id
+
+      within ".copy_meetings" do
+        find("*[type=submit]").click
+      end
+
+      expect(page).to have_admin_callout("successfully")
+
+      within "table" do
+        expect(page).to have_content("My duplicate meeting")
+      end
+    end
+  end
+
   describe "deleting a meeting" do
-    let!(:meeting2) { create(:meeting, feature: current_feature) }
+    let!(:meeting2) { create(:meeting, component: current_component) }
 
     before do
       visit current_path
@@ -201,8 +292,10 @@ shared_examples "manage meetings" do
       page.find(".datepicker-dropdown .hour", text: "12:00").click
       page.find(".datepicker-dropdown .minute", text: "12:50").click
 
-      scope_pick scopes_picker_find(:meeting_decidim_scope_id), scope
+      scope_pick select_data_picker(:meeting_decidim_scope_id), scope
       select translated(category.name), from: :meeting_decidim_category_id
+
+      autocomplete_select "#{organizer.name} (@#{organizer.nickname})", from: :organizer_id
 
       within ".new_meeting" do
         find("*[type=submit]").click
@@ -217,10 +310,10 @@ shared_examples "manage meetings" do
   end
 
   describe "closing a meeting" do
-    let(:proposal_feature) do
-      create(:feature, manifest_name: :proposals, participatory_space: meeting.feature.participatory_space)
+    let(:proposal_component) do
+      create(:component, manifest_name: :proposals, participatory_space: meeting.component.participatory_space)
     end
-    let!(:proposals) { create_list(:proposal, 3, feature: proposal_feature) }
+    let!(:proposals) { create_list(:proposal, 3, component: proposal_component) }
 
     it "closes a meeting with a report" do
       within find("tr", text: translated(meeting.title)) do
@@ -228,7 +321,7 @@ shared_examples "manage meetings" do
       end
 
       within ".edit_close_meeting" do
-        fill_in_i18n(
+        fill_in_i18n_editor(
           :close_meeting_closing_report,
           "#close_meeting-closing_report-tabs",
           en: "The meeting was great!",
@@ -250,7 +343,7 @@ shared_examples "manage meetings" do
     end
 
     context "when a meeting has alredy been closed" do
-      let!(:meeting) { create(:meeting, :closed, feature: current_feature) }
+      let!(:meeting) { create(:meeting, :closed, component: current_component) }
 
       it "can update the information" do
         within find("tr", text: translated(meeting.title)) do
@@ -263,6 +356,18 @@ shared_examples "manage meetings" do
         end
 
         expect(page).to have_admin_callout("Meeting successfully closed")
+      end
+    end
+  end
+
+  private
+
+  def fill_in_services
+    2.times { click_button "Add service" }
+
+    page.all(".meeting-service").each_with_index do |meeting_service, index|
+      within meeting_service do
+        fill_in current_scope.find("[id$=title_en]", visible: true)["id"], with: service_titles[index]
       end
     end
   end

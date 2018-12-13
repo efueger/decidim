@@ -10,7 +10,7 @@
   </div>
 <% else %>
   <h2 id="proposals-count" class="section-heading">
-    <%= t("officials_proposals", count: @officials_proposals.count, scope: "decidim.proposals.proposals.count") %>
+    <%= t("officials_proposals_count", count: @officials_proposals.count, scope: "decidim.proposals.proposals.count") %>
   </h2>
   <div class="<%= 'row small-up-1 medium-up-2 card-grid' unless @param_list %>">
     <%= render @officials_proposals %>

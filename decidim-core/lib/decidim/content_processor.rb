@@ -22,7 +22,7 @@ module Decidim
   # declare the other side making it "transparent" (declaring the class and leaving it empty).
   #
   # @example How to parse a content
-  #   parsed = Decidim::ContentProcessor.parse(content)
+  #   parsed = Decidim::ContentProcessor.parse(content, context)
   #   parsed.rewrite # contains rewritten content
   #   parsed.metadata # contains the merged metadata of all parsers
   #
@@ -30,6 +30,10 @@ module Decidim
   #   rendered = Decidim::ContentProcessor.render(content)
   #   puts rendered
   module ContentProcessor
+    extend ActionView::Helpers::SanitizeHelper
+    extend ActionView::Helpers::TagHelper
+    extend ActionView::Helpers::TextHelper
+
     # Class that represents the result of processing a text
     #
     # @!attribute rewrite
@@ -42,10 +46,13 @@ module Decidim
     # This calls all registered processors one after the other and collects the
     # metadata for each one and the resulting modified content
     #
+    # @param content [String] already rewritten content or regular content
+    # @param context [Hash] with information to inject to the parsers as context
+    #
     # @return [Result] a Result object with the content rewritten and the metadata
-    def self.parse(content)
+    def self.parse(content, context)
       parsed = Decidim.content_processors.each_with_object(rewrite: content, metadata: {}) do |type, result|
-        parser = parser_klass(type).constantize.new(result[:rewrite])
+        parser = parser_klass(type).constantize.new(result[:rewrite], context)
         result[:rewrite] = parser.rewrite
         result[:metadata][type] = parser.metadata
       end
@@ -58,9 +65,23 @@ module Decidim
     #
     # @return [String] the content processed and ready to display (it is expected to include HTML)
     def self.render(content)
-      Decidim.content_processors.reduce(content) do |result, type|
-        renderer_klass(type).constantize.new(result).render
-      end
+      simple_format(
+        Decidim.content_processors.reduce(content) do |result, type|
+          renderer_klass(type).constantize.new(result).render
+        end
+      )
+    end
+
+    # This method overwrites the views `sanitize` method. This is required to
+    # ensure the content does not include any weird HTML that could harm the end
+    # user.
+    #
+    # @return [String] sanitized content.
+    def self.sanitize(text, options = {})
+      Rails::Html::WhiteListSanitizer.new.sanitize(
+        text,
+        { scrubber: Decidim::UserInputScrubber.new }.merge(options)
+      ).try(:html_safe)
     end
 
     # Guess the class name of the parser for a processor

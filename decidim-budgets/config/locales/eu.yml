@@ -1,3 +1,4 @@
+---
 eu:
   activemodel:
     attributes:
@@ -8,9 +9,22 @@ eu:
         description: Descripción
         proposal_ids: Honekin lotutako proposamenak
         title: Titulua
+  activerecord:
+    errors:
+      messages:
+        equal_to: must be equal to %{count}
+      models:
+        decidim/budgets/project:
+          one: Project
+          other: Projects
+    models:
+      decidim/budgets/project:
+        one: Proiektua
+        other: Proiektuak
   decidim:
     budgets:
       actions:
+        attachment_collections: Bilduma
         attachments: Fitxategi erantsiak
         confirm_destroy: Ziur zaude proiektu hau ezabatu nahi duzula?
         destroy: Ezabatu
@@ -31,6 +45,9 @@ eu:
           edit:
             title: Editatu proiektua
             update: Eguneratu
+          form:
+            fields:
+              address: Address
           index:
             finished_orders: Bukatutako botoak
             pending_orders: Zain dauden botoei
@@ -41,9 +58,15 @@ eu:
           update:
             invalid: Arazo bat izan da proiektu hau eguneratzean
             success: Proiektua zuzen eguneratu da
+      admin_log:
+        project:
+          create: "%{user_name} %{resource_name} proiektua %{space_name} espazioan sortu zen"
+          delete: "%{user_name} %{resource_name} proiektua %{space_name} espazioan ezabatu da"
+          update: "%{user_name} %{resource_name} proiektuaren %{space_name} espazio eguneratu du"
       models:
         project:
           fields:
+            map: Map
             title: Titulua
       projects:
         budget_confirm:
@@ -64,7 +87,8 @@ eu:
           checked_out:
             description: 'Jada bozkatu duzu aurrekonturako. Iritziz aldatu baduzu, ezeztatu hemen: %{cancel_link}.'
             title: Botoa zuzen bidali da
-          description: Zure aburuz, proiektuetako zeinei esleitu behar diegu aurrekontua? Gutxienez, %{minimum_budget} esleitu nahi dituzun proiektuei, eta bozkatu aurrekontua zehazteko.
+          description_per_budget: What projects do you think we should allocate budget for? Assign at least %{minimum_budget} to the projects you want and vote with your preferences to define the budget.
+          description_per_project: To which projects do you think we should allocate a budget? Choose %{minimum_project} projects and validate your vote. Attention, all votes are irrevocable.
           title: Zure esku dago aurrekontua erabakitzea
         count:
           projects_count:
@@ -79,42 +103,68 @@ eu:
           filter: Iragazi
           filter_by: 'Iragazi honen arabera:'
           unfold: Zabaldu
+        index:
+          view_project: View project
+        limit_excess:
+          close: Close
+          description_per_budget: This project exceeds the maximum budget and can not be added. If you want, you can delete a project you have already selected to add, or make your vote with your preferences.
+          description_per_project: You have reached the maximum number of projects allowed for this budget. If you wish, you can delete a project that you have already selected.
+          ok: OK
+          title_per_budget: Maximum budget exceeded
+          title_per_project: Maximum number of projects reached
         order_progress:
           vote: Proiektuaren alde egin
         order_selected_projects:
+          choose: Choisissez encore
+          per_project:
+            one: project selected out of a total of
+            other: projects selected out of a total of
+          remaining_projects:
+            one: 1 project to validate your vote.
+            other: "%{count} projects to validate your vote."
           remove: Kendu
           selected_projects:
             one: hautatutako proiektua
             other: hautatutako proiektuak
+          total_projects:
+            one: projet
+            other: projets
           view: Ikusi
+          vote: Voter
         project:
           add: Gehitu
           count:
             one: 1 sostengu 
             other: "%{count} sostengu"
           remove: Kendu
+          view: ikusi
         project_budget_button:
           add: Gehitu
           added: Erantsita
         show:
           budget: Aurrekontua
           view_all_projects: Ikusi proiektu guztiak
-    features:
+    components:
       budgets:
         actions:
-          vote: Proiektuaren alde egin
+          vote: Bozkatu
         name: Aurrekontuak
         settings:
           global:
-            announcement: Oharra
+            announcement: Anuntzio
             comments_enabled: Iruzkinak gaituta
-            total_budget: Guztizko aurrekontua
-            vote_threshold_percent: Aurrekontuaren gutxieneko ehunekoa
+            geocoding_enabled: Geocoding enabled
+            projects_per_page: Orrialde bakoitzeko proiektuak
+            total_budget: Aurrekontu osoa
+            total_projects: Total projects
+            vote_per_budget: budget sum enabled (default)
+            vote_per_project: project number enabled
+            vote_threshold_percent: Votuen ehuneko atalasea
           step:
-            announcement: Oharra
+            announcement: Anuntzio
             comments_blocked: Iruzkinak blokeatuta
             show_votes: Erakutsi botoak
-            votes_enabled: Botoak gaituta
+            votes_enabled: Botoiak gaituta
     orders:
       checkout:
         error: Errorea gertatu da zure botoa prozesatzean
@@ -124,7 +174,7 @@ eu:
         success: Zure botua zuzen ezeztatu da
     resource_links:
       included_proposals:
-        project_proposals: 'Proiektu honetan jasotako proposamenak:'
+        project_proposal: 'Proiektu honetan jasotako proposamenak:'
   index:
     confirmed_orders_count: Botoen zenbaketa
   total_budget: Guztizko aurrekontua

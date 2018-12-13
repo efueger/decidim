@@ -9,7 +9,7 @@ import CommentThread from "./comment_thread.component";
 
 import {
   GetCommentsQuery,
-  GetCommentsQueryVariables,
+  GetCommentsQueryVariables
 } from "../support/schema";
 
 const { I18n } = require("react-i18nify");
@@ -32,12 +32,12 @@ export class Comments extends React.Component<CommentsProps> {
     loading: false,
     session: null,
     commentable: {
-      comments: [],
-    },
+      comments: []
+    }
   };
 
   public render() {
-    const { commentable: { comments, totalCommentsCount }, reorderComments, orderBy, loading } = this.props;
+    const { commentable: { comments, totalCommentsCount = 0 }, reorderComments, orderBy, loading } = this.props;
     let commentClasses = "comments";
     let commentHeader = I18n.t("components.comments.title", { count: totalCommentsCount });
 
@@ -142,7 +142,7 @@ export const commentsQuery = require("../queries/comments.query.graphql");
 
 const CommentsWithData: any = graphql<GetCommentsQuery, CommentsProps>(commentsQuery, {
   options: {
-    pollInterval: 15000,
+    pollInterval: 15000
   },
   props: ({ ownProps, data }) => {
     if (data) {
@@ -155,12 +155,12 @@ const CommentsWithData: any = graphql<GetCommentsQuery, CommentsProps>(commentsQ
         orderBy: ownProps.orderBy,
         reorderComments: (orderBy: string) => {
           return refetch({
-            orderBy,
+            orderBy
           });
-        },
+        }
       };
     }
-  },
+  }
 })(Comments);
 
 export interface CommentsApplicationProps extends GetCommentsQueryVariables {

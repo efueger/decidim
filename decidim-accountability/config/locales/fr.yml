@@ -1,17 +1,19 @@
+---
 fr:
   activemodel:
     attributes:
       result:
-        decidim_accountability_status_id: statut
+        decidim_accountability_status_id: Statut
         decidim_category_id: Catégorie
-        decidim_scope_id: Périmètre d'application
+        decidim_scope_id: Secteur
         description: Description
-        end_date: Date et heure de fin
+        end_date: Date de fin
         progress: Avancement
         project_ids: Projets inclus
-        proposal_ids: Propositions incluses
+        proposals: Propositions incluses
         start_date: Date de début
         title: Titre
+        updated_at: Mise à jour à
       status:
         description: Description
         key: Clé
@@ -20,6 +22,13 @@ fr:
       timeline_entry:
         description: Description
         entry_date: Date
+    models:
+      decidim/accountability/proposal_linked_event: Proposition incluse dans une réalisation
+  activerecord:
+    models:
+      decidim/accountability/result:
+        one: Réalisation
+        other: Réalisations
   decidim:
     accountability:
       actions:
@@ -28,35 +37,41 @@ fr:
         edit: Modifier
         new: Nouveau %{name}
         preview: Aperçu
-        timeline_entries: Evolution du projet
+        timeline_entries: Évolution du projet
         title: Actions
       admin:
         exports:
-          results: Résultats
+          results: Réalisations
         models:
           result:
-            name: Résultat
+            name: Réalisation
           status:
             name: Statut
           timeline_entry:
-            name: Elément de chronologie
+            name: Élément de chronologie
         results:
           create:
-            invalid: Un problème est survenu lors de la création de ce résultat
-            success: Résultat créé avec succès
+            invalid: Un problème est survenu lors de la création de cette réalisation
+            success: Réalisation créée avec succès
           destroy:
-            success: Résultat supprimé avec succès
+            success: Réalisation supprimée avec succès
           edit:
-            title: Modifier le résultat
-            update: Mise à jour du résultat
+            title: Modifier la réalisation
+            update: Mise à jour de la réalisation
+          form:
+            add_proposal: Ajouter une proposition
           index:
-            title: Résultats
+            title: Réalisations
           new:
-            create: Créer un résultat
-            title: Nouveau résultat
+            create: Créer une réalisation
+            title: Nouvelle réalisation
+          proposals:
+            close: Fermer
+            current_selection: Sélection actuelle
+            select: Sélectionner
           update:
-            invalid: Un problème est survenu lors de la mise à jour de ce résultat
-            success: Résultat mis à jour avec succès
+            invalid: Un problème est survenu lors de la mise à jour de cette réalisation
+            success: Réalisation mise à jour avec succès
         shared:
           subnav:
             statuses: Statuts
@@ -94,6 +109,14 @@ fr:
           update:
             invalid: Un problème est survenu lors de la mise à jour de cette entrée
             success: Entrée mise à jour avec succès
+      admin_log:
+        result:
+          create: "%{user_name} a créé la réalisation %{resource_name} dans %{space_name}"
+          delete: "%{user_name} a supprimé la réalisation %{resource_name} dans %{space_name}"
+          update: "%{user_name} a mis à jour la réalisation %{resource_name} dans %{space_name}"
+        value_types:
+          parent_presenter:
+            not_found: 'Le parent n''a pas été trouvé dans la base de données (ID: %{id})'
       models:
         result:
           fields:
@@ -115,16 +138,16 @@ fr:
       results:
         count:
           results_count:
-            one: 1 résultat
-            other: "%{count} résultats"
+            one: 1 réalisation
+            other: "%{count} réalisations"
         filters:
           all: Tous
-          scopes: Périmètre d'application
+          scopes: Secteur
         home:
           categories_label: Catégories
           subcategories_label: Sous-catégories
         home_header:
-          global_status: État d'exécution globale
+          global_status: État d'exécution global
         nav_breadcrumb:
           global: Exécution globale
         search:
@@ -132,7 +155,7 @@ fr:
         show:
           stats:
             attendees: Participants
-            back_to_result: Revenir au résultat
+            back_to_result: Revenir à la réalisation
             comments: Commentaires
             contributions: Contributions
             last_edited_by: Dernière édition par
@@ -142,12 +165,12 @@ fr:
             proposals: Propositions
             show_all_versions: Afficher toutes les versions
             version_author: Auteur de la version
-            version_created_at: Version créée à
+            version_created_at: Version créée le
             version_number: Numéro de version
             version_number_out_of_total: "%{current_version} sur %{total_count}"
-            votes: Soutiens
+            votes: Votes
         timeline:
-          title: Evolution du projet
+          title: Évolution du projet
       versions:
         index:
           changes_at_title: Changements à "%{title}"
@@ -156,22 +179,37 @@ fr:
           changes_at_title: Changements à "%{title}"
         version:
           version_index: Version %{index}
-    features:
+    components:
       accountability:
-        name: Responsabilité
+        name: Suivi
         settings:
           global:
             categories_label: Nom pour "Catégories"
-            comments_enabled: Commentaires activés
-            comments_upstream_moderation_enabled: Modération à priori des commentaires activée
+            comments_enabled: Activer le module de commentaire
+            display_progress_enabled: Afficher les progrès
             heading_leaf_level_results: Nom pour "Projets"
-            heading_parent_level_results: Nom pour "Résultats"
-            intro: Intro
+            heading_parent_level_results: Nom pour "Réalisations"
+            intro: Introduction
             subcategories_label: Nom pour "Sous-catégories"
           step:
-            comments_blocked: Commentaires bloqués
+            comments_blocked: Bloquer la création de nouveaux commentaires
+    events:
+      accountability:
+        proposal_linked:
+          email_intro: 'La proposition "%{proposal_title}" a été incluse dans une réalisation. Vous pouvez le voir sur cette page :'
+          email_outro: Vous avez reçu cette notification parce que vous suivez "%{proposal_title}". Vous pouvez arrêter de recevoir des notifications à partir du lien précédent.
+          email_subject: Une mise à jour de %{proposal_title}
+          notification_title: La proposition <a href="%{proposal_path}">%{proposal_title}</a> a été incluse dans la réalisation <a href="%{resource_path}">%{resource_title}</a>.
+    participatory_processes:
+      participatory_process_groups:
+        highlighted_results:
+          results: Réalisations
+    participatory_spaces:
+      highlighted_results:
+        results: Réalisations
+        see_all_results: Voir toutes les réalisations
     resource_links:
       included_projects:
-        result_projects: Projets inclus dans ce résultat
+        result_project: Projets inclus dans cette réalisation
       included_proposals:
-        result_proposals: Propositions incluses dans ce résultat
+        result_proposal: Propositions incluses dans cette réalisation

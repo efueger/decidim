@@ -3,6 +3,9 @@
 module Decidim
   # A UserGroup is an organization of citizens
   class UserGroup < ApplicationRecord
+    include Decidim::Traceable
+    include Decidim::Loggable
+
     belongs_to :organization, foreign_key: "decidim_organization_id", class_name: "Decidim::Organization"
 
     has_many :memberships, class_name: "Decidim::UserGroupMembership", foreign_key: :decidim_user_group_id, dependent: :destroy
@@ -20,6 +23,10 @@ module Decidim
     scope :verified, -> { where.not(verified_at: nil) }
     scope :rejected, -> { where.not(rejected_at: nil) }
 
+    def self.log_presenter_class_for(_log)
+      Decidim::AdminLog::UserGroupPresenter
+    end
+
     # Public: Checks if the user group is verified.
     def verified?
       verified_at.present?
@@ -36,16 +43,16 @@ module Decidim
     end
 
     def self.get_unique_random_user_group_document_number(current_organization)
-      random_range = 99999
+      random_range = 99_999
       user_group_document_number = SecureRandom.random_number(random_range)
       # While our random number is already picked, we picked an other one
-      while UserGroup.where(
-              document_number: user_group_document_number,
-              decidim_organization_id: current_organization.id
-              ).first.present?
+      while UserGroup.find_by(
+        document_number:         user_group_document_number,
+        decidim_organization_id: current_organization.id
+      ).present?
         user_group_document_number = SecureRandom.random_number(random_range)
       end
-      return user_group_document_number
+      user_group_document_number
     end
 
     private

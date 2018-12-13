@@ -5,9 +5,11 @@ module Decidim
   class ApplicationController < ::DecidimController
     include NeedsOrganization
     include LocaleSwitcher
-    include NeedsAuthorization
+    include NeedsPermission
     include PayloadInfo
     include ImpersonateUsers
+    include NeedsTosAccepted
+    include HttpCachingDisabler
 
     helper Decidim::MetaTagsHelper
     helper Decidim::DecidimFormHelper
@@ -17,8 +19,9 @@ module Decidim
     helper Decidim::CookiesHelper
     helper Decidim::AriaSelectedLinkToHelper
     helper Decidim::MenuHelper
-    helper Decidim::FeaturePathHelper
+    helper Decidim::ComponentPathHelper
     helper Decidim::ViewHooksHelper
+    helper Decidim::CardHelper
 
     # Saves the location before loading each page so we can return to the
     # right page.
@@ -28,6 +31,8 @@ module Decidim
     after_action :add_vary_header
 
     layout "layouts/decidim/application"
+
+    skip_before_action :disable_http_caching, unless: :user_signed_in?
 
     private
 
@@ -43,8 +48,19 @@ module Decidim
       store_location_for(:user, value)
     end
 
-    def user_not_authorized_path
+    def user_has_no_permission_path
       decidim.root_path
+    end
+
+    def permission_class_chain
+      [
+        Decidim::Admin::Permissions,
+        Decidim::Permissions
+      ]
+    end
+
+    def permission_scope
+      :public
     end
 
     # Make sure Chrome doesn't use the cache from a different format. This
@@ -52,12 +68,6 @@ module Decidim
     # displays the JS response instead of the HTML one.
     def add_vary_header
       response.headers["Vary"] = "Accept"
-    end
-
-    # Overwrites `cancancan`'s method to point to the correct ability class,
-    # since the gem expects the ability class to be in the root namespace.
-    def current_ability_klass
-      Decidim::Abilities::BaseAbility
     end
   end
 end

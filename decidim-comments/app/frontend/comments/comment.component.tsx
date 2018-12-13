@@ -10,7 +10,7 @@ import UpVoteButton from "./up_vote_button.component";
 import {
   AddCommentFormCommentableFragment,
   AddCommentFormSessionFragment,
-  CommentFragment,
+  CommentFragment
 } from "../support/schema";
 
 const { I18n } = require("react-i18nify");
@@ -41,7 +41,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
     articleClassName: "comment",
     isRootComment: false,
     session: null,
-    votable: false,
+    votable: false
   };
 
   public commentNode: HTMLElement;
@@ -50,7 +50,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
     super(props);
 
     this.state = {
-      showReplyForm: false,
+      showReplyForm: false
     };
   }
 
@@ -111,16 +111,17 @@ class Comment extends React.Component<CommentProps, CommentState> {
           </div>
         </div>
         <div className="comment__content">
-          <p>
+          <div>
             {this._renderAlignmentBadge()}
-            <span dangerouslySetInnerHTML={{__html: formattedBody}} />
-          </p>
+            <div dangerouslySetInnerHTML={{__html: formattedBody}} />
+          </div>
         </div>
         <div className="comment__footer">
           {this._renderReplyButton()}
           {this._renderVoteButtons()}
         </div>
         {this._renderReplies()}
+        {this._renderAdditionalReplyButton()}
         {this._renderReplyForm()}
       </article>
     );
@@ -235,26 +236,26 @@ class Comment extends React.Component<CommentProps, CommentState> {
    * @private
    * @returns {Void|DOMElement} - Render the reply button or not if user can reply
    */
-  // private _renderAdditionalReplyButton() {
-  //   const { comment: { acceptsNewComments, hasComments }, session, isRootComment } = this.props;
+  private _renderAdditionalReplyButton() {
+    const { comment: { acceptsNewComments, hasComments }, session, isRootComment } = this.props;
 
-  //   if (session && acceptsNewComments) {
-  //     if (hasComments && isRootComment) {
-  //       return (
-  //         <div className="comment__additionalreply">
-  //           <button
-  //             className="comment__reply muted-link"
-  //             aria-controls="comment1-reply"
-  //             onClick={this.toggleReplyForm}
-  //           >
-  //             {I18n.t("components.comment.reply")}
-  //           </button>
-  //         </div>
-  //       );
-  //     }
-  //   }
-  //   return null;
-  // }
+    if (session && acceptsNewComments) {
+      if (hasComments && isRootComment) {
+        return (
+          <div className="comment__additionalreply">
+            <button
+              className="comment__reply muted-link"
+              aria-controls="comment1-reply"
+              onClick={this.toggleReplyForm}
+            >
+              {I18n.t("components.comment.reply")}
+            </button>
+          </div>
+        );
+      }
+    }
+    return null;
+  }
 
   /**
    * Render upVote and downVote buttons when the comment is votable
@@ -348,7 +349,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
     const { comment: { alignment } } = this.props;
     const spanClassName = classnames("label alignment", {
       success: alignment === 1,
-      alert: alignment === -1,
+      alert: alignment === -1
     });
 
     let label = "";
@@ -428,7 +429,7 @@ class Comment extends React.Component<CommentProps, CommentState> {
                     </label>
                     <button type="submit" name="commit" className="button">{I18n.t("components.comment.report.action")}</button>
                   </form>
-                ),
+                )
               ];
             })()
           }

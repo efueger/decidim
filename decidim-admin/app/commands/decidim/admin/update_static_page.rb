@@ -23,6 +23,7 @@ module Decidim
         return broadcast(:invalid) if form.invalid?
 
         update_page
+        update_organization_tos_version if form.changed_notably
         broadcast(:ok)
       end
 
@@ -31,7 +32,11 @@ module Decidim
       attr_reader :form
 
       def update_page
-        @page.update_attributes!(attributes)
+        Decidim.traceability.update!(
+          @page,
+          form.current_user,
+          attributes
+        )
       end
 
       def attributes
@@ -40,6 +45,10 @@ module Decidim
           slug: form.slug,
           content: form.content
         }
+      end
+
+      def update_organization_tos_version
+        UpdateOrganizationTosVersion.call(@form.organization, @page, @form)
       end
     end
   end

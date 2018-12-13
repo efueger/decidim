@@ -7,14 +7,32 @@ module Decidim::Meetings
     subject { described_class.new(form, meeting) }
 
     let(:meeting) { create(:meeting) }
-    let(:organization) { meeting.feature.organization }
+    let(:organization) { meeting.component.organization }
     let(:scope) { create :scope, organization: organization }
-    let(:category) { create :category, participatory_space: meeting.feature.participatory_space }
+    let(:category) { create :category, participatory_space: meeting.component.participatory_space }
     let(:address) { meeting.address }
     let(:invalid) { false }
     let(:latitude) { 40.1234 }
     let(:longitude) { 2.1234 }
+    let(:services) do
+      [
+        {
+          "title" => { "en" => "First service" },
+          "description" => { "en" => "First description" }
+        },
+        {
+          "title" => { "en" => "Second service" },
+          "description" => { "en" => "Second description" }
+        }
+      ]
+    end
+    let(:services_to_persist) do
+      services.map { |service| Admin::MeetingServiceForm.from_params(service) }
+    end
     let(:user) { create :user, :admin }
+    let(:organizer) { create :user, organization: organization }
+    let(:private_meeting) { false }
+    let(:transparent) { true }
     let(:form) do
       double(
         invalid?: invalid,
@@ -29,6 +47,10 @@ module Decidim::Meetings
         address: address,
         latitude: latitude,
         longitude: longitude,
+        organizer: organizer,
+        private_meeting: private_meeting,
+        transparent: transparent,
+        services_to_persist: services_to_persist,
         current_user: user
       )
     end
@@ -63,6 +85,27 @@ module Decidim::Meetings
         expect(meeting.longitude).to eq(longitude)
       end
 
+      it "sets the organizer" do
+        subject.call
+        expect(meeting.organizer).to eq organizer
+      end
+
+      it "sets the services" do
+        subject.call
+        expect(meeting.services).to eq(services)
+      end
+
+      it "traces the action", versioning: true do
+        expect(Decidim.traceability)
+          .to receive(:update!)
+          .with(meeting, user, kind_of(Hash))
+          .and_call_original
+
+        expect { subject.call }.to change(Decidim::ActionLog, :count)
+        action_log = Decidim::ActionLog.last
+        expect(action_log.version).to be_present
+      end
+
       describe "events" do
         let!(:follow) { create :follow, followable: meeting, user: user }
         let(:title) { meeting.title }
@@ -83,6 +126,10 @@ module Decidim::Meetings
             address: address,
             latitude: meeting.latitude,
             longitude: meeting.longitude,
+            organizer: organizer,
+            private_meeting: private_meeting,
+            transparent: transparent,
+            services_to_persist: services_to_persist,
             current_user: user
           )
         end

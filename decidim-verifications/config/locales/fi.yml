@@ -1,3 +1,4 @@
+---
 fi:
   activemodel:
     attributes:
@@ -9,6 +10,13 @@ fi:
         document_type: Asiakirjan tyyppi
         user: Käyttäjä
         verification_attachment: Asiakirjan skannattu kopio
+      postal_letter_address:
+        full_address: Koko osoite
+      postal_letter_confirmation:
+        verification_code: Vahvistuskoodi
+      postal_letter_postage:
+        full_address: Koko osoite
+        verification_code: Vahvistuskoodi
   decidim:
     admin:
       menu:
@@ -17,16 +25,16 @@ fi:
       admin:
         id_documents:
           help:
-            - Käyttäjät täyttävät henkilötietonsa ja lähettävät kopion asiakirjastaan.
-            - Sinä täytät ladatussa kuvassa näkyvät tiedot.
-            - Tietojen tulisi vastata niitä tietoja, jotka käyttäjä on syöttänyt.
-            - Jos et voi nähdä tietoja selvästi tai et voi saada niitä vahvistettua, voit hylätä pyynnön, jolloin käyttäjä voi korjata sen.
+          - Käyttäjät täyttävät henkilötietonsa ja lähettävät kopion asiakirjastaan.
+          - Sinä täytät ladatussa kuvassa näkyvät tiedot.
+          - Tietojen tulisi vastata niitä tietoja, jotka käyttäjä on syöttänyt.
+          - Jos et voi nähdä tietoja selvästi tai et voi saada niitä vahvistettua, voit hylätä pyynnön, jolloin käyttäjä voi korjata sen.
         postal_letter:
           help:
-            - Käyttäjät pyytävät vahvistuskoodin lähettämistä heidän osoitteeseensa.
-            - Lähetät kirjeen heidän osoitteeseensa, mikä sisältää vahvistuskoodin.
-            - Sinä merkitset kirjeen lähetetyksi.
-            - Kun olet merkinnyt kirjeen lähetetyksi, käyttäjä voi ottaa syöttää koodin ja vahvistaa tilinsä.
+          - Käyttäjät pyytävät vahvistuskoodin lähettämistä heidän osoitteeseensa.
+          - Lähetät kirjeen heidän osoitteeseensa, mikä sisältää vahvistuskoodin.
+          - Sinä merkitset kirjeen lähetetyksi.
+          - Kun olet merkinnyt kirjeen lähetetyksi, käyttäjä voi ottaa syöttää koodin ja vahvistaa tilinsä.
       direct: Suoraan
       help: Ohjeet
       id_documents:
@@ -44,6 +52,7 @@ fi:
           success: Tilisi on onnistuneesti vahvistettu.
         first_login:
           actions:
+            another_dummy_authorization_handler: Varmista toisen esimerkkivahvistustavan käsittelijällä
             dummy_authorization_handler: Vahvista tili esimerkkivaltuuttajan avulla
             dummy_authorization_workflow: Vahvista esimerkkivaltuutuksen työnkulkuprosessin kautta
             id_documents: Vahvista tilisi lataamalla henkilöllisyystodistuksesi

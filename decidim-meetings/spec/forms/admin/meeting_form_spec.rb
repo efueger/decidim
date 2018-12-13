@@ -10,12 +10,12 @@ module Decidim::Meetings
     let(:context) do
       {
         current_organization: organization,
-        current_feature: current_feature,
+        current_component: current_component,
         current_participatory_space: participatory_process
       }
     end
     let(:participatory_process) { create :participatory_process, organization: organization }
-    let(:current_feature) { create :feature, participatory_space: participatory_process, manifest_name: "meetings" }
+    let(:current_component) { create :component, participatory_space: participatory_process, manifest_name: "meetings" }
     let(:title) do
       Decidim::Faker::Localized.sentence(3)
     end
@@ -31,6 +31,12 @@ module Decidim::Meetings
     let(:location_hints) do
       Decidim::Faker::Localized.sentence(3)
     end
+    let(:services) do
+      [
+        { title: Decidim::Faker::Localized.sentence(2), description: Decidim::Faker::Localized.sentence(5) },
+        { title: Decidim::Faker::Localized.sentence(2), description: Decidim::Faker::Localized.sentence(5) }
+      ]
+    end
     let(:address) { "Carrer Pare Llaurador 113, baixos, 08224 Terrassa" }
     let(:latitude) { 40.1234 }
     let(:longitude) { 2.1234 }
@@ -40,6 +46,10 @@ module Decidim::Meetings
     let(:scope_id) { scope.id }
     let(:category) { create :category, participatory_space: participatory_process }
     let(:category_id) { category.id }
+    let(:organizer) { create :user, organization: organization }
+    let(:organizer_id) { organizer.id }
+    let(:private_meeting) { false }
+    let(:transparent) { true }
     let(:attributes) do
       {
         decidim_scope_id: scope_id,
@@ -51,7 +61,11 @@ module Decidim::Meetings
         location_hints_en: location_hints[:en],
         address: address,
         start_time: start_time,
-        end_time: end_time
+        end_time: end_time,
+        private_meeting: private_meeting,
+        transparent: transparent,
+        organizer_id: organizer_id,
+        services: services
       }
     end
 
@@ -100,12 +114,6 @@ module Decidim::Meetings
       it { is_expected.not_to be_valid }
     end
 
-    describe "when current_feature is missing" do
-      let(:current_feature) { nil }
-
-      it { is_expected.not_to be_valid }
-    end
-
     describe "when start_time is after end_time" do
       let(:start_time) { end_time + 3.days }
 
@@ -142,10 +150,41 @@ module Decidim::Meetings
       expect(subject.longitude).to eq(longitude)
     end
 
+    it "properly maps services from model" do
+      meeting = create(:meeting, services: services)
+
+      services = described_class.from_model(meeting).services
+      expect(services).to all be_an(Admin::MeetingServiceForm)
+      expect(services.map(&:title_en)).to eq(services.map(&:title_en))
+    end
+
     it "properly maps category id from model" do
-      meeting = create(:meeting, feature: current_feature, category: category)
+      meeting = create(:meeting, component: current_component, category: category)
 
       expect(described_class.from_model(meeting).decidim_category_id).to eq(category_id)
+    end
+
+    describe "services_to_persist" do
+      subject { form.services_to_persist }
+
+      let(:services) do
+        [
+          { title: { en: "First service" }, description: { en: "First description" } },
+          { title: { en: "Second service" }, description: { en: "Second description" }, deleted: true },
+          { title: { en: "Third service" }, description: { en: "Third description" } }
+        ]
+      end
+
+      it "only returns non deleted services" do
+        expect(subject.size).to eq(2)
+        expect(subject.map(&:title_en)).to eq(["First service", "Third service"])
+      end
+    end
+
+    describe "number_of_services" do
+      subject { form.number_of_services }
+
+      it { is_expected.to eq(services.size) }
     end
 
     describe "scope" do

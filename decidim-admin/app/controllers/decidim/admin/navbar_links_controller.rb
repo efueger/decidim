@@ -9,19 +9,18 @@ module Decidim
       helper_method :navbar_link
 
       def index
-        authorize! :index, NavbarLink
+        enforce_permission_to :index, :navbar_link
         @navbar_links = current_organization.navbar_links
       end
 
       def new
-        authorize! :new, NavbarLink
+        enforce_permission_to :new, :navbar_link
         @form = form(NavbarLinkForm).instance
       end
 
       def create
-        authorize! :new, NavbarLink
+        enforce_permission_to :new, :navbar_link
         @form = form(NavbarLinkForm).from_params(params)
-
         CreateNavbarLink.call(@form) do
           on(:ok) do
             flash[:notice] = I18n.t("navbar_links.create.success", scope: "decidim.admin")
@@ -36,12 +35,12 @@ module Decidim
       end
 
       def edit
-        authorize! :update, navbar_link
+        enforce_permission_to :update, :navbar_link, navbar_link: navbar_link
         @form = form(NavbarLinkForm).from_model(navbar_link)
       end
 
       def update
-        authorize! :update,  navbar_link
+        enforce_permission_to :update, :navbar_link, navbar_link: navbar_link
         @form = form(NavbarLinkForm).from_params(params)
 
         UpdateNavbarLink.call(@form, navbar_link) do
@@ -58,7 +57,7 @@ module Decidim
       end
 
       def destroy
-        authorize! :destroy, navbar_link
+        enforce_permission_to :destroy, :navbar_link
         navbar_link.destroy!
 
         flash[:notice] = I18n.t("navbar_links.destroy.success", scope: "decidim.admin")
@@ -69,11 +68,7 @@ module Decidim
       private
 
       def navbar_link
-        navbar_link = if params[:id]
-                        NavbarLink.find(params[:id])
-                      else
-                        NavbarLink.new
-                      end
+        @navbar_link = NavbarLink.find(params[:id])
       end
     end
   end

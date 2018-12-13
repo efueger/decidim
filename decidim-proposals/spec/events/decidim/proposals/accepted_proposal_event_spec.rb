@@ -6,8 +6,8 @@ describe Decidim::Proposals::AcceptedProposalEvent do
   let(:resource) { create :proposal }
   let(:event_name) { "decidim.events.proposals.proposal_accepted" }
 
-  include_context "simple event"
-  it_behaves_like "an simple event"
+  include_context "when a simple event"
+  it_behaves_like "a simple event"
 
   describe "email_subject" do
     it "is generated correctly" do

@@ -11,7 +11,7 @@ module Decidim
     describe "validations" do
       context "when the file is too big" do
         before do
-          allow(Decidim).to receive(:maximum_attachment_size).and_return(5.megabytes)
+          allow(Decidim).to receive(:maximum_attachment_admin_size).and_return(5.megabytes)
           expect(subject.file).to receive(:size).and_return(6.megabytes)
         end
 
@@ -42,11 +42,11 @@ module Decidim
       subject { build(:attachment, :with_image) }
 
       it "has a thumbnail" do
-        expect(subject.thumbnail_url).to be
+        expect(subject.thumbnail_url).not_to be_nil
       end
 
       it "has a big version" do
-        expect(subject.big_url).to be
+        expect(subject.big_url).not_to be_nil
       end
 
       describe "photo?" do

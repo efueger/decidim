@@ -1,21 +1,26 @@
+---
 pl:
+  activemodel:
+    models:
+      decidim/comments/comment_by_followed_user_event: Komentarz
+      decidim/comments/comment_created_event: Komentarz
+      decidim/comments/reply_created_event: Odpowiedź na komentarz
+      decidim/comments/user_mentioned_event: Wzmianka
+  activerecord:
+    models:
+      decidim/comments/comment:
+        few: Komentarze
+        many: Komentarze
+        one: Komentarz
+        other: Komentarze
+      decidim/comments/comment_vote:
+        few: Głosy
+        many: Głosy
+        one: Głosować
+        other: Głosy
   decidim:
     comments:
-      events:
-        comment_created:
-          comment:
-            email_intro: '"Skomentował" %{resource_title} ". Możesz przeczytać komentarz na tej stronie:'
-            email_outro: Otrzymujesz to powiadomienie, ponieważ śledzisz "%{resource_title}". Możesz cofnąć ją od poprzedniego linku.
-            email_subject: Istnieje nowy komentarz z %{author_name} w %{resource_title}
-            notification_title: W %{author_name} w <a href="%{resource_path}">%{resource_title}</a> nowy komentarz
-            moderation:
-              email_intro: 'A new comment have been posted, you can moderate it in this page:'
-              email_subject: 'New comment from %{author_name} waiting for moderation'
-          reply:
-            email_intro: '"Skomentował" %{resource_title} "'
-            email_outro: Otrzymujesz to powiadomienie, ponieważ śledzisz "%{resource_title}". Możesz cofnąć ją od poprzedniego linku.
-            email_subject: Nowa odpowiedź Twojego komentarza z %{author_name} w <a href="%{resource_url}">%{resource_title}</a>
-            notification_title: Nowa odpowiedź Twojego komentarza z %{author_name} w <a href="%{resource_path}">%{resource_title}</a>
+      comments: Komentarze
       votes:
         create:
           error: Podczas głosowania komentarza wystąpiły błędy.
@@ -32,8 +37,8 @@ pl:
             label: Komentarz jako
         opinion:
           neutral: Neutralny
-        remaining_characters: "Pozostało %{count} znaków"
-        remaining_characters_1: "Pozostało znaków %{count}"
+        remaining_characters: Pozostało %{count} znaków
+        remaining_characters_1: Pozostało znaków %{count}
         title: Dodaj swój komentarz
       comment:
         alignment:
@@ -65,24 +70,28 @@ pl:
         blocked_comments_warning: Komentarze są w tej chwili wyłączone, ale możesz przeczytać poprzednie.
         loading: Ładowanie komentarzy ...
         title: "%{count} komentarzy"
-      featured_comment:
-        title: Wyróżniony komentarz
+        title_0: Il n'y a pas encore de commentaire
+        title_1: "%{count} commentaire"
     events:
       comments:
+        comment_by_followed_user:
+          email_intro: "%{author_name} dodał (a) komentarz w %{resource_title}. Możesz przeczytać na tej stronie:"
+          email_outro: Otrzymałeś to powiadomienie, ponieważ obserwujesz %{author_name}. Możesz przestać obserwować tego użytkownika na swojej stronie profilu.
+          email_subject: Jest nowy komentarz autor %{author_name} w %{resource_title}
+          notification_title: Pojawił się nowy komentarz <a href="%{author_path}">%{author_name} %{author_nickname}</a> w <a href="%{resource_path}">%{resource_title}</a>.
         comment_created:
-          comment:
-            email_intro: '"%{resource_title}" został skomentowany. Możesz przeczytać komentarz na tej stronie:'
-            email_outro: Otrzymałeś to powiadomienie, ponieważ obserwujesz "%{resource_title}" lub jego autora. Możesz przestać go obserwować z poprzedniego linku.
-            email_subject: Jest nowy komentarz od %{author_name} w %{resource_title}
-            notification_title: Jest nowy komentarz od <a href="%{author_path}">%{author_name} %{author_nickname}</a> w <a href="%{resource_path}">%{resource_title}</a>
-          reply:
-            email_intro: Komentarz "%{resource_title}" został skomentowany
-            email_outro: Otrzymałeś to powiadomienie, ponieważ obserwujesz "%{resource_title}" lub jego autora. Możesz przestać go obserwować z poprzedniego linku.
-            email_subject: Nowa odpowiedź na Twój komentarz od %{author_name} w <a href="%{resource_url}">%{resource_title}</a>
-            notification_title: Pojawiła się nowa odpowiedź Twojego komentarza z <a href="%{author_path}">%{author_name} %{author_nickname}</a> w <a href="%{resource_path}">%{resource_title}</a>
+          email_intro: "%{resource_title} został skomentowany. Możesz przeczytać komentarz na tej stronie:"
+          email_outro: Otrzymujesz to powiadomienie, ponieważ obserwujesz "%{resource_title}" lub jego autora. Możesz przestać go obserwować z poprzedniego linku.
+          email_subject: Jest nowy komentarz od %{author_name} w %{resource_title}
+          notification_title: Pojawił się nowy komentarz <a href="%{author_path}">%{author_name} %{author_nickname}</a> w <a href="%{resource_path}">%{resource_title}</a>
+        reply_created:
+          email_intro: "%{author_name} odpowiedział na Twój komentarz w %{resource_title}. Możesz przeczytać na tej stronie:"
+          email_outro: Otrzymałeś to powiadomienie, ponieważ Twój komentarz został wysłany.
+          email_subject: "%{author_name} odpowiedział na Twój komentarz w %{resource_title}"
+          notification_title: <a href="%{author_path}">%{author_name} %{author_nickname}</a> odpowiedział na Twój komentarz w <a href="%{resource_path}">%{resource_title}</a>
         user_mentioned:
           email_intro: Zostałeś wspomniany
-          email_outro: Otrzymałeś to powiadomienie, ponieważ wspomniano Cię w "%{resource_title}".
+          email_outro: Otrzymałeś to powiadomienie, ponieważ wspomniano o nim w %{resource_title}.
           email_subject: Wspomnieliś cie w %{resource_title}
           notification_title: Wspomniałeś w <a href="%{resource_path}">%{resource_title}</a> przez <a href="%{author_path}">%{author_name} %{author_nickname}</a>
   errors:

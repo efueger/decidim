@@ -10,13 +10,17 @@
         </div>
         <div class="show-for-medium">
           <h2 class="text-highlight heading-small">
-						<span class="process-header__hashtag">#urbaGracia</span>
+            <span class="process-header__hashtag">#urbaGracia</span>
             Proceso de mejoras del barrio de Gracia
-					</h2>
+          </h2>
         </div>
       </div>
       <div class="columns mediumlarge-3">
-        <%= partial "process_phase" %>
+        <% if is("initiatives") %>
+          <%= render partial: page_path("initiatives") + "/process_phase" %>
+        <% else %>
+          <%= partial "process_phase" %>
+        <% end %>
       </div>
     </div>
   </div>

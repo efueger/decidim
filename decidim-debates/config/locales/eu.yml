@@ -1,8 +1,10 @@
+---
 eu:
   activemodel:
     attributes:
       debate:
         category_id: Kategoria
+        decidim_category_id: Kategoria
         description: deskribapena
         end_time: Amaitzen du
         information_updates: Informazioaren eguneratzeak
@@ -10,13 +12,35 @@ eu:
         start_time: Hasi da
         title: Izenburua
         user_group_id: Sortu eztabaida gisa
+    models:
+      decidim/debates/create_debate_event: Debate
+      decidim/debates/creation_disabled_event: Debateak desgaituta daude
+      decidim/debates/creation_enabled_event: Debateak gaituta
+  activerecord:
+    models:
+      decidim/debates/debate:
+        one: Debate
+        other: eztabaidak
   decidim:
+    components:
+      debates:
+        actions:
+          create: Sortu
+        name: eztabaidak
+        settings:
+          global:
+            announcement: Anuntzio
+            comments_enabled: Iruzkinak gaituta
+          step:
+            announcement: Anuntzio
+            comments_blocked: Iruzkinak blokeatuta
+            creation_enabled: Erabiltzaileek gaitutako eztabaida sortzea
     debates:
       actions:
         confirm_destroy: Ziur zaude?
         destroy: ezabatu
         edit: Editatu
-        new: '%{name} berria'
+        new: "%{name} berria"
         title: Ekintzak
       admin:
         debates:
@@ -36,9 +60,16 @@ eu:
           update:
             invalid: Arazo bat izan da eztabaida hau eguneratzean.
             success: Debate arrakastaz eguneratu da.
+        exports:
+          comments: comments
+          debates: debates
         models:
           debate:
             name: Debate
+      admin_log:
+        debate:
+          create: "%{user_name} %{resource_name} eztabaida sortu zen %{space_name} espazioan"
+          update: "%{user_name} %{resource_name} eztabaida eguneratu zen %{space_name} espazioan"
       debates:
         count:
           debates_count:
@@ -48,9 +79,6 @@ eu:
           invalid: Arazo bat izan da eztabaida sortzen ari den bitartean.
           success: Debate sortu da behar bezala.
         debate:
-          comments:
-            one: Iruzkina
-            other: Oharrak
           participate: Parte hartu
         filters:
           all: guztiak
@@ -76,9 +104,6 @@ eu:
           close_window: Itxi leihoa
           share: Share
           share_link: Partekatu esteka
-        show:
-          comments: Oharrak
-          report: txostena
       models:
         debate:
           fields:
@@ -90,25 +115,22 @@ eu:
       debates:
         create_debate_event:
           space_followers:
-            email_intro: |-
-              Kaixo, %{space_title} partaidetzako espazioan eztabaida berria sortu da, egiaztatu eta lagundu:
+            email_intro: 'Kaixo, %{space_title} partaidetzako espazioan eztabaida berria sortu da, egiaztatu eta lagundu:'
             email_outro: Jakinarazpen hori jaso duzu %{space_title} partaidetzazko espazioa jarraituz gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki dezakezu.
             email_subject: Eztabaida berria %{space_title}
             notification_title: <a href="%{resource_path}">%{resource_title}</a> eztabaida sortu zen <a href="%{space_path}">%{space_title}</a>.
           user_followers:
-            email_intro: |-
-              Kaixo, %{author_name} %{author_nickname}, jarraitzen ari zarenak, eztabaida berri bat sortu du, egiaztatu eta lagundu:
+            email_intro: 'Kaixo, %{author_name} %{author_nickname}, jarraitzen ari zarenak, eztabaida berri bat sortu du, egiaztatu eta lagundu:'
             email_outro: Jakinarazpena jaso duzu %{author_nickname} jarraituz gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki dezakezu.
             email_subject: Eztabaida berria %{author_nickname}-ri
             notification_title: <a href="%{resource_path}">%{resource_title}</a> eztabaida sortu zen <a href="%{author_path}">%{author_name} %{author_nickname}</a>.
-    features:
-      debates:
-        actions:
-          create: Sortu
-        name: eztabaidak
-        settings:
-          global:
-            comments_enabled: Iruzkinak gaituta
-          step:
-            comments_blocked: Iruzkinak blokeatuta
-            creation_enabled: Erabiltzaileek gaitutako eztabaida sortzea
+        creation_disabled:
+          email_intro: 'Debate sortzea ez dago aktibo %{participatory_space_title}. Oraindik eztabaidak ireki ditzakezu orri honetatik:'
+          email_outro: Jakinarazpena jaso duzu %{participatory_space_title}jarraituz gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki dezakezu.
+          email_subject: Debate sortzea desgaituta %{participatory_space_title}
+          notification_title: Debateen sorrera desaktibatuta dago orain <a href="%{participatory_space_url}">%{participatory_space_title}</a>
+        creation_enabled:
+          email_intro: 'Orain %{participatory_space_title}hizketaldi berriak hasi ditzakezu! Hasi orri honetan parte hartzea:'
+          email_outro: Jakinarazpena jaso duzu %{participatory_space_title}jarraituz gero. Aurreko esteka jarraituz jakinarazpenak jasotzeari uztea erabaki dezakezu.
+          email_subject: Debates orain eskuragarri %{participatory_space_title}
+          notification_title: Orain <a href="%{resource_path}">eztabaida berriak hasi ditzakezu</a> <a href="%{participatory_space_url}">%{participatory_space_title}</a>

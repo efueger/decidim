@@ -1,3 +1,4 @@
+---
 nl:
   activemodel:
     attributes:
@@ -9,6 +10,13 @@ nl:
         document_type: Type van uw document
         user: Gebruiker
         verification_attachment: Gescande kopie van uw document
+      postal_letter_address:
+        full_address: Volledig adres
+      postal_letter_confirmation:
+        verification_code: Verificatiecode
+      postal_letter_postage:
+        full_address: Volledig adres
+        verification_code: Verificatiecode
   decidim:
     admin:
       menu:
@@ -17,16 +25,16 @@ nl:
       admin:
         id_documents:
           help:
-            - Gebruikers vullen hun identiteitsinformatie in en uploaden een kopie van hun document.
-            - U vult de informatie in die in de geüploade afbeelding aanwezig is.
-            - De informatie moet overeenkomen met wat de gebruiker heeft ingevuld.
-            - Als u de informatie niet duidelijk kunt zien of als u de informatie niet kunt verifiëren, kunt u het verzoek afwijzen en kan de gebruiker het probleem oplossen.
+          - Gebruikers vullen hun identiteitsinformatie in en uploaden een kopie van hun document.
+          - U vult de informatie in die in de geüploade afbeelding aanwezig is.
+          - De informatie moet overeenkomen met wat de gebruiker heeft ingevuld.
+          - Als u de informatie niet duidelijk kunt zien of als u de informatie niet kunt verifiëren, kunt u het verzoek afwijzen en kan de gebruiker het probleem oplossen.
         postal_letter:
           help:
-            - Gebruikers vragen een verificatiecode op te sturen naar hun adres.
-            - U stuurt de brief naar hun adres met de verificatiecode.
-            - U markeert de brief zoals verzonden.
-            - Nadat u de brief hebt gemarkeerd als verzonden, kan de gebruiker de code invoeren en worden geverifieerd.
+          - Gebruikers vragen een verificatiecode op te sturen naar hun adres.
+          - U stuurt de brief naar hun adres met de verificatiecode.
+          - U markeert de brief zoals verzonden.
+          - Nadat u de brief hebt gemarkeerd als verzonden, kan de gebruiker de code invoeren en worden geverifieerd.
       direct: direct
       help: Helpen
       id_documents:
@@ -44,6 +52,7 @@ nl:
           success: U bent geautoriseerd.
         first_login:
           actions:
+            another_dummy_authorization_handler: Controleer tegen een ander voorbeeld van autorisatieaanduiding
             dummy_authorization_handler: Verifieer met het voorbeeld van de autorisatieaanduiding
             dummy_authorization_workflow: Controleer aan de hand van het machtigingsworkflow voorbeeld
             id_documents: Wordt geverifieerd door uw identiteitsdocument te uploaden
@@ -57,7 +66,7 @@ nl:
         start_exploring: begin met verkennen
       dummy_authorization:
         extra_explanation:
-          one: Deelname is beperkt tot gebruikers met de postcode %{postal_codes}.
+          one: Deelname is beperkt tot gebruikers met postcode %{postal_codes}.
           other: 'Deelname is beperkt tot gebruikers met een van de volgende postcodes: %{postal_codes}.'
       id_documents:
         admin:

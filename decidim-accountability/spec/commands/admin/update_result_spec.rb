@@ -7,44 +7,46 @@ module Decidim::Accountability
     subject { described_class.new(form, result) }
 
     let(:result) { create :result }
-    let(:organization) { result.feature.organization }
+    let(:organization) { result.component.organization }
     let(:user) { create :user, organization: organization }
     let(:scope) { create :scope, organization: organization }
     let(:category) { create :category, participatory_space: participatory_process }
-    let(:participatory_process) { result.feature.participatory_space }
-    let(:meeting_feature) do
-      create(:feature, manifest_name: :meetings, participatory_space: participatory_process)
+    let(:participatory_process) { result.component.participatory_space }
+    let(:meeting_component) do
+      create(:component, manifest_name: :meetings, participatory_space: participatory_process)
     end
 
     let(:start_date) { Date.yesterday }
     let(:end_date) { Date.tomorrow }
-    let(:status) { create :status, feature: result.feature, key: "finished", name: { en: "Finished" } }
+    let(:status) { create :status, component: result.component, key: "finished", name: { en: "Finished" } }
     let(:progress) { 95 }
+    let(:external_id) { "external-id" }
+    let(:weight) { 0.3 }
 
     let(:meeting) do
       create(
         :meeting,
-        feature: meeting_feature
+        component: meeting_component
       )
     end
-    let(:proposal_feature) do
-      create(:feature, manifest_name: :proposals, participatory_space: participatory_process)
+    let(:proposal_component) do
+      create(:component, manifest_name: :proposals, participatory_space: participatory_process)
     end
     let(:proposals) do
       create_list(
         :proposal,
         3,
-        feature: proposal_feature
+        component: proposal_component
       )
     end
-    let(:project_feature) do
-      create(:feature, manifest_name: :budgets, participatory_space: participatory_process)
+    let(:project_component) do
+      create(:component, manifest_name: :budgets, participatory_space: participatory_process)
     end
     let(:projects) do
       create_list(
         :project,
         2,
-        feature: project_feature
+        component: project_component
       )
     end
     let(:form) do
@@ -61,7 +63,9 @@ module Decidim::Accountability
         decidim_accountability_status_id: status.id,
         progress: progress,
         current_user: user,
-        parent_id: nil
+        parent_id: nil,
+        external_id: external_id,
+        weight: weight
       )
     end
     let(:invalid) { false }
@@ -85,6 +89,17 @@ module Decidim::Accountability
           subject.call
         end.to change { result.versions.count }.by(1)
         expect(result.versions.last.whodunnit).to eq user.to_gid.to_s
+      end
+
+      it "traces the action", versioning: true do
+        expect(Decidim.traceability)
+          .to receive(:update!)
+          .with(result, form.current_user, kind_of(Hash))
+          .and_call_original
+
+        expect { subject.call }.to change(Decidim::ActionLog, :count)
+        action_log = Decidim::ActionLog.last
+        expect(action_log.version).to be_present
       end
 
       it "sets the scope" do
@@ -118,6 +133,16 @@ module Decidim::Accountability
         linked_meetings = result.linked_resources(:meetings, "meetings_through_proposals")
 
         expect(linked_meetings).to eq [meeting]
+      end
+
+      it "sets the external_id" do
+        subject.call
+        expect(result.external_id).to eq external_id
+      end
+
+      it "sets the weight" do
+        subject.call
+        expect(result.weight).to eq weight
       end
     end
   end

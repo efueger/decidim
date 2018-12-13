@@ -54,6 +54,8 @@ Decidim::System::Admin.create!(
 Once you have created your first admin you can access the system dashboard at `https://your-decidim-deployment-host/system` and login with your newly created user.
 From the system dashboard you can add new admins.
 
+⚠️ If you need to reset your administrator password you'll need to do it by entering the Rails console and changing it manually. ⚠️
+
 ## Managing organizations
 
 Once you have your system admin setup you can also start managing the organizations in your deploy. To do it, login at the system dashboard and create a new organization
@@ -62,6 +64,10 @@ following the form instructions. After creating it, a new admin user will be cre
 Remember that System admins and regular Admins are completely different users (they don't even share the same database table), so you can't use your
 system user to login in as an organization admin.
 
+## Contributing
+
+See [Decidim](https://github.com/decidim/decidim).
+
 ## License
 
-The gem is available as open source under the terms of the [AGPLv3 License](https://opensource.org/licenses/AGPL-3.0).
+See [Decidim](https://github.com/decidim/decidim).

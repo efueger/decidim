@@ -16,10 +16,19 @@ module Decidim
         root to: "debates#index"
       end
 
-      initializer "decidim_debates.inject_abilities_to_user" do |_app|
-        Decidim.configure do |config|
-          config.abilities += ["Decidim::Debates::Abilities::CurrentUserAbility"]
+      initializer "decidim_changes" do
+        Decidim::SettingsChange.subscribe "debates" do |changes|
+          Decidim::Debates::SettingsChangeJob.perform_later(
+            changes[:component_id],
+            changes[:previous_settings],
+            changes[:current_settings]
+          )
         end
+      end
+
+      initializer "decidim_meetings.add_cells_view_paths" do
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Debates::Engine.root}/app/cells")
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Debates::Engine.root}/app/views") # for partials
       end
     end
   end

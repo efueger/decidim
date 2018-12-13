@@ -3,7 +3,7 @@
 require "active_support/concern"
 
 module Decidim
-  # A concern with the features needed when you want a model to be able to create
+  # A concern with the components needed when you want a model to be able to create
   # links from it to another resource.
   module Resourceable
     extend ActiveSupport::Concern
@@ -18,7 +18,7 @@ module Decidim
       # Finds all the linked resources to or from this model for a given resource
       # name and link name.
       #
-      # resource_name - The String name of the resource manifest exposed by a feature.
+      # resource_name - The String name of the resource manifest exposed by a component.
       # link_name     - The String name of the link between this model and the target resource.
       #
       # Returns an ActiveRecord::Relation.
@@ -39,17 +39,16 @@ module Decidim
       # Builds an ActiveRecord::Relation in order to load all the resources
       # that are in the same parent as this model.
       #
-      # resource_name - The String name of the resource manifest exposed by a feature.
+      # resource_name - The String name of the resource manifest exposed by a component.
       #
       # Returns an ActiveRecord::Relation.
       def sibling_scope(resource_name)
         manifest = Decidim.find_resource_manifest(resource_name)
         return self.class.none unless manifest
 
-        scope = manifest.resource_scope(feature)
+        scope = manifest.resource_scope(component)
         scope = scope.where("#{self.class.table_name}.id != ?", id) if manifest.model_class == self.class
-
-        scope
+        scope.includes(:component).where.not(decidim_components: { published_at: nil })
       end
 
       # Links the given resources to this model, replaces any previous links with the same name.
@@ -63,26 +62,59 @@ module Decidim
         transaction do
           resource_links_from.where(name: link_name).delete_all
           Array.wrap(resources).each do |resource|
-            Decidim::ResourceLink.create!(
-              from: self,
-              to: resource,
-              name: link_name,
-              data: data
-            )
+            payload = {
+              from_type: self.class.name,
+              from_id: id,
+              to_type: resource.class.name,
+              to_id: resource.id
+            }
+            event_name = "decidim.resourceable.#{link_name}.created"
+            ActiveSupport::Notifications.instrument event_name, this: payload do
+              Decidim::ResourceLink.create!(
+                from: self,
+                to: resource,
+                name: link_name,
+                data: data
+              )
+            end
           end
+        end
+      end
+
+      delegate :resource_manifest, to: :class
+
+      # Checks throughout all its parent hierarchy if this Resource is visible.
+      # i.e. checks
+      # - the visibility of its parent Component
+      # - the visibility of its participatory space.
+      # - the visibility of the resource itself.
+      def visible?
+        !component.participatory_space.try(:private_space?) && component.published? && resource_visible?
+      end
+
+      # Check only the resource visibility not its hierarchy.
+      # This method is intended to be overriden by classes that include this module and have the
+      # need to impose its own visibility rules.
+      #
+      # @return If the resource is also Publicable checks if the resource is published, otherwise returns true by default.
+      def resource_visible?
+        if respond_to?(:published?)
+          published?
+        else
+          true
         end
       end
     end
 
     class_methods do
       # Finds the name of the classes that have been linked to this model for the given
-      # `feature`.
+      # `component`.
       #
-      # feature - a Decidim::Feature instance where the links will be scoped to.
+      # component - a Decidim::Component instance where the links will be scoped to.
       #
       # Returns an Array of Strings.
-      def linked_classes_for(feature)
-        scope = where(feature: feature)
+      def linked_classes_for(component)
+        scope = where(component: component)
 
         from = scope
                .joins(:resource_links_from)

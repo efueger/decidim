@@ -4,11 +4,17 @@ require "spec_helper"
 
 describe "Locales", type: :system do
   describe "switching locales" do
-    let(:organization) { create(:organization, available_locales: %w(en ca)) }
+    let(:organization) { create(:organization, :with_tos, available_locales: %w(en ca)) }
 
     before do
       switch_to_host(organization.host)
       visit decidim.root_path
+    end
+
+    after do
+      within_language_menu do
+        click_link "English"
+      end
     end
 
     it "changes the locale to the chosen one" do
