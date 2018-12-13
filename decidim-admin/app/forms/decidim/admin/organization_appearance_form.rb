@@ -86,6 +86,7 @@ module Decidim
       validates :omnipresent_banner_short_description, translatable_presence: true, if: :enable_omnipresent_banner?
 
       def map_model(model)
+        return unless model.custom_colors
         model.custom_colors.tap do |colors|
           self.primary_color = colors["primary_color"]
           self.secondary_color = colors["secondary_color"]
