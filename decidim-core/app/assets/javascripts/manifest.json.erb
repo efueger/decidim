@@ -1,0 +1,21 @@
+<% icons = Dir.glob(Rails.root.join('app', 'assets','images', 'icons', '*.png')).map{ |icon| File.basename icon } %>
+{
+  "name": "The democracy framework",
+  "short_name": "Decidim",
+  "theme_color": "#ef604d",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    <% icons.each do |icon| %>
+    <% dim = icon.delete("icon-").delete(".png") %>
+    {
+      "src": "<%= image_path "icons/icon-#{dim}.png" %>",
+      "sizes": "<%= dim %>",
+      "type": "image/png"
+    }<%= icon == icons.last ? '' : ',' %>
+    <% end %>
+  ]
+}

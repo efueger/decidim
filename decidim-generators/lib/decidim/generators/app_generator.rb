@@ -26,40 +26,40 @@ module Decidim
       source_root File.expand_path("app_templates", __dir__)
 
       class_option :app_name, type: :string,
-                              default: nil,
-                              desc: "The name of the app"
+                   default: nil,
+                   desc: "The name of the app"
 
       class_option :path, type: :string,
-                          default: nil,
-                          desc: "Path to the gem"
+                   default: nil,
+                   desc: "Path to the gem"
 
       class_option :edge, type: :boolean,
-                          default: false,
-                          desc: "Use GitHub's edge version from master branch"
+                   default: false,
+                   desc: "Use GitHub's edge version from master branch"
 
       class_option :branch, type: :string,
-                            default: nil,
-                            desc: "Use a specific branch from GitHub's version"
+                   default: nil,
+                   desc: "Use a specific branch from GitHub's version"
 
       class_option :recreate_db, type: :boolean,
-                                 default: false,
-                                 desc: "Recreate test database"
+                   default: false,
+                   desc: "Recreate test database"
 
       class_option :seed_db, type: :boolean,
-                             default: false,
-                             desc: "Seed test database"
+                   default: false,
+                   desc: "Seed test database"
 
       class_option :skip_bundle, type: :boolean,
-                                 default: true,
-                                 desc: "Don't run bundle install"
+                   default: true,
+                   desc: "Don't run bundle install"
 
       class_option :skip_gemfile, type: :boolean,
-                                  default: false,
-                                  desc: "Don't generate a Gemfile for the application"
+                   default: false,
+                   desc: "Don't generate a Gemfile for the application"
 
       class_option :demo, type: :boolean,
-                          default: false,
-                          desc: "Generate demo authorization handlers"
+                   default: false,
+                   desc: "Generate demo authorization handlers"
 
       def database_yml
         template "database.yml.erb", "config/database.yml", force: true
@@ -146,6 +146,14 @@ module Decidim
       def remove_default_error_pages
         remove_file "public/404.html"
         remove_file "public/500.html"
+      end
+
+      def add_offline_page
+        copy_file "offline.html", "public/offline.html"
+      end
+
+      def add_icons
+        directory "icons", "app/assets/images/icons"
       end
 
       def authorization_handler

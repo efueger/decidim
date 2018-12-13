@@ -22,5 +22,9 @@
 <%= javascript_include_tag "application" %>
 <%= foundation_datepicker_locale_tag %>
 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/manifest.json" />
+<%= javascript_include_tag "serviceworker-companion" %>
+
 <%= render partial: "layouts/decidim/head_extra" %>
 <%== current_organization.header_snippets if Decidim.enable_html_header_snippets %>

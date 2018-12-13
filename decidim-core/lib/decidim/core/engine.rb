@@ -61,7 +61,7 @@ module Decidim
 
       initializer "decidim.assets" do |app|
         app.config.assets.paths << File.expand_path("../../../app/assets/stylesheets", __dir__)
-        app.config.assets.precompile += %w(decidim_core_manifest.js)
+        app.config.assets.precompile += %w(decidim_core_manifest.js serviceworker.js manifest.json)
 
         Decidim.component_manifests.each do |component|
           app.config.assets.precompile += [component.icon]
