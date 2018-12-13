@@ -75,6 +75,7 @@ hu:
             proposal_wizard_step_2_help_text: Javaslat varázsló "Összehasonlítás" gomb súgójának szövege
             proposal_wizard_step_3_help_text: Javaslat varázsló "Teljesítés" gomb súgójának szövege
             proposal_wizard_step_4_help_text: Javaslat varázsló "Közzététel" gomb súgójának szövege
+            split_proposal_enabled: Split officials and citizens proposals
             threshold_per_proposal: Küszöbérték javaslatonként
             vote_limit: Szavazási limit felhasználónként
           step:
@@ -280,6 +281,8 @@ hu:
         create:
           error: Hiba történt a javaslatra való szavazás során.
       proposals:
+        citizens_proposals:
+          see_all: See all citizens proposals
         compare:
           mine_is_different: Javaslatom más jellegű
           no_similars_found: Szép munka! Nincsen hasonló javaslat
@@ -290,9 +293,23 @@ hu:
           send: Küldés
           title: Fejezd be a javaslatod
         count:
+          citizens_proposals:
+            one: Citizen proposal
+            other: Citizens proposals
+          citizens_proposals_count:
+            one: 1 citizen proposal
+            other: "%{count} citizens proposals"
+          officials_proposals:
+            one: Official proposal
+            other: Officials proposals
+          officials_proposals_count:
+            one: 1 official proposal
+            other: "%{count} officials proposals"
           proposals_count:
             one: 1 javaslat
             other: "%{count} javaslat"
+        display_type:
+          label: 'Display :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ hu:
         new:
           send: Tovább
           title: Hozz létre javaslatot
+        officials_proposals:
+          see_all: See all officials proposals
         orders:
           label: 'Javaslatok rendezése:'
           most_voted: Legtöbb szavazattal
@@ -365,6 +384,11 @@ hu:
         proposal:
           creation_date: 'Létrehozás: %{date}'
           view_proposal: Javaslat megtekintése
+        proposal_column:
+          creation_date: 'Creation: %{date}'
+          view_proposal: View proposal
+        proposal_list:
+          view_proposal: View proposal
         show:
           edit_proposal: Javaslat szerkesztése
           endorsements_list: Jóváhagyások listája
@@ -395,6 +419,11 @@ hu:
           maximum_votes_reached: Vote limit reached
           most_popular_proposal: Most popular proposal
           need_more_votes: Need more votes
+          no_votes_remaining: No votes remaining
+          votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Vote limit reached
+          neutral: Neutral
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
         votes_count:

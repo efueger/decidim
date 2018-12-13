@@ -75,6 +75,7 @@ fi:
             proposal_wizard_step_2_help_text: Ohjattu ohjattu "Vertaile" vaiheen ohjeteksti
             proposal_wizard_step_3_help_text: Ohjattu ohjattu "Valmis" vaiheen ohjeteksti
             proposal_wizard_step_4_help_text: Ohjattu ohjattu "julkaise" vaiheen ohjeteksti
+            split_proposal_enabled: Split officials and citizens proposals
             threshold_per_proposal: Kynnys ehdotusta kohden
             vote_limit: Äänestysraja käyttäjää kohden
           step:
@@ -280,6 +281,8 @@ fi:
         create:
           error: Äänestettäessä ehdotusta tapahtui virhe.
       proposals:
+        citizens_proposals:
+          see_all: See all citizens proposals
         compare:
           mine_is_different: Ehdotukseni on erilainen
           no_similars_found: Hyvin tehty! Vastaavia ehdotuksia ei löytynyt
@@ -290,9 +293,23 @@ fi:
           send: Lähetä
           title: Viimeistele ehdotuksesi
         count:
+          citizens_proposals:
+            one: Citizen proposal
+            other: Citizens proposals
+          citizens_proposals_count:
+            one: 1 citizen proposal
+            other: "%{count} citizens proposals"
+          officials_proposals:
+            one: Official proposal
+            other: Officials proposals
+          officials_proposals_count:
+            one: 1 official proposal
+            other: "%{count} officials proposals"
           proposals_count:
             one: 1 ehdotus
             other: "%{count} ehdotusta"
+        display_type:
+          label: 'Display :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ fi:
         new:
           send: Jatka
           title: Luo ehdotuksesi
+        officials_proposals:
+          see_all: See all officials proposals
         orders:
           label: 'Järjestä ehdotukset:'
           most_voted: Eniten ääniä saaneet
@@ -365,6 +384,11 @@ fi:
         proposal:
           creation_date: 'Luontiaika: %{date}'
           view_proposal: Näytä ehdotus
+        proposal_column:
+          creation_date: 'Creation: %{date}'
+          view_proposal: View proposal
+        proposal_list:
+          view_proposal: View proposal
         show:
           edit_proposal: Muokkaa ehdotusta
           endorsements_list: Luettelo hyväksynnästä
@@ -395,6 +419,11 @@ fi:
           maximum_votes_reached: Vote limit reached
           most_popular_proposal: Most popular proposal
           need_more_votes: Need more votes
+          no_votes_remaining: No votes remaining
+          votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Vote limit reached
+          neutral: Neutral
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
         votes_count:

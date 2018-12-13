@@ -83,6 +83,8 @@ search:
 # translation:
 #   # Get an API key and set billing info at https://code.google.com/apis/console to use Google Translate
 #   api_key: "AbC-dEf5"
+# translation:
+#   deepl_api_key: "AbC-dEf5"
 
 # Do not consider these keys missing:
 ignore_missing:
@@ -91,6 +93,8 @@ ignore_missing:
   - email_intro
   - email_outro
   - notification_title
+  - officials_proposals_count
+  - citizens_proposals_count
 
 # Consider these keys used:
 ignore_unused:
@@ -146,6 +150,8 @@ ignore_unused:
   - doorkeeper.scopes.*
   - decidim.proposals.proposals.votes_count.count.*
   - decidim.proposals.proposals.show.hidden_endorsers_count.*
+  - decidim.proposals.proposals.count.*
+  - decidim.proposals.proposals.vote_weight_button.*
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:

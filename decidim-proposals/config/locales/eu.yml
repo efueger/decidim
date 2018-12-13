@@ -75,6 +75,7 @@ eu:
             proposal_wizard_step_2_help_text: Proposamen laguntzailea "Konparatu" urrats laguntza testua
             proposal_wizard_step_3_help_text: Proposamen laguntzailea "Bete" urrats laguntza testua
             proposal_wizard_step_4_help_text: Proposamen laguntzailea "Argitaratu" urrats laguntza testua
+            split_proposal_enabled: Split officials and citizens proposals
             threshold_per_proposal: Proposamen bakoitzeko atalasea
             vote_limit: Erabiltzaile bakoitzari botoa emateko muga
           step:
@@ -280,6 +281,8 @@ eu:
         create:
           error: Erroreak gertatu dira proposamena bozkatzean.
       proposals:
+        citizens_proposals:
+          see_all: See all citizens proposals
         compare:
           mine_is_different: Nire proposamena desberdina da
           no_similars_found: Ongi egina! Ez da antzeko proposamenik aurkitu
@@ -290,9 +293,23 @@ eu:
           send: Bidali
           title: Zure proposamena osatzea
         count:
+          citizens_proposals:
+            one: Citizen proposal
+            other: Citizens proposals
+          citizens_proposals_count:
+            one: 1 citizen proposal
+            other: "%{count} citizens proposals"
+          officials_proposals:
+            one: Official proposal
+            other: Officials proposals
+          officials_proposals_count:
+            one: 1 official proposal
+            other: "%{count} officials proposals"
           proposals_count:
             one: 1 proposamen
             other: "%{count} proposamen"
+        display_type:
+          label: 'Display :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ eu:
         new:
           send: Jarraitu
           title: Sortu zure proposamena
+        officials_proposals:
+          see_all: See all officials proposals
         orders:
           label: 'Antolatu proposamenak honen arabera:'
           most_voted: Bozkatuenak
@@ -365,6 +384,11 @@ eu:
         proposal:
           creation_date: 'Sorkuntza: %{date}'
           view_proposal: Ikusi proposamena
+        proposal_column:
+          creation_date: 'Creation: %{date}'
+          view_proposal: View proposal
+        proposal_list:
+          view_proposal: View proposal
         show:
           edit_proposal: Editatu proposamena
           endorsements_list: Onarpenen zerrenda
@@ -395,6 +419,11 @@ eu:
           maximum_votes_reached: Vote limit reached
           most_popular_proposal: Most popular proposal
           need_more_votes: Need more votes
+          no_votes_remaining: No votes remaining
+          votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Vote limit reached
+          neutral: Neutral
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
         votes_count:

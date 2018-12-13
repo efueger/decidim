@@ -75,6 +75,7 @@ it:
             proposal_wizard_step_2_help_text: Procedura guidata di proposta "Confronta" il testo della guida del passo
             proposal_wizard_step_3_help_text: Procedura guidata "Completa" del testo della guida guidata della proposta
             proposal_wizard_step_4_help_text: Procedura guidata "Pubblica" del testo della guida per la procedura guidata
+            split_proposal_enabled: Dividere i funzionari e le proposte dei cittadini
             threshold_per_proposal: Soglia per proposta
             vote_limit: Limite di voto per utente
           step:
@@ -280,6 +281,8 @@ it:
         create:
           error: Ci sono stati errori durante la votazione della proposta.
       proposals:
+        citizens_proposals:
+          see_all: Vedi tutte le proposte dei cittadini
         compare:
           mine_is_different: La mia proposta è diversa
           no_similars_found: Molto bene! Non sono state trovate proposte simili
@@ -290,9 +293,23 @@ it:
           send: Inviare
           title: Completa la tua proposta
         count:
+          citizens_proposals:
+            one: Proposta del cittadino
+            other: Proposte dei cittadini
+          citizens_proposals_count:
+            one: 1 proposta del cittadino
+            other: "%{contare} proposte dei cittadini"
+          officials_proposals:
+            one: Proposta ufficiale
+            other: Proposte dei funzionari
+          officials_proposals_count:
+            one: 1 proposta ufficiale
+            other: "%{count} proposte di funzionari"
           proposals_count:
             one: 1 proposta
             other: "%{count} proposte"
+        display_type:
+          label: 'Visualizzazione :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ it:
         new:
           send: Continua
           title: Crea la tua proposta
+        officials_proposals:
+          see_all: Vedi tutte le proposte dei funzionari
         orders:
           label: 'Ordina le proposte per:'
           most_voted: Più votate
@@ -365,6 +384,11 @@ it:
         proposal:
           creation_date: 'Creazione: %{date}'
           view_proposal: Visualizza la proposta
+        proposal_column:
+          creation_date: 'Creazione: %{date}'
+          view_proposal: Visualizza proposta
+        proposal_list:
+          view_proposal: Visualizza proposta
         show:
           edit_proposal: Modifica la proposta
           endorsements_list: Elenco di approvazioni
@@ -397,6 +421,11 @@ it:
           need_more_votes: Need more votes
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Limite di voto raggiunto
+          neutral: Neutro
+          no_votes_remaining: Nessun voto rimanente
+          votes_blocked: Voto disattivato
         votes_count:
           count:
             one: VOTO

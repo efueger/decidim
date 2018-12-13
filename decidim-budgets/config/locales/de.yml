@@ -10,6 +10,9 @@ de:
         proposal_ids: Ähnliche Vorschläge
         title: Titel
   activerecord:
+    errors:
+      messages:
+        equal_to: muss gleich %{count} sein
     models:
       decidim/budgets/project:
         one: Projekt
@@ -38,6 +41,9 @@ de:
           edit:
             title: Projekt bearbeiten
             update: Aktualisieren
+          form:
+            fields:
+              address: Adresse
           index:
             finished_orders: Beendete Stimmen
             pending_orders: Schwebende Stimmen
@@ -56,6 +62,7 @@ de:
       models:
         project:
           fields:
+            map: Karte
             title: Titel
       projects:
         budget_confirm:
@@ -76,7 +83,8 @@ de:
           checked_out:
             description: Sie haben bereits für das Budget gestimmt. Wenn Sie Ihre Meinung geändert haben, können Sie %{cancel_link}.
             title: Haushaltsabstimmung abgeschlossen
-          description: Für welche Projekte sollten wir das Budget bereitstellen? Weisen Sie den gewünschten Projekten mindestens %{minimum_budget} zu und stimmen Sie mit Ihren Einstellungen ab, um das Budget zu definieren.
+          description_per_budget: Für welche Projekte sollten wir Ihrer Meinung nach Budget bereitstellen? Weisen Sie den gewünschten Projekten mindestens %{minimum_budget} zu und stimmen Sie mit Ihren Wünschen ab, um das Budget festzulegen.
+          description_per_project: Für welche Projekte sollten wir Ihrer Meinung nach ein Budget bereitstellen? Wählen Sie %{minimum_project} Projekte und validieren Sie Ihre Stimme. Achtung, alle Stimmen sind unwiderruflich.
           title: Sie entscheiden über das Budget
         count:
           projects_count:
@@ -91,14 +99,34 @@ de:
           filter: Filter
           filter_by: Filtern nach
           unfold: Entfalten
+        index:
+          view_project: Projekt ansehen
+        limit_excess:
+          close: Schließen
+          description_per_budget: Dieses Projekt überschreitet das maximale Budget und kann nicht hinzugefügt werden. Wenn Sie möchten, können Sie ein Projekt löschen, das Sie bereits zum Hinzufügen ausgewählt haben, oder Ihre Stimme mit Ihren Einstellungen abgeben.
+          description_per_project: Sie haben die maximale Anzahl von Projekten erreicht, die für dieses Budget zulässig sind. Wenn Sie möchten, können Sie ein Projekt löschen, das Sie bereits ausgewählt haben.
+          ok: OK
+          title_per_budget: Maximales Budget überschritten
+          title_per_project: Maximale Anzahl der erreichten Projekte
         order_progress:
           vote: Abstimmung
         order_selected_projects:
+          choose: Choisissez Zugabe
+          per_project:
+            one: projekt ausgewählt aus einer Gesamtzahl von
+            other: projekte ausgewählt aus einer Gesamtzahl von
+          remaining_projects:
+            one: 1 Projekt, um deine Stimme zu bestätigen.
+            other: "%{count} Projekte, um Ihre Stimme zu bestätigen."
           remove: Löschen
           selected_projects:
             one: Projekt ausgewählt
             other: ausgewählte Projekte
+          total_projects:
+            one: projekt
+            other: projekte
           view: Aussicht
+          vote: Wähler
         project:
           add: Hinzufügen
           count:
@@ -121,8 +149,12 @@ de:
           global:
             announcement: Ankündigung
             comments_enabled: Kommentare aktiviert
+            geocoding_enabled: Geokodierung aktiviert
             projects_per_page: Projekte pro Seite
             total_budget: Gesamtbudget; Gesamtetat
+            total_projects: Gesamtzahl der Projekte
+            vote_per_budget: budgetsumme aktiviert (Standard)
+            vote_per_project: projektnummer aktiviert
             vote_threshold_percent: Abstimmungsschwelle in Prozent
           step:
             announcement: Ankündigung

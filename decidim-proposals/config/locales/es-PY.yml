@@ -75,6 +75,7 @@ es-PY:
             proposal_wizard_step_2_help_text: Asistente de propuesta "Comparar" texto de ayuda paso
             proposal_wizard_step_3_help_text: Texto de ayuda al paso "Completar" de propuestas
             proposal_wizard_step_4_help_text: Asistente de propuesta Texto de ayuda paso "Publicar"
+            split_proposal_enabled: Dividir las propuestas de los funcionarios y de los ciudadanos
             threshold_per_proposal: Umbral por propuesta
             vote_limit: Límite de voto por usuario
           step:
@@ -280,6 +281,8 @@ es-PY:
         create:
           error: Ha habido errores al votar la propuesta.
       proposals:
+        citizens_proposals:
+          see_all: Ver todas las propuestas de los ciudadanos
         compare:
           mine_is_different: Mi propuesta es diferente
           no_similars_found: "¡Bien hecho! No se encontraron propuestas similares"
@@ -290,9 +293,23 @@ es-PY:
           send: Enviar
           title: Completa tu propuesta
         count:
+          citizens_proposals:
+            one: Propuesta ciudadana
+            other: Propuestas ciudadanas
+          citizens_proposals_count:
+            one: 1 propuesta ciudadana
+            other: "%{contar} propuestas ciudadanas"
+          officials_proposals:
+            one: Propuesta oficial
+            other: Propuestas de los funcionarios
+          officials_proposals_count:
+            one: 1 propuesta oficial
+            other: "%{conteo} propuestas de los funcionarios"
           proposals_count:
             one: 1 propuesta
             other: "%{count} propuestas"
+        display_type:
+          label: Visualizar
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ es-PY:
         new:
           send: Continuar
           title: Crea tu propuesta
+        officials_proposals:
+          see_all: Ver todas las propuestas de los funcionarios
         orders:
           label: 'Ordenar propuestas por:'
           most_voted: Más votado
@@ -364,6 +383,11 @@ es-PY:
           update_pos: Mettre à jour la position
         proposal:
           creation_date: 'Creación: %{date}'
+          view_proposal: Ver propuesta
+        proposal_column:
+          creation_date: 'Creación: %{date}'
+          view_proposal: Ver propuesta
+        proposal_list:
           view_proposal: Ver propuesta
         show:
           edit_proposal: Editar propuesta
@@ -397,6 +421,11 @@ es-PY:
           need_more_votes: Need more votes
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Límite de votos alcanzado
+          neutral: Neutral
+          no_votes_remaining: No hay votos restantes
+          votes_blocked: Votación desactivada
         votes_count:
           count:
             one: APOYO

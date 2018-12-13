@@ -83,6 +83,7 @@ ru:
             proposal_wizard_step_2_help_text: Справка мастера предложений о шаге "Сравнить"
             proposal_wizard_step_3_help_text: Справка мастера предложений о шаге "Завершить"
             proposal_wizard_step_4_help_text: Справка мастера предложений о шаге "Обнародовать"
+            split_proposal_enabled: Раздельные предложения должностных лиц и граждан
             threshold_per_proposal: Порог для каждого предложения
             vote_limit: Предельное количество голосов для одного участника
           step:
@@ -288,6 +289,8 @@ ru:
         create:
           error: При голосовании по этому предложению произошли ошибки.
       proposals:
+        citizens_proposals:
+          see_all: Ознакомьтесь с предложениями всех граждан
         compare:
           mine_is_different: Мое предложение отличается
           no_similars_found: Хорошая работа! Подобных предложений не найдено
@@ -298,11 +301,25 @@ ru:
           send: Отправить
           title: Завершите свое предложение
         count:
+          citizens_proposals:
+            one: Предложение гражданина
+            other: Предложения граждан
+          citizens_proposals_count:
+            one: 1 гражданское предложение
+            other: "%  предложения граждан"
+          officials_proposals:
+            one: Официальное предложение
+            other: Предложения должностных лиц
+          officials_proposals_count:
+            one: 1 официальное предложение
+            other: "%  Предложения чиновников"
           proposals_count:
             few: "%{count} предложения"
             many: "%{count} предложений"
             one: 1 предложение
             other: "%{count} предложений"
+        display_type:
+          label: 'Дисплей :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -357,6 +374,8 @@ ru:
         new:
           send: Продолжить
           title: Создайте свое предложение
+        officials_proposals:
+          see_all: Ознакомьтесь со всеми предложениями официальных лиц
         orders:
           label: 'Упорядочить предложения по:'
           most_voted: С наибольшим количеством голосов
@@ -378,6 +397,11 @@ ru:
           update_pos: Mettre à jour la position
         proposal:
           creation_date: 'Создано: %{date}'
+          view_proposal: Просмотреть предложение
+        proposal_column:
+          creation_date: 'Творение: %% от общего числа  '
+          view_proposal: Просмотреть предложение
+        proposal_list:
           view_proposal: Просмотреть предложение
         show:
           edit_proposal: Редактировать предложение
@@ -413,6 +437,11 @@ ru:
           need_more_votes: Need more votes
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Достигнут лимит голосов
+          neutral: Нейтральный
+          no_votes_remaining: Голосований не осталось
+          votes_blocked: Голосование отключено
         votes_count:
           count:
             few: ГОЛОСА

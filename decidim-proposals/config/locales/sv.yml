@@ -75,6 +75,7 @@ sv:
             proposal_wizard_step_2_help_text: Hjälptext till steget "Jämför" i förslagsguiden
             proposal_wizard_step_3_help_text: Hjälptext till steget "Komplett" i förslagsguiden
             proposal_wizard_step_4_help_text: Förslagsguiden "Publicera" steg hjälptext
+            split_proposal_enabled: Split officials and citizens proposals
             threshold_per_proposal: Tröskel per förslag
             vote_limit: Röstningsgräns per användare
           step:
@@ -280,6 +281,8 @@ sv:
         create:
           error: Det har uppstått fel när man röstade om förslaget.
       proposals:
+        citizens_proposals:
+          see_all: See all citizens proposals
         compare:
           mine_is_different: Mitt förslag är annorlunda
           no_similars_found: Bra gjort! Inga liknande förslag hittades
@@ -290,9 +293,23 @@ sv:
           send: Skicka
           title: Färdigställ ditt förslag
         count:
+          citizens_proposals:
+            one: Citizen proposal
+            other: Citizens proposals
+          citizens_proposals_count:
+            one: 1 citizen proposal
+            other: "%{count} citizens proposals"
+          officials_proposals:
+            one: Official proposal
+            other: Officials proposals
+          officials_proposals_count:
+            one: 1 official proposal
+            other: "%{count} officials proposals"
           proposals_count:
             one: 1 förslag
             other: "%{count} förslag"
+        display_type:
+          label: 'Display :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ sv:
         new:
           send: Fortsätt
           title: Skapa ditt förslag
+        officials_proposals:
+          see_all: See all officials proposals
         orders:
           label: 'Beställ förslag av:'
           most_voted: Mest röstade
@@ -365,6 +384,11 @@ sv:
         proposal:
           creation_date: 'Skapat: %{date}'
           view_proposal: Visa förslag
+        proposal_column:
+          creation_date: 'Creation: %{date}'
+          view_proposal: View proposal
+        proposal_list:
+          view_proposal: View proposal
         show:
           edit_proposal: Redigera förslag
           endorsements_list: Förteckning över Stöd
@@ -395,6 +419,11 @@ sv:
           maximum_votes_reached: Vote limit reached
           most_popular_proposal: Most popular proposal
           need_more_votes: Need more votes
+          no_votes_remaining: No votes remaining
+          votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Vote limit reached
+          neutral: Neutral
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
         votes_count:

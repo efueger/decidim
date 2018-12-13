@@ -281,17 +281,8 @@ fr:
         create:
           error: Des erreurs se sont produites lors du soutien de la proposition.
       proposals:
-        display_type:
-          label: 'Affichage :'
         citizens_proposals:
           see_all: Voir toutes les propositions citoyennes
-        officials_proposals:
-          see_all: Voir toutes les propositions officielles
-        vote_weight_button:
-          neutral: Neutre
-          maximum_votes_reached: Nb max de votes atteint
-          no_votes_remaining: Aucun vote restant
-          votes_blocked: Votes désactivés
         compare:
           mine_is_different: Ma proposition est différente
           no_similars_found: Bien joué ! Aucune proposition similaire n'a été trouvée
@@ -302,22 +293,24 @@ fr:
           send: Envoyer
           title: Complétez votre proposition
         count:
-          proposals_count:
-            one: 1 proposition
-            other: "%{count} propositions"
-          citizens_proposals_count:
-            one: 1 proposition citoyenne
-            other: "%{count} propositions citoyennes"
-          officials_proposals_count:
-            one: 1 proposition officielle
-            other: "%{count} propositions officielles"
           citizens_proposals:
             one: Proposition citoyenne
             other: Propositions citoyennes
+          citizens_proposals_count:
+            one: 1 proposition citoyenne
+            other: "%{count} propositions citoyennes"
           officials_proposals:
             one: Proposition officielle
             other: Propositions officielles
             zero: "%{count} proposition"
+          officials_proposals_count:
+            one: 1 proposition officielle
+            other: "%{count} propositions officielles"
+          proposals_count:
+            one: 1 proposition
+            other: "%{count} propositions"
+        display_type:
+          label: 'Affichage :'
         dynamic_map_instructions:
           primary: Vous pouvez déplacer le point sur la carte.
           secondary: N'oubliez pas de cliquer sur le bouton "Mettre à jour la position" avant de publier votre proposition.
@@ -370,17 +363,13 @@ fr:
         new:
           send: Continuer
           title: Créer une proposition
+        officials_proposals:
+          see_all: Voir toutes les propositions officielles
         orders:
           label: 'Classement des propositions par :'
           most_voted: Les plus votées
           random: Aléatoire
           recent: Les plus récents
-        proposal_column:
-          creation_date: 'Création: %{date}'
-          view_proposal: Voir la proposition
-        proposal_list:
-          creation_date: 'Création: %{date}'
-          recent: Les plus récentes
         placeholder:
           address: 32 rue des cascades 75020 Paris
         preview:
@@ -396,6 +385,11 @@ fr:
         proposal:
           creation_date: 'Création : %{date}'
           view_proposal: Voir la proposition
+        proposal_column:
+          creation_date: 'Création: %{date}'
+          view_proposal: Voir la proposition
+        proposal_list:
+          view_proposal: View proposal
         show:
           edit_proposal: Modifier la proposition
           endorsements_list: Liste des soutiens
@@ -426,6 +420,11 @@ fr:
           maximum_votes_reached: Nombre maximum de votes atteint
           most_popular_proposal: Proposition la plus populaire
           need_more_votes: Besoin de plus de votes
+          no_votes_remaining: Aucun vote restant
+          votes_blocked: Votes désactivés
+        vote_weight_button:
+          maximum_votes_reached: Nb max de votes atteint
+          neutral: Neutre
           no_votes_remaining: Aucun vote restant
           votes_blocked: Votes désactivés
         votes_count:

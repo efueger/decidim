@@ -83,6 +83,7 @@ uk:
             proposal_wizard_step_2_help_text: Довідка майстра пропозицій щодо кроку "Порівняти"
             proposal_wizard_step_3_help_text: Довідка майстра пропозицій щодо кроку "Завершити"
             proposal_wizard_step_4_help_text: Довідка майстра пропозицій щодо кроку "Оприлюднити"
+            split_proposal_enabled: Split officials and citizens proposals
             threshold_per_proposal: Поріг на кожну пропозицію
             vote_limit: Гранична кількість голосів від одного учасника
           step:
@@ -288,6 +289,8 @@ uk:
         create:
           error: При голосуванні щодо пропозиції сталися помилки.
       proposals:
+        citizens_proposals:
+          see_all: See all citizens proposals
         compare:
           mine_is_different: Моя пропозиція інша
           no_similars_found: Гарна робота! Не знайдено схожий пропозицій
@@ -298,11 +301,25 @@ uk:
           send: Надіслати
           title: Завершіть свою пропозицію
         count:
+          citizens_proposals:
+            one: Citizen proposal
+            other: Citizens proposals
+          citizens_proposals_count:
+            one: 1 citizen proposal
+            other: "%{count} citizens proposals"
+          officials_proposals:
+            one: Official proposal
+            other: Officials proposals
+          officials_proposals_count:
+            one: 1 official proposal
+            other: "%{count} officials proposals"
           proposals_count:
             few: "%{count} пропозиції"
             many: "%{count} пропозицій"
             one: 1 пропозиція
             other: "%{count} пропозицій"
+        display_type:
+          label: 'Display :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -357,6 +374,8 @@ uk:
         new:
           send: Продовжити
           title: Внесіть свою пропозицію
+        officials_proposals:
+          see_all: See all officials proposals
         orders:
           label: 'Впорядкувати пропозиції за:'
           most_voted: Отримали найбільше голосів
@@ -379,6 +398,11 @@ uk:
         proposal:
           creation_date: 'Внесено: %{date}'
           view_proposal: Переглянути пропозицію
+        proposal_column:
+          creation_date: 'Creation: %{date}'
+          view_proposal: View proposal
+        proposal_list:
+          view_proposal: View proposal
         show:
           edit_proposal: Редагувати пропозицію
           endorsements_list: Перелік тих, хто підтримав
@@ -411,6 +435,11 @@ uk:
           maximum_votes_reached: Vote limit reached
           most_popular_proposal: Most popular proposal
           need_more_votes: Need more votes
+          no_votes_remaining: No votes remaining
+          votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Vote limit reached
+          neutral: Neutral
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
         votes_count:

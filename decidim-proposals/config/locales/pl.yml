@@ -83,6 +83,7 @@ pl:
             proposal_wizard_step_2_help_text: Kreator propozycji "Porównaj" tekst pomocy
             proposal_wizard_step_3_help_text: Kreator propozycji "Zakończ" tekst pomocy
             proposal_wizard_step_4_help_text: Kreator propozycji "Pomoc do opublikowania" tekstu pomocy
+            split_proposal_enabled: Podziel wnioski urzędników i obywateli
             threshold_per_proposal: Próg na wniosek
             vote_limit: Limit głosowania na użytkownika
           step:
@@ -288,6 +289,8 @@ pl:
         create:
           error: Podczas głosowania nad propozycją wystąpiły błędy.
       proposals:
+        citizens_proposals:
+          see_all: Zobacz wszystkie propozycje dla obywateli
         compare:
           mine_is_different: Moja propozycja jest inna
           no_similars_found: Dobra robota! Nie znaleziono podobnych propozycji
@@ -298,11 +301,25 @@ pl:
           send: Wysłać
           title: Uzupełnij swoją propozycję
         count:
+          citizens_proposals:
+            one: Propozycja obywatelska
+            other: Propozycje obywatelskie
+          citizens_proposals_count:
+            one: 1 wniosek obywatelski
+            other: "%{liczba} propozycje obywatelskie"
+          officials_proposals:
+            one: Oficjalny wniosek
+            other: Wnioski urzędników
+          officials_proposals_count:
+            one: 1 oficjalny wniosek
+            other: "%{liczba} propozycje urzędników"
           proposals_count:
             few: "%{count} propozycje"
             many: "%{count} propozycje"
             one: 1 propozycja
             other: "%{count} propozycje"
+        display_type:
+          label: 'Wyświetlacz :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -357,6 +374,8 @@ pl:
         new:
           send: dalej
           title: Utwórz swoją ofertę
+        officials_proposals:
+          see_all: Zobacz wszystkie wnioski urzędników
         orders:
           label: 'Propozycje zamówień:'
           most_voted: Większość głosów
@@ -379,6 +398,11 @@ pl:
         proposal:
           creation_date: 'Tworzenie: %{date}'
           view_proposal: Wyświetl propozycję
+        proposal_column:
+          creation_date: 'Tworzenie: %{data}'
+          view_proposal: Zobacz propozycję
+        proposal_list:
+          view_proposal: Zobacz propozycję
         show:
           edit_proposal: Edytuj propozycję
           endorsements_list: Lista rekomendacji
@@ -413,6 +437,11 @@ pl:
           need_more_votes: Need more votes
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Osiągnięty limit głosów
+          neutral: Neutralne
+          no_votes_remaining: Liczba głosów pozostałych do obsadzenia
+          votes_blocked: Głosowanie niepełnosprawni
         votes_count:
           count:
             few: GŁOSOWANIA

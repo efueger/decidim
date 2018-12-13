@@ -75,6 +75,7 @@ nl:
             proposal_wizard_step_2_help_text: Helptekst "Vergelijk" bij het maken van een nieuw voorstel
             proposal_wizard_step_3_help_text: Voorstel wizard "Complete" stap helptekst
             proposal_wizard_step_4_help_text: Helptekst "Publiceren" bij het maken van een nieuw voorstel
+            split_proposal_enabled: Gesplitste voorstellen voor ambtenaren en burgers
             threshold_per_proposal: Limiet per voorstel
             vote_limit: Limiet van het aantal stemmen per gebruiker
           step:
@@ -282,6 +283,8 @@ nl:
         create:
           error: Er zijn fouten geweest bij het stemmen van het voorstel.
       proposals:
+        citizens_proposals:
+          see_all: Bekijk alle voorstellen van de burgers
         compare:
           mine_is_different: Mijn voorstel is anders
           no_similars_found: Goed gedaan! Geen vergelijkbare voorstellen gevonden
@@ -292,9 +295,23 @@ nl:
           send: Sturen
           title: Maak uw voorstel af
         count:
+          citizens_proposals:
+            one: Burger voorstel
+            other: Voorstellen van burgers
+          citizens_proposals_count:
+            one: 1 voorstel van de burger
+            other: "%{telling} voorstellen van burgers"
+          officials_proposals:
+            one: Officieel voorstel
+            other: Voorstellen van ambtenaren
+          officials_proposals_count:
+            one: 1 officieel voorstel
+            other: "%{telling} voorstellen van ambtenaren"
           proposals_count:
             one: 1 voorstel
             other: "%{count} voorstellen"
+        display_type:
+          label: 'Weergave :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -347,6 +364,8 @@ nl:
         new:
           send: Doorgaan
           title: Maak voorstel aan
+        officials_proposals:
+          see_all: Zie alle voorstellen van de ambtenaren
         orders:
           label: 'Bestelling sorteren op:'
           most_voted: Meeste stemmen
@@ -366,6 +385,11 @@ nl:
           update_pos: Mettre à jour la position
         proposal:
           creation_date: 'Aangemaakt op: %{date}'
+          view_proposal: Bekijk voorstel
+        proposal_column:
+          creation_date: 'Creatie: %{datum}'
+          view_proposal: Bekijk voorstel
+        proposal_list:
           view_proposal: Bekijk voorstel
         show:
           edit_proposal: Bewerk voorstel
@@ -399,6 +423,11 @@ nl:
           need_more_votes: Meer stemmen nodig
           no_votes_remaining: Geen stemmen meer
           votes_blocked: Stemmen invalide
+        vote_weight_button:
+          maximum_votes_reached: Stemgrens bereikt
+          neutral: Neutraal
+          no_votes_remaining: Geen stemmen meer
+          votes_blocked: Stemmen met een handicap
         votes_count:
           count:
             one: STEM

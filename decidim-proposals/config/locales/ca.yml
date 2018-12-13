@@ -75,6 +75,7 @@ ca:
             proposal_wizard_step_2_help_text: Text del pas "Comparar" de l'assistent de propostes
             proposal_wizard_step_3_help_text: Text d'ajuda al pas de "completar" propostes
             proposal_wizard_step_4_help_text: Text del pas "Publicar" de l'assistent de propostes
+            split_proposal_enabled: Split officials and citizens proposals
             threshold_per_proposal: Llindar per proposta
             vote_limit: Límit de suports per usuari
           step:
@@ -280,6 +281,8 @@ ca:
         create:
           error: Hi ha hagut errors en donar suport a la proposta.
       proposals:
+        citizens_proposals:
+          see_all: See all citizens proposals
         compare:
           mine_is_different: La meva proposta és diferent
           no_similars_found: Ben fet! No s'han trobat propostes semblants
@@ -290,9 +293,23 @@ ca:
           send: Enviar
           title: Completa la teva proposta
         count:
+          citizens_proposals:
+            one: Citizen proposal
+            other: Citizens proposals
+          citizens_proposals_count:
+            one: 1 citizen proposal
+            other: "%{count} citizens proposals"
+          officials_proposals:
+            one: Official proposal
+            other: Officials proposals
+          officials_proposals_count:
+            one: 1 official proposal
+            other: "%{count} officials proposals"
           proposals_count:
             one: 1 proposta
             other: "%{count} propostes"
+        display_type:
+          label: 'Display :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ ca:
         new:
           send: Continua
           title: Crea la teva proposta
+        officials_proposals:
+          see_all: See all officials proposals
         orders:
           label: 'Ordenar propostes per:'
           most_voted: Ha rebut més suports
@@ -365,6 +384,11 @@ ca:
         proposal:
           creation_date: 'Creació: %{date}'
           view_proposal: Veure proposta
+        proposal_column:
+          creation_date: 'Creation: %{date}'
+          view_proposal: View proposal
+        proposal_list:
+          view_proposal: View proposal
         show:
           edit_proposal: Editar proposta
           endorsements_list: Llista d'adhesions
@@ -395,6 +419,11 @@ ca:
           maximum_votes_reached: Vote limit reached
           most_popular_proposal: Most popular proposal
           need_more_votes: Need more votes
+          no_votes_remaining: No votes remaining
+          votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Vote limit reached
+          neutral: Neutral
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
         votes_count:

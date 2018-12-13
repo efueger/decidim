@@ -75,6 +75,7 @@ de:
             proposal_wizard_step_2_help_text: Angebotsassistent "Vergleichen" Schritt-Hilfetext
             proposal_wizard_step_3_help_text: Angebotsassistent "Schritt" - Hilfetext "Fertig"
             proposal_wizard_step_4_help_text: Angebotsassistent "Veröffentlichen" Schritt-Hilfetext
+            split_proposal_enabled: Split Beamte und Bürger Vorschläge
             threshold_per_proposal: Schwellenwert pro Angebot
             vote_limit: Wahllimit pro Benutzer
           step:
@@ -280,6 +281,8 @@ de:
         create:
           error: Es gab Fehler bei der Abstimmung des Vorschlags.
       proposals:
+        citizens_proposals:
+          see_all: Alle Vorschläge der Bürger ansehen
         compare:
           mine_is_different: Mein Vorschlag ist anders
           no_similars_found: Gut gemacht! Keine ähnlichen Vorschläge gefunden
@@ -290,9 +293,23 @@ de:
           send: Senden
           title: Vervollständigen Sie Ihren Vorschlag
         count:
+          citizens_proposals:
+            one: Bürgerlicher Vorschlag
+            other: Vorschläge der Bürger
+          citizens_proposals_count:
+            one: 1 Bürgerantrag
+            other: "%{count} Bürger Vorschläge"
+          officials_proposals:
+            one: Offizieller Vorschlag
+            other: Vorschläge der Beamten
+          officials_proposals_count:
+            one: 1 offizieller Vorschlag
+            other: "%{count} offizielle Vorschläge"
           proposals_count:
             one: 1 Vorschlag
             other: "%{count} Vorschläge"
+        display_type:
+          label: 'Anzeigen:'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ de:
         new:
           send: Fortsetzen
           title: Erstellen Sie Ihren Vorschlag
+        officials_proposals:
+          see_all: Alle Vorschläge der Beamten anzeigen
         orders:
           label: 'Bestellvorschläge von:'
           most_voted: Die meisten haben gewählt
@@ -365,6 +384,11 @@ de:
         proposal:
           creation_date: 'Erstellung: %{date}'
           view_proposal: Angebot anzeigen
+        proposal_column:
+          creation_date: 'Erstellung: %{Datum}>'
+          view_proposal: Vorschlag ansehen
+        proposal_list:
+          view_proposal: Vorschlag ansehen
         show:
           edit_proposal: Angebot bearbeiten
           endorsements_list: Liste der Empfehlungen
@@ -397,6 +421,11 @@ de:
           need_more_votes: Need more votes
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Stimmrechtslimit erreicht
+          neutral: Neutral
+          no_votes_remaining: Keine Stimmen mehr vorhanden
+          votes_blocked: Stimmabgabe deaktiviert
         votes_count:
           count:
             one: ABSTIMMUNG

@@ -75,6 +75,7 @@ gl:
             proposal_wizard_step_2_help_text: Asistente de propostas "Comparar" texto de axuda paso a paso
             proposal_wizard_step_3_help_text: Asistente de propostas Texto de axuda de paso "Completo"
             proposal_wizard_step_4_help_text: Asistente de propostas "Publica" o texto de axuda paso a paso
+            split_proposal_enabled: Split officials and citizens proposals
             threshold_per_proposal: Umbral por proposta
             vote_limit: Límite de voto por usuario
           step:
@@ -280,6 +281,8 @@ gl:
         create:
           error: Houbo erros ao votar a proposta.
       proposals:
+        citizens_proposals:
+          see_all: See all citizens proposals
         compare:
           mine_is_different: A miña proposta é diferente
           no_similars_found: Ben feito! Non se atoparon propostas similares
@@ -290,9 +293,23 @@ gl:
           send: Enviar
           title: Completa a túa proposta
         count:
+          citizens_proposals:
+            one: Citizen proposal
+            other: Citizens proposals
+          citizens_proposals_count:
+            one: 1 citizen proposal
+            other: "%{count} citizens proposals"
+          officials_proposals:
+            one: Official proposal
+            other: Officials proposals
+          officials_proposals_count:
+            one: 1 official proposal
+            other: "%{count} officials proposals"
           proposals_count:
             one: 1 proposta
             other: "%{count} propostas"
+        display_type:
+          label: 'Display :'
         dynamic_map_instructions:
           primary: You can move the point on the map.
           secondary: Don't forget to click on the "Update Position" button before publishing your proposal.
@@ -345,6 +362,8 @@ gl:
         new:
           send: Continuar
           title: Crea a túa proposta
+        officials_proposals:
+          see_all: See all officials proposals
         orders:
           label: 'Solicitar propostas por:'
           most_voted: A maioría votada
@@ -365,6 +384,11 @@ gl:
         proposal:
           creation_date: 'Creación: %{date}'
           view_proposal: Ver proposta
+        proposal_column:
+          creation_date: 'Creation: %{date}'
+          view_proposal: View proposal
+        proposal_list:
+          view_proposal: View proposal
         show:
           edit_proposal: Editar proposta
           endorsements_list: Lista de avales
@@ -395,6 +419,11 @@ gl:
           maximum_votes_reached: Vote limit reached
           most_popular_proposal: Most popular proposal
           need_more_votes: Need more votes
+          no_votes_remaining: No votes remaining
+          votes_blocked: Voting disabled
+        vote_weight_button:
+          maximum_votes_reached: Vote limit reached
+          neutral: Neutral
           no_votes_remaining: No votes remaining
           votes_blocked: Voting disabled
         votes_count:
