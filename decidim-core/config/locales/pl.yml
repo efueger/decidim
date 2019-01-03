@@ -934,7 +934,7 @@ pl:
         error: Wystąpił błąd podczas tworzenia raportu. Proszę spróbować ponownie.
         success: Raport został utworzony z powodzeniem i zostanie poddany przeglądowi przez administratora.
     scopes:
-      global: Overall scope
+      global: Global scope
       picker:
         cancel: Anuluj
         choose: Wybierz

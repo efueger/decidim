@@ -924,7 +924,7 @@ eu:
         error: Errorea gertatu da edukia salatzean. Mesedez, saiatu berriro.
         success: Salaketa zuzen sortu da, eta administratzaile batek aztertuko du.
     scopes:
-      global: Overall scope
+      global: Global scope
       picker:
         cancel: Utzi
         choose: Aukeratu
