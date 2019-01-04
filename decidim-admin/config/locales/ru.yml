@@ -330,6 +330,7 @@ ru:
         help_sections: Help sections
         homepage: Домашняя страница
         impersonations: Выступления в роли участника
+        navbar_links: Navbar links
         newsletters: Рассылки новостей
         oauth_applications: Приложения OAuth
         participants: Participants

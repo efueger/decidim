@@ -330,6 +330,7 @@ it:
         help_sections: Aiuto sezioni
         homepage: Homepage
         impersonations: impersonations
+        navbar_links: Navbar links
         newsletters: Newsletters
         oauth_applications: Applicazioni OAuth
         participants: I partecipanti

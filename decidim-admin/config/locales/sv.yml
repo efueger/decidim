@@ -330,6 +330,7 @@ sv:
         help_sections: Hjälpavsnitt
         homepage: Hemsida
         impersonations: impersonations
+        navbar_links: Navbar links
         newsletters: Nyhetsbrev
         oauth_applications: OAuth applikationer
         participants: Deltagarna

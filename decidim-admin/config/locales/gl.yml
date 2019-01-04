@@ -330,6 +330,7 @@ gl:
         help_sections: Seccións de axuda
         homepage: Páxina de inicio
         impersonations: Impersonacións
+        navbar_links: Navbar links
         newsletters: Boletíns informativos
         oauth_applications: Aplicacións OAuth
         participants: Participantes

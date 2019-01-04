@@ -330,6 +330,7 @@ nl:
         help_sections: Help secties
         homepage: Startpagina
         impersonations: Zich voordoen als
+        navbar_links: Navbar links
         newsletters: Nieuwsbrieven
         oauth_applications: OAuth-toepassingen
         participants: Deelnemers

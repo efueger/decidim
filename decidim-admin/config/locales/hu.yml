@@ -330,6 +330,7 @@ hu:
         help_sections: Segítségrészek
         homepage: Homepage
         impersonations: Felhatalmazások
+        navbar_links: Navbar links
         newsletters: Hírlevelek
         oauth_applications: OAuth alkalmazások
         participants: résztvevők
