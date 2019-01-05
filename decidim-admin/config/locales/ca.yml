@@ -127,7 +127,6 @@ ca:
         browse: Explorar
         export: Exporta
         manage: Gestionar
-        new: Nou %{name}
         permissions: Permisos
         reject: Rebutjar
         verify: Verificar

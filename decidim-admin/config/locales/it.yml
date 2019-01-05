@@ -127,7 +127,6 @@ it:
         browse: Naviga
         export: Esporta
         manage: Gestisci
-        new: Nuovo %{name}
         permissions: Permessi
         reject: Rifiutare
         verify: Verifica

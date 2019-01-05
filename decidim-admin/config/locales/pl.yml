@@ -127,7 +127,6 @@ pl:
         browse: Paść się
         export: Eksport
         manage: Zarządzanie
-        new: Nowe %{name}
         permissions: Uprawnienia
         reject: Odrzucać
         verify: Zweryfikować

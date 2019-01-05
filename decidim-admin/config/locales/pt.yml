@@ -127,7 +127,6 @@ pt:
         browse: Explorar
         export: Exportar
         manage: Gerir
-        new: Novo %{name}
         permissions: Permissões
         reject: Rejeitar
         verify: Verificar

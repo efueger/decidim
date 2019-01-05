@@ -127,7 +127,6 @@ ru:
         browse: Просмотреть
         export: Сохранить в виде файла
         manage: Управлять
-        new: Добавить %{name}
         permissions: Права
         reject: Отклонить
         verify: Подтвердить личность

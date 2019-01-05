@@ -852,10 +852,6 @@ nl:
         subheading: Navigeer door de helppagina's van %{name}
         title: Helpen
         topics: Onderwerpen
-      participatory_space:
-        metrics:
-          headline: Deelname aan cijfers
-          link: Toon alle statistieken
       terms_and_conditions:
         accept:
           error: Er is een fout opgetreden bij het accepteren van de algemene voorwaarden.

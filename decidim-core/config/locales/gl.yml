@@ -852,10 +852,6 @@ gl:
         subheading: Navega polas páxinas de axuda de %{name}
         title: Axuda
         topics: Temas
-      participatory_space:
-        metrics:
-          headline: Participación en números
-          link: Mostrar todas as estatísticas
       terms_and_conditions:
         accept:
           error: Produciuse un erro ao aceptar os termos e condicións.

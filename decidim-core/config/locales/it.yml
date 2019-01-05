@@ -852,10 +852,6 @@ it:
         subheading: Navigare attraverso le pagine di aiuto di %{name}
         title: Aiuto
         topics: Temi
-      participatory_space:
-        metrics:
-          headline: Partecipazione in cifre
-          link: Mostra tutte le statistiche
       terms_and_conditions:
         accept:
           error: Si è verificato un errore durante l'accettazione dei termini e delle condizioni.

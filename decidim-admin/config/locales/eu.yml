@@ -127,7 +127,6 @@ eu:
         browse: Arakatu
         export: Esportatu
         manage: Kudeatu
-        new: "%{name}berria"
         permissions: Baimenak
         reject: Ukatu
         verify: Egiaztatu

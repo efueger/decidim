@@ -852,10 +852,6 @@ ca:
         subheading: Navega per les pàgines d'ajuda de %{name}
         title: Ajuda
         topics: Temes
-      participatory_space:
-        metrics:
-          headline: Participació en xifres
-          link: Mostra totes les estadístiques
       terms_and_conditions:
         accept:
           error: S'ha produït un error en acceptar els Termes i Condicions.

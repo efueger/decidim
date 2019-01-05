@@ -862,10 +862,6 @@ pl:
         subheading: Przejdź przez strony pomocy %{name}
         title: Wsparcie
         topics: Tematy
-      participatory_space:
-        metrics:
-          headline: Udział w liczbach
-          link: Pokaż wszystkie statystyki
       terms_and_conditions:
         accept:
           error: Wystąpił błąd podczas akceptowania warunków.

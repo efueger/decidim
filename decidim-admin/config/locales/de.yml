@@ -127,7 +127,6 @@ de:
         browse: Durchsuche
         export: Export
         manage: Verwalten
-        new: Neu %{name}
         permissions: Berechtigungen
         reject: Ablehnen
         verify: Überprüfen

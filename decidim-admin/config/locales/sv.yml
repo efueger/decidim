@@ -127,7 +127,6 @@ sv:
         browse: Bläddra
         export: Exportera
         manage: Hantera
-        new: Ny %{name}
         permissions: Behörigheter
         reject: Avvisa
         verify: Kontrollera

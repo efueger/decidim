@@ -127,7 +127,6 @@ hu:
         browse: Böngészés
         export: Exportálás
         manage: Kezelés
-        new: Új %{name}
         permissions: Engedélyek
         reject: Elutasít
         verify: Ellenőrzés

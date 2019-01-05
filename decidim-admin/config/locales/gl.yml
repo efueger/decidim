@@ -127,7 +127,6 @@ gl:
         browse: Buscar
         export: Exportar
         manage: Xestionar
-        new: Novo %{name}
         permissions: Permisos
         reject: Rexeitar
         verify: Verifique

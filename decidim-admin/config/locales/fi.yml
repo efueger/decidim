@@ -127,7 +127,6 @@ fi:
         browse: Selaa
         export: Vie
         manage: Hallitse
-        new: Uusi %{name}
         permissions: Oikeudet
         reject: Hylkää
         verify: Vahvista
