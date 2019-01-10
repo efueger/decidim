@@ -26,7 +26,6 @@ module Decidim
     #
     # Returns nothing.
     def call
-      byebug
       search_results = Decidim::Searchable.searchable_resources.inject({}) do |results_by_type, (class_name, klass)|
         result_ids = filtered_query_for(class_name).pluck(:resource_id)
         results_count = result_ids.count

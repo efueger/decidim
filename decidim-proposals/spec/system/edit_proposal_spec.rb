@@ -67,8 +67,6 @@ describe "Edit proposals", type: :system do
           fill_in :proposal_address, with: new_address
         end
 
-
-
         click_button "Send"
         expect(page).to have_content(new_address)
       end
