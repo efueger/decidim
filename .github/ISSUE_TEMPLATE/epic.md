@@ -7,8 +7,6 @@ assignees: armandfardeau, lu-hamani, moustachu
 
 ---
 
-## Title
-
 ## Description
 
 
