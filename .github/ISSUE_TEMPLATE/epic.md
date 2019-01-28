@@ -1,6 +1,6 @@
 ---
 name: Epic
-about: Describe this issue template's purpose here.
+about: User story of user stories
 title: ''
 labels: epic
 assignees: armandfardeau, lu-hamani, moustachu
