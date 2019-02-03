@@ -149,5 +149,9 @@ Decidim::Core::Engine.routes.draw do
     get "/me" => "doorkeeper/credentials#me"
   end
 
+  Decidim::Assembly.where.not(hostname: [nil,""]).find_each do |assembly|
+    root to: "assemblies/assemblies#show", slug: assembly.slug, constraints: { host: assembly.hostname }
+  end
   root to: "homepage#show"
+
 end

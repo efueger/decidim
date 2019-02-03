@@ -16,6 +16,8 @@ gem "uglifier", "~> 4.1"
 
 gem "faker", "~> 1.9"
 
+gem "doc2text", "~> 0.4.0"
+
 group :development, :test do
   gem "byebug", "~> 10.0", platform: :mri
 

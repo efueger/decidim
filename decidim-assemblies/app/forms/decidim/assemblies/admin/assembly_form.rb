@@ -33,6 +33,7 @@ module Decidim
         mimic :assembly
 
         attribute :slug, String
+        attribute :hostname, String
         attribute :hashtag, String
         attribute :promoted, Boolean
         attribute :scopes_enabled, Boolean

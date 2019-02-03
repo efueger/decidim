@@ -58,6 +58,7 @@ module Decidim
             title: form.title,
             subtitle: form.subtitle,
             slug: form.slug,
+            hostname: form.hostname,
             hashtag: form.hashtag,
             hero_image: form.hero_image,
             remove_hero_image: form.remove_hero_image,

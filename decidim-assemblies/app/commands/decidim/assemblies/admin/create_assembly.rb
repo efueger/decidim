@@ -46,6 +46,7 @@ module Decidim
             title: form.title,
             subtitle: form.subtitle,
             slug: form.slug,
+            hostname: form.hostname,
             hashtag: form.hashtag,
             description: form.description,
             short_description: form.short_description,

@@ -28,6 +28,10 @@
         <p class="help-text"><%== t(".slug_help", url: decidim_form_slug_url(:assemblies, form.object.slug)) %></p>
       </div>
 
+      <div class="columns xlarge-6 hostname">
+        <%= form.text_field :hostname %>
+      </div>
+
       <div class="columns xlarge-6">
         <%= form.text_field :hashtag %>
       </div>

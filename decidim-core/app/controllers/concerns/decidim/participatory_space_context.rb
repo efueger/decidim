@@ -30,6 +30,7 @@ module Decidim
       helper_method :current_participatory_space_manifest
       helper_method :current_participatory_space_context
       helper_method :help_section, :help_id
+      helper_method :is_direct_participatory_space?
     end
 
     private
@@ -86,6 +87,10 @@ module Decidim
 
     def help_id
       @help_id ||= current_participatory_space_manifest.name
+    end
+
+    def is_direct_participatory_space?
+      request.env["decidim.is_direct_participatory_space"]
     end
   end
 end

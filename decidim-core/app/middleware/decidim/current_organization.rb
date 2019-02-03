@@ -23,26 +23,36 @@ module Decidim
         organization = find_secondary_host_org(env)
         return @app.call(env) unless organization
 
-        location = new_location_for(env, organization.host)
+        participatory_space = detect_current_participatory_space(env)
 
-        [301, { "Location" => location, "Content-Type" => "text/html", "Content-Length" => "0" }, []]
+        if participatory_space
+          env["decidim.current_organization"] = organization
+          env["decidim.current_participatory_space"] = participatory_space
+          env["decidim.is_direct_participatory_space"] = true
+          @app.call(env)
+        else
+          location = new_location_for(env, organization.host)
+          [301, { "Location" => location, "Content-Type" => "text/html", "Content-Length" => "0" }, []]
+        end
       end
     end
 
     private
 
     def detect_current_organization(env)
-      host = host_for(env)
-      Decidim::Organization.find_by(host: host)
+      Decidim::Organization.find_by(host: host_for(env))
+    end
+
+    def detect_current_participatory_space(env)
+      Decidim::Assembly.find_by(hostname: host_for(env))
     end
 
     def find_secondary_host_org(env)
-      host = host_for(env)
-      Decidim::Organization.find_by("? = ANY(secondary_hosts)", host)
+      Decidim::Organization.find_by("? = ANY(secondary_hosts)", host_for(env))
     end
 
     def host_for(env)
-      Rack::Request.new(env).host.downcase
+      @host ||= Rack::Request.new(env).host.downcase
     end
 
     def new_location_for(env, host)
