@@ -125,7 +125,9 @@ fr:
       actions:
         add: Ajouter
         browse: Parcourir
+        cancel: Annuler
         export: Exporter
+        filter: Filtrer
         manage: Gérer
         new: Nouveau %{name}
         permissions: Autorisations

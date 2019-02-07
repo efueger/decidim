@@ -8,11 +8,15 @@
   <td>
     <%= present(proposal).title %><br />
   </td>
-  <td>
-    <% if proposal.category %>
-      <%= translated_attribute proposal.category.name %>
-    <% end %>
-  </td>
+
+  <% unless params[:q] && params[:q][:category_id_eq] %>
+    <td>
+      <% if proposal.category %>
+        <%= translated_attribute proposal.category.name %>
+      <% end %>
+    </td>
+  <% end %>
+
   <% if current_participatory_space.scopes_enabled? %>
     <td>
       <% if proposal.scope %>
@@ -22,13 +26,16 @@
       <% end %>
     </td>
   <% end %>
-  <td>
-    <%= t("decidim/amendment", scope: "activerecord.models", count: 1) if proposal.emendation? %>
-    <strong class="<%= proposal_state_css_class proposal.state %>">
+
+  <% unless params[:q] && params[:q][:state_eq] %>
+    <td>
       <%= t("decidim/amendment", scope: "activerecord.models", count: 1) if proposal.emendation? %>
-      <%= humanize_proposal_state proposal.state %>
-    </strong>
-  </td>
+      <strong class="<%= proposal_state_css_class proposal.state %>">
+        <%= t("decidim/amendment", scope: "activerecord.models", count: 1) if proposal.emendation? %>
+        <%= humanize_proposal_state proposal.state %>
+      </strong>
+    </td>
+  <% end %>
 
   <% if current_settings.votes_enabled? %>
     <td>

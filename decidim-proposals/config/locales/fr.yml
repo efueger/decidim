@@ -398,17 +398,17 @@ fr:
         withdrawn: Retirée
       application_helper:
         filter_origin_values:
-          all: Tout
+          all: Toutes
           citizens: Propositions citoyennes
           meetings: Des réunions
           official: Propositions officielles
           user_groups: Groupes d'utilisateurs
         filter_state_values:
-          accepted: Accepté
-          all: Tout
-          evaluating: Évaluer
+          accepted: Acceptées
+          all: Toutes
+          evaluating: En cours d'évaluation
           except_rejected: Toutes sauf les propositions non retenues
-          rejected: Rejeté
+          rejected: Rejetées
         filter_type_values:
           all: Tout
           amendments: Amendements

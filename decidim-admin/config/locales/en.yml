@@ -125,7 +125,9 @@ en:
       actions:
         add: Add
         browse: Browse
+        cancel: Cancel
         export: Export
+        filter: Filter
         manage: Manage
         new: New %{name}
         permissions: Permissions
