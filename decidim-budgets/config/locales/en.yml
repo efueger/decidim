@@ -184,6 +184,13 @@ en:
     resource_links:
       included_proposals:
         project_proposal: 'Proposals included in this project:'
+    events:
+      budgets:
+        unfinished_order:
+          email_intro: email_intro
+          notification_title: notification_title
+          email_subject: email_subject
+          email_outro: email_outro
   index:
     confirmed_orders_count: Votes count
   total_budget: Total budget
