@@ -184,6 +184,13 @@ en:
     resource_links:
       included_proposals:
         project_proposal: 'Proposals included in this project:'
+    events:
+      budgets:
+        order_checkout:
+          email_intro: "Your vote has been validated. You can always edit it if you like by clicking here:"
+          email_outro: Thank you for your participation
+          email_subject: Your vote has been validated
+          notification_title: Your vote has been validated
   index:
     confirmed_orders_count: Votes count
   total_budget: Total budget
