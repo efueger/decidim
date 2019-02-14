@@ -3,6 +3,8 @@
 module Decidim
   module Budgets
     class UnfinishedOrderReminderJob < ApplicationJob
+      queue_as :reminder
+
       def perform(unfinished_order_id)
         order = Decidim::Budgets::Order.find(unfinished_order_id)
         send_notification(order) unless order.checked_out?
