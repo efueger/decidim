@@ -323,7 +323,7 @@ module Decidim
     def upload(attribute, options = {})
       self.multipart = true
       options[:optional] = options[:optional].nil? ? true : options[:optional]
-      
+
       file = object.send attribute
       template = ""
       template += label(attribute, label_for(attribute) + required_for_attribute(attribute))

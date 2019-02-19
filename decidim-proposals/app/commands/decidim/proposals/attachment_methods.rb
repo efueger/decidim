@@ -43,6 +43,10 @@ module Decidim
       def remove_attachment?
         @form.attachment.try(:remove_file).to_s == "1"
       end
+
+      def attachment_action?
+        process_attachments? || remove_attachment?
+      end
     end
   end
 end
