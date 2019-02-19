@@ -66,7 +66,8 @@ module Decidim
         def edit
           enforce_permission_to :edit, :proposal, proposal: proposal
           @form = form(Admin::ProposalForm).from_model(proposal)
-          @form.attachment = form(AttachmentForm).from_params({})
+          @form.attachment = form(AttachmentForm).from_model(proposal.attachments.first)
+          @form
         end
 
         def update

@@ -27,11 +27,12 @@ module Decidim
         def call
           return broadcast(:invalid) if form.invalid?
 
-          if process_attachments?
+          if process_attachments? || remove_attachment?
             @proposal.attachments.destroy_all
-
-            build_attachment
-            return broadcast(:invalid) if attachment_invalid?
+            unless remove_attachment?
+              build_attachment
+              return broadcast(:invalid) if attachment_invalid?
+            end
           end
 
           transaction do

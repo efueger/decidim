@@ -30,11 +30,12 @@ module Decidim
         return broadcast(:invalid) unless proposal.editable_by?(current_user)
         return broadcast(:invalid) if proposal_limit_reached?
 
-        if process_attachments?
+        if process_attachments? || remove_attachment?
           @proposal.attachments.destroy_all
-
-          build_attachment
-          return broadcast(:invalid) if attachment_invalid?
+          unless remove_attachment?
+            build_attachment
+            return broadcast(:invalid) if attachment_invalid?
+          end
         end
 
         transaction do

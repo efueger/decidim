@@ -8,6 +8,7 @@ module Decidim
       include TranslatableAttributes
 
       attribute :file
+      attribute :remove_file
       translatable_attribute :title, String
       translatable_attribute :description, String
       attribute :weight, Integer, default: 0

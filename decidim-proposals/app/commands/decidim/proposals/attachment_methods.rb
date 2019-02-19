@@ -11,13 +11,14 @@ module Decidim
         @attachment = Attachment.new(
           title: @form.attachment.title,
           file: @form.attachment.file,
+          remove_file: @form.attachment.remove_file,
           attached_to: @attached_to
         )
       end
 
       def attachment_invalid?
-        if attachment.invalid? && attachment.errors.has_key?(:file)
-          @form.attachment.errors.add :file, attachment.errors[:file]
+        if @attachment.invalid? && @attachment.errors.has_key?(:file)
+          @form.attachment.errors.add :file, @attachment.errors[:file]
           true
         end
       end
@@ -27,8 +28,8 @@ module Decidim
       end
 
       def create_attachment
-        attachment.attached_to = @attached_to
-        attachment.save!
+        @attachment.attached_to = @attached_to
+        @attachment.save!
       end
 
       def attachments_allowed?
@@ -37,6 +38,10 @@ module Decidim
 
       def process_attachments?
         attachments_allowed? && attachment_present?
+      end
+
+      def remove_attachment?
+        @form.attachment.try(:remove_file).to_s == "1"
       end
     end
   end

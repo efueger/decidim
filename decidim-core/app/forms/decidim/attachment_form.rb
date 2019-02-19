@@ -6,6 +6,7 @@ module Decidim
   class AttachmentForm < Form
     attribute :title, String
     attribute :file
+    attribute :remove_file
 
     mimic :attachment
 
