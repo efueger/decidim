@@ -24,6 +24,7 @@ module Decidim
         # Returns nothing.
         def call
           return broadcast(:invalid) if form.invalid?
+
           update_assembly
           link_participatory_processes(@assembly)
 

@@ -1,3 +1,4 @@
+---
 ca:
   activemodel:
     attributes:
@@ -127,7 +128,6 @@ ca:
         browse: Explorar
         export: Exporta
         manage: Gestionar
-        new: Nou %{name}
         permissions: Permisos
         reject: Rebutjar
         verify: Verificar
@@ -306,6 +306,11 @@ ca:
         logs_list:
           no_logs_yet: Encara no hi ha cap registre d'activitat
       managed_users:
+        index:
+          impersonate: Impersonate
+          needs_authoriation_warning: Needs authoriation warning
+          promote: Promote
+          view_logs: View logs
         promotion:
           error: S'ha produït un error en promoure l'usuari gestionat.
           success: S'ha promogut amb èxit l'usuari gestionat.
@@ -325,6 +330,7 @@ ca:
         help_sections: Seccions d'ajuda
         homepage: Pàgina d'inici
         impersonations: Impersonacions
+        navbar_links: Navbar links
         newsletters: Butlletins
         oauth_applications: Aplicacions OAuth
         participants: Participants
@@ -362,6 +368,13 @@ ca:
             reason: Raó
             started_at: Va començar el
             user: Usuari
+        managed_user:
+          name: Name
+        navbar_link:
+          fields:
+            link: Link
+            title: Title
+            weight: Weight
         newsletter:
           fields:
             created_at: Data de creació
@@ -373,7 +386,6 @@ ca:
           fields:
             created_at: Creat el
             name: Nom
-          name: Aplicació OAuth
         participatory_space_private_user:
           name: Usuari privat de l'espai de participació
         scope:
@@ -398,7 +410,6 @@ ca:
             roles:
               admin: Administrador
               user_manager: Administrador d'usuaris
-          name: Usuari
         user_group:
           fields:
             actions: Accions
@@ -416,6 +427,28 @@ ca:
             does_not_belong: No pertany
             offensive: Ofensiu
             spam: Contingut brossa
+      navbar_links:
+        create:
+          error: There was an error when creating this link.
+          success: Link created successfully
+        destroy:
+          success: Link successfully destroyed
+        edit:
+          title: Edit navbar link
+          update: Update
+        form:
+          link: Link
+          new_tab: Open in a new tab
+          same_tab: Open in the same tab
+          title: Title
+          weight: Weight
+        new:
+          create: Create
+          title: New navbar link
+        no_links: No links created
+        update:
+          error: There was an error when updating this link.
+          success: Link updated successfully
       newsletters:
         create:
           error: S'ha produït un error en crear aquest butlletí.
@@ -445,6 +478,8 @@ ca:
         update:
           error: S'ha produït un error en actualitzar aquest butlletí.
           success: Butlletí actualitzat correctament. Si us plau, revisa'l abans d'enviar-lo.
+      oauth_application:
+        new: Nouvelle application Oauth
       oauth_applications:
         create:
           error: S'ha produït un error en crear aquesta aplicació.
@@ -617,12 +652,16 @@ ca:
         dashboard: Tauler de control
         impersonatable_users: Usuaris impersonables
         impersonations: Suplantacions
+        managed_users: Managed users
+        navbar_links: Navbar links
         participants: Participants
         scope_types: Tipus d'àmbit
         scopes: Àmbits
         static_pages: Pàgines
         user_groups: Grups d'usuaris
         users: Usuaris
+      user:
+        new: New
       user_group:
         csv_verify:
           invalid: S'ha produït un error en llegir el fitxer CSV.

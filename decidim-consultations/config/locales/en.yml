@@ -1,3 +1,4 @@
+---
 en:
   activemodel:
     attributes:
@@ -48,7 +49,7 @@ en:
         one: Response
         other: Responses
       decidim/consultations/vote:
-        one: Vote
+        one: No votes
         other: Votes
   decidim:
     admin:
