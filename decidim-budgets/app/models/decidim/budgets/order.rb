@@ -38,6 +38,11 @@ module Decidim
         checked_out_at.present?
       end
 
+      # Public: Returns true if the order exist but has not been checked out
+      def pending?
+        checked_out_at.nil? && !line_items.empty?
+      end
+
       # Public: Returns the order budget percent from the settings total budget
       def budget_percent
         (total_budget.to_f / component.settings.total_budget.to_f) * 100

@@ -3,7 +3,7 @@
     <div class="progress budget-progress" role="progressbar" tabindex="0" aria-valuenow="<%= current_order_budget_percent %>" aria-valuemin="<%= component_settings.vote_threshold_percent %>" aria-valuetext="<%= current_order_budget_percent %>%" aria-valuemax="100">
       <div class="progress-meter progress-meter--minimum" style="width: <%= 100 - current_order_budget_percent %>%"></div>
       <!--Change width and text dynamically.-->
-      <div class="progress-meter budget-progress__meter" style="width: <%= current_order_budget_percent %>%">
+      <div class="progress-meter budget-progress__meter <%= progress_meter_state %>" style="width: <%= current_order_budget_percent %>%">
         <p class="progress-meter-text progress-meter-text--right"><%= current_order_budget_percent %>%</p>
       </div>
     </div>
