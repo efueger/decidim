@@ -91,6 +91,7 @@ en:
           components: Components
           info: Info
           moderations: Moderations
+          upstream_moderations: Upstream moderations
           private_users: Private Users
           process_admins: Process users
           steps: Steps

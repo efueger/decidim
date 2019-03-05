@@ -123,6 +123,9 @@ en:
         site: Website
   decidim:
     admin:
+      upstream_moderations:
+        index:
+          title: Upstream moderations
       actions:
         add: Add
         browse: Browse
