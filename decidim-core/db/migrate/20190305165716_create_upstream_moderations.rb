@@ -4,7 +4,7 @@ class CreateUpstreamModerations < ActiveRecord::Migration[5.0]
   def change
     create_table :decidim_upstream_moderations do |t|
       t.references :decidim_participatory_process, null: false, index: { name: "decidim_upstream_moderations_participatory_process" }
-      t.references :decidim_reportable, null: false, polymorphic: true, index: { unique: true, name: "decidim_upstream_moderations_reportable" }
+      t.references :decidim_upstream_reportable, null: false, polymorphic: true, index: { unique: true, name: "decidim_upstream_moderations_reportable" }
       t.integer :report_count, null: false, default: 0, index: { name: "decidim_upstream_moderations_report_count" }
       t.datetime :hidden_at, index: { name: "decidim_upstream_moderations_hidden_at" }
 

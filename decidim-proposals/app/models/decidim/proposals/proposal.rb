@@ -4,6 +4,7 @@ module Decidim
   module Proposals
     # The data store for a Proposal in the Decidim::Proposals component.
     class Proposal < Proposals::ApplicationRecord
+      include Decidim::UpstreamReportable
       include Decidim::Resourceable
       include Decidim::Coauthorable
       include Decidim::HasComponent

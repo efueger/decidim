@@ -8,32 +8,30 @@ module Decidim
     extend ActiveSupport::Concern
 
     included do
-      has_one :upstream_moderation, as: :reportable, foreign_key: "decidim_reportable_id", foreign_type: "decidim_reportable_type", class_name: "Decidim::UpstreamModeration"
-      has_many :reports, through: :upstream_moderation
+      has_one :upstream_moderation, as: :upstream_reportable, foreign_key: "decidim_upstream_reportable_id", foreign_type: "decidim_upstream_reportable_type", class_name: "Decidim::UpstreamModeration"
 
-      scope :reported, -> { left_outer_joins(:upstream_moderation).where(Decidim::UpstreamModeration.arel_table[:report_count].gt(0)) }
-      scope :hidden, -> { left_outer_joins(:upstream_moderation).where.not(Decidim::UpstreamModeration.arel_table[:hidden_at].eq nil) }
-      scope :not_hidden, -> { left_outer_joins(:upstream_moderation).where(Decidim::UpstreamModeration.arel_table[:hidden_at].eq nil) }
+      after_save :add_to_upstream_moderation, if: -> { upstream_moderation_activated? }
 
-      # Public: Check if the user has reported the reportable.
-      #
-      # Returns Boolean.
-      def reported_by?(user)
-        reports.where(user: user).any?
+      scope :visible, -> { left_outer_joins(:upstream_moderation).where(Decidim::UpstreamModeration.arel_table[:hidden_at].eq nil) }
+      scope :not_visible, -> { left_outer_joins(:upstream_moderation).where.not(Decidim::UpstreamModeration.arel_table[:hidden_at].eq nil) }
+
+      def add_to_upstream_moderation
+        Decidim::UpstreamModeration.find_or_create_by!(
+          upstream_reportable: self,
+          participatory_space: participatory_space,
+          hidden_at: Time.now
+        )
+      end
+
+      def upstream_moderation_activated?
+        component.settings.upstream_moderation
       end
 
       # Public: Checks if the reportable is hidden or not.
       #
       # Returns Boolean.
-      def hidden?
-        moderation&.hidden_at&.present?
-      end
-
-      # Public: Checks if the reportable has been reported or not.
-      #
-      # Returns Boolean.
-      def reported?
-        moderation&.report_count&.positive?
+      def visible?
+        upstream_moderation&.hidden_at&.present?
       end
 
       # Public: The reported content url

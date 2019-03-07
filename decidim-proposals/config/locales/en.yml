@@ -73,6 +73,7 @@ en:
         name: Proposals
         settings:
           global:
+            upstream_moderation: Upstream moderation
             amendments_enabled: Amendments enabled
             announcement: Announcement
             attachments_allowed: Allow attachments
