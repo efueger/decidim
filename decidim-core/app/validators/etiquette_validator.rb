@@ -38,7 +38,7 @@ class EtiquetteValidator < ActiveModel::EachValidator
   end
 
   def validate_length(record, attribute, value)
-    return if value.length > 15
+    return if value.length > 1
     record.errors.add(attribute, options[:message] || :too_short)
   end
 end

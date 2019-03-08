@@ -9,7 +9,7 @@
 
 L.DivIcon.SVGIcon.DecidimIcon = L.DivIcon.SVGIcon.extend({
   options: {
-    fillColor: "#ef604d",
+    fillColor: "#ff1515",
     opacity: 0
   },
   _createPathDescription: function() {
@@ -29,23 +29,14 @@ const updateCoordinates = (data) => {
 }
 
 const addMarkers = (markersData, markerClusters, map) => {
-  const bounds = new L.LatLngBounds(markersData.map((markerData) => [markerData.latitude, markerData.longitude]));
+  // const bounds = new L.LatLngBounds(markersData.map((markerData) => [markerData.latitude, markerData.longitude]));
 
   markersData.forEach((markerData) => {
     let marker = L.marker([markerData.latitude, markerData.longitude], {
       icon: new L.DivIcon.SVGIcon.DecidimIcon(),
       draggable: markerData.draggable
     });
-    let node = document.createElement("div");
 
-    $.tmpl(popupTemplateId, markerData).appendTo(node);
-
-    marker.bindPopup(node, {
-      maxwidth: 640,
-      minWidth: 500,
-      keepInView: true,
-      className: "map-info"
-    }).openPopup();
     if (markerData.draggable)  {
       updateCoordinates({
         lat: markerData.latitude,
@@ -89,9 +80,9 @@ const loadMap = (mapId, markersData) => {
   }).addTo(map);
 
   const geojsonLayer = L.geoJSON(window.Decidim.geojson, {
-    style: function (feature) {
+    style: function () {
       return {
-        color: "#ff1515", // border color
+        color: "#ff1515",
         weight: 1,
         fillOpacity: 0.05
       };
