@@ -10,17 +10,16 @@ module Decidim
     included do
       has_one :upstream_moderation, as: :upstream_reportable, foreign_key: "decidim_upstream_reportable_id", foreign_type: "decidim_upstream_reportable_type", class_name: "Decidim::UpstreamModeration"
 
-      after_save :add_to_upstream_moderation, if: -> { upstream_moderation_activated? }
-
       scope :visible, -> { left_outer_joins(:upstream_moderation).where(Decidim::UpstreamModeration.arel_table[:hidden_at].eq nil) }
       scope :not_visible, -> { left_outer_joins(:upstream_moderation).where.not(Decidim::UpstreamModeration.arel_table[:hidden_at].eq nil) }
 
       def add_to_upstream_moderation
+        return unless upstream_moderation_activated?
+
         Decidim::UpstreamModeration.find_or_create_by!(
           upstream_reportable: self,
-          participatory_space: participatory_space,
-          hidden_at: Time.now
-        )
+          participatory_space: participatory_space
+        ).update!(hidden_at: Time.now)
       end
 
       def upstream_moderation_activated?

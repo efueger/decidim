@@ -23,6 +23,7 @@ module Decidim
         return broadcast(:invalid) unless @proposal.authored_by?(@current_user)
 
         transaction do
+          add_to_upstream_moderation
           publish_proposal
           increment_scores
           send_notification
@@ -33,6 +34,10 @@ module Decidim
       end
 
       private
+
+      def add_to_upstream_moderation
+        @proposal.add_to_upstream_moderation
+      end
 
       # This will be the PaperTrail version that is
       # shown in the version control feature (1 of 1)

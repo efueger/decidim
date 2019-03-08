@@ -123,9 +123,6 @@ en:
         site: Website
   decidim:
     admin:
-      upstream_moderations:
-        index:
-          title: Upstream moderations
       actions:
         add: Add
         browse: Browse
@@ -663,6 +660,9 @@ en:
         static_pages: Pages
         user_groups: User groups
         users: Users
+      upstream_moderations:
+        index:
+          title: Upstream moderations
       user:
         new: New user
       user_group:
@@ -737,6 +737,18 @@ en:
             reported_content_url: Reported content URL
             reports: Reports
             visit_url: Visit URL
+    upstream_moderations:
+      actions:
+        make_visible: Make visible
+        not_visible: Not visible
+        visible: Visible
+      models:
+        upstream_moderation:
+          fields:
+            reportable: Reportable
+            reportable_title: Reportable title
+            reported_content_url: Reported content url
+            visit_url: Visit url
   errors:
     messages:
       invalid_json: Invalid JSON

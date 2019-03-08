@@ -4,9 +4,9 @@
       <%= t(".title") %>
 
       <div class="card__filter">
-        <%= link_to t("actions.not_hidden", scope: "decidim.moderations"), upstream_moderations_path %>
+        <%= link_to t("actions.not_visible", scope: "decidim.upstream_moderations"), upstream_moderations_path %>
         |
-        <%= link_to t("actions.hidden", scope: "decidim.moderations"), upstream_moderations_path(hidden: true) %>
+        <%= link_to t("actions.visible", scope: "decidim.upstream_moderations"), upstream_moderations_path(visible: true) %>
       </div>
     </h2>
   </div>
@@ -15,59 +15,46 @@
     <div class="table-scroll">
       <table class="table-list">
         <thead>
-          <tr>
-            <th><%= t("models.moderation.fields.reportable", scope: "decidim.moderations") %></th>
-            <th><%= t("models.moderation.fields.reported_content_url", scope: "decidim.moderations") %></th>
-            <th><%= t("models.moderation.fields.reports", scope: "decidim.moderations") %></th>
-            <th><%= t("models.moderation.fields.report_count", scope: "decidim.moderations") %></th>
-            <% if params[:hidden] %>
-              <th><%= t("models.moderation.fields.hidden_at", scope: "decidim.moderations") %></th>
-            <% end %>
-            <th class="actions"><%= t("actions.title", scope: "decidim.moderations") %></th>
-          </tr>
+        <tr>
+          <th><%= t("models.upstream_moderation.fields.reportable", scope: "decidim.upstream_moderations") %></th>
+          <th><%= t("models.upstream_moderation.fields.reportable_title", scope: "decidim.upstream_moderations") %></th>
+          <th><%= t("models.upstream_moderation.fields.reported_content_url", scope: "decidim.upstream_moderations") %></th>
+          <% unless params[:visible] %>
+            <th class="actions"><%= t("actions.make_visible", scope: "decidim.upstream_moderations") %></th>
+          <% end %>
+        </tr>
         </thead>
         <tbody>
-          <% moderations.each do |moderation| %>
-            <tr data-id="<%= moderation.id %>">
+        <% upstream_moderations.each do |upstream_moderation| %>
+          <tr data-id="<%= upstream_moderation.id %>">
+            <td>
+              <%= upstream_moderation.upstream_reportable.class.name.demodulize %>
+            </td>
+            <td><%= upstream_moderation.upstream_reportable.title %></td>
+            <td>
+              <%=
+                link_to t("models.upstream_moderation.fields.visit_url", scope: "decidim.upstream_moderations"), upstream_moderation.upstream_reportable.reported_content_url
+              %>
+            </td>
+            <% if params[:hidden] %>
               <td>
-                <%= moderation.reportable.class.name.demodulize %>
+                <%= l(upstream_moderation.hidden_at, format: :long) if upstream_moderation.hidden_at.present? %>
               </td>
-              <td>
-                <%=
-                  link_to t("models.moderation.fields.visit_url", scope: "decidim.moderations"), moderation.reportable.reported_content_url
-                %>
-              </td>
-              <td>
-                <% reports = moderation.reports.map { |report| render "report", report: report } %>
-                <%= safe_join(reports, ",") %>
-              </td>
-              <td>
-                <%= moderation.report_count %>
-              </td>
-              <% if params[:hidden] %>
-                <td>
-                  <%= l(moderation.hidden_at, format: :long) if moderation.hidden_at.present? %>
-                </td>
-              <% end %>
+            <% end %>
+            <% unless params[:visible] %>
               <td class="actions">
 
-                <% if allowed_to?(:unreport, :moderation) %>
-                  <%= icon_link_to "action-undo",
-                                   unreport_moderation_path(id: moderation),
-                                   t("actions.unreport", scope: "decidim.moderations"),
-                                   class: "action-icon--unreport",
-                                   method: :put %>
-                <% end %>
-                <% if !moderation.reportable.hidden? && allowed_to?(:hide, :moderation) %>
-                  <%= icon_link_to "eye",
-                                   hide_moderation_path(id: moderation),
-                                   t("actions.hide", scope: "decidim.moderations"),
-                                   class: "action-icon--hide",
+                <% if allowed_to?(:make_visible, :moderation) %>
+                  <%= icon_link_to "check",
+                                   make_visible_upstream_moderation_path(id: upstream_moderation),
+                                   t("actions.make_visible", scope: "decidim.upstream_moderations"),
+                                   class: "action-icon--check",
                                    method: :put %>
                 <% end %>
               </td>
-            </tr>
-          <% end %>
+            <% end %>
+          </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
