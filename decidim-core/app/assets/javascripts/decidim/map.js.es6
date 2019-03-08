@@ -5,6 +5,8 @@
 // = require jquery-tmpl
 // = require_self
 
+// = require data/mel_communes.geojson
+
 L.DivIcon.SVGIcon.DecidimIcon = L.DivIcon.SVGIcon.extend({
   options: {
     fillColor: "#ef604d",
@@ -34,6 +36,16 @@ const addMarkers = (markersData, markerClusters, map) => {
       icon: new L.DivIcon.SVGIcon.DecidimIcon(),
       draggable: markerData.draggable
     });
+    let node = document.createElement("div");
+
+    $.tmpl(popupTemplateId, markerData).appendTo(node);
+
+    marker.bindPopup(node, {
+      maxwidth: 640,
+      minWidth: 500,
+      keepInView: true,
+      className: "map-info"
+    }).openPopup();
     if (markerData.draggable)  {
       updateCoordinates({
         lat: markerData.latitude,
@@ -57,7 +69,7 @@ const addMarkers = (markersData, markerClusters, map) => {
   });
 
   map.addLayer(markerClusters);
-  map.fitBounds(bounds, { padding: [100, 100] });
+  // map.fitBounds(bounds, { padding: [100, 100] });
 };
 
 const loadMap = (mapId, markersData) => {
@@ -76,11 +88,23 @@ const loadMap = (mapId, markersData) => {
     appCode: hereAppCode
   }).addTo(map);
 
+  const geojsonLayer = L.geoJSON(window.Decidim.geojson, {
+    style: function (feature) {
+      return {
+        color: "#ff1515", // border color
+        weight: 1,
+        fillOpacity: 0.05
+      };
+    }
+  }).addTo(map);
+
   if (markersData.length > 0) {
     addMarkers(markersData, markerClusters, map);
   } else {
     map.fitWorld();
   }
+
+  map.fitBounds(geojsonLayer.getBounds());
 
   map.scrollWheelZoom.disable();
 
