@@ -6,6 +6,7 @@ module Decidim
     # comment on them. The will be able to create conversations between users
     # to discuss or share their thoughts about the resource.
     class Comment < ApplicationRecord
+      include Decidim::Reportable
       include Decidim::Authorable
       include Decidim::Comments::Commentable
       include Decidim::FriendlyDates
