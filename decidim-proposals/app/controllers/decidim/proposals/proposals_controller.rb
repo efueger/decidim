@@ -27,7 +27,7 @@ module Decidim
           @proposals = Decidim::Proposals::Proposal
                          .where(component: current_component)
                          .published
-                         .not_hidden
+                         .upstream_not_hidden
                          .visible
                          .includes(:category, :scope)
                          .order(position: :asc)
@@ -36,7 +36,7 @@ module Decidim
           @proposals = search
                          .results
                          .published
-                         .visible
+                         .upstream_not_hidden
                          .not_hidden
                          .includes(:category)
                          .includes(:scope)
@@ -55,6 +55,7 @@ module Decidim
       end
 
       def show
+        enforce_permission_to :read, :proposal, proposal: @proposal
         @report_form = form(Decidim::ReportForm).from_params(reason: "spam")
       end
 

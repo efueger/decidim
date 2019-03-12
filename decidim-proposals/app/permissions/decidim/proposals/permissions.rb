@@ -4,6 +4,7 @@ module Decidim
   module Proposals
     class Permissions < Decidim::DefaultPermissions
       def permissions
+        can_read_proposal? if permission_action.subject == :proposal && permission_action.action == :read
         return permission_action unless user
 
         # Delegate the admin permission checks to the admin permissions class
@@ -76,40 +77,52 @@ module Decidim
         toggle_allow(proposal && proposal.editable_by?(user))
       end
 
+      def can_read_proposal?
+        return toggle_allow(proposal) unless proposal.upstream_moderation_activated?
+
+        return toggle_allow(proposal) unless proposal.upstream_hidden?
+
+        return unless user
+
+        return toggle_allow(proposal) if proposal.upstream_not_hidden_for?(user)
+
+        toggle_allow(proposal) if Decidim::ParticipatoryProcessesWithUserRole.for(user, role: :moderation).include? @proposal.component.participatory_space
+      end
+
       def can_withdraw_proposal?
         toggle_allow(proposal && proposal.authored_by?(user))
       end
 
       def can_endorse_proposal?
         is_allowed = proposal &&
-                     authorized?(:endorse, resource: proposal) &&
-                     current_settings&.endorsements_enabled? &&
-                     !current_settings&.endorsements_blocked?
+          authorized?(:endorse, resource: proposal) &&
+          current_settings&.endorsements_enabled? &&
+          !current_settings&.endorsements_blocked?
 
         toggle_allow(is_allowed)
       end
 
       def can_unendorse_proposal?
         is_allowed = proposal &&
-                     authorized?(:endorse, resource: proposal) &&
-                     current_settings&.endorsements_enabled?
+          authorized?(:endorse, resource: proposal) &&
+          current_settings&.endorsements_enabled?
 
         toggle_allow(is_allowed)
       end
 
       def can_vote_proposal?
         is_allowed = proposal &&
-                     authorized?(:vote, resource: proposal) &&
-                     voting_enabled? &&
-                     remaining_votes.positive?
+          authorized?(:vote, resource: proposal) &&
+          voting_enabled? &&
+          remaining_votes.positive?
 
         toggle_allow(is_allowed)
       end
 
       def can_unvote_proposal?
         is_allowed = proposal &&
-                     authorized?(:vote, resource: proposal) &&
-                     voting_enabled?
+          authorized?(:vote, resource: proposal) &&
+          voting_enabled?
 
         toggle_allow(is_allowed)
       end
