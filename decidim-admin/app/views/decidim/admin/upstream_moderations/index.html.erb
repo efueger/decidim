@@ -30,7 +30,7 @@
             <td>
               <%= upstream_moderation.upstream_reportable.class.name.demodulize %>
             </td>
-            <td><%= upstream_moderation.upstream_reportable.title %></td>
+            <td><%= (upstream_moderation.upstream_reportable.try(:title) || upstream_moderation.upstream_reportable.try(:body)).truncate(25, omission: '...') %></td>
             <td>
               <%=
                 link_to t("models.upstream_moderation.fields.visit_url", scope: "decidim.upstream_moderations"), upstream_moderation.upstream_reportable.reported_content_url

@@ -24,6 +24,8 @@ module Decidim
 
         create_comment
 
+        add_to_upstream_moderation
+
         broadcast(:ok, comment)
       end
 
@@ -53,6 +55,10 @@ module Decidim
         mentioned_users = parsed.metadata[:user].users
         CommentCreation.publish(@comment, parsed.metadata)
         send_notifications(mentioned_users)
+      end
+
+      def add_to_upstream_moderation
+        @comment.add_to_upstream_moderation
       end
 
       def send_notifications(mentioned_users)

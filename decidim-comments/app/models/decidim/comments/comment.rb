@@ -7,6 +7,7 @@ module Decidim
     # to discuss or share their thoughts about the resource.
     class Comment < ApplicationRecord
       include Decidim::Reportable
+      include Decidim::UpstreamReportable
       include Decidim::Authorable
       include Decidim::Comments::Commentable
       include Decidim::FriendlyDates
