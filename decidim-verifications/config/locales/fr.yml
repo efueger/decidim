@@ -1,3 +1,4 @@
+---
 fr:
   activemodel:
     attributes:
@@ -34,6 +35,10 @@ fr:
         grant_id_documents_offline_verification: "%{user_name} vérifié %{resource_name} aide d'une vérification hors ligne des documents d'identité"
     authorization_handlers:
       admin:
+        csv_census:
+          help:
+            - Importer un fichier CSV de recensement des membres de l'organisation
+            - Seul les participants avec une adresse email présente dans ce fichier seront validés
         id_documents:
           help:
             - Les utilisateurs remplissent leurs informations d'identité et téléchargent une copie de leur document.
@@ -46,6 +51,9 @@ fr:
             - Vous envoyez la lettre à leur adresse avec le code de vérification.
             - Vous marquez la lettre comme envoyée.
             - Une fois que vous avez coché la lettre, l'utilisateur sera en mesure de présenter le code et d'être vérifié.
+      csv_census:
+        explanation: Vérification à l'aide du recensement des membres de l'organisation
+        name: Recensement des membres de l'organisation
       direct: Direct
       help: Texte d'aide
       id_documents:
@@ -76,6 +84,34 @@ fr:
           authorize_with: Vérifier votre identité avec %{authorizer}
         skip_verification: Vous pouvez omettre cette étape pour le moment et %{link}
         start_exploring: commencer à explorer
+      csv_census:
+        admin:
+          census:
+            create:
+              error: Il y a eu une erreur lors de l'importation du fichier.
+              success: Importation réussie de %{count} enregistrements (%{errors} erreurs)
+            destroy_all:
+              success: Toutes les données du recensement ont été supprimées
+          destroy:
+            confirm: Supprimer des données ne peut pas être annulée. Êtes-vous sûr de vouloir continuer ?
+            title: Supprimer toutes les données du recensement
+          index:
+            data: Il y a %{count} enregistrements chargés au total. La dernière date de téléchargement était le %{due_date}
+            empty: Il n'y a pas de données de recensement. Utilisez le formulaire ci-dessous pour importer un fichier au format CSV.
+            title: Données du recensement
+          instructions:
+            body: Pour cela, vous devez aller dans l'administration système et activer l'autorisation csv_census pour l'organisation
+            title: Vous devez activer le recensement CSV pour cette organisation
+          new:
+            file: Fichier.csv avec les données des emails
+            info: 'Le format est une unique colonne avec entête : email'
+            submit: Télécharger le fichier
+            title: Télécharger un nouveau recensement des membres
+        authorizations:
+          new:
+            error: Nous n'avons pas pu vérifier votre compte ou vous n'êtes pas dans
+              le recensement de l'organisation.
+            success: Votre compte a été vérifié avec succès.
       dummy_authorization:
         extra_explanation:
           one: La participation est réservée aux utilisateurs avec le code postal %{postal_codes}.
