@@ -179,6 +179,9 @@ end
 - **decidim-proposals** Don't count withdrawn proposals when publishing one [\#4875](https://github.com/decidim/decidim/pull/4875)
 - **decidim-core**: Fix process filters [\#4872](https://github.com/decidim/decidim/pull/4872)
 
+**Backported:**
+- **decidim-verifications**: Add multitenant csv census verifications [\#4719](https://github.com/decidim/decidim/pull/4719)
+
 
 ## [0.16.0](https://github.com/decidim/decidim/tree/v0.16.0)
 
