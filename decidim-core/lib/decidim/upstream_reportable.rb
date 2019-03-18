@@ -20,6 +20,9 @@ module Decidim
           upstream_reportable: self,
           participatory_space: participatory_space
         ).update!(hidden_at: Time.now)
+
+        send_notification_to_moderators
+        send_notification_to_author
       end
 
       def upstream_moderation_activated?
@@ -42,6 +45,31 @@ module Decidim
       # Returns String
       def reported_content_url
         raise NotImplementedError
+      end
+
+      private
+
+      def send_notification_to_moderators
+        participatory_space_moderators.each do |moderator|
+          Decidim::Admin::UpstreamModerationMailer.notify_moderator(moderator, self).deliver_now
+        end
+      end
+
+      def send_notification_to_author
+        Decidim::EventsManager.publish(
+          event: "decidim.events.admin.upstream_moderated",
+          event_class: Decidim::UpstreamModeratedEvent,
+          resource: self.root_commentable,
+          affected_users: [self.author]
+        )
+      end
+
+      def participatory_space_moderators
+        @participatory_space_moderators ||= participatory_space.moderators
+      end
+
+      def participatory_space
+        @participatory_space ||= component.participatory_space
       end
     end
   end

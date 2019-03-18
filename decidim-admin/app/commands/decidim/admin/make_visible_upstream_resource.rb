@@ -23,6 +23,9 @@ module Decidim
         return broadcast(:invalid) unless @upstream_reportable
 
         make_visible!
+
+        notify_involved
+
         broadcast(:ok, @reportable)
       end
 
@@ -39,6 +42,19 @@ module Decidim
         ) do
           @upstream_reportable.upstream_moderation.update!(hidden_at: nil)
         end
+      end
+
+      def notify_involved
+        if @upstream_reportable.class.name == "Decidim::Comments::Comment"
+          parsed = Decidim::ContentProcessor.parse(@upstream_reportable.body, current_organization: upstream_reportable.component.organization)
+          mentioned_users = parsed.metadata[:user].users
+          Decidim::Comments::CommentCreation.publish(@upstream_reportable, parsed.metadata)
+          send_notifications(mentioned_users)
+        end
+      end
+
+      def send_notifications(mentioned_users)
+        Decidim::Comments::NewCommentNotificationCreator.new(@upstream_reportable, mentioned_users).create
       end
     end
   end

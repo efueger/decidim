@@ -122,7 +122,18 @@ en:
         redirect_uri: Redirect URI
         site: Website
   decidim:
+    upstream_moderation_mailer:
+      notify_moderator:
+        hello: Hello %{name},
+        manage_moderations: Manage moderations
+        report_html: <p>The following content has been added <a href="%{url}">content</a> and is currently hidden.</p>
+        subject: A new resource has been added and is currently hidden
     admin:
+      upstream_moderation_mailer:
+        notify_moderator:
+          hello: Hello
+          report_html: <p>The following <a href="%{url}">content</a> has been hidden automatically.</p>
+          manage_moderations: manage moderations
       actions:
         add: Add
         browse: Browse
@@ -709,6 +720,7 @@ en:
           create: Invite
           title: Invite user as administrator
       view_public_page: View public page
+
     forms:
       errors:
         impersonate_user:

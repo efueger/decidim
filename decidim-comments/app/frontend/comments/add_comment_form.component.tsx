@@ -138,6 +138,7 @@ export class AddCommentForm extends React.Component<AddCommentFormProps, AddComm
             <label className="show-for-sr" htmlFor={`add-comment-${type}-${id}`}>{I18n.t("components.add_comment_form.form.body.label")}</label>
             {this._renderTextArea()}
             {this._renderTextAreaError()}
+            <div className="upstream_moderation-helper">{I18n.t("components.add_comment_form.form.upstream_moderation")}</div>
             <button
               type="submit"
               className={submitButtonClassName}
