@@ -1,16 +1,16 @@
 ---
 name: Instances to update/boot
 about: Instances to update with PR(s) that it should include
-title: ''
+title: Client Boot/Update
 labels: Bump-needed
-assignees: armandfardeau, lu-hamani, moustachu
+assignees: moustachu, lu-hamani
 
 ---
 
-**0.12**
-- [ ]  - #
-- [ ]  - #
+## Client
 
-**0.16**
-- [ ]  - #
-- [ ]  - #
+**Version**
+- 0.16
+
+**PRs to include**
+- [ ] -
