@@ -53,7 +53,7 @@ fr:
             - Une fois que vous avez coché la lettre, l'utilisateur sera en mesure de présenter le code et d'être vérifié.
       csv_census:
         explanation: Vérification à l'aide du recensement des membres de l'organisation
-        name: Recensement des membres de l'organisation
+        name: Recensement
       direct: Direct
       help: Texte d'aide
       id_documents:
@@ -103,7 +103,7 @@ fr:
             body: Pour cela, vous devez aller dans l'administration système et activer l'autorisation csv_census pour l'organisation
             title: Vous devez activer le recensement CSV pour cette organisation
           new:
-            file: Fichier.csv avec les données des emails
+            file: Fichier CSV avec les données des emails
             info: 'Le format est une unique colonne avec entête : email'
             submit: Télécharger le fichier
             title: Télécharger un nouveau recensement des membres
