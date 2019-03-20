@@ -21,12 +21,12 @@ module Decidim
           participatory_space: participatory_space
         ).update!(hidden_at: Time.now)
 
-        send_notification_to_moderators
+        return unless send_notification_to_moderators
         send_notification_to_author
       end
 
       def upstream_moderation_activated?
-        component.settings.upstream_moderation
+        component.settings&.upstream_moderation
       end
 
       def upstream_not_hidden_for?(user)
@@ -59,9 +59,21 @@ module Decidim
         Decidim::EventsManager.publish(
           event: "decidim.events.admin.upstream_moderated",
           event_class: Decidim::UpstreamModeratedEvent,
-          resource: self.root_commentable,
-          affected_users: [self.author]
+          resource: event_resource,
+          affected_users: event_affected_users
         )
+      end
+
+      def event_resource
+        return [self.root_commentable] if self.is_a? Decidim::Comments::Comment
+
+        [self]
+      end
+
+      def event_affected_users
+        return [self.author] if self.is_a? Decidim::Comments::Comment
+
+        self.authors
       end
 
       def participatory_space_moderators
