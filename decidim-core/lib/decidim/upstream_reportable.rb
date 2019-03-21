@@ -16,6 +16,8 @@ module Decidim
       def add_to_upstream_moderation
         return unless upstream_moderation_activated?
 
+        return unless user_with_role?
+
         Decidim::UpstreamModeration.find_or_create_by!(
           upstream_reportable: self,
           participatory_space: participatory_space
@@ -65,15 +67,24 @@ module Decidim
       end
 
       def event_resource
-        return [self.root_commentable] if self.is_a? Decidim::Comments::Comment
+        return [root_commentable] if is_a? Decidim::Comments::Comment
 
         [self]
       end
 
       def event_affected_users
-        return [self.author] if self.is_a? Decidim::Comments::Comment
+        return [author] if is_a? Decidim::Comments::Comment
 
-        self.authors
+        authors
+      end
+
+      def author_is_admin?
+        author = if is_a? Decidim::Comments::Comment
+                   self.author
+                 else
+                   authors.first
+                 end
+        participatory_space_moderators.include? author
       end
 
       def participatory_space_moderators

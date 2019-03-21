@@ -15,12 +15,28 @@ module Decidim
 
         Admin::MakeVisibleUpstreamResource.call(upstream_reportable, current_user) do
           on(:ok) do
-            flash[:notice] = I18n.t("reportable.unreport.success", scope: "decidim.moderations.admin")
+            flash[:notice] = I18n.t("reportable.make_visible.success", scope: "decidim.upstream_moderations.admin")
             redirect_to upstream_moderations_path
           end
 
           on(:invalid) do
-            flash.now[:alert] = I18n.t("reportable.unreport.invalid", scope: "decidim.moderations.admin")
+            flash.now[:alert] = I18n.t("reportable.make_visible.invalid", scope: "decidim.upstream_moderations.admin")
+            redirect_to upstream_moderations_path
+          end
+        end
+      end
+
+      def hide
+        enforce_permission_to :hide, :moderation
+
+        Admin::HideUpstreamResource.call(upstream_reportable, current_user) do
+          on(:ok) do
+            flash[:notice] = I18n.t("reportable.hide.success", scope: "decidim.upstream_moderations.admin")
+            redirect_to upstream_moderations_path
+          end
+
+          on(:invalid) do
+            flash.now[:alert] = I18n.t("reportable.hide.invalid", scope: "decidim.upstream_moderations.admin")
             redirect_to upstream_moderations_path
           end
         end
@@ -31,9 +47,11 @@ module Decidim
       def upstream_moderations
         @upstream_moderations ||= begin
           if params[:visible]
-            participatory_space_upstream_moderations.where(hidden_at: nil)
+            participatory_space_upstream_moderations.visible
+          elsif params[:not_visible]
+            participatory_space_upstream_moderations.not_visible
           else
-            participatory_space_upstream_moderations.where.not(hidden_at: nil)
+            participatory_space_upstream_moderations.pending_moderation
           end
         end
       end

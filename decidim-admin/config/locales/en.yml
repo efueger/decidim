@@ -720,7 +720,6 @@ en:
           create: Invite
           title: Invite user as administrator
       view_public_page: View public page
-
     forms:
       errors:
         impersonate_user:
@@ -750,8 +749,19 @@ en:
             reports: Reports
             visit_url: Visit URL
     upstream_moderations:
+      admin:
+        reportable:
+          hide:
+            success: Ressource has been successfully hidden in the dashboard.
+            invalid: There's been a problem hiding the resource.
+          make_visible:
+            success: Ressource is now visible.
+            invalid: There's been a problem unhidding the resource.
       actions:
+        change_visibility: Change visibility
+        hide: Hide
         make_visible: Make visible
+        pending_moderation: Pending moderation
         not_visible: Not visible
         visible: Visible
       models:

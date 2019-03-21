@@ -58,6 +58,7 @@ module Decidim
           resources :upstream_moderations do
             member do
               put :make_visible
+              put :hide
             end
           end
 

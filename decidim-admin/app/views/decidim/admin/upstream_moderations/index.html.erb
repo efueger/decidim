@@ -4,7 +4,9 @@
       <%= t(".title") %>
 
       <div class="card__filter">
-        <%= link_to t("actions.not_visible", scope: "decidim.upstream_moderations"), upstream_moderations_path %>
+        <%= link_to t("actions.pending_moderation", scope: "decidim.upstream_moderations"), upstream_moderations_path %>
+        |
+        <%= link_to t("actions.not_visible", scope: "decidim.upstream_moderations"), upstream_moderations_path(not_visible: true) %>
         |
         <%= link_to t("actions.visible", scope: "decidim.upstream_moderations"), upstream_moderations_path(visible: true) %>
       </div>
@@ -20,7 +22,7 @@
           <th><%= t("models.upstream_moderation.fields.reportable_title", scope: "decidim.upstream_moderations") %></th>
           <th><%= t("models.upstream_moderation.fields.reported_content_url", scope: "decidim.upstream_moderations") %></th>
           <% unless params[:visible] %>
-            <th class="actions"><%= t("actions.make_visible", scope: "decidim.upstream_moderations") %></th>
+            <th class="actions"><%= t("actions.change_visibility", scope: "decidim.upstream_moderations") %></th>
           <% end %>
         </tr>
         </thead>
@@ -43,7 +45,16 @@
             <% end %>
             <% unless params[:visible] %>
               <td class="actions">
-
+                <% unless params[:not_visible] %>
+                  <% if allowed_to?(:hide, :moderation) %>
+                    <%= icon_link_to "circle-x",
+                                     hide_upstream_moderation_path(id: upstream_moderation),
+                                     t("actions.hide", scope: "decidim.upstream_moderations"),
+                                     class: "action-icon--check",
+                                     method: :put
+                    %>
+                  <% end %>
+                <% end %>
                 <% if allowed_to?(:make_visible, :moderation) %>
                   <%= icon_link_to "check",
                                    make_visible_upstream_moderation_path(id: upstream_moderation),
