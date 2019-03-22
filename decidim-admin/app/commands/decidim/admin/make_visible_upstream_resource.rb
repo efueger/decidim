@@ -40,7 +40,10 @@ module Decidim
             upstream_reportable_type: @upstream_reportable.class.name
           }
         ) do
-          @upstream_reportable.upstream_moderation.update!(hidden_at: nil)
+          @upstream_reportable.upstream_moderation.update!(
+            hidden_at: nil,
+            pending: false
+          )
         end
       end
 
