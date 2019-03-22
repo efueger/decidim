@@ -15,8 +15,7 @@ module Decidim
 
       def add_to_upstream_moderation
         return unless upstream_moderation_activated?
-
-        return unless user_with_role?
+        return if author_has_role?
 
         Decidim::UpstreamModeration.find_or_create_by!(
           upstream_reportable: self,
@@ -78,7 +77,7 @@ module Decidim
         authors
       end
 
-      def author_is_admin?
+      def author_has_role?
         author = if is_a? Decidim::Comments::Comment
                    self.author
                  else
