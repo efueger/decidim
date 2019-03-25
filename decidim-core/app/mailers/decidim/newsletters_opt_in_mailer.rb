@@ -4,6 +4,11 @@ module Decidim
   # A custom mailer for Decidim so we can notify users to verify
   # his own newsletter notifications settings. GDPR releated
   class NewslettersOptInMailer < ApplicationMailer
+    # TODO: REMOVE the "default from: Decidim.config.mailer_sender"
+    # The :from should've been inherited from ApplicationMailer
+    # For an unknown reason, it doesn't
+    default from: Decidim.config.mailer_sender
+
     def notify(user, token)
       @user = user
       @organization = user.organization
