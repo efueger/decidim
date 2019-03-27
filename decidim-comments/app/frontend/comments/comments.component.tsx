@@ -31,7 +31,7 @@ interface CommentsProps extends GetCommentsQuery {
 export class Comments extends React.Component<CommentsProps> {
   public static defaultProps: any = {
     loading: false,
-    scrollTo: window.location.hash.replace("#",""),
+    scrollTo: window.location.hash.replace("#", ""),
     session: null,
     commentable: {
       comments: []

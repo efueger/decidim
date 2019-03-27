@@ -61,8 +61,8 @@ class Comment extends React.Component<CommentProps, CommentState> {
 
     if (regex.test(hash)) {
       const elt = document.getElementById(`comment_${id}`);
-      if(elt) {
-        elt.parentElement!.classList.add('highlighted');
+      if (elt) {
+        elt.parentElement!.classList.add("highlighted");
         elt.scrollIntoView();
       }
     }
