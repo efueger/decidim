@@ -38,6 +38,10 @@ module Decidim
         created_by?(user)
       end
 
+      def comment_threads
+        super.reject(&:upstream_hidden?)
+      end
+
       # Public: Checks if the reportable is hidden or not.
       #
       # Returns Boolean.
