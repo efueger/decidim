@@ -21,7 +21,6 @@ Decidim.register_component(:proposals) do |component|
   component.permissions_class_name = "Decidim::Proposals::Permissions"
 
   component.settings(:global) do |settings|
-    settings.attribute :upstream_moderation, type: :boolean, default: false
     settings.attribute :vote_limit, type: :integer, default: 0
     settings.attribute :minimum_votes_per_user, type: :integer, default: 0
     settings.attribute :proposal_limit, type: :integer, default: 0
@@ -31,6 +30,7 @@ Decidim.register_component(:proposals) do |component|
     settings.attribute :can_accumulate_supports_beyond_threshold, type: :boolean, default: false
     settings.attribute :proposal_answering_enabled, type: :boolean, default: true
     settings.attribute :official_proposals_enabled, type: :boolean, default: true
+    settings.attribute :upstream_moderation, type: :boolean, default: false
     settings.attribute :comments_enabled, type: :boolean, default: true
     settings.attribute :geocoding_enabled, type: :boolean, default: false
     settings.attribute :attachments_allowed, type: :boolean, default: false
@@ -75,7 +75,7 @@ Decidim.register_component(:proposals) do |component|
   end
 
   component.register_stat :proposals_count, primary: true, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |components, start_at, end_at|
-    Decidim::Proposals::FilteredProposals.for(components, start_at, end_at).published.except_withdrawn.not_hidden.count
+    Decidim::Proposals::FilteredProposals.for(components, start_at, end_at).published.except_withdrawn.not_hidden.upstream_not_hidden.count
   end
 
   component.register_stat :proposals_accepted, primary: true, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |components, start_at, end_at|
@@ -83,17 +83,17 @@ Decidim.register_component(:proposals) do |component|
   end
 
   component.register_stat :votes_count, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |components, start_at, end_at|
-    proposals = Decidim::Proposals::FilteredProposals.for(components, start_at, end_at).published.not_hidden
+    proposals = Decidim::Proposals::FilteredProposals.for(components, start_at, end_at).published.not_hidden.upstream_not_hidden
     Decidim::Proposals::ProposalVote.where(proposal: proposals).count
   end
 
   component.register_stat :endorsements_count, priority: Decidim::StatsRegistry::MEDIUM_PRIORITY do |components, start_at, end_at|
-    proposals = Decidim::Proposals::FilteredProposals.for(components, start_at, end_at).not_hidden
+    proposals = Decidim::Proposals::FilteredProposals.for(components, start_at, end_at).not_hidden.upstream_not_hidden
     Decidim::Proposals::ProposalEndorsement.where(proposal: proposals).count
   end
 
   component.register_stat :comments_count, tag: :comments do |components, start_at, end_at|
-    proposals = Decidim::Proposals::FilteredProposals.for(components, start_at, end_at).published.not_hidden
+    proposals = Decidim::Proposals::FilteredProposals.for(components, start_at, end_at).published.not_hidden.upstream_not_hidden
     Decidim::Comments::Comment.where(root_commentable: proposals).count
   end
 

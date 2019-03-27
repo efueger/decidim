@@ -73,7 +73,6 @@ en:
         name: Proposals
         settings:
           global:
-            upstream_moderation: Upstream moderation
             amendments_enabled: Amendments enabled
             announcement: Announcement
             attachments_allowed: Allow attachments
@@ -95,6 +94,7 @@ en:
             proposal_wizard_step_4_help_text: Proposal wizard "Publish" step help text
             resources_permissions_enabled: Actions permissions can be set for each proposal
             threshold_per_proposal: Threshold per proposal
+            upstream_moderation: Upstream moderation
             vote_limit: Vote limit per user
           step:
             announcement: Announcement
@@ -165,15 +165,11 @@ en:
             email_outro: You have received this notification because you are an author of "%{resource_title}".
             email_subject: Your proposal has been accepted
             notification_title: Your proposal <a href="%{resource_path}">%{resource_title}</a> has been accepted.
-          email_intro: 'Пропозиція "%{resource_title}" була прийнята. Ви можете прочитати відповідь на сторінці:'
-          email_outro: Ви отримали це сповіщення, тому що ви стежите за "%{resource_title}". Ви можете припинити стежити за ним, перейшовши за наведеним вище посиланням.
-          email_subject: Пропозиція, за якою ви стежите, була прийнята
           follower:
             email_intro: 'The proposal "%{resource_title}" has been accepted. You can read the answer in this page:'
             email_outro: You have received this notification because you are following "%{resource_title}". You can unfollow it from the previous link.
             email_subject: A proposal you're following has been accepted
             notification_title: The <a href="%{resource_path}">%{resource_title}</a> proposal has been accepted.
-          notification_title: Пропозицію <a href="%{resource_path}">%{resource_title}</a> було прийнято.
         proposal_endorsed:
           email_intro: '%{endorser_name} %{endorser_nickname}, who you are following, has just endorsed the "%{resource_title}" proposal and we think it may be interesting to you. Check it out and contribute:'
           email_outro: You have received this notification because you are following %{endorser_nickname}. You can stop receiving notifications following the previous link.
@@ -185,15 +181,11 @@ en:
             email_outro: You have received this notification because you are an author of "%{resource_title}".
             email_subject: Your proposal is being evaluated
             notification_title: Your proposal <a href="%{resource_path}">%{resource_title}</a> is being evaluated.
-          email_intro: 'Пропозиція "%{resource_title}" зараз розглядається. Ви можете перевірити наявність відповіді на сторінці:'
-          email_outro: Ви отримали це сповіщення, тому що ви стежите за "%{resource_title}". Ви можете припинити стежити за ним, перейшовши за наведеним вище посиланням.
-          email_subject: Пропозиція, за якою ви стежите, зараз розглядається
           follower:
             email_intro: 'The proposal "%{resource_title}" is currently being evaluated. You can check for an answer in this page:'
             email_outro: You have received this notification because you are following "%{resource_title}". You can unfollow it from the previous link.
             email_subject: A proposal you're following is being evaluated
             notification_title: The <a href="%{resource_path}">%{resource_title}</a> proposal is being evaluated.
-          notification_title: Пропозиція <a href="%{resource_path}">%{resource_title}</a> розглядається.
         proposal_mentioned:
           email_intro: Your proposal "%{mentioned_proposal_title}" has been mentioned <a href="%{resource_path}">in this space</a> in the comments.
           email_outro: You have received this notification because you are an author of "%{resource_title}".
@@ -215,15 +207,11 @@ en:
             email_outro: You have received this notification because you are an author of "%{resource_title}".
             email_subject: Your proposal been rejected
             notification_title: Your proposal <a href="%{resource_path}">%{resource_title}</a> has been rejected.
-          email_intro: 'Пропозиція "%{resource_title}" була відхилена. Ви можете прочитати відповідь на сторінці:'
-          email_outro: Ви отримали це сповіщення, тому що ви стежите за "%{resource_title}". Ви можете припинити стежити за ним, перейшовши за наведеним вище посиланням.
-          email_subject: Пропозиція, за якою ви стежите, була відхилена
           follower:
             email_intro: 'The proposal "%{resource_title}" has been rejected. You can read the answer in this page:'
             email_outro: You have received this notification because you are following "%{resource_title}". You can unfollow it from the previous link.
             email_subject: A proposal you're following has been rejected
             notification_title: The <a href="%{resource_path}">%{resource_title}</a> proposal has been rejected.
-          notification_title: Пропозицію <a href="%{resource_path}">%{resource_title}</a> було відхилено.
         proposal_update_category:
           email_intro: 'An admin has updated the category of your proposal "%{resource_title}", check it out:'
           email_outro: You have received this notification because you are the author of the proposal.
@@ -314,8 +302,10 @@ en:
         participatory_texts:
           bulk-actions:
             are_you_sure: Are you sure to discard the whole participatory text draft?
-            import_doc: Import document
             discard_all: Discard all
+            import_doc: Import document
+          discard:
+            success: All Participatory text drafts have been discarded.
           import:
             invalid: The form is invalid!
             success: Congratulations, the following sections have been parsed from the imported document, they have been converted to proposals. Now you can review and adjust whatever you need before publishing.
@@ -332,14 +322,12 @@ en:
           publish:
             invalid: Could not publish proposals
             success: All proposals have been published
-          discard:
-            success: All Participatory text drafts have been discarded.
           sections:
             article: "<em>Article</em>"
             section: "<em>Section:</em> <strong>%{title}</strong>"
             sub-section: "<em>Subsection:</em> %{title}"
           update:
-             success: Participatory text updated successfully.
+            success: Participatory text updated successfully.
         proposal_answers:
           edit:
             accepted: Accepted

@@ -94,6 +94,7 @@ fr:
             proposal_wizard_step_4_help_text: Texte d'aide à l'étape "Publier" de la création de proposition
             resources_permissions_enabled: Les autorisations d'actions peuvent être définies pour chaque proposition
             threshold_per_proposal: Seuil par proposition
+            upstream_moderation: Modération à priori
             vote_limit: Limite de votes par utilisateur
           step:
             announcement: Annonce
@@ -316,7 +317,7 @@ fr:
             discard_all: Rejeter
             import_doc: Importer un document
           discard:
-            success: Tous les projets de textes participatifs ont été rejetés.
+            success: Tous les brouillons de texte participatifs ont été rejetés.
           import:
             invalid: Le formulaire est invalide!
             success: Félicitations, les sections suivantes ont été analysées à partir du document importé. Elles ont été converties en propositions. Maintenant, vous pouvez revoir et ajuster tout ce dont vous avez besoin avant de publier.
@@ -333,8 +334,6 @@ fr:
           publish:
             invalid: Impossible de publier des propositions
             success: Toutes les propositions ont été publiées
-          discard:
-            success: Tous les brouillons de texte participatifs ont été rejetés.
           sections:
             article: "<em>article</em>"
             section: "<em>Section :</em> <strong>%{title}</strong>"
