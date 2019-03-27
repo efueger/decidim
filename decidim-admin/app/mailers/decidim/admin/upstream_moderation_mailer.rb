@@ -13,7 +13,7 @@ module Decidim
           @participatory_space = @upstream_reportable.component.participatory_space
           @organization = user.organization
           @user = user
-          subject = I18n.t("report.subject", scope: "decidim.reported_mailer")
+          subject = I18n.t("moderator_subject", scope: "decidim.events.admin.upstream_pending")
           mail(from: Decidim.config.mailer_sender, to: user.email, subject: subject)
         end
       end

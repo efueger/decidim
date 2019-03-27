@@ -729,6 +729,7 @@ en:
           email_intro: 'Your contribution "%{resource_title}" is awaiting moderation.'
           email_outro: You will receive another notification once it has been moderated.
           email_subject: Your contribution is awaiting moderation.
+          moderator_subject: A contribution is awaiting moderation.
           notification_title: '"<a href="%{resource_path}">%{resource_title}</a>" is awaiting moderation.'
         upstream_hidden:
           email_intro: 'Your contribution "%{resource_title}" was rejected.'
