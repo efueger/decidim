@@ -10,17 +10,17 @@ module Decidim
         enforce_permission_to :read, :moderation
       end
 
-      def make_visible
-        enforce_permission_to :make_visible, :moderation
+      def accept
+        enforce_permission_to :accept, :moderation
 
-        Admin::MakeVisibleUpstreamResource.call(upstream_reportable, current_user) do
+        Admin::AcceptUpstreamResource.call(upstream_reportable, current_user) do
           on(:ok) do
-            flash[:notice] = I18n.t("reportable.make_visible.success", scope: "decidim.upstream_moderations.admin")
+            flash[:notice] = I18n.t("reportable.accept.success", scope: "decidim.upstream_moderations.admin")
             redirect_to upstream_moderations_path
           end
 
           on(:invalid) do
-            flash.now[:alert] = I18n.t("reportable.make_visible.invalid", scope: "decidim.upstream_moderations.admin")
+            flash.now[:alert] = I18n.t("reportable.accept.invalid", scope: "decidim.upstream_moderations.admin")
             redirect_to upstream_moderations_path
           end
         end

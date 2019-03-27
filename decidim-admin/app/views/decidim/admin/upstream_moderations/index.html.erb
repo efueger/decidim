@@ -55,10 +55,10 @@
                     %>
                   <% end %>
                 <% end %>
-                <% if allowed_to?(:make_visible, :moderation) %>
+                <% if allowed_to?(:accept, :moderation) %>
                   <%= icon_link_to "check",
-                                   make_visible_upstream_moderation_path(id: upstream_moderation),
-                                   t("actions.make_visible", scope: "decidim.upstream_moderations"),
+                                   accept_upstream_moderation_path(id: upstream_moderation),
+                                   t("actions.accept", scope: "decidim.upstream_moderations"),
                                    class: "action-icon--check",
                                    method: :put %>
                 <% end %>

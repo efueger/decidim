@@ -23,6 +23,7 @@ module Decidim
         return broadcast(:invalid) unless @upstream_reportable
 
         hide!
+        send_notification_to_author
 
         broadcast(:ok, @reportable)
       end
@@ -31,7 +32,7 @@ module Decidim
 
       def hide!
         Decidim.traceability.perform_action!(
-          "unreport",
+          "hide",
           @upstream_reportable.upstream_moderation,
           @current_user,
           extra: {
@@ -41,6 +42,23 @@ module Decidim
           @upstream_reportable.upstream_moderation.update!(
             pending: false
           )
+        end
+      end
+
+      def send_notification_to_author
+        Decidim::EventsManager.publish(
+          event: "decidim.events.admin.upstream_hidden",
+          event_class: Decidim::UpstreamHiddenEvent,
+          resource: @upstream_reportable,
+          affected_users: authors
+        )
+      end
+
+      def authors
+        if @upstream_reportable.class.name == "Decidim::Comments::Comment"
+          [@upstream_reportable.author]
+        elsif @upstream_reportable.class.name == "Decidim::Proposals::Proposal"
+          @upstream_reportable.authors
         end
       end
     end

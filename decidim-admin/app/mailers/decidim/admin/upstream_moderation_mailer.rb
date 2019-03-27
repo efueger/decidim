@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Decidim
   module Admin
     class UpstreamModerationMailer < Decidim::ApplicationMailer
@@ -19,11 +21,11 @@ module Decidim
       private
 
       def reported_content_url
-        @reported_content_url ||=  @upstream_reportable.reported_content_url
+        @reported_content_url ||= @upstream_reportable.reported_content_url
       end
 
       def manage_moderations_url
-        @manage_moderations_url ||= EngineRouter.admin_proxy(@participatory_space).moderations_url(host: @organization.host)
+        @manage_moderations_url ||= EngineRouter.admin_proxy(@participatory_space).upstream_moderations_url(host: @organization.host)
       end
     end
   end
