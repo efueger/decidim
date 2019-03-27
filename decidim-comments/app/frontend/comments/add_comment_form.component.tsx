@@ -340,7 +340,10 @@ export class AddCommentForm extends React.Component<AddCommentFormProps, AddComm
     }
 
     this.bodyTextArea.value = "";
-    this.setState({ alignment: 0 });
+    this.setState({
+      alignment: 0,
+      remainingCharacterCount: MAX_LENGTH
+    });
 
     if (onCommentAdded) {
       onCommentAdded();
