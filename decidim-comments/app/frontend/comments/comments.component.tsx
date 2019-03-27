@@ -16,6 +16,7 @@ const { I18n } = require("react-i18nify");
 
 interface CommentsProps extends GetCommentsQuery {
   loading?: boolean;
+  scrollTo?: string;
   orderBy: string;
   reorderComments: (orderBy: string) => void;
 }
@@ -30,6 +31,7 @@ interface CommentsProps extends GetCommentsQuery {
 export class Comments extends React.Component<CommentsProps> {
   public static defaultProps: any = {
     loading: false,
+    scrollTo: window.location.hash.replace("#",""),
     session: null,
     commentable: {
       comments: []
@@ -37,7 +39,7 @@ export class Comments extends React.Component<CommentsProps> {
   };
 
   public render() {
-    const { commentable: { comments, totalCommentsCount = 0 }, reorderComments, orderBy, loading } = this.props;
+    const { commentable: { comments, totalCommentsCount = 0 }, reorderComments, orderBy, loading, scrollTo } = this.props;
     let commentClasses = "comments";
     let commentHeader = I18n.t("components.comments.title", { count: totalCommentsCount });
 
