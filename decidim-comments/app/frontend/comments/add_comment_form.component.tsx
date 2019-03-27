@@ -26,6 +26,7 @@ interface AddCommentFormProps {
   submitButtonClassName?: string;
   autoFocus?: boolean;
   arguable?: boolean;
+  upstream?: boolean;
   addComment?: (data: { body: string, alignment: number, userGroupId?: string }) => void;
   onCommentAdded?: () => void;
   orderBy: string;
@@ -50,6 +51,7 @@ export class AddCommentForm extends React.Component<AddCommentFormProps, AddComm
     showTitle: true,
     submitButtonClassName: "button button--sc",
     arguable: false,
+    upstream: false,
     autoFocus: false
   };
 
@@ -127,7 +129,7 @@ export class AddCommentForm extends React.Component<AddCommentFormProps, AddComm
    * @returns {Void|DOMElement} - The add comment form on an empty element.
    */
   private _renderForm() {
-    const { session, submitButtonClassName, commentable: { id, type } } = this.props;
+    const { session, submitButtonClassName, upstream, commentable: { id, type } } = this.props;
     const { disabled, remainingCharacterCount } = this.state;
 
     if (session) {
@@ -136,9 +138,13 @@ export class AddCommentForm extends React.Component<AddCommentFormProps, AddComm
           {this._renderCommentAs()}
           <div className="field">
             <label className="show-for-sr" htmlFor={`add-comment-${type}-${id}`}>{I18n.t("components.add_comment_form.form.body.label")}</label>
+            {upstream && (
+              <div className="callout small warning help-text">
+                {I18n.t("components.add_comment_form.form.upstream_moderation")}
+              </div>
+            )}
             {this._renderTextArea()}
             {this._renderTextAreaError()}
-            <div className="upstream_moderation-helper">{I18n.t("components.add_comment_form.form.upstream_moderation")}</div>
             <button
               type="submit"
               className={submitButtonClassName}
@@ -397,6 +403,7 @@ const AddCommentFormWithMutation = graphql<addCommentMutation, AddCommentFormPro
               variables
              });
             const { id, type } = ownProps.commentable;
+            const { upstream } = ownProps;
             const newComment = data.commentable && data.commentable.addComment;
             let comments = [];
 
@@ -422,6 +429,8 @@ const AddCommentFormWithMutation = graphql<addCommentMutation, AddCommentFormPro
             if (prev) {
               if (type === "Decidim::Comments::Comment") {
                   comments = prev.commentable.comments.map(commentReducer);
+                } else if (upstream) {
+                  comments = prev.commentable.comments;
                 } else {
                   comments = [
                     ...prev.commentable.comments,

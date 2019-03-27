@@ -113,7 +113,7 @@ export class Comments extends React.Component<CommentsProps> {
    */
   private _renderAddCommentForm() {
     const { session, commentable, orderBy } = this.props;
-    const { acceptsNewComments, commentsHaveAlignment } = commentable;
+    const { acceptsNewComments, commentsHaveAlignment, commentsHaveUpstreamModeration } = commentable;
 
     if (acceptsNewComments) {
       return (
@@ -121,6 +121,7 @@ export class Comments extends React.Component<CommentsProps> {
           session={session}
           commentable={commentable}
           arguable={commentsHaveAlignment}
+          upstream={commentsHaveUpstreamModeration}
           rootCommentable={commentable}
           orderBy={orderBy}
         />
