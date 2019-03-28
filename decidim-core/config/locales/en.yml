@@ -994,7 +994,7 @@ en:
         share: Share
         share_link: Share link
       upstream_moderation:
-        pending_info: Your content will be visible once it has been moderated
+        pending_info: This content will be visible once it has been moderated
       version_author:
         deleted: Deleted user
     user_activity:

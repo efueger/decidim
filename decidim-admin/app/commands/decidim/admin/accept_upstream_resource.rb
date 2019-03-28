@@ -55,6 +55,8 @@ module Decidim
           Decidim::Comments::NewCommentNotificationCreator.new(@upstream_reportable, mentioned_users).create
         elsif @upstream_reportable.class.name == "Decidim::Proposals::Proposal"
           Decidim::Proposals::PublishProposal.call(@upstream_reportable, authors.first)
+        elsif @upstream_reportable.class.name == "Decidim::Questions::Question"
+          Decidim::Questions::PublishQuestion.call(@upstream_reportable, authors.first)
         end
       end
 
@@ -71,6 +73,8 @@ module Decidim
         if @upstream_reportable.class.name == "Decidim::Comments::Comment"
           [@upstream_reportable.author]
         elsif @upstream_reportable.class.name == "Decidim::Proposals::Proposal"
+          @upstream_reportable.authors
+        elsif @upstream_reportable.class.name == "Decidim::Questions::Question"
           @upstream_reportable.authors
         end
       end

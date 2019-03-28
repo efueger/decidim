@@ -59,6 +59,8 @@ module Decidim
           [@upstream_reportable.author]
         elsif @upstream_reportable.class.name == "Decidim::Proposals::Proposal"
           @upstream_reportable.authors
+        elsif @upstream_reportable.class.name == "Decidim::Questions::Question"
+          @upstream_reportable.authors
         end
       end
     end
